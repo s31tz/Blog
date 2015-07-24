@@ -6,8 +6,7 @@ Blog - Blog articles
 
 =head1 DESCRIPTION
 
-Dieses Repository enthält Quellen der Blog-Artikel, die auf
-L<http://fseitz.de> erschienen sind.
+Die Quellen der Blog-Artikel, die auf L<http://fseitz.de> erschienen sind.
 
 =over 4
 
