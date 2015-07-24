@@ -29,9 +29,8 @@ Kommandozeile:
 Der Vorteil von Perl gegenüber sed ist dessen leistungsfähigere
 Regex-Engine.
 
-WICHTIG: Die Ersetzungsoperation wird I{zeilenweise}
-angewendet, d.h. eine Ersetzung, die sich über Zeilengrenzen
-erstreckt, ist I{nicht} möglich.
+WICHTIG: Die Ersetzungsoperation wird I{zeilenweise} angewendet,
+d.h. eine Ersetzung über Zeilengrenzen hinweg ist I{nicht} möglich.
 
 = Links
 
