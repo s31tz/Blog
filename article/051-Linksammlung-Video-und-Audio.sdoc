@@ -1,0 +1,41 @@
+# Date: 2011-04-28
+
+%Document:
+  title="Linksammlung Video und Audio"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=57
+
+= Video
+
+* Media Formats Explained: U{http://www.dr-lex.be/info-stuff/mediaformats.html}
+
+* Video Bitrate Calculator: U{http://www.dr-lex.be/info-stuff/videocalc.html}
+
+* Bitraten-Rechner: U{http://www.videohelp.com/calc.htm}
+
+* Offizielle YouTube APIs und Tools. Data API für Upload,
+  Custom Player etc.: U{http://code.google.com/apis/youtube/overview.html}
+
+* Kdenlive User Manual: U{http://www.kdenlive.org/user-manual}
+
+* Kdenlive Wiki: U{http://en.wikibooks.org/wiki/Kdenlive}
+
+* Videohokuspokus mit FFmpeg:
+  U{http://spielwiese.la-evento.com/hokuspokus/index.html}
+
+* FFmpeg Homepage: U{http://www.ffmpeg.org/}
+
+* Audacity Manual: U{http://manual.audacityteam.org/}
+
+* How to Create a Time Lapse Video using FFMPEG:
+  U{http://pr0gr4mm3r.com/linux/how-to-create-a-time-lapse-video-using-ffmpeg/}
+
+= Audio
+
+* U{"http://superuser.com/questions/64164/linux-command-to-concatenate-\
+  audio-files-and-output-them-to-ogg",text="Audio-Dateien zusammenfügen"}
+
+# eof

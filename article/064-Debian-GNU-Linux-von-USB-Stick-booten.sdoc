@@ -1,0 +1,141 @@
+# Date: 2012-01-17
+
+%Document:
+  title="Debian GNU/Linux von USB-Stick booten"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=76
+
+%Figure: file="uploads/debian_splash_590x124.png" width="508" height="107" \
+  url="https://www.debian.org/"
+
+= Rescue System
+
+Hat man die Kontrolle über ein Linux-System verloren
+(es bootet nicht mehr, Anmelden als root ist nicht möglich, o.ä.)
+ist es nützlich ein Rescue-System zu haben, von dem aus man das
+defekte System untersuchen und ggf. reparieren kann.
+
+Ein solches Rescue-System lässt sich leicht auf einem USB-Stick
+installieren. Hierzu holt man sich das Image eines Live-Systems
+von einem Debian-Mirror und kopiert es 1:1 auf den USB-Stick.
+
+Die Live-Systeme von Debian finden sich unter
+U{http://www.debian.org/CD/live/}. Sie basieren auf dem aktuellen
+Stable-Release für die Architekturen i386 und amd64 und unterscheiden
+sich in der Desktop-Umgebung (Gnome, KDE, LXDE, Xfce oder
+Terminal):
+
+  debian-live-<version>-<arch>-gnome-desktop.<ext>
+  debian-live-<version>-<arch>-kde-desktop.<ext>
+  debian-live-<version>-<arch>-lxde-desktop.<ext>
+  debian-live-<version>-<arch>-xfce-desktop.<ext>
+  debian-live-<version>-<arch>-rescue.<ext>
+  debian-live-<version>-<arch>-standard.<ext>
+
+  Hierbei ist:
+
+  <version> die Versionsnummer des Stable-Release (aktuell 6.0.3)
+  <arch> die Prozessor-Architektur (amd64 oder i386)
+  <ext> die Dateiendung .iso oder .img
+
+Da jedes Live-System aus nur einer Datei besteht und bootfähig ist,
+gestaltet sich das Herunterladen und Installieren sehr einfach:
+
+  # wget <file>
+  # dd if=<file> of=/dev/sd<x> bs=1M
+  # sync
+
+  Hierbei ist:
+
+  <file> eine der obigen Dateien
+  <x> der Device-Buchstabe des USB-Stick
+
+Fertig.
+
+Vorsicht! Ein falscher Device-Name kann Daten auf anderen Geräten als
+dem USB-Stick oder gar das System komplett zerstören. Er sollte daher
+akribisch geprüft werden. Er lässt sich z.B. mit C{fdisk -l}
+ermitteln. Sollte der Stick beim Einstecken automatisch gemountet
+worden sein, was wahrscheinlich ist, muss er vor Ausführung des
+C{dd}-Kommandos erst mit C{umount} ausgehängt werden.
+
+Zum Booten vom Stick stellt man die Bootreihenfolge im BIOS-Setup
+entweder dauerhaft um oder ändert sie "on the fly" beim Bootvorgang,
+durch Drücken der Taste, die eine Auswahl des Boot-Device
+erlaubt (z.B. C{ESC}). Beim Eee PC Asus 1001PX lässt sich der
+Stick nur mit der letzterer Methode booten. Ein automatisches Booten
+vom Stick funktioniert nicht, es wird immer von der Festplatte gebootet.
+
+= Installer für Debian Testing
+
+Die Images für das Erzeugen eines Debian-Installers für Testing auf
+einem USB-Stick (oder einer CD) befinden sich hier:
+U{http://www.debian.org/devel/debian-installer/}
+
+== Businesscard-ISO-Image
+
+Das Businesscard-Image lässt sich vereinfacht auf den USB-Stick bringen,
+da es in die boot.img-Partition passt. Das NetInst-Image von Testing
+ist dafür zu groß (siehe L{"NetInst-ISO-Image"}).
+
+  # wget -N http://d-i.debian.org/daily-images/<arch>/daily/\\
+      hd-media/boot.img.gz
+  # wget -N http://cdimage.debian.org/cdimage/daily-builds/daily/\\
+      arch-latest/<arch>/iso-cd//debian-testing-<arch>-businesscard.iso
+  # zcat boot.img.gz >/dev/sd<x>
+  # mount /dev/sd<x> /mnt
+  # cp debian-testing-<arch>-businesscard.iso /mnt
+  # umount /dev/sd<x> 
+
+  Hierbei ist:
+
+  <arch> die Prozessor-Architektur (i386, amd64, ...)
+  <x> der Device-Buchstabe des USB-Stick
+
+== A{NetInst-ISO-Image}
+
+Das NetInst-Image muss wegen seiner Größe mittels Syslinux auf den
+USB-Stick gebracht werden. Syslinux benötigt eine Partitionierung
+mit einer FAT16-Partition à la
+
+   Device    Boot      Start         End      Blocks   Id  System
+   /dev/sdc1   *        2048     7829503     3913728    6  FAT16
+
+Wie diese erstellt wird, siehe
+U{http://wiki.debian.org/BootUsb#Partitioning_the_USB_key}.
+
+Ferner werden folgende Pakete benötigt: C{mbr}, C{mtools}, C{syslinux}.
+
+  # wget http://d-i.debian.org/daily-images/<arch>/daily/hd-media/vmlinuz
+  # wget http://d-i.debian.org/daily-images/<arch>/daily/hd-media/initrd.gz
+  # http://cdimage.debian.org/cdimage/daily-builds/daily/arch-latest/\\
+      <arch>/iso-cd/debian-testing-<arch>-netinst.iso
+  # install-mbr /dev/sd<x>
+  # mkdosfs /dev/sd<x>1
+  mkdosfs 3.0.12 (29 Oct 2011)
+  # syslinux -i /dev/sd<x>1
+  # mount /dev/sd<x>1 /mnt
+  # cp vmlinuz initrd.gz debian-testing-i386-netinst.iso /mnt
+  # cat >/mnt/syslinux.cfg
+  default vmlinuz
+  append initrd=initrd.gz
+  ^D
+  # umount /dev/sd<x>1
+
+  Hierbei ist:
+
+  <arch> die Prozessor-Architektur (i386, amd64, ...)
+  <x> der Device-Buchstabe des USB-Stick
+
+= Links
+
+* U{http://wiki.debian.org/BootUsb}
+
+= Programm
+
+  %Code: file="include/debian-to-usb.1"
+
+# eof

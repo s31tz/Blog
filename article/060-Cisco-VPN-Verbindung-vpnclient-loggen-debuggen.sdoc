@@ -1,0 +1,26 @@
+# Date: 2011-04-27
+
+%Document:
+  title="Cisco VPN-Verbindung (vpnclient) loggen/debuggen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=55
+
+%Figure: file="uploads/cisco-vpnclient-100x100.png" \
+  width="65" height="65" url=""
+
+Die Ausgaben des Cisco C{vpnclient} sind nicht unbedingt informativ,
+wenn etwas schief geht. Hier hilft die Aktivierung und Auswertung des Log.
+Das Logging wird in der Datei C{vpnclient.ini} aktiviert. Hierzu wird
+die Option C{EnableLog=1} gesetzt und alle LogLevel-Einträge
+auf C{LogLevel=3}.
+
+Das Logging wird gestartet durch
+
+  $ ipseclog /tmp/vpnclient.log
+
+Die Logmeldungen werden nach C{/tmp/vpnclient.log} geschrieben.
+
+# eof

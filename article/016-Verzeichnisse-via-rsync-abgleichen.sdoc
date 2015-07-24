@@ -1,0 +1,32 @@
+# Date: 2010-01-21
+
+%Document:
+  title="Verzeichnisse via rsync abgleichen"
+  styleSheet=blog-style.css
+  generateAnchors=0
+  utf8=1
+
+# id=18
+
+%Figure: file="uploads/rsync-logo-205x100.jpg" \
+  width="103" height="50" url="https://rsync.samba.org/"
+
+= Verzeichnisbaum spiegeln (local => remote)
+
+  $ rsync -avz --delete DIR1/ USER@HOST:DIR2
+
+Der trailing Slash bei C{DIR1/} ist wichtig, da sonst C{DIR1} in dir
+C{DIR2} hineinkopiert wird. Die Verzeichnisse können unterschiedlich
+heißen.
+
+Bei Angabe der Option -n wird die Ausführung nur simuliert.
+
+= Via ssh
+
+  $ rsync -e ssh -avz --delete DIR1/ USER@HOST:DIR2
+
+= Via ssh mit speziellem Port
+
+  $ rsync --rsh='ssh -p port' -avz --delete DIR1/ USER@HOST:DIR2
+
+# eof

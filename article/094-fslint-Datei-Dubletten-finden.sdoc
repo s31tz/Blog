@@ -1,0 +1,61 @@
+# Date: 2015-06-18
+
+%Document:
+  title="fslint: Datei-Dubletten finden"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=111
+
+%Figure: file="uploads/fslint-icon-48x48.png" \
+    width="48" height="48" url="http://www.pixelbeat.org/fslint/"
+
+Um Datei-Dubletten in einem Verzeichnis oder Dateibaum zu finden, gibt
+es unter Unix/Linux meines Wissens keine Standard-Toolchain. Es
+existiert aber eine Programmsammlung namens C{fslint}, die u.a. auch
+ein Programm zum Finden von Dubletten enthält.
+
+Installation (Debian):
+
+  # apt-get install fslint
+
+Ungewöhnlich an dieser Programmsammlung ist, dass die enthaltenen
+Kommandozeilenprogramme nicht in ein Verzeichnis des
+Suchpfads installiert werden, sondern zunächst nur über das
+GUI-Programm C{fslint-gui} genutzt werden können. Die
+Kommandozeilenprogramme werden von der Shell erst gefunden, wenn man
+C{PATH} um den Installationspfad der Werkzeugsammlung erweitert:
+
+  $ PATH=/usr/share/fslint/fslint:$PATH
+
+Auch existieren zu den einzelnen Programmen - außer dem GUI-Programm -
+keine Manpages. Informationen über die Benutzung erhält man bei
+Aufruf des jeweiligen Programms mit der Option C{-h}.
+
+Eine Übersicht über die Programmsammlung:
+
+  $ man fslint-gui
+
+Das Programm zum Finden von Dubletten heißt C{findup}.
+
+Beschreibung des Programms und Beispiele:
+
+  $ findup -h
+
+Finde alle Dubletten in Dateibaum DIR (also rekursiv) und zeige diese an:
+
+  $ findup DIR
+
+Lösche alle Dubletten in Dateibaum DIR - bis auf jeweils ein Exemplar:
+
+  $ findup -d DIR
+
+Bei Angabe der Option C{-r} werden Subverzeichnisse I{nicht} durchsucht.
+
+Links:
+
+* U{"http://www.pixelbeat.org/fslint/",text="Homepage fslint"}
+* U{"https://github.com/pixelb/fslint",text="Sourcen auf GitHub"}
+
+# eof

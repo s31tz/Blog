@@ -1,0 +1,26 @@
+# Date: 2011-05-25
+
+%Document:
+  title="dvgrab: Video von miniDV-Camcorder lesen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=61
+
+Mit C{dvgrab} wird ein Video von einem digitalen Camcorder über
+FireWire gelesen und in Form von einzelnen Clips (.dv-Dateien) auf die
+Platte geschrieben. Die von mir bevorzugt verwendete Kommandozeile lautet:
+
+  $ dvgrab -autosplit -size 0 -timestamp clip-
+
+  -autosplit : trenne den Video-Strom auf Clip-Grenzen
+  -size 0    : erlaube, dass Clip-Dateien beliebig groß werden können
+  -timestamp : füge den Timecode des ersten Frame zum Clip-Grundnamen hinzu
+  clip-      : Grundname der Clip-Dateien
+
+Die Clip-Dateien erhalten die Namen C{clip-YYYY.MM.DD_HH-MI-SS.dv}.
+Pro Sekunde fallen 3.43 MB an Daten an, eine Stunde Videomaterial belegt
+12.35 GB Plattenplatz.
+
+# eof

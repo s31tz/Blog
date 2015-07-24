@@ -1,0 +1,24 @@
+# Date: 2010-02-05
+
+%Document:
+  title="Perl: Effizient Zeichen zählen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=28
+
+%Figure: file="uploads/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+Ist eine FAQ (s. C{perldoc -q occurrences}), aber ich vergesse
+immer die genaue Syntax, da ich C{tr///} selten nutze und es mehrere
+Funktionen in sich vereint:
+
+  %Code: filter="./blog-highlight perl %FORMAT%"
+  $n = $str =~ tr/\n//;
+  .
+
+C{$n} ist in diesem Fall die Anzahl der Zeilenumbrüche in C{$str}.
+
+# eof

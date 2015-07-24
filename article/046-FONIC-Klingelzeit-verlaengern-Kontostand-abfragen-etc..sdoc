@@ -1,0 +1,75 @@
+# Date: 2011-12-28
+
+%Document:
+  title="FONIC: Klingelzeit verlängern, Kontostand abfragen etc."
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=72
+
+%Figure: file="uploads/mobile-phone-74x100.png" \
+    width="47" height="64" url="https://de.wikipedia.org/wiki/USSD-Codes"
+
+= Bedingte Rufweiterleitung + Klingelzeit setzen
+
+  **004*333**30#<abheben>
+
+  **                       Definieren
+    004*                   Umleitung bei Abwesenheit, Unerreichbarkeit, besetzt
+        333                Nummer, auf die umgeleitet wird (hier: FONIC-Mailbox)
+           **              Dienstkennung (leer)
+             30            Zeitspanne in Sekunden (5 bis 30 möglich)
+               #           Endekennung des GSM-Befehls
+                <abheben>  GSM-Code an Provider übermitteln
+
+  Antwort:
+  Rufweiterleitung
+  Registrierung war erfolgreich
+
+Bei Abwesenheit, Unerreichbarkeit (kein Netz oder Telefon ist ausgeschaltet)
+oder besetzt wird der Anrufer auf die FONIC-Mailbox weitergeleitet.
+Bei Abwesenheit klingelt das Telefon bis zur Weiterleitung
+die maximal möglichen 30 Sekunden.
+
+= Bedingte Rufweiterleitung löschen
+
+  ##004#<abheben>
+
+  Antwort:
+  Rufweiterleitung
+  Löschvorgang erfolgreich
+
+Alle bedingten Rufweiterleitungen (Abwesenheit, Unerreichbarkeit,
+besetzt) werden gelöscht. Die Mailbox geht anschließend nicht mehr
+ran. Der Anrufer hört eine Ansage des Providers, kann aber keine
+Nachricht hinterlassen.
+
+= Kontostand abfragen
+
+  *101#<abheben>
+
+  Antwort:
+  Ihr FONIC Guthaben beträgt: <X> EUR Tipp: Laden Sie Ihr Guthaben
+  bequem und einfach vom Bankkonto auf. Infos unter www.fonic.de
+
+= IMEI ermitteln
+
+  *#06#
+
+  Antwort (des Telefons):
+  TTTTTTTTSSSSSSC
+
+  TTTTTTTT Type Approval Code
+  SSSSSS   Seriennummer
+  C        Prüfziffer
+
+Die IMEI identifiziert das Telefon eindeutig. Im Falle eines
+Garantiefalls oder Diebstahls kann es notwendig bzw. vorteilhaft sein
+sie zu wissen. Genauere Information: U{http://de.wikipedia.org/wiki/IMEI}
+
+= Links
+
+* U{"https://de.wikipedia.org/wiki/USSD-Codes",text="Weitere USSD-Codes"}
+
+# eof

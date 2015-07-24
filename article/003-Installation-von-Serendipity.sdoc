@@ -1,0 +1,131 @@
+# Date: 2010-01-02
+
+%Document:
+  title="Installation von Serendipity"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=2
+
+%Figure: file="uploads/serendipity-logo-268x56.png" \
+    width="182" height="38" url="http://www.s9y.org/"
+
+Meine Wahl der Blog-Software ist auf Serendipity gefallen, da ich es
+neulich positiv erwähnt gefunden habe und meine anschließende
+Recherche ergeben hat, dass es wohl tatsächlich gut ist.
+
+Als ersten technischen Eintrag schreibe ich auf, wie ich Serendipity
+from scratch auf meinem Debian Web-Host installiert habe. Zwar gibt es
+Serendipity auch fix und fertig als Debian-Paket, aber das ist in
+Debian/Stable schon älter. Außerdem ist diese Anwendung für mich
+wichtig genug, dass ich alles im Detail kontrollieren möchte,
+einschließlich programmierung, und keinesfalls will, dass die
+Debian-Paketverwaltung mir mit Updates dazwischen kommt.
+
+Homepage von Serendipity: U{http://www.s9y.org/}
+
+= Schritt 1: Herunterladen der Software
+
+Auf der Homepage bekommt man die aktuelle Version als Tarball und auch
+eine Beschreibung für die manuelle Installation. Diese hat den Titel
+I{Fresh Installation}. Sie ist gut, aber in einigen Punkten nicht
+ausführlich genug. Ich beschreibe hier die Dinge, die ich bei meiner
+Installation dort nicht gefunden habe.
+
+= Schritt 2: Auspacken des Pakets
+
+Das Paket, in meinen Fall C{serendipity-1.5.1.tar.gz}, kann irgendwo im
+Dateisystem ausgepackt werden. In der Webserver-Konfiguration wird
+später mitgeteilt, wo es sich befindet. Ich entscheide mich als
+Installationsort für C{/opt/serendipity/1.5.1/}.
+
+= Schritt 3: Benötigte Debian-Pakete installieren
+
+  # deb-install php5
+  # apt-get install postgresql
+  # apt-get install php5-pgsql
+  # apt-get install imagemagick
+
+Serendipity ist in PHP5 programmiert. Als DBMS verwende ich
+PostgreSQL. Imagemagick wird von Serendipity zur Bildbearbeitung
+gebraucht.
+
+= Schritt 4: Apache Konfiguration
+
+Im Serendipity-Paket scheint keine Apache-Config dabei zu sein. Ich
+habe diese von der Debian-Version übernommen, mit der ich zuvor
+herumgespielt habe. Lediglich die Pfade brauchte ich anpassen. Der URL
+des Blog wird C{http://SERVER.DOMAIN/blog} lauten.
+
+  Alias /blog /opt/serendipity/1.5.1
+
+  <Directory /opt/serendipity/1.5.1>
+    Options -Indexes +FollowSymlinks
+
+    DirectoryIndex index.php
+
+    <IfModule mod_php5.c>
+    php_flag session.use_trans_sid off
+    php_flag register_globals off
+    </IfModule>
+
+    AllowOverride All
+    order allow,deny
+    allow from all
+
+    <Files *.tpl.php>
+        deny from all
+    </Files>
+
+    <Files *.tpl>
+        deny from all
+    </Files>
+
+    <Files *.sql>
+        deny from all
+    </Files>
+
+    <Files *.inc.php>
+        deny from all
+    </Files>
+
+    <Files *.db>
+        deny from all
+    </Files>
+  </Directory>
+
+Die Datei wird als C{serendiptiy.conf} nach C{/etc/apacha2/conf.d}
+kopiert und anschließend der Apache neu gestartet:
+
+  # apache2ctl restart
+
+= Schritt 5: PostgreSQL-Datenbank einrichten
+
+Für die Datenbank-Einrichtung sind drei Dinge zu tun:
+
+  1. Datenbank erzeugen
+  2. Datenbank-User erzeugen, über den Serendipity auf die Datenbank zugreift
+  3. Datenbanknamen und User und Passwort in die Serendipity-Config eintragen
+
+Datenbank und User erzeugen:
+
+  # su - postgres
+  $ createdb serendipity
+  $ createuser -P serendipity
+  Password:
+
+Wichtig ist bei creatuser der Parameter C{-P}, damit der User ein
+Passwort erhält.
+
+= Schritt 6: Konfiguration und Administration von Serendipity
+
+Anschließend auf C{http://SERVER.DOMAIN/blog/serendipity_admin.php} gehen
+und die Datenbank-Angaben in die Formularfelder eintragen
+
+Bei Anmeldeaufforderung per "John Doe" mit Passwort "john"
+anmelden. Benutzername und Passwort sollten nach der Anmeldung als
+erstes geändert werden. Danach kann Serendipity im Detail den
+eigenen Wünschen angepasst werden.
+
+# eof

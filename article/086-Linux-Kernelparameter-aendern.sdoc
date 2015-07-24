@@ -1,0 +1,52 @@
+# Date: 2014-05-31
+
+%Document:
+  title="Linux Kernelparameter ändern"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=101
+
+# 0.35
+%Figure: file="uploads/linux-logo-370x158.jpg" \
+    width=129 height=55 url="https://www.kernel.org/"
+
+Kernel-Parameter können zur Laufzeit des Linux-Systems mit dem Kommando
+C{sysctl} geändert werden.
+
+Typischer Problemfall: Beim Starten meldet ein Programm (hier der
+PostgreSQL-Server), dass ein Kernel-Parameter (hier die maximale Größe
+eines Shared-Memory-Segments) nicht ausreicht:
+
+    The PostgreSQL server failed to start.
+    FATAL: could not create shared memory segment.
+    DETAIL: Failed system call was shmget(key=5432001, size=536084480, 03600).
+    HINT: This error usually means that PostgreSQL's request for a shared
+    memory segment exceeded your kernel's SHMMAX parameter.
+
+Der betreffende Kernel-Parameter (hier C{kernel.shmmax}) kann mit
+
+    $ sysctl kernel.shmmax
+    kernel.shmmax = 33554432
+
+abgefragt werden. Man sieht, der Wert ist zu klein. Mit
+
+    # sysctl kernel.shmmax=600000000
+    kernel.shmmax = 600000000
+
+kann der Parameter auf einen ausreichenden Wert gesetzt werden. Zum
+Setzen muss man über root-Rechte verfügen. Anschließend sollte der
+Fehler nicht mehr auftreten.
+
+Um die Setzung permanent zu machen, muss sie in eine der
+Konfigurationsdateien des Systems eingetragen werden, typischerweise
+C{/etc/sysctl.conf} oder in eine selbst erstellte Datei in
+C{/etc/sysctl.d}, z.B. C{/etc/sysctl.d/NN-local.conf} (C{NN} ist der
+numerische Wert, der die Postion in der Ladereihenfolge festlegt).
+
+Eine selbst erstellte Datei hat den Vorteil, dass Änderungskonflikte
+vermieden werden, wenn die Paketverwaltung Änderungen an der globalen
+Datei C{/etc/sysctl.conf} vornimmt.
+
+# eof

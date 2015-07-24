@@ -1,0 +1,27 @@
+# Date: 2010-01-26
+
+%Document:
+  title="HTML: String in Entity-Schreibweise wandeln"
+  generateAnchors=0
+  styleSheet="blog-style.css blog-highlight.css"
+  utf8=1
+
+# id=22
+
+%Figure: file="uploads/valid-xhtml10.png" \
+    width="88" height="31" url="http://www.w3.org/"
+
+Eine einfache (eventuell nicht besonders wirksame) Methode, um
+Email-Adressen in HTML-Seiten unkenntlich zu machen, um sie vor
+Spammern zu verbergen, ist, sie in Entity-Schreibweise zu wandeln. Der
+folgende Perl-Code wandelt einen beliebigen String in
+Entity-Schreibweise:
+
+  %Code: listing=1 extract="# begin\s+(.*)# end" \
+  file="src/ROOT-str-to-entity" filter="./blog-highlight perl %FORMAT%"
+
+Beispiel:
+
+  $ ./str-to-entity 'rudi.ratlos@...'
+  &#114;&#117;&#100;&#105;&#46;&#114;&#97;&#116;&#108;&#111;&#115;
+      &#64;&#46;&#46;&#46;

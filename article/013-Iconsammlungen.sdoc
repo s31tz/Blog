@@ -1,0 +1,21 @@
+# Date: 2010-01-15
+
+%Document:
+  title="Iconsammlungen"
+  styleSheet=blog-style.css
+  generateAnchors=0
+  utf8=1
+
+# id=14
+
+G{"uploads/Misc-Videos-icon.png",style="margin-left: 2em",\
+  width="50",height="50"}
+G{"uploads/Misc-Globe-icon.png",width="50",height="50"}
+G{"uploads/Misc-Music-icon.png",width="50",height="50"}
+
+* Sammlung von mehreren tausend qualitativ hochwertigen Desktop- und
+  Web-Icons: U{http://www.iconarchive.com/}
+
+* Fugue Icons: U{http://p.yusukekamiyamane.com/}
+
+# eof

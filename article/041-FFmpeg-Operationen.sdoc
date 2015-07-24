@@ -1,0 +1,97 @@
+# Date: 2011-10-19
+
+%Document:
+  title="FFmpeg Operationen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=68
+
+%Figure: file="uploads/ffmpeg-logo-250x63.png" \
+  width="134" height="36" url="https://www.ffmpeg.org/"
+
+= Film bei Wiedergabe zyklisch wiederholen
+
+   $ ffplay INFILE -loop N
+
+Wiederholt den Film N mal, 0 = unendlich oft. Wichtig: die Option muss
+I{nach} INFILE stehen.
+
+= Film bei Wiedergabe skalieren
+
+   $ ffplay INFILE -vf scale=WIDTH:HEIGHT
+
+Der Film wird in der Größe WIDTHxHIGH wiedergegeben.
+
+= Film skalieren
+
+Ändere die Größe eines Films in WIDTHxHEIGHT:
+
+   $ ffmpeg -i INFILE -s WIDTHxHEIGHT ... OUTFILE
+
+   -s WIDTHxHEIGHT : die neue Breite und Höhe des Films
+
+Die Option C{-s} ist nur sinnvoll, wenn das Seitenverhältnis
+gleich bleibt. Ansonsten wird das Bild verzerrt. Bei abweichendem
+Seitenverhältnis kann mit den Operationen C{pad} oder C{crop}
+gearbeitet werden (siehe pad und crop).
+
+= Ausschnitt extrahieren
+
+  $ ffmpeg -i INFILE -ss 0:0:12.200 -t 0:0:5 -codec copy OUTFILE
+
+  -ss 0:0:12.200 : Start bei 12 Sekunden und 200 Millisekunden
+  -t 0:0:5       : Länge 5 Sekunden (kann auch als -t 5 angegeben werden)
+  -codec copy    : Kopiere alle Streams ohne Reencoding.
+
+Es ist wichtig, dass der Zeit-Offset C{-ss 0:0:12.200} als Parameter der
+I{Ausgabedatei} angegeben wird, und nicht als Parameter der Eingabedatei,
+da sonst Keyframe-Probleme auftreten können.
+
+Subtitle-Streams werden von C{-codec copy} nicht kopiert (Bug?).
+
+= Film mit Balken versehen (pad)
+
+INFILE sei ein 16:9-formatiger Film der Größe 640x360, der mit
+60 Pixel hohen Balken oben und unten auf 4:3-Format gebracht werden soll.
+Kommando:
+
+   $ ffmpeg -i INFILE -vf pad=640:480:0:60 ... OUTFILE
+
+   pad     : Operation: Auffüllen
+   640:480 : die Größe (Dimension) WIDTH:HEIGHT des Resultats (OUTFILE)
+   0:60    : der Offset X:Y des Films von der oberen linken Ecke des Resultats
+
+= Bildausschnitt extrahieren (crop)
+
+Mit folgendem Kommando werden die Balken wieder entfernt.
+
+   $ ffmpeg -i INFILE -vf crop=640:360:0:60 ... OUTFILE
+
+   crop    : Operation: Ausschneiden
+   640:360 : die Größe (Dimension) WIDTH:HEIGHT des Resultats
+   0:60    : der Offset X:Y des Ausschnitts von der oberen linken Ecke
+             des Eingangsmaterials (INFILE)
+
+= Audio nach MP3 wandeln
+
+  $ ffmpeg -i INFILE -ab 128k -acodec libmp3lame -ac 2 ... OUTFILE
+
+  -ab 128k           : Audio-Bitrate in kb/s
+  -acodec libmp3lame : MP3 Codec
+  -ac 2              : Zwei Kanäle (stereo)
+
+= Audio entfernen
+
+  $ ffmpeg -i INFILE -an ... OUTFILE
+
+= Bitrate, Framerate und Bildgröße eines HD-Films reduzieren
+
+  $ ffmpeg -i INFILE -b 5000k -r 25 -s 1280x720 ... OUTFILE
+
+  -b 5000k    : Video-Bitrate auf 5000 kb/s reduzieren
+  -r 25       : Frame-Rate auf 25 Bilder pro Sekunde reduzieren
+  -s 1280x720 : Bildauflösung auf 1280x720 Pixel reduzieren
+
+# eof

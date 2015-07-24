@@ -1,0 +1,100 @@
+# Date: 2010-05-19
+
+%Document:
+  title="Medion Life S60003 MP3 Player unter Debian"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=38
+
+%Figure: file="uploads/mp3-player-115x100.png" \
+    width="64" height="56" url=""
+
+Der Medion Life S60003 ist ein einfacher Player zum Abspielen
+von MP3- und WMA-Dateien.
+
+Zum Datenaustausch wird dieser auf einen freien USB-Port gesteckt.
+Der Player wechselt in den Zustand "USB Connected". Wird gerade
+ein Titel gespielt, muss die Wiedergabe erst angehalten werden.
+
+= Zugriff auf das Dateisystem des Players
+
+Der Player wird von udev erkannt und vom System automatisch auf ein
+Verzeichnis unter C{/media} gemountet. Der Vorgang wird in
+C{/var/log/messages} protokolliert:
+
+  usb 3-1: new high speed USB device using ehci_hcd and address 18
+  usb 3-1: New USB device found, idVendor=066f, idProduct=8588
+  usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=5
+  usb 3-1: Product: MD 83366
+  usb 3-1: Manufacturer: Medion
+  usb 3-1: SerialNumber: 43F9000056B398A30002D8F515A958A3
+  usb 3-1: configuration #1 chosen from 1 choice
+  scsi18 : SCSI emulation for USB Mass Storage devices
+  scsi 18:0:0:0: Direct-Access   Medion   MD 83366   0100 PQ: 0 ANSI: 4
+  scsi 18:0:0:1: Direct-Access   Medion   MD 83366   0100 PQ: 0 ANSI: 4
+  sd 18:0:0:0: [sdc] 478976 4096-byte logical blocks: (1.96 GB/1.82 GiB)
+  sd 18:0:0:0: [sdc] Write Protect is off
+  sd 18:0:0:0: [sdc] 478976 4096-byte logical blocks: (1.96 GB/1.82 GiB)
+  sd 18:0:0:1: [sdd] Attached SCSI removable disk
+   sdc:
+  sd 18:0:0:0: [sdc] 478976 4096-byte logical blocks: (1.96 GB/1.82 GiB)
+  sd 18:0:0:0: [sdc] Attached SCSI removable disk
+
+Der Mountpoint lässt sich mit C{mount(1)} herausfinden:
+
+  $ mount
+  ...
+  /dev/sdc on /media/87C9-FFD0 type vfat (rw,nosuid,nodev,uhelper=udisks,
+    uid=1000,gid=1000,shortname=mixed,dmask=0077,utf8=1,flush)
+
+Eigentlich ist der Flash-Speicher des Players nicht direkt
+mountbar. Vielmehr wird der Player als MTP-Gerät
+(U{"http://de.wikipedia.org/wiki/Media_Transfer_Protocol", text="Media
+Transfer Protocol"}) angesprochen. Der Eintrag in
+C{/lib/udev/rules.d/45-libmtp8.rules} lautet:
+
+  # Medion MD8333
+  ATTR{idVendor}=="066f", ATTR{idProduct}=="8588", SYMLINK+="libmtp-%k",
+    MODE="660", GROUP="audio"
+
+Der Player kann, wenn obiges Setup stimmt, auch per Hand gemountet
+werden:
+
+  # mount /dev/sdX /mnt
+
+C{X} ist der Buchstabe des SCSI-Geräts I{ohne} eine Partitionsnummer,
+hier: C{/dev/sdc}.
+
+Ist unter I{System/Preferences/File Management/Media} (Gnome) die
+Option "Browse Media when inserted" aktiviert, wird von Gnome der File
+Browser Nautilus auf dem Verzeichnis gestartet, wenn es automatisch
+gemountet wird.
+
+B{Aber ACHTUNG:} Dies alles klappt nicht, wenn der Gnome
+Audio-Player Rhythmbox läuft! Dieser nimmt selbst mit dem Player
+via MTP Kontakt auf. Offenbar kann der Player nicht gleichzeitig
+gemountet sein, d.h. ein etwaiger Mount - egal ob automatisch
+oder manuell aufgebaut - wird sofort wieder abgebaut oder
+anderweitig gestört.
+
+= Dateien übertragen
+
+Gemountet kann der Player als Datenträger für beliebige
+Dateien und Verzeichnisstrukturen verwendet werden.
+
+Auch die Musiksammlung kann theoretisch mittels
+Dateisystem-Operationen auf dem Player verwaltet werden. Dies ist
+allerdings nicht praktikabel, da der Player die in den MP3-Dateien
+enthaltenen ID3-Tags I{nicht} auswertet. Werden MP3-Dateien einfach
+nur kopiert, befinden sie sich anschließend zwar auf dem Player und
+können gespielt werden, aber der Player "weiß" nichts über ihren
+Inhalt und kann dem Benutzer die zur Unterscheidung wichtigen
+Informationen Titel, Künstler, Album, Jahr, Genre nicht präsentieren.
+
+Daher ist es besser, die Dateien mit Rhythmbox - oder einem anderen
+Programm, welches Musikdateien per MTP verwaltet - zu übertragen. Der
+Player erhält dann auch die Meta-Information zu den Dateien.
+
+# eof

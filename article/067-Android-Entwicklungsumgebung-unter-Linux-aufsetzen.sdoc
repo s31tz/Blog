@@ -1,0 +1,113 @@
+# Date: 2012-02-09
+
+%Document:
+  title="Android: Entwicklungsumgebung unter Linux aufsetzen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=78
+
+%Figure: file="uploads/droid-75x90.png" width="50" height="60" \
+  url="http://developer.android.com/"
+
+Auf dem U{"http://developer.android.com/",text="Adroid Developer Portal"}
+ist unter dem Einstiegspunkt
+U{"http://developer.android.com/sdk/installing.html",text="Installing the SDK"}
+beschrieben, wie eine Android-Entwicklungsumgebung
+aufgesetzt wird. Die Information ist allerdings über etliche Seiten
+verstreut, weswegen ich die Schritte hier zusammenfasse.
+
+Unser Ziel ist die Einrichtung einer Android-Entwicklungsumgebung
+unter Linux mit anschließender Erstellung eines "Hello
+World"-Programms, das wir unter Android ausprobieren können. Wir
+arbeiten an der Kommandozeile ohne die Verwendung einer IDE (Eclipse),
+denn wir wollen das Android SDK zunächst direkt, ohne den Mantel einer
+IDE kennen lernen.
+
+Alle hier genannten Dateinamen, Versionsnummern und Screenshots
+beziehen sich auf den Zeitpunkt der Erstellung des Blog-Eintrags und
+können sich danach natürlich geändert haben. Anhand der im Text
+angegebenen Links können diese Angaben geprüft und ggf. sinngemäß
+ersetzt werden.
+
+Wir setzten voraus, dass das Java SE JDK und Ant auf dem System
+bereits installiert sind. Sollte das nicht der Fall sein,
+lässt sich dies unter Debian leicht nachholen:
+
+  $ apt-get install openjdk-6-jdk
+  $ apt-get install ant
+
+B{1.} Als erstes legen ein Verzeichnis C{android} an. Der Name und der
+Ort im Dateisystem sind gleichgültig. In diesem Verzeichnis befindet
+sich nach Abschluss der folgenden Schritte die Android
+Entwicklungsumgebung mit dem "Hello World"-Programm.
+
+  $ mkdir ~/android
+  $ cd ~/android
+
+B{2.} Als nächstes laden wir das SDK Starter Package von der
+U{"http://developer.android.com/sdk/index.html",text="SDK download
+page"} herunter. Für Linux ist dies die Datei
+C{android-sdk_r16-linux.tgz}.
+
+  $ wget http://dl.google.com/android/android-sdk_r16-linux.tgz
+  $ tar xvzf android-sdk_r16-linux.tgz
+
+Der Tarball entpackt sich in das Subverzeichnis C{android-sdk-linux}.
+Das SDK Starter-Package enthält noch nicht die volle Entwicklungsumgebung,
+sondern
+
+= Suchpfad erweitern
+
+  $ PATH=~/android/android-sdk-linux/tools:$PATH
+
+= SDK-Manager aufrufen und weitere Komponenten nachladen
+
+  $ android
+
+%Figure: file="uploads/android-sdk-manager-500x547.png" width="500" height="547"
+
+= Suchpfad erweitern
+
+  $ PATH=~/android/android-sdk-linux/platform-tools:$PATH
+
+= Android Virtual Device (AVD) erzeugen
+
+U{http://developer.android.com/guide/developing/devices/managing-avds.html}
+
+Wiederum android aufrufen und 
+
+  $ android
+  Menüpunkt "Tools/Manage AVDs..."
+
+  Name:
+  Target:
+
+= Programm "Hello World" generieren
+
+U{http://developer.android.com/resources/tutorials/hello-world.html}
+
+  $ android create project \\
+    --package com.example.helloandroid \\
+    --activity HelloAndroid \\
+    --target 2 \\
+    --path project/HelloAndroid
+
+= Programm installieren
+
+  $ cd project/HelloAndroid
+  $ ant debug
+  Buildfile: /home/fs/android/project/HelloAndroid/build.xml
+  ...
+  $ adb install bin/HelloAndroid-debug.apk
+  106 KB/s (4871 bytes in 0.044s)
+      pkg: /data/local/tmp/HelloAndroid-debug.apk
+  Success
+
+= Links
+
+* U{"http://developer.android.com/sdk/installing.html",\
+  text="Installing the Android SDK"}.
+
+# eof

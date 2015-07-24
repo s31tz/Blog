@@ -1,0 +1,48 @@
+# Date: 2010-03-16
+
+%Document:
+  title="Perl: Filehandles objektorientiert"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=34
+
+%Figure: file="uploads/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+Mit lexikalischen Filehandles ist es in Perl leicht möglich, File-I/O
+objektorientiert zu kapseln. Hier zur Veranschaulichung eine Klasse
+C{Filehandle} mit drei Methoden: C{new()} (Datei öffnen), C{close()}
+(Datei schließen) und C{slurp()} (Datei komplett einlesen):
+
+  %Code: listing=1 file="src/Filehandle.pm" \
+    filter="./blog-highlight perl %FORMAT%"
+
+B{Beispiel:} Lies eine Datei komplett ein und gib sie auf C{STDOUT} aus
+
+  %Code: ln=1 filter="./blog-highlight perl %FORMAT%"
+  use Filehandle;
+
+  my $fh = Filehandle->new('<',$file);
+  print $fh->slurp;
+  $fh->close;
+  .
+
+B{Der Clou:} Die Filehandle C{$fh} kann unabhängig von der Klasse wie
+jede andere Perl-Filehandle benutzt werden, z.B. mit dem
+Diamant-Operator C{<>} oder jeder anderen Filehandle-Operation
+wie C{read()}, C{write()} usw. Obiges Programm lässt sich also auch so
+implementieren:
+
+  %Code: ln=1 filter="./blog-highlight perl %FORMAT%"
+  use Filehandle;
+
+  my $fh = Filehandle->new('<',$file);
+  while (<$fh>) {
+      print;
+  }
+  $fh->close;
+  .
+
+# eof

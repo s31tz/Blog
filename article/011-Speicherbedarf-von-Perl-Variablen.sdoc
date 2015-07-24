@@ -1,0 +1,70 @@
+# Date: 2010-01-12
+
+%Document:
+  title="Speicherbedarf von Perl-Variablen"
+  generateAnchors=0
+  styleSheet="blog-style.css blog-highlight.css"
+  utf8=1
+
+# id=11
+
+%Figure: file="uploads/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+Der Speicherbedarf von einzelnen Perl-Variablen und komplexeren
+Datenstrukturen lässt sich mit
+U{"http://search.cpan.org/~tels/Devel-Size/",text="Devel::Size"}
+ermitteln. Hier die Werte für Perl 5.10 auf einem 32-Bit System.
+
+(Eine andere Betrachtung - Messung des verbrauchten virtuellen
+Speichers bei großen Datenstrukturen - hat Peter J. Holzer angestellt:
+U{http://www.hjp.at/programming/perl/memory/})
+
+= Skalare
+
+|+ Skalar ohne Wert: | 16 Bytes |
+|+ Referenz: | 16 Bytes |
+|+ Integer: | 16 Bytes |
+|+ Float: | 24 Bytes |
+|+ Leerstring: | 36 Bytes |
+|+ String der Länge n: | 36+n Bytes |
+
+Perl alloziert bei Strings jeweils 4 Bytes im Voraus, vermutlich um
+jedes UTF-8 Zeichen speichern zu können. Obige Berechnung geht von
+1-Byte-Zeichen aus. Enthält der String UTF-8 Zeichen mit 2, 3 oder 4
+Byte, vergrößert sich der Platzbedarf entsprechend.
+
+= Arrays
+
+|+ leeres Array: | 100 Bytes |
+|+ Array der Größe n: | 100+4*n Bytes |
+
+Perl vergrößert ein Array schrittweise auf 4, 8, 16, 32, 64,
+... Elemente. D.h. wird das 4. Element zugewiesen, vergößert Perl
+intern schon auf 8 Elemente usw. Für jedes Element alloziert Perl
+einen Pointer (4 Bytes). Die angegebene Größe ist der
+I{Netto}-Speicherbedarf des Array, d.h. der Speicherbedarf der
+(skalaren) Werte kommt noch hinzu.
+
+= Hashes
+
+|+ leerer Hash: | 76 Bytes |
+|+ Hash mit n Keys: | ungefähr 76+n*4+n*(durchschn. Keygröße+8+Anz. Buckets) |
+
+Perl vergrößert einen Hash schrittweise auf 8, 16, 32, 64,
+... Elemente. D.h. wird das 8. Element zugewiesen, vergößert Perl
+intern auf 16 Elemente usw. Für jeden Key alloziert Perl vorab einen
+Pointer (4 Bytes). Zusätzlich kommt mit zunehmender Anzahl Buckets ein
+wachsender Overhead von 9, 10, 11, ... Bytes je Key hinzu. Die Größe
+des Key geht auch mit ein. Bei der Messung unten ist der Key der
+String "EintragNNNN", also 11 Zeichen lang. Die angegebene Größe ist
+der I{Netto}-Speicherbedarf des Hash, d.h. der Speicherbedarf der
+Werte kommt noch hinzu.
+
+= Messung
+
+%Code: exec="src/ROOT-perl-memory"
+
+= Programm
+
+%Code: ln=1 file="src/ROOT-perl-memory" filter="./blog-highlight perl %FORMAT%"

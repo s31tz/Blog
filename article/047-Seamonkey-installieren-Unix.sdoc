@@ -1,0 +1,39 @@
+# Date: 2011-01-04
+
+%Document:
+  title="Seamonkey installieren (Unix)"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=51
+
+= Installation
+
+1. Neueste Seamonkey-Version (Tarball) holen von
+
+     http://www.seamonkey-project.org/releases/
+
+2. Einrichten
+
+   Seamonkey wird durch Entpacken des Tarball installiert (die
+   Datei README enthält weitere Informationen). Das Directory kann
+   eine beliebige Stelle im Dateisystem geschoben werden.
+
+     $ tar jxvf seamonkey-<VERSION>.tar.bz2
+     $ mkdir /usr/local/lib/seamonkey
+     $ mv seamonkey /usr/local/lib/seamonkey/<VERSION>
+
+3. Seamonkey starten
+
+     $ /usr/local/lib/seamonkey/<VERSION>/seamonkey
+
+= Icon auf GNOME Panel legen
+
+Mit der rechten Maustaste das Panel-Menü öffnen, "Add to panel"
+auswählen und einen "Custom Application Launcher" für das
+Executable anlegen. Das Seamonkey-Icon findet sich unter
+
+  seamonkey/<VERSION>/chrome/icons/default/default.png  
+
+# eof

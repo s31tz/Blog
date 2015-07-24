@@ -1,0 +1,36 @@
+# Date: 2011-08-30
+
+%Document:
+  title="MySQL: Mehrere Instanzen auf einem Server"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=64
+
+%Figure: file="uploads/mysql-logo-170x115.png" \
+  width="74" height="50" url="http://www.mysql.de/"
+
+Eine elegante Möglichkeit, mehrere MySQL-Instanzen auf einem Server zu
+betreiben, bietet das Programm C{mysqld_multi}. Es erweitert die
+Konfigurationsdatei C{/etc/my.cnf} um Abschnitte für mehrere
+MySQL-Serverinstanzen C{[mysqld#]} (wobei C{#} die jeweilige Instanznummer
+bezeichnet). In den Abschnitten werden den Instanzen getrennte
+Datadirs, Sockets, Ports, Pid-Files usw. zugewiesen.
+
+C{mysqld_multi} ist das Frontend-Programm zum Starten und Stoppen
+der einzelnen Instanzen, à la
+
+  $ mysqld_multi start 2
+
+Eine Beispielkonfiguration, die auf die eigenen Verhältnissse
+angepasst und in C{my.cnf} eingesetzt werden kann, liefert das
+Kommando
+
+  $ mysqld_multi --example
+
+Die ausführliche Doku ist auf der Manpage zu finden:
+
+  $ man mysql_multi
+
+# eof

@@ -1,0 +1,43 @@
+# Date: 2012-11-26
+
+%Document:
+  title="meld: Unterschiede zwischen Dateien anzeigen und bearbeiten"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=92
+
+%Figure: file="uploads/meld-84x84.png" \
+  width=56 height=56 url="http://meldmerge.org/"
+
+Ein ausgezeichnetes Programm zur Visualisierung und interaktiven
+Bearbeitung von Unterschieden zwischen Dateien ist C{meld}. Es
+unterstützt
+
+* den Vergleich von 2 oder 3 Dateien
+* den Vergleich von Verzeichnisbäumen
+* den Vergleich gegen den Stand im Versionskontrollsystem (SVN, Git, u.a.)
+* Übertragung von Änderungen per Mausklick
+* Undo und Redo
+
+Vergleich zweier Dateien:
+
+  $ meld FILE1 FILE2
+
+Die Unterschiede werden grafisch dargestellt. Innerhalb differierender
+Zeilen werden die Unterschiede bis auf Zeichenebene markiert. Die
+Dateien können mithilfe des eingebauten Editors bearbeitet
+werden. Dabei entstehende Differenzen werden just-in-time neu
+berechnet und angezeigt. Mittels Klick auf einen der eingeblendeten
+Pfeile (s. Sceenshot) wird eine Änderung insgesamt in die
+gegenüberliegende Datei übertragen, die Differenz also eleminiert.
+
+%Figure: file="uploads/meld-644x548.png" width="508" height="432"
+    style="border: 1px solid"
+
+Links:
+
+* U{"http://meldmerge.org/",text="Meld Hompage"}
+
+# eof

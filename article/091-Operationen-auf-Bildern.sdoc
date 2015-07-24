@@ -1,0 +1,103 @@
+# Date: 2015-01-10
+
+%Document:
+  title="Operationen auf Bildern"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=107
+
+%Figure: file="uploads/imagemagick-logo-464x240.png" \
+    width="184" height="95" url="http://www.imagemagick.org/"
+
+= Bild verkleinern
+
+   $ convert INPUT_FILE -resize WIDTHxHEIGHT OUTPUT_FILE
+
+oder "in place", anwendbar auf mehrere Dateien
+
+   $ mogrify -resize WIDTHxHEIGHT FILE ...
+
+= Bild spiegeln
+
+Vertikal (links-nach-rechts):
+
+   $ convert INPUT_FILE -flop OUTPUT_FILE
+
+Horizontal (oben-nach-unten):
+
+   $ convert INPUT_FILE -flip OUTPUT_FILE
+
+= Hintergrundfarbe transparent machen
+
+  $ gimp FILE
+
+1. Layer / Transparency / Add Alpha Channel
+2. Tools / Selection Tools / By Color Select
+3. Im Bild: Klick auf die Hintergrundfarbe
+4. Edit / Cut
+5. File / Export As... (z.B. als PNG)
+
+= Transparenten Hintergrund durch Farbe ersetzen
+
+  $ convert INPUT_FIILE -background COLOR -flatten OUTPUT_FILE
+
+Sonderfall weiss (da Default für -background):
+
+  $ convert INPUT_FIILE -flatten OUTPUT_FILE
+
+= Sämtliche Metainformation entfernen
+
+   $ exiftool -all= INPUT_FILE ...
+
+Bei diesem Kommando kann eine Liste von Bilddatein angegeben
+werden. Die resultierenden Bilddateien werden unter dem Namen des
+Originals gespeichert, während die jeweilige Originaldatei mit dem
+Suffix C{_original} gesichert wird.
+
+Bei Angabe der Option C{-overwrite_original} werden die Originaldateien
+nicht gesichert:
+
+   $ exiftool -all= -overwrite_original INPUT_FILE ...
+
+= Bild croppen
+
+   $ convert INPUT_FILE -crop WIDTHxHEIGHT+XOFFS+YOFFS OUTPUT_FILE
+
+C{WIDTHxHEIGHT} ist die Geometrie des I{erzeugten} Bildes und C{XOFFS}
+und C{YOFFS} sind der x- und y-Offset bezogen auf die Geometrie
+des I{Ausgangsbildes}.
+
+Wert von C{-crop} bei Wandlung von 16:9 nach 4:3:
+
+  |+~ 16:9    |+~ 4:3     |+~ -crop (mittig) |+~ XOFFS Bereich |
+  | 1920x1080 | 1440x1080 | 1440x1080+240+0  | 0 .. 480        |
+  | 1280x720  | 960x720   | 960x720+160+0    | 0 .. 320        |
+
+WIDTH = HEIGHT / 9 * 16
+
+= Höchauflösende 4:3-Bilder in 16:9-Videoformat (HD) wandeln
+
+1920x1080:
+
+  $ convert INPUT_FILE -resize 1920x1440 -crop 1920x1080+0+180 OUTPUT_FILE
+
+Bereich C{YOFFS}: 0 .. 360
+
+1280x720:
+
+  $ convert INPUT_FILE -resize 1280x960 -crop 1280x720+0+120 OUTPUT_FILE
+
+Bereich C{YOFFS}: 0 .. 240
+
+HEIGHT = WIDTH / 4 * 3
+
+= Links
+
+* U{"http://www.imagemagick.org/",text="ImageMagick"} (allgemeine
+  Bildbearbeitung)
+* U{"http://www.sno.phy.queensu.ca/~phil/exiftool/",text="exiftool"}
+  (Bearbeitung der Metainformation)
+
+# eof

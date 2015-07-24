@@ -1,0 +1,58 @@
+# Date: 2015-06-30
+
+%Document:
+  title="Helligkeit von Farben des RGB-Farbraums berechnen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=112
+
+%Figure: file="uploads/rgb-logo-300x290.png" \
+    width="54" height="52" url="https://de.wikipedia.org/wiki/RGB-Farbraum"
+
+Möchte man Text auf einen beliebigen einfarbigen Hintergrund setzen,
+muss man entscheiden, ob die Farbe des Hintergrunds eher hell oder
+dunkel ist, so dass man die Schriftfarbe geeignet wählen kann. Für
+einen dunklen Hintergrund sollte man eine helle Schrift (z.B. weiß) wählen
+und für einen hellen Hintergrund eine dunkle Schrift (z.B. schwarz), damit
+der Text problemlos lesbar ist.
+
+Eine Heuristik, nach der dies für Farben des RGB-Farbraums entschieden
+werden kann, ist:
+
+%Figure: \
+    file="uploads/rgb-brightness-formula-441x25.png" \
+    width="353" height="20" url="http://latex2png.com?latex=brightness%20%3D\
+    %20%5Csqrt%7B0.299%20%5Ccdot%20r%5E2%20%2B%200.587%20%5Ccdot%20g%5E2%20%\
+    2B%200.114%20%5Ccdot%20b%5E2%7D&amp;res=150&amp;color=999999"
+
+Die drei Koeffizienten 0.299, 0.587 und 0.114 gewichten die drei
+Farbkomponenten hinsichtlich der menschlichen
+Helligkeitswahrnehmung. Denn bei gleichem Farbwert wird Blau vom
+Menschen dunkler wahrgenommen als Rot und Rot dunkler als Grün. Die
+Summe der drei Koeffizienten ergibt 1, entsprechend hat die Funktion den
+gleichen Wertebereich wie die drei Farbkomponenten. Der übliche
+Wertebereich ist 0 bis 255. Bei einem Wert < 128 kann man die Farbe
+als dunkel ansehen, andernfalls als hell. Man kann die Funktion
+auch anwenden, um RGB-Farben in Grauwerte umzurechnen.
+
+Perl:
+
+    $brightness = sqrt 0.299*$r**2 + 0.587*$g**2 + 0.114*$b**2;
+
+JavaScript:
+
+    brightness = Math.sqrt(0.299*pow(r,2) + 0.587*pow(g,2) + 0.114*pow(b,2))
+
+Hier ein Farbauswahl-Menü, dessen Einträge unter Verwendung der
+Helligkeitsfunktion generiert wurden, erkennbar daran, dass die
+Schrift auf der jeweiligen Hintergrundfarbe mal schwarz und mal weiß
+ist: 
+
+%Include: file="src/color-select.%FORMAT%"
+
+Der Artikel, der die Heuristik und ihren Ursprung genauer beschreibt:
+U{http://alienryderflex.com/hsp.html}.
+
+# eof

@@ -1,0 +1,193 @@
+# Date: 2015-07-11
+
+%Document:
+  title="Apache: Aufsetzen einer CGI Webapplikation"
+  styleSheet=blog-style.css
+  generateAnchors=0
+  utf8=1
+
+# id=115
+
+%Figure: file="uploads/apache-logo-200x60.png" \
+  width="153" height="46" url="http://httpd.apache.org/"
+
+Das Aufsetzen einer CGI-Applikation ist kein Zauberwerk. Es führen
+allerdings viele Wege nach Rom und es kann leicht passieren, dass ein
+"from scratch" erstelltes Setup überkomplex und krautig wird. Es folgt
+- in vier Schritten - das Setup, mit dem ich beim Erstellen von
+CGI-Applikationen starte. Es ist aufgeräumt und beruht auf technisch
+sauberen Konzepten. Von diesem Ausgangspunkt aus lässt sich eine
+beliebig umfangreiche Applikation aufbauen, ohne später den am Anfang
+gesteckten Rahmen verlassen zu müssen.
+
+= 1. Applikationsstruktur im Dateisystem
+
+Jede nicht-triviale Applikation sollte sich im Dateisystem auf drei
+Bereiche verteilen. Wir wählen nach moderner Unix-Konvention
+hierfür eine C{/opt}-Struktur:
+
+* C{/opt/<application>} (Programmcode und statische Daten)
+* C{/etc/opt/<application>} (Konfiguration)
+* C{/var/opt/<application>} (Bewegungsdaten)
+
+C{<application>} ist der Name der Applikation.
+
+  /opt/<application>/
+    +-- ...
+    +-- www/
+    +-- bin/index.cgi
+
+  /etc/opt/<application>/
+    +-- ...
+    +-- apache.conf
+
+  /var/opt/<application>/
+    +-- ...
+    +-- access.log
+    +-- error.log
+
+Erläuterung:
+
+* Das Subverzeichnis C{www/} ist das DocumentRoot-Verzeichnis der
+  Applikation. Hier werden statische Inhalte abgelegt, die vom HTTP-Server
+  direkt ausgeliefert werden. Es ist das einzige Verzeichnis, dessen Inhalt
+  von außen zugegriffen werden kann.
+
+* Die Datei C{bin/index.cgi} ist das CGI-Programm, das alle dynamischen
+  Inhalte generiert. Es ist außerhalb von DocumentRoot installiert,
+  damit der Programmcode - auch im Falle einer Fehlkonfiguration - nicht
+  von außen eingesehen werden kann.
+
+* Die Datei C{apache.conf} enthält die Apache-Konfiguration der
+  Applikation (s.u. "Apache-Konfiguration"). Die Datei wird in
+  das Konfigurationsverzeichnis des Apache-Servers gelinkt
+  (s.u. "Kommandos"), da sie dort gebraucht wird.
+
+* Die applikationsspezifischen Logdateien C{access.log} und C{error.log},
+  die der HTTP-Server schreibt, liegen im Bereich der Bewegungsdaten.
+
+= 2. CGI-Programm (index.cgi)
+
+Hier ein minimales CGI-Programm. Es gibt die IP-Adresse des
+Client aus.
+
+  #!/usr/bin/perl -T
+
+  use strict;
+  use warnings;
+
+  print <<"__HTTP__";
+  Content-Type: text/plain
+
+  $ENV{'REMOTE_ADDR'}
+  __HTTP__
+
+  # eof
+
+= 3. Apache-Konfiguration (apache.conf)
+
+Die Apache-Konfigurationsdatei vereinbart einen VirtualHost
+und zwei Verzeichnisse:
+
+  # Apache Config for <application>
+
+  <VirtualHost *:80>
+    ServerName [host].[domain]
+    DocumentRoot /opt/[application]/www
+    ScriptAlias /index.cgi /opt/[application]/bin/index.cgi
+    RedirectMatch ^/$ /index.cgi
+    ErrorLog /var/opt/[application]/error.log
+    CustomLog /var/opt/[application]/access.log combined
+  </VirtualHost>
+
+  <Directory /opt/[application]/bin>
+    Options ExecCGI
+    Require all granted
+  </Directory>
+
+  <Directory /opt/[application]/www>
+    Require all granted
+  </Directory>
+
+  # eof
+
+Erläuterung:
+
+* Die Angaben C{[host]}, C{[domain]} und C{[application]}
+  sind Platzhalter, die passend zur jeweiligen Applikation
+  gesetzt werden müssen.
+
+* C{ServerName} definiert die Domain, unter der die Applikation
+  im Netz erreicht wird.
+
+* C{DokumentRoot} definiert das Verzeichnis für statische Inhalte (HTML-,
+  CSS-, JavaScript-, Bilddateien usw.)
+
+* C{SkriptAlias} definiert das CGI-Programm für dynamische Inhalte.
+  Als Name wird hier C{index.cgi} vereinbart. Es kann auch
+  anders heißen. Es wird aus dem bin-Verzeichnis heraus
+  aufgerufen, das aus Sicherheitsgründen nicht unterhalb von
+  C{DocumentRoot} liegt.
+
+* C{RedirectMatch} definiert die Umschreibungsregel, mit der der Client
+  auf das CGI-Programm gelenkt wird, wenn kein Pfad angegeben ist.
+  Die Regel lenkt also auf den Start-URL der Applikation.
+
+* C{ErrorLog} und C{CustomLog} definieren den Ort, an den die
+  Server-Logdateien geschrieben werden, und - im Falle von C{CustomLog} -
+  zusätzlich das Format der Datei (C{combined}).
+
+* Mit der Option C{ExecCGI} wird dem Webserver gestattet, im
+  Verzeichnis C{/opt/[application]/bin} das CGI-Programm C{index.cgi}
+  auszuführen.
+
+* Mit C{Require all granted} wird der Außenwelt bedingungsloser
+  Zugriff auf die beiden Verzeichnisse C{/opt/[application]/bin}
+  und C{/opt/[application]/www} eingeräumt.
+
+= 4. Kommandos (für Apache 2.0 und höher)
+
+Mit folgenden Kommandos wird das oben beschriebene Apache-Setup
+im Webserver aktiviert. Hierfür sind root-Rechte erforderlich.
+
+1 - Apache-Konfiguration der Applikation verlinken (Debian):
+
+  # ln -s /etc/<application>/apache.conf \
+    /etc/apache2/sites-available/<application>.conf
+
+2 - Apache-Konfiguration der Applikation aktivieren:
+
+  # a2ensite <application>
+
+3 - Apache-Modul für CGI-Ausführung aktivieren:
+
+  # a2enmod cgid
+
+4 - Apache-Setup in den laufenden Server übernehmen (Debian):
+
+  # service apache2 reload
+
+= Variante: Verdecktes CGI-Programm
+
+Wird in die VirtualHost-Definition anstelle von
+
+  ScriptAlias /index.cgi /opt/<application>/bin/index.cgi
+  RedirectMatch ^/$ /index.cgi
+
+die Definition
+
+  RewriteEngine on
+  RewriteRule ^/([A-Z0-9a-z/]+)$ /opt/<application>/bin/index.cgi/$1 \
+    [H=cgi-script]
+  RedirectMatch ^/$ /<start>
+
+eingesetzt, tritt das CGI-Programm im URL nicht mehr in
+Erscheinung. Zusätzlich werden alle Pfade, die ausschließlich aus den
+Zeichen C{A-Z0-9a-z/} bestehen, via C{$PATH_INFO} an das CGI-Programm
+übergeben.
+
+Die RewriteEngine muss zuvor verfügbar gemacht werden mit:
+
+  # a2enmod rewrite
+
+# eof

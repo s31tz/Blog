@@ -1,0 +1,99 @@
+# Date: 2013-06-22
+
+%Document:
+  title="Perl: Web Services mit SOAP::WSDL ansprechen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=118
+
+%Figure: file="uploads/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+Das Perl-Modul U{"http://search.cpan.org/~swalters/SOAP-WSDL/",
+text="SOAP::WDSL"} stellt Mittel bereit, um Web Services
+ansprechen zu können, für die eine WDSL-Definition existiert.
+
+Der bevorzugte Weg ist, aus der WDSL-Definition eine Client-Schnittstelle zu
+generieren und diese zur Interaktion mit dem Web-Service zu nutzen.
+Die generierte Schnittstelle ist objektorientiert, besteht also aus einer
+Sammlung von Klassen.
+
+Die Schnittstelle wird von dem Programm C{wsdl2perl.pl} generiert, das
+Bestandteil des Moduls SOAP::WSDL ist. Ein typischer Aufruf ist:
+
+  $ wsdl2perl.pl -b DIR -p PREFIX URL
+
+  DIR    : Zielverzeichnis (Default: ".")
+  PREFIX : Präfix für alle generierten Klasse (Default: "My")
+  URL    : URL der WSDL-Definition
+
+= Beispiel
+
+Der Web Service "Global Weather" ist ein einfacher Dienst, der
+aktuelle Wetterinformation über größere Städte der Welt liefert.
+Als Ausgangsinformation steht zur Verfügung:
+
+* eine verbale Beschreibung der SOAP-Schnittstelle:
+  U{"http://www.webservicex.net/globalweather.asmx"}
+
+* die WSDL-Definition der SOAP-Schnittstelle:
+  U{"http://www.webservicex.net/globalweather.asmx?wsdl"}
+
+Aus der formalen WSDL-Definition generieren wir mittels
+C{wsdl2perl.pl} eine objektorientierte Client-Schnittstelle für Perl:
+
+  $ wsdl2perl.pl -b lib -p GW:: http://www.webservicex.net/globalweather.asmx?wsdl
+  Creating element class GW/Elements/GetWeather.pm 
+  Creating element class GW/Elements/GetWeatherResponse.pm 
+  Creating element class GW/Elements/GetCitiesByCountry.pm 
+  Creating element class GW/Elements/GetCitiesByCountryResponse.pm 
+  Creating element class GW/Elements/string.pm 
+  Creating typemap class GW/Typemaps/GlobalWeather.pm
+  Creating interface class GW/Interfaces/GlobalWeather/GlobalWeatherSoap.pm
+
+Nun können wir einen Client programmieren, der das Wetter abfragt:
+
+  %Code: ln=1 filter="./blog-highlight perl %FORMAT%"
+  #!/usr/bin/env perl
+
+  use strict;
+  use warnings;
+
+  use lib 'lib';
+  use GW::Interfaces::GlobalWeather::GlobalWeatherSoap;
+
+  if (@ARGV != 2) {
+      die "Usage: gw COUNTRY CITY\n";
+  }
+  my ($country,$city) = @ARGV;
+
+  my $soap = GW::Interfaces::GlobalWeather::GlobalWeatherSoap->new;
+
+  my $res = $soap->GetWeather({
+      CountryName=>$country,
+      CityName=>$city,
+  });
+
+  printf "%s\n",$res->get_GetWeatherResult;
+  .
+
+Aufruf und Resultat:
+
+  $ gw germany hamburg
+  <?xml version="1.0" encoding="utf-16"?>
+  <CurrentWeather>
+    <Location>Hamburg-Finkenwerder, Germany (EDHI) 53-32N 009-50E 13M</Location>
+    <Time>Jun 22, 2013 - 09:20 AM EDT / 2013.06.22 1320 UTC</Time>
+    <Wind> from the SSW (200 degrees) at 15 MPH (13 KT) (direction variable):0</Wind>
+    <Visibility> greater than 7 mile(s):0</Visibility>
+    <SkyConditions> mostly cloudy</SkyConditions>
+    <Temperature> 69 F (21 C)</Temperature>
+    <DewPoint> 57 F (14 C)</DewPoint>
+    <RelativeHumidity> 64%</RelativeHumidity>
+    <Pressure> 29.85 in. Hg (1011 hPa)</Pressure>
+    <Status>Success</Status>
+  </CurrentWeather>
+
+# eof

@@ -1,0 +1,23 @@
+# Date: 2010-01-07
+
+%Document:
+  title="Perl-Interpreter über Shebang-Zeile suchen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=1
+
+%Figure: file="uploads/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+Mit folgender Shebang-Zeile wird der Perl-Interpreter über die
+Environment-Variable C{$PATH} gesucht:
+
+  #!/usr/bin/env perl
+
+D.h. die Shebang-Zeile muss nicht angepasst werden, wenn das Skript in
+mehreren Umgebungen mit unterschiedlichen Installationspfaden laufen
+soll.
+
+# eof

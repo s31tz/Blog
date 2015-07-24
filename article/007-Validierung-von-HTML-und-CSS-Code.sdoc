@@ -1,0 +1,44 @@
+# Date: 2010-01-09
+
+%Document:
+  title="Validierung von HTML- und CSS-Code"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=9
+
+Das W3C stellt zwei Services zur Validierung von HTML- und CSS-Code
+zur Verfügung:
+
+* HTML-Validator: U{http://validator.w3.org/}
+* CSS-Validator: U{http://jigsaw.w3.org/css-validator/}
+
+Um den HTML- bzw. CSS-Code einer Seite direkt zu validieren, können
+folgende Links in die Seite eingebaut werden. Aus dem Referer-Header
+ermittelt der Validator die Ausgangsseite und ruft diese ab. Das geht
+natürlich nur, wenn die Seite öffentlich zugreifbar ist.
+
+= Validierung von XHTML-Code
+
+%Figure: file="uploads/valid-xhtml10.png" \
+  width="88" height="31" url="http://jigsaw.w3.org/css-validator/check/referer"
+
+  <a href="http://validator.w3.org/check/referer?ss=1">
+    <img src="valid-xhtml10.png" width="88" height="31" alt="Valid XHTML 1.0!" />
+  </a>
+
+Der URL-Parameter C{ss=1} sorgt dafür, dass der Validator ein
+Source-Listing erzeugt. Dies ist sehr sinnvoll, da dann von einem
+Fehler aus direkt an die beanstandete Stelle gesprungen werden kann.
+
+= Validierung von CSS2-Code
+
+%Figure: file="uploads/valid-css.png" \
+  width="88" height="31" url="http://jigsaw.w3.org/css-validator/check/referer"
+
+  <a href="http://jigsaw.w3.org/css-validator/check/referer">
+    <img src="valid-css2.png" width="88" height="31" alt="Valid CSS!" />
+  </a>
+
+# eof

@@ -1,0 +1,109 @@
+# Date: 2013-01-11
+
+%Document:
+  title="CSS: Erstes Kind- bzw. Folgeelement gestalten"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=93
+
+%Figure: file="uploads/valid-css.png" \
+  width="88" height="31" url="http://www.w3.org/TR/tr-groups-all\
+  #tr_Cascading_Style_Sheets__CSS__Working_Group"
+
+Mitunter soll das erste Element eines HTML-Konstrukts per CSS
+speziell gestaltet werden, z.B. was dessen Außenabstände
+angeht. Diese Anforderung gibt es in zwei Ausprägungen:
+
+1. Das zu behandelnde Element ist das erste Element,
+   das dem Bezugselement I{folgt}.
+
+2. Das zu behandelnde Element ist das erste Element,
+   das dem Bezugselement I{untergeordnet} ist.
+
+Diese beiden Element-Anordnungen erfordern unterschiedliche
+CSS-Selektoren.
+
+= Element folgt auf Bezugselement
+
+  %Code: ln=1 filter="./blog-highlight html %FORMAT%"
+  <X>...</X>
+  <Y>
+    ...
+  </Y>
+  ...
+  .
+
+Der CSS-Selektor lautet:
+
+  %Code: ln=1 filter="./blog-highlight css %FORMAT%"
+  X + * {
+      ...
+  }
+  .
+
+Bezugselement ist C{X}. Der Selektor C{+} selektiert das unmittelbar
+folgende Element. Der Universelle Selektor C{*} füllt hier syntaktisch
+die zweite Argumentposition des Selektors und nimmt keine weitere
+Einschränkung vor.
+
+Beispiel: Jedes erste Element nach einer <h1>-Überschrift soll
+einen oberen Außenabstand von 0.5em erhalten:
+
+  %Code: ln=1 filter="./blog-highlight css %FORMAT%"
+  h1 + * {
+      margin-top: 0.5em;
+  }
+  .
+
+= Element ist Bezugselement untergeordnet
+
+  %Code: ln=1 filter="./blog-highlight html %FORMAT%"
+  <X>
+    <Y>
+      ...
+    </Y>
+  </X>
+  .
+
+Der CSS-Selektor lautet:
+
+  %Code: ln=1 filter="./blog-highlight css %FORMAT%"
+  X > *:first-child {
+      ...
+  }
+  .
+
+Bezugselement ist C{X}. Der Selektor C{>} selektiert alle Elemente,
+die dem Bezugselement direkt untergeordnet sind. Die Pseudoklasse
+C{*:first-child} schränkt diese Menge auf das erste Kindelement
+ein (der Stern kann auch weggelassen werden).
+
+Beispiel: Jedes erste Unterelement eines C{<dd>}-Definitionsabschnitts
+soll keinen oberen Außenabstand besitzen, sondern direkt an den
+Definitionsterminus C{<dt>} anschließen:
+
+HTML:
+
+  %Code: ln=1 filter="./blog-highlight html %FORMAT%"
+  <dl>
+    <dt>...</dt>
+    <dd>
+      <Y>
+        ...
+      </Y>
+    </dd>
+    ...
+  </dl>
+  .
+
+CSS:
+
+  %Code: ln=1 filter="./blog-highlight css %FORMAT%"
+  dd > *:first-child {
+      margin-top: 0;
+  }
+  .
+
+# eof

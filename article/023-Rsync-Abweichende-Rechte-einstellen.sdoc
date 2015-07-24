@@ -1,0 +1,39 @@
+# Date: 2010-01-29
+
+%Document:
+  title="Rsync: Abweichende Rechte einstellen"
+  styleSheet=blog-style.css
+  generateAnchors=0
+  utf8=1
+
+# id=26
+
+%Figure: file="uploads/rsync-logo-205x100.jpg" \
+  width="103" height="50" url="https://rsync.samba.org/"
+
+Mit der Option C{-a} führt C{rsync} den Abgleich im Q{Archive Mode}
+durch, d.h. Symlinks, Devices, Permissions, Ownerschaft usw. werden
+auf die Zielmaschine transferiert.
+
+Was aber, wenn gewisse Unterschiede erforderlich sind, z.B. die
+Ownerschaft einiger Dateien verschieden sein muss, weil
+der Owner oder die Group auf der Zielmaschine anders heißen?
+
+Beispiel: Die Group des HTTP-Servers heißt auf der
+einen Maschine Q{www-data} während sie auf der anderen Maschine
+Q{apache} heißt. Über die Group bekommt der HTTP-Server
+Rechte auf bestimmten Dateien eingeräumt, sie muss
+also passend zur Maschine gesetzt sein.
+
+Solche Differenzen kann C{rsync} nicht auflösen und bietet auch keine
+Option hierfür. Es lässt sich aber mit einem nachgeschalteten
+Shell-Skript erreichen, das via C{ssh} auf der Zielmaschine ausgeführt
+wird:
+
+  rsync -avz --delete -e ssh DIR1/ USER@HOST:DIR2
+  ssh USER@HOST CMD
+
+Wird I{CMD} in I{DIR1} abgelegt, wird es durch den C{rsync}-Aufruf
+mit verwaltet, also automatisch auf dem neusten Stand gehalten.
+
+# eof

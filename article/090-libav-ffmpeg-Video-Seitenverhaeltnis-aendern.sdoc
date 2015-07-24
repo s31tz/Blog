@@ -1,0 +1,45 @@
+# Date: 2015-05-30
+
+%Document:
+  title="libav/ffmpeg: Video-Seitenverhältnis ändern"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=109
+
+%Figure: file="uploads/libav-logo-484x140.png" \
+    width="121" height="35" url="https://libav.org/"
+
+Mitunter stößt man - insbesondere auf YouTube - auf Videos, die im
+falschen Seitenverhältnis produziert wurden. Dies macht sich dadurch
+bemerkbar, dass der Inhalt verzerrt, z.B. horizontal gestaucht ist
+(bei Seitenverhältnis 4:3 statt 16:9). Dies lässt sich mit
+C{avconv/ffmpeg} korrigieren.
+
+Hierzu genügt es jedoch nicht, das Video mit C{-vf scale=WIDTH:HeiGHT}
+zu reskalieren, da dies bei einem abweichenden
+C{WIDTH:HEIGHT}-Verhältnis zu schwarzen Balken oben/unten oder
+rechts/links führt. Denn das ursprüngliche Seitenverhältnis des Video
+wird beibehalten und der durch die Skalierung entstehende Leerraum
+wird schwarz aufgefüllt.
+
+Dieser meist unerwünschte Effekt findet nicht statt, wenn zusätzlich das
+Seitenverhältnis (engl. I{aspect ratio}) definiert wird. Die
+betreffende avconv/ffmpeg-Option lautet C{-aspect ASPECT}.
+
+Kommandozeile:
+
+  $ avconv -i INFILE -vf scale=WIDTH:HEIGHT -aspect ASPECT ... OUTFILE
+
+  -vf scale=WIDTH:HEIGHT : Breite/Höhe des Video gemäß neuem Seitenverhältnis
+  -aspect ASPECT         : neues Seitenverhältnis, z.B. 16:9 oder 4:3 (s.u.)
+
+Doku zum Wert C{ASPECT} auf der avconv(1) Manpage:
+
+> ASPECT can be a floating point number string, or a string of the form
+> num:den, where num and den are the numerator and denominator of the
+> aspect ratio. For example "4:3", "16:9", "1.3333", and "1.7777" are
+> valid argument values.
+
+# eof

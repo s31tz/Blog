@@ -1,0 +1,58 @@
+# Date: 2010-01-26
+
+%Document:
+  title="Email-Adressen in HTML vor Spammern schützen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=23
+
+%Figure: file="uploads/valid-xhtml10.png" \
+    width="88" height="31" url="http://www.w3.org/"
+
+= In Mailto-URLs
+
+Statt den Mailto-URL per href zu setzen, wird der mailto-URL zum
+Zeitpunkt des Klicks via JavaScript generiert.
+
+Nicht gut: 
+
+  <a href="mailto:rudi.ratlos@host.dom">...</a>
+
+Besser:
+
+  <a href="#" onclick="this.href = 'mailto:rudi.ratlos'+'&#64;'+'host.dom'">\
+  ...<a/>
+
+Dies setzt natürlich JavaScript voraus. Aber schreibt heutzutage noch
+jemand Web-Anwendungen ohne JavaScript?
+
+= Im Text
+
+Statt die Email-Adresse im Klartext hinzuschreiben, wird das C{@}-Zeichen
+ausgetauscht: entweder durch ein HTML-Entity, eine Zeichenkette wie
+"C{<AT>}" oder eine Grafik:
+
+Nicht gut: 
+
+  rudi.ratlos@host.dom
+
+Besser:
+
+  rudi.ratlos&#64;host.dom
+
+Noch besser, mit Text:
+
+  rudi.ratlos&lt;AT&gt;host.dom
+
+Mit Grafik:
+
+  rudi.ratlos<img src="at.png" alt="AT" ... />host.dom
+
+Bei einer Grafik besteht lediglich das Problem, dass diese vom
+Aussehen statisch ist, das Aussehen des umgebenden Textes u.U. nicht
+immer gleich ist, z.B. in unterschiedlichen Browsern oder durch
+Farbänderung beim Überfahren eines Link.
+
+# eof

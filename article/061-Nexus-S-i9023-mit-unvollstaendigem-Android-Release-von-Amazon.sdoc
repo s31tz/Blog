@@ -1,0 +1,35 @@
+# Date: 2011-12-20
+
+%Document:
+  title="Nexus S i9023 mit unvollständigem Android Release von Amazon"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=71
+
+Amazon Warehouse Deals hat mir einen Rückläufer des Google Phone
+Nexus S i9023 für ca. 70% des Neupreises verkauft. Das Smartphone
+wurde nach Angaben von Amazon auf Funktionsfähigkeit geprüft und für
+"gut" befunden.
+
+%Figure: file="uploads/nexus_04_gesamt_400x340.jpg" width="400" height="340"
+
+Leider ist das Gerät unbrauchbar. Die rote Meldung auf dem
+Display, die einem nach dem Einschalten unübersehbar ins Auge sticht,
+deutet bereits darauf hin:
+
+  WARNING!!! S/W is not completely installed. DOWNLOAD Full S/W Before Release.
+
+Eine genauere Prüfung ergibt, dass die Installation tatsächlich defekt
+ist. Es handelt sich anscheinend um eine Entwicklerversion des
+Smartphone, auf welcher unvollständig Android 2.4 installiert ist -
+eine Version, die es zum Zeitpunkt der Lieferung offiziell gar nicht
+gibt. Im Netz habe ich keine aktuelle, installierbare
+Android 2.3.6 Komplettversion gefunden (nur Updates von der vorherigen
+Version) und das Phone daher reklamiert und an Amazon zurückgeschickt.
+
+Dass das Gerät vor Auslieferung geprüft wurde, kann also nicht stimmen.
+Eine unerfreuliche Sache, die mich einige Stunden gekostet hat.
+
+# eof

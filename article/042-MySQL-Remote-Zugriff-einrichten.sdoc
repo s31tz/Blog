@@ -1,0 +1,38 @@
+# Date: 2010-11-03
+
+%Document:
+  title="MySQL: Remote-Zugriff einrichten"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=46
+
+%Figure: file="uploads/mysql-logo-170x115.png" \
+  width="74" height="50" url="http://www.mysql.de/"
+
+Damit der MySQL-Server C{mysqld} TCP-Verbindungen annimmt, muss ihm in
+C{my.cnf} im Abschnitt C{[mysqld]} eine Bind-Adresse zugewiesen
+werden:
+
+  bind-address = <server-ip>
+
+Falls vorhanden, muss die Direktive C{skip-networking} gleichzeitig
+auskommentiert werden, da diese Priorität hat und forciert, dass
+der Server nur Unix Domain Sockets zulässt.
+
+Per SQL einen neuen User anlegen und ihm den Remote-Zugriff von allen
+Hosts ('%') auf alle Schemata und Tabellen (*.*) erlauben:
+
+  CREATE USER <user> IDENTIFIED BY '<password>';
+  GRANT ALL ON *.* TO '<user>'@'%';
+
+Login mit mysql-Client:
+
+  $ mysql -u <user> -h <host> --password=<password>
+
+Die User-Zugriffsberechtigungen stehen in der Tabelle C{mysql.user}.
+Diese  Tabelle kann mit INSERT/UPDATE/DELETE Statements
+auch direkt manipuliert werden.
+
+# eof

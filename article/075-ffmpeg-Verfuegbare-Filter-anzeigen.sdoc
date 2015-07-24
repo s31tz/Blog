@@ -1,0 +1,20 @@
+# Date: 2012-10-07
+
+%Document:
+  title="ffmpeg: Verfügbare Filter anzeigen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=91
+
+%Figure: file="uploads/ffmpeg-logo-250x63.png" \
+  width="134" height="36" url="https://www.ffmpeg.org/"
+
+Die in ffmpeg verfügbaren Filter werden bei Angabe der Option C{-filters}
+angezeigt. Leider ist die Liste unsortiert, was sich durch folgende
+Kommandozeile beheben lässt:
+
+  $ ffmpeg -filters 2>/dev/null | grep -v ^Filters: | sort
+
+# eof

@@ -1,0 +1,19 @@
+# Date: 2010-01-01
+
+%Document:
+  title="Eröffnung des Blog"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=3
+
+Ich habe beschlossen ein Technik-Blog zu führen, in dem ich meine
+Erfahrungen aufschreibe. Primär als Nachschlagewerk zur eigenen
+Erinnerung, aber auch als mögliche Hilfe für andere. Ich selbst
+schlage oft im Web nach, wenn ich auf eine Fragestellung oder ein
+Problem stoße, und meistens ist etwas darunter was mir weiter
+hilft. Dies soll mein bescheidener Beitrag zur Wissensweitergabe im
+Zeitalter des Internet sein.
+
+# eof

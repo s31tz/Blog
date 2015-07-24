@@ -1,0 +1,45 @@
+# Date: 2013-04-10
+
+%Document:
+  title="SSH: Über SSH-Tunnel mit MySQL Datenbank verbinden"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=97
+
+# 0.65
+%Figure: file="uploads/ssh-logo-90x78.png" \
+    width=58 height=50 url="http://www.openssh.com/"
+
+Eine MySQL-Datenbank, die von innen (Host oder lokalem Netzwerk),
+jedoch nicht von außen (Internet) per TCP/IP erreichbar ist, kann von
+einem entfernten Rechner über einen SSH-Tunnel erreicht werden, wenn
+man einen SSH-Zugang zu dem Datenbank-Host oder einem Host des
+Netzwerks besitzt.
+
+1 - SSH-Tunnel zum MySQL Port 3306 aufsetzen:
+
+    $ ssh <user>@<host> -L <port>:localhost:3306 -f -N
+
+    -L <port>:localhost:3306 : Verbinde lokalen Port <port> remote mit MySQL \
+                               Port 3306
+    -f                       : Lege den ssh-Prozess in den Hintergrund
+    -N                       : Führe remote nichts aus (kein Login, \
+                               kein Kommando)
+
+2 - Mit der Datenbank verbinden:
+
+    $ mysql --host=localhost --port=<port> --protocol=tcp ...
+
+oder
+
+    $ mysql --host=127.0.0.1 --port=<port> ...
+
+Dieser spezielle Fall von SSH-Tunneling kann natürlich auch auf andere
+Dienste (Ports) übertragen werden.
+
+Ein weiterer Artikel zu dem Thema:
+U{http://www.revsys.com/writings/quicktips/ssh-tunnel.html}
+
+# eof

@@ -1,0 +1,42 @@
+# Date: 2010-03-18
+
+%Document:
+  title="Perl: Dirhandles objektorientiert"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=35
+
+%Figure: file="uploads/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+Analog zu lexikalischen Filehandles besitzt Perl lexikalische
+Dirhandles. Eine Dirhandle ist ein Iterator über einem Verzeichnis.
+Die Operationen auf Dirhandles lassen sich objektorientiert kapseln.
+
+Hier eine entsprechende Klasse C{Dirhandle} mit drei
+Methoden: C{new()} (Directory öffnen), C{close()} (Directory
+schließen) und C{next()} (nächster Directory-Eintrag):
+
+  %Code: listing=1 file="src/Dirhandle.pm" \
+    filter="./blog-highlight perl %FORMAT%"
+
+B{Beispiel:} Gib alle Einträge des Verzeichnisses C{$dir} auf
+C{STDOUT} aus
+
+  %Code: ln=1 filter="./blog-highlight perl %FORMAT%"
+  use Dirhandle;
+
+  my $dh = Dirhandle->new($dir);
+  while (my $entry = $dh->next) {
+      say $entry;
+  }
+  $dh->close;
+  .
+
+Das Dirhandle-Objekt C{$dh} kann wie jede normale Dirhandle an
+die Perl-Builtins C{readdir()}, C{telldir()},  C{seekdir()},
+C{rewinddir()},  C{closedir()} übergeben werden. 
+
+# eof

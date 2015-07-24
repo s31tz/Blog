@@ -1,0 +1,122 @@
+# Date: 2010-01-28
+
+%Document:
+  title="Overlays in Google Earth einbinden"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=25
+
+%Figure: file="uploads/google-earth-logo-358x102.png" \
+    width="147" height="42" url="https://www.google.com/earth/"
+
+Overlays sind Bilder, die von U{"https://www.google.com/earth/",
+text="Google Earth"} auf einen Bereich der Erdoberfläche
+(E{GroundOverlays}) oder statisch ins Anwendungsfenster
+(E{ScreenOverlays}) projiziert werden.
+
+Zu den Bildern gehört eine Spezifikation in
+U{"https://developers.google.com/kml/documentation/kmlreference",text="KML"} (E{Keyhole
+Markup Language}), die die Bilder beschreibt und festlegt, wie
+Google Earth mit ihnen verfahren soll. KML ist XML-basiert und
+wird in einer Datei mit der Extension .kml gespeichert.
+
+Die kml-Datei und die Bild-Dateien können zusammen in Form einer
+einzelnen kmz-Datei an Google Earth übergeben werden. Die kmz-Datei
+ist eine ZIP-Datei, die die genannten Dateien enthält.
+
+Die kmz-Datei wird entweder über "C{File/Open}" geladen oder als
+Parameter beim Aufruf von Google Earth angegeben.
+
+= Beispiel
+
+%Figure:
+  file=uploads/google-earth-overlay.png
+  width=506
+  height=584
+
+= KML-Datei
+
+  %Code: listing=1 filter="./blog-highlight XML %FORMAT%"
+  <?xml version="1.0" encoding="UTF-8"?>
+  <kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>__NAME__</name>
+    <open>1</open>
+    <description>__DESCRIPTION__</description>
+    <GroundOverlay>
+      <name>Image</name>
+      <Icon>
+        <href>__FILE__</href>
+      </Icon>
+      <LatLonBox>
+        <north>__NORTH__</north>
+        <south>__SOUTH__</south>
+        <east>__EAST__</east>
+        <west>__WEST__</west>
+      </LatLonBox>
+    </GroundOverlay>
+    <ScreenOverlay>
+      <name>Legend</name>
+      <Icon>
+        <href>__LEGEND_FILE__</href>
+      </Icon>
+      <overlayXY x="0.02" y="0.98" xunits="fraction" yunits="fraction"/>
+      <screenXY x="0.02" y="0.98" xunits="fraction" yunits="fraction"/>
+      <size x="-1" y="-1" xunits="pixels" yunits="pixels"/>
+    </ScreenOverlay>
+  </Document>
+  </kml>
+  .
+
+Obige KML-Spezifiktion beschreibt ein Bild, das auf die Erdoberfläche
+projiziert wird (Element GroundOverlay) und ein Bild, das statisch in
+der oberen linken Ecke des Fensters dargestellt wird (Element
+ScreenOverlay). Die beteiligten Hauptelemente sind:
+U{"https://developers.google.com/kml/documentation/kmlreference#document",text="Document"},
+U{"https://developers.google.com/kml/documentation/kmlreference#groundoverlay",text="GroundOverlay"},
+U{"https://developers.google.com/kml/documentation/kmlreference#screenoverlay",text="ScreenOverlay"}.
+
+Für die Platzhalter __NAME__, __DESCRIPTION__ usw. müssen konkrete
+Werte eingesetzt werden.
+
+[__NAME__]:
+  Bezeichnung des Orts (Google-Terminus: Place). Diese Bezeichnung
+  erscheint auf der linken Seite im Fenster und kann direkt ausgewählt werden.
+
+[__DESCRIPTION__]:
+  Beschreibung zum Ort.
+
+[__FILE__]:
+  Dateiname des Bildes, das auf die Erdoberfläche projiziert wird.
+
+[__NORTH__, __SOUTH__, __EAST__, __WEST__]:
+  Quadrupel von dezimalen Gradzahlen, die die geografische Region
+  definieren.
+
+[__LEGEND_FILE__]:
+  Dateiname des statischen Bildes (das wir hier als "Legende" bezeichnen).
+
+= MIME Type
+
+Wird die kmz-Datei von einem HTTP-Server ausgeliefert, sollte
+dieser den MIME-Type kennen:
+
+  application/vnd.google-earth.kmz kmz
+
+Im Browser kann Google-Earth als Helper-Applikation vereinbart
+werden. Dann wird Google Earth beim Eintreffen einer kmz-Datei
+automatisch gestartet und positioniert an den betreffenden Ort.
+
+Die Angaben für den Browser sind:
+
+| Mime-Type: => application/vnd.google-earth.kmz |
+| Description: => Keyhole Markup Language Archive |
+| Extension: => kmz |
+
+= Applikation
+
+U{http://ferrydata.hzg.de/index.cgi?seite=map_plot}
+
+# eof

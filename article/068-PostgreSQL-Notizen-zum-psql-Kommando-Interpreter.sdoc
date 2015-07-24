@@ -1,0 +1,56 @@
+# Date: 2012-02-28
+
+%Document:
+  title="PostgreSQL: Notizen zum psql Kommando-Interpreter"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=81
+
+%Figure: file="uploads/postgresql-logo-95x51.png" \
+  width="95" height="51" url="http://www.postgresql.org/"
+
+Startup-Datei anlegen/ändern:
+
+  $ vi ~/.psqlrc
+
+Die Kommandos in der Datei führt der Interpreter beim Start aus.
+Hier können persönliche Einstellungen vorgenommen werden. Z.B. kann man
+dort den Pager aus- und die Zeitmessung einschalten.
+
+Pager abschalten:
+
+  <db>=# \pset pager off
+  Pager usage is off.
+
+Zeitmessung einschalten:
+
+  <db>=# \timing on
+  Timing is on.
+
+B{Nützliche interaktive Kommandos:}
+
+Liste der Schemata:
+
+  <db>=# \dn
+  ...
+
+Liste der Tabellen eines Schemas:
+
+  <db>=# \dt <schema>.*
+  ...
+
+Tabelle, View oder Sequenz beschreiben:
+
+  <db>=# \d <object>
+  ...
+
+B{Spezielle SQL-Anweisungen:}
+
+Liste der Runtime-Parameter:
+
+  <db>=# show all;
+  ...
+
+# eof

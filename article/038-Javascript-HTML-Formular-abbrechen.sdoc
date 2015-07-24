@@ -1,0 +1,30 @@
+# Date: 2010-10-28
+
+%Document:
+  title="Javascript: HTML-Formular abbrechen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=43
+
+%Figure: file="uploads/javascript-logo-100x100.png" \
+  width="50" height="50" url="https://en.wikipedia.org/wiki/JavaScript"
+
+Ein HTML-Formular soll mittels Abbruch-Button beendet werden, d.h. der
+Button soll die Formulardaten nicht abschicken, sondern auf eine
+andere Seite I{URL} verzweigen, z.B. die Seite, von der aus das
+Formular aufgerufen wurde.
+
+Implementierung:
+
+  <input type="button" value="Abbrechen" onclick="location.href = 'URL'">
+
+1. Der Button ist ein einfacher Button (C{type="button"}),
+   kein Submit-Button, d.h. eine Formularaction wird durch
+   den Button nicht ausgelöst.
+
+2. Die Folgeseite C{URL} wird durch Zuweisung an das href-Attribut des
+   location-Objekts geladen.
+
+# eof

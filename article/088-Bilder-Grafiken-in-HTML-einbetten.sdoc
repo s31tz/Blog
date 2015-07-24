@@ -1,0 +1,39 @@
+# Date: 2014-06-30
+
+%Document:
+  title="Bilder / Grafiken in HTML einbetten"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=103
+
+%Figure: file="uploads/valid-xhtml10.png" \
+  width="88" height="31" url="http://www.w3.org/"
+
+Anstelle eines URL können dem src-Attribut des <img>-Tag auch
+Bilddaten zugewiesen werden. Damit ist es möglich, Bilder direkt in
+HTML einzubetten. Die Syntax hierfür lautet:
+
+  <img src="data:image/TYPE;base64,DATA" .../>
+
+Hierbei ist C{TYPE} der Typ des Bildes (C{jpeg}, C{png}, C{gif}, ...)
+und C{DATA} sind die Base64-encodierten Bilddaten (s.u.).
+
+Dies ist für dynamisch generierte HTML-Seiten mit dynamisch
+generierten Grafiken, wie z.B. Plots, nützlich. Die Grafiken können so
+mit dem umgebenden HTML zusammen erzeugt und in einer einzigen
+(HTML-)Datei ausgeliefert werden.
+
+Unter Perl findet sich die Funktion für die Umwandlung von binären
+Daten nach Base64 im Core-Modul C{MIME::Base64}:
+
+  use MIME::Base64 ();
+  ...
+  $data = MIME::Base64::encode_base64($image,'');
+
+Die binären Bilddaten stehen hier auf C{$image}. Der Leerstring als
+zweiter Parameter bewirkt, dass die Base64-Zeichenkette einzeilig
+erzeugt wird.
+
+# eof

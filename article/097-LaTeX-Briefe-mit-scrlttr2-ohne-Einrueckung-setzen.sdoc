@@ -1,0 +1,48 @@
+# Date: 2015-06-04
+
+%Document:
+  title="LaTeX: Briefe mit scrlttr2 ohne Einrückung setzen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=110
+
+%Figure: file="uploads/latex-logo-320x133.png" \
+    width="106" height="44" url="http://www.latex-project.org/"
+
+Die Briefklasse C{scrlttr2} ist die vermutlich leistungsfähigste
+LaTeX-Klasse zum Setzen von (DIN-)Briefen. Sie hat aus meiner Sicht
+jedoch den kleinen Fehler, dass sie dem Briefkörper eine andere Breite
+zuweist als dem Briefkopf. Der Briefkörper ist schmaler und unter dem
+Briefkopf zentiert, was die Lesbarkeit erhöhen soll. Dadurch wirkt der
+Brieftext gegenüber dem Adressfeld jedoch verschoben. Gerade bei
+kürzeren Briefen sieht das nach meinem Empfinden nicht gut aus.
+
+C{Scrlttr2} bietet leider keine einfache Möglichkeit, das Layout so
+umzustellen, dass die Ränder des Briefkörpers mit dem Adressfeld
+und der Kopfzeile abschließen.
+
+Ich musste eine Weile suchen und herumexperimentieren, bis ich eine
+Lösung gefunden habe:
+
+  % Briefkörper bündig am Briefkopf ausrichten
+
+  \setlength{\oddsidemargin}{\useplength{toaddrhpos}}
+  \addtolength{\oddsidemargin}{-1in}
+  \setlength{\textwidth}{\useplength{firstheadwidth}}
+
+Die ersten beiden Anweisungen setzen den linken Rand des Briefkörpers
+mit dem linken Rand des Adressfeldes gleich. Sie finden sich im Buch
+der Autors von KOMA-Script in Anhang E. Die dritte Anweisung macht den
+Briefkörper so breit wie den Briefkopf. Diese Anweisung habe ich
+ergänzt. Beides zusammen ergibt das angestrebte Layout.
+
+Vorher/Nachher am Beispiel einer Rechnung:
+
+G{"uploads/rechnung1.png",style="border: 1px #999 solid; margin-left: 2em; \
+    margin-bottom: 0.5em"}
+G{"uploads/rechnung2.png",style="border: 1px #999 solid; margin-left: 2em; \
+    margin-bottom: 0.5em"}
+
+# eof

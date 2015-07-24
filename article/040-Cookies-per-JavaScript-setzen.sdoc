@@ -1,0 +1,41 @@
+# Date: 2010-10-28
+
+%Document:
+  title="Cookies per JavaScript setzen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=45
+
+%Figure: file="uploads/javascript-logo-100x100.png" \
+  width="50" height="50" url="https://en.wikipedia.org/wiki/JavaScript"
+
+= Serverseitig via HTML
+
+Wenn serverseitig kein Zugriff auf die Header der HTTP-Antwort besteht, kann
+ein Cookie auch per HTML gesetzt werden:
+
+    %Code: listing=1 filter="./blog-highlight html %FORMAT%"
+    <script type="text/javascript">
+    document.cookie = "KEY=VALUE";
+    </script>
+    .
+
+= Zustand eines Select-Menü (per CGI.pm generiert) sichern
+
+Ein onchange-Handler setzt einen Cookie, der den Zustand eines
+Select-Menü anwendungsglobal speichert (Perl/CGI.pm):
+
+    %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    my $n = $cgi->cookie('n') || 25;
+    my $nSelect = $cgi->popup_menu(
+        -name=>'n',
+        -values=>[qw/1 2 5 10 15 20 25 30 40 50 75 100/],
+        -default=>$n,
+        -onChange=>'document.cookie = '.
+            '"n="+this.options[this.selectedIndex].value',
+    );
+    .
+
+# eof

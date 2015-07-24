@@ -1,0 +1,90 @@
+# Date: 2012-03-11
+
+%Document:
+  title="Perl: Text im richtigen Character Encoding ausgeben"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+  minLnWidth=2
+
+# id=84
+
+%Figure: file="uploads/perl-130x65.png" \
+    width=96 height=48 url="http://www.perl.org/"
+
+Jedes Kommandozeilenprogramm, das Texte und Meldungen mit
+Non-ASCII-Zeichen (z.B. Umlauten) aufs Terminal ausgibt, sollte die
+aktuelle Locale-Einstellung berücksichtigen, damit sichergestellt ist,
+dass alle Zeichen richtig dargestellt werden.
+
+Es reicht nicht aus, dass die Ausgabe unter der eigenen
+Terminal-Einstellung (z.B C{LANG=xx_XX.UTF-8}) korrekt aussieht. Denn
+hat der Anwender ein abweichendes Character-Encoding konfiguriert
+(z.B. C{LANG=xx_XX.ISO-8859-1}), sieht er anstelle der
+Non-ASCII-Zeichen Zeichensalat, wenn das Programm nicht explizit in
+dieses Encoding wandelt (in diesem Fall sähe er zwei Zeichen statt
+einem für jeden Umlaut).
+
+In Perl lässt sich diese nicht-triviale Aufgabe elegant durch
+Verwendung des Pragma U{"http://perldoc.perl.org/open.html",text="open"}
+in Verbindung mit der Angabe C{':locale'} lösen. Die Zeile
+
+  %Code: ln=0 filter="./blog-highlight perl %FORMAT%"
+  use open OUT=>':locale';
+  .
+
+am Anfang des Programms sorgt dafür, dass für alle Ausgabeströme
+(einschl.  STDOUT und STDERR) ein I/O-Layer eingerichtet wird, der die
+geschriebenen Daten automatisch gemäß dem in der Umgebung
+eingestellten Character-Encoding enkodiert.
+
+Beispiel: Die folgenden beiden Programme geben für beliebig in der
+Umgebung eingestellte Zeichensätze mit deutschen Umlauten -
+u.a. C{UTF-8} und C{ISO-8859-1} - zwei Zeilen mit Umlauten aus, die
+korrekt dargestellt sein sollten. Hierbei erzeugt C{print} die Ausgabe
+via STDOUT und C{warn} die Ausgabe via STDERR.
+
+Quelle mit einem Latin1-Editor erstellt:
+
+  %Code: ln=1 bg=2 filter="./blog-highlight perl %FORMAT%"
+  #!/usr/bin/env perl
+
+  use strict;
+  use warnings;
+
+  use open OUT=>':locale';
+
+  my $str = "ÄÖÜäöüß";
+
+  print "$str\n";
+  warn "$str\n";
+
+  # eof                         .
+  .
+
+Quelle mit einem UTF-8-Editor erstellt:
+
+  %Code: ln=1 bg=2 filter="./blog-highlight perl %FORMAT%"
+  #!/usr/bin/env perl
+
+  use strict;
+  use warnings;
+
+  use utf8; # <- UTF-8 Quelltext
+  use open OUT=>':locale';
+
+  my $str = "ÄÖÜäöüß";
+
+  print "$str\n";
+  warn "$str\n";
+
+  # eof                         .
+  .
+
+= Links
+
+* U{"http://perlgeek.de/de/artikel/charsets-unicode",\
+    text="Zeichenkodierungen oder 'Warum funktionieren meine Umlaute nicht?'"}
+* U{"http://perldoc.perl.org/open.html",text="Pragma open"}
+
+# eof

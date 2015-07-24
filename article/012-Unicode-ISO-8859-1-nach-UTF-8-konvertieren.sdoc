@@ -1,0 +1,22 @@
+# Date: 2010-01-12
+
+%Document:
+  title="Unicode: ISO-8859-1 nach UTF-8 konvertieren"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=12
+
+%Figure: file="uploads/unicode-logo-220x220.png" \
+  width="66" height="66" url="http://unicode-table.com/en/"
+
+iconv - Convert encoding of given files from one encoding to another
+
+  $ iconv -f ISO-8859-1 -t UTF-8 INPUT >OUTPUT
+
+tcs - translate character sets
+
+  $ tcs -f 8859-1 INPUT >OUTPUT
+
+# eof

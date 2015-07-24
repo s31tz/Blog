@@ -1,0 +1,90 @@
+# Date: 2012-03-23
+
+%Document:
+  title="Lookup-Trigger für Oracle und PostgreSQL"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=85
+
+%Figure: file="uploads/postgresql-logo-95x51.png" \
+  width="95" height="51" url="http://www.postgresql.org/"
+
+Gegeben ist eine Tabelle C{<table>} mit einer Kolumne C{<x>}, deren
+Wert frei manipuliert werden kann, und einer Kolumne C{<y>}, deren
+Wert funktional von C{<x>} abhängt (also nicht frei manipuliert werden
+kann). Die Abbildung von C{<x>} auf C{<y>} ist in einer Lookup-Tabelle
+C{<lookup_table>} definiert, die jedem Wert C{<x>} den
+entsprechenden Wert C{<y>} zuordnet.
+
+Aufgabe: Der C{<y>}-Wert soll in C{<table>} gespeichert werden und
+stets konstitent zu C{<x>} sein. Der Wert von C{<y>} soll I{nicht}
+erst bei Abfrage ermittelt werden. Im Prinzip ist das eine unerwüschte
+Redundanz, die aber aus praktischen Gründen sinnvoll sein kann.
+
+Die Anforderung lässt sich durch einen C{BEFORE INSERT OR
+UPDATE}-Trigger erfüllen, der beim Einfügen oder Ändern in C{<table>}
+den C{<y>}-Wert via C{<x>} in C{<lookup_table>} ermittelt und auf
+C{<table>.<y>} überträgt.
+
+Es folgt die Lösung für Oracle und PostgreSQL.
+
+= Oracle
+
+  %Code: ln=1 filter="./blog-highlight sql %FORMAT%"
+  CREATE OR REPLACE TRIGGER <tigger> BEFORE INSERT OR UPDATE
+      ON <table> FOR EACH ROW
+  BEGIN
+      SELECT
+          <y>
+      INTO
+          :new.<y>
+      FROM
+          <lookup_table>
+      WHERE
+          <x> = :new.<x>;
+  END;
+  .
+
+= PostgreSQL
+
+  %Code: ln=1 filter="./blog-highlight sql %FORMAT%"
+  CREATE FUNCTION <trigger_func>() RETURNS trigger AS $$
+  BEGIN
+      SELECT
+          <y>
+      INTO STRICT
+          NEW.<y>
+      FROM
+          <lookup_table>
+      WHERE
+          <x> = NEW.<x>;
+
+      RETURN NEW;
+  END;
+  $$ LANGUAGE plpgsql;
+
+  CREATE TRIGGER <trigger> BEFORE INSERT OR UPDATE
+      ON <table> FOR EACH ROW
+      EXECUTE PROCEDURE <trigger_func>();
+  .
+
+Der Code ist bei beiden Datenbanksystemen ähnlich, die Unterschiede sind im
+Wesentlichen:
+
+* Die Prozedur kann bei Oracle als Teil des Trigger definiert werden, was
+  den Code einfach und elegant macht. Bei PostgreSQL ist eine
+  spezielle, vom Trigger getrennte Prozedurdefinition erforderlich.
+
+* Der Bezeichner für die neue Tabellenzeile ist bei Oracle C{:new},
+  bei PostgreSQL C{NEW}. Bei PostgreSQL muss diese Zeile von
+  der Trigger-Prozedur zurückgeliefert werden. Bei Oracle wird nichts
+  zurückgeliefert.
+
+* PostgreSQL generiert bei C{INTO STRICT} automatisch eine Exception,
+  wenn durch das C{SELECT} keine oder mehr als eine Zeile getroffen wird.
+  Dies ist ein kostenloser Paranoia-Test für die Daten in
+  C{<lookup_table>}.
+
+# eof

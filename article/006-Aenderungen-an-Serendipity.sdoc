@@ -1,0 +1,22 @@
+# Date: 2010-01-07
+
+%Document:
+  title="Änderungen an Serendipity"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=15
+
+%Figure: file="uploads/serendipity-logo-268x56.png" \
+    width="182" height="38" url="http://www.s9y.org/"
+
+= Favicon hinzugefügt
+
+Zu Datei: C{templates/default/index.tpl}
+
+= Homelink2 auf Artikelübersicht geändert
+
+Zu C{index.php?/archives/summary.html} in Datei: C{templates/default/index.tpl}
+
+# eof

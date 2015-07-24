@@ -1,0 +1,71 @@
+# Date: 2010-02-09
+
+%Document:
+  title="GNU Makefile zum Konvertieren von Dateien"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=31
+
+%Figure: file="uploads/gnu-logo-102x100.png" \
+  width="71" height="70" url="http://www.gnu.org/"
+
+Mitunter soll eine Menge von Dateien, die man erstellt und bearbeitet,
+systematisch in etwas anderes, z.B. ein anderes Format, konvertiert
+werden. Die Konvertierung lässt sich mit dem Utilty C{make}
+organisieren, so dass überflüssige Konvertierungen vermieden werden.
+
+Wie sieht ein GNU Makefile für diese Aufgabe aus?
+
+Das folgende (fiktive) Beispiel geht davon aus, dass wir .in-Dateien
+in .out-Dateien konvertieren wollen. Die Konvertierung übernimmt das
+(fiktive) Programm in2out.
+
+  %Code: listing=1 filter="./blog-highlight Makefile %FORMAT%"
+  OUTFILES = $(patsubst %.in,%.out,$(wildcard *.in))
+
+  %.out: %.in
+          in2out $< $*.out
+
+  all: $(OUTFILES)
+
+  clean:
+          rm -f *.out
+  .
+
+[Zeile 1]:
+  Definition der Liste der Targets, also der Dateien, die zu
+  generieren sind. Das sind .out-Dateien. Diese Liste könnten wir per
+  Hand pflegen, was aber mühselig wäre. Stattdessen nutzen wir die
+  Möglichkeiten von GNU make und generieren die Liste mittels der
+  Funktionen C{wildcard} und C{patsub} aus den im aktuellen
+  Verzeichnis befindlichen .in-Quell-Dateien.
+
+[Zeile 3-4]:
+  Pattern Rule, welche definiert, welche Kommandofolge aus einer
+  .in-Quelldatei eine .out-Zieldatei erzeugt. Hier ist es ein einzelnes
+  Kommando, der Aufruf von C{in2out [infile] [outfile]}.
+  Die make-Variable C{$<} enthält den Namen der .in-Quelldatei,
+  die Variable C{$*} den Grundnamen der Quelldatei, aus dem
+  durch Anhängen von ".out" der Name der Zieldatei wird.
+
+[Zeile 6]:
+  Regel, die bei Aufruf von
+
+    $ make
+
+  oder
+
+    $ make all
+
+  zu erfüllen versucht wird. Diese (PHONY-)regel besagt, dass
+  als Vorbedingung alle C{$(OUTFILES)} zu generieren sind.
+
+[Zeile 8-9]:
+  Regel ohne Vorbedingung, die aufräumt, also alle .out-Dateien löscht, z.B.
+  um sie insgesamt neu zu generieren. Aufruf:
+
+    $ make clean
+
+# eof

@@ -1,0 +1,82 @@
+# Date: 2010-01-27
+
+%Document:
+  title="Perl: Gleitkomma-Zahlen ausgeben wie sie sind"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+  minLnWidth=2
+
+# id=24
+
+%Figure: file="uploads/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+Vielleicht trivial, aber mir war die Antwort bislang nicht klar: Wie
+gebe ich eine Gleitkomma-Zahl aus, ohne dass Stellen wegfallen oder
+überflüssige Nullen am Ende erscheinen?
+
+Bei der Ausgabe von Gleitkommazahlen habe ich bislang automatisch zu
+printf/sprintf und %f gegriffen, aber das Format-Element %f formatiert
+die Zahlen ja immer auf eine feste Anzahl an Stellen und rundet auf
+die letzte Stelle. Z.B.
+
+  my $x = 0.123456789;
+  printf "%f",$x;
+
+ergibt
+
+  0.123457
+
+(%f formatiert/rundet per Default auf 6 Nachkommastellen)
+
+Natürlich kann ich die Anzahl der Stellen groß wählen, aber dann
+bekomme ich u.U. zusätzliche Stellen, wenn die betreffende Zahl binär
+nur näherungsweise dargestellt werden kann:
+
+  my $x = 0.123456789;
+  printf "%.20f",$x;
+
+ergibt
+
+  0.12345678899999999734
+
+Andererseits erhalte ich am Ende überflüssige Nullen bei Zahlen, die
+dezimal weniger als die vorgegebenen Stellen besitzen:
+
+  my $x = 0.5;
+  printf "%.20f",$x;
+
+ergibt
+
+  0.50000000000000000000
+
+Was tun?
+
+Die Lösung ist (anscheinend) einfach: Ich gebe die Zahl nicht als Zahl
+sondern als String aus! D.h. im Falle von printf/sprintf mit
+Format-Element %s!
+
+Damit erhalte ich, was ich will. Die Zahl mit allen Stellen und nicht mehr
+
+  my $x = 0.123456789;
+  printf "%s",$x;
+  -> 0.123456789
+
+und ohne überflüssige Nullen
+
+  my $x = 0.5;
+  printf "%s",$x;
+  -> 0.5
+
+Bei näherer Überlegung leuchtet das ein, da Perl intern neben der
+(binären) numerischen Repräsentation eine Stringrepräsentation des
+Werts speichert, welche anfänglich genau der Zeichenfolge bei der
+Zuweisung entspricht.
+
+Schlussfolgerung: Programme, die nicht rechnen, sondern
+Gleitkommazahlen nur einlesen und wieder ausgeben, sollten, um
+Verfälschungen auszuschließen, diese bei der Ausgabe grundsätzlich als
+Strings und nicht als Zahlen behandeln.
+
+# eof

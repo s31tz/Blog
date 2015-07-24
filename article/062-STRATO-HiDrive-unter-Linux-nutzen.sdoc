@@ -1,0 +1,48 @@
+# Date: 2011-12-30
+
+%Document:
+  title="STRATO HiDrive unter Linux nutzen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=75
+
+%Figure: file="uploads/strato-hidrive-456x100.png" \
+    width="173" height="38" url="https://hidrive.strato.com/"
+
+Installation von davfs (Debian):
+
+  # apt-get install davfs2
+
+Dateisystem manuell mounten:
+
+  # mkdir /hidrive
+  # mount -t davfs https://webdav.hidrive.strato.com /hidrive
+  Username: myname
+  Password: mypassword
+
+Eintrag zur fstab hinzufügen:
+
+  # vi /etc/fstab
+  ...
+  https://webdav.hidrive.strato.com /hidrive davfs noauto,user 0 0
+
+Dateisystem vereinfacht manuell mounten:
+
+  # mount /hidrive
+
+Dateibaum C{DIR} per rsync in HiDrive Nutzerverzeichnis übertragen,
+ohne Verwendung des Mountpoint:
+
+  $ rsync -avz -e ssh DIR myname@rsync.hidrive.strato.com:/users/myname/
+
+Unter "Einstellungen/Kontenverwaltung/OpenSSH-Schlüssel" kann
+der Public-Key des aufrufenden Benutzers hochgeladen werden, so dass
+sich die Passworteingabe vermeiden lässt.
+
+= Links
+
+* U{"https://hidrive.strato.com/",text="HiDrive Login"}
+
+# eof

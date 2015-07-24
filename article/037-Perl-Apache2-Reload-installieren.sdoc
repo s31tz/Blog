@@ -1,0 +1,43 @@
+# Date: 2010-10-21
+
+%Document:
+  title="Perl: Apache2::Reload installieren"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=42
+
+%Figure: file="uploads/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+U{"http://search.cpan.org/~shay/Apache-Reload/",text="Apache2::Reload"}
+ist ein Perl-Modul, das Module einer mod_perl-Applikation automatisch
+neu lädt, wenn diese geändert wurden.  Andernfalls müsste der
+HTTP-Server neu gestartet werden um die Änderungen sichtbar zu machen,
+was während der Entwicklung umständlich ist und Zeit kostet.
+
+1. Apache2::Reload von CPAN herunterladen
+
+2. Apache Libs und Headerfiles installieren (Redhat-System)
+
+     yum install httpd-devel.x86_64
+
+3. Modul installieren
+
+     perl Makefile.PL
+     make
+     make install
+
+   (make test geht nicht ohne Apache Testumgebung)
+
+4. HTTP-Config ergänzen:
+
+     PerlModule Apache2::Reload
+     PerlInitHandler Apache2::Reload
+
+5. Apache neu starten
+
+     apachectl restart
+
+# eof

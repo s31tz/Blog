@@ -1,0 +1,23 @@
+# Date: 2010-12-06
+
+%Document:
+  title="scp: Whitespace in Remote-Dateinamen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=48
+
+%Figure: file="uploads/ssh-logo-90x78.png" \
+    width=58 height=50 url="http://www.openssh.com/"
+
+Um per C{scp} Dateien, die Whitespace im Dateienamen enthalten,
+von einem entfernten System zu kopieren, müssen die Leerzeichen
+I{zwei Mal} maskiert werden: Einmal für die lokale Shell und
+einmal für die remote Shell.
+
+Beispiel:
+
+  $ scp 'user@host:/pfad/"eine datei"' .
+
+# eof

@@ -1,0 +1,28 @@
+# Date: 2015-07-11
+
+%Document:
+  title="Globale Verbreitung von DNS-Änderungen überprüfen"
+  styleSheet=blog-style.css
+  generateAnchors=0
+  utf8=1
+
+# id=116
+
+%Figure: file="uploads/dns-logo-100x100.jpg" \
+    width="60" height="60" url="https://www.whatsmydns.net/"
+
+Wer wissen möchte, ob jüngst durchgeführte Änderungen an DNS-Einträgen
+in anderen Teilen der Welt bereits angekommen sind, kann sich des "DNS
+Propagation Checkers" U{"https://www.whatsmydns.net/",text="whatsmydns.net"}
+bedienen.
+
+Dieser fragt DNS-Server in verschiedenen Teilen der Welt ab, zeigt
+die Ergebnisse in Form einer Tabelle an und zeichnet sie in eine
+Weltkarte ein. Als Suchkriterium gibt man die Domain, den Record-Typ
+und - optional - den erwarteten Record-Wert vor.
+
+Insbesondere nach dem Anlegen einer neuen Domain kann es eine Weile
+dauern bis die Nameserver-Definitionen global propagiert sind. Mit
+diesem Service lässt sich das verfolgen. 
+
+# eof

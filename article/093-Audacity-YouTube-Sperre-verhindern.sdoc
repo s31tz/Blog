@@ -1,0 +1,48 @@
+# Date: 2011-04-29
+
+%Document:
+  title="Audacity: YouTube-Sperre verhindern"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=59
+
+%Figure: file="uploads/audacity-logo-373x135.jpg" \
+    width="154" height="56" url="http://web.audacityteam.org/"
+
+Wer sichergehen will, dass der selbstgemachte Videoclip wegen der
+Hintergrundmusik von YouTube nicht gesperrt oder mit Werbung für die
+Musik versehen wird, kann versuchen, die Audio-Daten so zu verändern,
+dass die YouTube Content-Erkennung nicht anspricht.
+
+Ein Weg, dies zu erreichen, ist, die I{Tonhöhe} des Audio-Materials zu
+verändern. Eine Änderung um ein, zwei oder mehr Halbtöne ist hierfür
+notwendig. Eventuell muss mit verschiedenen Werten experimentiert
+werden. Nachteile: Die Audio-Manipulation ist hörbar und sie hat
+Auswirkungen auf das Timing innerhalb des Clip, weswegen man die
+Änderung vorab machen und austesten sollte (s.u.).
+
+In U{"http://web.audacityteam.org/",text="audacity"} findet sich die
+Programmfunktion zum Ändern der Tonhöhe unter dem Menüpunkt
+U{"http://manual.audacityteam.org/o/man/change_pitch.html",
+text="Effect/Change Pitch"}. Ein positiver Wert im Eingabefeld
+C{Semitones} hebt die Tonhöhe an, ein negativer Wert reduziert sie -
+jeweils um die angegebene Anzahl Halbtonschritte.
+
+= A{Test Audio-Datei}
+
+Mit U{"https://libav.org/avconv.html",text="avconv"} (oder
+U{"https://www.ffmpeg.org/",text="ffmpeg"}) lässt sich aus einem
+einzelnen Bild und der veränderten Audio-Datei ein Videoclip erzeugen, der
+testweise nach YouTube hochgeladen werden kann.
+
+  $ avconv -loop 1 -i IMAGE -i AUDIO -t S ... VIDEO.mp4
+
+  -loop 1   : verwende die nachfolgende Bilddatei für jeden Frame
+  -i IMAGE  : eine beliebige Bilddatei, z.B. in der Größe 640x360 Pixel
+  -i AUDIO  : die veränderte Audio-Datei
+  -t S      : Länge des generierten Clip in Sekunden, z.B. 60 für eine Minute
+  VIDEO.mp4 : generierter Test-Clip für YouTube
+
+# eof

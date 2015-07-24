@@ -1,0 +1,73 @@
+# Date: 2013-02-19
+
+%Document:
+  title="Shell: stderr auf Pipe umleiten und andere dup-Operationen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=94
+
+%Figure: file="uploads/bash-222x51.jpg" \
+  width="130" height="30" url="http://www.gnu.org/software/bash/"
+
+Einer der weniger einleuchtenden Shell-Operatoren ist der Operator
+C{>&}. Den Klassiker, die Umlenkung von stdout I{und} stderr
+in eine Datei,
+
+  $ cmd >/tmp/file 2>&1
+
+kennt jeder, der häufiger unter Unix unterwegs ist. Es stellt sich
+dabei aber immer leicht die Frage: Wie war das nochmal? Muss C{2>&1}
+vor der Umlenkung C{>/tmp/file} stehen? Oder dahinter? Gleichgültig
+ist die Reihenfolge jedenfalls nicht.
+
+Die Beschreibung auf der Bash-Manpage ist recht knapp:
+
+> The operator C{[n]>&word} is used to duplicate output file descriptors.
+> If C{word} expands to one or more digits, the file descriptor denoted
+> by C{n} is made to be a copy of that file descriptor. If C{n} is
+> not specified, the standard output (file descriptor 1) is used.
+
+Das heißt, man kann den Operator C{N>&M} als Zuweisung verstehen: Das
+Ausgabeziel (Terminal, Datei oder Pipe), das seitens des schreibenden
+Prozesses über Deskriptor C{M} erreicht wird, wird von der Shell
+(zusätzlich) mit Deskriptor C{N} verbunden. Alles, was der schreibende
+Prozess auf Desktiptor C{N} schreibt, gelangt somit an das gleiche
+Ziel wie das, was er auf Deskriptor C{M} schreibt. Liegen mehrere
+Umlenkungsoperationen vor, werden diese von links nach rechts ausgewertet.
+Es folgen einige Anwendungsfälle.
+
+= Stderr und stdout gemeinsam auf eine Pipe lenken
+
+  $ cmd1 2>&1 | cmd2
+
+1. Deskriptor 1 (stdout) von C{cmd1} wird von der Shell mit
+   der Pipe verbunden (C{|}).
+2. Deskriptor 2 (stderr) wird ebenfalls mit der Pipe verbunden (C{2>&1}).
+
+Ergebnis: stdout und stderr gehen auf die Pipe.
+
+= Stderr statt stdout auf eine Pipe lenken
+
+  $ cmd1 2>&1 >/dev/null | cmd2
+
+1. Deskriptor 1 (stdout) von C{cmd1} wird von der Shell mit der Pipe
+   verbunden (C{|}).
+2. Deskriptor 2 (stderr) wird ebenfalls mit der Pipe verbunden (C{2>&1}).
+3. Deskriptor 1 (stdout) wird mit C{/dev/null} verbunden (C{>/dev/null}).
+
+Ergebnis: stderr geht auf die Pipe, stdout geht nach C{/dev/null}.
+
+= Stdout und stderr vertauschen
+
+  $ cmd 3>&1 1>&2 2>&3 3>&-
+
+1. Deskriptor 3 geht auf das gleiche Ziel wie Deskriptor 1 (C{3>&1}).
+2. Deskriptor 1 geht auf das gleiche Ziel wie Deskriptor 2 (C{1>&2}).
+3. Deskriptor 2 geht auf das gleiche Ziel wie Deskriptor 3 (C{2>&3}).
+4. Gib Deskriptor 3 frei (C{3>&-}).
+
+Ergebnis: stdout und stderr sind vertauscht.
+
+# eof

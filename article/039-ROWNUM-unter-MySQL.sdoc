@@ -1,0 +1,38 @@
+# Date: 2010-10-28
+
+%Document:
+  title="ROWNUM unter MySQL"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=44
+
+%Figure: file="uploads/mysql-logo-170x115.png" \
+  width="74" height="50" url="http://www.mysql.de/"
+
+Oracle kennt die Pseudo-Kolumne C{ROWNUM}, die die Datensätze einer
+Selektion von 1 an aufsteigend durchnummeriert. In MySQL
+existiert dieses Konzept nicht, es kann aber mittels einer
+Benutzer-definierten Variable simuliert werden.
+
+Implementierung:
+
+    %Code: listing=1 filter="./blog-highlight sql %FORMAT%"
+    SELECT
+        @rownum := @rownum + 1 ROWNUM
+        , t.*
+    FROM
+        (SELECT @rownum := 0) r,
+        t
+    .
+
+Einschränkung: Die Lösung ist unzureichend, wenn ein ORDER BY
+verwendet wird, da die Nummerierung I{vor} der Sortierung
+stattfindet.
+
+Unter Oracle wird C{ROWNUM} auch benutzt, um die Ergebnismenge auf
+die die ersten I{n} Datensätze zu begrenzen. Dafür hat MySQL ein
+besseres Konzept, die SELECT-Klausel C{LIMIT}.
+
+# eof

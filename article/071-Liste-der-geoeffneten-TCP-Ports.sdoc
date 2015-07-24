@@ -1,0 +1,30 @@
+# Date: 2012-06-10
+
+%Document:
+  title="Liste der geöffneten TCP-Ports"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=87
+
+%Figure: file="uploads/network-118x102.png" width="65" height="56" \
+  url="http://tldp.org/LDP/nag2/x-087-2-iface.netstat.html"
+
+Zeige die Liste der geöffneten TCP-Ports und welche Programme sie nutzen:
+
+  # netstat -pant
+
+  -p : Zeige PID und Programmnamen
+  -a : Zeige sowohl Listening- als auch Non-Listening-Sockets
+  -n : Zeige numerische Werte statt symbolischer Host-, Port- und Benutzernamen
+  -t : Zeige TCP-Ports (-u UDP-Ports)
+
+= Links
+
+* U{"http://tldp.org/LDP/nag2/x-087-2-iface.netstat.html",\
+    text="Linux Network Administrators Guide: The netstat Command"}
+
+* U{"http://www.skrenta.com/rt/man/netstat.8.html",text="netstat(8)"}
+
+# eof

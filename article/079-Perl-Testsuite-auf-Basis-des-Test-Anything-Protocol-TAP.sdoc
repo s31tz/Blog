@@ -1,0 +1,99 @@
+# Date: 2013-03-05
+
+%Document:
+  title="Perl: Testsuite auf Basis des Test Anything Protocol (TAP)"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=95
+
+%Figure: file="uploads/perl-130x65.png" \
+    width=96 height=48 url="http://www.perl.org/"
+
+= Protokoll und Komponenten
+
+Das I{Test Anything Protocol} (TAP) definiert eine textorientierte
+Kommunikationsschnittstelle zwischen Programmen, die Tests
+durchführen, den sogenannten I{Produzenten} des Protokolls, und
+Steuer- und Auswertungsprogrammen, die Testprogramme aufrufen,
+deren Ergebnisse einsammeln und anzeigen, den sogenannten
+I{Konsumenten} des Protokolls.
+
+* Die semi-offizielle Spezifikation des TAP Protokolls findet sich
+  in dem Dokument U{"http://search.cpan.org/~petdance/Test-Harness/\
+  lib/Test/Harness/TAP.pod",text="Test::Harness::TAP"}.
+
+* Die Standard-Klasse zur Implementierung von Produzenten:
+  U{"http://search.cpan.org/~mschwern/Test-Simple/lib/Test/Builder.pm",\
+  text="Test::Builder"}.
+
+* Die Standard-Klasse zur Implementierung von Konsumenten:
+  U{"http://search.cpan.org/~ovid/Test-Harness/lib/TAP/Parser.pm",\
+  text="TAP::Parser"}.
+
+Die genannten Klassen sind im Perl Core, also unter jeder neueren
+Perl-Installation von Hause aus verfügbar.
+
+= Objektorientierte Überdeckung für Test::More
+
+Die Klasse C{Test::Builder} stellt eine Grundlage (Basisklasse) für
+das Schreiben von Testprogrammen dar. Die Klasse erlaubt, das I{Test
+Anything Protocol} in vollem Umfang "zu sprechen". Allerdings
+implementiert die Klasse nur einen begrenzten Umfang an Testmethoden:
+
+  ok is_eq is_num isnt_eq isnt_num like unlike cmp_ok
+
+Eine andere Möglichkeit besteht darin, das Core-Modul
+U{"http://search.cpan.org/~mschwern/Test-Simple/lib/Test/More.pm",\
+text="Test::More"} zu nutzen, das auf C{Test::Builder} aufbaut
+und u.a. die sehr wichtige Funktion C{is_deeply} (Vergleich von
+Datenstrukturen) zur Verfügung stellt.
+
+Der Nachteil von C{Test::More} ist allerdings, dass es nur eine
+Funktionssammlung, keine Klasse ist. Wer objektorientiert arbeiten
+möchte, findet das eventuell nicht so gut. Es lässt sich aber leicht
+eine saubere objektorientierte Überdeckung für C{Test::More}
+schreiben, wenn man einige Punkte beachtet.
+
+Hier eine objektorientierte Hülle für C{is_deeply}, die analog
+auf alle Testfunktionen von C{Test::More} ausgedehnt werden kann:
+
+  %Code: ln=1 filter="./blog-highlight perl %FORMAT%"
+  use Test::More ();
+
+  sub is_deeply {
+      my ($self,$ref1,$ref2,$text) = @_;
+
+      local $Test::Builder::Level = $Test::Builder::Level + 1;
+      return Test::More::is_deeply($ref1,$ref2,$text);    
+  }
+  .
+
+Erklärung der Besonderheiten:
+
+[Zeile 1:]
+  C{Test::More} wird geladen. Das leere Klammerpaar verhindert, dass
+  Funktionen des Moduls importiert und damit der Namensraum der Klasse,
+  in der wir die Methode definieren, verunreinigt wird.
+
+[Zeile 6:]
+  Die Variable C{$Test::Builder::Level} definiert den Abstand auf
+  dem Callstack zwischen dem Aufrufer und der Testfunktion in
+  C{Test::More}. Dies wird für das Reporting der genauen Codestelle
+  im Fehlerfall benötigt. Wir erhöhen den Abstand um 1, da wir
+  unsere Methode in die Aufrufhierarchie einfügen.
+  Für die Klassenvariable C{$Test::Builder::Level} gilt
+  U{"http://de.wikipedia.org/wiki/Variable_(Programmierung)\
+  #Beispiel_lexikalisch_versus_dynamisch",text="dynamisches Scoping"}.
+  Daher können wir ihren Wert via C{local} lokal setzen und uns darauf
+  verlassen, dass beim Verlassen des Blocks automatisch der
+  ursprüngliche Wert wieder hergetellt wird.
+
+[Zeile 7:]
+  Wir rufen die Funktion C{is_deeply} mit Package-Präfix voll qualifiziert
+  als C{Test::More::is_deeply} auf, da wir die C{Test::More}-Funktionen
+  aus gutem Grund nicht in den Namensraum der Klasse importiert haben (siehe
+  Erklärung zu Zeile 1).
+
+# eof

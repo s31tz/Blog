@@ -1,0 +1,78 @@
+# Date: 2011-12-29
+
+%Document:
+  title="HTTPS-Server: SSL-Zertifikat erwerben und einrichten"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=74
+
+%Figure: file="uploads/https-396x100.png" \
+    width="158" height="40" url=""
+
+B{Antragstellung:} über Strato V-Server Account,
+B{SSL-Zertifikatstyp:} thawte SSL123, B{Kosten:} 3,90 EUR/Monat.
+
+= Private Key erzeugen (mydomain-de.key)
+
+  # openssl genrsa -des3 -out mydomain-de.key 2048
+  Generating RSA private key, 2048 bit long modulus
+  ...
+
+Der Private Key wird hier im Klartext ohne Passphrase erzeugt. Es ist
+praktischer, keine Passphrase zu verwenden, da sonst beim Neustart des
+HTTP-Servers die Passphrase manuell eingegeben werden müsste.
+
+= Certificate Request erzeugen (mydomain-de.csr)
+
+  # openssl req -new -key mydomain-de.key -out mydomain-de.csr
+  ...
+  Country Name (2 letter code) [AU]:DE
+  State or Province Name (full name) [Some-State]:BUNDESLAND
+  Locality Name (eg, city) []:STADT
+  Organization Name (eg, company) [Internet Widgits Pty Ltd]:ORGANISATION
+  Organizational Unit Name (eg, section) []:
+  Common Name (eg, YOUR name) []:mydomain.de
+  Email Address []:me@mydomain.de
+
+  Please enter the following 'extra' attributes
+  to be sent with your certificate request
+  A challenge password []:
+  An optional company name []:
+
+Der Certificate Request wird bei Thawte eingereicht. Dies wickelt
+Strato ab. Die Daten werden über ein Webformular unter
+"SSL-Verwaltung/Easy SSL" erhoben. Thawte meldet sich per Mail.
+Auf dem Weg und per Bestätigung übers Web findet die Validierung statt.
+Der Certificate Request hat später für die Verwendung von SSL keine
+Bedeutung.
+
+= Signed Certificate (mydomain-de.crt)
+
+Das signierte Zertifikat wird von Thawte nach Validierung geliefert und kann
+bei Strato unter "SSL-Verwaltung/Easy SSL" abgerufen werden.
+Das Zertifikat wird als mydomain-de.crt gespeichert.
+
+= Installation
+
+Installation des Private Key und des Zertifikats auf dem Server:
+
+  # mv mydomain-de.csr /etc/ssl/certs
+  # mv mydomain-de.key /etc/ssl/private
+  # chown root.root /etc/ssl/private
+  # chmod 600 /etc/ssl/private
+
+Apache-Konfiguration:
+
+  <IfModule mod_ssl.c>
+    <VirtualHost *:443>
+      ...
+      SSLEngine on
+      SSLCertificateFile /etc/ssl/certs/mydomain-de.crt
+      SSLCertificateKeyFile /etc/ssl/private/mydomain-de.key
+      ...
+    </VirtualHost>
+  </IfModule>
+
+# eof

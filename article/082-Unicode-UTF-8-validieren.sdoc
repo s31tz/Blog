@@ -1,0 +1,28 @@
+# Date: 2013-05-24
+
+%Document:
+  title="Unicode: UTF-8 validieren"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=99
+
+# 0.3
+%Figure: file="uploads/unicode-logo-220x220.png" \
+  width="66" height="66" url="http://unicode-table.com/en/"
+
+Zum  Validieren von UTF-8 kann GNU C{iconv} genutzt werden. Der Aufruf
+
+  $ iconv -f UTF-8 FILE >/dev/null
+
+liefert Exitcode C{0}, wenn die Datei C{FILE} valides UTF-8 enthält,
+andernfalls C{1}. Im Falle von nicht-validem UTF-8 schreibt C{iconv}
+zusätzlich eine Fehlermeldung nach stderr:
+
+  iconv: illegal input sequence at position N
+
+Hierbei ist C{N} der Byte-Offset, an dem die (erste) ungültige Byte-Sequenz
+gefunden wurde.
+
+# eof

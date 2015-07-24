@@ -1,0 +1,60 @@
+# Date: 2010-02-03
+
+%Document:
+  title="Apache: Redirection auf Subdirectory"
+  styleSheet=blog-style.css
+  generateAnchors=0
+  utf8=1
+
+# id=27
+
+%Figure: file="uploads/apache-logo-200x60.png" \
+    width="153" height="46" url="http://httpd.apache.org/"
+
+Mit der Direktive
+U{"http://httpd.apache.org/docs/2.4/mod/mod_alias.html#redirect",\
+  text="Redirect"}
+kann ein Seitenzugriff auf eine andere Seite umgeleitet werden. Die
+Umleitung schließt alle Subpfade ein, also Seiten mit gleichem
+Pfadanfang.
+
+Möchte man ein Directory auf ein Subdirectory umleiten, klappt es
+mit Redirect nicht, da dies zu einer Endlos-Rekursion führt.
+Die Redirect-Regel
+
+  Redirect /a /a/b
+
+führt bei Aufruf von C{/a} zu der endlosen Kette von HTTP-Aufrufen
+
+  /a
+  /a/b
+  /a/b/b
+  /a/b/b/b
+  ...
+
+bis der Browser dies erkennt und mit einer Meldung wie
+
+  Redirect Loop: Redirection limit for this URL exceeded.
+
+abbricht.
+
+Die Lösung liefert die (leistungsfähigere) Direktive
+U{"http://httpd.apache.org/docs/2.4/mod/mod_alias.html#redirectmatch",
+text="RedirectMatch"}. Mit dieser lässt sich der umzulenkende
+Pfad per Regex präzise eingrenzen:
+
+  RedirectMatch /a$ /a/b
+
+Das Dollarzeichen verankert den Pfad C{/a} am Ende des URL,
+so dass Subpfade nicht mehr matchen und die Rekursion unterbleibt.
+
+Da durch die Regel keine Subpfade weitergeleitet werden,
+müssen die Zugriffe innerhalb von C{/a/b} relativ sein.
+
+Ist das Ausgangsdirectory das Root-Directory, muss
+auch der Anfang verankert werden, da jedes Verzeichnis
+auf C{/} endet:
+
+  RedirectMatch ^/$ /a
+
+# eof

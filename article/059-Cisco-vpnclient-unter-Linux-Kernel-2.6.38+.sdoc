@@ -1,0 +1,77 @@
+# Date: 2011-04-27
+
+%Document:
+  title="Cisco vpnclient unter Linux Kernel 2.6.38+"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=56
+
+%Figure: file="uploads/cisco-vpnclient-100x100.png" \
+  width="65" height="65" url=""
+
+= Problem
+
+Das für frühere Kernel-Versionen kompilierte Kernel-Modul
+C{cisco_ipsec} crasht bei Aufruf des Cisco vpnclient unter Linux
+2.6.38. Das System ist danach nur noch eingeschränkt nutzbar.
+
+= Lösung
+
+Das Problem wurde auf U{"http://forum.tuxx-home.at/viewtopic.php?f=15&t=1296",
+text="http://forum.tuxx-home.at"} diskutiert und behoben. Der Patch
+dort funktioniert allerdings nicht, da der Patch, den man nur per
+Copy&Paste erhalten kann, in der Form defekt ist.
+
+Ich habe diesen händisch restauriert und aus den Patches
+
+1. U{http://www.lamnk.com/download/fixes.patch}
+2. U{http://forum.tuxx-home.at/viewtopic.php?f=15&t=1293} (defekter
+   Copy&Paste-Patch)
+
+einen einzigen Patch erstellt, der auf das originale
+Cisco-Archiv angewendet werden kann.
+
+= Installation vpnclient für Linux 2.6.38+
+
+1. Cisco-Archiv herunterladen
+
+    # wget http://projects.tuxx-home.at/ciscovpn/clients/linux/4.8.02/\\
+      vpnclient-linux-x86_64-4.8.02.0030-k9.tar.gz
+
+2. Patch für Linux 2.5.38+ herunterladen
+
+    # wget http://fseitz.de/download/vpnclient.patch-2.6.38
+
+3. Cisco-Archiv entpacken
+
+    # tar xvzf vpnclient-linux-x86_64-4.8.02.0030-k9.tar.gz
+
+4. Ins vpnclient-Verzeichnis wechseln
+
+    # cd vpnclient
+
+5. Patch anwenden
+
+    # patch <../vpnclient.patch-2.6.38
+
+6. Cisco Software kompilieren
+
+    # make
+
+7. Cisco Software installieren
+
+    # ./vpn_install
+
+= Links
+
+* Cisco-Archiv und Patches: U{http://projects.tuxx-home.at/?id=cisco_vpn_client}
+
+* Support-Forum: U{http://forum.tuxx-home.at/viewforum.php?f=15}
+
+* U{"http://www.cisco.com/en/US/docs/security/vpn_client/cisco_vpn_client/\
+  vpn_client46/administration/guide/vcA_original.pdf",\
+  text="Cisco VPN Client Administrator Guide"}
+
+# eof

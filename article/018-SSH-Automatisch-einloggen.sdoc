@@ -1,0 +1,26 @@
+# Date: 2010-01-25
+
+%Document:
+  title="SSH: Automatisch einloggen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=20
+
+%Figure: file="uploads/ssh-logo-90x78.png" \
+    width=58 height=50 url="http://www.openssh.com/"
+
+Ein automatisches Login führt SSH durch, wenn auf der Zielmaschine
+der Öffentliche Schlüssel des eigenen Accounts hinterlegt ist. Der
+Öffentliche Schlüssel wird auf der Zielmaschine zum Zielaccount
+hinzugefügt mittels:
+
+  $ cat id_rsa.pub >>.ssh/authorized_keys
+
+Die Datei darf nur für den Owner schreibbar sein.
+
+Information zur Schlüsselgenerierung:
+U{http://www.supportnet.de/faqsthread/806}
+
+# eof

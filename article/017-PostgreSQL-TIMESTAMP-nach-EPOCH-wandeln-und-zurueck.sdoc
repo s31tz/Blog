@@ -1,0 +1,62 @@
+# Date: 2010-01-22
+
+%Document:
+  title="PostgreSQL: TIMESTAMP nach EPOCH wandeln und zurück"
+  styleSheet=blog-style.css
+  generateAnchors=0
+  utf8=1
+
+# id=19
+
+%Figure: file="uploads/postgresql-logo-95x51.png" \
+  width="95" height="51" url="http://www.postgresql.org/"
+
+= TIMESTAMP WITHOUT TIME ZONE nach EPOCH
+
+Umwandlung eines C{TIMESTAMP WITHOUT TIME ZONE} in Unix-Epoch
+(Sekunden seit 1.1.1970 0 Uhr) in einer Anwendung, die mit UTC-Zeiten
+arbeitet:
+
+  sql> SELECT EXTRACT(EPOCH FROM TIMESTAMP
+          '1970-01-01 00:00:00' AT TIME ZONE 'UTC') AS t;
+   t 
+  ---
+   0
+
+Entscheidend ist hier der Zusatz "C{AT TIME ZONE 'UTC'}", denn ein
+C{TIMESTAMP WITHOUT TIME ZONE} wird als Zeit der I{lokalen} Zeitzone
+interpretiert - nicht etwa UTC! Ohne den Zusatz ist das Resultat um
+dem Offset der lokalen Zeitzone verschoben - böse Falle. Hier das
+Ergebnis im Falle von MEZ (+0100):
+
+  sql> SELECT EXTRACT(EPOCH FROM TIMESTAMP '1970-01-01 00:00:00') AS t;
+     t   
+  -------
+   -3600
+
+== Erläuterungen
+
+* C{EXTRACT(EPOCH FROM t)} extrahiert die Epoch-Sekunden
+    vom Zeit-Wert C{t}.
+* C{TIMESTAMP '1970-01-01 00:00:00'} ist die Zeitangabe C{t}.
+* C{AT TIME ZONE 'UTC'} interpretiert die Zeitangabe C{t}
+  hinsichtlich Zeitzone UTC.
+
+= EPOCH nach TIMESTAMP WITHOUT TIMEZONE
+
+Umwandlung von Epoch-Sekunden in einen C{TIMESTAMP WITHOUT TIMEZONE}
+(die C{0} steht für den Epoch-Wert):
+
+  sql> gkss=# SELECT TIMESTAMP 'epoch' + 0 * INTERVAL '1 second' AS t;
+           t    
+  ---------------------
+   1970-01-01 00:00:00
+
+== Erläuterungen
+
+* C{TIMESTAMP 'epoch'} bzeichnet den Anfang der Zeitrechnung (1.1.1970 0 Uhr).
+* C{0 * INTERVAL '1 second'} ist der Zeitoffset in Sekunden, der
+  hinzuaddiert wird. Er kann auch negativ sein.
+* Das Resultat ist ein Timestamp.
+
+# eof

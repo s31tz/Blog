@@ -1,0 +1,39 @@
+# Date: 2010-01-19
+
+%Document:
+  title="Liste der zusätzlich installierten Perl-Module"
+  generateAnchors=0
+  styleSheet="blog-style.css blog-highlight.css"
+  utf8=1
+
+# id=16
+
+%Figure: file="uploads/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+Wie ermittele ich, welche Perl-Module über das Grundsystem hinaus
+installiert wurden?
+
+Die Antwort liefert das Kommando:
+
+  $ perldoc perllocal
+
+Das Ergebnis ist ein formatiertes POD-Dokument, das die
+Installationshistorie aller per C{make install} oder
+C{./Build install} installierten Module aufführt.
+
+Das Dokument wird mit der Installation des ersten Moduls
+angelegt. Unmittelbar nach Installation des Core-Systems ist es noch
+nicht vorhanden, da noch kein zusätzliches Modul installiert wurde.
+
+Mit jeder Modul-Installation wird ein Eintrag am Ende hinzugefügt.
+Wird ein Modul mehrfach installiert, taucht es mehrfach auf.
+
+= Programm
+
+Liefere die Namen der zusätzlich installierten Module, alphabetisch
+sortiert, ohne Doubletten:
+
+  %Code: ln=1 file="src/ROOT-perl-modules" filter="./blog-highlight perl %FORMAT%"
+
+# eof

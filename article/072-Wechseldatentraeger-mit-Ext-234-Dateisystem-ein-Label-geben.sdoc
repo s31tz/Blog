@@ -1,0 +1,22 @@
+# Date: 2012-06-24
+
+%Document:
+  title="Wechseldatenträger mit Ext[234]-Dateisystem ein Label geben"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=88
+
+%Figure: file="uploads/usb-stick-219x100.png" width="88" height="40"
+  url="http://manpages.debian.org/cgi-bin/man.cgi?query=tune2fs"
+
+Wechseldatenträger (USB Festplatten, Memory Sticks) werden unter Linux
+automatisch nach C{/media/<name>} gemountet. Hat der Datenträger ein Label,
+wird dieses als (sprechender) C{<name>} verwendet.
+
+Label setzen:
+
+  # tune2fs -L <name> <device>
+
+# eof

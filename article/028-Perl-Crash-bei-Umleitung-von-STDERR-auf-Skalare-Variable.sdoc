@@ -1,0 +1,52 @@
+# Date: 2010-03-05
+
+%Document:
+  title="Perl: Crash bei Umleitung von STDERR auf Skalare Variable"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=33
+
+%Figure: file="uploads/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+Ich weiß nicht, wann Perl mir mal abgestürzt ist,
+aber jetzt bin ich auf einen Fall gestoßen:
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  #!/usr/bin/env perl
+
+  use strict;
+  use warnings;
+
+  my $s;
+  close STDERR;
+  open STDERR,'>',\$s or die;
+  warn "a\n";
+  $s =~ s/./xx/g;
+
+  # eof
+  .
+
+Aufruf:
+
+  $ ./test.pl
+  Segmentation fault
+
+Perl-Version (andere habe ich nicht probiert):
+
+  $ perl -v
+  This is perl, v5.10.1 (*) built for i686-linux
+
+= Variationen
+
+Wenn C{$s} kein In-Memory File ist, geht es.
+
+Bei C{$s =~ s/./xx/;} geht es (ohne g Modifier).
+
+Bei C{$s =~ s/./x/g;} geht es (der String wird nicht länger).
+
+Schließen von C{STDERR} vor dem C{s///} ändert nichts.
+
+# eof

@@ -1,0 +1,33 @@
+# Date: 2011-08-29
+
+%Document:
+  title="Linksammlung: UTF-8 Portierung"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=63
+
+%Figure: file="uploads/unicode-logo-220x220.png" \
+  width="66" height="66" url="http://unicode-table.com/en/"
+
+= Allgemein
+
+* The Absolute Minimum Every Software Developer Absolutely,
+  Positively Must Know About Unicode and Character Sets (No Excuses!)
+  U{http://www.joelonsoftware.com/articles/Unicode.html}
+
+= MySQL
+
+* Convert latin1 to UTF-8 in MySQL:
+  U{http://en.gentoo-wiki.com/wiki/Convert_latin1_to_UTF-8_in_MySQL}
+
+* Zeichensätze und Sortierfolgen im Allgemeinen:
+  U{http://dev.mysql.com/doc/refman/5.1/de/charset-general.html}
+
+= Perl
+
+* Zeichenkodierungen oder „Warum funktionieren meine Umlaute nicht?”:
+  U{http://perlgeek.de/de/artikel/charsets-unicode}
+
+# eof

@@ -1,0 +1,75 @@
+# Date: 2012-02-09
+
+%Document:
+  title="Java SE 7 JDK unter Linux installieren"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=79
+
+%Figure: file="uploads/java-logo-160x100.png" \
+  width="96" height="60" url="https://www.java.com/"
+
+Das Java SE (Standard Edition) Devolpment Kit (JDK) gibt es
+U{"http://www.oracle.com/technetwork/java/javase/downloads/",text="hier"}.
+Wir folgen dem Workflow und laden die gewünschten Archiv-Dateien herunter.
+
+Für Standard Edition 7 sind es für Linux x86 die Dateien:
+
+* JDK: C{jdk-7u2-linux-i586.tar.gz}
+* Beispiele (optional): C{jdk-7u2-linux-i586-demos.tar.gz}
+* Dokumentation (optional): C{jdk-7u2-apidocs.zip}
+
+Wir gehen in ein beliebiges Verzeichnis (z.B. C{/opt/java}) und
+entpacken die Dateien dort:
+
+  $ tar xvzf jdk-7u2-linux-i586.tar.gz
+  $ tar xvzf jdk-7u2-linux-i586-demos.tar.gz
+  $ unzip jdk-7u2-apidocs.zip
+  $ mv docs jdk1.7.0_02
+
+Im Unterverzeichnis C{jdk1.7.0_02} befindet sich nun das JDK
+einschließlich Dokumentation (Unterverzeichnis C{docs} mit
+C{docs/index.html} als Startseite) und Beispielen (Unterverzeichnisse
+C{demo} und C{samples}).
+
+Wir nutzen diese Java-Installation, indem wir das Environment
+darauf einstellen:
+
+  $ export JAVA_HOME=`pwd`/jdk1.7.0_02
+  $ PATH=$JAVA_HOME/bin:$PATH
+
+Programm "Hello world":
+
+  $ vi HelloWorldApp.java
+  class HelloWorldApp {
+      public static void main(String[] args) {
+          System.out.println("Hello World!");
+      }
+  }
+
+Klasse kompilieren und ausführen:
+
+  $ javac HelloWorldApp.java
+  $ java HelloWorldApp
+  Hello World!
+
+= Java SE 6 JDK
+
+Für Standard Edition 6 sind es für Linux x86 nur zwei Archiv-Dateien,
+da das JDK-Archiv die Beispiele mit enthält:
+
+* JDK und Beispiele: C{jdk-6u30-linux-i586.bin}
+* Dokumentation (optional): C{jdk-6u30-apidocs.zip}
+
+Das Auspacken verläuft geringfügig anders, da die Daten in ein
+Shell-Archiv eingepackt sind:
+
+  $ sh jdk-6u30-linux-i586.bin
+  $ unzip jdk-6u30-apidocs.zip
+  $ mv docs jdk1.6.0_30
+
+Das JDK befindet sich in Unterverzeichnis C{jdk1.6.0_30}.
+
+# eof

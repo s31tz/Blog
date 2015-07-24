@@ -1,0 +1,24 @@
+# Date: 2010-05-20
+
+%Document:
+  title="Perl: POD als Programm-Hilfetext"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=39
+
+%Figure: file="uploads/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+Das Core-Modul C{Pod::Usage} kann einen Programm-Hilfetext aus der
+eingebetteten POD-Dokumentation generieren. Es geht auch einfacher:
+
+  %Code: listing=1 file="src/pod-nach-stdout.pl" \
+    filter="./blog-highlight perl %FORMAT%"
+
+produziert auf STDOUT
+
+  %Code: exec="src/pod-nach-stdout.pl"
+
+# eof

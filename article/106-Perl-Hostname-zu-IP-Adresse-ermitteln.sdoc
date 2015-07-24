@@ -1,0 +1,23 @@
+# Date: 2015-07-10
+
+%Document:
+  title="Perl: Hostname zu IP-Adresse ermitteln"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+  minLnWidth=2
+
+# id=114
+
+%Figure: file="uploads/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+Bei der Auswertung von HTTP-Zugriffen möchte man u.U. die IP-Adressen
+zu Hostnamen auflösen. Das geht so:
+
+  %Code: ln=1 bg=2 filter="./blog-highlight perl %FORMAT%"
+  use Socket;
+  $hostname = gethostbyaddr(inet_aton($ip),AF_INET);
+  .
+
+# eof

@@ -1,0 +1,36 @@
+# Date: 2012-05-25
+
+%Document:
+  title="Streamripper: Internet-Radio aufzeichnen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=86
+
+%Figure: file="uploads/streamripper-logo-570x90.png" \
+    width="285" height="45" url="http://streamripper.sourceforge.net/"
+
+Streamripper ist ein Kommandozeilenprogram, mit dem es möglich ist,
+SHOUTcast- und Icecast-Internetradiosendungen aufzuzeichnen. Das geht so:
+
+Rippe Stream C{URL}, speichere die Dateien im aktuellen Verzeichnis
+und erzeuge einen Relay-Server auf Port C{8000}:
+
+  $ streamripper URL -r
+
+Gib den Stream parallel über den von streamripper erzeugten
+Relay-Server wieder:
+
+  $ cvlc -q http://localhost:8000
+
+= Radio-Links
+
+* SomaFM: U{http://somafm.com/}
+* Digitally Imported: U{http://www.di.fm/}
+
+= Links
+
+* U{"http://streamripper.sourceforge.net/",text="Streamripper Homepage"}
+
+# eof

@@ -1,0 +1,55 @@
+# Date: 2011-05-11
+
+%Document:
+  title="SVN: Auf Branch entwickeln"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=60
+
+%Figure: file="uploads/svn-374x51.jpg" \
+    width=224 height=31 url="https://subversion.apache.org/"
+
+= Erzeugen eines Branch
+
+  $ svn copy svn://HOST:PORT/trunk svn://HOST:PORT/branches/BRANCH -m MSG
+
+  HOST   : Name des SVN Host
+  PORT   : Portnummer (falls der Server nicht auf dem Standardport 3690 läuft)
+  BRANCH : Name des Branch, welcher frei gewählt werden kann
+  MSG    : Logmeldung zur Brancherzeugung
+
+  $ svn up /DIR/branches/BRANCH
+
+  DIR    : Wurzelverzeichis des ausgecheckten Repository (Trunk+Branches)
+
+= Aktualisieren des Branch
+
+  $ cd /DIR/branches/BRANCH
+  $ svn merge svn://HOST:PORT/trunk
+
+Das Aktualisieren des Branch mit den Änderungen im Trunk sollte so oft
+wie möglich passieren, damit nicht zu viele Konflikte auflaufen.
+
+= Rückintegrieren des Branch
+
+  $ cd /DIR/trunk
+  $ svn merge --reintegrate svn://HOST:PORT/branches/BRANCH
+
+= Löschen des Branch
+
+  $ svn delete /DIR/branches/BRANCH
+
+Nach der Rückintegration des Branch in den Trunk ist der Branch
+nutzlos geworden und sollte gelöscht werden. Im Repository bleibt er
+vorhanden, es wird ohne Angabe der letzten Revision Number bei einem
+Update in /DIR/branches aber keine (unerwünschte) Working Copy mehr
+erzeugt.
+
+= O'Reilly SVN Buch
+
+Freie Online-Version von U{"http://svnbook.red-bean.com/index.en.html",\
+  text="Version Control with Subversion"}
+
+# eof

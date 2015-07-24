@@ -1,0 +1,100 @@
+# Date: 2015-07-15
+
+%Document:
+  title="Apache: Bessere access.log-Datei definieren"
+  styleSheet=blog-style.css
+  generateAnchors=0
+  utf8=1
+
+# id=117
+
+%Figure: file="uploads/apache-logo-200x60.png" \
+  width="153" height="46" url="http://httpd.apache.org/"
+
+C{31.16.4.127 - - [15/Jul/2015:12:27:34 +0200] "GET /path/script.cgi?a=b HTTP/1.1" 302 583 "http://host.domain/page" "Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0 Iceweasel/38.1.0"}
+
+Der Aufbau der C{access.log}-Datei, die ein Apache HTTP-Server per
+Default schreibt, lässt in mehrfacher Hinsicht zu wünschen übrig:
+
+* B{Information ist unpraktisch formatiert:} Der
+  Request-Zeitpunkt wird als C{[15/Jul/2015:12:27:34 +0200]} (Formatelement
+  C{%t}) aufgezeichnet. Ein ISO-8601-ähnlicher Aufbau à la
+  C{2015-07-15 12:27:34} wäre besser lesbar und verarbeitbar. Zudem
+  wird die Zeitzone im Normalfall nicht benötigt.
+
+* B{Information ist zusammengesetzt, die besser getrennt sein sollte:}
+  Der Request wird als eine Zeichenkette C{"GET
+  /path/script.cgi?a=b HTTP/1.1"} (Formatelement C{%r})
+  aufgezeichnet. Darin sind vier Teilinformationen enthalten:
+
+  1. die Request-Methode (C{GET}),
+  2. der URL-Pfad (C{/path/script.cgi}),
+  3. der (optionale) Query-String (C{?a=b}),
+  4. das Request-Protokoll (C{HTTP/1.1}).
+
+  Eine Zerlegung ist nicht ganz einfach, da der Query-String optional ist.
+  Besser wäre es, die Information in getrennten Feldern abzulegen
+  (URL-Pfad und Query-String können zusammengelegt werden).
+
+* B{Interessante Information fehlt:} Z.B. fehlt die Ausführungsdauer
+  des Request, was bei der Performance-Optimierung
+  von dynmisch generierten Inhalten hilfreich ist, sowie Hostname und
+  Port, an die der Request gegangen ist, was bei einem
+  VirtualHost-Setup von Nutzen sein kann. Auch der Content-Type der
+  Response kann interessant sein, um die Logeinträge besser
+  filtern zu können.
+
+* B{Zeilen lassen sich schlecht in ihre Teilinformationen
+  zerlegen:} Eine einfache Trennung auf Whitespace geht nicht, da
+  manche Felder Whitespace enthalten. Solche Felder sind in doppelte
+  Anführungsstriche eingefasst. Aber nicht alle. Der Aufruf-Zeitpunkt
+  ist in eckige Klammern eingefasst (s.o.). Fehlende Werte werden
+  durch einen Bindstrich (C{-}) dargestellt. Aber auch nicht immer.
+  Für den Query-String (Formatelement C{%q}) gilt dies nicht.
+
+Aufgrund dieser Ungereimtheiten definiert man sich am besten ein
+eigenes Logfile-Format. Zum Glück ist dies mit der Apache-Direktive
+C{LogFormat} leicht möglich. Ich verwende folgende Definition, mit
+einem senkrechten Strich als eindeutigem Feldtrenner:
+
+  LogFormat "%{%Y-%m-%d %H:%M:%S}t|%h|%>s|%L|%D|%I|%O|%{Content-Type}o|\
+    %m|%v|%p|%U%q|%H|%{Referer}i|%{User-Agent}i" NAME
+
+Verwendete Formatelemente (die mit + gekennzeichnete Information kommt im
+ursprünglichen Format nicht vor):
+
+  %{%Y-%m-%d %H:%M:%S}t Request-Zeitpunkt
+  %h .................. Client-IP oder -Name
+  %>s ................. finaler HTTP Status (200, ...)
+  %L .................. + error.log wurde geschrieben
+  %D .................. + Ausführungsdauer in Mikrosekunden
+  %I .................. + Bytes empfangen
+  %O .................. Bytes gesendet
+  %{Content-Type}o .... + Content-Type Header der Response
+  %m .................. Request-Methode (GET, POST, ...)
+  %v .................. + Hostname
+  %p .................. + Port
+  %U .................. URL-Pfad
+  %q .................. Query-String
+  %H .................. Request-Protokoll (HTTP/1.0, ...)
+  %{Referer}i ......... Referer Header des Requests
+  %{User-Agent}i ...... User-Agent Header des Requests
+  NAME ................ Name es Log-Formats
+
+Ein weiteres interessantes Formatelement ist
+
+  %{COOKIE}C ...........: Wert des Cookie COOKIE
+
+das in Anwendungen, die Cookies nutzen, nützlich sein kann. Ich füge
+es bei Bedarf am Ende hinzu.
+
+Links:
+
+* U{"http://httpd.apache.org/docs/2.4/mod/mod_log_config.html#logformat",
+  text="LogFormat-Direktive"}
+* U{"http://httpd.apache.org/docs/2.4/mod/mod_log_config.html#formats",
+  text="Liste aller Format-Elemente"}
+
+C{2015-07-15 12:27:34|31.16.4.127|302|-|7273|400|583|text/html|GET|myhost.mydomain|80|/path/script.cgi?a=b|HTTP/1.1|http://host.domain/page|Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0 Iceweasel/38.1.0}
+
+# eof

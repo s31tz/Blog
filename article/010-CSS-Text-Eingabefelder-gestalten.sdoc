@@ -1,0 +1,51 @@
+# Date: 2010-01-11
+
+%Document:
+  title="CSS: Text-Eingabefelder gestalten"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=10
+
+%Figure: file="uploads/valid-css.png" \
+  width="88" height="31" url="http://www.w3.org/TR/tr-groups-all\
+  #tr_Cascading_Style_Sheets__CSS__Working_Group"
+
+= Eingabefeld
+
+  <input type="text"  id="e" name="text" size="20" />
+
+%Include: file="include/input.%FORMAT%"
+
+= Umrahmung
+
+Rahmen von 1px Breite statt der normalen Dekoration.
+
+  #e {
+    border: 1px #999 solid;
+  }
+
+= Hintergrundfarbe
+
+Die Hintergrundfarbe des Eingabefeldes ändern, wenn es mit der Maus
+überfahren wird (:hover) oder den Fokus bekommt (:focus). Besitzt das
+Feld weder den Fokus noch befindet sich die Maus darüber, wird die
+ursprüngliche Hintergrundfarbe automatisch wieder hergestellt. Dies
+braucht nicht vereinbart werden.
+
+  #e:hover, #e:focus {
+    background-color: #eee;
+  }
+
+= Font
+
+Ein Text-Eingabefeld sollte m.E. normalerweise einen monospaced Font
+eingestellt haben, nur dann entspricht die optische Feldbreite exakt
+der Anzahl der Zeichen, die in das Feld passen.
+
+  #e {
+    font-family: monospace;
+  }
+
+# eof

@@ -1,0 +1,27 @@
+# Date: 2010-02-08
+
+%Document:
+  title="Syntax-Highlighting mit highlight"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=30
+
+Highlight stellt die Syntax von zahlreichen Programmiersprachen farbig
+und mit Fontattributen wie kursiv und fett dar:
+
+  $ highlight --syntax=LANG --fragment <CODE >CODE.html
+
+Die Option C{--syntax=LANG} stellt die Programmiersprache ein,
+C{--fragment} sorgt dafür, dass keine vollständige HTML-Seite,
+sondern einbettbarer HTML-Code generiert wird.
+
+Die zugehörigen CSS-Klassen liefert folgendes Kommando nach stdout:
+
+  $ highlight --print-style --style-outfile=stdout | grep '^\.' >CODE.css
+
+Das nachgeschaltete grep sorgt dafür, dass der Output auf
+die relevanten Klassen für eine Einbettung eingeschränkt wird.
+
+# eof

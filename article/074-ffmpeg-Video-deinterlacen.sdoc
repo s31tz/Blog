@@ -1,0 +1,27 @@
+# Date: 2012-10-07
+
+%Document:
+  title="ffmpeg: Video deinterlacen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=90
+
+%Figure: file="uploads/ffmpeg-logo-250x63.png" \
+  width="134" height="36" url="https://www.ffmpeg.org/"
+
+Ein Video, das I{interlaced} aufgezeichnet wurde, muss vor einer weiteren
+Verarbeitung I{deinterlaced} werden. Der entsprechende Filter von ffmpeg
+heißt C{yadif} (Yet Another DeInterlacing Filter). Anwendung:
+
+  $ ffmpeg -i INFILE -vf yadif ... OUTFILE
+
+In älteren Versionen:
+
+  $ ffmpeg -i INFILE -filter:v yadif ... OUTFILE
+
+Zwar besitzt ffmpeg die Option C{-deinterlace}, diese soll laut Manpage
+jedoch nicht genutzt werden, da das Ergebnis von geringer Qualität sei.
+
+# eof

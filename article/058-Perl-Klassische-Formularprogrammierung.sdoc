@@ -1,0 +1,72 @@
+# Date: 2011-10-14
+
+%Document:
+  title="Perl: Klassische Formularprogrammierung"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=67
+
+%Figure: file="uploads/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+(dieser Eintrag wird fortgeführt)
+
+Die Eingabeelemente eines Web-Formulars empfangen ihre Werte idealerweise
+aus dem Request-Objekt. Drei Fälle sind zu unterscheiden:
+
+1. Auffrischen: Das Request-Objekt enthält die Daten eines
+   vorangegangenen Submit. Es ist nichts zu tun. Dies ist
+   typischerweise bei einem Fehler der Fall oder wenn in Folge einer
+   Benutzerauswahl ein Neuaufbau des Formulars erforderlich ist.
+
+2. Bearbeiten: Die Daten kommen aus der Datenbank. Die Daten werden
+   selektiert und auf das Request-Objekt kopiert, ggf. nach einer
+   geeigneten Transformation.
+
+3. Neueingabe: Es gibt keine äußere Datenquelle. Das Request-Objekt
+   wird mit Defaultwerten für die Formularfelder initialisiert.
+
+In Perl:
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  # Request-Objekt für Webformular manipulieren
+
+  my $action = $cgi->get('action');
+  my $objId = $cgi->get('obj_id');
+
+  if ($action) {
+      # Fall 1: nichts tun
+  }
+  elsif ($objId) {
+      # Fall 2: Datenbank-Inhalt selektieren und auf Request-Objekt kopieren
+      my $obj = Object->lookup($db,obj_id=>$objId);
+      $obj->copyTo($cgi);
+  }
+  else {
+      # Fall 3: Request-Objekt mit Defaultwerten initialisieren
+      $cgi->set(@keyVal);
+  }
+
+  # Ab hier Felder aus dem Request-Objekt initialisieren
+  .
+
+B{$cgi} ist das Request-Objekt.
+
+B{$action} zeigt an, ob die Daten nach einem Submit an das Formular
+zurückgeliefert wurden. Die Formularwerte kommen dann aus den CGI-Parametern.
+
+B{$objId} ist die Id des Modell-Objekts. Wenn $action nicht gesetzt ist,
+wird das Formular aus dessen Attributen initialisiert.
+
+B{Object} ist die Modell-Klasse. Diese implementiert die Methode
+copyTo(), welche die Datensatz-Attribute auf das Request-Objekt kopiert.
+
+B{$db} ist das Datenbank-Objekt, über das auf ddie Datenbank
+zugegriffen wird.
+
+B{@keyVal} ist die Liste aus Schlüssel/Wert-Paaren für die Initialisierung
+mit den Defaultwerten.
+
+# eof

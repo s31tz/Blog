@@ -1,0 +1,94 @@
+# Date: 2011-08-19
+
+%Document:
+  title="Oracle+Linux: ORA-00845: MEMORY_TARGET not supported on this system"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=62
+
+%Figure: file="uploads/database-114x100.png" \
+  width="80" height="70" url="https://docs.oracle.com/en/"
+
+Unter Linux (Debian) bricht eine zuvor funktionierende
+Oracle-Datenbank beim Hochfahren plötzlich ab. Die Meldung lautet:
+
+  ORA-00845: MEMORY_TARGET not supported on this system
+
+Im Netz wird in Blogs als Lösung genannt, man möge C{/dev/shm} mounten
+
+  # mount -t tmpfs tmpfs -o size=2g /dev/shm
+
+oder, falls C{/dev/shm} bereits gemountet ist, den Speicher vergrößern
+
+  # mount -o remount,size=2g /dev/shm
+
+Dies hat beides allerdings nicht geholfen, da es eine weitere
+Fehlerursache gibt. Die Meldung im C{alert_<DB>.log} zu dem Fehler
+lautet:
+
+  WARNING: You are trying to use the MEMORY_TARGET feature. This feature
+  requires the /dev/shm file system to be mounted for at least
+  1275068416 bytes. /dev/shm is either not mounted or is mounted with
+  available space less than this size. Please fix this so that MEMORY_TARGET
+  can work as expected. Current available is 0 and used is 0 bytes.
+  Ensure that the mount point is /dev/shm for this directory.
+
+Der entscheidende Punkt in der Meldung, welcher zur Lösung führt,
+ist, dass Oracle keinen verfügbaren Speicher erkennt ("Current
+available is 0 and used is 0 bytes") und dass der Mountpoint exakt
+C{/dev/shm} sein muss ("Ensure that the mount point is /dev/shm for
+this directory").
+
+Letztere Bedingung war auf dem Debian-System (testing) nicht erfüllt:
+
+  # df -h /dev/shm
+  Filesystem            Size  Used Avail Use% Mounted on
+  tmpfs                 3.0G     0  3.0G   0% /run/shm
+
+Als Mountpoint wird hier nicht C{/dev/shm} angezeigt, sondern
+C{/run/shm}, weil C{/dev/shm} lediglich ein Symlink auf C{/run/shm} ist:
+
+  # ls -l /dev/shm
+  lrwxrwxrwx 1 root root 8 Aug 19 09:37 /dev/shm -> /run/shm
+
+Mit diesem Setup kommt der Oracle-Kernel (11.2.0.1.0) nicht klar. Er
+erkennt (aus nicht weiter erforschten Gründen) die Größe des
+Shared-Memory-Bereichs nicht.
+
+Der Fix besteht darin, im Oracle-Kernel alle Vorkommen von
+C{/dev/shm} durch C{/run/shm} zu ersetzen:
+
+  # cd $ORACLE_HOME/bin
+  # cp oracle oracle.bak
+  # sed 's|/dev/shm|/run/shm|g' oracle.bak >oracle
+
+Danach fährt die Datenbank wieder hoch:
+
+  $ sqlplus / as sysdba
+
+  SQL*Plus: Release 11.2.0.1.0 Production on Fri Aug 19 13:29:21 2011
+
+  Copyright (c) 1982, 2009, Oracle.  All rights reserved.
+
+  Connected to an idle instance.
+
+  SQL> startup
+  ORACLE instance started.
+
+  Total System Global Area 1272213504 bytes
+  Fixed Size		    1336260 bytes
+  Variable Size		  805309500 bytes
+  Database Buffers	  452984832 bytes
+  Redo Buffers		   12582912 bytes
+  Database mounted.
+  Database opened.
+
+= Links
+
+* U{"http://www.oracle.com/technetwork/database/enterprise-edition/\
+  downloads/index.html",text="Oracle Database Software Downloads"}
+* U{"https://docs.oracle.com/en/database",text="Oracle Database Documentation"}
+
+# eof

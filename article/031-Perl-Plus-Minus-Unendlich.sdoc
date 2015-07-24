@@ -1,0 +1,31 @@
+# Date: 2010-03-25
+
+%Document:
+  title="Perl: Plus / Minus Unendlich"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=37
+
+%Figure: file="uploads/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+Perl kennt mehrere Zeichenketten, die - numerisch interpretiert - plus
+und minus Unendlich bedeuten.
+
+| Plus Unendlich: => C{'+inf'}, C{'+infinity'}, C{'inf'}, C{'infinity'} |
+| Minus Unendlich: => C{'-inf'}, C{'-infinity'} |
+
+B{Beispiel:} Maximum ermitteln
+
+  %Code: listing=1 extract="# begin\s+(.*)" file="src/test-inf.pl" \
+    filter="./blog-highlight perl %FORMAT%"
+
+B{Aber Achtung:} Diese besonderen Werte sind nicht sonderlich gut
+dokumentiert und scheinen bei einigen Windows-Ports nicht zu
+funktionieren. Siehe:
+U{"http://reneeb-perlblog.blogspot.com/2010/03/unendliches-perl.html",text="Unendliches
+Perl..."}
+
+# eof

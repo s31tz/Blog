@@ -1,0 +1,45 @@
+# Date: 2013-03-05
+
+%Document:
+  title="Perl: Module installieren mit cpanm"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=96
+
+%Figure: file="uploads/perl-130x65.png" \
+    width=96 height=48 url="http://www.perl.org/"
+
+Ein hervorragendes Werkzeug zum Installieren von Perl-Modulen ist
+U{"http://search.cpan.org/~miyagawa/App-cpanminus/bin/cpanm",text="cpanm"}
+("cpanminus").
+
+Nach dem Kompilieren und Installieren von Perl aus den Quellen per
+
+  $ ./Configure -des -Dprefix=~
+  $ make test
+  $ make install
+
+und der Installation von C{cpanm} per
+
+  $ curl -L http://cpanmin.us | ~/bin/perl - --self-upgrade
+
+kann man jedes (naja, fast jedes) CPAN-Modul mit einem simplen Aufruf zur
+Installation hinzufügen:
+
+  $ ~/bin/cpanm <module>
+
+Abhängkeiten von anderen Modulen werden erkannt und rekursiv
+aufgelöst.
+
+Das Programm C{cpanm} lässt sich auch standalone an Ort und Stelle
+installieren (aus U{"http://search.cpan.org/~miyagawa/App-cpanminus/lib\
+/App/cpanminus.pm",text="App::cpanminus"}):
+
+  cd ~/bin
+  curl -LO http://xrl.us/cpanm
+  chmod +x cpanm
+  # edit shebang if you don't have /usr/bin/env
+
+# eof

@@ -1,0 +1,100 @@
+# Date: 2010-05-30
+
+%Document:
+  title="HTML-Konstrukte mit CSS gestalten"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=40
+
+%Figure: file="uploads/valid-css.png" \
+  width="88" height="31" url="http://www.w3.org/TR/tr-groups-all\
+  #tr_Cascading_Style_Sheets__CSS__Working_Group"
+
+= Problem
+
+Ein aus mehreren Elementen bestehendes HTML-Konstrukt soll in seinem
+Aussehen frei gestaltbar sein. Wie lässt sich dies mit CSS erreichen?
+
+= Beispiel
+
+Gegeben sei ein Inhaltsverzeichnis, bestehend aus einer Überschrift
+(h1) und verschachtelten Listen (ul, li) mit Links (a) auf die
+Dokument-Abschnitte.
+
+  %Code: listing=1 file="src/inhaltsverz.html"
+    extract="<!--B-->\s+(.*)<!--E-->"
+    filter="./blog-highlight html %FORMAT%"
+
+Der HTML-Code wird ohne CSS vom Browser (Firefox) ungefähr so dargestellt
+(die Strukturelemente für den Titel (h1) und die Listen (ul) sind zur
+Verdeutlichung grau hinterlegt):
+
+%Figure: file="uploads/inhaltsverz.png" width="300" height="129"
+
+= Lösung
+
+Um ein HTML-Konstrukt aus mehreren Elementen per CSS anpassbar zu
+machen, gehen wir folgendermaßen vor:
+
+* Wir geben dem Wurzelelement des Konstruktes eine eindeutige Bezeichnung
+  und weisen ihm hierzu eine Id oder einen Klassennamen (oder beides) zu.
+
+    %Code: listing=1 filter="./blog-highlight html %FORMAT%"
+    <ELEMENT id="my-toc-4711" class="my-toc">
+      ...
+    </ELEMENT>
+    .
+
+  Eine Id verwenden wir, wenn wir eine bestimmte Instanz des Konstrukts
+  gestalten wollen. Wollen wir alle Instanzen des Konstruktes
+  gestalten, verwenden wir einen Klassennamen.
+
+* Hat das Konstrukt kein Wurzelelement, wie im Beispiel, denn auf
+  oberster Ebene stehen hier I{zwei} Elemente: h1 und ul, erzeugen wir
+  ein künstliches Wurzelelement, indem wir das Konstrukt in ein
+  <div> einfassen.
+
+    %Code: listing=1 filter="./blog-highlight html %FORMAT%"
+    <div class="my-toc">
+      HTML
+    </div>
+    .
+
+  I{Ein} Wurzelelement zu haben, ist in vielerlei Hinsicht praktisch,
+  denn es kann Definitionen aufnehmen, die das Konstrukt als Ganzes
+  (Hintergrund, Abstände, etc.) oder alle seine Subelemente
+  betreffen (Texteigenschaften etc.).
+
+* Im Stylesheet adressieren wir die Elemente ausgehend vom Wurzelelement
+  mit entsprechenden Selektoren. Bei obiger Inhaltsverzeichnis-Struktur
+  könnte dies so aussehen:
+
+    %Code: listing=1 filter="./blog-highlight css %FORMAT%"
+    .my-toc {
+        /* das gesamte Konstrukt */
+    }
+    .my-toc h1 {
+        /* die Überschrift */
+    }
+    .my-toc ul {
+        /* die Liste der Ebene 1 */
+    }
+    .my-toc ul ul {
+        /* die Listen der Ebene 2 */
+    }
+    .my-toc ul ul ul {
+        /* die Listen der Ebene 3 und tiefer */
+    }
+    .my-toc a {
+        /* alle Links */
+    }
+    .
+
+* Weitere Klassennamen oder Ids werden innerhalb des Konstruktes nicht
+  benötigt, es sei denn, es liegt der eher seltene Fall vor, dass
+  CSS-Selektoren die erforderliche Elementauswahl nicht treffen können.
+  Beispiel: gerade oder ungerade Zeilen einer Tabelle.
+
+# eof

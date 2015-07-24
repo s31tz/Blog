@@ -1,0 +1,140 @@
+# Date: 2014-12-14
+
+%Document:
+  title="Minecraft-Server unter Linux einrichten"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=106
+
+%Figure: file="uploads/minecraft-1373x230.png" \
+    width="227" height="38" url="https://minecraft.net/"
+
+= Einleitung
+
+Ein Multiuser Minecraft-Server ist ein einzelner Jar-File, der auf einem
+Host mit Java Runtime Environment gestartet wird und dann
+Client-Verbindungen auf Port 25565 entgegen nimmt.
+
+= Download
+
+Auf der Download-Seite
+U{"https://minecraft.net/download",target="_top"} von Mojang findet
+sich der Link zum Jar-File I{URL} und das Kommando I{CMD}, mit dem der
+Server gestartet wird.
+
+Werte für I{URL} und I{CMD} zum Zeitpunkt des Schreibens dieses Texts:
+
+  URL: https://s3.amazonaws.com/Minecraft.Download/versions/1.8.1/minecraft_server.1.8.1.jar
+  CMD: java -Xmx1024M -Xms1024M -jar minecraft_server.1.8.1.jar nogui
+
+= Installation in Kurzform
+
+Die Installation auf Debian-basierten Linux-Systemen in Kurzform:
+
+  $ sudo apt-get install default-jre
+  $ wget URL
+  $ CMD
+  $ vi eula.txt
+  eula=true
+  $ CMD
+
+= Installation im Detail
+
+1. Java Runtime Environment installieren (falls noch nicht vorhanden)
+
+     $ sudo apt-get install default-jre
+
+2. Jar-File des Minecraft-Servers herunterladen
+
+     $ wget URL
+
+   I{URL} ist der Download-Link von der Mojang Download-Seite (s.o.).
+
+3. Minecraft-Server starten
+
+     $ CMD
+
+   I{CMD} ist das Kommando von der Mojang Download-Seite (s.o.).
+
+   Beim ersten Start erzeugt der Server im aktuellen Verzeichnis
+   mehrere Dateien - u.a. eula.txt - und terminiert sofort (!) mit der
+   Meldung "You need to agree to the EULA in order to run the server.
+   Go to eula.txt for more info".
+
+4. Minecraft End User Licence Agreement (EULA) akzeptieren
+
+   Die Zustimmung erteilt man, indem man in eula.txt die Variable C{eula}
+   von C{false} auf C{true} setzt.
+
+     $ vi eula.txt
+     eula=true
+
+5. Minecraft-Server noch einmal starten
+
+   Server noch einmal wie in Schritt 3 starten. Nun sollte er laufen.
+   Am Shellprompt gestartet, schreibt er INFO-Meldungen aufs Terminal und
+   läuft nun so lange, bis er gekillt wird.
+
+6. Port-Freischaltung
+
+   Als letztes muss in der Firewall eine
+   Port-Freischaltung/Weiterleitung für Port 25565 konfiguriert
+   werden, damit der Minecraft-Server von außen erreicht werden
+   kann. Dieser Schritt lässt sich nicht allgemeingültig beschreiben,
+   da er von den Gegebenheiten des lokalen Netzwerks abhängt.
+
+   In meinem Fall ist der Host eine EC2-Instanz in der Amazon Cloud.
+   Dort wird die Portfreigabe in der Security-Group der
+   Instanz eingestellt. Durch Hinzufügen einer weiteren Regel
+   ("Custom TCP Rule") bei den Eingangsverbindungen ("Inbound") mit
+   Protocol=TCP, Port Range=25565 und Source=Anywhere (0.0.0.0/0) ist
+   der Mincraft-Server weltweit erreichbar.
+
+= Admin-Rechte vergeben
+
+Admins werden in der Datei C{ops.json} definiert. Die JSON-Datei enthält
+zunächst eine leere Liste C{[]}, definiert also keine Admins. 
+
+Für jeden Admin/Operator wird ein Eintrag zur Liste hinzugefügt.
+Aufbau der Datei:
+
+    [
+      {
+        "uuid": "UUID",
+        "name": "USERNAME",
+        "level": LEVEL
+      },
+      ...
+    ]
+
+Hierbei ist:
+
+[UUID:]
+    Zeichenkette, die den Benutzer identifiziert. Diese Zeichenkette
+    lässt sich z.B. auf U{"http://mcuuid.net/",target="_top"} aus dem
+    Benutzernamen erzeugen.
+
+[USERNAME:]
+    Der Benutzername.
+
+[LEVEL:]
+    Der Berechtigungs-Level. Vier Level werden unterschieden:
+
+    [1:]
+        Can bypass spawn protection.
+    [2:]
+        Can use C{/clear}, C{/difficulty}, C{/effect}, C{/gamemode},
+        C{/gamerule}, C{/give}, C{/summon}, C{/setblock} and C{/tp}
+        and can edit command blocks.
+    [3:]
+        Can use C{/ban}, C{/deop}, C{/kick}, and C{/op}.
+    [4:]
+        Can use C{/stop}.
+
+= Config-Dateien
+
+Server.properties: U{http://minecraft.gamepedia.com/Server.properties}
+
+# eof

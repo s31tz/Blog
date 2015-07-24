@@ -1,0 +1,32 @@
+# Date: 2012-07-16
+
+%Document:
+  title="Film mit kdenlive/MLT in Teilen rendern"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=89
+
+%Figure: file="uploads/kdenlive-89x96.png" \
+    width="54" height="58" url="https://kdenlive.org/"
+
+Fertige Teile eines Filmprojekts können sukzessive gerendert und später
+mit C{cat} zusammengefügt werden, wenn als Format C{MPEG-2} verwendet wird.
+Damit lässt sich das Neurendern des Films auf das Rendern des geänderten
+Teils verkürzen.
+
+Mit der Option C{Selected Zone} des Render-Dialogs von
+U{"https://kdenlive.org/",text="kdenlive"} wird ein Ausschnitt des
+Films gerendert. Fertige Teile müssen nur einmal gerendert werden und
+können mit einem neuen Teil per
+
+  $ cat CLIP1.mpg CLIP2.mpg ... >MOVIE.mpg
+
+zum vollständigen Film zusammengefügt werden. Dies geht wesentlich
+schneller als den gesamten Film zu rendern.
+
+Dieses Vorgehen setzt natürlich voraus, dass alle Clips mit den
+gleichen Einstellungen (Geometrie, Bitrate usw.) erstellt werden.
+
+# eof

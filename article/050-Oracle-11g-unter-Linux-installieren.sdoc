@@ -1,0 +1,109 @@
+# Date: 2011-03-10
+
+%Document:
+  title="Oracle 11g unter Linux installieren"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=54
+
+%Figure: file="uploads/database-114x100.png" \
+    width="80" height="70" url="https://docs.oracle.com/en/"
+
+Eine Anleitung zum Installieren von Oracle 11g unter Debian, die
+versucht, mögliche Probleme von vornherein auszuschließen, dafür aber
+umfangreiche Vorarbeiten verlangt, findet sich hier:
+U{http://edin.no-ip.com/blog/hswong3i/\
+oracle-database-11g-release-1-debian-sid-howto}
+
+Meine Anleitung hat das Ziel, die Voraussetzungen für den Aufruf des
+Installers zu schaffen. Da der Installer selbst den Softwarestand und
+die Kernelparameter prüft, können Anpassungen auch bei laufender
+Installation vogenommen werden.
+
+%Figure: file="uploads/oracle-installer-configuration-600x449.png" \
+width="508" height="381" title="Abbildung 1: Allgemeine \
+Konfigurationsangaben im Installer"
+
+= Schritt 1: Download
+
+Dateien von Oracle.com herunterladen: U{"http://www.oracle.com/technetwork/\
+database/enterprise-edition/downloads/index.html",text="Download 11g \
+Enterprise Edition"} (Hierfür ist ein OTN-Konto nötig)
+
+= Schritt 2: Oracle-Benutzer und DBA-Gruppe erzeugen
+
+  # addgroup --system dba
+  # adduser --system --home /opt/oracle --shell /bin/bash --ingroup dba \
+    --gecos 'Oracle DBA' oracle
+  # passwd oracle
+
+= Schritt 3: Dateien entpacken
+
+Auf Benutzer C{oracle} wechseln, unter dessen Rechten wird die weitere
+Installation durchgeführt:
+
+  # su - oracle
+  $ unzip linux_11gR2_database_1of2.zip
+  $ unzip linux_11gR2_database_2of2.zip
+
+Die Dateien werden von C{unzip} in ein Unterverzeichnis C{database}
+entpackt. Wo entpackt wird, ist egal. Die entpackten Dateien werden
+nur während der Installation gebraucht. Nach der Installtion kann das
+gesamte Verzeichnis gelöscht werden.
+
+= Schritt 4: Installer ausführen
+
+B{Wichtig:} Wurde der Desktop unter einem anderen Benutzer als C{oracle}
+gestartet, muss der Benutzer den Desktop für den Zugriff des Benutzers
+C{oracle} freigeben, da dieser den Installer aufruft. Geschieht die
+Freigabe nicht, stirbt der Installer nach einigen Sekunden mit der
+wenig aussagekräftigen Fehlermeldung
+
+  No protocol specified
+  [Java Stacktrace]
+
+Die Freigabe erfolgt mit dem Kommando:
+
+  <user>$ xhost +
+
+Als Benutzer oracle ausführen:
+
+  $ cd database
+  $ ./runInstaller
+
+Der Installer führt den Benutzer durch die Installation, nimmt
+zahlreiche Prüfungen vor und schreibt ein Logfile, das bei Problemen
+konsultiert werden kann.
+
+Unstimmigkeiten können parallel behoben werden, Prüfungen und
+fehlgeschlagene Schritte können immer wieder neu durchgeführt werden
+bis es klappt.
+
+%Figure: file="uploads/oracle-installer-prerequisite-checks-600x450.png" \
+width="508" height="382" title="Abbildung 2: Kernel- und \
+Software-Prüfungen durch den Installer"
+
+= Installierte Dateien
+
+== Konfigurationsdateien in /etc
+
+  /etc/oraInst.loc
+  /etc/oratab
+
+== Die eigentliche Installation
+
+  /opt/oracle/app/*
+
+== Hilfsprogramme
+
+  /usr/local/bin/oraenv
+  /usr/local/bin/coraenv
+  /usr/local/bin/dbhome
+
+== Datenbank-Dateien
+
+  /var/opt/oracle/<DATABASE>/*
+
+# eof

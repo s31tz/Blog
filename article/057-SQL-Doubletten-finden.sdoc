@@ -1,0 +1,22 @@
+# Date: 2011-09-05
+
+%Document:
+  title="SQL: Dubletten finden"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=66
+
+%Figure: file="uploads/sql-icon-86x100.png" width="48" height="56" \
+  url=""
+
+  SELECT col1, ..., colN, COUNT(*)
+  FROM tab
+  GROUP BY col1, ..., colN
+  HAVING COUNT(*) > 1
+
+C{col1, ..., colN} sind die Kolumnen, über denen die
+Dubletten-Eigenschaft geprüft wird.
+
+# eof

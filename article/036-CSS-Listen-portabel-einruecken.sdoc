@@ -1,0 +1,39 @@
+# Date: 2010-05-31
+
+%Document:
+  title="CSS: Listen portabel einrücken"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=41
+
+%Figure: file="uploads/valid-css.png" \
+  width="88" height="31" url="http://www.w3.org/TR/tr-groups-all\
+  #tr_Cascading_Style_Sheets__CSS__Working_Group"
+
+Die Browser benutzen unterschiedliche Wege, Listen einzurücken.
+Einige rücken per I{Padding} ein, andere per I{Margin}.
+
+Soll die Einrückung portabel verändert werden, müssen
+C{margin-left} uns C{padding-left} also zusammen gesetzt
+werden, und zwar eine Angabe auf die gewünschte Einrückung
+und die andere auf 0.
+
+  %Code: listing=1 filter="./blog-highlight css %FORMAT%"
+  ul {
+      padding-left: 20px;
+      margin-left: 0;
+  }
+  .
+
+oder
+
+  %Code: listing=1 filter="./blog-highlight css %FORMAT%"
+  ul {
+      padding-left: 0;
+      margin-left: 20px;
+  }
+  .
+
+# eof

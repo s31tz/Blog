@@ -1,0 +1,54 @@
+# Date: 2013-06-17
+
+%Document:
+  title="Eclipse: EPIC-Plugin für Perl installieren"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=120
+
+%Figure: file="uploads/eclipse-logo-246x94.png" \
+  width="131" height="50" url="http://www.epic-ide.org/"
+
+= Installation von EPIC unter Eclipse 3.8
+
+1) Help -> Install New Software...
+
+2) Add...
+
+3) Name: EPIC, Location: http://e-p-i-c.sf.net/updates/testing
+
+4) "EPIC Mail Components" auswählen und "Next >" betätigen
+
+5) "EPIC" auswählen und "Next >" betätigen
+
+6) Lizenzbedingungen akzeptieren und "Finish" betätigen
+
+= Behandlung von Tabs
+
+Window -> Preferences -> Perl EPIC -> Editor
+
+Displayed tab width: 4
+Insert tabs/spaces on indent: 1->4
+[x] use spaces instead of tabs
+
+= Zeilen umbrechen
+
+Window -> Preferences -> Perl EPIC -> Editor
+
+[x] Wrap lines
+
+= Perl-Projekt anlegen
+
+File -> New -> Project...
+
+Perl Project
+
+= Fontgröße einstellen
+
+Window -> Preferences -> General -> Appearence -> Colors and Fonts
+
+Doppelklick auf "Text Font". Dort die Fontgröße auswählen.
+
+# eof

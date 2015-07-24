@@ -1,0 +1,23 @@
+# Date: 2013-06-04
+
+%Document:
+  title="JavaScript: Existenz eines Bildes prüfen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=119
+
+%Figure: file="uploads/javascript-logo-100x100.png" \
+  width="50" height="50" url="https://en.wikipedia.org/wiki/JavaScript"
+
+  var img = new Image();
+  img.onload = function () {
+      // Bild existiert
+  };
+  img.onerror = function () {
+      // Bild existiert nicht
+  };
+  img.src = URL;
+
+# eof

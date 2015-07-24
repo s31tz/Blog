@@ -1,0 +1,39 @@
+# Date: 2010-01-03
+
+%Document:
+  title="Style der Serendipity Admin-Oberfläche ändern"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=4
+
+%Figure: file="uploads/serendipity-logo-268x56.png" \
+    width="182" height="38" url="http://www.s9y.org/"
+
+Die Admin-Oberfläche bietet keine getrennte Einstellung für den
+eigenen Style - entweder der Haupt-Style ändert den Style der
+Admin-Oberfläche mit oder es bleibt bei dem (für meinen Geschmack)
+nicht sonderlich schönen Default.
+
+Die Admin-Styles sind in den Verzeichnissen der Haupt-Styles in
+C{templates/STYLE/admin} definiert. Die Haupt-Styles, die einen
+Admin-Style mitbringen, lassen sich folgendermaßen ermitteln:
+
+  $ find templates -type d | grep admin$
+  ./carl_contest/admin
+  ./competition/admin
+  ./contest/admin
+  ./bulletproof/admin
+  ./default-rtl/admin
+  ./default/admin
+
+Ein Style, der keinen Admin-Style definiert, kann mit einem fremden
+Admin-Style ausgestattet werden, indem ein fremdes admin Verzeichnis
+(eines anderen Style) dorthin kopiert wird oder ein Symlink auf dieses
+angelegt wird:
+
+  $ cd templates/MYSTYLE
+  $ ln -s ../OTHERSTYLE/admin .
+
+# eof

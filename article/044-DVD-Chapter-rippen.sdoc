@@ -1,0 +1,55 @@
+# Date: 2011-12-03
+
+%Document:
+  title="DVD-Chapter rippen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=70
+
+= Liste der verfügbaren Titel
+
+  $ HandBrakeCLI --input=/dev/dvd --title=0 2>&1 | grep '\+'
+  [...]
+  + title 3:
+    + vts 1, ttn 3, cells 0->1 (150271 blocks)
+    + duration: 00:14:27
+    + size: 720x576, pixel aspect: 64/45, display aspect: 1.78, 25.000 fps
+    + autocrop: 40/30/4/4
+    + chapters:
+      + 1: cells 0->0, 150266 blocks, duration 00:14:27
+      + 2: cells 1->1, 5 blocks, duration 00:00:00
+    + audio tracks:
+      + 1, Deutsch (AC3) (2.0 ch) (iso639-2: deu), 48000Hz, 224000bps
+    + subtitle tracks:
+  [...]
+
+= Chapter rippen
+
+  $ HandBrakeCLI --input=/dev/dvd --title=<n> --chapters=<k>[-<j>] \\
+        --deinterlace --output=<name>.<ext>
+
+= Weitere nützliche Optionen
+
+[--vb <kb/s>]:
+  Set video bitrate (default: 1000)
+
+[--native-language deu --native-dub]: 
+  Language preference and default audio track.
+
+[--start-at <unit:#>]:
+  Start encoding at a given frame, duration (in seconds),
+  or pts (on a 90kHz clock)
+
+[--stop-at <unit:#>]:
+  Stop encoding at a given frame, duration (in seconds),
+  or pts (on a 90kHz clock)
+
+[--crop <T:B:L:R>]:
+  Set cropping values (default: autocrop)
+
+[--two-pass]:
+  Use two-pass mode
+
+# eof

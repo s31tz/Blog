@@ -1,0 +1,46 @@
+# Date: 2015-07-21
+
+%Document:
+  title="Globale in-place Textersetzung mit sed oder Perl"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=121
+
+# Breite: 0.256 Höhe: 0.225 (absichtlich gestreckt)
+%Figure: file="uploads/unix-390x118.jpg" \
+  width="100" height="27" url="http://www.unix.org/"
+
+Mitunter möchte man einen Text oder ein Muster global über mehreren
+Dateien C{FILE ...} ersetzen. Unter Unix/Linux geht das am einfachsten
+mit C{sed}:
+
+  $ sed -i s/PATTERN/REPLACEMENT/g FILE ...
+
+Das Gleiche, angewendet auf einen Dateibaum C{DIR}:
+
+  $ find DIR -type f | xargs sed -i s/PATTERN/REPLACEMENT/g
+
+Perl bietet die sed-Funktionaltät mit einer ähnlich einfachen
+Kommandozeile:
+
+  $ perl -pi -e s/PATTERN/REPLACEMENT/g FILE ...
+
+Der Vorteil von Perl gegenüber sed ist dessen leistungsfähigere
+Regex-Engine.
+
+WICHTIG: Die Ersetzungsoperation wird I{zeilenweise}
+angewendet, d.h. eine Ersetzung, die sich über Zeilengrenzen
+erstreckt, ist I{nicht} möglich.
+
+= Links
+
+* U{"http://www.grymoire.com/unix/sed.html",\
+    text="Sed - An Introduction and Tutorial "}
+
+* U{"http://www.gnu.org/software/sed/manual/sed.html",text="GNU sed Manual"}
+
+* U{"http://perldoc.perl.org/perlre.html",text="Perl Regular Expressions"}
+
+# eof

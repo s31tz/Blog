@@ -1,0 +1,42 @@
+# Date: 2012-02-07
+
+%Document:
+  title="Notizen zu Amazons eBook-Reader Kindle 4"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=77
+
+%Figure: file="uploads/kindle-4-225x300.jpg" width="225" height="300"
+
+= eBook-Management
+
+Eine leistungsfähiges Werkzeug zur Verwaltung und Konvertierung von
+eBooks ist das eBook Management-System
+U{"http://calibre-ebook.com",text="Calibre"}.
+
+Installation unter Debian:
+
+  # apt-get install calibre
+
+= eBook per Kommandozeile in Calibre-Bibliothek kopieren
+
+  $ calibredb add FILE.azw
+
+= Private Kopien von DRM-geschützten eBooks anlegen
+
+Dafür existiert das Calibre-Plugin C{K4MobiDeDRM}. Siehe:
+
+* U{"http://apprenticealf.wordpress.com/",\
+  text="FAQ about the DRM removal tools"}
+* U{"http://apprenticealf.wordpress.com/2011/01/13/ebooks-formats-drm-\
+  and-you-%E2%80%94-a-guide-for-the-perplexed/",\
+  text="Calibre Plugins: The simplest option for removing DRM"}
+
+= Links
+
+* eBook Wiki (Formats, Free Books, Hardware, Software, ...):
+  U{http://wiki.mobileread.com/}
+
+# eof

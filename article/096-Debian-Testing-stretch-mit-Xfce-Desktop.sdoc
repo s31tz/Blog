@@ -1,0 +1,111 @@
+# Date: 2015-05-23
+
+%Document:
+  title="Debian Testing (stretch) mit Xfce Desktop"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=108
+
+%Figure: file="uploads/xfce-300x300.png" width="95" \
+    height="95" url="http://www.xfce.org/"
+
+Spezielle Anpassungen nach Installation von Debian Testing mit Xfce Desktop.
+
+= Emacs Keybindings auf Eingabefeldern
+
+Emacs-Tastaturkommandos sind auf den Eingabefeldern der GUI-Applikationen
+verfügbar, wenn als globale Einstellung vorgenommen wird:
+
+C{Applications / Settings / Settings Editor / xsettings / Gtk / KeyThemeName / \
+    Edit / Value=Emacs}
+
+= Flash-Plugin für Iceweasel
+
+Das Flash-Plugin für den Mozilla-Abkömmling C{Iceweasel} kann bei Adobe
+heruntergeladen werden: U{https://get.adobe.com/flashplayer/}.
+
+Installation: die .tar.gz Datei lokal entpacken und die darin
+enthaltene Shared Libraray ins Plugin-Verzeichnis des Browsers kopieren.
+
+  # cp libflashplayer.so /usr/lib/mozilla/plugins
+
+Unter C{Add Ons / Plugins} kann das Plugin im laufenden Browser
+aktiviert werden. Andernfalls wird es ab dem nächsten Neustart des
+Browsers genutzt.
+
+= Kernel-Modul für Intel WLAN-Adapter
+
+Das Kernel-Modul für den Intel WLAN-Adapter (meines Rechners) ist
+proprietär und wird daher bei der Debian-Installation nicht
+automatisch mit installiert. Er ist jedoch im non-free Bereich
+verüfgbar und kann einfach nachinstalliert werden (vorausgesetzt, dass
+in /etc/apt/sources.list der Bereich C{non-free} eingetragen ist):
+
+  # apt-get install firmware-iwlwifi
+
+= Kernel-Modul für Realtek Ethernet-Karte
+
+Dasselbe wie für den WLAN-Adapter gilt für die Ethernetkarte. Das Fehlen
+des Moduls rtl8411-2.fw wird beim Booten bemängelt, es scheint jedoch nicht
+wirklich benötigt zu werden, da das Ethernet-Interface auch ohne das
+Modul funktioniert. Gegen die Fehlermeldung hilft:
+
+  # apt-get install firmware-realtek
+
+= Netzwerkmanager
+
+U{"http://www.xfce.org/",text="Xfce"} hat keinen eigenen
+Netzwerkmanager für die Verwaltung von LAN- und WLAN-Verbindungen. Ein
+leichtgewichtiger Netzwerkmanager ist
+U{"http://wiki.ubuntuusers.de/Wicd",text="Wicd"}.
+
+Installation:
+
+  # apt-get install wicd
+
+Er installiert sich als Autostart-Applikation und wird aus dem Panel oder
+unter C{Applications / Internet / Wicd Network Manager} aufgerufen.
+
+Beim Start sucht C{wicd} nach den WLAN-Netzen der Umgebung. Führt dies
+zu der Meldung "No wireless networks found", ist möglicherweise das
+Wireless Interface (meist C{wlan0}) nicht unter den Preferences
+eingetragen. Das Menü zum Aufruf des Dialogs verbirgt sich hinter dem
+Pfeil oben rechts.
+
+= Skype
+
+Installation (32-Bit-Programm auf 64-Bit-System):
+
+  # dpkg --add-architecture i386
+  # apt-get update
+  # wget -O skype-install.deb http://www.skype.com/go/getskype-linux-deb
+  # dpkg -i skype-install.deb
+  # apt-get -f install
+
+Siehe: U{https://wiki.debian.org/skype}
+
+= Vim
+
+Per Default ist ein einfacher vi-Klon installiert, der im Insert-Mode
+die Escape-Sequenzen der Pfeiltasten nicht behandelt. Vim hat dieses
+Problem nicht:
+
+  # apt-get install vim
+
+Ferner lohnt es sich, in die Vim-Konfigurationsdatei C{/etc/vim/vimrc}
+zu schauen und dort weitere Optionen zu aktivieren, z.B. Mausunterstützung
+und Syntax-Highlighting.
+
+= Bell abschalten
+
+Die Bell unterliegt nicht den Soundeinstellungen und ist extrem laut. Mit
+
+  $ xset b off
+
+lässt sie sich abschalten. Soll das immer gelten, kann das Kommando
+unter C{Applications / Settings / Session and Startup / Application
+Autostart / Add} zu den Autostart-Kommandos hinzugefügt werden.
+
+# eof

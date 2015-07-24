@@ -1,0 +1,43 @@
+# Date: 2011-01-28
+
+%Document:
+  title="mod_perl: Eigenen Perl-Interpreter für Virtual Host"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=53
+
+%Figure: file="uploads/mod_perl-logo-375x78.png" \
+    width="192" height="40" url="http://perl.apache.org/"
+
+Per Default wird bei U{"http://perl.apache.org/",text="mod_perl"}
+derselbe Perl-Interpreter für alle Virtual Hosts genutzt. Das kann zu
+Problemen führen, wenn die Applikationen unterschiedliche Versionen
+derselben Module nutzen.
+
+Dies kann bei mod_perl 2.0 mit der PerlOption +Clone
+ausgeschlossen werden:
+
+  <VirtualHost ...>
+  PerlOptions +Clone
+  </VirtualHost>
+
+Die Option +Clone bewirkt, dass für den betreffenden Virtual Host ein
+eigener Interpreter-Pool genutzt wird. Dieser entsteht durch Klonen
+des Parent-Interpreters (welcher eventuell schon eine
+Startup-Initialisierung erfahren hat).
+
+Ein Interpreter-Pool mit einem gänzlich neuen Parent-Interpreter wird
+bei Angabe von +Parent erzeugt:
+
+  <VirtualHost ...>
+  PerlOptions +Parent
+  </VirtualHost>
+
+Um dem Interpreter einen (oder mehrere) eigene Suchpfade mitzugeben,
+kann die Perl Standard-Option -I verwendet werden:
+
+  PerlSwitches -I/var/www1/modules
+
+# eof

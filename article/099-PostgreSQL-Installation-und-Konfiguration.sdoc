@@ -1,0 +1,188 @@
+# Date: 2010-01-08
+
+%Document:
+  title="PostgreSQL: Installation und Konfiguration"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=6
+
+%Figure: file="uploads/postgresql-logo-95x51.png" \
+    width="95" height="51" url="http://www.postgresql.org/"
+
+U{"http://www.postgresql.org/",text="PostgreSQL"} gilt als das beste
+frei erhältliche Relationale Datenbanksystem. Es besitzt viele
+Gemeinsamkeiten mit Oracle, ist aber wesentlich leichter zu
+administrieren. Hier die wichtigsten Kommandos, um damit an den Start
+gehen zu können.
+
+= PostgreSQL RDBMS installieren (Debian)
+
+  # apt-get install postgresql
+
+= Zum DB-Admin machen
+
+  # su - postgres
+
+Nur von diesem Unix-Account aus kann nach der Installation eine
+Connection zum DBMS aufgebaut werden.
+
+= Liste der existierenden Datenbanken
+
+  $ psql -l
+  [Liste]
+
+Nach der Installation existiert zunächst nur die Datenbank
+C{postgres}.
+
+= Datenbank erzeugen/zerstören
+
+  $ createdb DB
+  ...
+  $ dropdb DB
+
+= Liste der existierenden Benutzer
+
+  $ psql
+  postgres=# \du
+
+oder
+
+  postgres=# SELECT rolname FROM pg_roles;
+
+= Benutzer anlegen/entfernen
+
+  $ createuser USER
+  ...
+  $ dropuser USER
+
+Bei Angabe der Option C{--superuser} erhält der Benutzer Admin-Rechte:
+
+  $ createuser --superuser USER
+
+Benutzer sind global für alle Datenbanken einer Installation.
+Zunächst existiert nur der Benutzer C{postgres}. Soll der User
+C{USER} von einem anderen Account als dem entsprechenden
+Unix-Account connecten können, muss ein Passwort vergeben
+werden. Option C{-P}.
+
+= Datenbankzugriff
+
+Ist ein DB-User erzeugt, kann dieser vom gleichnamigen Unix-Account
+oder per Passwort, falls eins vergeben wurde, von einem anderen
+Account per C{psql} auf die Datenbank zugreifen.
+
+  USER$ psql DB
+  psql (9.4.3)
+  Type "help" for help.
+  ...
+  DB=#
+
+Wurde ein Passwort für User USER vergeben, aber die Anmeldung
+von einem anderen Accout aus schlägt fehl mit der Meldung
+
+  $ psql -U USER DB
+  psql: FATAL:  Peer authentication failed for user "USER"
+
+dann muss in C{pg_hba.conf} die Authentisierungsmethode für
+lokale Logins geändert werden von
+
+  local     all     all      peer
+
+in
+
+  local     all     all      md5
+
+und anschließend der Server neu gestartet werden.
+
+= Liste der existierenden Objekte
+
+| Schemata: => C{\dn} |
+| Tabellen: => C{\dt} |
+| Views: => C{\dv} |
+| Sequenzen: => C{\ds} |
+
+Liste aller interaktiven psql-Kommandos: C{\?}
+
+= Exportieren/Importieren
+
+| Alle Datenbanken: => C{pg_dumpall >FILE} |
+| Eine Datenbank: => C{pg_dump DB >FILE} |
+| Importieren: => C{psql -f FILE DB} |
+
+= Session-Einstellungen
+
+== Zeitzone
+
+Die Zeitzone kann für eine Session abweichend gesetzt werden:
+
+  SET TIME ZONE 'Europe/Berlin';
+
+Die Default-Zeitzone ist in C{postgresql.conf} definiert:
+
+  timezone = 'Europe/Berlin'
+
+== Datumsformat
+
+Datumsangaben im Format YYYY-MM-DD:
+
+  SET datestyle TO iso, ymd;
+
+Aktueller Zeitpunkt:
+
+  select localtimestamp(0);
+
+liefert die Zeit entsprechend dem eingestellten Format
+
+  2015-06-09 11:44:29
+
+== Zeichensatz
+
+Client arbeitet mit ISO-8859-1:
+
+  SET client_encoding TO iso88591
+
+Client arbeitet mit UTF-8:
+
+  SET client_encoding TO utf8
+
+Siehe: U{http://www.postgresql.org/docs/9.4/static/multibyte.html}
+
+Der clientseitige Zeichensatz kann jederzeit umgeschaltet werden.
+Wenn Daten mit unterschiedlichem Encoding verarbeitet werden,
+besteht die Möglichkeit, vor dem Schreiben auf die Datenbank das
+clientseitige Encoding umzuschalten. Die Konvertierung wird dann
+vom Server übernommen.
+
+== \-Escapes in Stringliteralen verbieten
+
+  SET standard_conforming_strings TO on
+
+= Server-Zugriff von externen Hosts
+
+Die folgenden Einträge ermöglichen den Zugriff von allen
+Hosts für alle User und alle Datenbanken.
+
+1. In C{pg_hba.conf} oberhalb der anderen Einträge hinzufügen:
+
+     # TYPE  DATABASE  USER  CIDR-ADDRESS  METHOD
+     host    all       all   0.0.0.0/0     md5
+
+2. In C{postgresql.conf} eintragen:
+
+     listen_addresses = '*'
+
+= Server neu starten
+
+  # /etc/init.d/postgresql-X.Y restart
+
+= Upgrade auf eine neue Version
+
+Siehe Kapitel "Upgrading" in der Doku.
+
+= Links
+
+* U{"http://www.postgresql.org/docs",text="PostgreSQL Dokumentation"}
+
+# eof

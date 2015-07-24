@@ -1,0 +1,36 @@
+# Date: 2014-06-29
+
+%Document:
+  title="Leeres lokales SVN-Repository anlegen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=102
+
+%Figure: file="uploads/svn-374x51.jpg" \
+    width=224 height=31 url="https://subversion.apache.org/"
+
+Installation von SVN auf Debian-basierten Systemen:
+
+    $ sudo apt-get install subversion
+
+REPOSITORY und WORK sind im folgenden zwei beliebig gewählte lokale
+Verzeichnisse.
+
+Leeres SVN-Repository REPOSITORY erzeugen:
+
+    $ mkdir REPOSITORY
+    $ svnadmin create REPOSITORY
+
+Leeres Repository in Arbeitsverzeichnis WORK auschecken:
+
+    $ svn checkout file://REPOSITORY WORK
+    Checked out revision 0.
+
+In WORK kann nun eine beliebige Substruktur aufgebaut werden.
+
+Details siehe U{"http://svnbook.red-bean.com/",\
+    text="Version Control with Subversion"}
+
+# eof

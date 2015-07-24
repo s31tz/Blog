@@ -1,0 +1,24 @@
+# Date: 2011-04-29
+
+%Document:
+  title="ffmpeg: Lautstärke anheben oder verringern"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=58
+
+%Figure: file="uploads/ffmpeg-logo-250x63.png" \
+  width="134" height="36" url="https://www.ffmpeg.org/"
+
+Die Audio-Lautstärke kann bei ffmpeg mit der Option C{-vol}
+verändert werden. Diese Option ist auf der Manpage (Version 0.6.2)
+nicht dokumentiert.
+
+  $ ffmpeg -i INPUT_FILE -vol N OUTPUT_FILE
+
+Der Lautstärke-Wert C{N} ist eine Angabe in "Byte Percent", d.h. 256 = 100%.
+Mit dem Wert 512 wird die Lautstärke also verdoppelt und mit
+dem Wert 128 wird sie halbiert.
+
+# eof

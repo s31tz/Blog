@@ -1,0 +1,33 @@
+# Date: 2010-01-10
+
+%Document:
+  title="CSS: Table Cellspacing unterdrücken"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=8
+
+%Figure: file="uploads/valid-css.png" \
+  width="88" height="31" url="http://www.w3.org/TR/tr-groups-all\
+  #tr_Cascading_Style_Sheets__CSS__Working_Group"
+
+In HTML:
+
+  %Code: listing=1 filter="./blog-highlight html %FORMAT%"
+  <table cellspacing="0">
+  .
+
+Per CSS (C{#t} sei die Tabelle):
+
+  %Code: listing=1 filter="./blog-highlight css %FORMAT%"
+  #t {
+    border-collapse: collapse;
+  }
+
+  #t > td {
+    padding: 0;
+  }
+  .
+
+# eof

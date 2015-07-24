@@ -1,0 +1,93 @@
+# Date: 2010-01-09
+
+%Document:
+  title="CSS: Dreispaltiges Seitenlayout"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=7
+
+%Figure: file="uploads/valid-css.png" \
+  width="88" height="31" url="http://www.w3.org/TR/tr-groups-all\
+  #tr_Cascading_Style_Sheets__CSS__Working_Group"
+
+Layout mit Kopf, Fuss und drei Spalten:
+
+%Figure: file="uploads/layout3-3.png" style="border-width: 2px"\
+  width="398" height="180"
+
+Der HTML- und CSS-Code, der dies realisiert:
+
+  %Code: filter="./blog-cat %FORMAT%"
+  &lt;div id="<span style="background:#ffff5a">header</span>"&gt;
+  Header
+  &lt;/div&gt;
+  &lt;div id="<span style="background:#ff5a5a">left</span>"&gt;
+  Left
+  &lt;/div&gt;
+  &lt;div id="<span style="background:#ff5aff">right</span>"&gt;
+  Right
+  &lt;/div&gt;
+  &lt;div id="<span style="background:#5affff">middle</span>"&gt;
+  Middle
+  &lt;/div&gt;
+  &lt;div id="<span style="background:#5aff5a">footer</span>"&gt;
+  Footer
+  &lt;/div&gt;
+  .
+
+  %Code: filter="./blog-cat %FORMAT%"
+  #<span style="background:#ffff5a">header</span> {
+    clear: both;
+  }
+  #<span style="background:#ff5a5a">left</span> {
+    float: left;
+    width: 80px;
+  }
+  #<span style="background:#ff5aff">right</span> {
+    float: right;
+    width: 80px;
+  }
+  #<span style="background:#5affff">middle</span> {
+    padding: 0 80px 0 80px;
+  }
+  #<span style="background:#5aff5a">footer</span> {
+    clear: both;
+  }
+  .
+  
+= Anmerkungen:
+
+* Die Breite von C{#header}, C{#middle} und C{#footer} passt sich dem zur
+  Verfügung stehenden Raum dynamisch an.
+
+* Die Reihenfolge der divs in HTML ist signifikant. Das div C{#middle}
+  kommt nach C{#left} und C{#right}.
+
+* C{"clear: both;"} bei C{#header} bewirkt, dass neben dem Header kein Float
+  platziert wird. D.h. die beiden Floats C{#left} und C{#right} werden vom
+  Browser darunter platziert.
+
+* Durch C{"float: left;"} wird das Element C{#left} links platziert. Analog
+  wird Element C{#right} durch C{"float: right;"} rechts platziert. Die
+  Breitenangabe C{"width: 80px;"} weist den Floats ihren (fixen)
+  horizontalen Raum am linken und rechten Rand zu.
+
+* Das Element C{#middle} hat keine clear-Angabe und kann daher zwischen
+  die Elemente C{#left} und C{#right} treten. Damit der Inhalt des div sich
+  nicht mit den Randelementen überschneidet, wird mit C{"padding: 0 80px
+  0 80px;"} ein Padding eingestellt, das den Raum, der von den
+  Randelementen belegt wird, ausspart. Die Reihenfolge der Angaben
+  ist: oben, rechts, unten, links.
+
+* C{"clear: both;"} bei C{#footer} verhindert, dass beim horizontalen
+  Verkleinern des Fensters die oberen Floats neben oder unter den
+  Footer springen.
+
+* Die Konstruktion aus den fünf divs kann in den HTML C{<body>} oder eine
+  Tabellenzelle C{<td>} eigebettet werden.
+
+
+
+# eof

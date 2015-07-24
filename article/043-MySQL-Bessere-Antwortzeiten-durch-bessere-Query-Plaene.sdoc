@@ -1,0 +1,28 @@
+# Date: 2010-11-04
+
+%Document:
+  title="MySQL: Bessere Antwortzeiten durch bessere Query-Pläne"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=47
+
+%Figure: file="uploads/mysql-logo-170x115.png" \
+  width="74" height="50" url="http://www.mysql.de/"
+
+Der MySQL Query Optimizer kann bessere Query-Pläne generieren,
+wenn er Informationen über die Tabelleninhalte hat. Diese können per
+SQL mit C{ANALYZE TABLE} erzeugt werden oder - einfacher - mit dem
+Kommandozeilenprogramm C{mysqlcheck}. Die Option zum Analysieren
+heißt C{--analyze}. Bei Angabe der Option C{--all-databases} werden alle
+Tabellen aller Schemata (in MySQL-Sprechweise: Datenbanken)
+auf einen Schlag analysiert. Das ist meistens das, was man will.
+
+  $ mysqlcheck --analyze --all-databases ...
+
+bzw. in Kurzform
+
+  $ mysqlcheck -a -A ...
+
+# eof

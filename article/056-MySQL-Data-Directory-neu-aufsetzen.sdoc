@@ -1,0 +1,26 @@
+# Date: 2011-08-30
+
+%Document:
+  title="MySQL: Data Directory neu aufsetzen"
+  styleSheet="blog-style.css blog-highlight.css"
+  generateAnchors=0
+  utf8=1
+
+# id=65
+
+%Figure: file="uploads/mysql-logo-170x115.png" \
+  width="74" height="50" url="http://www.mysql.de/"
+
+1. Server herunterfahren
+
+2. Inhalt des Datadir löschen
+
+     $ rm -r DATADIR/*
+
+3. Datadir initialisieren
+
+     $ mysql_install_db --user=mysql --ldata=DATADIR
+
+4. Server wieder hochfahren
+
+# eof
