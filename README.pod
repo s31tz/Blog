@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-Blog - Blog articles
+Blog - Blog articles on http://fseitz.de/blog
 
 =head1 DESCRIPTION
 
