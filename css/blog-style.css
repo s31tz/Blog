@@ -1,0 +1,249 @@
+/* HTML-Seite */
+
+body { 
+    font-family: arial, helvetica, sans-serif;
+    font-size: 14px;
+    color: #000000;
+    background: #ffffff;
+    /* max-width: 1024px; /* max. Darstellungsbreite */
+}
+
+/* Dokument (%Document:) */
+
+.sdoc-doc-h1 {
+    font-size: xx-large;
+    background: #d0d0d0; /* Hintergrundfarbe */
+    /* text-align: center; */ /* Ausrichtung des Dokument-Titels */
+}
+
+/* Inhaltsverzeichnis (%TableOfContents:) */
+
+.sdoc-toc-h1 {
+}
+.sdoc-toc-ul {
+    padding-left: 2em;  /* Einrücktiefe der Ebenen */
+}
+.sdoc-toc-li {
+}
+.sdoc-toc-a {
+}
+
+/* Abschnitte/Überschriften */
+
+.sdoc-sec-h1 { 
+    background: #d0d0d0; /* Hintergrundfarbe */
+}
+.sdoc-sec-h2 {
+}
+.sdoc-sec-h3 { 
+}
+.sdoc-sec-h4 { 
+}
+.sdoc-sec-h5 { 
+}
+.sdoc-sec-h6 { 
+}
+
+/* Paragraphen */
+
+.sdoc-para-p { 
+}
+
+/* Code-Abschnitte */
+
+/* a) mit Zeilennummern */
+
+.sdoc-code-table {
+    font-family: courier, monospace;
+    border-collapse: collapse;
+    white-space: pre;
+    margin-left: 1.75em;
+    border: 1px dashed black;
+}
+.sdoc-code-td-ln {
+    background: #d0d0d0;
+    text-align: right;
+}
+.sdoc-code-td-line {
+    padding-left: 0.5em;
+}
+.sdoc-code-tr-odd {
+    background: #f6f6f6;
+}
+.sdoc-code-tr-even {
+    background: #fdfdfd;
+}
+
+.sdoc-code-div {
+    background: #f6f6f6;
+    border: 1px dashed black;
+    padding: 0.3em;
+    margin-left: 1.75em;
+    display: table;
+    /*
+    */
+}
+.sdoc-code-pre {
+    font-family: courier, monospace;
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+.sdoc-code-ln {
+    background: #d0d0d0;
+    padding-left: 0.2em;
+    padding-right: 0.3em;
+}
+
+/* Abbildungen (%Figure:) */
+
+.sdoc-fig-p { 
+    text-align: left;     /* Ausrichtung der Bildunterschrift */
+    /* font-weight: normal;  Darstellung Bildunterschrift bold=fett */
+    padding-left: 1.75em;  /* Abstand der Abb. vom linken Rand */
+    /* margin-top: 0em;      Abstand der Abb. nach oben */
+    /* margin-bottom: 0em;   Abstand der Abb. nach unten */
+}
+.sdoc-fig-img { 
+    /* margin: auto;         Bild zentrieren */
+    margin-bottom: 0.1em; /* Abstand zum Text */
+}
+
+/* Punktlisten */
+
+.sdoc-list-ul {
+}
+.sdoc-list-li {
+}
+.sdoc-list-ul p {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
+
+/* Numerierungslisten */
+
+.sdoc-list-ol {
+    margin-top: 0.5em;
+}
+.sdoc-list-li-num {
+    margin-bottom: 0.5em;
+}
+.sdoc-list-ol p {
+    margin-top: 0em;
+    margin-bottom: 0.5em;
+}
+
+/* Definitionslisten */
+
+.sdoc-list-dl {
+}
+.sdoc-list-dt {
+    font-weight: bold;
+}
+.sdoc-list-dd p {
+    margin-top: 0;
+    margin-bottom: 0.5em; */
+    margin-left: -1em;
+    padding-left: 0;
+}
+
+/* Tabellen */
+
+.sdoc-tab-table {
+    border-collapse: collapse;
+    margin-left: 1.75em;
+}
+.sdoc-tab-tr-odd {
+}
+.sdoc-tab-tr-even {
+}
+.sdoc-tab-th {
+    border-width: 1px;
+    border-style: solid;
+    padding: 2px;
+    background: #f6f6f6; /* Hintergrundfarbe */
+}
+.sdoc-tab-td {
+    border-width: 1px;
+    border-style: solid;
+    padding: 2px;
+}
+
+/* Schlüssel/Wert-Tabellen */
+
+.sdoc-keyval-table {
+    border-collapse: collapse;
+    margin-left: 1.75em;
+}
+.sdoc-keyval-tr {
+}
+.sdoc-keyval-td-key {
+    padding: 0px;
+    /* font-weight: bold; */
+}
+.sdoc-keyval-td-value {
+    padding: 0px;
+    padding-left: 0.5em;
+}
+
+/* Zitat */
+
+.sdoc-quot-blockquote {
+    font-style: italic;
+}
+
+/* Box */
+
+.sdoc-box-div {
+    background: #fafafa;
+    border: 1px solid black;
+    display: table;
+    margin-left: 1.75em;
+    padding: 0.2em;
+}
+.sdoc-box-div :first-child {
+    margin-top: 0em;
+}
+.sdoc-box-div :last-child {
+    margin-bottom: 0em;
+}
+.sdoc-box-title-p {
+    font-weight: bold;
+}
+.sdoc-box-div p {
+    background: inherit;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+.sdoc-box-div pre {
+    border: none;
+    color: black;
+    background: inherit;
+    padding: 0em;
+}
+
+/* Inline-Segmente */
+
+.sdoc-seg-b {
+}
+.sdoc-seg-c {
+    font-family: courier, monospace;
+    font-weight: bold;
+}
+.sdoc-seg-e {
+}
+.sdoc-seg-i {
+}
+.sdoc-seg-u {
+}
+
+@media print {
+    .sdoc-hr {
+        display: none;
+    }
+    .sdoc-code-pre {
+        background-color: white;
+    }
+}
+
+/* eof */

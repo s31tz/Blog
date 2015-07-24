@@ -2,7 +2,6 @@
 
 %Document:
   title="MySQL: Bessere Antwortzeiten durch bessere Query-Pläne"
-  styleSheet="blog-style.css blog-highlight.css"
   generateAnchors=0
   utf8=1
 

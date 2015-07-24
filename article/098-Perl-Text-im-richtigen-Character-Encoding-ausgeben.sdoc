@@ -2,7 +2,6 @@
 
 %Document:
   title="Perl: Text im richtigen Character Encoding ausgeben"
-  styleSheet="blog-style.css blog-highlight.css"
   generateAnchors=0
   utf8=1
   minLnWidth=2

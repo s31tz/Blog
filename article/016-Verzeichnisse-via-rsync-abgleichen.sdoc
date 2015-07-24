@@ -2,7 +2,6 @@
 
 %Document:
   title="Verzeichnisse via rsync abgleichen"
-  styleSheet=blog-style.css
   generateAnchors=0
   utf8=1
 

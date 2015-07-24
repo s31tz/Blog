@@ -2,7 +2,6 @@
 
 %Document:
   title="Apache: Aufsetzen einer CGI Webapplikation"
-  styleSheet=blog-style.css
   generateAnchors=0
   utf8=1
 

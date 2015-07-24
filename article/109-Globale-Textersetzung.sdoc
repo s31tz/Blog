@@ -2,7 +2,6 @@
 
 %Document:
   title="Globale in-place Textersetzung mit sed oder Perl"
-  styleSheet="blog-style.css blog-highlight.css"
   generateAnchors=0
   utf8=1
 

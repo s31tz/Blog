@@ -2,7 +2,6 @@
 
 %Document:
   title="Dateibaum chronologisch sortiert anzeigen"
-  styleSheet="blog-style.css blog-highlight.css"
   generateAnchors=0
   utf8=1
 

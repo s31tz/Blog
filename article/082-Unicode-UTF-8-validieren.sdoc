@@ -2,7 +2,6 @@
 
 %Document:
   title="Unicode: UTF-8 validieren"
-  styleSheet="blog-style.css blog-highlight.css"
   generateAnchors=0
   utf8=1
 

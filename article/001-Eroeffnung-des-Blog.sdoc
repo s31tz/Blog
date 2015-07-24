@@ -2,7 +2,6 @@
 
 %Document:
   title="Eröffnung des Blog"
-  styleSheet="blog-style.css blog-highlight.css"
   generateAnchors=0
   utf8=1
 

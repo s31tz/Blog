@@ -2,7 +2,6 @@
 
 %Document:
   title="Perl: Hostname zu IP-Adresse ermitteln"
-  styleSheet="blog-style.css blog-highlight.css"
   generateAnchors=0
   utf8=1
   minLnWidth=2

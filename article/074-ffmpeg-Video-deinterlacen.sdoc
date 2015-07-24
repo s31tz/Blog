@@ -2,7 +2,6 @@
 
 %Document:
   title="ffmpeg: Video deinterlacen"
-  styleSheet="blog-style.css blog-highlight.css"
   generateAnchors=0
   utf8=1
 

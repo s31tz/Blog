@@ -2,7 +2,6 @@
 
 %Document:
   title="Shell: stderr auf Pipe umleiten und andere dup-Operationen"
-  styleSheet="blog-style.css blog-highlight.css"
   generateAnchors=0
   utf8=1
 

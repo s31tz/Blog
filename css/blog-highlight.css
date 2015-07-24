@@ -1,0 +1,39 @@
+/* perltidy */
+
+.pt-c  { color: #228B22;} /* comment */
+.pt-cm { color: #000000;} /* comma */
+.pt-co { color: #000000;} /* colon */
+.pt-h  { color: #CD5555; font-weight:bold;} /* here-doc-target */
+.pt-hh { color: #CD5555; font-style:italic;} /* here-doc-text */
+.pt-i  { color: #00688B;} /* identifier */
+.pt-j  { color: #CD5555; font-weight:bold;} /* label */
+.pt-k  { color: #8B008B; font-weight:bold;} /* keyword */
+.pt-m  { color: #FF0000; font-weight:bold;} /* subroutine */
+.pt-n  { color: #B452CD;} /* numeric */
+.pt-p  { color: #000000;} /* paren */
+.pt-pd { color: #228B22; font-style:italic;} /* pod-text */
+.pt-pu { color: #000000;} /* punctuation */
+.pt-q  { color: #CD5555;} /* quote */
+.pt-s  { color: #000000;} /* structure */
+.pt-sc { color: #000000;} /* semicolon */
+.pt-v  { color: #B452CD;} /* v-string */
+.pt-w  { color: #000000;} /* bareword */
+
+/* highlight */
+
+.hl.num { color:#2928ff; }
+.hl.esc { color:#ff00ff; }
+.hl.str { color:#ff0000; }
+.hl.dstr { color:#818100; }
+.hl.slc { color:#838183; font-style:italic; }
+.hl.com { color:#838183; font-style:italic; }
+.hl.dir { color:#008200; }
+.hl.sym { color:#000000; }
+.hl.line { color:#555555; }
+.hl.mark	{ background-color:#ffffbb;}
+.hl.kwa { color:#000000; font-weight:bold; }
+.hl.kwb { color:#830000; }
+.hl.kwc { color:#000000; font-weight:bold; }
+.hl.kwd { color:#010181; }
+
+/* eof */

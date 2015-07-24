@@ -2,7 +2,6 @@
 
 %Document:
   title="Apache: Bessere access.log-Datei definieren"
-  styleSheet=blog-style.css
   generateAnchors=0
   utf8=1
 

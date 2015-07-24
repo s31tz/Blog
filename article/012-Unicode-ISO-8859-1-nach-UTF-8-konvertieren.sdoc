@@ -2,7 +2,6 @@
 
 %Document:
   title="Unicode: ISO-8859-1 nach UTF-8 konvertieren"
-  styleSheet="blog-style.css blog-highlight.css"
   generateAnchors=0
   utf8=1
 

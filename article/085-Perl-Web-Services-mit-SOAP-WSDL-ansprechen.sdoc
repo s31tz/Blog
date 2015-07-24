@@ -2,7 +2,6 @@
 
 %Document:
   title="Perl: Web Services mit SOAP::WSDL ansprechen"
-  styleSheet="blog-style.css blog-highlight.css"
   generateAnchors=0
   utf8=1
 

@@ -2,7 +2,6 @@
 
 %Document:
   title="meld: Unterschiede zwischen Dateien anzeigen und bearbeiten"
-  styleSheet="blog-style.css blog-highlight.css"
   generateAnchors=0
   utf8=1
 

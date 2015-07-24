@@ -79,9 +79,11 @@ elsif (@ARGV) {
 my $app = Blog::Base::ApplicationPaths->new;
 my $cfg = Blog::Base::Config->new($app->etcDir('blog.conf'));
 
-# Ins Artikelverzeichnis wechseln
-
 my $articleDir = $app->homeDir('article');
+my $imageDir = $app->homeDir('image');
+my $cssDir = $app->homeDir('css');
+
+# Ins Artikelverzeichnis wechseln
 Blog::Base::Path->cd($articleDir);
 
 # Artikeldateien zusammenfügen
@@ -101,6 +103,7 @@ for my $file (reverse Blog::Base::Path->glob("*.sdoc")) {
 
     $text =~ s/^.*^# id=\d+\s+//sm; # Anfang wegschneiden
     $text =~ s/^(=+)/=$1/mg;        # Abschnitte eine Ebene tiefer
+    $text =~ s/IMGDIR/$imageDir/g;  # Bildverzeichnis eintragen
     $text =~ s/^# eof\n//m;         # # eof entfernen
     $text =~ s/\s+$//;              # Whitespace am Ende entfernen
 
@@ -110,12 +113,19 @@ for my $file (reverse Blog::Base::Path->glob("*.sdoc")) {
     $sdoc .= "= $title\n\n$text";
 }
 
-my $styleSheets = 'blog-style.css blog-highlight.css';
-my $embedImages = 0;
-if ($embed) {
-    $styleSheets = 'inline:blog-style.css inline:blog-highlight.css';
-    $embedImages = 1;
-}
+# Stylesheets
+
+my $embedImages = $embed? 1: 0;
+my @styleSheets = qw/blog-style.css blog-highlight.css/;
+for my $styleSheet (@styleSheets) {
+    $styleSheet = "$cssDir/$styleSheet";
+    if ($embed) {
+        $styleSheet = "inline:$styleSheet";
+    }
+}    
+my $styleSheets = join ' ',@styleSheets;
+
+# Dokument generieren
 
 my $date = POSIX::strftime('%Y-%m-%d',localtime);
 $sdoc = <<"__EOT__";

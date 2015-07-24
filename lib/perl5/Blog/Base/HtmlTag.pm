@@ -1215,6 +1215,7 @@ sub tag {
             }
             else {
                 if ($embedImages && $tag eq 'img' && $key eq 'src') {
+warn "$val\n";
                     if (-f $val) {
                         # Bette Bilddaten in das src-Attribut ein
                         # FIXME: Bild-URLs auch laden

@@ -2,7 +2,6 @@
 
 %Document:
   title="Rsync: Abweichende Rechte einstellen"
-  styleSheet=blog-style.css
   generateAnchors=0
   utf8=1
 

@@ -2,7 +2,6 @@
 
 %Document:
   title="GNU Makefile zum Konvertieren von Dateien"
-  styleSheet="blog-style.css blog-highlight.css"
   generateAnchors=0
   utf8=1
 

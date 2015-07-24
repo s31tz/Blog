@@ -2,7 +2,6 @@
 
 %Document:
   title="Apache: Redirection auf Subdirectory"
-  styleSheet=blog-style.css
   generateAnchors=0
   utf8=1
 

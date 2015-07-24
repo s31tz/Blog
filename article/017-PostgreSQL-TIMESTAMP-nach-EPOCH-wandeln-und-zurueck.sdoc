@@ -2,7 +2,6 @@
 
 %Document:
   title="PostgreSQL: TIMESTAMP nach EPOCH wandeln und zurück"
-  styleSheet=blog-style.css
   generateAnchors=0
   utf8=1
 

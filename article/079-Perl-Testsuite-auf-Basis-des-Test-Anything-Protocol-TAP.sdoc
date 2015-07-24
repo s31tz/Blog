@@ -2,7 +2,6 @@
 
 %Document:
   title="Perl: Testsuite auf Basis des Test Anything Protocol (TAP)"
-  styleSheet="blog-style.css blog-highlight.css"
   generateAnchors=0
   utf8=1
 
