@@ -4,438 +4,438 @@
 
 =item *
 
-L<109. Globale in-place Textersetzung mit sed oder Perl|http://fseitz.de/blog/index.php?/archives/121.html>
+L<109. Globale in-place Textersetzung mit sed oder Perl|http://fseitz.de/blog/index.php?/archives/121-x.html>
 
 =item *
 
-L<108. Oracle+Linux: ORA-00845: MEMORY_TARGET not supported on this system|http://fseitz.de/blog/index.php?/archives/62.html>
+L<108. Oracle+Linux: ORA-00845: MEMORY_TARGET not supported on this system|http://fseitz.de/blog/index.php?/archives/62-x.html>
 
 =item *
 
-L<107. Globale Verbreitung von DNS-Änderungen überprüfen|http://fseitz.de/blog/index.php?/archives/116.html>
+L<107. Globale Verbreitung von DNS-Änderungen überprüfen|http://fseitz.de/blog/index.php?/archives/116-x.html>
 
 =item *
 
-L<106. Perl: Hostname zu IP-Adresse ermitteln|http://fseitz.de/blog/index.php?/archives/114.html>
+L<106. Perl: Hostname zu IP-Adresse ermitteln|http://fseitz.de/blog/index.php?/archives/114-x.html>
 
 =item *
 
-L<105. Perl: Speedy (CGI-SpeedyCGI) unter Perl 5.10 und höher kompilieren|http://fseitz.de/blog/index.php?/archives/113.html>
+L<105. Perl: Speedy (CGI-SpeedyCGI) unter Perl 5.10 und höher kompilieren|http://fseitz.de/blog/index.php?/archives/113-x.html>
 
 =item *
 
-L<104. Helligkeit von Farben des RGB-Farbraums berechnen|http://fseitz.de/blog/index.php?/archives/112.html>
+L<104. Helligkeit von Farben des RGB-Farbraums berechnen|http://fseitz.de/blog/index.php?/archives/112-x.html>
 
 =item *
 
-L<103. Apache: Bessere access.log-Datei definieren|http://fseitz.de/blog/index.php?/archives/117.html>
+L<103. Apache: Bessere access.log-Datei definieren|http://fseitz.de/blog/index.php?/archives/117-x.html>
 
 =item *
 
-L<102. Overlays in Google Earth einbinden|http://fseitz.de/blog/index.php?/archives/25.html>
+L<102. Overlays in Google Earth einbinden|http://fseitz.de/blog/index.php?/archives/25-x.html>
 
 =item *
 
-L<101. Apache: Aufsetzen einer CGI Webapplikation|http://fseitz.de/blog/index.php?/archives/115.html>
+L<101. Apache: Aufsetzen einer CGI Webapplikation|http://fseitz.de/blog/index.php?/archives/115-x.html>
 
 =item *
 
-L<100. Apache: Redirection auf Subdirectory|http://fseitz.de/blog/index.php?/archives/27.html>
+L<100. Apache: Redirection auf Subdirectory|http://fseitz.de/blog/index.php?/archives/27-x.html>
 
 =item *
 
-L<99. PostgreSQL: Installation und Konfiguration|http://fseitz.de/blog/index.php?/archives/6.html>
+L<99. PostgreSQL: Installation und Konfiguration|http://fseitz.de/blog/index.php?/archives/6-x.html>
 
 =item *
 
-L<98. Perl: Text im richtigen Character Encoding ausgeben|http://fseitz.de/blog/index.php?/archives/84.html>
+L<98. Perl: Text im richtigen Character Encoding ausgeben|http://fseitz.de/blog/index.php?/archives/84-x.html>
 
 =item *
 
-L<97. LaTeX: Briefe mit scrlttr2 ohne Einrückung setzen|http://fseitz.de/blog/index.php?/archives/110.html>
+L<97. LaTeX: Briefe mit scrlttr2 ohne Einrückung setzen|http://fseitz.de/blog/index.php?/archives/110-x.html>
 
 =item *
 
-L<96. Debian Testing (stretch) mit Xfce Desktop|http://fseitz.de/blog/index.php?/archives/108.html>
+L<96. Debian Testing (stretch) mit Xfce Desktop|http://fseitz.de/blog/index.php?/archives/108-x.html>
 
 =item *
 
-L<95. Unix Epoch in lesbare Zeitangabe wandeln und umgekehrt|http://fseitz.de/blog/index.php?/archives/105.html>
+L<95. Unix Epoch in lesbare Zeitangabe wandeln und umgekehrt|http://fseitz.de/blog/index.php?/archives/105-x.html>
 
 =item *
 
-L<94. fslint: Datei-Dubletten finden|http://fseitz.de/blog/index.php?/archives/111.html>
+L<94. fslint: Datei-Dubletten finden|http://fseitz.de/blog/index.php?/archives/111-x.html>
 
 =item *
 
-L<93. Audacity: YouTube-Sperre verhindern|http://fseitz.de/blog/index.php?/archives/59.html>
+L<93. Audacity: YouTube-Sperre verhindern|http://fseitz.de/blog/index.php?/archives/59-x.html>
 
 =item *
 
-L<92. Dateibaum chronologisch sortiert anzeigen|http://fseitz.de/blog/index.php?/archives/104.html>
+L<92. Dateibaum chronologisch sortiert anzeigen|http://fseitz.de/blog/index.php?/archives/104-x.html>
 
 =item *
 
-L<91. Operationen auf Bildern|http://fseitz.de/blog/index.php?/archives/107.html>
+L<91. Operationen auf Bildern|http://fseitz.de/blog/index.php?/archives/107-x.html>
 
 =item *
 
-L<90. libav/ffmpeg: Video-Seitenverhältnis ändern|http://fseitz.de/blog/index.php?/archives/109.html>
+L<90. libav/ffmpeg: Video-Seitenverhältnis ändern|http://fseitz.de/blog/index.php?/archives/109-x.html>
 
 =item *
 
-L<89. Minecraft-Server unter Linux einrichten|http://fseitz.de/blog/index.php?/archives/106.html>
+L<89. Minecraft-Server unter Linux einrichten|http://fseitz.de/blog/index.php?/archives/106-x.html>
 
 =item *
 
-L<88. Bilder / Grafiken in HTML einbetten|http://fseitz.de/blog/index.php?/archives/103.html>
+L<88. Bilder / Grafiken in HTML einbetten|http://fseitz.de/blog/index.php?/archives/103-x.html>
 
 =item *
 
-L<87. Leeres lokales SVN-Repository anlegen|http://fseitz.de/blog/index.php?/archives/102.html>
+L<87. Leeres lokales SVN-Repository anlegen|http://fseitz.de/blog/index.php?/archives/102-x.html>
 
 =item *
 
-L<86. Linux Kernelparameter ändern|http://fseitz.de/blog/index.php?/archives/101.html>
+L<86. Linux Kernelparameter ändern|http://fseitz.de/blog/index.php?/archives/101-x.html>
 
 =item *
 
-L<85. Perl: Web Services mit SOAP::WSDL ansprechen|http://fseitz.de/blog/index.php?/archives/118.html>
+L<85. Perl: Web Services mit SOAP::WSDL ansprechen|http://fseitz.de/blog/index.php?/archives/118-x.html>
 
 =item *
 
-L<84. Eclipse: EPIC-Plugin für Perl installieren|http://fseitz.de/blog/index.php?/archives/120.html>
+L<84. Eclipse: EPIC-Plugin für Perl installieren|http://fseitz.de/blog/index.php?/archives/120-x.html>
 
 =item *
 
-L<83. JavaScript: Existenz eines Bildes prüfen|http://fseitz.de/blog/index.php?/archives/119.html>
+L<83. JavaScript: Existenz eines Bildes prüfen|http://fseitz.de/blog/index.php?/archives/119-x.html>
 
 =item *
 
-L<82. Unicode: UTF-8 validieren|http://fseitz.de/blog/index.php?/archives/99.html>
+L<82. Unicode: UTF-8 validieren|http://fseitz.de/blog/index.php?/archives/99-x.html>
 
 =item *
 
-L<81. SSH: Über SSH-Tunnel mit MySQL Datenbank verbinden|http://fseitz.de/blog/index.php?/archives/97.html>
+L<81. SSH: Über SSH-Tunnel mit MySQL Datenbank verbinden|http://fseitz.de/blog/index.php?/archives/97-x.html>
 
 =item *
 
-L<80. Perl: Module installieren mit cpanm|http://fseitz.de/blog/index.php?/archives/96.html>
+L<80. Perl: Module installieren mit cpanm|http://fseitz.de/blog/index.php?/archives/96-x.html>
 
 =item *
 
-L<79. Perl: Testsuite auf Basis des Test Anything Protocol (TAP)|http://fseitz.de/blog/index.php?/archives/95.html>
+L<79. Perl: Testsuite auf Basis des Test Anything Protocol (TAP)|http://fseitz.de/blog/index.php?/archives/95-x.html>
 
 =item *
 
-L<78. Shell: stderr auf Pipe umleiten und andere dup-Operationen|http://fseitz.de/blog/index.php?/archives/94.html>
+L<78. Shell: stderr auf Pipe umleiten und andere dup-Operationen|http://fseitz.de/blog/index.php?/archives/94-x.html>
 
 =item *
 
-L<77. CSS: Erstes Kind- bzw. Folgeelement gestalten|http://fseitz.de/blog/index.php?/archives/93.html>
+L<77. CSS: Erstes Kind- bzw. Folgeelement gestalten|http://fseitz.de/blog/index.php?/archives/93-x.html>
 
 =item *
 
-L<76. meld: Unterschiede zwischen Dateien anzeigen und bearbeiten|http://fseitz.de/blog/index.php?/archives/92.html>
+L<76. meld: Unterschiede zwischen Dateien anzeigen und bearbeiten|http://fseitz.de/blog/index.php?/archives/92-x.html>
 
 =item *
 
-L<75. ffmpeg: Verfügbare Filter anzeigen|http://fseitz.de/blog/index.php?/archives/91.html>
+L<75. ffmpeg: Verfügbare Filter anzeigen|http://fseitz.de/blog/index.php?/archives/91-x.html>
 
 =item *
 
-L<74. ffmpeg: Video deinterlacen|http://fseitz.de/blog/index.php?/archives/90.html>
+L<74. ffmpeg: Video deinterlacen|http://fseitz.de/blog/index.php?/archives/90-x.html>
 
 =item *
 
-L<73. Film mit kdenlive/MLT in Teilen rendern|http://fseitz.de/blog/index.php?/archives/89.html>
+L<73. Film mit kdenlive/MLT in Teilen rendern|http://fseitz.de/blog/index.php?/archives/89-x.html>
 
 =item *
 
-L<72. Wechseldatenträger mit Ext[234]-Dateisystem ein Label geben|http://fseitz.de/blog/index.php?/archives/88.html>
+L<72. Wechseldatenträger mit Ext[234]-Dateisystem ein Label geben|http://fseitz.de/blog/index.php?/archives/88-x.html>
 
 =item *
 
-L<71. Liste der geöffneten TCP-Ports|http://fseitz.de/blog/index.php?/archives/87.html>
+L<71. Liste der geöffneten TCP-Ports|http://fseitz.de/blog/index.php?/archives/87-x.html>
 
 =item *
 
-L<70. Streamripper: Internet-Radio aufzeichnen|http://fseitz.de/blog/index.php?/archives/86.html>
+L<70. Streamripper: Internet-Radio aufzeichnen|http://fseitz.de/blog/index.php?/archives/86-x.html>
 
 =item *
 
-L<69. Lookup-Trigger für Oracle und PostgreSQL|http://fseitz.de/blog/index.php?/archives/85.html>
+L<69. Lookup-Trigger für Oracle und PostgreSQL|http://fseitz.de/blog/index.php?/archives/85-x.html>
 
 =item *
 
-L<68. PostgreSQL: Notizen zum psql Kommando-Interpreter|http://fseitz.de/blog/index.php?/archives/81.html>
+L<68. PostgreSQL: Notizen zum psql Kommando-Interpreter|http://fseitz.de/blog/index.php?/archives/81-x.html>
 
 =item *
 
-L<67. Android: Entwicklungsumgebung unter Linux aufsetzen|http://fseitz.de/blog/index.php?/archives/78.html>
+L<67. Android: Entwicklungsumgebung unter Linux aufsetzen|http://fseitz.de/blog/index.php?/archives/78-x.html>
 
 =item *
 
-L<66. Java SE 7 JDK unter Linux installieren|http://fseitz.de/blog/index.php?/archives/79.html>
+L<66. Java SE 7 JDK unter Linux installieren|http://fseitz.de/blog/index.php?/archives/79-x.html>
 
 =item *
 
-L<65. Notizen zu Amazons eBook-Reader Kindle 4|http://fseitz.de/blog/index.php?/archives/77.html>
+L<65. Notizen zu Amazons eBook-Reader Kindle 4|http://fseitz.de/blog/index.php?/archives/77-x.html>
 
 =item *
 
-L<64. Debian GNU/Linux von USB-Stick booten|http://fseitz.de/blog/index.php?/archives/76.html>
+L<64. Debian GNU/Linux von USB-Stick booten|http://fseitz.de/blog/index.php?/archives/76-x.html>
 
 =item *
 
-L<63. HTTPS-Server: SSL-Zertifikat erwerben und einrichten|http://fseitz.de/blog/index.php?/archives/74.html>
+L<63. HTTPS-Server: SSL-Zertifikat erwerben und einrichten|http://fseitz.de/blog/index.php?/archives/74-x.html>
 
 =item *
 
-L<62. STRATO HiDrive unter Linux nutzen|http://fseitz.de/blog/index.php?/archives/75.html>
+L<62. STRATO HiDrive unter Linux nutzen|http://fseitz.de/blog/index.php?/archives/75-x.html>
 
 =item *
 
-L<61. Nexus S i9023 mit unvollständigem Android Release von Amazon|http://fseitz.de/blog/index.php?/archives/71.html>
+L<61. Nexus S i9023 mit unvollständigem Android Release von Amazon|http://fseitz.de/blog/index.php?/archives/71-x.html>
 
 =item *
 
-L<60. Cisco VPN-Verbindung (vpnclient) loggen/debuggen|http://fseitz.de/blog/index.php?/archives/55.html>
+L<60. Cisco VPN-Verbindung (vpnclient) loggen/debuggen|http://fseitz.de/blog/index.php?/archives/55-x.html>
 
 =item *
 
-L<59. Cisco vpnclient unter Linux Kernel 2.6.38+|http://fseitz.de/blog/index.php?/archives/56.html>
+L<59. Cisco vpnclient unter Linux Kernel 2.6.38+|http://fseitz.de/blog/index.php?/archives/56-x.html>
 
 =item *
 
-L<58. Perl: Klassische Formularprogrammierung|http://fseitz.de/blog/index.php?/archives/67.html>
+L<58. Perl: Klassische Formularprogrammierung|http://fseitz.de/blog/index.php?/archives/67-x.html>
 
 =item *
 
-L<57. SQL: Dubletten finden|http://fseitz.de/blog/index.php?/archives/66.html>
+L<57. SQL: Dubletten finden|http://fseitz.de/blog/index.php?/archives/66-x.html>
 
 =item *
 
-L<56. MySQL: Data Directory neu aufsetzen|http://fseitz.de/blog/index.php?/archives/65.html>
+L<56. MySQL: Data Directory neu aufsetzen|http://fseitz.de/blog/index.php?/archives/65-x.html>
 
 =item *
 
-L<55. MySQL: Mehrere Instanzen auf einem Server|http://fseitz.de/blog/index.php?/archives/64.html>
+L<55. MySQL: Mehrere Instanzen auf einem Server|http://fseitz.de/blog/index.php?/archives/64-x.html>
 
 =item *
 
-L<54. Linksammlung: UTF-8 Portierung|http://fseitz.de/blog/index.php?/archives/63.html>
+L<54. Linksammlung: UTF-8 Portierung|http://fseitz.de/blog/index.php?/archives/63-x.html>
 
 =item *
 
-L<53. SVN: Auf Branch entwickeln|http://fseitz.de/blog/index.php?/archives/60.html>
+L<53. SVN: Auf Branch entwickeln|http://fseitz.de/blog/index.php?/archives/60-x.html>
 
 =item *
 
-L<52. ffmpeg: Lautstärke anheben oder verringern|http://fseitz.de/blog/index.php?/archives/58.html>
+L<52. ffmpeg: Lautstärke anheben oder verringern|http://fseitz.de/blog/index.php?/archives/58-x.html>
 
 =item *
 
-L<51. Linksammlung Video und Audio|http://fseitz.de/blog/index.php?/archives/57.html>
+L<51. Linksammlung Video und Audio|http://fseitz.de/blog/index.php?/archives/57-x.html>
 
 =item *
 
-L<50. Oracle 11g unter Linux installieren|http://fseitz.de/blog/index.php?/archives/54.html>
+L<50. Oracle 11g unter Linux installieren|http://fseitz.de/blog/index.php?/archives/54-x.html>
 
 =item *
 
-L<49. mod_perl: Eigenen Perl-Interpreter für Virtual Host|http://fseitz.de/blog/index.php?/archives/53.html>
+L<49. mod_perl: Eigenen Perl-Interpreter für Virtual Host|http://fseitz.de/blog/index.php?/archives/53-x.html>
 
 =item *
 
-L<48. Finde Dateinamen mit Sonderzeichen|http://fseitz.de/blog/index.php?/archives/52.html>
+L<48. Finde Dateinamen mit Sonderzeichen|http://fseitz.de/blog/index.php?/archives/52-x.html>
 
 =item *
 
-L<47. Seamonkey installieren (Unix)|http://fseitz.de/blog/index.php?/archives/51.html>
+L<47. Seamonkey installieren (Unix)|http://fseitz.de/blog/index.php?/archives/51-x.html>
 
 =item *
 
-L<46. FONIC: Klingelzeit verlängern, Kontostand abfragen etc.|http://fseitz.de/blog/index.php?/archives/72.html>
+L<46. FONIC: Klingelzeit verlängern, Kontostand abfragen etc.|http://fseitz.de/blog/index.php?/archives/72-x.html>
 
 =item *
 
-L<45. scp: Whitespace in Remote-Dateinamen|http://fseitz.de/blog/index.php?/archives/48.html>
+L<45. scp: Whitespace in Remote-Dateinamen|http://fseitz.de/blog/index.php?/archives/48-x.html>
 
 =item *
 
-L<44. DVD-Chapter rippen|http://fseitz.de/blog/index.php?/archives/70.html>
+L<44. DVD-Chapter rippen|http://fseitz.de/blog/index.php?/archives/70-x.html>
 
 =item *
 
-L<43. MySQL: Bessere Antwortzeiten durch bessere Query-Pläne|http://fseitz.de/blog/index.php?/archives/47.html>
+L<43. MySQL: Bessere Antwortzeiten durch bessere Query-Pläne|http://fseitz.de/blog/index.php?/archives/47-x.html>
 
 =item *
 
-L<42. MySQL: Remote-Zugriff einrichten|http://fseitz.de/blog/index.php?/archives/46.html>
+L<42. MySQL: Remote-Zugriff einrichten|http://fseitz.de/blog/index.php?/archives/46-x.html>
 
 =item *
 
-L<41. FFmpeg Operationen|http://fseitz.de/blog/index.php?/archives/68.html>
+L<41. FFmpeg Operationen|http://fseitz.de/blog/index.php?/archives/68-x.html>
 
 =item *
 
-L<40. Cookies per JavaScript setzen|http://fseitz.de/blog/index.php?/archives/45.html>
+L<40. Cookies per JavaScript setzen|http://fseitz.de/blog/index.php?/archives/45-x.html>
 
 =item *
 
-L<39. ROWNUM unter MySQL|http://fseitz.de/blog/index.php?/archives/44.html>
+L<39. ROWNUM unter MySQL|http://fseitz.de/blog/index.php?/archives/44-x.html>
 
 =item *
 
-L<38. Javascript: HTML-Formular abbrechen|http://fseitz.de/blog/index.php?/archives/43.html>
+L<38. Javascript: HTML-Formular abbrechen|http://fseitz.de/blog/index.php?/archives/43-x.html>
 
 =item *
 
-L<37. Perl: Apache2::Reload installieren|http://fseitz.de/blog/index.php?/archives/42.html>
+L<37. Perl: Apache2::Reload installieren|http://fseitz.de/blog/index.php?/archives/42-x.html>
 
 =item *
 
-L<36. CSS: Listen portabel einrücken|http://fseitz.de/blog/index.php?/archives/41.html>
+L<36. CSS: Listen portabel einrücken|http://fseitz.de/blog/index.php?/archives/41-x.html>
 
 =item *
 
-L<35. HTML-Konstrukte mit CSS gestalten|http://fseitz.de/blog/index.php?/archives/40.html>
+L<35. HTML-Konstrukte mit CSS gestalten|http://fseitz.de/blog/index.php?/archives/40-x.html>
 
 =item *
 
-L<34. dvgrab: Video von miniDV-Camcorder lesen|http://fseitz.de/blog/index.php?/archives/61.html>
+L<34. dvgrab: Video von miniDV-Camcorder lesen|http://fseitz.de/blog/index.php?/archives/61-x.html>
 
 =item *
 
-L<33. Perl: POD als Programm-Hilfetext|http://fseitz.de/blog/index.php?/archives/39.html>
+L<33. Perl: POD als Programm-Hilfetext|http://fseitz.de/blog/index.php?/archives/39-x.html>
 
 =item *
 
-L<32. Medion Life S60003 MP3 Player unter Debian|http://fseitz.de/blog/index.php?/archives/38.html>
+L<32. Medion Life S60003 MP3 Player unter Debian|http://fseitz.de/blog/index.php?/archives/38-x.html>
 
 =item *
 
-L<31. Perl: Plus / Minus Unendlich|http://fseitz.de/blog/index.php?/archives/37.html>
+L<31. Perl: Plus / Minus Unendlich|http://fseitz.de/blog/index.php?/archives/37-x.html>
 
 =item *
 
-L<30. Perl: Dirhandles objektorientiert|http://fseitz.de/blog/index.php?/archives/35.html>
+L<30. Perl: Dirhandles objektorientiert|http://fseitz.de/blog/index.php?/archives/35-x.html>
 
 =item *
 
-L<29. Perl: Filehandles objektorientiert|http://fseitz.de/blog/index.php?/archives/34.html>
+L<29. Perl: Filehandles objektorientiert|http://fseitz.de/blog/index.php?/archives/34-x.html>
 
 =item *
 
-L<28. Perl: Crash bei Umleitung von STDERR auf Skalare Variable|http://fseitz.de/blog/index.php?/archives/33.html>
+L<28. Perl: Crash bei Umleitung von STDERR auf Skalare Variable|http://fseitz.de/blog/index.php?/archives/33-x.html>
 
 =item *
 
-L<27. GNU Makefile zum Konvertieren von Dateien|http://fseitz.de/blog/index.php?/archives/31.html>
+L<27. GNU Makefile zum Konvertieren von Dateien|http://fseitz.de/blog/index.php?/archives/31-x.html>
 
 =item *
 
-L<26. Syntax-Highlighting mit highlight|http://fseitz.de/blog/index.php?/archives/30.html>
+L<26. Syntax-Highlighting mit highlight|http://fseitz.de/blog/index.php?/archives/30-x.html>
 
 =item *
 
-L<25. Syntax-Highlighting mit perltidy|http://fseitz.de/blog/index.php?/archives/29.html>
+L<25. Syntax-Highlighting mit perltidy|http://fseitz.de/blog/index.php?/archives/29-x.html>
 
 =item *
 
-L<24. Perl: Effizient Zeichen zählen|http://fseitz.de/blog/index.php?/archives/28.html>
+L<24. Perl: Effizient Zeichen zählen|http://fseitz.de/blog/index.php?/archives/28-x.html>
 
 =item *
 
-L<23. Rsync: Abweichende Rechte einstellen|http://fseitz.de/blog/index.php?/archives/26.html>
+L<23. Rsync: Abweichende Rechte einstellen|http://fseitz.de/blog/index.php?/archives/26-x.html>
 
 =item *
 
-L<22. Email-Adressen in HTML vor Spammern schützen|http://fseitz.de/blog/index.php?/archives/23.html>
+L<22. Email-Adressen in HTML vor Spammern schützen|http://fseitz.de/blog/index.php?/archives/23-x.html>
 
 =item *
 
-L<21. Perl: Gleitkomma-Zahlen ausgeben wie sie sind|http://fseitz.de/blog/index.php?/archives/24.html>
+L<21. Perl: Gleitkomma-Zahlen ausgeben wie sie sind|http://fseitz.de/blog/index.php?/archives/24-x.html>
 
 =item *
 
-L<20. HTML: String in Entity-Schreibweise wandeln|http://fseitz.de/blog/index.php?/archives/22.html>
+L<20. HTML: String in Entity-Schreibweise wandeln|http://fseitz.de/blog/index.php?/archives/22-x.html>
 
 =item *
 
-L<19. SSH: Timeout unterbinden|http://fseitz.de/blog/index.php?/archives/21.html>
+L<19. SSH: Timeout unterbinden|http://fseitz.de/blog/index.php?/archives/21-x.html>
 
 =item *
 
-L<18. SSH: Automatisch einloggen|http://fseitz.de/blog/index.php?/archives/20.html>
+L<18. SSH: Automatisch einloggen|http://fseitz.de/blog/index.php?/archives/20-x.html>
 
 =item *
 
-L<17. PostgreSQL: TIMESTAMP nach EPOCH wandeln und zurück|http://fseitz.de/blog/index.php?/archives/19.html>
+L<17. PostgreSQL: TIMESTAMP nach EPOCH wandeln und zurück|http://fseitz.de/blog/index.php?/archives/19-x.html>
 
 =item *
 
-L<16. Verzeichnisse via rsync abgleichen|http://fseitz.de/blog/index.php?/archives/18.html>
+L<16. Verzeichnisse via rsync abgleichen|http://fseitz.de/blog/index.php?/archives/18-x.html>
 
 =item *
 
-L<15. Perl: Operationen auf Symlinks|http://fseitz.de/blog/index.php?/archives/17.html>
+L<15. Perl: Operationen auf Symlinks|http://fseitz.de/blog/index.php?/archives/17-x.html>
 
 =item *
 
-L<14. Liste der zusätzlich installierten Perl-Module|http://fseitz.de/blog/index.php?/archives/16.html>
+L<14. Liste der zusätzlich installierten Perl-Module|http://fseitz.de/blog/index.php?/archives/16-x.html>
 
 =item *
 
-L<13. Iconsammlungen|http://fseitz.de/blog/index.php?/archives/14.html>
+L<13. Iconsammlungen|http://fseitz.de/blog/index.php?/archives/14-x.html>
 
 =item *
 
-L<12. Unicode: ISO-8859-1 nach UTF-8 konvertieren|http://fseitz.de/blog/index.php?/archives/12.html>
+L<12. Unicode: ISO-8859-1 nach UTF-8 konvertieren|http://fseitz.de/blog/index.php?/archives/12-x.html>
 
 =item *
 
-L<11. Speicherbedarf von Perl-Variablen|http://fseitz.de/blog/index.php?/archives/11.html>
+L<11. Speicherbedarf von Perl-Variablen|http://fseitz.de/blog/index.php?/archives/11-x.html>
 
 =item *
 
-L<10. CSS: Text-Eingabefelder gestalten|http://fseitz.de/blog/index.php?/archives/10.html>
+L<10. CSS: Text-Eingabefelder gestalten|http://fseitz.de/blog/index.php?/archives/10-x.html>
 
 =item *
 
-L<9. CSS: Table Cellspacing unterdrücken|http://fseitz.de/blog/index.php?/archives/8.html>
+L<9. CSS: Table Cellspacing unterdrücken|http://fseitz.de/blog/index.php?/archives/8-x.html>
 
 =item *
 
-L<8. CSS: Dreispaltiges Seitenlayout|http://fseitz.de/blog/index.php?/archives/7.html>
+L<8. CSS: Dreispaltiges Seitenlayout|http://fseitz.de/blog/index.php?/archives/7-x.html>
 
 =item *
 
-L<7. Validierung von HTML- und CSS-Code|http://fseitz.de/blog/index.php?/archives/9.html>
+L<7. Validierung von HTML- und CSS-Code|http://fseitz.de/blog/index.php?/archives/9-x.html>
 
 =item *
 
-L<6. Änderungen an Serendipity|http://fseitz.de/blog/index.php?/archives/15.html>
+L<6. Änderungen an Serendipity|http://fseitz.de/blog/index.php?/archives/15-x.html>
 
 =item *
 
-L<5. Style der Serendipity Admin-Oberfläche ändern|http://fseitz.de/blog/index.php?/archives/4.html>
+L<5. Style der Serendipity Admin-Oberfläche ändern|http://fseitz.de/blog/index.php?/archives/4-x.html>
 
 =item *
 
-L<4. Perl-Interpreter über Shebang-Zeile suchen|http://fseitz.de/blog/index.php?/archives/1.html>
+L<4. Perl-Interpreter über Shebang-Zeile suchen|http://fseitz.de/blog/index.php?/archives/1-x.html>
 
 =item *
 
-L<3. Installation von Serendipity|http://fseitz.de/blog/index.php?/archives/2.html>
+L<3. Installation von Serendipity|http://fseitz.de/blog/index.php?/archives/2-x.html>
 
 =item *
 
-L<2. Haftungsausschluss|http://fseitz.de/blog/index.php?/archives/80.html>
+L<2. Haftungsausschluss|http://fseitz.de/blog/index.php?/archives/80-x.html>
 
 =item *
 
-L<1. Eröffnung des Blog|http://fseitz.de/blog/index.php?/archives/3.html>
+L<1. Eröffnung des Blog|http://fseitz.de/blog/index.php?/archives/3-x.html>
 
 =back
