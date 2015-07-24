@@ -8,7 +8,7 @@
 
 # id=113
 
-%Figure: file="uploads/speedy-167x61.png" \
+%Figure: file="IMGDIR/speedy-167x61.png" \
     width="101" height="37" url="http://search.cpan.org/~horrocks/\
     CGI-SpeedyCGI-2.22/"
 

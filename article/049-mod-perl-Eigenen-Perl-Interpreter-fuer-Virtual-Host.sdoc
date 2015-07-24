@@ -8,7 +8,7 @@
 
 # id=53
 
-%Figure: file="uploads/mod_perl-logo-375x78.png" \
+%Figure: file="IMGDIR/mod_perl-logo-375x78.png" \
     width="192" height="40" url="http://perl.apache.org/"
 
 Per Default wird bei U{"http://perl.apache.org/",text="mod_perl"}

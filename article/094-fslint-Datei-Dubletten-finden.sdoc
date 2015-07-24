@@ -8,7 +8,7 @@
 
 # id=111
 
-%Figure: file="uploads/fslint-icon-48x48.png" \
+%Figure: file="IMGDIR/fslint-icon-48x48.png" \
     width="48" height="48" url="http://www.pixelbeat.org/fslint/"
 
 Um Datei-Dubletten in einem Verzeichnis oder Dateibaum zu finden, gibt

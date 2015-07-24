@@ -8,7 +8,7 @@
 
 # id=76
 
-%Figure: file="uploads/debian_splash_590x124.png" width="508" height="107" \
+%Figure: file="IMGDIR/debian_splash_590x124.png" width="508" height="107" \
   url="https://www.debian.org/"
 
 = Rescue System

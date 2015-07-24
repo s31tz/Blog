@@ -8,7 +8,7 @@
 
 # id=108
 
-%Figure: file="uploads/xfce-300x300.png" width="95" \
+%Figure: file="IMGDIR/xfce-300x300.png" width="95" \
     height="95" url="http://www.xfce.org/"
 
 Spezielle Anpassungen nach Installation von Debian Testing mit Xfce Desktop.

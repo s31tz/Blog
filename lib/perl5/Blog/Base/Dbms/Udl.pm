@@ -1,0 +1,572 @@
+package Blog::Base::Dbms::Udl;
+use base qw/Blog::Base::Hash/;
+
+use strict;
+use warnings;
+
+use Blog::Base::Hash;
+
+# -----------------------------------------------------------------------------
+
+=encoding utf8
+
+=head1 NAME
+
+Blog::Base::Dbms::Udl - Universal Database Locator
+
+=head1 BASE CLASS
+
+Blog::Base::Hash
+
+=head1 SYNOPSIS
+
+Klasse laden:
+
+    use Blog::Base::Dbms::Udl;
+
+Objekt instantiieren:
+
+    # alte Schreibweise - user:password und dbms:db vertauscht - ist
+    # ebenfalls erlaubt: 'dbi#xyz_admin:koala3%oracle:xyz@pluto.gaga.de'
+    
+    my $udlStr = 'dbi#oracle:xyz%xyz_admin:koala3@pluto.gaga.de';
+    my $udl = Blog::Base::Dbms::Udl->new($udlStr);
+
+UDL-Komponenten:
+
+    print $udl->api,"\n";      # dbi
+    print $udl->dbms,"\n";     # oracle
+    print $udl->db,"\n";       # xyz
+    print $udl->user,"\n";     # xyz_admin
+    print $udl->password,"\n"; # koala3
+    print $udl->host,"\n";     # pluto.gaga.de
+    print $udl->port,"\n";
+    
+    my $opts = $udl->opts;
+    while (($key,$val) = each %$opts) {
+        print "$key=$val\n";
+    }
+
+UDL als String:
+
+    print $udl->asString,"\n"; # $udlStr
+
+=head1 ATTRIBUTES
+
+=over 4
+
+=item api => $str
+
+Der Name der Schnittstelle (z.B. dbi).
+
+=item dbms => $str
+
+Der Name der Datenbanksystems (z.B. oracle, postgresql, sqlite, mysql).
+
+=item db => $str
+
+Der Name der Datenbank.
+
+=item user => $str
+
+Der Name des Benutzers.
+
+=item password => $str
+
+Das Passwort des Benutzers.
+
+=item host => $str
+
+Der Name des Hosts, auf dem die Datenbank sich befindet.
+
+=item port = $str
+
+Der Port, über welchen die Netzverbindung aufgebaut wird.
+
+=item opts => \%hash
+
+Referenz auf Hash mit den Optionen.
+
+=back
+
+=head1 DESCRIPTION
+
+Ein Universal Database Locator (UDL) adressiert eine Datenbank,
+wie ein Universal Resource Locator eine Web-Resource adressiert.
+
+Ein UDL hat folgenden Aufbau:
+
+    api#dbms:db%user:password@host:port;opts
+
+Ein Objekt der Klasse kapselt einen UDL und bietet Methoden,
+um auf die einzelnen Komponenten zuzugreifen.
+
+=head1 METHODS
+
+=head2 Konstruktor
+
+=head3 new() - Konstruktor
+
+=head4 Synopsis
+
+    $udl = $class->new;
+    $udl = $class->new($udlStr);
+    $udl = $class->new(@keyVal);
+
+=head4 Description
+
+Instantiiere ein Udl-Objekt und liefere eine Referenz auf
+dieses Objekt zurück.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub new {
+    my $class = shift;
+
+    my $self = $class->SUPER::new(
+        api=>'',
+        dbms=>'',
+        db=>'',
+        user=>'',
+        password=>'',
+        host=>'',
+        port=>'',
+        # FIXME: auf Blog::Base::OrderedHash umstellen
+        opts=>Blog::Base::Hash->new,
+    );
+    $self->lockKeys;
+
+    if (@_) {
+        $self->udl(@_);
+    }
+
+    return $self;
+}
+
+# -----------------------------------------------------------------------------
+
+=head2 Accessors
+
+=head3 api() - Setze/Liefere Wert des Attributs api
+
+=head4 Synopsis
+
+    $api = $udl->api;
+    $api = $udl->api($api);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub api {
+    my $self = shift;
+
+    if (@_) {
+        $self->{'api'} = defined $_[0]? shift: '';
+    }
+
+    return $self->{'api'};
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 dbms() - Setze/Liefere Wert des Attributs dbms
+
+=head4 Synopsis
+
+    $dbms = $udl->dbms;
+    $dbms = $udl->dbms($dbms);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub dbms {
+    my $self = shift;
+
+    if (@_) {
+        $self->{'dbms'} = defined $_[0]? shift: '';
+    }
+
+    return $self->{'dbms'};
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 db() - Setze/Liefere Wert des Attributs db
+
+=head4 Synopsis
+
+    $db = $udl->db;
+    $db = $udl->db($db);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub db {
+    my $self = shift;
+
+    if (@_) {
+        $self->{'db'} = defined $_[0]? shift: '';
+    }
+
+    return $self->{'db'};
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 user() - Setze/Liefere Wert des Attributs user
+
+=head4 Synopsis
+
+    $user = $udl->user;
+    $user = $udl->user($user);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub user {
+    my $self = shift;
+
+    if (@_) {
+        $self->{'user'} = defined $_[0]? shift: '';
+    }
+
+    return $self->{'user'};
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 password() - Setze/Liefere Wert des Attributs password
+
+=head4 Synopsis
+
+    $password = $udl->password;
+    $password = $udl->password($password);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub password {
+    my $self = shift;
+
+    if (@_) {
+        $self->{'password'} = defined $_[0]? shift: '';
+    }
+
+    return $self->{'password'};
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 host() - Setze/Liefere Wert des Attributs host
+
+=head4 Synopsis
+
+    $host = $udl->host;
+    $host = $udl->host($host);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub host {
+    my $self = shift;
+
+    if (@_) {
+        $self->{'host'} = defined $_[0]? shift: '';
+    }
+
+    return $self->{'host'};
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 port() - Setze/Liefere Wert des Attributs port
+
+=head4 Synopsis
+
+    $port = $udl->port;
+    $port = $udl->port($port);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub port {
+    my $self = shift;
+
+    if (@_) {
+        $self->{'port'} = defined $_[0]? shift: '';
+    }
+
+    return $self->{'port'};
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 opts() - Setze/Liefere Option-Hash
+
+=head4 Synopsis
+
+    $hash = $udl->opts;
+    $hash = $udl->opts($str);
+    $hash = $udl->opts(@keyVal);
+    $hash = $udl->opts(\%hash);
+
+=head4 Description
+
+Setze/Liefere Hash mit den UDL-Optionen.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub opts {
+    my $self = shift;
+    # @_: Argument
+
+    my $optH = $self->{'opts'};
+
+    if (@_) {
+        if (ref $_[0]) { # HashRef
+            $optH = $self->{'opts'} = shift;
+        }
+        elsif (@_ > 1) { # KeyVal
+            %$optH = @_;
+        }
+        else {           # String
+            %$optH = ();
+            for my $pair (split /;/,shift) {
+                my ($key,$val) = split /=/,$pair;
+                $optH->{$key} = $val;
+            }
+        }
+    }
+
+    return $optH;
+}
+
+# -----------------------------------------------------------------------------
+
+=head2 Miscellaneous
+
+=head3 udl() - Setze/Liefere UDL als Ganzes
+
+=head4 Synopsis
+
+    $udl->udl($udlStr);
+    $udl->udl(@keyVal);
+    $udlStr = $udl->udl;
+
+=head4 Description
+
+Liefere UDL oder setze UDL als Ganzes aus String oder Liste von
+Schlüssel/Wert-Paaren. Die Methode liefert keinen Wert zurück.
+
+Der Aufruf ohne Parameter ist identisch zum Aufruf von asString().
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub udl {
+    my $self = shift;
+
+    if (!@_) {
+        return $self->asString;
+    }
+
+    # UDL neu aufsetzen
+
+    $self->set(api=>'',dbms=>'',db=>'',user=>'',password=>'',host=>'',
+        port=>'');
+    %{$self->{'opts'}} = ();
+
+    if (@_ == 1) { # $udlStr
+        my $udl = shift;
+
+        if ($udl =~ s|^([a-z]+)#||) {
+            $self->api($1);
+        }
+        if ($udl =~ s|;(.*)||) {
+            $self->opts($1);
+        }
+        if ($udl =~ s|\@(.*)||) {
+            my ($host,$port) = split(/:/,$1,2);
+            $self->host($host);
+            $self->port($port);
+        }
+        my ($dbms,$db,$user,$password);
+        if ($udl =~ s|%(.*)||) {
+            ($user,$password) = split(/:/,$1,2);
+        }
+        ($dbms,$db) = split(/:/,$udl,2);
+        if (!defined $dbms) {
+            $dbms = '';
+        }
+
+        # Rückwärtskompatibilität
+
+        if (!grep { $dbms eq $_ } qw/oracle postgresql sqlite mysql/) {
+            ($dbms,$db,$user,$password) = ($user,$password,$dbms,$db);
+        }
+
+        $self->user($user);
+        $self->password($password);
+        $self->dbms($dbms);
+        $self->db($db);
+    }
+    else { # @keyVal
+        while (@_) {
+            my $key = shift;
+            $self->$key(shift);
+        }
+    }
+
+    return;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 elements() - Liefere Elemente
+
+=head4 Synopsis
+
+    ($api,$dbms,$db,$user,$password,$host,$port,$opts) = $udl->elements;
+
+=head4 Description
+
+Liefere die Elemente des Udl-Objekts
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub elements {
+    my $self = shift;
+
+    return (
+        $self->api,
+        $self->dbms,
+        $self->db,
+        $self->user,
+        $self->password,
+        $self->host,
+        $self->port,
+        $self->opts,
+    );
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 asString() - Liefere UDL als String
+
+=head4 Synopsis
+
+    $udlStr = $udl->asString;
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub asString {
+    my $self = shift;
+
+    my $str = '';
+
+    # api
+
+    my $api = $self->api;
+    $str .= $api.'#' if $api;
+
+    # dbms, db
+
+    my $dbms = $self->dbms;
+    my $db = $self->db;
+    if ($dbms || $db) {
+        $str .= $dbms if $dbms;
+        if ($db) {
+            $str .= ":$db";
+        }
+    }
+
+    # user, password
+
+    my $user = $self->user;
+    my $password = $self->password;
+    if ($user || $password) {
+        $str .= '%';
+        $str .= $user if $user;
+        $str .= ":$password" if $password;
+    }
+
+    # host, port
+
+    my $host = $self->host;
+    my $port = $self->port;
+    if ($host || $port) {
+        $str .= '@';
+        $str .= $host if $host;
+        $str .= ":$port" if $port;
+    }
+
+    # opts
+
+    my $opts = $self->opts;
+    while (my ($key,$val) = each %$opts) {
+        $str .= ';' if $str;
+        $str .= "$key=$val";
+    }
+
+    return $str;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 apiClass() - Liefere Api-Klasse
+
+=head4 Synopsis
+
+    $apiClass = $udl->apiClass;
+
+=head4 Description
+
+Liefere die Blog::Base::Misc-API-Klasse. Über diese findet intern der
+Verbindungsaufbau zur Datenbank statt.
+
+Die API-Klasse für das DBI-API ist:
+
+    Blog::Base::DbmsApi::Dbi::Database
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub apiClass {
+    my $self = shift;
+    return 'Blog::Base::DbmsApi::'.ucfirst($self->api).'::Database';
+}
+
+# -----------------------------------------------------------------------------
+
+=head1 AUTHOR
+
+Frank Seitz, http://fseitz.de/
+
+=head1 COPYRIGHT
+
+Copyright (C) 2015 Frank Seitz
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+1;
+
+# eof

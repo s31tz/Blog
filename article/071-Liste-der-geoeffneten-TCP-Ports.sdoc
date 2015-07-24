@@ -8,7 +8,7 @@
 
 # id=87
 
-%Figure: file="uploads/network-118x102.png" width="65" height="56" \
+%Figure: file="IMGDIR/network-118x102.png" width="65" height="56" \
   url="http://tldp.org/LDP/nag2/x-087-2-iface.netstat.html"
 
 Zeige die Liste der geöffneten TCP-Ports und welche Programme sie nutzen:

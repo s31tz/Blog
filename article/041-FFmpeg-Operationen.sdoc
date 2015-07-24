@@ -8,7 +8,7 @@
 
 # id=68
 
-%Figure: file="uploads/ffmpeg-logo-250x63.png" \
+%Figure: file="IMGDIR/ffmpeg-logo-250x63.png" \
   width="134" height="36" url="https://www.ffmpeg.org/"
 
 = Film bei Wiedergabe zyklisch wiederholen

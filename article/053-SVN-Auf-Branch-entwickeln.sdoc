@@ -8,7 +8,7 @@
 
 # id=60
 
-%Figure: file="uploads/svn-374x51.jpg" \
+%Figure: file="IMGDIR/svn-374x51.jpg" \
     width=224 height=31 url="https://subversion.apache.org/"
 
 = Erzeugen eines Branch

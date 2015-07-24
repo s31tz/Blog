@@ -8,7 +8,7 @@
 
 # id=45
 
-%Figure: file="uploads/javascript-logo-100x100.png" \
+%Figure: file="IMGDIR/javascript-logo-100x100.png" \
   width="50" height="50" url="https://en.wikipedia.org/wiki/JavaScript"
 
 = Serverseitig via HTML

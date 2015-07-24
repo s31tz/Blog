@@ -8,7 +8,7 @@
 
 # id=64
 
-%Figure: file="uploads/mysql-logo-170x115.png" \
+%Figure: file="IMGDIR/mysql-logo-170x115.png" \
   width="74" height="50" url="http://www.mysql.de/"
 
 Eine elegante Möglichkeit, mehrere MySQL-Instanzen auf einem Server zu

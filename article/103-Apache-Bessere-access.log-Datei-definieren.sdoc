@@ -8,7 +8,7 @@
 
 # id=117
 
-%Figure: file="uploads/apache-logo-200x60.png" \
+%Figure: file="IMGDIR/apache-logo-200x60.png" \
   width="153" height="46" url="http://httpd.apache.org/"
 
 C{31.16.4.127 - - [15/Jul/2015:12:27:34 +0200] "GET /path/script.cgi?a=b HTTP/1.1" 302 583 "http://host.domain/page" "Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0 Iceweasel/38.1.0"}

@@ -8,7 +8,7 @@
 
 # id=79
 
-%Figure: file="uploads/java-logo-160x100.png" \
+%Figure: file="IMGDIR/java-logo-160x100.png" \
   width="96" height="60" url="https://www.java.com/"
 
 Das Java SE (Standard Edition) Devolpment Kit (JDK) gibt es

@@ -9,7 +9,7 @@
 # id=121
 
 # Breite: 0.256 Höhe: 0.225 (absichtlich gestreckt)
-%Figure: file="uploads/unix-390x118.jpg" \
+%Figure: file="IMGDIR/unix-390x118.jpg" \
   width="100" height="27" url="http://www.unix.org/"
 
 Mitunter möchte man einen Text oder ein Muster global über mehreren

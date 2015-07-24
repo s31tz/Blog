@@ -8,7 +8,7 @@
 
 # id=72
 
-%Figure: file="uploads/mobile-phone-74x100.png" \
+%Figure: file="IMGDIR/mobile-phone-74x100.png" \
     width="47" height="64" url="https://de.wikipedia.org/wiki/USSD-Codes"
 
 = Bedingte Rufweiterleitung + Klingelzeit setzen

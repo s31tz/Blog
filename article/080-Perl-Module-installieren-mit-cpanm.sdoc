@@ -8,7 +8,7 @@
 
 # id=96
 
-%Figure: file="uploads/perl-130x65.png" \
+%Figure: file="IMGDIR/perl-130x65.png" \
     width=96 height=48 url="http://www.perl.org/"
 
 Ein hervorragendes Werkzeug zum Installieren von Perl-Modulen ist

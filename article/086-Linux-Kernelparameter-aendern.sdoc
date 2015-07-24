@@ -9,7 +9,7 @@
 # id=101
 
 # 0.35
-%Figure: file="uploads/linux-logo-370x158.jpg" \
+%Figure: file="IMGDIR/linux-logo-370x158.jpg" \
     width=129 height=55 url="https://www.kernel.org/"
 
 Kernel-Parameter können zur Laufzeit des Linux-Systems mit dem Kommando

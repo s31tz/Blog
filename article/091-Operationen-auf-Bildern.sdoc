@@ -8,7 +8,7 @@
 
 # id=107
 
-%Figure: file="uploads/imagemagick-logo-464x240.png" \
+%Figure: file="IMGDIR/imagemagick-logo-464x240.png" \
     width="184" height="95" url="http://www.imagemagick.org/"
 
 = Bild verkleinern

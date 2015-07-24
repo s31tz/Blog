@@ -9,7 +9,7 @@
 # id=99
 
 # 0.3
-%Figure: file="uploads/unicode-logo-220x220.png" \
+%Figure: file="IMGDIR/unicode-logo-220x220.png" \
   width="66" height="66" url="http://unicode-table.com/en/"
 
 Zum  Validieren von UTF-8 kann GNU C{iconv} genutzt werden. Der Aufruf

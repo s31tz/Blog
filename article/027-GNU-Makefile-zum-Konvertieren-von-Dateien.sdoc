@@ -8,7 +8,7 @@
 
 # id=31
 
-%Figure: file="uploads/gnu-logo-102x100.png" \
+%Figure: file="IMGDIR/gnu-logo-102x100.png" \
   width="71" height="70" url="http://www.gnu.org/"
 
 Mitunter soll eine Menge von Dateien, die man erstellt und bearbeitet,

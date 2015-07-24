@@ -8,7 +8,7 @@
 
 # id=90
 
-%Figure: file="uploads/ffmpeg-logo-250x63.png" \
+%Figure: file="IMGDIR/ffmpeg-logo-250x63.png" \
   width="134" height="36" url="https://www.ffmpeg.org/"
 
 Ein Video, das I{interlaced} aufgezeichnet wurde, muss vor einer weiteren

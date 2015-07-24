@@ -8,7 +8,7 @@
 
 # id=112
 
-%Figure: file="uploads/rgb-logo-300x290.png" \
+%Figure: file="IMGDIR/rgb-logo-300x290.png" \
     width="54" height="52" url="https://de.wikipedia.org/wiki/RGB-Farbraum"
 
 Möchte man Text auf einen beliebigen einfarbigen Hintergrund setzen,
@@ -22,7 +22,7 @@ Eine Heuristik, nach der dies für Farben des RGB-Farbraums entschieden
 werden kann, ist:
 
 %Figure: \
-    file="uploads/rgb-brightness-formula-441x25.png" \
+    file="IMGDIR/rgb-brightness-formula-441x25.png" \
     width="353" height="20" url="http://latex2png.com?latex=brightness%20%3D\
     %20%5Csqrt%7B0.299%20%5Ccdot%20r%5E2%20%2B%200.587%20%5Ccdot%20g%5E2%20%\
     2B%200.114%20%5Ccdot%20b%5E2%7D&amp;res=150&amp;color=999999"

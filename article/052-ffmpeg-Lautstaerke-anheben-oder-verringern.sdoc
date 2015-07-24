@@ -8,7 +8,7 @@
 
 # id=58
 
-%Figure: file="uploads/ffmpeg-logo-250x63.png" \
+%Figure: file="IMGDIR/ffmpeg-logo-250x63.png" \
   width="134" height="36" url="https://www.ffmpeg.org/"
 
 Die Audio-Lautstärke kann bei ffmpeg mit der Option C{-vol}

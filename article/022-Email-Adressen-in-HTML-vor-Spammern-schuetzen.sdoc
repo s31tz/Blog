@@ -8,7 +8,7 @@
 
 # id=23
 
-%Figure: file="uploads/valid-xhtml10.png" \
+%Figure: file="IMGDIR/valid-xhtml10.png" \
     width="88" height="31" url="http://www.w3.org/"
 
 = In Mailto-URLs

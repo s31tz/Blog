@@ -1,0 +1,185 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use utf8;
+
+use FindBin qw/$Bin/;;
+use lib "$Bin/../lib/perl5";
+use open OUT=>':locale';
+use Blog::Base::Sdoc;
+use Blog::Base::Option;
+use Blog::Base::Help;
+use Blog::Base::ApplicationPaths;
+use Blog::Base::Config;
+use Blog::Base::Dbms::Database;
+use Blog::Base::Path;
+
+# -----------------------------------------------------------------------------
+
+=encoding utf8
+
+=head1 NAME
+
+blog-update - Aktualisiere Serendipity Blog-Datenbank
+
+=head1 USAGE
+
+blog-update [OPTIONS]
+
+=head1 OPTIONS
+
+=over 4
+
+=item --dry-run
+
+Zeige die Liste der Artikel, die zu aktualisierenden sind, aber
+aktualisiere sie nicht.
+
+=item --verbose
+
+Zeige die ausgeführten SQL-Statements an.
+
+=item --help
+
+Diese Hilfe.
+
+=back
+
+=head1 DESCRIPTION
+
+Das Programm prüft, welche .sdoc-Dateien geändert wurden
+(deren mtime also jünger ist als das last_modified-Datum des
+Artikels auf der Serendipity-Datenbank) wandelt die .sdoc-Datei
+nach HTML und aktualisiert die betreffenden Artikel auf der Datenbank.
+
+=head1 EXIT CODES
+
+=over 4
+
+=item 0
+
+Es wurden Artikel aktualisiert
+
+=item 1
+
+Es wurden keine Artikel aktualisiert
+
+=back
+
+=head1 AUTHOR
+
+Frank Seitz, http://fseitz.de/
+
+=head1 COPYRIGHT
+
+Copyright (C) 2015 Frank Seitz
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+# Hilfsfunktion: Wandele Sdoc-Datei in Serendipty-Daten
+
+my $convertFile = sub {
+    my $file = shift;
+
+    my $sdoc =  Blog::Base::Sdoc->new("$file",-utf8=>1);
+    my $html = Encode::decode('utf-8',$sdoc->dump('ehtml'));
+    $html =~ s|<h1.*?>(.*?)</h1>\n+||;
+    my $title = $1;
+
+    # Relative Bild-URLs für XING expandieren
+    $html =~ s|"IMGDIR/|"http://fseitz.de/blog/uploads/|g;
+
+    return ($title,$html);
+};
+
+# Optionen
+
+my $dryRun = 0;
+my $verbose = 0;
+my $help = 0;
+
+Blog::Base::Option->extract(\@ARGV,
+    -dryRun=>\$dryRun,
+    -verbose=>\$verbose,
+    -help=>\$help,
+);
+if ($help) {
+    Blog::Base::Help->exit;
+}
+elsif (@ARGV) {
+    Blog::Base::Help->exit(10,'ERROR: Too many arguments');
+}
+
+# Konfiguration
+
+my $app = Blog::Base::ApplicationPaths->new;
+my $cfg = Blog::Base::Config->new($app->etcDir('blog.conf'));
+
+# Datenbankverbindung aufbauen
+my $db = Blog::Base::Dbms::Database->new($cfg->get('Udl'),
+    -utf8=>1,
+    -log=>$verbose,
+);
+
+# Artikelinformation von der Datenbank lesen
+
+my $entT = $db->select(
+    -select=>qw/id last_modified/,
+    -from=>'serendipity_entries',
+);
+my %idIdx = $entT->index('id');
+
+# Ins Artikelverzeichnis wechseln
+
+my $articleDir = $app->homeDir('article');
+Blog::Base::Path->cd($articleDir);
+
+# Artikeldateien lesen
+
+my $n = 0; # Anzahl aktualisierter Artikel
+for my $file (Blog::Base::Path->glob("*.sdoc")) {
+    my $mtime = Blog::Base::Path->mtime($file);
+    my $text = Encode::decode('utf8',Blog::Base::Path->read($file));
+
+    my ($id) = $text =~ /^# id=(\d+)/m;
+    if (!$id) {
+        # Neuer Eintrag: Daten für Serendipity ausgeben
+        warn "WARNING: Datei enthält keine id: $file\n";
+
+        my ($title,$html) = $convertFile->($file);
+        print "Title: $title\n\nHTML:\n$html";
+
+        next;
+    }
+
+    my $ent = $idIdx{$id};
+    if (!$ent) {
+        warn "WARNING: Artikel-Id auf der Datenbank nicht gefunden: $id\n";
+        next;
+    }
+
+    if ($mtime > $ent->last_modified) {
+        # Existierender Eintrag: Blog-DB aktualisieren
+        printf "Aktualisiere: %s\n",$file;
+
+        if (!$dryRun) {
+            my ($title,$html) = $convertFile->($file);
+            $db->update('serendipity_entries',
+                title=>Encode::encode('iso-8859-1',$title),
+                body=>Encode::encode('iso-8859-1',$html),
+                last_modified=>$mtime,
+                -where,id=>$id,
+            );
+            $n++;
+        }
+    }
+}
+$db->commit;
+
+# Wenn Artikel aktualisiert wurden, terminieren wir mit 0, sonst 1
+exit $n? 0: 1;
+
+# eof

@@ -8,7 +8,7 @@
 
 # id=18
 
-%Figure: file="uploads/rsync-logo-205x100.jpg" \
+%Figure: file="IMGDIR/rsync-logo-205x100.jpg" \
   width="103" height="50" url="https://rsync.samba.org/"
 
 = Verzeichnisbaum spiegeln (local => remote)

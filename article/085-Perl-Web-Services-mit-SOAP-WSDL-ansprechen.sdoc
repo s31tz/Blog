@@ -8,7 +8,7 @@
 
 # id=118
 
-%Figure: file="uploads/perl-130x65.png" \
+%Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"
 
 Das Perl-Modul U{"http://search.cpan.org/~swalters/SOAP-WSDL/",

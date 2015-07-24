@@ -8,7 +8,7 @@
 
 # id=110
 
-%Figure: file="uploads/latex-logo-320x133.png" \
+%Figure: file="IMGDIR/latex-logo-320x133.png" \
     width="106" height="44" url="http://www.latex-project.org/"
 
 Die Briefklasse C{scrlttr2} ist die vermutlich leistungsfähigste
@@ -40,9 +40,9 @@ ergänzt. Beides zusammen ergibt das angestrebte Layout.
 
 Vorher/Nachher am Beispiel einer Rechnung:
 
-G{"uploads/rechnung1.png",style="border: 1px #999 solid; margin-left: 2em; \
+G{"IMGDIR/rechnung1.png",style="border: 1px #999 solid; margin-left: 2em; \
     margin-bottom: 0.5em"}
-G{"uploads/rechnung2.png",style="border: 1px #999 solid; margin-left: 2em; \
+G{"IMGDIR/rechnung2.png",style="border: 1px #999 solid; margin-left: 2em; \
     margin-bottom: 0.5em"}
 
 # eof

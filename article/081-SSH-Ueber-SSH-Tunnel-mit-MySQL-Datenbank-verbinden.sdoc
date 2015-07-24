@@ -9,7 +9,7 @@
 # id=97
 
 # 0.65
-%Figure: file="uploads/ssh-logo-90x78.png" \
+%Figure: file="IMGDIR/ssh-logo-90x78.png" \
     width=58 height=50 url="http://www.openssh.com/"
 
 Eine MySQL-Datenbank, die von innen (Host oder lokalem Netzwerk),

@@ -8,7 +8,7 @@
 
 # id=75
 
-%Figure: file="uploads/strato-hidrive-456x100.png" \
+%Figure: file="IMGDIR/strato-hidrive-456x100.png" \
     width="173" height="38" url="https://hidrive.strato.com/"
 
 Installation von davfs (Debian):

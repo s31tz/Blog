@@ -8,7 +8,7 @@
 
 # id=94
 
-%Figure: file="uploads/bash-222x51.jpg" \
+%Figure: file="IMGDIR/bash-222x51.jpg" \
   width="130" height="30" url="http://www.gnu.org/software/bash/"
 
 Einer der weniger einleuchtenden Shell-Operatoren ist der Operator

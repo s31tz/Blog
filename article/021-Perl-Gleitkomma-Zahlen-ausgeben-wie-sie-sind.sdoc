@@ -9,7 +9,7 @@
 
 # id=24
 
-%Figure: file="uploads/perl-130x65.png" \
+%Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"
 
 Vielleicht trivial, aber mir war die Antwort bislang nicht klar: Wie

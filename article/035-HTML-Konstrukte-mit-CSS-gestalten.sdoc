@@ -8,7 +8,7 @@
 
 # id=40
 
-%Figure: file="uploads/valid-css.png" \
+%Figure: file="IMGDIR/valid-css.png" \
   width="88" height="31" url="http://www.w3.org/TR/tr-groups-all\
   #tr_Cascading_Style_Sheets__CSS__Working_Group"
 
@@ -31,7 +31,7 @@ Der HTML-Code wird ohne CSS vom Browser (Firefox) ungefähr so dargestellt
 (die Strukturelemente für den Titel (h1) und die Listen (ul) sind zur
 Verdeutlichung grau hinterlegt):
 
-%Figure: file="uploads/inhaltsverz.png" width="300" height="129"
+%Figure: file="IMGDIR/inhaltsverz.png" width="300" height="129"
 
 = Lösung
 

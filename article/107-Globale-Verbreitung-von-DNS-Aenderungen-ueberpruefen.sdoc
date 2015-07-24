@@ -8,7 +8,7 @@
 
 # id=116
 
-%Figure: file="uploads/dns-logo-100x100.jpg" \
+%Figure: file="IMGDIR/dns-logo-100x100.jpg" \
     width="60" height="60" url="https://www.whatsmydns.net/"
 
 Wer wissen möchte, ob jüngst durchgeführte Änderungen an DNS-Einträgen

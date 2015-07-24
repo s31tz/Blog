@@ -8,13 +8,13 @@
 
 # id=7
 
-%Figure: file="uploads/valid-css.png" \
+%Figure: file="IMGDIR/valid-css.png" \
   width="88" height="31" url="http://www.w3.org/TR/tr-groups-all\
   #tr_Cascading_Style_Sheets__CSS__Working_Group"
 
 Layout mit Kopf, Fuss und drei Spalten:
 
-%Figure: file="uploads/layout3-3.png" style="border-width: 2px"\
+%Figure: file="IMGDIR/layout3-3.png" style="border-width: 2px"\
   width="398" height="180"
 
 Der HTML- und CSS-Code, der dies realisiert:

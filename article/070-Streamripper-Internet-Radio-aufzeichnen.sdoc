@@ -8,7 +8,7 @@
 
 # id=86
 
-%Figure: file="uploads/streamripper-logo-570x90.png" \
+%Figure: file="IMGDIR/streamripper-logo-570x90.png" \
     width="285" height="45" url="http://streamripper.sourceforge.net/"
 
 Streamripper ist ein Kommandozeilenprogram, mit dem es möglich ist,

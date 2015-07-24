@@ -8,7 +8,7 @@
 
 # id=92
 
-%Figure: file="uploads/meld-84x84.png" \
+%Figure: file="IMGDIR/meld-84x84.png" \
   width=56 height=56 url="http://meldmerge.org/"
 
 Ein ausgezeichnetes Programm zur Visualisierung und interaktiven
@@ -33,7 +33,7 @@ berechnet und angezeigt. Mittels Klick auf einen der eingeblendeten
 Pfeile (s. Sceenshot) wird eine Änderung insgesamt in die
 gegenüberliegende Datei übertragen, die Differenz also eleminiert.
 
-%Figure: file="uploads/meld-644x548.png" width="508" height="432"
+%Figure: file="IMGDIR/meld-644x548.png" width="508" height="432"
     style="border: 1px solid"
 
 Links:

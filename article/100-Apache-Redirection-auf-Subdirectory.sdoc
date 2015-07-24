@@ -8,7 +8,7 @@
 
 # id=27
 
-%Figure: file="uploads/apache-logo-200x60.png" \
+%Figure: file="IMGDIR/apache-logo-200x60.png" \
     width="153" height="46" url="http://httpd.apache.org/"
 
 Mit der Direktive

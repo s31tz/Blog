@@ -1,0 +1,144 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use FindBin qw/$Bin/;
+use lib "$Bin/../lib/perl5";
+use open OUT=>':locale';
+use POSIX ();
+use Blog::Base::Option;
+use Blog::Base::Help;
+use Blog::Base::ApplicationPaths;
+use Blog::Base::Config;
+use Blog::Base::Path;
+use Blog::Base::Sdoc;
+
+# -----------------------------------------------------------------------------
+
+=head1 NAME
+
+blog-one-page - Erzeuge eine HTML-Seite mit allen Artikeln
+
+=head1 USAGE
+
+blog-one-page [OPTIONS]
+
+=head1 OPTIONS
+
+=over 4
+
+=item --embed=BOOL (Default: 1)
+
+Bette Stylesheets und Bilder in HTML-Code ein.
+
+=item --format=FORMAT (Default: 'html')
+
+Format der generierten Datei: 'html' oder 'sdoc'.
+
+=item --help
+
+Diese Hilfe.
+
+=back
+
+=head1 AUTHOR
+
+Frank Seitz, http://fseitz.de/
+
+=head1 COPYRIGHT
+
+Copyright (C) 2015 Frank Seitz
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+# Optionen
+
+my $embed = 1;
+my $format = 'html';
+my $verbose = 0;
+my $help = 0;
+
+Blog::Base::Option->extract(\@ARGV,
+    -embed=>\$embed,
+    -format=>\$format,
+    -verbose=>\$verbose,
+    -help=>\$help,
+);
+if ($help) {
+    Blog::Base::Help->exit;
+}
+elsif (@ARGV) {
+    Blog::Base::Help->exit(10,'ERROR: Too many arguments');
+}
+
+# Konfiguration
+
+my $app = Blog::Base::ApplicationPaths->new;
+my $cfg = Blog::Base::Config->new($app->etcDir('blog.conf'));
+
+# Ins Artikelverzeichnis wechseln
+
+my $articleDir = $app->homeDir('article');
+Blog::Base::Path->cd($articleDir);
+
+# Artikeldateien zusammenfügen
+
+my $sdoc = '';
+for my $file (reverse Blog::Base::Path->glob("*.sdoc")) {
+    my ($num) = $file =~ m|(\d+)-[^/]+.sdoc|;
+    $num += 0;
+    my $text = Blog::Base::Path->read($file);
+
+    # Titel des Artikels bestimmen
+
+    my ($title) = $text =~ /title="(.*?)"/;
+    $title = "$num. $title";
+
+    # Text manipulieren
+
+    $text =~ s/^.*^# id=\d+\s+//sm; # Anfang wegschneiden
+    $text =~ s/^(=+)/=$1/mg;        # Abschnitte eine Ebene tiefer
+    $text =~ s/^# eof\n//m;         # # eof entfernen
+    $text =~ s/\s+$//;              # Whitespace am Ende entfernen
+
+    if ($sdoc) {
+        $sdoc .= "\n\n";
+    }
+    $sdoc .= "= $title\n\n$text";
+}
+
+my $styleSheets = 'blog-style.css blog-highlight.css';
+my $embedImages = 0;
+if ($embed) {
+    $styleSheets = 'inline:blog-style.css inline:blog-highlight.css';
+    $embedImages = 1;
+}
+
+my $date = POSIX::strftime('%Y-%m-%d',localtime);
+$sdoc = <<"__EOT__";
+%Document:
+  title="Frank Seitz - Developer Logbuch - $date"
+  styleSheet="$styleSheets"
+  embedImages=$embedImages
+  generateAnchors=0
+  utf8=1
+
+%TableOfContents:
+  maxDepth=1
+
+$sdoc
+
+# eof
+__EOT__
+
+if ($format eq 'sdoc') {
+    print Encode::decode('utf-8',$sdoc);
+    exit;
+}
+
+print Encode::decode('utf-8',Blog::Base::Sdoc->new(\$sdoc,-utf8=>1)->dump('html'));
+
+# eof

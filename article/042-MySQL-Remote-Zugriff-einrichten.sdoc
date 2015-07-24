@@ -8,7 +8,7 @@
 
 # id=46
 
-%Figure: file="uploads/mysql-logo-170x115.png" \
+%Figure: file="IMGDIR/mysql-logo-170x115.png" \
   width="74" height="50" url="http://www.mysql.de/"
 
 Damit der MySQL-Server C{mysqld} TCP-Verbindungen annimmt, muss ihm in

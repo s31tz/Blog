@@ -9,7 +9,7 @@
 
 # id=114
 
-%Figure: file="uploads/perl-130x65.png" \
+%Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"
 
 Bei der Auswertung von HTTP-Zugriffen möchte man u.U. die IP-Adressen

@@ -8,7 +8,7 @@
 
 # id=17
 
-%Figure: file="uploads/perl-130x65.png" \
+%Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"
 
 Für den Umgang mit Symlinks stellt Perl eine Reihe von Builtins zur

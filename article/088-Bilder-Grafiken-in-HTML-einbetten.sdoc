@@ -8,7 +8,7 @@
 
 # id=103
 
-%Figure: file="uploads/valid-xhtml10.png" \
+%Figure: file="IMGDIR/valid-xhtml10.png" \
   width="88" height="31" url="http://www.w3.org/"
 
 Anstelle eines URL können dem src-Attribut des <img>-Tag auch

@@ -8,7 +8,7 @@
 
 # id=66
 
-%Figure: file="uploads/sql-icon-86x100.png" width="48" height="56" \
+%Figure: file="IMGDIR/sql-icon-86x100.png" width="48" height="56" \
   url=""
 
   SELECT col1, ..., colN, COUNT(*)
