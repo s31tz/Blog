@@ -6,7 +6,7 @@ Blog - Blog articles
 
 =head1 DESCRIPTION
 
-Quellen der Blog-Artikel auf L<http://fseitz.de>
+Die Quellen der Blog-Artikel, die auf L<http://fseitz.de> erschienen sind.
 
 =over 4
 
