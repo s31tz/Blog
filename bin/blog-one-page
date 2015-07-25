@@ -44,7 +44,7 @@ Diese Hilfe.
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
@@ -127,14 +127,19 @@ my $styleSheets = join ' ',@styleSheets;
 
 # Dokument generieren
 
+my $year = POSIX::strftime('%Y',localtime);
 my $date = POSIX::strftime('%Y-%m-%d',localtime);
+my $time = POSIX::strftime('%Y-%m-%d %H:%M:%S',localtime);
+
 $sdoc = <<"__EOT__";
 %Document:
-  title="Frank Seitz - Developer Logbuch - $date"
+  title="Frank Seitz - Developer Logbuch"
   styleSheet="$styleSheets"
   embedImages=$embedImages
   generateAnchors=0
   utf8=1
+
+Copyright \xc2\xa9 2010-$year Frank Seitz, U{http://fseitz.de/}, Last update: $time
 
 %TableOfContents:
   maxDepth=1
