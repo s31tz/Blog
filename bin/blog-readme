@@ -2,6 +2,7 @@
 
 use strict;
 use warnings;
+use utf8;
 
 use FindBin qw/$Bin/;
 use lib "$Bin/../lib/perl5";
@@ -119,7 +120,7 @@ Frank Seitz, U{http://fseitz.de}
 
 = COPYRIGHT
 
-Copyright (C) 2010-%s Frank Seitz
+Copyright © 2010-%s Frank Seitz
 
 # eof
 __EOT__

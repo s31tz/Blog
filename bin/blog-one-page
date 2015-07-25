@@ -2,6 +2,7 @@
 
 use strict;
 use warnings;
+use utf8;
 
 use FindBin qw/$Bin/;
 use lib "$Bin/../lib/perl5";
@@ -141,7 +142,7 @@ $sdoc = <<"__EOT__";
   generateAnchors=0
   utf8=1
 
-Copyright \xc2\xa9 2010-$year Frank Seitz, U{http://fseitz.de/}, Last update: $time
+Copyright © 2010-$year Frank Seitz, U{http://fseitz.de/}, Last update: $time
 
 %TableOfContents:
   maxDepth=1
