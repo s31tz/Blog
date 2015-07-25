@@ -7,10 +7,10 @@
 
 # id=14
 
-G{"IMGDIR/Misc-Videos-icon.png",style="margin-left: 2em",\
+G{"IMGDIR/misc-videos-icon-128x128.png",style="margin-left: 2em",\
   width="50",height="50"}
-G{"IMGDIR/Misc-Globe-icon.png",width="50",height="50"}
-G{"IMGDIR/Misc-Music-icon.png",width="50",height="50"}
+G{"IMGDIR/misc-globe-icon-128x128.png",width="50",height="50"}
+G{"IMGDIR/misc-music-icon-128x128.png",width="50",height="50"}
 
 * Sammlung von mehreren tausend qualitativ hochwertigen Desktop- und
   Web-Icons: U{http://www.iconarchive.com/}
