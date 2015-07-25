@@ -16,7 +16,7 @@ Blog::Base::DbmsApi::Dbi::Cursor - DBI Datenbank-Cursor
 
 =head1 BASE CLASS
 
-Blog::Base::DbmsApi::Cursor
+L<Blog::Base::DbmsApi::Cursor|../../../Blog::Base/DbmsApi/Cursor.html>
 
 =head1 ATTRIBUTES
 
@@ -293,11 +293,11 @@ sub fetch {
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2015 Frank Seitz
+Copyright © 2015 Frank Seitz
 
 =cut
 

@@ -17,7 +17,7 @@ Blog::Base::ApplicationPaths - Determine fundamental paths of an Unix applicatio
 
 =head1 BASE CLASS
 
-Blog::Base::RestrictedHash
+L<Blog::Base::RestrictedHash|../Blog::Base/RestrictedHash.html>
 
 =head1 SYNOPSIS
 
@@ -577,11 +577,11 @@ sub varPath {
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2015 Frank Seitz
+Copyright © 2015 Frank Seitz
 
 =cut
 

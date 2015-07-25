@@ -14,7 +14,7 @@ Blog::Base::DbmsApi::Cursor - Abstrakte Basisklasse für Datenbank-Cursor
 
 =head1 BASE CLASS
 
-Blog::Base::Hash
+L<Blog::Base::Hash|../../Blog::Base/Hash.html>
 
 =head1 METHODS
 
@@ -121,11 +121,11 @@ Methode eine Abbildung von undef auf '' vor.
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2015 Frank Seitz
+Copyright © 2015 Frank Seitz
 
 =cut
 

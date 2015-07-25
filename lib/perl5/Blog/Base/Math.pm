@@ -17,7 +17,7 @@ Blog::Base::Math - Mathematische Funktionen
 
 =head1 BASE CLASS
 
-Blog::Base::Object
+L<Blog::Base::Object|../Blog::Base/Object.html>
 
 =head1 METHODS
 
@@ -161,7 +161,7 @@ Float
 Berechne durch lineare Interpolation den Wert y=f(x) zwischen
 den gegebenen Punkten y0=f(x0) und y1=f(x1) und liefere diesen zurück.
 
-Siehe: http://de.wikipedia.org/wiki/Interpolation_%28Mathematik%29#Lineare_Interpolation
+Siehe: L<http://de.wikipedia.org/wiki/Interpolation_%28Mathematik%29#Lineare_Interpolation>
 
 =cut
 
@@ -615,11 +615,11 @@ sub intToWord {
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2009-2015 Frank Seitz
+Copyright © 2009-2015 Frank Seitz
 
 =cut
 

@@ -14,7 +14,7 @@ Blog::Base::RestrictedHash - Hash-Klasse ohne änderbare Schüssel
 
 =head1 BASE CLASS
 
-Blog::Base::Hash
+L<Blog::Base::Hash|../Blog::Base/Hash.html>
 
 =head1 DESCRIPTION
 
@@ -143,11 +143,11 @@ sub rebless {
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2010-2015 Frank Seitz
+Copyright © 2010-2015 Frank Seitz
 
 =cut
 

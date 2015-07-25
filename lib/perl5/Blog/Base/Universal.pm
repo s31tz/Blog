@@ -1168,11 +1168,11 @@ sub nextMethod {
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2015 Frank Seitz
+Copyright © 2015 Frank Seitz
 
 =cut
 

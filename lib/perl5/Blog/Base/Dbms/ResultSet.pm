@@ -20,7 +20,7 @@ Blog::Base::Dbms::ResultSet - Liste von Datensätzen (abstrakte Basisklasse)
 
 =head1 BASE CLASS
 
-Blog::Base::Hash
+L<Blog::Base::Hash|../../Blog::Base/Hash.html>
 
 =head1 DESCRIPTION
 
@@ -861,11 +861,11 @@ sub diffReport {
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2015 Frank Seitz
+Copyright © 2015 Frank Seitz
 
 =cut
 

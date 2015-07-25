@@ -28,7 +28,7 @@ Blog::Base::Dbms::Database - Verbindung zu einer Relationalen Datenbank
 
 =head1 BASE CLASS
 
-Blog::Base::Hash
+L<Blog::Base::Hash|../../Blog::Base/Hash.html>
 
 =head1 DESCRIPTION
 
@@ -3983,11 +3983,11 @@ Beispiel: Eine DBI MySQL-Handle $dbh wird als Lowlevel-Handle verwendet,
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2015 Frank Seitz
+Copyright © 2015 Frank Seitz
 
 =cut
 

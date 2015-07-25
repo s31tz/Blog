@@ -24,7 +24,7 @@ Blog::Base::DbmsApi::Dbi::Database - Datenbankverbindung über den DBI-Layer
 
 =head1 BASE CLASS
 
-Blog::Base::DbmsApi::Database
+L<Blog::Base::DbmsApi::Database|../../../Blog::Base/DbmsApi/Database.html>
 
 =head1 ATTRIBUTES
 
@@ -485,11 +485,11 @@ sub sql {
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2015 Frank Seitz
+Copyright © 2015 Frank Seitz
 
 =cut
 

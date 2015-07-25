@@ -16,7 +16,7 @@ Blog::Base::Dbms::Row - Basisklasse Datensatz (abstrakt)
 
 =head1 BASE CLASS
 
-Blog::Base::Object
+L<Blog::Base::Object|../../Blog::Base/Object.html>
 
 =head1 DESCRIPTION
 
@@ -157,11 +157,11 @@ sub makeTable {
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2015 Frank Seitz
+Copyright © 2015 Frank Seitz
 
 =cut
 

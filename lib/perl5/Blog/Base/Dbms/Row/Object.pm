@@ -21,7 +21,7 @@ Blog::Base::Dbms::Row::Object - Datensatz als Objekt
 
 =head1 BASE CLASS
 
-Blog::Base::Dbms::Row
+L<Blog::Base::Dbms::Row|../../../Blog::Base/Dbms/Row.html>
 
 =head1 DESCRIPTION
 
@@ -1521,11 +1521,11 @@ sub AUTOLOAD {
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2015 Frank Seitz
+Copyright © 2015 Frank Seitz
 
 =cut
 

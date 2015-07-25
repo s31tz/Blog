@@ -25,15 +25,15 @@ Blog::Base::Program - Basisklasse für Programme
 
 =item *
 
-Blog::Base::Misc
+L<Blog::Base::Misc|../Blog::Base/Misc.html>
 
 =item *
 
-Blog::Base::Hash
+L<Blog::Base::Hash|../Blog::Base/Hash.html>
 
 =item *
 
-Blog::Base::Shell
+L<Blog::Base::Shell|../Blog::Base/Shell.html>
 
 =back
 
@@ -368,11 +368,11 @@ sub progDir {
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2015 Frank Seitz
+Copyright © 2015 Frank Seitz
 
 =cut
 

@@ -16,7 +16,7 @@ Blog::Base::Html::Listing - Programm-Listing in HTML
 
 =head1 BASE CLASS
 
-Blog::Base::Html
+L<Blog::Base::Html|../../Blog::Base/Html.html>
 
 =head1 SYNOPSIS
 
@@ -388,15 +388,15 @@ sub html {
     PREFIX-doc|Kennzeichnung Doku (bei Perl POD)
     PREFIX-comment|Kennzeichnung Kommentar
 
-PREFIX ist der cssPrefix (siehe Basisklasse)
+PREFIX ist der cssPrefix (L<siehe Basisklasse|Blog::Base::Misc-Html.html#cssprefix>)
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2010-2015 Frank Seitz
+Copyright © 2010-2015 Frank Seitz
 
 =cut
 

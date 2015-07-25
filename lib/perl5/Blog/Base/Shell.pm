@@ -25,7 +25,7 @@ Blog::Base::Shell - Klasse zur Ausführung von Shell-Kommandos
 
 =head1 BASE CLASS
 
-Blog::Base::Hash
+L<Blog::Base::Hash|../Blog::Base/Hash.html>
 
 =head1 METHODS
 
@@ -526,11 +526,11 @@ sub checkError {
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2009-2015 Frank Seitz
+Copyright © 2009-2015 Frank Seitz
 
 =cut
 

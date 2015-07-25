@@ -16,7 +16,7 @@ Blog::Base::Sdoc::BridgeHead - Zwischenüberschrift
 
 =head1 BASE CLASS
 
-Blog::Base::Sdoc::Node
+L<Blog::Base::Sdoc::Node|../../Blog::Base/Sdoc/Node.html>
 
 =head1 ATTRIBUTES
 
@@ -128,11 +128,11 @@ sub dump {
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2015 Frank Seitz
+Copyright © 2015 Frank Seitz
 
 =cut
 

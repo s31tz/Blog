@@ -17,7 +17,7 @@ Blog::Base::Dbms::ResultSet::Array - Liste von Datensätzen in Array-Repräsenta
 
 =head1 BASE CLASS
 
-Blog::Base::Dbms::ResultSet
+L<Blog::Base::Dbms::ResultSet|../../../Blog::Base/Dbms/ResultSet.html>
 
 =head1 DESCRIPTION
 
@@ -170,11 +170,11 @@ sub index {
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2015 Frank Seitz
+Copyright © 2015 Frank Seitz
 
 =cut
 
