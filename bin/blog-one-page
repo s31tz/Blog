@@ -91,10 +91,18 @@ Blog::Base::Path->cd($articleDir);
 # Artikeldateien zusammenfügen
 
 my $sdoc = '';
+my $maxMtime = 0;
 for my $file (reverse Blog::Base::Path->glob("*.sdoc")) {
     my ($num) = $file =~ m|(\d+)-[^/]+.sdoc|;
     $num += 0;
     my $text = Blog::Base::Path->read($file);
+
+    # Zeitpunkt der jüngsten Änderung
+
+    my $mtime = Blog::Base::Path->mtime($file);
+    if ($mtime > $maxMtime) {
+        $maxMtime = $mtime;
+    }
 
     # Titel des Artikels bestimmen
 
@@ -131,7 +139,7 @@ my $styleSheets = join ' ',@styleSheets;
 
 my $year = POSIX::strftime('%Y',localtime);
 my $date = POSIX::strftime('%Y-%m-%d',localtime);
-my $time = POSIX::strftime('%Y-%m-%d %H:%M:%S',localtime);
+my $mtime = POSIX::strftime('%Y-%m-%d %H:%M:%S',localtime($maxMtime));
 
 # ACHTUNG: \xc2\xa9 kann nicht durch © ersetzt werden!
 
@@ -143,7 +151,7 @@ $sdoc = <<"__EOT__";
   generateAnchors=0
   utf8=1
 
-Copyright \xc2\xa9 2010-$year Frank Seitz, U{http://fseitz.de/}, Last update: $time
+Copyright \xc2\xa9 2010-$year Frank Seitz, U{http://fseitz.de/}, Last update: $mtime
 
 %TableOfContents:
   maxDepth=1
