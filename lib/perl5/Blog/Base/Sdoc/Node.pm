@@ -545,6 +545,7 @@ sub urlSegment {
         $attH->set($str =~ /(\w+)="(.*?)"/g);
     }
 
+    my $text = $attH->{'text'};
     if ($format =~ /^e?html/) {
         my $h = shift;
 
@@ -554,13 +555,16 @@ sub urlSegment {
             class=>"$cssPrefix-seg-u",
             href=>$url,
             target=>$attH->{'target'},
-            $attH->{'text'} || $url,
+            $text || $url,
         );
     }
-
-    # für sonstige Formate
-
-    if (my $text = $attH->{'text'}) {
+    elsif ($format eq 'pod') {
+        if ($text) {
+            return "L<$text|$url>";
+        }
+        return "L<$url>";
+    }
+    elsif ($text) { # sonstige Formate
         return $text;
     }
 

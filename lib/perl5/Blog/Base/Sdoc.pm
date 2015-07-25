@@ -40,7 +40,7 @@ Blog::Base::Sdoc - Sdoc-Parsingbaum
 
 =head1 BASE CLASS
 
-Blog::Base::Sdoc::Node
+L<Blog::Base::Sdoc::Node|../Blog::Base/Sdoc/Node.html>
 
 =head1 SYNOPSIS
 
@@ -398,10 +398,10 @@ sub title {
     my $title = $self->{'title'} || '';
     if (!$title) {
         # FIXME: lookup implementieren
-        my ($sec) = $self->select(type=>'Section');
-        if ($sec) {
-            $title = $sec->get('title');
-        }
+        #my ($sec) = $self->select(type=>'Section');
+        #if ($sec) {
+        #    $title = $sec->get('title');
+        #}
     }
 
     return $title;
@@ -555,7 +555,7 @@ sub dump {
 
 =head1 AUTHOR
 
-Frank Seitz, http://fseitz.de/
+Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 

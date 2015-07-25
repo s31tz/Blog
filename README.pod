@@ -9,7 +9,7 @@ Blog - Blog articles on http://fseitz.de/blog
 Die Quellen der Blog-Artikel, die auf L<http://fseitz.de/blog>
 erschienen sind.
 
-=over 4
+=over 2
 
 =item *
 
@@ -460,4 +460,3 @@ Frank Seitz, L<http://fseitz.de>
 =head1 COPYRIGHT
 
 Copyright (C) 2010-2015 Frank Seitz
-
