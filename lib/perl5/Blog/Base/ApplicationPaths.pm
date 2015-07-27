@@ -1,11 +1,10 @@
 package Blog::Base::ApplicationPaths;
-use base qw/Blog::Base::RestrictedHash/;
 
 use strict;
 use warnings;
 
-use 5.010;
 use Cwd ();
+use Hash::Util ();
 
 # -----------------------------------------------------------------------------
 
@@ -15,169 +14,78 @@ use Cwd ();
 
 Blog::Base::ApplicationPaths - Determine fundamental paths of an Unix application
 
-=head1 BASE CLASS
-
-L<Blog::Base::RestrictedHash|../Blog::Base/RestrictedHash.html>
-
 =head1 SYNOPSIS
 
-Pfadsetzung:
-
-    PATH=<application_homedir>/bin:$PATH
-
-Programmcode:
-
-    # Applikationsinstallation mit Versionisierung
-    # /opt/<app>/version/<version>/bin/<prog>
+    # Homedir: <prefix>/opt/<application>
     
     use FindBin qw/$Bin/;
-    use lib "$Bin/../lib/perl5";           # $depth = 1, siehe new()
+    use lib "$Bin/../lib/perl5";           # $depth = 1
     use Blog::Base::ApplicationPaths;
     
-    my $app = Blog::Base::ApplicationPaths->new($depth);        # <-- $depth = Anzahl ../ oben
+    my $app = Blog::Base::ApplicationPaths->new($depth);
     
-    my $name = $app->name;                 # <app>
-    my $version = $app->version;           # <version>
+    my $name = $app->name;                 # <application>
+    my $prefix = $app->prefix($subPath);   # <prefix>
     
-    my $prefix = $app->prefix($subPath);   # '' (Leerstring)
-    
-    my $rootDir = $app->rootDir($subPath); # /opt/<app>
-    my $homeDir = $app->homeDir($subPath); # /opt/<app>/version/<version>
-    my $etcDir = $app->etcDir($subPath);   # /etc/opt/<app>
-    my $varDir = $app->varDir($subPath);   # /var/opt/<app>
-    
-    my $etcPath = $app->etcPath($suffix);  # /etc/opt/<app>
-    my $varPath = $app->varPath($suffix);  # /var/opt/<app>
-
-Beispiele siehe im Testcode.
+    my $homeDir = $app->homeDir($subPath); # <prefix>/opt/<application>
+    my $etcDir = $app->etcDir($subPath);   # <prefix>/etc/opt/<application>
+    my $varDir = $app->varDir($subPath);   # <prefix>/var/opt/<application>
 
 =head1 DESCRIPTION
 
 Die Klasse ermöglicht einer Applikation ohne hartkodierte absolute
 Pfade auszukommen. Alle Pfade, unter denen sich die verschiedenen
-Teile einer Applikation (opt-, etc-, var-Bereich) im Dateisystem
+Teile der Applikation (opt-, etc-, var-Bereich) im Dateisystem
 befinden, werden von der Klasse aus dem Pfad des ausgeführten
-Programms und Installations-Konventionen hergeleitet.
+Programms und aus Installations-Konventionen hergeleitet.
 
-Wir unterscheiden zwei Installations-Konventionen (Layouts).
-
-Layout 1:
+Das Layout entspricht der opt-Installatiosstruktur eines Unix-Systems:
 
 =over 2
 
 =item *
 
-/opt/<app> (Programmcode und statische Daten)
+/opt/<application> (Programmcode und statische Daten)
 
 =item *
 
-/etc/opt/<app> (Konfiguration)
+/etc/opt/<application> (Konfiguration)
 
 =item *
 
-/var/opt/<app> (Bewegungsdaten)
-
-=back
-
-Layout 2:
-
-=over 2
-
-=item *
-
-/opt/<app> (Programmcode und statische Daten)
-
-=item *
-
-/etc/<app> (Konfiguration)
-
-=item *
-
-/var/<app> (Bewegungsdaten)
+/var/opt/<application> (Bewegungsdaten)
 
 =back
 
 Die Pfade müssen nicht im Root-Verzeichnis beginnen, ihnen kann
-auch Präfix-Pfad <prefix> vorangestellt sein. In dem Fall ist
-<app> in einem tieferen Teil des Dateisystems installiert,
-z.B. im Home-Verzeichnis eines Benutzers.
-
-Layout 1 entspricht der modernen opt-Installatiosstruktur eines
-Unix-Systems und kommt vorzugsweise zur Anwendung, wenn das
-opt-Verzeichnis im Root-Verzeichnis liegt.
-
-Layout 2 ist eine klassische Struktur, die vorzugsweise zur Anwendung
-kommt, wenn die Installation tiefer im Dateisystem liegt, also
-den Pfaden noch ein Präfix-Pfad <prefix> vorangestellt ist.
-Beispiel:
-
-    /home/<user>/opt/<app>
-    /home/<user>/etc/<app>
-    /home/<user>/var/<app>
-
-Zu jedem Layout ist eine unversionisierte und eine versionisierte
-Installation möglich. Die versionisierte Installation stellt eine
-Erweiterung der obigen Layouts dar.
-
-Unversionierte Installation:
-
-    <prefix>/opt/<app>/...
-
-Versionierte Installation:
-
-    <prefix>/opt/<app>/version/<version>/...
-
-Der Konstruktor der Klasse erkennt das Layout der Installation und
-die Objektmethoden liefern Informationen über die Installation.
+auch Präfix-Pfad <prefix> vorangestellt sein, z.B. kann sich die
+Struktur im Home-Verzeichnis eines Benutzers befinden
+(s. EXAMPLES).
 
 =head1 EXAMPLES
+
+Installationen und die Werte der Methodenaufrufe:
 
 =over 2
 
 =item *
 
-/opt/<app>/...
+/opt/<application>/...
 
-    name() => : <app>
-    version() => : (Leerstring)
-    prefix () => : (Leerstring)
-    rootDir() => : /opt/<app>
-    homeDir() => : /opt/<app>
-    etcDir(), etcPath() => : /etc/opt/<app>
-    varDir(), varPath() => : /var/opt/<app>
+    prefix() => : (Leerstring)
+    name() => : <application>
+    homeDir() => : /opt/<application>
+    etcDir() => : /etc/opt/<application>
+    varDir() => : /var/opt/<application>
 =item *
 
-/opt/<app>/version/<version>/...
+/home/<user>/opt/<application>/...
 
-    name() => : <app>
-    version() => : <version>
-    prefix () => : (Leerstring)
-    rootDir() => : /opt/<app>
-    homeDir() => : /opt/<app>/version/<version>
-    etcDir(), etcPath() => : /etc/opt/<app>/<version>
-    varDir(), varPath() => : /var/opt/<app>/<version>
-=item *
-
-/home/<user>/opt/<app>/...
-
-    name() => : <app>
-    version() => : (Leerstring)
-    prefix () => : /home/<user>
-    rootDir() => : /home/<user>/opt/<app>
-    homeDir() => : /home/<user>/opt/<app>
-    etcDir(), etcPath() => : /home/<user>/etc/<app>
-    varDir(), varPath() => : /home/<user>/var/<app>
-=item *
-
-/home/<user>/opt/<app>/version/<version>/...
-
-    name() => : <app>
-    version() => : <version>
-    prefix () => : /home/<user>
-    rootDir() => : /home/<user>/opt/<app>
-    homeDir() => : /home/<user>/opt/<app>/version/<version>
-    etcDir(), etcPath() => : /home/<user>/etc/<app>/<version>
-    varDir(), varPath() => : /home/<user>/var/<app>/<version>
+    prefix() => : /home/<user>
+    name() => : <application>
+    homeDir() => : /home/<user>/opt/<application>
+    etcDir() => : /home/<user>/etc/opt/<application>
+    varDir() => : /home/<user>/var/opt/<application>
 =back
 
 =head1 METHODS
@@ -190,7 +98,6 @@ die Objektmethoden liefern Informationen über die Installation.
 
     $app = $class->new;
     $app = $class->new($depth);
-    $app = $class->new($depth,$layout);
 
 =head4 Arguments
 
@@ -199,18 +106,13 @@ die Objektmethoden liefern Informationen über die Installation.
 =item $depth (Default: 1)
 
 Gibt an, wie viele Subverzeichnisse tief das Programm unterhalb des
-Homedir (/opt/<app> bzw. /opt/<app>/version/<version>) angesiedelt ist.
-
-=item $layout (Default: 1)
-
-Forciert ein bestimmtes Layout. Mögliche Werte: 1 oder 2 (s.o.).
+Homedir (<prefix>/opt/<application>) angesiedelt ist.
 
 =back
 
 =head4 Description
 
-Instantiiere ein Objekt der Klasse und liefere dieses zurück. Das Objekt
-ist ein Singleton.
+Instanziiere ein Objekt der Klasse und liefere dieses zurück.
 
 =cut
 
@@ -218,8 +120,7 @@ ist ein Singleton.
 
 sub new {
     my $class = shift;
-    my $depth = shift // 1;
-    my $layout = shift || 1;
+    my $depth = shift || 1;
 
     # Wir arbeiten nicht mit den Variablen von FindBin, da diese
     # Symlinks auflösen und wir keinen Symbolischen Namen wie
@@ -238,49 +139,37 @@ sub new {
         $path = sprintf '%s/%s',Cwd::getcwd,$path;
     }
 
+    # HomeDir bestimmen, indem wir das Programm und $depth
+    # Verzeichnisse darüber vom Pfad entfernen
+ 
     my @path = split m|/|,$path;
     splice @path,-($depth+1);
     my $homeDir = join '/',@path;
 
-    my ($name,$version,$rootDir,$etcPath,$varPath);
-    if ($path[-2] eq 'version') {
-        $name = $path[-3];
-        $version = $path[-1];
-        splice @path,-2; # entferne: version/<version>
-        $rootDir = join '/',@path;
-        $etcPath = "$name/$version";
-        $varPath = "$name/$version";
-    }
-    else {
-        $name = $path[-1];
-        $version = '';
-        $rootDir = $homeDir;
-        $etcPath = $name;
-        $varPath = $name;
-    }
+    # <application> ist die letzte Pfadkomponente
 
-    pop @path; # <name> entfernen
-    my $parent = pop @path; # Pfadkomponente über <name>
-    my $prefix = join '/',@path;
+    my ($application,$etcPath,$varPath);
+    $application = pop @path;
 
-    if ($layout == 1) {
-        $etcPath = "$prefix/etc/opt/$etcPath";
-        $varPath = "$prefix/var/opt/$varPath";
-    }
-    else {
-        $etcPath = "$prefix/etc/$etcPath";
-        $varPath = "$prefix/var/$varPath";
-    }
+    # <prefix> erhalten wir nach dem Entfernen des
+    # Verzeichnisses oberhalb von <application>
 
-    return $class->SUPER::new(
-        name=>$name,
-        version=>$version,
+    pop @path; # opt entfernen
+    my $prefix = join('/',@path);
+
+    my $etcDir = "$prefix/etc/opt/$application";
+    my $varDir = "$prefix/var/opt/$application";
+
+    my $self = bless {
+        name=>$application,
         prefix=>$prefix,
-        rootDir=>$rootDir,
         homeDir=>$homeDir,
-        etcPath=>$etcPath,
-        varPath=>$varPath,
-    );
+        etcDir=>$etcDir,
+        varDir=>$varDir,
+    },$class;
+    Hash::Util::lock_ref_keys($self);
+
+    return $self;
 }
 
 # -----------------------------------------------------------------------------
@@ -307,27 +196,6 @@ sub name {
 
 # -----------------------------------------------------------------------------
 
-=head3 version() - Version der Applikation
-
-=head4 Synopsis
-
-    $version = $app->version;
-
-=head4 Description
-
-Liefere die Version <version> der Applikation. Ist die Installation nicht
-versionisiert, liefere '' (Leerstring).
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub version {
-    shift->{'version'};
-}
-
-# -----------------------------------------------------------------------------
-
 =head3 prefix() - Pfad-Präfix der Installation
 
 =head4 Synopsis
@@ -337,9 +205,11 @@ sub version {
 
 =head4 Description
 
-Liefere den Pfad-Präfix <prefix> der Installation, also den Pfad
-oberhalb des opt-Verzeichnisses. Ist die Applikation in /opt
-installiert, liefere den Wert '' (Leerstring).
+Liefere den Pfad-Präfix <prefix> der Applikations-Installation,
+also den Pfad oberhalb des opt-Verzeichnisses. Ist die Applikation
+in /opt (opt im Wurzelverzeichnis) installiert, wird ein
+Leerstring geliefert. Ist Zeichenkette $subPath angegeben,
+wird diese mit '/' getrennt angefügt.
 
 =cut
 
@@ -359,38 +229,6 @@ sub prefix {
 
 # -----------------------------------------------------------------------------
 
-=head3 rootDir() - Wurzelverzeichnis der Applikation
-
-=head4 Synopsis
-
-    $rootDir = $app->rootDir;
-    $rootDir = $app->rootDir($subPath);
-
-=head4 Description
-
-Liefere das Wurzelverzeichnis der Applikation <prefix>/opt/<name>.
-Wenn die Installation I<nicht> versionisiert ist, ist das
-Wurzelverzeichnis der Applikation gleich dem Home-Verzeichnis der
-Applikation.
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub rootDir {
-    my $self = shift;
-    # @_: $subPath
-
-    my $path = $self->{'rootDir'};
-    if (@_) {
-        $path .= '/'.shift;
-    }
-
-    return $path;
-}
-
-# -----------------------------------------------------------------------------
-
 =head3 homeDir() - Home-Verzeichnis der Applikation
 
 =head4 Synopsis
@@ -400,16 +238,9 @@ sub rootDir {
 
 =head4 Description
 
-Das Home-Verzeichnis der Applikation ist das Verzeichnis, in dem
-der Programmcode und statische Daten abgelegt sind.
-
-Bei einer unversionisierten Installation:
-
-    <prefix>/opt/<app>
-
-Bei einer versionisierten Installation:
-
-    <prefix>/opt/<app>/version/<version>
+Liefere das Verzeichnis, in dem der Programmcode und die statischen
+Daten der Applikaion abgelegt sind. Ist Zeichenkette $subPath angegeben,
+wird diese mit '/' getrennt angefügt.
 
 =cut
 
@@ -438,20 +269,9 @@ sub homeDir {
 
 =head4 Description
 
-Das Konfigurations-Verzeichnis der Applikation ist das Verzeichnis,
-in dem die Konfigurationsdateien der Applikation abgelegt sind.
-
-Bei einer unversionisierten Installation:
-
-    /etc/opt/<app>
-    -oder-
-    <prefix>/etc/<app>
-
-Bei einer versionisierten Installation:
-
-    /etc/opt/<app>/<version>
-    -oder-
-    <prefix>/etc/<app>/<version>
+Liefere das Verzeichnis, in dem die Konfigurationsdateien der
+Applikation abgelegt sind. Ist Zeichenkette $subPath angegeben,
+wird diese mit '/' getrennt angefügt.
 
 =cut
 
@@ -461,40 +281,9 @@ sub etcDir {
     my $self = shift;
     # @_: $subPath
 
-    my $path = $self->etcPath;
+    my $path = $self->{'etcDir'};
     if (@_) {
         $path .= '/'.shift;
-    }
-
-    return $path;
-}
-
-# -----------------------------------------------------------------------------
-
-=head3 etcPath() - Konfigurations-Pfad der Applikation
-
-=head4 Synopsis
-
-    $etcPath = $app->etcPath;
-    $etcPath = $app->etcPath($suffix);
-
-=head4 Description
-
-Ohne Parameter gerufen liefert die Methode den gleichen Wert
-wie etcDir(). Ist ein Parameter angegeben, wird dieser
-ohne Trennzeichen konkateniert.
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub etcPath {
-    my $self = shift;
-    # @_: $suffix
-
-    my $path = $self->{'etcPath'};
-    if (@_) {
-        $path .= shift;
     }
 
     return $path;
@@ -511,20 +300,8 @@ sub etcPath {
 
 =head4 Description
 
-Das Bewegungsdaten-Verzeichnis der Applikation ist das Verzeichnis,
-in dem die Applikation Bewegungsdaten speichert.
-
-Bei einer unversionisierten Installation:
-
-    /var/opt/<app>
-    -oder-
-    <prefix>/var/<app>
-
-Bei einer versionisierten Installation:
-
-    /var/opt/<app>/<version>
-    -oder-
-    <prefix>/var/<app>/<version>
+Liefere das Verzeichnis, in dem die Applikation Bewegungsdaten speichert.
+Ist Zeichenkette $subPath angegeben, wird diese mit '/' getrennt angefügt.
 
 =cut
 
@@ -534,7 +311,7 @@ sub varDir {
     my $self = shift;
     # @_: $subPath
 
-    my $path = $self->varPath;
+    my $path = $self->{'varDir'};
     if (@_) {
         $path .= '/'.shift;
     }
@@ -544,36 +321,47 @@ sub varDir {
 
 # -----------------------------------------------------------------------------
 
-=head3 varPath() - Bewegungsdaten-Pfad der Applikation
+=head1 DETAILS
 
-=head4 Synopsis
+=head2 Mögliche Erweiterungen
 
-    $varPath = $app->varPath;
-    $varPath = $app->varPath($suffix);
+=head3 Andere Layouts
 
-=head4 Description
+Andere Layouts sind möglich und könnten von der Klasse ebenfalls
+behandelt werden. Bei Bedarf den Konstruktor um eine Option
+C<<-layout=>$layout>> erweitern und das betreffende Layout innerhalb
+des Konstruktors behandeln. Beispiele:
 
-Ohne Parameter gerufen liefert die Methode den gleichen Wert
-wie varDir(). Ist ein Parameter angegeben, wird dieser
-ohne Trennzeichen konkateniert.
+Installation mit Unterscheidung nach Versionsnummer:
 
-=cut
+    <prefix>/opt/<application>/<version>
+    <prefix>/etc/opt/<application>/<version>
+    <prefix>/var/opt/<application>/<version>
 
-# -----------------------------------------------------------------------------
+Installation mit Unterscheidung nach Versionsnummer in eigenem
+Subverzeichnis:
 
-sub varPath {
-    my $self = shift;
-    # @_: $suffix
+    <prefix>/opt/<application>/version/<version>
+    <prefix>/etc/opt/<application>/<version>
+    <prefix>/var/opt/<application>/<version>
 
-    my $path = $self->{'varPath'};
-    if (@_) {
-        $path .= shift;
-    }
+Kein opt-Unterverzeichnis in etc und var:
 
-    return $path;
-}
+    <prefix>/opt/<application>
+    <prefix>/etc/<application>
+    <prefix>/var/<application>
 
-# -----------------------------------------------------------------------------
+=head3 Optionaler Trenner bei etcDir() und varDir()
+
+Die Methoden etcDir() und varDir() könnten um eine Variante mit
+zwei Parametern erweitert werden, die die Vorgabe des Trennzeichens
+erlaubt:
+
+    $path = $app->etcDir('','.conf');
+    # <prefix>/etc/opt/<application>.conf
+    
+    $path = $app->varDir('','.log');
+    # <prefix>/etc/opt/<application>.log
 
 =head1 AUTHOR
 

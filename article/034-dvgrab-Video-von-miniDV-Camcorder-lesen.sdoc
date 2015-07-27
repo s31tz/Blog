@@ -7,6 +7,9 @@
 
 # id=61
 
+%Figure: file="IMGDIR/video-camera-168x100.png"
+  width="84" height="50" url="https://wiki.ubuntuusers.de/dvgrab"
+
 Mit C{dvgrab} wird ein Video von einem digitalen Camcorder über
 FireWire gelesen und in Form von einzelnen Clips (.dv-Dateien) auf die
 Platte geschrieben. Die von mir bevorzugt verwendete Kommandozeile lautet:
@@ -21,5 +24,9 @@ Platte geschrieben. Die von mir bevorzugt verwendete Kommandozeile lautet:
 Die Clip-Dateien erhalten die Namen C{clip-YYYY.MM.DD_HH-MI-SS.dv}.
 Pro Sekunde fallen 3.43 MB an Daten an, eine Stunde Videomaterial belegt
 12.35 GB Plattenplatz.
+
+= Links
+
+* U{"https://wiki.ubuntuusers.de/dvgrab",text="Ubuntuusers Wiki - dvgrab"}
 
 # eof

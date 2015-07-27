@@ -7,6 +7,9 @@
 
 # id=70
 
+%Figure: file="IMGDIR/handbrake-logo-100x100.png"
+  width="65" height="65" url="https://handbrake.fr/"
+
 = Liste der verfügbaren Titel
 
   $ HandBrakeCLI --input=/dev/dvd --title=0 2>&1 | grep '\+'
@@ -50,5 +53,9 @@
 
 [--two-pass]:
   Use two-pass mode
+
+= Links
+
+* U{"https://handbrake.fr/",text="Handbrake Homepage"}
 
 # eof
