@@ -133,7 +133,7 @@ sub dump {
     elsif ($format eq 'pod') {
         # FIXME: Texttabelle erzeugen
         $childs =~ s/^/    /mg;
-        return $childs;
+        return "$childs\n";
     }
     elsif ($format eq 'man') {
         $self->notImplemented;

@@ -64,29 +64,21 @@ Struktur im Home-Verzeichnis eines Benutzers befinden
 
 =head1 EXAMPLES
 
-Installationen und die Werte der Methodenaufrufe:
-
-=over 2
-
-=item *
-
 /opt/<application>/...
 
-    prefix() => : (Leerstring)
-    name() => : <application>
-    homeDir() => : /opt/<application>
-    etcDir() => : /etc/opt/<application>
-    varDir() => : /var/opt/<application>
-=item *
+    prefix()  : (Leerstring)
+    name()    : <application>
+    homeDir() : /opt/<application>
+    etcDir()  : /etc/opt/<application>
+    varDir()  : /var/opt/<application>
 
 /home/<user>/opt/<application>/...
 
-    prefix() => : /home/<user>
-    name() => : <application>
-    homeDir() => : /home/<user>/opt/<application>
-    etcDir() => : /home/<user>/etc/opt/<application>
-    varDir() => : /home/<user>/var/opt/<application>
-=back
+    prefix()  : /home/<user>
+    name()    : <application>
+    homeDir() : /home/<user>/opt/<application>
+    etcDir()  : /home/<user>/etc/opt/<application>
+    varDir()  : /home/<user>/var/opt/<application>
 
 =head1 METHODS
 
