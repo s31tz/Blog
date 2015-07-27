@@ -8,7 +8,7 @@
 # id=61
 
 %Figure: file="IMGDIR/video-camera-168x100.png"
-  width="84" height="50" url="https://wiki.ubuntuusers.de/dvgrab"
+  width="76" height="45" url="https://wiki.ubuntuusers.de/dvgrab"
 
 Mit C{dvgrab} wird ein Video von einem digitalen Camcorder über
 FireWire gelesen und in Form von einzelnen Clips (.dv-Dateien) auf die
