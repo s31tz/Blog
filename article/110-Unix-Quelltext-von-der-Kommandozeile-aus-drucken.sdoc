@@ -1,0 +1,86 @@
+# Date: 2015-07-28
+
+%Document:
+  title="Unix: (Quell)Text von der Kommandozeile aus drucken"
+  generateAnchors=0
+  utf8=1
+
+# id=122
+
+%Figure: file="IMGDIR/gnu-logo-102x100.png" \
+  width="71" height="70" url="http://www.gnu.org/"
+
+Ein Kommandozeilen-Werkzeug aus dem GNU-Werkzeugkasten zum Wandeln von
+Text nach PostScript, und damit in ein druckbares Format, ist
+U{"http://www.gnu.org/software/enscript/",text="enscript"}. Sein
+Verhalten wird von Konfigurationseinstellungen und den
+Kommandozeilenparametern des jeweiligen Aufrufs bestimmt.
+
+Das Programm ist als Filter konzipiert, sendet seine Ausgabe per
+Default jedoch I{direkt} an einen Drucker. Dieses Verhalten ist, wenn
+man C{enscript} universell einsetzen will, eher störend. Es empfiehlt
+sich, in der Konfiguration C{DefaultOutputMethod: stdout}
+einzustellen, dann schreibt das Programm seine Ausgabe nach stdout. Im
+folgenden gehe ich von dieser Einstellung aus.
+
+(Quell)Textdatei C{FILE} in eine PDF-Datei wandeln:
+
+  $ enscript FILE | ps2pdf - FILE.pdf
+
+Mit einem PDF-Viewer kann das Resultat C{FILE.pdf} angesehen und von
+dort aus ganz oder teilweise gedruckt werden.
+
+= Optionen
+
+C{Enscript} hat sehr viele Optionen und Konfigurationsvariablen, mit
+denen man auf die Gestaltung der Druckseite Einfluss nehmen kann.
+Diese sind auf der Man page ausführlich beschrieben. Hier einige
+Einstellungen, die speziell das Drucken von Quelltext nützlich sind.
+
+Einen kleineren Font verwenden (Default ist C{Courier10}):
+
+  --font=FONT+SIZE (z.B. Courier7)
+
+Zweispaltige Ausgabe im Querformat (ein kleinerer Font wird automatisch
+gewählt):
+
+  --columns=2 --landscape
+
+Syntax-Highlighting:
+
+  --highlight=LANGUAGE (z.B. perl)
+
+Das Syntax-Highlighting ist im Falle von Perl eher rudimentär und
+kommt leicht durcheinander.
+
+= UTF-8
+
+Leider beherrscht C{enscript} kein C{UTF-8}. Im Falle einer UTF-8-Datei
+müssen wir in ein Encoding wandeln, mit dem C{enscript} umgehen
+kann. Das Default-Encoding von C{enscript} ist C{latin1}. Enthält
+unsere Datei C{FILE} lediglich Umlaute, brauchen wir bei C{enscript}
+nichts weiter einstellen. Für die Wandlung von C{UTF-8} nach C{latin1}
+schalten wir einfach C{iconv} davor:
+
+  $ iconv -f utf-8 -t latin1 FILE | enscript ...
+
+= Globale Einstellungen
+
+Für eigene systemglobale Einstellungen sollte man eine zusätzliche
+Datei C{/etc/enscriptsite.cfg} anlegen. Vorteil: Es entstehen keine
+Konflikte, wenn durch die Paketverwaltung an der eigentlichen
+Configdatei C{/etc/enscript.cfg} Änderungen vorgenommen
+werden. Beispiel:
+
+  # Site-spezifische Einstellungen
+
+  DefaultMedia: A4dj
+  DefaultOutputMethod: stdout
+
+  # eof
+
+= Links
+
+* U{"http://www.gnu.org/software/enscript/",text="enscript Homepage"}
+
+# eof

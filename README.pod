@@ -13,6 +13,10 @@ veröffentlicht habe.
 
 =item *
 
+L<Unix: (Quell)Text von der Kommandozeile aus drucken|http://fseitz.de/blog/index.php?/archives/122-x.html>
+
+=item *
+
 L<Globale in-place Textersetzung mit sed oder Perl|http://fseitz.de/blog/index.php?/archives/121-x.html>
 
 =item *
