@@ -8,13 +8,13 @@
 # id=122
 
 %Figure: file="IMGDIR/printer-icon-118x100.png" \
-  width="65" height="55" url="http://www.gnu.org/"
+  width="64" height="54" url="http://www.gnu.org/"
 
 Ein Kommandozeilen-Werkzeug aus dem GNU-Werkzeugkasten zum Wandeln von
 Text nach PostScript, und damit in ein druckbares Format, ist
 U{"http://www.gnu.org/software/enscript/",text="enscript"}. Sein
 Verhalten wird von Konfigurationseinstellungen und den
-Kommandozeilenparametern des jeweiligen Aufrufs bestimmt.
+Kommandozeilenparametern des Aufrufs bestimmt.
 
 Das Programm ist als Filter konzipiert, sendet seine Ausgabe per
 Default jedoch I{direkt} an einen Drucker. Dieses Verhalten ist, wenn
