@@ -53,7 +53,7 @@ C{--header=STRING} umdefinieren I{oder} einen sog. "Fancy Header"
 auswählen, der die Headerinformation fix-und-fertig vorgibt und die
 Seite zusätzlich durch Umrandungen und Trennlinen gestaltet. Welche
 Fancy Header zur Verfügung stehenden, ist auf der man page nicht
-dokumentiert. Dies kann aber anhand der Konfigurationsdateien
+dokumentiert, kann aber anhand der Konfigurationsdateien
 ermittelt werden:
 
   $ ls -l /usr/share/enscript/*.hdr
@@ -87,12 +87,12 @@ Die Liste der unterstützen Sprachen erhält man mit
 
 = UTF-8
 
-Leider beherrscht C{enscript} kein C{UTF-8}. Im Falle einer UTF-8-Datei
-müssen wir in ein Encoding wandeln, mit dem C{enscript} umgehen
-kann. Das Default-Encoding von C{enscript} ist C{latin1}. Enthält
-unsere Datei C{FILE} lediglich Umlaute, brauchen wir bei C{enscript}
-nichts weiter einstellen. Für die Wandlung von C{UTF-8} nach C{latin1}
-schalten wir einfach C{iconv} davor:
+Leider beherrscht C{enscript} kein C{UTF-8}. Im Falle einer
+UTF-8-Datei müssen wir in ein Encoding wandeln, mit dem C{enscript}
+umgehen kann. Das Default-Encoding von C{enscript} ist
+C{latin1}. Enthält unsere Quelltext-Datei C{FILE} lediglich Umlaute,
+brauchen wir bei C{enscript} nichts weiter einstellen. Für die
+Wandlung von C{UTF-8} nach C{latin1} schalten wir C{iconv} davor:
 
   $ iconv -f utf-8 -t latin1 FILE | enscript ...
 
