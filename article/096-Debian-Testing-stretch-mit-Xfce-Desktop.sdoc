@@ -107,7 +107,7 @@ lässt sie sich abschalten. Soll das immer gelten, kann das Kommando
 unter C{Applications / Settings / Session and Startup / Application
 Autostart / Add} zu den Autostart-Kommandos hinzugefügt werden.
 
-= Java 8 (1.8) installieren
+= Java 8
 
 Quelle definieren:
 
