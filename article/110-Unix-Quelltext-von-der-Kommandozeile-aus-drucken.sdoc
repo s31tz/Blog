@@ -54,7 +54,7 @@ C{--header=STRING} umdefinieren I{oder} einen sog. "Fancy Header"
 auswählen, der die Headerinformation fix-und-fertig vorgibt und die
 Seite zusätzlich durch Umrandungen und Trennlinen gestaltet. Welche
 Fancy Header zur Verfügung stehenden, ist auf der man page nicht
-dokumentiert, kann aber anhand der Konfigurationsdateien
+dokumentiert, kann aber anhand der betreffenden Konfigurationsdateien
 ermittelt werden:
 
   $ ls -l /usr/share/enscript/*.hdr
@@ -103,8 +103,8 @@ Die oben beschrieben Anforderungen sind bereits zu umfangreich, als
 dass sie mit jedem Ausdruck manuell angewendet werden
 könnten. Folgendes Bash-Script kapselt sie. Die
 Zeichensatz-Konvertierung ist hier mittels einer temporären Datei
-(statt einer Pipe) gelöst, damit C{enscript} den Dateinamen und
-den Änderungszeitpunkt erfährt.
+(statt einer Pipe) gelöst, damit C{enscript} den Dateinamen und den
+Änderungszeitpunkt erfährt.
 
 %Code: ln=1 filter="sed -r 's/r1-|-fs//g' | ./blog-highlight bash %FORMAT%" \
 file="/media/seitzf/share/opt/CoTeDo/storage/root/code/program/r1-src-to-pdf" 
