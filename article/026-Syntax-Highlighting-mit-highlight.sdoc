@@ -7,6 +7,9 @@
 
 # id=30
 
+%Figure: file="IMGDIR/highlight-logo-100x100.png" \
+  width="60" height="60" url="http://www.andre-simon.de/"
+
 Highlight stellt die Syntax von zahlreichen Programmiersprachen farbig
 und mit Fontattributen wie kursiv und fett dar:
 
@@ -22,5 +25,10 @@ Die zugehörigen CSS-Klassen liefert folgendes Kommando nach stdout:
 
 Das nachgeschaltete grep sorgt dafür, dass der Output auf
 die relevanten Klassen für eine Einbettung eingeschränkt wird.
+
+= Links
+
+* U{"http://www.andre-simon.de/doku/highlight/en/highlight.php",\
+    text="Highlight Manual"}
 
 # eof

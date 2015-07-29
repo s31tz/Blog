@@ -41,7 +41,7 @@ eine Quelltextausgabe als sinnvoll erachte.
 
 == Zweispaltige Ausgabe
 
-Wer, wie ich, die Zeilenlänge seiner Quelltexte auf 80 Zeichen
+Wer (wie ich) die Zeilenlänge seiner Quelltexte auf 80 Zeichen
 beschränkt, fährt mit einer zweispaltigen Ausgabe im Querformat am
 besten:
 
@@ -88,12 +88,12 @@ Die Liste der unterstützen Sprachen erhält man mit
 
 = UTF-8
 
-Leider beherrscht C{enscript} kein C{UTF-8}. Im Falle einer
+Leider beherrscht C{enscript} kein UTF-8. Im Falle einer
 UTF-8-Datei müssen wir in ein Encoding wandeln, mit dem C{enscript}
 umgehen kann. Das Default-Encoding von C{enscript} ist
-C{latin1}. Enthält unsere Quelltext-Datei C{FILE} lediglich Umlaute,
-brauchen wir bei C{enscript} nichts weiter einstellen. Für die
-Wandlung von C{UTF-8} nach C{latin1} schalten wir C{iconv} davor:
+latin1. Enthält unsere UTF-8-Quelltext-Datei C{FILE} lediglich
+Umlaute, brauchen wir bei C{enscript} nichts weiter einstellen. Für
+die Wandlung von C{UTF-8} nach C{latin1} schalten wir C{iconv} davor:
 
   $ iconv -f utf-8 -t latin1 FILE | enscript ...
 
