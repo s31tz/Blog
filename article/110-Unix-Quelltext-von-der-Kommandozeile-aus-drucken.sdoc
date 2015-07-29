@@ -8,13 +8,13 @@
 # id=122
 
 %Figure: file="IMGDIR/printer-icon-118x100.png" \
-  width="64" height="54" url="http://www.gnu.org/"
+  width="61" height="52" url="http://www.gnu.org/software/enscript/"
 
 Ein Kommandozeilen-Werkzeug aus dem GNU-Werkzeugkasten zum Wandeln von
-Text nach PostScript, und damit in ein druckbares Format, ist
-U{"http://www.gnu.org/software/enscript/",text="enscript"}. Sein
+Text nach PostScript - und damit in ein druckbares Format - ist
+U{"http://swoolley.org/man.cgi/1/enscript",text="enscript"}. Sein
 Verhalten wird von Konfigurationseinstellungen und den
-Kommandozeilenparametern des Aufrufs bestimmt.
+Kommandozeilenparametern bestimmt.
 
 Das Programm ist als Filter konzipiert, sendet seine Ausgabe per
 Default jedoch I{direkt} an einen Drucker. Dieses Verhalten ist, wenn
@@ -32,26 +32,32 @@ dort aus ganz oder teilweise gedruckt werden.
 
 = Optionen
 
-C{Enscript} hat sehr viele Optionen und Konfigurationsvariablen, mit
-denen man auf die Gestaltung der Druckseite Einfluss nehmen kann.
-Diese sind auf der Man page ausführlich beschrieben. Hier einige
-Einstellungen, die speziell das Drucken von Quelltext nützlich sind.
+C{Enscript} hat viele Optionen und Konfigurationsvariablen, mit denen
+man auf die Gestaltung der Druckseite Einfluss nehmen kann. Hier
+einige Einstellungen, die speziell für das Drucken von Quelltext
+nützlich sind.
 
 Einen kleineren Font verwenden (Default ist C{Courier10}):
 
-  --font=FONT+SIZE (z.B. Courier7)
+  --font=FONT+SIZE (z.B. Courier8)
 
 Zweispaltige Ausgabe im Querformat (ein kleinerer Font wird automatisch
 gewählt):
 
   --columns=2 --landscape
 
+(es gibt auch eine Option --nup=N, bei der der aus irgendeinem Grund
+obere Teil Seite jedoch teilweise leer bleibt)
+
 Syntax-Highlighting:
 
   --highlight=LANGUAGE (z.B. perl)
 
-Das Syntax-Highlighting ist im Falle von Perl eher rudimentär und
-kommt leicht durcheinander.
+Die Liste der verfügbaren Sprachen erhält man mit C{--help-highlight}.
+
+Kein Header (d.h. etwas mehr Platz):
+
+  --no-header
 
 = UTF-8
 
@@ -82,5 +88,6 @@ werden. Beispiel:
 = Links
 
 * U{"http://www.gnu.org/software/enscript/",text="enscript Homepage"}
+* U{"http://swoolley.org/man.cgi/1/enscript",text="enscript(1)"}
 
 # eof
