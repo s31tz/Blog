@@ -27,7 +27,8 @@ Kommandozeile:
   $ perl -pi -e s/PATTERN/REPLACEMENT/g FILE ...
 
 Der Vorteil von Perl gegenüber sed ist dessen leistungsfähigere
-Regex-Engine.
+Regex-Engine. Bei sed lassen sich mit Option C{-r} "Extended Regular
+Expressions" einschalten (die aber auch nicht an Perl heranreichen).
 
 WICHTIG: Die Ersetzungsoperation wird I{zeilenweise} angewendet,
 d.h. eine Ersetzung über Zeilengrenzen hinweg ist I{nicht} möglich.
