@@ -10,9 +10,10 @@
 %Figure: file="IMGDIR/printer-icon-118x100.png" \
   width="64" height="54" url="http://swoolley.org/man.cgi/1/enscript"
 
-Ein Kommandozeilen-Werkzeug aus dem GNU-Werkzeugkasten zum Wandeln von
-Text nach PostScript, und damit in ein druckbares Format, ist
-U{"http://swoolley.org/man.cgi/1/enscript",text="enscript"}. Sein
+Ein Kommandozeilen-Werkzeug aus dem
+U{"http://www.gnu.org/software/",text="GNU-Werkzeugkasten"}
+zum Wandeln von Text nach PostScript, und damit in ein druckbares Format,
+ist U{"http://swoolley.org/man.cgi/1/enscript",text="enscript"}. Sein
 Verhalten wird von Konfigurationseinstellungen und den
 Kommandozeilenparametern des jeweiligen Aufrufs bestimmt.
 
@@ -100,7 +101,10 @@ Wandlung von C{UTF-8} nach C{latin1} schalten wir C{iconv} davor:
 
 Die oben beschrieben Anforderungen sind bereits zu umfangreich, als
 dass sie mit jedem Ausdruck manuell angewendet werden
-könnten. Folgendes Bash-Script kapselt sie:
+könnten. Folgendes Bash-Script kapselt sie. Die
+Zeichensatz-Konvertierung ist hier mittels einer temporären Datei
+(statt einer Pipe) gelöst, damit C{enscript} den Dateinamen und
+den Änderungszeitpunkt erfährt.
 
 %Code: ln=1 filter="sed -r 's/r1-|-fs//g' | ./blog-highlight bash %FORMAT%" \
 file="/media/seitzf/share/opt/CoTeDo/storage/root/code/program/r1-src-to-pdf" 
