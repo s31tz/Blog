@@ -34,7 +34,7 @@ dort aus ganz oder teilweise gedruckt werden.
 
 C{Enscript} hat viele Optionen und Konfigurationsvariablen, mit denen
 man auf die Gestaltung der Druckseite Einfluss nehmen kann. Wie
-üblich, muss man ein wenig rumfummeln bis das Ergbnis den eigenen
+üblich, muss man ein wenig rumfummeln bis das Ergebnis den eigenen
 Vorstellungen entspricht. Es folgen die Optionen, ich für
 eine Quelltextausgabe als sinnvoll erachte.
 
@@ -51,9 +51,10 @@ besten:
 Der Default-Header ist recht simpel. Man kann ihn mit Option
 C{--header=STRING} umdefinieren I{oder} einen sog. "Fancy Header"
 auswählen, der die Headerinformation fix-und-fertig vorgibt und die
-Seite zusätzlich durch Umrandungen und Trennlinen gestaltet. Die zur
-Verfügung stehenden Fancy Header sind nicht dokumentiert, können aber
-anhand ihrer Konfigurationsdateien ermittelt werden:
+Seite zusätzlich durch Umrandungen und Trennlinen gestaltet. Welche
+Fancy Header zur Verfügung stehenden, ist auf der man page nicht
+dokumentiert. Dies kann aber anhand der Konfigurationsdateien
+ermittelt werden:
 
   $ ls -l /usr/share/enscript/*.hdr
 
@@ -61,7 +62,8 @@ Mir erscheint Fancy Header C{edd} am zweckmäßigsten:
 
   --fancy-header=edd
 
-Im Kopf der Seite erscheint dann sämtliche relevante Information:
+Beim Fancy Header C{edd} steht im Kopf der Seite sämtliche relevante
+Information:
 
 * Dateiname
 * Letzter Änderungszeitpunkt
@@ -69,15 +71,15 @@ Im Kopf der Seite erscheint dann sämtliche relevante Information:
 * Druckzeitpunkt
 
 Außerdem werden die beiden Spalten des zweiseitigen Drucks durch
-einen senkrechten Strich optisch getrennt.
+eine senkrechte Linie optisch getrennt.
 
 == Syntax Highlighting
 
 Programm-Quelltext ist leichter lesbar, wenn Schlüsselworter und
-andere Sprachbestandteile hervorgehoben werden. In C{enscript}
-wird dies mit der Option C{--highlight} aktiviert.
+andere Sprachbestandteile hervorgehoben werden. Bei Angabe der Option
+C{--highlight} führt C{enscript} ein Syntax-Highlighting durch:
 
-  --highlight=LANGUAGE (z.B. perl)
+  --highlight=LANGUAGE
 
 Die Liste der unterstützen Sprachen erhält man mit
 
@@ -94,13 +96,22 @@ schalten wir einfach C{iconv} davor:
 
   $ iconv -f utf-8 -t latin1 FILE | enscript ...
 
+= Script
+
+Die oben beschrieben Anforderungen sind bereits zu umfangreich, als
+dass sie mit jedem Ausdruck manuell angewendet werden
+könnten. Folgendes Bash-Script kapselt sie:
+
+%Code: ln=1 filter="sed -r 's/r1-|-fs//g' | ./blog-highlight bash %FORMAT%" \
+file="/media/seitzf/share/opt/CoTeDo/storage/root/code/program/r1-src-to-pdf" 
+
 = Globale Einstellungen
 
-Für systemglobale Einstellungen sollte man die zusätzliche
+Für systemglobale Anpassungen sollte man die ergänzende
 Datei C{/etc/enscriptsite.cfg} anlegen. Vorteil: Es entstehen keine
 Konflikte, wenn durch die Paketverwaltung an der eigentlichen
 Configdatei C{/etc/enscript.cfg} Änderungen vorgenommen
-werden. Hier die Datei, die ich angelegt habe:
+werden. Hier die Anpassungen, die ich systemglobal vorgenommen habe:
 
   # Site-spezifische Einstellungen
 
@@ -112,7 +123,6 @@ werden. Hier die Datei, die ich angelegt habe:
 
 = Links
 
-* U{"http://www.gnu.org/software/enscript/",text="enscript Homepage"}
 * U{"http://swoolley.org/man.cgi/1/enscript",text="enscript(1) man page"}
 
 # eof

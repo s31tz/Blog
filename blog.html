@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-07-29 17:33:47
+    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-07-29 23:04:14
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -410,7 +410,7 @@
   <p class="sdoc-para-p">
     <tt class="sdoc-seg-c">Enscript</tt> hat viele Optionen und Konfigurationsvariablen, mit denen
     man auf die Gestaltung der Druckseite Einfluss nehmen kann. Wie
-    üblich, muss man ein wenig rumfummeln bis das Ergbnis den eigenen
+    üblich, muss man ein wenig rumfummeln bis das Ergebnis den eigenen
     Vorstellungen entspricht. Es folgen die Optionen, ich für
     eine Quelltextausgabe als sinnvoll erachte.
   </p>
@@ -428,9 +428,10 @@
     Der Default-Header ist recht simpel. Man kann ihn mit Option
     <tt class="sdoc-seg-c">--header=STRING</tt> umdefinieren <i class="sdoc-seg-i">oder</i> einen sog. "Fancy Header"
     auswählen, der die Headerinformation fix-und-fertig vorgibt und die
-    Seite zusätzlich durch Umrandungen und Trennlinen gestaltet. Die zur
-    Verfügung stehenden Fancy Header sind nicht dokumentiert, können aber
-    anhand ihrer Konfigurationsdateien ermittelt werden:
+    Seite zusätzlich durch Umrandungen und Trennlinen gestaltet. Welche
+    Fancy Header zur Verfügung stehenden, ist auf der man page nicht
+    dokumentiert. Dies kann aber anhand der Konfigurationsdateien
+    ermittelt werden:
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">$ ls -l /usr/share/enscript/*.hdr</pre>
@@ -442,7 +443,8 @@
     <pre class="sdoc-code-pre">--fancy-header=edd</pre>
   </div>
   <p class="sdoc-para-p">
-    Im Kopf der Seite erscheint dann sämtliche relevante Information:
+    Beim Fancy Header <tt class="sdoc-seg-c">edd</tt> steht im Kopf der Seite sämtliche relevante
+    Information:
   </p>
   <ul class="sdoc-list-ul">
     <li class="sdoc-list-li-point" style="list-style-type:disc">Dateiname</li>
@@ -452,16 +454,16 @@
   </ul>
   <p class="sdoc-para-p">
     Außerdem werden die beiden Spalten des zweiseitigen Drucks durch
-    einen senkrechten Strich optisch getrennt.
+    eine senkrechte Linie optisch getrennt.
   </p>
   <h3 class="sdoc-sec-h3">Syntax Highlighting<a id="section_1_1_3"></a></h3>
   <p class="sdoc-para-p">
     Programm-Quelltext ist leichter lesbar, wenn Schlüsselworter und
-    andere Sprachbestandteile hervorgehoben werden. In <tt class="sdoc-seg-c">enscript</tt>
-    wird dies mit der Option <tt class="sdoc-seg-c">--highlight</tt> aktiviert.
+    andere Sprachbestandteile hervorgehoben werden. Bei Angabe der Option
+    <tt class="sdoc-seg-c">--highlight</tt> führt <tt class="sdoc-seg-c">enscript</tt> ein Syntax-Highlighting durch:
   </p>
   <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre">--highlight=LANGUAGE (z.B. perl)</pre>
+    <pre class="sdoc-code-pre">--highlight=LANGUAGE</pre>
   </div>
   <p class="sdoc-para-p">
     Die Liste der unterstützen Sprachen erhält man mit
@@ -481,20 +483,28 @@
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">$ iconv -f utf-8 -t latin1 FILE | enscript ...</pre>
   </div>
-  <h2 class="sdoc-sec-h2">Globale Einstellungen<a id="section_1_3"></a></h2>
+  <h2 class="sdoc-sec-h2">Script<a id="section_1_3"></a></h2>
   <p class="sdoc-para-p">
-    Für systemglobale Einstellungen sollte man die zusätzliche
+    Die oben beschrieben Anforderungen sind bereits zu umfangreich, als
+    dass sie mit jedem Ausdruck manuell angewendet werden
+    könnten. Folgendes Bash-Script kapselt sie:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre"><span class="sdoc-code-ln"> 1</span> <span class="hl slc">#!/bin/bash</span>&#10;<span class="sdoc-code-ln"> 2</span> &#10;<span class="sdoc-code-ln"> 3</span> <span class="hl slc"># NAME</span>&#10;<span class="sdoc-code-ln"> 4</span> <span class="hl slc">#     src-to-pdf - Quelltext nach PDF</span>&#10;<span class="sdoc-code-ln"> 5</span> <span class="hl slc">#     </span>&#10;<span class="sdoc-code-ln"> 6</span> <span class="hl slc"># USAGE</span>&#10;<span class="sdoc-code-ln"> 7</span> <span class="hl slc">#     src-to-pdf LANGUAGE ENCODING SOURCE_FILE PDF_FILE</span>&#10;<span class="sdoc-code-ln"> 8</span> <span class="hl slc">#     </span>&#10;<span class="sdoc-code-ln"> 9</span> <span class="hl slc"># DESCRIPTION</span>&#10;<span class="sdoc-code-ln">10</span> <span class="hl slc">#     Erzeuge zu Quelltext-Datei SOURCE_FILE mit Character-Encoding ENCODING</span>&#10;<span class="sdoc-code-ln">11</span> <span class="hl slc">#     in Programmiersprache LANGUAGE die (druckbare) PDF-Datei PDF_FILE.</span>&#10;<span class="sdoc-code-ln">12</span> <span class="hl slc">#     </span>&#10;<span class="sdoc-code-ln">13</span> <span class="hl slc"># AUTHOR</span>&#10;<span class="sdoc-code-ln">14</span> <span class="hl slc">#     Frank Seitz, http://fseitz.de/</span>&#10;<span class="sdoc-code-ln">15</span> <span class="hl slc">#     </span>&#10;<span class="sdoc-code-ln">16</span> <span class="hl slc"># COPYRIGHT</span>&#10;<span class="sdoc-code-ln">17</span> <span class="hl slc">#     Copyright © 2015 Frank Seitz</span>&#10;<span class="sdoc-code-ln">18</span> &#10;<span class="sdoc-code-ln">19</span> <span class="hl kwa">if</span> <span class="hl opt">[</span> <span class="hl kwd">$#</span> <span class="hl opt">!=</span> <span class="hl num">4</span> <span class="hl opt">];</span> <span class="hl kwa">then</span>&#10;<span class="sdoc-code-ln">20</span>     PROG<span class="hl opt">=</span><span class="hl str">`basename</span> <span class="hl ipl">$0</span><span class="hl str">`</span>&#10;<span class="sdoc-code-ln">21</span>     <span class="hl kwb">echo</span> <span class="hl str">&quot;Usage:</span> <span class="hl ipl">$PROG</span> <span class="hl str">LANGUAGE ENCODING SOURCE_FILE PDF_FILE&quot;</span>&#10;<span class="sdoc-code-ln">22</span>     <span class="hl kwb">exit</span> <span class="hl num">10</span>&#10;<span class="sdoc-code-ln">23</span> <span class="hl kwa">fi</span>&#10;<span class="sdoc-code-ln">24</span> &#10;<span class="sdoc-code-ln">25</span> LANG<span class="hl opt">=</span><span class="hl kwd">$1</span>&#10;<span class="sdoc-code-ln">26</span> ENC<span class="hl opt">=</span><span class="hl kwd">$2</span>&#10;<span class="sdoc-code-ln">27</span> IN<span class="hl opt">=</span><span class="hl kwd">$3</span>&#10;<span class="sdoc-code-ln">28</span> OUT<span class="hl opt">=</span><span class="hl kwd">$4</span>&#10;<span class="sdoc-code-ln">29</span> TMP<span class="hl opt">=/</span>tmp<span class="hl opt">/</span><span class="hl kwd">$IN</span>&#10;<span class="sdoc-code-ln">30</span> &#10;<span class="sdoc-code-ln">31</span> <span class="hl kwc">iconv</span> <span class="hl opt">-</span>f <span class="hl kwd">$ENC</span> <span class="hl opt">-</span>t latin1 <span class="hl kwd">$IN</span> <span class="hl opt">&gt;</span><span class="hl kwd">$TMP</span>&#10;<span class="sdoc-code-ln">32</span> <span class="hl kwc">touch</span> <span class="hl opt">--</span>reference<span class="hl opt">=</span><span class="hl kwd">$IN $TMP</span>&#10;<span class="sdoc-code-ln">33</span> <span class="hl opt">(</span><span class="hl kwb">cd</span> <span class="hl opt">/</span>tmp<span class="hl opt">;</span> enscript <span class="hl opt">--</span>quiet <span class="hl opt">--</span>output<span class="hl opt">=- --</span>columns<span class="hl opt">=</span><span class="hl num">2</span> <span class="hl opt">--</span>landscape \&#10;<span class="sdoc-code-ln">34</span>     <span class="hl opt">--</span>fancy-header<span class="hl opt">=</span>edd <span class="hl opt">--</span>highlight<span class="hl opt">=</span><span class="hl kwd">$LANG $IN</span> | ps2pdf <span class="hl opt">-</span> <span class="hl kwd">$OUT</span><span class="hl opt">)</span>&#10;<span class="sdoc-code-ln">35</span> <span class="hl kwc">rm</span> <span class="hl kwd">$TMP</span>&#10;<span class="sdoc-code-ln">36</span> &#10;<span class="sdoc-code-ln">37</span> <span class="hl slc"># eof</span>&#10;</pre>
+  </div>
+  <h2 class="sdoc-sec-h2">Globale Einstellungen<a id="section_1_4"></a></h2>
+  <p class="sdoc-para-p">
+    Für systemglobale Anpassungen sollte man die ergänzende
     Datei <tt class="sdoc-seg-c">/etc/enscriptsite.cfg</tt> anlegen. Vorteil: Es entstehen keine
     Konflikte, wenn durch die Paketverwaltung an der eigentlichen
     Configdatei <tt class="sdoc-seg-c">/etc/enscript.cfg</tt> Änderungen vorgenommen
-    werden. Hier die Datei, die ich angelegt habe:
+    werden. Hier die Anpassungen, die ich systemglobal vorgenommen habe:
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre"># Site-spezifische Einstellungen&#10;&#10;DefaultFancyHeader: edd&#10;DefaultMedia: A4dj&#10;DefaultOutputMethod: stdout&#10;&#10;# eof</pre>
   </div>
-  <h2 class="sdoc-sec-h2">Links<a id="section_1_4"></a></h2>
+  <h2 class="sdoc-sec-h2">Links<a id="section_1_5"></a></h2>
   <ul class="sdoc-list-ul">
-    <li class="sdoc-list-li-point" style="list-style-type:disc"><a class="sdoc-seg-u" href="http://www.gnu.org/software/enscript/">enscript Homepage</a></li>
     <li class="sdoc-list-li-point" style="list-style-type:disc"><a class="sdoc-seg-u" href="http://swoolley.org/man.cgi/1/enscript">enscript(1) man page</a></li>
   </ul>
   <h1 class="sdoc-sec-h1">109. Globale in-place Textersetzung mit sed oder Perl<a id="section_2"></a></h1>
