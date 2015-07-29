@@ -8,7 +8,7 @@
 # id=122
 
 %Figure: file="IMGDIR/printer-icon-118x100.png" \
-  width="71" height="70" url="http://swoolley.org/man.cgi/1/enscript"
+  width="64" height="54" url="http://swoolley.org/man.cgi/1/enscript"
 
 Ein Kommandozeilen-Werkzeug aus dem GNU-Werkzeugkasten zum Wandeln von
 Text nach PostScript, und damit in ein druckbares Format, ist
@@ -100,7 +100,7 @@ Für systemglobale Einstellungen sollte man die zusätzliche
 Datei C{/etc/enscriptsite.cfg} anlegen. Vorteil: Es entstehen keine
 Konflikte, wenn durch die Paketverwaltung an der eigentlichen
 Configdatei C{/etc/enscript.cfg} Änderungen vorgenommen
-werden. Beispiel:
+werden. Hier die Datei, die ich angelegt habe:
 
   # Site-spezifische Einstellungen
 
