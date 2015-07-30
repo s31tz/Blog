@@ -13,7 +13,7 @@ veröffentlicht habe.
 
 =item *
 
-L<Unix: (Quell)Text von der Kommandozeile aus drucken|http://fseitz.de/blog/index.php?/archives/122-x.html>
+L<Enscript: Quelltext von der Kommandozeile aus drucken|http://fseitz.de/blog/index.php?/archives/122-x.html>
 
 =item *
 
