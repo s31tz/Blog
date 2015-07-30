@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-07-30 13:48:58
+    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-07-30 15:14:52
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -493,9 +493,156 @@
     (statt einer Pipe) gelöst, damit <tt class="sdoc-seg-c">enscript</tt> den Dateinamen und den
     letzten Änderungszeitpunkt erfährt.
   </p>
-  <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre"><span class="sdoc-code-ln"> 1</span> <span class="hl slc">#!/bin/bash</span>&#10;<span class="sdoc-code-ln"> 2</span> &#10;<span class="sdoc-code-ln"> 3</span> <span class="hl slc"># NAME</span>&#10;<span class="sdoc-code-ln"> 4</span> <span class="hl slc">#     src-to-pdf - Quelltext nach PDF</span>&#10;<span class="sdoc-code-ln"> 5</span> <span class="hl slc">#     </span>&#10;<span class="sdoc-code-ln"> 6</span> <span class="hl slc"># USAGE</span>&#10;<span class="sdoc-code-ln"> 7</span> <span class="hl slc">#     src-to-pdf LANGUAGE ENCODING SOURCE_FILE PDF_FILE</span>&#10;<span class="sdoc-code-ln"> 8</span> <span class="hl slc">#     </span>&#10;<span class="sdoc-code-ln"> 9</span> <span class="hl slc"># DESCRIPTION</span>&#10;<span class="sdoc-code-ln">10</span> <span class="hl slc">#     Erzeuge zu Quelltext-Datei SOURCE_FILE mit Character-Encoding ENCODING</span>&#10;<span class="sdoc-code-ln">11</span> <span class="hl slc">#     in Programmiersprache LANGUAGE die (druckbare) PDF-Datei PDF_FILE.</span>&#10;<span class="sdoc-code-ln">12</span> <span class="hl slc">#     </span>&#10;<span class="sdoc-code-ln">13</span> <span class="hl slc"># AUTHOR</span>&#10;<span class="sdoc-code-ln">14</span> <span class="hl slc">#     Frank Seitz, http://fseitz.de/</span>&#10;<span class="sdoc-code-ln">15</span> <span class="hl slc">#     </span>&#10;<span class="sdoc-code-ln">16</span> <span class="hl slc"># COPYRIGHT</span>&#10;<span class="sdoc-code-ln">17</span> <span class="hl slc">#     Copyright © 2015 Frank Seitz</span>&#10;<span class="sdoc-code-ln">18</span> &#10;<span class="sdoc-code-ln">19</span> <span class="hl kwa">if</span> <span class="hl opt">[</span> <span class="hl kwd">$#</span> <span class="hl opt">!=</span> <span class="hl num">4</span> <span class="hl opt">];</span> <span class="hl kwa">then</span>&#10;<span class="sdoc-code-ln">20</span>     PROG<span class="hl opt">=</span><span class="hl str">`basename</span> <span class="hl ipl">$0</span><span class="hl str">`</span>&#10;<span class="sdoc-code-ln">21</span>     <span class="hl kwb">echo</span> <span class="hl str">&quot;Usage:</span> <span class="hl ipl">$PROG</span> <span class="hl str">LANGUAGE ENCODING SOURCE_FILE PDF_FILE&quot;</span>&#10;<span class="sdoc-code-ln">22</span>     <span class="hl kwb">exit</span> <span class="hl num">10</span>&#10;<span class="sdoc-code-ln">23</span> <span class="hl kwa">fi</span>&#10;<span class="sdoc-code-ln">24</span> &#10;<span class="sdoc-code-ln">25</span> LANG<span class="hl opt">=</span><span class="hl kwd">$1</span>&#10;<span class="sdoc-code-ln">26</span> ENC<span class="hl opt">=</span><span class="hl kwd">$2</span>&#10;<span class="sdoc-code-ln">27</span> IN<span class="hl opt">=</span><span class="hl kwd">$3</span>&#10;<span class="sdoc-code-ln">28</span> OUT<span class="hl opt">=</span><span class="hl kwd">$4</span>&#10;<span class="sdoc-code-ln">29</span> TMP<span class="hl opt">=/</span>tmp<span class="hl opt">/</span><span class="hl kwd">$IN</span>&#10;<span class="sdoc-code-ln">30</span> &#10;<span class="sdoc-code-ln">31</span> <span class="hl kwc">iconv</span> <span class="hl opt">-</span>f <span class="hl kwd">$ENC</span> <span class="hl opt">-</span>t latin1 <span class="hl kwd">$IN</span> <span class="hl opt">&gt;</span><span class="hl kwd">$TMP</span>&#10;<span class="sdoc-code-ln">32</span> <span class="hl kwc">touch</span> <span class="hl opt">--</span>reference<span class="hl opt">=</span><span class="hl kwd">$IN $TMP</span>&#10;<span class="sdoc-code-ln">33</span> <span class="hl opt">(</span><span class="hl kwb">cd</span> <span class="hl opt">/</span>tmp<span class="hl opt">;</span> enscript <span class="hl opt">--</span>quiet <span class="hl opt">--</span>output<span class="hl opt">=- --</span>columns<span class="hl opt">=</span><span class="hl num">2</span> <span class="hl opt">--</span>landscape \&#10;<span class="sdoc-code-ln">34</span>     <span class="hl opt">--</span>fancy-header<span class="hl opt">=</span>edd <span class="hl opt">--</span>highlight<span class="hl opt">=</span><span class="hl kwd">$LANG $IN</span> | ps2pdf <span class="hl opt">-</span> <span class="hl kwd">$OUT</span><span class="hl opt">)</span>&#10;<span class="sdoc-code-ln">35</span> <span class="hl kwc">rm</span> <span class="hl kwd">$TMP</span>&#10;<span class="sdoc-code-ln">36</span> &#10;<span class="sdoc-code-ln">37</span> <span class="hl slc"># eof</span>&#10;</pre>
-  </div>
+  <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln"> 1</td>
+    <td class="sdoc-code-td-line"><span class="hl slc">#!/bin/bash</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln"> 2</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln"> 3</td>
+    <td class="sdoc-code-td-line"><span class="hl slc"># NAME</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln"> 4</td>
+    <td class="sdoc-code-td-line"><span class="hl slc">#     src-to-pdf - Quelltext nach PDF</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln"> 5</td>
+    <td class="sdoc-code-td-line"><span class="hl slc">#     </span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln"> 6</td>
+    <td class="sdoc-code-td-line"><span class="hl slc"># USAGE</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln"> 7</td>
+    <td class="sdoc-code-td-line"><span class="hl slc">#     src-to-pdf LANGUAGE ENCODING SOURCE_FILE PDF_FILE</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln"> 8</td>
+    <td class="sdoc-code-td-line"><span class="hl slc">#     </span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln"> 9</td>
+    <td class="sdoc-code-td-line"><span class="hl slc"># DESCRIPTION</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">10</td>
+    <td class="sdoc-code-td-line"><span class="hl slc">#     Erzeuge zu Quelltext-Datei SOURCE_FILE mit Character-Encoding ENCODING</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">11</td>
+    <td class="sdoc-code-td-line"><span class="hl slc">#     in Programmiersprache LANGUAGE die (druckbare) PDF-Datei PDF_FILE.</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">12</td>
+    <td class="sdoc-code-td-line"><span class="hl slc">#     </span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">13</td>
+    <td class="sdoc-code-td-line"><span class="hl slc"># AUTHOR</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">14</td>
+    <td class="sdoc-code-td-line"><span class="hl slc">#     Frank Seitz, http://fseitz.de/</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">15</td>
+    <td class="sdoc-code-td-line"><span class="hl slc">#     </span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">16</td>
+    <td class="sdoc-code-td-line"><span class="hl slc"># COPYRIGHT</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">17</td>
+    <td class="sdoc-code-td-line"><span class="hl slc">#     Copyright © 2015 Frank Seitz</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">18</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">19</td>
+    <td class="sdoc-code-td-line"><span class="hl kwa">if</span> <span class="hl opt">[</span> <span class="hl kwd">$#</span> <span class="hl opt">!=</span> <span class="hl num">4</span> <span class="hl opt">];</span> <span class="hl kwa">then</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">20</td>
+    <td class="sdoc-code-td-line">    PROG<span class="hl opt">=</span><span class="hl str">`basename</span> <span class="hl ipl">$0</span><span class="hl str">`</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">21</td>
+    <td class="sdoc-code-td-line">    <span class="hl kwb">echo</span> <span class="hl str">&quot;Usage:</span> <span class="hl ipl">$PROG</span> <span class="hl str">LANGUAGE ENCODING SOURCE_FILE PDF_FILE&quot;</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">22</td>
+    <td class="sdoc-code-td-line">    <span class="hl kwb">exit</span> <span class="hl num">10</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">23</td>
+    <td class="sdoc-code-td-line"><span class="hl kwa">fi</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">24</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">25</td>
+    <td class="sdoc-code-td-line">LANG<span class="hl opt">=</span><span class="hl kwd">$1</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">26</td>
+    <td class="sdoc-code-td-line">ENC<span class="hl opt">=</span><span class="hl kwd">$2</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">27</td>
+    <td class="sdoc-code-td-line">IN<span class="hl opt">=</span><span class="hl kwd">$3</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">28</td>
+    <td class="sdoc-code-td-line">OUT<span class="hl opt">=</span><span class="hl kwd">$4</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">29</td>
+    <td class="sdoc-code-td-line">TMP<span class="hl opt">=/</span>tmp<span class="hl opt">/</span><span class="hl kwd">$IN</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">30</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">31</td>
+    <td class="sdoc-code-td-line"><span class="hl kwc">iconv</span> <span class="hl opt">-</span>f <span class="hl kwd">$ENC</span> <span class="hl opt">-</span>t latin1 <span class="hl kwd">$IN</span> <span class="hl opt">&gt;</span><span class="hl kwd">$TMP</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">32</td>
+    <td class="sdoc-code-td-line"><span class="hl kwc">touch</span> <span class="hl opt">--</span>reference<span class="hl opt">=</span><span class="hl kwd">$IN $TMP</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">33</td>
+    <td class="sdoc-code-td-line"><span class="hl opt">(</span><span class="hl kwb">cd</span> <span class="hl opt">/</span>tmp<span class="hl opt">;</span> enscript <span class="hl opt">--</span>quiet <span class="hl opt">--</span>output<span class="hl opt">=- --</span>columns<span class="hl opt">=</span><span class="hl num">2</span> <span class="hl opt">--</span>landscape \</td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">34</td>
+    <td class="sdoc-code-td-line">    <span class="hl opt">--</span>fancy-header<span class="hl opt">=</span>edd <span class="hl opt">--</span>highlight<span class="hl opt">=</span><span class="hl kwd">$LANG $IN</span> | ps2pdf <span class="hl opt">-</span> <span class="hl kwd">$OUT</span><span class="hl opt">)</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">35</td>
+    <td class="sdoc-code-td-line"><span class="hl kwc">rm</span> <span class="hl kwd">$TMP</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">36</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">37</td>
+    <td class="sdoc-code-td-line"><span class="hl slc"># eof</span></td>
+  </tr>
+  </table>
   <h2 class="sdoc-sec-h2">Globale Einstellungen<a id="section_1_4"></a></h2>
   <p class="sdoc-para-p">
     Für systemglobale Anpassungen sollte man die ergänzende
