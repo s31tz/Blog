@@ -53,7 +53,7 @@ C{--header=STRING} umdefinieren I{oder} einen sog. "Fancy Header"
 auswählen, der die Headerinformation fix-und-fertig vorgibt und die
 Seite zusätzlich durch Umrandungen und Trennlinen gestaltet. Welche
 Fancy Header zur Verfügung stehen ist auf der man page nicht
-dokumentiert, kann aber anhand der betreffenden Konfigurationsdateien
+dokumentiert, kann aber anhand der Fancy-Header-Definitionsdateien
 ermittelt werden:
 
   $ ls -l /usr/share/enscript/*.hdr
@@ -103,7 +103,7 @@ dass sie mit jedem Ausdruck manuell angewendet werden
 könnten. Folgendes Bash-Script kapselt sie. Die
 Zeichensatz-Konvertierung ist hier mittels einer temporären Datei
 (statt einer Pipe) gelöst, damit C{enscript} den Dateinamen und den
-Änderungszeitpunkt erfährt.
+letzten Änderungszeitpunkt erfährt.
 
 %Code: ln=1 filter="sed -r 's/r1-|-fs//g' | ./blog-highlight bash %FORMAT%" \
 file="/media/seitzf/share/opt/CoTeDo/storage/root/code/program/r1-src-to-pdf" 
@@ -114,7 +114,7 @@ Für systemglobale Anpassungen sollte man die ergänzende
 Datei C{/etc/enscriptsite.cfg} anlegen. Vorteil: Es entstehen keine
 Konflikte, wenn durch die Paketverwaltung an der eigentlichen
 Configdatei C{/etc/enscript.cfg} Änderungen vorgenommen
-werden. Hier die Anpassungen, die ich systemglobal vorgenommen habe:
+werden. Hier meine systemglobalen Anpassungen:
 
   # Site-spezifische Einstellungen
 
