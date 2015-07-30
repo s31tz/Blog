@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-07-30 13:29:02
+    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-07-30 13:37:38
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -473,12 +473,13 @@
   </div>
   <h2 class="sdoc-sec-h2">UTF-8<a id="section_1_2"></a></h2>
   <p class="sdoc-para-p">
-    Leider beherrscht <tt class="sdoc-seg-c">enscript</tt> kein UTF-8. Im Falle einer
-    UTF-8-Datei müssen wir in ein Encoding wandeln, mit dem <tt class="sdoc-seg-c">enscript</tt>
-    umgehen kann. Das Default-Encoding von <tt class="sdoc-seg-c">enscript</tt> ist
-    latin1. Enthält unsere UTF-8-Quelltext-Datei <tt class="sdoc-seg-c">FILE</tt> lediglich
-    Umlaute, brauchen wir bei <tt class="sdoc-seg-c">enscript</tt> nichts weiter einstellen. Für
-    die Wandlung von <tt class="sdoc-seg-c">UTF-8</tt> nach <tt class="sdoc-seg-c">latin1</tt> schalten wir <tt class="sdoc-seg-c">iconv</tt> davor:
+    Leider beherrscht <tt class="sdoc-seg-c">enscript</tt> kein UTF-8. Im Falle einer UTF-8-Datei
+    müssen wir in ein Encoding wandeln, mit dem <tt class="sdoc-seg-c">enscript</tt> umgehen
+    kann. Das Default-Encoding von <tt class="sdoc-seg-c">enscript</tt> ist latin1. Enthält unsere
+    UTF-8-Quelltext-Datei <tt class="sdoc-seg-c">FILE</tt> lediglich Umlaute und ggf. andere
+    Zeichen, die in latin1 enthalten sind, brauchen wir bei <tt class="sdoc-seg-c">enscript</tt>
+    nichts weiter einstellen. Für die Wandlung von <tt class="sdoc-seg-c">UTF-8</tt> nach <tt class="sdoc-seg-c">latin1</tt>
+    schalten wir <tt class="sdoc-seg-c">iconv</tt> davor:
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">$ iconv -f utf-8 -t latin1 FILE | enscript ...</pre>
