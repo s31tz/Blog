@@ -34,7 +34,7 @@ dort aus ganz oder teilweise gedruckt werden.
 
 C{Enscript} hat viele Optionen und Konfigurationsvariablen, mit denen
 man auf die Gestaltung der Druckseite Einfluss nehmen kann. Wie
-üblich, muss man ein wenig rumfummeln bis das Ergebnis den eigenen
+üblich, muss man ein wenig experimentieren bis das Ergebnis den eigenen
 Vorstellungen entspricht. Es folgen die Optionen, die ich für
 eine Quelltextausgabe als sinnvoll erachte.
 
