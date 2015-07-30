@@ -35,7 +35,7 @@ dort aus ganz oder teilweise gedruckt werden.
 C{Enscript} hat viele Optionen und Konfigurationsvariablen, mit denen
 man auf die Gestaltung der Druckseite Einfluss nehmen kann. Wie
 üblich, muss man ein wenig rumfummeln bis das Ergebnis den eigenen
-Vorstellungen entspricht. Es folgen die Optionen, ich für
+Vorstellungen entspricht. Es folgen die Optionen, die ich für
 eine Quelltextausgabe als sinnvoll erachte.
 
 == Zweispaltige Ausgabe
@@ -52,7 +52,7 @@ Der Default-Header ist recht simpel. Man kann ihn mit Option
 C{--header=STRING} umdefinieren I{oder} einen sog. "Fancy Header"
 auswählen, der die Headerinformation fix-und-fertig vorgibt und die
 Seite zusätzlich durch Umrandungen und Trennlinen gestaltet. Welche
-Fancy Header zur Verfügung stehenden, ist auf der man page nicht
+Fancy Header zur Verfügung stehen ist auf der man page nicht
 dokumentiert, kann aber anhand der betreffenden Konfigurationsdateien
 ermittelt werden:
 
