@@ -52,7 +52,7 @@ Der Default-Header ist recht simpel. Man kann ihn mit Option
 C{--header=STRING} umdefinieren I{oder} einen sog. "Fancy Header"
 auswählen, der die Headerinformation fix-und-fertig vorgibt und die
 Seite zusätzlich durch Umrandungen und Trennlinen gestaltet. Welche
-Fancy Header zur Verfügung stehen ist auf der man page nicht
+Fancy Header zur Verfügung stehen, ist auf der man page nicht
 dokumentiert, kann aber anhand der Fancy-Header-Definitionsdateien
 ermittelt werden:
 
@@ -90,7 +90,7 @@ Die Liste der unterstützen Sprachen erhält man mit
 Leider beherrscht C{enscript} kein UTF-8. Im Falle einer UTF-8-Datei
 müssen wir in ein Encoding wandeln, mit dem C{enscript} umgehen
 kann. Das Default-Encoding von C{enscript} ist latin1. Enthält unsere
-UTF-8-Quelltext-Datei C{FILE} lediglich Umlaute und ggf. andere
+UTF-8-Quelltext-Datei C{FILE} lediglich Umlaute und andere
 Zeichen, die in latin1 enthalten sind, brauchen wir bei C{enscript}
 nichts weiter einstellen. Für die Wandlung von C{UTF-8} nach C{latin1}
 schalten wir C{iconv} davor:

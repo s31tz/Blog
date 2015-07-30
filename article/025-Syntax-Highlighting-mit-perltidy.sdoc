@@ -13,7 +13,7 @@
 U{"http://perltidy.sourceforge.net/",text="Pertidy"} stellt die
 Syntax von Perl-Code farbig und mit Fontattributen wie kursiv und fett
 dar, wenn man den Code mit Option C{-html} nach HTML wandelt. Ich
-nutze dieses Feature, um lesbareren Perl-Code für mein Blog zu
+nutze dieses Feature, um gut lesbareren Perl-Code für mein Blog zu
 generieren.
 
 Für die Einbettung des generierten HTML-Codes in eigene HTML-Seiten
