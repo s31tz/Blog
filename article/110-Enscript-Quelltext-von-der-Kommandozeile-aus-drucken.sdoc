@@ -104,7 +104,7 @@ dass sie mit jedem Ausdruck manuell angewendet werden
 könnten. Folgendes Bash-Script kapselt sie. Die
 Zeichensatz-Konvertierung ist hier mittels einer temporären Datei
 (statt einer Pipe) gelöst, damit C{enscript} den Dateinamen und den
-letzten Änderungszeitpunkt erfährt. 
+letzten Änderungszeitpunkt erfährt.
 
 %Code: ln=1 bg=2 \
 filter="sed -r 's/r1-|-fs//g' | ./blog-highlight bash %FORMAT%" \
