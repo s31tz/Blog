@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-07-30 15:14:52
+    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-07-31 17:49:27
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -608,38 +608,50 @@
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">29</td>
-    <td class="sdoc-code-td-line">TMP<span class="hl opt">=/</span>tmp<span class="hl opt">/</span><span class="hl kwd">$IN</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">30</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line">FILE<span class="hl opt">=</span><span class="hl str">`basename</span> <span class="hl ipl">$IN</span><span class="hl str">`</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">31</td>
-    <td class="sdoc-code-td-line"><span class="hl kwc">iconv</span> <span class="hl opt">-</span>f <span class="hl kwd">$ENC</span> <span class="hl opt">-</span>t latin1 <span class="hl kwd">$IN</span> <span class="hl opt">&gt;</span><span class="hl kwd">$TMP</span></td>
+    <td class="sdoc-code-td-line">TMP<span class="hl opt">=/</span>tmp<span class="hl opt">/</span><span class="hl kwd">$FILE</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">32</td>
-    <td class="sdoc-code-td-line"><span class="hl kwc">touch</span> <span class="hl opt">--</span>reference<span class="hl opt">=</span><span class="hl kwd">$IN $TMP</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">33</td>
-    <td class="sdoc-code-td-line"><span class="hl opt">(</span><span class="hl kwb">cd</span> <span class="hl opt">/</span>tmp<span class="hl opt">;</span> enscript <span class="hl opt">--</span>quiet <span class="hl opt">--</span>output<span class="hl opt">=- --</span>columns<span class="hl opt">=</span><span class="hl num">2</span> <span class="hl opt">--</span>landscape \</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">34</td>
-    <td class="sdoc-code-td-line">    <span class="hl opt">--</span>fancy-header<span class="hl opt">=</span>edd <span class="hl opt">--</span>highlight<span class="hl opt">=</span><span class="hl kwd">$LANG $IN</span> | ps2pdf <span class="hl opt">-</span> <span class="hl kwd">$OUT</span><span class="hl opt">)</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">35</td>
-    <td class="sdoc-code-td-line"><span class="hl kwc">rm</span> <span class="hl kwd">$TMP</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">36</td>
     <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">33</td>
+    <td class="sdoc-code-td-line"><span class="hl kwb">set</span> <span class="hl opt">-</span>e</td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">34</td>
+    <td class="sdoc-code-td-line"><span class="hl kwc">iconv</span> <span class="hl opt">-</span>f <span class="hl kwd">$ENC</span> <span class="hl opt">-</span>t latin1 <span class="hl kwd">$IN</span> <span class="hl opt">&gt;</span><span class="hl kwd">$TMP</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">35</td>
+    <td class="sdoc-code-td-line"><span class="hl kwc">touch</span> <span class="hl opt">--</span>reference<span class="hl opt">=</span><span class="hl kwd">$IN $TMP</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">36</td>
+    <td class="sdoc-code-td-line"><span class="hl opt">(</span><span class="hl kwb">cd</span> <span class="hl opt">/</span>tmp<span class="hl opt">;</span> enscript <span class="hl opt">--</span>quiet <span class="hl opt">--</span>output<span class="hl opt">=- --</span>columns<span class="hl opt">=</span><span class="hl num">2</span> <span class="hl opt">--</span>landscape \</td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">37</td>
+    <td class="sdoc-code-td-line">    <span class="hl opt">--</span>fancy-header<span class="hl opt">=</span>edd <span class="hl opt">--</span>highlight<span class="hl opt">=</span><span class="hl kwd">$LANG $FILE</span> | ps2pdf <span class="hl opt">-</span> <span class="hl kwd">$OUT</span><span class="hl opt">)</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">38</td>
+    <td class="sdoc-code-td-line"><span class="hl kwc">rm</span> <span class="hl kwd">$TMP</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">39</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">40</td>
     <td class="sdoc-code-td-line"><span class="hl slc"># eof</span></td>
   </tr>
   </table>
