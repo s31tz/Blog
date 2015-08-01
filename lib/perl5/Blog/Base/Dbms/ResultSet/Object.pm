@@ -160,6 +160,58 @@ sub index {
 
 # -----------------------------------------------------------------------------
 
+=head3 min() - Numerisches Minimum der Kolumne
+
+=head4 Synopsis
+
+    $min = $tab->min($key);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub min {
+    my ($self,$key) = @_;
+
+    my $min;
+    for my $row (@{$self->rows}) {
+        my $x = $row->$key;
+        if ($x ne '' && (!defined($min) || $x < $min)) {
+            $min = $x;
+        }
+    }
+
+    return $min;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 max() - Numerisches Maximum der Kolumne
+
+=head4 Synopsis
+
+    $max = $tab->max($key);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub max {
+    my ($self,$key) = @_;
+
+    my $max;
+    for my $row (@{$self->rows}) {
+        my $x = $row->$key;
+        if ($x ne '' && (!defined($max) || $x > $max)) {
+            $max = $x;
+        }
+    }
+
+    return $max;
+}
+
+# -----------------------------------------------------------------------------
+
 =head2 Verschiedenes
 
 =head3 absorbModifications() - Absorbiere Datensatz-Änderungen
