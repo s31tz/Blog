@@ -1,0 +1,62 @@
+# Date: 2015-08-02
+
+%Document:
+  title="GnuPG: Verschlüsseln, entschlüsseln und andere Operationen"
+  generateAnchors=0
+  utf8=1
+
+# id=123
+
+%Figure: file="IMGDIR/gnupg-logo-331x100.png" \
+  width="146" height="44" url="https://www.gnupg.org/"
+
+= Datei verschlüsseln
+
+  $ gpg --encrypt --recipient UID --batch --yes FILE
+
+  --encrypt        : Verschlüsselung
+  --recipient UID  : ID des Users, für den die Datei verschlüsselt wird
+  --batch --yes    : überschreibe Zieldatei FILE.gpg ohne Rückfrage, \
+                     falls sie existiert
+
+= Datei entschlüsseln
+
+  $ gpg --decrypt FILE.gpg >FILE
+
+  --decrypt        : Entschlüsselung
+
+= Problem: Entropie bei Schlüsselerzeugung zu niedrig
+
+Das Erzeugen eines Schlüssels mit
+
+  $ gpg --gen-key
+
+stoppt mit der Meldung
+
+  Not enough random bytes available. Please do some other work to give
+  the OS a chance to collect more entropy! (Need <N> more bytes)
+
+Entropie abfragen:
+
+  $ cat /proc/sys/kernel/random/entropy_avail
+
+Folgende "Lösung", die im Netz viel genannt wird, sollte man I{nicht}
+anwenden:
+
+  # apt-get install rng-tools
+  # rngd -r /dev/urandom
+
+Siehe U{"https://bugs.launchpad.net/ubuntu/+source/gnupg/+bug/706011",
+text="Diskussion zur Entropieerhöhung"}. Geeignet ist dagegen
+das Generieren von Plattenaktivität:
+
+  $ find / >/dev/null
+
+Das Kommando wird einfach parallel zu C{gpg --gen-key} ausgeführt, bis
+der Schlüssel erzeugt ist.
+
+= Links
+
+* U{"https://www.gnupg.org/",text="GnuPG Homepage"}
+
+# eof
