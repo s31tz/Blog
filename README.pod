@@ -13,7 +13,7 @@ veröffentlicht habe.
 
 =item *
 
-L<GnuPG: Datei verschlüsseln, entschlüsseln und andere Operationen|http://fseitz.de/blog/index.php?/archives/123-x.html>
+L<GnuPG: Verschlüsseln, entschlüsseln und andere Operationen|http://fseitz.de/blog/index.php?/archives/123-x.html>
 
 =item *
 
