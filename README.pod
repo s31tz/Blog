@@ -13,6 +13,10 @@ veröffentlicht habe.
 
 =item *
 
+L<GnuPG: Datei verschlüsseln und entschlüsseln|http://fseitz.de/blog/index.php?/archives/123-x.html>
+
+=item *
+
 L<Enscript: Quelltext von der Kommandozeile aus drucken|http://fseitz.de/blog/index.php?/archives/122-x.html>
 
 =item *
