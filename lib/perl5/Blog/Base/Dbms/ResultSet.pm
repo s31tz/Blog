@@ -780,6 +780,7 @@ sub asTable {
             }
             $str .= $fmt[$i]->asFixedWidthString($arr[$i]);
         }
+        $str =~ s/\s+$//; # Whitespace am Ende entfernen
         $str .= "\n";
     }
 
