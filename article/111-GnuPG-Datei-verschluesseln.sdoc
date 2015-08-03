@@ -10,7 +10,7 @@
 %Figure: file="IMGDIR/gnupg-logo-331x100.png" \
   width="146" height="44" url="https://www.gnupg.org/"
 
-= Datei verschlüsseln
+= Datei verschlüsseln (ohne Rückfrage)
 
   $ gpg --encrypt --recipient UID --batch --yes FILE
 
@@ -48,15 +48,20 @@ anwenden:
 
 Siehe U{"https://bugs.launchpad.net/ubuntu/+source/gnupg/+bug/706011",
 text="Diskussion zur Entropieerhöhung"}. Geeignet ist dagegen
-das Generieren von Plattenaktivität:
+das Forcieren von Plattenaktivität:
 
   $ find / >/dev/null
 
 Das Kommando wird einfach parallel zu C{gpg --gen-key} ausgeführt, bis
 der Schlüssel erzeugt ist.
 
+= Liste der öffentliche Schlüssel des Schlüsselbundes
+
+  $ gpg --list-keys
+
 = Links
 
 * U{"https://www.gnupg.org/",text="GnuPG Homepage"}
+* U{"https://www.gnupg.org/faq/gnupg-faq.html",text="GnuPG FAQ"}
 
 # eof
