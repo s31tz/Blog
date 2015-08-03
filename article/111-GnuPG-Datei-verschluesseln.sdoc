@@ -59,6 +59,13 @@ der Schlüssel erzeugt ist.
 
   $ gpg --list-keys
 
+= Revocation Certificate erzeugen
+
+  $ gpg --gen-revoke UID
+
+Das erzeugte Zertifikat auf einem gesicherten Datenträger speichern
+und zusätzlich ausdrucken.
+
 = Links
 
 * U{"https://www.gnupg.org/",text="GnuPG Homepage"}

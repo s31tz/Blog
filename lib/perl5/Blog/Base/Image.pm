@@ -25,26 +25,63 @@ L<Blog::Base::Object|../Blog::Base/Object.html>
 =head3 Synopsis
 
     $type = $class->type($file);
+    $type = $class->type($file,$enumType);
 
 =head3 Description
 
-Liefere den Typ der Bilddatei $file. Drei Bildtypen werden
-erkannt: 'jpg', 'png', 'gif'. Ist der Bildtyp nicht bekannt, wirf
-eine Exception.
+Liefere den Typ der Bilddatei $file. Drei Bildtypen werden erkannt:
+
+=over 2
+
+=item *
+
+JPEG
+
+=item *
+
+PNG
+
+=item *
+
+GIF
+
+=back
+
+Die Typbezeichnung, die geliefert wird, hängt von PArameter
+$enumType ab:
+
+=over 4
+
+=item 0 oder nicht angegeben
+
+'jpg', 'png', 'gif'
+
+=item 1
+
+'jpeg', 'png', 'gif'
+
+=back
+
+Wird der Bildtyp nicht erkannt, wirft die Methode eine Exception.
+
+Anstelle eines Dateinamens kann auch eine Skalarreferenz
+(Bild in-memory) übergeben werden.
 
 =cut
 
 # -----------------------------------------------------------------------------
 
 sub type {
-    my ($class,$file) = @_;
+    my $class = shift;
+    my $file = shift;
+    my $enumType = shift || 0;
 
     my $fh = Blog::Base::FileHandle->new('<',$file);
     my $data = $fh->read(8);
     $fh->close;
 
     if ($data =~ /^\xff\xd8\xff/) {
-        return 'jpg';
+        return $enumType? 'jpeg': 'jpg';
     }
     elsif ($data =~ /^\x89PNG\r\n\x1a\n/) {
         return 'png';

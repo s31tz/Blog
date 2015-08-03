@@ -6,9 +6,9 @@ use warnings;
 use utf8;
 
 use MIME::Base64 ();
+use Blog::Base::String;
 use Blog::Base::Image;
 use Blog::Base::Path;
-use Blog::Base::String;
 
 # -----------------------------------------------------------------------------
 
@@ -806,6 +806,10 @@ dann konkateniert werden:
 
 Umfang der Element-Typ und Attribut-Prüfung.
 
+=item -embedImage => $bool (Default: 0)
+
+Bette im Falle eines <img>-Tag das Bild in den HTML-Code ein.
+
 =item -endTagOnly => $bool (Default: 0)
 
 Erzeuge nur den Content und den End-Tag. Diese Option ist nützlich,
@@ -1059,7 +1063,7 @@ sub tag {
 
     my $xhtml = $self->{'htmlVersion'} =~ /^xhtml/;
     my $uppercase = !$xhtml && $self->{'uppercase'};
-    my $embedImages = $self->{'embedImages'};
+    my $embedImage = $self->{'embedImages'};
     my $checkLevel = $self->{'checkLevel'};
     my $fmt = 'm';
     my $nl = 1;
@@ -1168,6 +1172,9 @@ sub tag {
             elsif ($key eq '-endTagOnly') {
                 $endTagOnly = $val;
             }
+            elsif ($key eq '-embedImage') {
+                $embedImage = $val;
+            }
             else {
                 $self->throw(
                     q{HTML-00001: Unbekannte Option},
@@ -1214,22 +1221,8 @@ sub tag {
                 }
             }
             else {
-                if ($embedImages && $tag eq 'img' && $key eq 'src') {
-                    if (-f $val) {
-                        # Bette Bilddaten in das src-Attribut ein
-                        # FIXME: Bild-URLs auch laden
-                        
-                        my $type = Blog::Base::Image->type($val);
-                        $type = 'jpeg' if substr($type,0,1) eq 'j';
-
-                        my $data = Blog::Base::Path->read($val);
-                        
-                        $val = sprintf 'data:image/%s;base64,%s',$type,
-                            MIME::Base64::encode_base64($data,'');
-                    }
-                    elsif ($val !~ /^data:/) {
-                        warn "WARNING: <img> Can't open image file: $val\n";
-                    }
+                if ($tag eq 'img' && $key eq 'src') {
+                    $val = $self->imgSrcValue($val,$embedImage);
                 }
                 $val =~ s/"/&quot;/g; # FIXME: auf best. Domänen einschränken
                 $str .= qq| $key="$val"|;
@@ -1744,6 +1737,42 @@ sub checkValue {
     # FIXME: Wertprüfungen implementieren
 
     return;
+}
+
+# -----------------------------------------------------------------------------
+
+=head2 imgSrcValue() - Liefere den Wert, auf den das scr-Attribut gesetzt wird
+
+=head3 Synopsis
+
+    $val = $this->imgSrcValue($val,$embedImage);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub imgSrcValue {
+    my ($this,$val,$embedImage) = @_;
+
+    if (ref $val) {
+        # Bilddaten in-memory
+        my $type = Blog::Base::Image->type($val,1);
+        $val = sprintf 'data:image/%s;base64,%s',$type,
+            MIME::Base64::encode_base64($$val,'');
+    } elsif ($embedImage) {
+        if (-f $val) {
+            # lokale Bilddatei
+            my $type = Blog::Base::Image->type($val,1);
+            $val = sprintf 'data:image/%s;base64,%s',$type,
+                MIME::Base64::encode_base64(Blog::Base::Path->read($val),'');
+        }
+        else {
+            warn 'WARNING: <img> Embedding of URL-Image'.
+                " currently not supported: $val\n";
+        }
+    }
+
+    return $val;
 }
 
 # -----------------------------------------------------------------------------

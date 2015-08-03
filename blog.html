@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-08-03 07:41:20
+    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-08-03 08:08:23
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -431,7 +431,15 @@
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">$ gpg --list-keys</pre>
   </div>
-  <h2 class="sdoc-sec-h2">Links<a id="section_1_5"></a></h2>
+  <h2 class="sdoc-sec-h2">Revocation Certificate erzeugen<a id="section_1_5"></a></h2>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">$ gpg --gen-revoke UID</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Das erzeugte Zertifikat auf einem gesicherten Datenträger speichern
+    und zusätzlich ausdrucken.
+  </p>
+  <h2 class="sdoc-sec-h2">Links<a id="section_1_6"></a></h2>
   <ul class="sdoc-list-ul">
     <li class="sdoc-list-li-point" style="list-style-type:disc"><a class="sdoc-seg-u" href="https://www.gnupg.org/">GnuPG Homepage</a></li>
     <li class="sdoc-list-li-point" style="list-style-type:disc"><a class="sdoc-seg-u" href="https://www.gnupg.org/faq/gnupg-faq.html">GnuPG FAQ</a></li>
