@@ -1213,6 +1213,13 @@ sub tag {
                 $self->checkValue($dom,$val);
             }
 
+            if ($tag eq 'img' && $key eq 'src') {
+                $val = $self->imgSrcValue($val,$embedImage);
+            }
+            else {
+                $val =~ s/"/&quot;/g; # FIXME: auf best. Domänen einschränken
+            }
+
             $key = uc $key if $uppercase;
 
             if ($dom eq 'bool') {
@@ -1221,10 +1228,6 @@ sub tag {
                 }
             }
             else {
-                if ($tag eq 'img' && $key eq 'src') {
-                    $val = $self->imgSrcValue($val,$embedImage);
-                }
-                $val =~ s/"/&quot;/g; # FIXME: auf best. Domänen einschränken
                 $str .= qq| $key="$val"|;
             }
 
@@ -1741,7 +1744,7 @@ sub checkValue {
 
 # -----------------------------------------------------------------------------
 
-=head2 imgSrcValue() - Liefere den Wert, auf den das scr-Attribut gesetzt wird
+=head2 imgSrcValue() - Liefere Wert für scr-Attribut eines Bildes
 
 =head3 Synopsis
 
