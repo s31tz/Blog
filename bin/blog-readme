@@ -84,7 +84,7 @@ Blog::Base::Path->cd($articleDir);
 my $code = <<'__EOT__';
 = NAME
 
-Blog - Blog articles on http://fseitz.de/blog
+Blog - Blog articles
 
 = DESCRIPTION
 
