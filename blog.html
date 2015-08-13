@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-08-13 10:18:31
+    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-08-13 10:30:21
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -750,7 +750,7 @@
   <p class="sdoc-para-p">
     Mitunter möchte man einen Text oder ein Muster global über mehreren
     Dateien <tt class="sdoc-seg-c">FILE ...</tt> ersetzen. Unter Unix/Linux geht das am einfachsten
-    mit <tt class="sdoc-seg-c">sed</tt>:
+    mit <tt class="sdoc-seg-c">sed</tt> (GNU):
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">$ sed -i s/PATTERN/REPLACEMENT/g FILE ...</pre>
@@ -770,8 +770,8 @@
   </div>
   <p class="sdoc-para-p">
     Der Vorteil von Perl gegenüber sed ist dessen leistungsfähigere
-    Regex-Engine. Bei sed lassen sich mit Option <tt class="sdoc-seg-c">-r</tt> "Extended Regular
-    Expressions" einschalten (die aber auch nicht an Perl heranreichen).
+    Regex-Engine. Bei sed (GNU) lassen sich mit Option <tt class="sdoc-seg-c">-r</tt> "Extended Regular
+    Expressions" einschalten (die eher an Perl Regexes heranreichen).
   </p>
   <p class="sdoc-para-p">
     WICHTIG: Die Ersetzungsoperation wird <i class="sdoc-seg-i">zeilenweise</i> angewendet,

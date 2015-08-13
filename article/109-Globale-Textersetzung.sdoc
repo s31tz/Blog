@@ -13,7 +13,7 @@
 
 Mitunter möchte man einen Text oder ein Muster global über mehreren
 Dateien C{FILE ...} ersetzen. Unter Unix/Linux geht das am einfachsten
-mit C{sed}:
+mit C{sed} (GNU):
 
   $ sed -i s/PATTERN/REPLACEMENT/g FILE ...
 
@@ -27,8 +27,8 @@ Kommandozeile:
   $ perl -pi -e s/PATTERN/REPLACEMENT/g FILE ...
 
 Der Vorteil von Perl gegenüber sed ist dessen leistungsfähigere
-Regex-Engine. Bei sed lassen sich mit Option C{-r} "Extended Regular
-Expressions" einschalten (die aber auch nicht an Perl heranreichen).
+Regex-Engine. Bei sed (GNU) lassen sich mit Option C{-r} "Extended Regular
+Expressions" einschalten (die eher an Perl Regexes heranreichen).
 
 WICHTIG: Die Ersetzungsoperation wird I{zeilenweise} angewendet,
 d.h. eine Ersetzung über Zeilengrenzen hinweg ist I{nicht} möglich.
