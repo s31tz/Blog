@@ -31,7 +31,7 @@ Wird ein Modul mehrfach installiert, taucht es mehrfach auf.
 = Programm
 
 Liefere die Namen der zusätzlich installierten Module, alphabetisch
-sortiert, ohne Doubletten:
+sortiert, ohne Dubletten:
 
   %Code: ln=1 file="src/ROOT-perl-modules" filter="./blog-highlight perl %FORMAT%"
 
