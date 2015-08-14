@@ -1,7 +1,7 @@
 # Date: 2015-07-21
 
 %Document:
-  title="Globale in-place Textersetzung mit sed oder Perl"
+  title="Globale in-place Textersetzung mit GNU sed oder Perl"
   generateAnchors=0
   utf8=1
 
@@ -27,7 +27,7 @@ Kommandozeile:
   $ perl -pi -e s/PATTERN/REPLACEMENT/g FILE ...
 
 Der Vorteil von Perl gegenüber sed ist dessen leistungsfähigere
-Regex-Engine. Bei sed (GNU) lassen sich mit Option C{-r} "Extended Regular
+Regex-Engine. Bei GNU C{sed} lassen sich mit Option C{-r} "Extended Regular
 Expressions" einschalten (die eher an Perl Regexes heranreichen).
 
 WICHTIG: Die Ersetzungsoperation wird I{zeilenweise} angewendet,

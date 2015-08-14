@@ -50,7 +50,7 @@ Als Mountpoint wird hier nicht C{/dev/shm} angezeigt, sondern
 C{/run/shm}, weil C{/dev/shm} lediglich ein Symlink auf C{/run/shm} ist:
 
   # ls -l /dev/shm
-  lrwxrwxrwx 1 root root 8 Aug 19 09:37 /dev/shm -> /run/shm
+  lrwxrwxrwx 1 root root 8 Aug 7 09:37 /dev/shm -> /run/shm
 
 Mit diesem Setup kommt der Oracle-Kernel (11.2.0.1.0) nicht klar. Er
 erkennt (aus nicht weiter erforschten Gründen) die Größe des
@@ -67,7 +67,7 @@ Danach fährt die Datenbank wieder hoch:
 
   $ sqlplus / as sysdba
 
-  SQL*Plus: Release 11.2.0.1.0 Production on Fri Aug 19 13:29:21 2011
+  SQL*Plus: Release 11.2.0.1.0 Production on Fri Aug 7 13:29:21 2015
 
   Copyright (c) 1982, 2009, Oracle.  All rights reserved.
 
