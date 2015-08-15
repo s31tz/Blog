@@ -21,7 +21,7 @@ L<Enscript: Quelltext von der Kommandozeile aus drucken|http://fseitz.de/blog/in
 
 =item *
 
-L<Globale in-place Textersetzung mit GNU sed oder Perl|http://fseitz.de/blog/index.php?/archives/121-x.html>
+L<Globale in-place Textersetzung mit sed oder Perl|http://fseitz.de/blog/index.php?/archives/121-x.html>
 
 =item *
 

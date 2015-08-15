@@ -1,7 +1,7 @@
 # Date: 2015-07-21
 
 %Document:
-  title="Globale in-place Textersetzung mit GNU sed oder Perl"
+  title="Globale in-place Textersetzung mit sed oder Perl"
   generateAnchors=0
   utf8=1
 

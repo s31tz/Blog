@@ -19,4 +19,9 @@ zu Hostnamen auflösen. Das geht so:
   $hostname = gethostbyaddr(inet_aton($ip),AF_INET);
   .
 
+Zwei Punkte sollte man in dem Zusammenhang im Hinterkopf behalten:
+
+* nicht jede IP-Adresse kann zu einem Hostnamen aufgelöst werden
+* der Aufruf kann manchmal eine Weile dauern (10 Sekunden und mehr)
+
 # eof
