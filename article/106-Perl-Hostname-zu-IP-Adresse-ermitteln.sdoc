@@ -21,7 +21,8 @@ zu Hostnamen auflösen. Das geht so:
 
 Zwei Punkte sollte man in dem Zusammenhang im Hinterkopf behalten:
 
-* nicht jede IP-Adresse kann zu einem Hostnamen aufgelöst werden
-* der Aufruf kann manchmal eine Weile dauern (10 Sekunden und mehr)
+* nicht jede IP-Adresse kann zu einem Hostnamen aufgelöst werden (in
+  dem Fall wird C{undef} geliefert)
+* der Aufruf kann mitunter eine Weile dauern (10 Sekunden und mehr)
 
 # eof
