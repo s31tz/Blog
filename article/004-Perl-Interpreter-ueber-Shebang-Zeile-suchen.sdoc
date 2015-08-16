@@ -16,7 +16,7 @@ Environment-Variable C{$PATH} gesucht:
   #!/usr/bin/env perl
 
 D.h. die Shebang-Zeile muss nicht angepasst werden, wenn das Skript in
-mehreren Umgebungen mit unterschiedlichen Installationspfaden laufen
+mehreren Umgebungen mit unterschiedlichen Perl-Installationspfaden laufen
 soll.
 
 # eof
