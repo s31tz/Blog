@@ -22,7 +22,7 @@ zu Hostnamen auflösen. Das geht so:
 Zwei Punkte sollte man dabei im Hinterkopf behalten:
 
 * nicht jede IP-Adresse kann zu einem Hostnamen aufgelöst werden
-  (C{gethostbyaddr()} liefert in dem Fall C{undef})
+  (C{gethostbyaddr()} liefert dann C{undef})
 * der Aufruf kann u.U. eine Weile dauern (10 Sekunden und mehr)
 
 # eof
