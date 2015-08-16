@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-08-16 10:50:06
+    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-08-16 18:24:44
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -900,18 +900,18 @@
   </tr>
   </table>
   <p class="sdoc-para-p">
-    Zwei Punkte sollte man in dem Zusammenhang im Hinterkopf behalten:
+    Zwei Punkte sollte man dabei im Hinterkopf behalten:
   </p>
   <ul class="sdoc-list-ul">
     <li class="sdoc-list-li-point" style="list-style-type:disc">
       <p class="sdoc-para-p">
-        nicht jede IP-Adresse kann zu einem Hostnamen aufgelöst werden (in
-        dem Fall wird <tt class="sdoc-seg-c">undef</tt> geliefert)
+        nicht jede IP-Adresse kann zu einem Hostnamen aufgelöst werden
+        (<tt class="sdoc-seg-c">gethostbyaddr()</tt> liefert in dem Fall <tt class="sdoc-seg-c">undef</tt>)
       </p>
     </li>
     <li class="sdoc-list-li-point" style="list-style-type:disc">
       <p class="sdoc-para-p">
-        der Aufruf kann mitunter eine Weile dauern (10 Sekunden und mehr)
+        der Aufruf kann u.U. eine Weile dauern (10 Sekunden und mehr)
       </p>
     </li>
   </ul>
