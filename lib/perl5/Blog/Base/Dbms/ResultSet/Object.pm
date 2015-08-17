@@ -212,6 +212,58 @@ sub max {
 
 # -----------------------------------------------------------------------------
 
+=head3 minStr() - Alphaumerisches Minimum der Kolumne
+
+=head4 Synopsis
+
+    $min = $tab->minStr($key);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub minStr {
+    my ($self,$key) = @_;
+
+    my $min;
+    for my $row (@{$self->rows}) {
+        my $x = $row->$key;
+        if ($x ne '' && (!defined($min) || $x le $min)) {
+            $min = $x;
+        }
+    }
+
+    return $min;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 maxStr() - Alphanumerisches Maximum der Kolumne
+
+=head4 Synopsis
+
+    $max = $tab->maxStr($key);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub maxStr {
+    my ($self,$key) = @_;
+
+    my $max;
+    for my $row (@{$self->rows}) {
+        my $x = $row->$key;
+        if ($x ne '' && (!defined($max) || $x gt $max)) {
+            $max = $x;
+        }
+    }
+
+    return $max;
+}
+
+# -----------------------------------------------------------------------------
+
 =head2 Verschiedenes
 
 =head3 absorbModifications() - Absorbiere Datensatz-Änderungen
