@@ -385,6 +385,10 @@ sub worldToPixelFactor {
 
     $x = $class->worldToPixelX($width,$xFac,$xMin,$xVal);
 
+=head3 Alias
+
+worldToPixel()
+
 =head3 Returns
 
 X-Position
@@ -412,6 +416,11 @@ sub worldToPixelX {
     }
 
     return $x;
+}
+
+{
+    no warnings 'once';
+    *worldToPixel = \&worldToPixelX;
 }
 
 # -----------------------------------------------------------------------------
