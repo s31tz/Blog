@@ -374,7 +374,7 @@ entsprechen.
 
 sub worldToPixelFactor {
     my ($class,$size,$min,$max) = @_;
-    return $size/($max-$min);
+    return ($size-1)/($max-$min);
 }
 
 # -----------------------------------------------------------------------------
@@ -399,9 +399,7 @@ Transformiere Weltkoordinate $xVal in eine Pixelkoordinate
 auf einer X-Pixelachse der Breite $width. Das Weltkoordinaten-Minimum
 ist $xMin und der Umrechnungsfaktor ist $xFac, welcher von
 Methode worldToPixelFactor() geliefert wird. Die gelieferten
-Werte sollen im Bereich 0 .. $width-1 liegen. Wird für das angenommene
-Weltkoordinaten-Maximum der Wert $width berechnet, wird dieser
-zu $width-1 korrigiert.
+Werte sollen im Bereich 0 .. $width-1 liegen.
 
 =cut
 
@@ -409,13 +407,7 @@ zu $width-1 korrigiert.
 
 sub worldToPixelX {
     my ($class,$width,$xFac,$xMin,$xVal) = @_;
-
-    my $x = int(($xVal-$xMin)*$xFac);
-    if ($x == $width) {
-        $x--;
-    }
-
-    return $x;
+    return int(($xVal-$xMin)*$xFac);
 }
 
 {
@@ -441,9 +433,7 @@ Transformiere Weltkoordinate $yVal in eine Pixelkoordinate
 auf einer Y-Pixelachse der Höhe $height. Das Weltkoordinaten-Minimum
 ist $yMin und der Umrechnungsfaktor ist $yFac, welcher von
 Methode worldToPixelFactor() geliefert wird. Die gelieferten
-Werte sollen im Bereich $height-1 .. 0 liegen. Wird für das angenommene
-Weltkoordinaten-Minimum der Wert $height berechnet, wird dieser
-zu $height-1 korrigiert.
+Werte sollen im Bereich $height-1 .. 0 liegen.
 
 =cut
 
@@ -451,12 +441,7 @@ zu $height-1 korrigiert.
 
 sub worldToPixelY {
     my ($class,$height,$yFac,$yMin,$yVal) = @_;
-
     my $y = int(($yVal-$yMin)*$yFac);
-    if ($y == 0) {
-        $y++;
-    }
-
     return $height-$y;
 }
 
