@@ -355,7 +355,7 @@ sub readableNumber {
 
 =head3 Synopsis
 
-    $factor = $class->worldToPixelFactor($length,$min,$max);
+    $factor = $class->worldToPixelFactor($length,$min,$max)
 
 =head3 Returns
 
@@ -407,7 +407,7 @@ Werte sollen im Bereich 0 .. $width-1 liegen.
 
 sub worldToPixelX {
     my ($class,$width,$xFac,$xMin,$xVal) = @_;
-    return int(($xVal-$xMin)*$xFac);
+    return sprintf '%.0f',($xVal-$xMin)*$xFac;
 }
 
 {
@@ -441,7 +441,7 @@ Werte sollen im Bereich $height-1 .. 0 liegen.
 
 sub worldToPixelY {
     my ($class,$height,$yFac,$yMin,$yVal) = @_;
-    my $y = int(($yVal-$yMin)*$yFac);
+    my $y = sprintf '%.0f',($yVal-$yMin)*$yFac;
     return $height-$y;
 }
 
