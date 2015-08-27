@@ -692,38 +692,46 @@
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">33</td>
-    <td class="sdoc-code-td-line">TMP<span class="hl opt">=/</span>tmp<span class="hl opt">/</span><span class="hl kwd">$FILE</span></td>
+    <td class="sdoc-code-td-line">TMPDIR<span class="hl opt">=/</span>tmp<span class="hl opt">/</span>enscript</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">34</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line">TMPFILE<span class="hl opt">=</span><span class="hl kwd">$TMPDIR</span><span class="hl opt">/</span><span class="hl kwd">$FILE</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">35</td>
-    <td class="sdoc-code-td-line"><span class="hl kwc">iconv</span> <span class="hl opt">-</span>f <span class="hl kwd">$ENC</span> <span class="hl opt">-</span>t latin1 <span class="hl kwd">$IN</span> <span class="hl opt">&gt;</span><span class="hl kwd">$TMP</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">36</td>
-    <td class="sdoc-code-td-line"><span class="hl kwc">touch</span> <span class="hl opt">--</span>reference<span class="hl opt">=</span><span class="hl kwd">$IN $TMP</span></td>
+    <td class="sdoc-code-td-line">mkdir <span class="hl opt">-</span>p <span class="hl kwd">$TMPDIR</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">37</td>
-    <td class="sdoc-code-td-line"><span class="hl opt">(</span><span class="hl kwb">cd</span> <span class="hl opt">/</span>tmp<span class="hl opt">;</span> enscript <span class="hl opt">--</span>quiet <span class="hl opt">--</span>output<span class="hl opt">=- --</span>columns<span class="hl opt">=</span><span class="hl num">2</span> <span class="hl opt">--</span>landscape \</td>
+    <td class="sdoc-code-td-line"><span class="hl kwc">iconv</span> <span class="hl opt">-</span>f <span class="hl kwd">$ENC</span> <span class="hl opt">-</span>t latin1 <span class="hl kwd">$IN</span> <span class="hl opt">&gt;</span><span class="hl kwd">$TMPFILE</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">38</td>
-    <td class="sdoc-code-td-line">    <span class="hl opt">--</span>fancy-header<span class="hl opt">=</span>edd <span class="hl opt">--</span>highlight<span class="hl opt">=</span><span class="hl kwd">$LANG $FILE</span> | ps2pdf <span class="hl opt">-</span> <span class="hl kwd">$OUT</span><span class="hl opt">)</span></td>
+    <td class="sdoc-code-td-line"><span class="hl kwc">touch</span> <span class="hl opt">--</span>reference<span class="hl opt">=</span><span class="hl kwd">$IN $TMPFILE</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">39</td>
-    <td class="sdoc-code-td-line"><span class="hl kwc">rm</span> <span class="hl kwd">$TMP</span></td>
+    <td class="sdoc-code-td-line"><span class="hl opt">(</span><span class="hl kwb">cd</span> <span class="hl kwd">$TMPDIR</span><span class="hl opt">;</span> enscript <span class="hl opt">--</span>quiet <span class="hl opt">--</span>output<span class="hl opt">=- --</span>columns<span class="hl opt">=</span><span class="hl num">2</span> <span class="hl opt">--</span>landscape \</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">40</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line">    <span class="hl opt">--</span>fancy-header<span class="hl opt">=</span>edd <span class="hl opt">--</span>highlight<span class="hl opt">=</span><span class="hl kwd">$LANG $FILE</span><span class="hl opt">)</span> | ps2pdf <span class="hl opt">-</span> <span class="hl kwd">$OUT</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">41</td>
+    <td class="sdoc-code-td-line"><span class="hl kwc">rm</span> <span class="hl opt">-</span>rf <span class="hl kwd">$TMPDIR</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">42</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">43</td>
     <td class="sdoc-code-td-line"><span class="hl slc"># eof</span></td>
   </tr>
   </table>
