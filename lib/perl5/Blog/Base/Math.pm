@@ -442,7 +442,7 @@ Werte sollen im Bereich $height-1 .. 0 liegen.
 sub worldToPixelY {
     my ($class,$height,$yFac,$yMin,$yVal) = @_;
     my $y = sprintf '%.0f',($yVal-$yMin)*$yFac;
-    return $height-$y;
+    return $height-1-$y;
 }
 
 # -----------------------------------------------------------------------------
