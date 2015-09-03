@@ -12,7 +12,7 @@
     width=94 height=47 url="http://www.perl.org/"
 
 Bei der Auswertung von HTTP-Zugriffen möchte man u.U. die IP-Adressen
-zu Hostnamen auflösen. Das geht so:
+zu Hostnamen auflösen. Das geht in Perl so:
 
   %Code: ln=1 bg=2 filter="./blog-highlight perl %FORMAT%"
   use Socket;
@@ -23,6 +23,6 @@ Zwei Punkte sollte man dabei im Hinterkopf behalten:
 
 * nicht jede IP-Adresse kann zu einem Hostnamen aufgelöst werden
   (C{gethostbyaddr()} liefert dann C{undef})
-* der Aufruf kann u.U. eine Weile dauern (10 Sekunden und mehr)
+* der Aufruf kann u.U. eine Weile dauern (bei mir bis zu 10 Sekunden)
 
 # eof
