@@ -245,11 +245,11 @@ folgender Regel:
 Für Nachkommastellen < .5 runde ab, für Nachkommastellen >= .5 runde auf.
 Für negative $x ist es umgekehrt.
 
-Folgender Ansatz funktioniert nicht:
+Folgender Ansatz funktioniert nicht
 
     $n = sprintf '%.0f',$x;
 
-Manchmal wird nicht richtig auf oder abgerundet:
+denn dieser gibt inkonsistente Ergebnisse
 
     0.5 => 0
     1.5 => 2

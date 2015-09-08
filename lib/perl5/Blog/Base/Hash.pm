@@ -705,7 +705,7 @@ sub weaken {
     # @_: @keys
 
     for (@_) {
-        Scalar::Util::weaken $self->{$_};
+        Scalar::Util::weaken($self->{$_});
     }
 
     return;
