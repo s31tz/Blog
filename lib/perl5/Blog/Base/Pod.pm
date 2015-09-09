@@ -43,7 +43,7 @@ sub inlineSegment {
             $maxL = $l;
         }
     }
-    if ($text =~ /^</ or $text =~ />$/) {
+    if ($maxL or $text =~ /^</ or $text =~ />$/) {
         $text = " $text ";
     }
     $maxL++;
