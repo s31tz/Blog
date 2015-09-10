@@ -15,6 +15,7 @@ use Blog::Base::Array;
 use Blog::Base::Misc;
 use Blog::Base::DirHandle;
 use Blog::Base::FileHandle;
+use Encode::Guess ();
 use Fcntl qw/:DEFAULT/;
 use Blog::Base::Shell;
 use Blog::Base::FileSystem;
@@ -787,6 +788,57 @@ sub read {
     $fh->close;
 
     return $data;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 readDecode() - Lies und decode Textdatei
+
+=head4 Synopsis
+
+    $text = $obj->readDecode(@opt);
+    $text = $class->readDecode($path,@opt);
+
+=head4 Options
+
+Siehe Methode read().
+
+=head4 Description
+
+Lies den Inhalt der Textatei $path, analysiere das Encoding,
+dekodiere den Text entsprechend und liefere ihn zurück.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub readDecode {
+    my $this = shift;
+
+    my $text = $this->read(@_);
+
+    # Wir dekodieren UTF-8 und ISO-8859-1
+    my $decoder = Encode::Guess::guess_encoding($text,'iso-8859-1');
+    if (ref $decoder) {
+        # Character Encoding eindeutig bestimmt
+        $text = $decoder->decode($text);
+    }
+    elsif ($decoder eq 'utf8 or iso-8859-1') {
+        # Datei ist UTF-8 oder ISO-8859-1 kodiert. Da es sehr
+        # unwahrscheinlich ist, dass eine ISO-8859-1 Textdatei zufällig
+        # korrektes UTF-8 enthält, gehen wir davon aus, dass die
+        # Datei UTF-8 encoded ist.
+        $text = Encode::decode('utf-8',$text);
+    }
+    else {
+        # Es ist ein anderer Fehler aufgetreten
+        $this->throw(
+            q{PATH-00099: Zeichen-Dekodierung fehlgeschlagen},
+            Message=>$decoder,
+        );
+    }
+
+    return $text;
 }
 
 # -----------------------------------------------------------------------------
