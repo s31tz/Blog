@@ -13,6 +13,10 @@ veröffentlicht habe.
 
 =item *
 
+L<Perl: UTF-8 und ISO-8859-1 Dateien erkennen und automatisch dekodieren|http://fseitz.de/blog/index.php?/archives/124-x.html>
+
+=item *
+
 L<GnuPG: Verschlüsseln, entschlüsseln und andere Operationen|http://fseitz.de/blog/index.php?/archives/123-x.html>
 
 =item *

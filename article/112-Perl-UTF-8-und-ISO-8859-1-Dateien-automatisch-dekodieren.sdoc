@@ -1,0 +1,206 @@
+# Date: 2015-07-10
+
+%Document:
+  title="Perl: UTF-8 und ISO-8859-1 Dateien erkennen und automatisch dekodieren"
+  generateAnchors=0
+  utf8=1
+  minLnWidth=2
+
+# id=124
+
+%Figure: file="IMGDIR/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+Das in Westeuropa weit verbreitete Character Encoding ISO-8859-1
+(Latin1) wird zunehmend durch UTF-8 abgelöst.
+
+Oftmals kommen Textdateien - z.B. Quelltexte - in beiden Encodings
+vor. Wenn ein- und dasselbe Programm mit ISO-8859-1 I{und} UTF-8
+umgehen soll, wirft dies ein Problem auf. Denn um eine Textdatei
+korrekt verarbeiten zu können, muss ihr Inhalt gemäß ihres Encodings
+dekodiert werden. Idealerweise sollte ein Programm sowohl mit
+ISO-8859-1 als auch mit UTF-8 umgehen können, und zwar am besten so,
+dass das Encoding I{nicht} explizit angegeben werden muss.
+
+Lässt sich dies realisieren?
+
+Ja, indem das Programm sich den Inhalt der Datei "ansieht", entscheidet,
+welches Encoding vorliegt und den Text entsprechend dekodiert.
+
+Im Falle von Perl kann hierfür das Modul C{Encode::Guess} eingesetzt werden.
+Es ist Teil des Perl-Core - also in jeder Perl-Installation vorhanden -
+und kann mit
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  use Encode::Guess;
+  .
+
+einfach geladen werden.
+
+Theoretisch sollte für die Aufgabe folgender Fünfzeiler ausreichen:
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  my $dec = guess_encoding($text,'iso-8859-1');
+  if (!ref $dec) {
+      die "ERROR: $dec\n";
+  }
+  $text = $dec->decode($text);
+  .
+
+Erläuterung:
+
+[Zeile 1:]
+
+  Der Inhalt der Datei steht auf der Variable C{$text} (das Einlesen
+  ist hier nicht gezeigt). Der Aufruf C{guess_encoding()} prüft
+  C{$text} gegen die Encodings C{ascii}, C{utf8}, C{UTF-16/32 mit BOM}
+  (Default) I{und} C{iso-8859-1}. Im Erfolgsfall liefert der Aufruf
+  ein Decoder-Objekt, im Fehlerfall eine Fehlermeldung (also eine
+  Zeichenkette).
+
+[Zeile 2-4:]
+  Fehlerbehandlung. Im Fehlerfall erhalten wir kein Decoder-Objekt sondern
+  einen String. Wir brechen mit einer Exception ab. Zwei mögliche Fehlerfälle
+  sind:
+
+  1. Der Text entspricht I{keinem} der geprüften Encodings.
+  2. I{Mehr als eines} der Encodings kommt infrage.
+
+[Zeile 5:]
+  I{Genau ein} Encoding wurde als möglich erkannt. Wir dekodieren den Text
+  mit dem entsprechenden Decoder-Objekt.
+
+Leider reicht diese Implementierung nicht aus (!), denn wir stellen
+folgendes fest:
+
+* Ist die Datei ISO-8859-1 kodiert, läuft der Code ohne Fehler und
+  korrekt durch.
+
+* Ist die Datei UTF-8 kodiert, bricht der Code mit einer der beiden
+  Fehlermeldungen
+
+    ERROR: utf8 or iso-8859-1
+
+  oder
+
+    ERROR: iso-8859-1 or utf8
+
+  ab, d.h. C{guess_encoding()} war es nicht möglich, ein Encoding
+  eindeutig zu erkennen.
+
+Woran liegt das?
+
+Die Ursache für den Fehler ist, dass jede UTF-8-Datei I{formal} auch
+eine ISO-8859-Datei ist. D.h. I{formal} ist in dem Fall die
+Zeichensatz-Kodierung mehrdeutig. Allerdings kann (und sollte) dennoch eine
+Entscheidung zugunsten von UTF-8 gefällt werden. Denn es ist I{sehr
+unwahrscheinlich}, dass ein realer Text, der in ISO-8859-1 erstellt wird,
+valides UTF-8 ergibt. Unter Einbeziehung dieser Tatsache können wir
+die Erkennung von ISO-8859-1 vs. UTF-8 wesentlich intelligenter gestalten:
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  my $dec = guess_encoding($text,'iso-8859-1');
+  if (ref $dec) {
+      $text = $dec->decode($text);
+  }
+  elsif ($dec eq 'utf8 or iso-8859-1' || $dec eq 'iso-8859-1 or utf-8') {
+      $text = Encode::decode('utf-8',$text);
+  }
+  else {
+      die "ERROR: $dec\n";
+  }
+  .
+
+Erläuterung:
+
+[Zeile 2-4:]
+  Das Charcter-Encoding konnte eindeutig bestimmt werden. Wir dekodieren
+  den Text mit dem entsprechenden Dekoder-Objekt. Eine ISO-8859-1 Datei
+  wird mit großer Wahrscheinlichkeit an dieser Stelle behandelt.
+
+[Zeile 5-7:]
+  Die Datei wird von C{Encode::Guess} als UTF-8 oder ISO-8859-1 kodiert erkannt.
+  Da es unwahrscheinlich ist, dass eine ISO-8859-1 Textdatei zufällig korrektem
+  UTF-8 entspricht, entscheiden wir, dass die Datei UTF-8 kodiert ist und
+  dekodieren sie entsprechend mit C{Encode::decode()}.
+
+[Zeile 8-10:]
+  Fehlerbehandlung und Abbruch mit Exception (wie oben).
+
+Das Ganze als vollständige Implementierung einer Perl-Klasse C{File} mit
+einer Methode C{decode()}:
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  package File;
+
+  use strict;
+  use warnings;
+
+  use Encode::Guess ();
+
+  # ---------------------------------------------------------------------------
+
+  =encoding utf8
+
+  =head1 NAME
+
+  File - Datei-Operationen
+
+  =head1 METHODS
+
+  =head2 decode() - Lies und dekodiere eine Datei
+
+  =head3 Synopsis
+
+      $text = $class->decode($file);
+
+  =cut
+
+  # ---------------------------------------------------------------------------
+
+  sub decode {
+      my ($class,$file) = @_;
+
+      # Datei einlesen
+
+      local $/ = undef;
+      open my $fh,'<',$file or die "ERROR: open failed: $file ($!)\n";
+      my $text = <$fh>;
+      close $fh;
+
+      # Encoding ermitteln und Text dekodieren
+
+      my $dec = Encode::Guess::guess_encoding($text,'iso-8859-1');
+      if (ref $dec) {
+          $text = $dec->decode($text);
+      }
+      elsif ($dec eq 'utf8 or iso-8859-1' || $dec eq 'iso-8859-1 or utf-8') {
+          $text = Encode::decode('utf-8',$text);
+      }
+      else {
+          die "ERROR: $dec\n";
+      }
+
+      return $text;
+  }
+
+  # ---------------------------------------------------------------------------
+
+  =head1 AUTHOR
+
+  Frank Seitz, L<http://fseitz.de/>
+
+  =cut
+
+  # ---------------------------------------------------------------------------
+
+  1;
+
+  # eof
+  .
+
+= Links
+
+* U{"http://perldoc.perl.org/Encode/Guess.html",text="Encode::Guess"}
+
+# eof

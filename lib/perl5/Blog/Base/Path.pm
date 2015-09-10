@@ -818,12 +818,12 @@ sub readDecode {
     my $text = $this->read(@_);
 
     # Wir dekodieren UTF-8 und ISO-8859-1
-    my $decoder = Encode::Guess::guess_encoding($text,'iso-8859-1');
-    if (ref $decoder) {
+    my $dec = Encode::Guess::guess_encoding($text,'iso-8859-1');
+    if (ref $dec) {
         # Character Encoding eindeutig bestimmt
-        $text = $decoder->decode($text);
+        $text = $dec->decode($text);
     }
-    elsif ($decoder eq 'utf8 or iso-8859-1') {
+    elsif ($dec =~ /utf8/ && $dec =~ / or / && $dec =~ /iso-8859-1/) {
         # Datei ist UTF-8 oder ISO-8859-1 kodiert. Da es sehr
         # unwahrscheinlich ist, dass eine ISO-8859-1 Textdatei zufällig
         # korrektes UTF-8 enthält, gehen wir davon aus, dass die
@@ -834,7 +834,7 @@ sub readDecode {
         # Es ist ein anderer Fehler aufgetreten
         $this->throw(
             q{PATH-00099: Zeichen-Dekodierung fehlgeschlagen},
-            Message=>$decoder,
+            Message=>$dec,
         );
     }
 
