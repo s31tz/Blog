@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-09-11 14:34:02
+    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-09-11 20:17:29
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -409,7 +409,7 @@
     Im Falle von Perl kann hierfür das Modul
     <a class="sdoc-seg-u" href="http://perldoc.perl.org/Encode/Guess.html">Encode::Guess</a>
     genutzt werden. Es ist Teil des Perl-Core und damit in jeder
-    Perl-Installation vorhanden. Es wird mit
+    Perl-Installation enthalten. Es wird mit
   </p>
   <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
   <tr class="sdoc-code-tr-odd">
@@ -500,8 +500,10 @@
     </dd>
   </dl>
   <p class="sdoc-para-p">
-    Leider funktioniert diese Implementierung nicht! Denn wir stellen
-    folgendes fest:
+    Leider funktioniert diese Implementierung nicht!
+  </p>
+  <p class="sdoc-para-p">
+    Wir stellen folgendes fest:
   </p>
   <ul class="sdoc-list-ul">
     <li class="sdoc-list-li-point" style="list-style-type:disc">
@@ -547,14 +549,13 @@
     Ist die Unterscheidung von UTF-8 und ISO-8859-1 also nicht möglich?
   </p>
   <p class="sdoc-para-p">
-    Doch, sie ist möglich, wenn auch nicht nach den rein formalen
-    Kriterien, die <tt class="sdoc-seg-c">Encode::Guess</tt> anwendet. Denn auch wenn UTF-8 formal
-    gültiges ISO-8859-1 ist, so gilt nicht die Umkehrung, also dass jeder
-    ISO-8859-1 Text valides UTF-8 darstellt. Es ist sogar <i class="sdoc-seg-i">sehr
-    unwahrscheinlich</i>, dass ein realer Text, der ISO-8859-1 encoded ist,
-    gleichzeitig valides UTF-8 darstellt. Unter Berücksichtigung
-    dieser Tatsache können wir die Erkennung von ISO-8859-1 vs. UTF-8
-    besser realisieren:
+    Doch, sie ist möglich, wenn auch nicht nach den formalen Kriterien,
+    die <tt class="sdoc-seg-c">Encode::Guess</tt> anwendet. Denn auch wenn UTF-8 formal gültiges
+    ISO-8859-1 ist, so gilt nicht die Umkehrung, dass jeder ISO-8859-1
+    Text valides UTF-8 darstellt. Es ist sogar <i class="sdoc-seg-i">sehr unwahrscheinlich</i>,
+    dass ein realer ISO-8859-1 Text, gleichzeitig valides UTF-8
+    darstellt. Unter Berücksichtigung dieser Tatsache können wir die
+    Erkennung von ISO-8859-1 vs. UTF-8 realisieren:
   </p>
   <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
   <tr class="sdoc-code-tr-odd">
