@@ -815,23 +815,23 @@ dekodiere den Text entsprechend und liefere ihn zurück.
 sub readDecode {
     my $this = shift;
 
+    # Datei einlesen
     my $text = $this->read(@_);
 
-    # Wir dekodieren UTF-8 und ISO-8859-1
-    my $dec = Encode::Guess::guess_encoding($text,'iso-8859-1');
+    # Encoding ermitteln und Text dekodieren
+
+    # $Encode::Guess::NoUTFAutoGuess = 1;
+    my $dec = Encode::Guess->guess($text);
     if (ref $dec) {
-        # Character Encoding eindeutig bestimmt
+        # Wir dekodieren Unicode
         $text = $dec->decode($text);
     }
-    elsif ($dec =~ /utf8/ && $dec =~ / or / && $dec =~ /iso-8859-1/) {
-        # Datei ist UTF-8 oder ISO-8859-1 kodiert. Da es sehr
-        # unwahrscheinlich ist, dass eine ISO-8859-1 Textdatei zufällig
-        # korrektes UTF-8 enthält, gehen wir davon aus, dass die
-        # Datei UTF-8 encoded ist.
-        $text = Encode::decode('utf-8',$text);
+    elsif ($dec =~ /No appropriate encodings found/i) {
+        # Wir dekodieren ISO-8859-1
+        $text = Encode::decode('iso-8859-1',$text);
     }
     else {
-        # Es ist ein anderer Fehler aufgetreten
+        # Unerwarteter Fehler
         $this->throw(
             q{PATH-00099: Zeichen-Dekodierung fehlgeschlagen},
             Message=>$dec,

@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-09-10 22:17:10
+    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-09-11 14:34:02
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -385,16 +385,18 @@
   </p>
   <p class="sdoc-para-p">
     Das in Westeuropa weit verbreitete Character Encoding ISO-8859-1
-    (Latin1) wird zunehmend durch UTF-8 abgelöst.
+    (Latin1) wird zunehmend durch das umfassendere UTF-8 abgelöst. Oftmals
+    treten Textdateien - z.B. Quelltexte - in verschiedenen Encodings
+    auf. Wenn ein- und dasselbe Programm mit ISO-8859-1 <i class="sdoc-seg-i">und</i> UTF-8
+    umgehen soll, wirft dies ein Problem auf. Denn um eine Textdatei
+    korrekt verarbeiten zu können, muss der Text gemäß seines Encodings
+    dekodiert werden. Das Encoding ist der Datei von außen aber nicht
+    anzusehen.
   </p>
   <p class="sdoc-para-p">
-    Oftmals kommen Textdateien - z.B. Quelltexte - in beiden Encodings
-    vor. Wenn ein- und dasselbe Programm mit ISO-8859-1 <i class="sdoc-seg-i">und</i> UTF-8
-    umgehen soll, wirft dies ein Problem auf. Denn um eine Textdatei
-    korrekt verarbeiten zu können, muss ihr Inhalt gemäß ihres Encodings
-    dekodiert werden. Idealerweise sollte ein Programm sowohl mit
-    ISO-8859-1 als auch mit UTF-8 umgehen können, und zwar am besten so,
-    dass das Encoding <i class="sdoc-seg-i">nicht</i> explizit angegeben werden muss.
+    Idealerweise sollte ein Programm sowohl mit ISO-8859-1 als auch mit
+    UTF-8 umgehen können, und zwar am besten so, dass das Encoding
+    <i class="sdoc-seg-i">nicht</i> explizit angegeben werden muss.
   </p>
   <p class="sdoc-para-p">
     Lässt sich dies realisieren?
@@ -404,9 +406,10 @@
     welches Encoding vorliegt und den Text entsprechend dekodiert.
   </p>
   <p class="sdoc-para-p">
-    Im Falle von Perl kann hierfür das Modul <tt class="sdoc-seg-c">Encode::Guess</tt> eingesetzt werden.
-    Es ist Teil des Perl-Core - also in jeder Perl-Installation vorhanden -
-    und kann mit
+    Im Falle von Perl kann hierfür das Modul
+    <a class="sdoc-seg-u" href="http://perldoc.perl.org/Encode/Guess.html">Encode::Guess</a>
+    genutzt werden. Es ist Teil des Perl-Core und damit in jeder
+    Perl-Installation vorhanden. Es wird mit
   </p>
   <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
   <tr class="sdoc-code-tr-odd">
@@ -415,30 +418,35 @@
   </tr>
   </table>
   <p class="sdoc-para-p">
-    einfach geladen werden.
+    geladen.
   </p>
   <p class="sdoc-para-p">
-    Theoretisch sollte für die Aufgabe folgender Fünfzeiler ausreichen:
+    Wir nutzen die objektorientierte Schnittstelle des Moduls. Theoretisch
+    sollte folgender Sechszeiler die Aufgabe erledigen:
   </p>
   <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">1</td>
-    <td class="sdoc-code-td-line"><span class="pt-k">my</span> <span class="pt-i">$dec</span> = <span class="pt-i">guess_encoding</span><span class="pt-s">(</span><span class="pt-i">$text</span><span class="pt-cm">,</span><span class="pt-q">&#39;iso-8859-1&#39;</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
+    <td class="sdoc-code-td-line"><span class="pt-w">Encode::Guess</span><span class="pt-w">-&gt;set_suspects</span><span class="pt-s">(</span><span class="pt-q">&#39;iso-8859-1&#39;</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">2</td>
-    <td class="sdoc-code-td-line"><span class="pt-k">if</span> <span class="pt-s">(</span>!<span class="pt-k">ref</span> <span class="pt-i">$dec</span><span class="pt-s">)</span> <span class="pt-s">{</span></td>
+    <td class="sdoc-code-td-line"><span class="pt-k">my</span> <span class="pt-i">$dec</span> = <span class="pt-w">Encode::Guess</span><span class="pt-w">-&gt;guess</span><span class="pt-s">(</span><span class="pt-i">$text</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">3</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">die</span> <span class="pt-q">&quot;ERROR: $dec\n&quot;</span><span class="pt-sc">;</span></td>
+    <td class="sdoc-code-td-line"><span class="pt-k">if</span> <span class="pt-s">(</span>!<span class="pt-k">ref</span> <span class="pt-i">$dec</span><span class="pt-s">)</span> <span class="pt-s">{</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">4</td>
-    <td class="sdoc-code-td-line"><span class="pt-s">}</span></td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">die</span> <span class="pt-q">&quot;ERROR: $dec\n&quot;</span><span class="pt-sc">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">5</td>
+    <td class="sdoc-code-td-line"><span class="pt-s">}</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">6</td>
     <td class="sdoc-code-td-line"><span class="pt-i">$text</span> = <span class="pt-i">$dec</span><span class="pt-i">-&gt;decode</span><span class="pt-s">(</span><span class="pt-i">$text</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
   </tr>
   </table>
@@ -449,20 +457,26 @@
     <dt class="sdoc-list-dt">Zeile 1:</dt>
     <dd class="sdoc-list-dd">
       <p class="sdoc-para-p">
-        Der Inhalt der Datei steht auf der Variable <tt class="sdoc-seg-c">$text</tt> (das Einlesen
-        ist hier nicht gezeigt). Der Aufruf <tt class="sdoc-seg-c">guess_encoding()</tt> prüft
-        <tt class="sdoc-seg-c">$text</tt> gegen die Encodings <tt class="sdoc-seg-c">ascii</tt>, <tt class="sdoc-seg-c">utf8</tt>, <tt class="sdoc-seg-c">UTF-16/32 mit BOM</tt>
-        (Default) <i class="sdoc-seg-i">und</i> <tt class="sdoc-seg-c">iso-8859-1</tt>. Im Erfolgsfall liefert der Aufruf
-        ein Decoder-Objekt, im Fehlerfall eine Fehlermeldung (also eine
-        Zeichenkette).
+        Wir definieren <tt class="sdoc-seg-c">iso-8859-1</tt> als Encoding, das <i class="sdoc-seg-i">zusätzlich</i> zu den
+        Default-Encodings <tt class="sdoc-seg-c">ascii</tt>, <tt class="sdoc-seg-c">utf8</tt>, <tt class="sdoc-seg-c">UTF-16/32 mit BOM</tt>,
+        geprüft werden soll.
       </p>
     </dd>
-    <dt class="sdoc-list-dt">Zeile 2-4:</dt>
+    <dt class="sdoc-list-dt">Zeile 2:</dt>
     <dd class="sdoc-list-dd">
       <p class="sdoc-para-p">
-        Fehlerbehandlung. Im Fehlerfall erhalten wir kein Decoder-Objekt sondern
-        einen String. Wir brechen mit einer Exception ab. Zwei mögliche Fehlerfälle
-        sind:
+        Der Inhalt der Datei steht auf der Variable <tt class="sdoc-seg-c">$text</tt> (das Einlesen hat
+        vorher stattgefunden und ist hier nicht wiedergegeben). Die Methode
+        <tt class="sdoc-seg-c">guess()</tt> versucht das Encoding zu ermitteln und liefert im
+        Erfolgsfall ein entsprechendes Decoder-Objekt. Im Fehlerfall liefert
+        die Methode eine Fehlermeldung (also eine Zeichenkette).
+      </p>
+    </dd>
+    <dt class="sdoc-list-dt">Zeile 3-5:</dt>
+    <dd class="sdoc-list-dd">
+      <p class="sdoc-para-p">
+        Fehlerbehandlung. Falls wir eine Fehlermeldung erhalten haben, brechen
+        wir mit einer Exception ab. Zwei mögliche Fehlerfälle sind:
       </p>
       <ol class="sdoc-list-ol">
         <li class="sdoc-list-li-num">
@@ -477,29 +491,28 @@
         </li>
       </ol>
     </dd>
-    <dt class="sdoc-list-dt">Zeile 5:</dt>
+    <dt class="sdoc-list-dt">Zeile 6:</dt>
     <dd class="sdoc-list-dd">
       <p class="sdoc-para-p">
-        <i class="sdoc-seg-i">Genau ein</i> Encoding wurde als möglich erkannt. Wir dekodieren den Text
-        mit dem entsprechenden Decoder-Objekt.
+        Es wurde ein Decoder-Objekt geliefert, also ein Encoding
+        <i class="sdoc-seg-i">eindeutig</i> erkannt. Wir dekodieren den Text mit dem Decoder-Objekt.
       </p>
     </dd>
   </dl>
   <p class="sdoc-para-p">
-    Leider reicht diese Implementierung nicht aus (!), denn wir stellen
+    Leider funktioniert diese Implementierung nicht! Denn wir stellen
     folgendes fest:
   </p>
   <ul class="sdoc-list-ul">
     <li class="sdoc-list-li-point" style="list-style-type:disc">
       <p class="sdoc-para-p">
-        Ist die Datei ISO-8859-1 kodiert, läuft der Code ohne Fehler und
-        korrekt durch.
+        Ist die Datei ISO-8859-1 kodiert, läuft der Code problemlos.
       </p>
     </li>
     <li class="sdoc-list-li-point" style="list-style-type:disc">
       <p class="sdoc-para-p">
-        Ist die Datei UTF-8 kodiert, bricht der Code mit einer der beiden
-        Fehlermeldungen
+        Ist die Datei UTF-8 kodiert, bricht der Code wahlweise mit einer der
+        beiden Fehlermeldungen
       </p>
       <div class="sdoc-code-div">
         <pre class="sdoc-code-pre">ERROR: utf8 or iso-8859-1</pre>
@@ -511,8 +524,8 @@
         <pre class="sdoc-code-pre">ERROR: iso-8859-1 or utf8</pre>
       </div>
       <p class="sdoc-para-p">
-        ab, d.h. <tt class="sdoc-seg-c">guess_encoding()</tt> war es nicht möglich, ein Encoding
-        eindeutig zu erkennen.
+        ab, d.h. der Methode <tt class="sdoc-seg-c">guess()</tt> war es nicht möglich, das Encoding
+        eindeutig zu bestimmen.
       </p>
     </li>
   </ul>
@@ -520,18 +533,33 @@
     Woran liegt das?
   </p>
   <p class="sdoc-para-p">
-    Die Ursache für den Fehler ist, dass jede UTF-8-Datei <i class="sdoc-seg-i">formal</i> auch
-    eine ISO-8859-Datei ist. D.h. <i class="sdoc-seg-i">formal</i> ist in dem Fall die
-    Zeichensatz-Kodierung mehrdeutig. Allerdings kann (und sollte) dennoch eine
-    Entscheidung zugunsten von UTF-8 gefällt werden. Denn es ist <i class="sdoc-seg-i">sehr
-    unwahrscheinlich</i>, dass ein realer Text, der in ISO-8859-1 erstellt wird,
-    valides UTF-8 ergibt. Unter Einbeziehung dieser Tatsache können wir
-    die Erkennung von ISO-8859-1 vs. UTF-8 wesentlich intelligenter gestalten:
+    Die Ursache für den Abbruch ist, dass jede UTF-8-Datei <i class="sdoc-seg-i">formal</i>
+    auch eine ISO-8859-1-Datei ist. Denn <i class="sdoc-seg-i">jede</i> Datei ist <i class="sdoc-seg-i">formal</i> eine
+    ISO-8859-1-Datei, selbst eine Binärdatei wie z.B. ein JPEG-Bild. Das
+    liegt daran, dass ISO-8859-1 ein Ein-Byte-Encoding ist, bei dem alle
+    256 Werte belegt sind.
+  </p>
+  <p class="sdoc-para-p">
+    Es ist also fruchtlos und hinderlich, mit <tt class="sdoc-seg-c">Encode::Guess</tt> auf
+    ISO-8859-1 testen zu wollen.
+  </p>
+  <p class="sdoc-para-p">
+    Ist die Unterscheidung von UTF-8 und ISO-8859-1 also nicht möglich?
+  </p>
+  <p class="sdoc-para-p">
+    Doch, sie ist möglich, wenn auch nicht nach den rein formalen
+    Kriterien, die <tt class="sdoc-seg-c">Encode::Guess</tt> anwendet. Denn auch wenn UTF-8 formal
+    gültiges ISO-8859-1 ist, so gilt nicht die Umkehrung, also dass jeder
+    ISO-8859-1 Text valides UTF-8 darstellt. Es ist sogar <i class="sdoc-seg-i">sehr
+    unwahrscheinlich</i>, dass ein realer Text, der ISO-8859-1 encoded ist,
+    gleichzeitig valides UTF-8 darstellt. Unter Berücksichtigung
+    dieser Tatsache können wir die Erkennung von ISO-8859-1 vs. UTF-8
+    besser realisieren:
   </p>
   <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln"> 1</td>
-    <td class="sdoc-code-td-line"><span class="pt-k">my</span> <span class="pt-i">$dec</span> = <span class="pt-i">guess_encoding</span><span class="pt-s">(</span><span class="pt-i">$text</span><span class="pt-cm">,</span><span class="pt-q">&#39;iso-8859-1&#39;</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
+    <td class="sdoc-code-td-line"><span class="pt-k">my</span> <span class="pt-i">$dec</span> = <span class="pt-w">Encode::Guess</span><span class="pt-w">-&gt;guess</span><span class="pt-s">(</span><span class="pt-i">$text</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln"> 2</td>
@@ -547,11 +575,11 @@
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln"> 5</td>
-    <td class="sdoc-code-td-line"><span class="pt-k">elsif</span> <span class="pt-s">(</span><span class="pt-i">$dec</span> <span class="pt-k">eq</span> <span class="pt-q">&#39;utf8 or iso-8859-1&#39;</span> || <span class="pt-i">$dec</span> <span class="pt-k">eq</span> <span class="pt-q">&#39;iso-8859-1 or utf-8&#39;</span><span class="pt-s">)</span> <span class="pt-s">{</span></td>
+    <td class="sdoc-code-td-line"><span class="pt-k">elsif</span> <span class="pt-s">(</span><span class="pt-i">$dec</span> =~ <span class="pt-q">/No appropriate encodings found/i</span><span class="pt-s">)</span> <span class="pt-s">{</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln"> 6</td>
-    <td class="sdoc-code-td-line">    <span class="pt-i">$text</span> = <span class="pt-i">Encode::decode</span><span class="pt-s">(</span><span class="pt-q">&#39;utf-8&#39;</span><span class="pt-cm">,</span><span class="pt-i">$text</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
+    <td class="sdoc-code-td-line">    <span class="pt-i">$text</span> = <span class="pt-i">Encode::decode</span><span class="pt-s">(</span><span class="pt-q">&#39;iso-8859-1&#39;</span><span class="pt-cm">,</span><span class="pt-i">$text</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln"> 7</td>
@@ -574,33 +602,42 @@
     Erläuterung:
   </p>
   <dl class="sdoc-list-dl">
+    <dt class="sdoc-list-dt">Zeile 1:</dt>
+    <dd class="sdoc-list-dd">
+      <p class="sdoc-para-p">
+        Der Dateiinhalt wird auf die Default-Encodings <tt class="sdoc-seg-c">ascii</tt>, <tt class="sdoc-seg-c">utf8</tt>,
+        <tt class="sdoc-seg-c">UTF-16/32 mit BOM</tt> - also Unicode - geprüft.
+      </p>
+    </dd>
     <dt class="sdoc-list-dt">Zeile 2-4:</dt>
     <dd class="sdoc-list-dd">
       <p class="sdoc-para-p">
-        Das Charcter-Encoding konnte eindeutig bestimmt werden. Wir dekodieren
-        den Text mit dem entsprechenden Dekoder-Objekt. Eine ISO-8859-1 Datei
-        wird mit großer Wahrscheinlichkeit an dieser Stelle behandelt.
+        Falls UTF-8 erkannt wurde (oder eines der anderen Unicode-Encodings)
+        nutzen wir das gelieferte Encoder-Objekt um den Text zu dekodieren.
       </p>
     </dd>
     <dt class="sdoc-list-dt">Zeile 5-7:</dt>
     <dd class="sdoc-list-dd">
       <p class="sdoc-para-p">
-        Die Datei wird von <tt class="sdoc-seg-c">Encode::Guess</tt> als UTF-8 oder ISO-8859-1 kodiert erkannt.
-        Da es unwahrscheinlich ist, dass eine ISO-8859-1 Textdatei zufällig korrektem
-        UTF-8 entspricht, entscheiden wir, dass die Datei UTF-8 kodiert ist und
-        dekodieren sie entsprechend mit <tt class="sdoc-seg-c">Encode::decode()</tt>.
+        Falls kein Unicode-Encoding erkannt wurde, muss es sich um ISO-8859-1
+        Datei handeln, denn andere Encodings erwarten wir nicht. Wir dekodieren
+        den Text ohne Encoder-Objekt mit der Funktion <tt class="sdoc-seg-c">Encode::decode()</tt>.
       </p>
     </dd>
     <dt class="sdoc-list-dt">Zeile 8-10:</dt>
     <dd class="sdoc-list-dd">
       <p class="sdoc-para-p">
-        Fehlerbehandlung und Abbruch mit Exception (wie oben).
+        Falls ein sonstiger Fehler eingetreten ist, brechen wir mit
+        einer Exception ab.
       </p>
     </dd>
   </dl>
   <p class="sdoc-para-p">
-    Das Ganze als vollständige Implementierung einer Perl-Klasse <tt class="sdoc-seg-c">File</tt> mit
-    einer Methode <tt class="sdoc-seg-c">decode()</tt>:
+    Dieser Ansatz funktioniert.
+  </p>
+  <p class="sdoc-para-p">
+    Das Ganze als vollständige Implementierung einer Perl-Klasse <tt class="sdoc-seg-c">File</tt>
+    mit einer einzelnen Methode <tt class="sdoc-seg-c">decode()</tt>:
   </p>
   <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
   <tr class="sdoc-code-tr-odd">
@@ -657,7 +694,7 @@
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">14</td>
-    <td class="sdoc-code-td-line"><span class="pt-pd">File - Datei-Operationen</span></td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">File - Klasse mit Datei-Operationen</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">15</td>
@@ -673,7 +710,7 @@
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">18</td>
-    <td class="sdoc-code-td-line"><span class="pt-pd">=head2 decode() - Lies und dekodiere eine Datei</span></td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">=head2 decode() - Lies und dekodiere eine Textdatei</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">19</td>
@@ -697,7 +734,7 @@
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">24</td>
-    <td class="sdoc-code-td-line"><span class="pt-pd">=cut</span></td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">=head3 Description</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">25</td>
@@ -705,151 +742,151 @@
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">26</td>
-    <td class="sdoc-code-td-line"><span class="pt-c"># ---------------------------------------------------------------------------</span></td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">Lies Textdatei $file und liefere den dekodierten Inhalt zur&uuml;ck.</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">27</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">Als Character Encoding erwarten wir Unicode (speziell UTF-8) oder</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">28</td>
-    <td class="sdoc-code-td-line"><a name="decode"></a><span class="pt-k">sub </span><span class="pt-m">decode</span> <span class="pt-s">{</span></td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">Latin1 (ISO-8859-1).</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">29</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">my</span> <span class="pt-s">(</span><span class="pt-i">$class</span><span class="pt-cm">,</span><span class="pt-i">$file</span><span class="pt-s">)</span> = <span class="pt-i">@_</span><span class="pt-sc">;</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">30</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">31</td>
-    <td class="sdoc-code-td-line">    <span class="pt-c"># Datei einlesen</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">32</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">33</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">local</span> <span class="pt-i">$/</span> = <span class="pt-k">undef</span><span class="pt-sc">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">34</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">open</span> <span class="pt-k">my</span> <span class="pt-i">$fh</span><span class="pt-cm">,</span><span class="pt-q">&#39;&lt;&#39;</span><span class="pt-cm">,</span><span class="pt-i">$file</span> <span class="pt-k">or</span> <span class="pt-k">die</span> <span class="pt-q">&quot;ERROR: open failed: $file ($!)\n&quot;</span><span class="pt-sc">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">35</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">my</span> <span class="pt-i">$text</span> = <span class="pt-q">&lt;$fh&gt;</span><span class="pt-sc">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">36</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">close</span> <span class="pt-i">$fh</span><span class="pt-sc">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">37</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">38</td>
-    <td class="sdoc-code-td-line">    <span class="pt-c"># Encoding ermitteln und Text dekodieren</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">39</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">40</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">my</span> <span class="pt-i">$dec</span> = <span class="pt-i">Encode::Guess::guess_encoding</span><span class="pt-s">(</span><span class="pt-i">$text</span><span class="pt-cm">,</span><span class="pt-q">&#39;iso-8859-1&#39;</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">41</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">if</span> <span class="pt-s">(</span><span class="pt-k">ref</span> <span class="pt-i">$dec</span><span class="pt-s">)</span> <span class="pt-s">{</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">42</td>
-    <td class="sdoc-code-td-line">        <span class="pt-i">$text</span> = <span class="pt-i">$dec</span><span class="pt-i">-&gt;decode</span><span class="pt-s">(</span><span class="pt-i">$text</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">43</td>
-    <td class="sdoc-code-td-line">    <span class="pt-s">}</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">44</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">elsif</span> <span class="pt-s">(</span><span class="pt-i">$dec</span> <span class="pt-k">eq</span> <span class="pt-q">&#39;utf8 or iso-8859-1&#39;</span> || <span class="pt-i">$dec</span> <span class="pt-k">eq</span> <span class="pt-q">&#39;iso-8859-1 or utf-8&#39;</span><span class="pt-s">)</span> <span class="pt-s">{</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">45</td>
-    <td class="sdoc-code-td-line">        <span class="pt-i">$text</span> = <span class="pt-i">Encode::decode</span><span class="pt-s">(</span><span class="pt-q">&#39;utf-8&#39;</span><span class="pt-cm">,</span><span class="pt-i">$text</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">46</td>
-    <td class="sdoc-code-td-line">    <span class="pt-s">}</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">47</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">else</span> <span class="pt-s">{</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">48</td>
-    <td class="sdoc-code-td-line">        <span class="pt-k">die</span> <span class="pt-q">&quot;ERROR: $dec\n&quot;</span><span class="pt-sc">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">49</td>
-    <td class="sdoc-code-td-line">    <span class="pt-s">}</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">50</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">51</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">return</span> <span class="pt-i">$text</span><span class="pt-sc">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">52</td>
-    <td class="sdoc-code-td-line"><span class="pt-s">}</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">53</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">54</td>
-    <td class="sdoc-code-td-line"><span class="pt-c"># ---------------------------------------------------------------------------</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">55</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">56</td>
-    <td class="sdoc-code-td-line"><span class="pt-pd">=head1 AUTHOR</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">57</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">58</td>
-    <td class="sdoc-code-td-line"><span class="pt-pd">Frank Seitz, L&lt;http://fseitz.de/&gt;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">59</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">60</td>
     <td class="sdoc-code-td-line"><span class="pt-pd">=cut</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">61</td>
+    <td class="sdoc-code-td-ln">31</td>
     <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">62</td>
+    <td class="sdoc-code-td-ln">32</td>
     <td class="sdoc-code-td-line"><span class="pt-c"># ---------------------------------------------------------------------------</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">33</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">34</td>
+    <td class="sdoc-code-td-line"><a name="decode"></a><span class="pt-k">sub </span><span class="pt-m">decode</span> <span class="pt-s">{</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">35</td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">my</span> <span class="pt-s">(</span><span class="pt-i">$class</span><span class="pt-cm">,</span><span class="pt-i">$file</span><span class="pt-s">)</span> = <span class="pt-i">@_</span><span class="pt-sc">;</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">36</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">37</td>
+    <td class="sdoc-code-td-line">    <span class="pt-c"># Datei einlesen</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">38</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">39</td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">local</span> <span class="pt-i">$/</span> = <span class="pt-k">undef</span><span class="pt-sc">;</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">40</td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">open</span> <span class="pt-k">my</span> <span class="pt-i">$fh</span><span class="pt-cm">,</span><span class="pt-q">&#39;&lt;&#39;</span><span class="pt-cm">,</span><span class="pt-i">$file</span> <span class="pt-k">or</span> <span class="pt-k">die</span> <span class="pt-q">&quot;ERROR: open failed: $file ($!)\n&quot;</span><span class="pt-sc">;</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">41</td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">my</span> <span class="pt-i">$text</span> = <span class="pt-q">&lt;$fh&gt;</span><span class="pt-sc">;</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">42</td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">close</span> <span class="pt-i">$fh</span><span class="pt-sc">;</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">43</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">44</td>
+    <td class="sdoc-code-td-line">    <span class="pt-c"># Encoding ermitteln und Text dekodieren</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">45</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">46</td>
+    <td class="sdoc-code-td-line">    <span class="pt-c"># $Encode::Guess::NoUTFAutoGuess = 1;</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">47</td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">my</span> <span class="pt-i">$dec</span> = <span class="pt-w">Encode::Guess</span><span class="pt-w">-&gt;guess</span><span class="pt-s">(</span><span class="pt-i">$text</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">48</td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">if</span> <span class="pt-s">(</span><span class="pt-k">ref</span> <span class="pt-i">$dec</span><span class="pt-s">)</span> <span class="pt-s">{</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">49</td>
+    <td class="sdoc-code-td-line">        <span class="pt-c"># Wir dekodieren Unicode</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">50</td>
+    <td class="sdoc-code-td-line">        <span class="pt-i">$text</span> = <span class="pt-i">$dec</span><span class="pt-i">-&gt;decode</span><span class="pt-s">(</span><span class="pt-i">$text</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">51</td>
+    <td class="sdoc-code-td-line">    <span class="pt-s">}</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">52</td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">elsif</span> <span class="pt-s">(</span><span class="pt-i">$dec</span> =~ <span class="pt-q">/No appropriate encodings found/i</span><span class="pt-s">)</span> <span class="pt-s">{</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">53</td>
+    <td class="sdoc-code-td-line">        <span class="pt-c"># Wir dekodieren Latin1</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">54</td>
+    <td class="sdoc-code-td-line">        <span class="pt-i">$text</span> = <span class="pt-i">Encode::decode</span><span class="pt-s">(</span><span class="pt-q">&#39;iso-8859-1&#39;</span><span class="pt-cm">,</span><span class="pt-i">$text</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">55</td>
+    <td class="sdoc-code-td-line">    <span class="pt-s">}</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">56</td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">else</span> <span class="pt-s">{</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">57</td>
+    <td class="sdoc-code-td-line">        <span class="pt-c"># Unerwarteter Fehler</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">58</td>
+    <td class="sdoc-code-td-line">        <span class="pt-k">die</span> <span class="pt-q">&quot;ERROR: $dec\n&quot;</span><span class="pt-sc">;</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">59</td>
+    <td class="sdoc-code-td-line">    <span class="pt-s">}</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">60</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">61</td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">return</span> <span class="pt-i">$text</span><span class="pt-sc">;</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">62</td>
+    <td class="sdoc-code-td-line"><span class="pt-s">}</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">63</td>
@@ -857,7 +894,7 @@
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">64</td>
-    <td class="sdoc-code-td-line"><span class="pt-n">1</span><span class="pt-sc">;</span></td>
+    <td class="sdoc-code-td-line"><span class="pt-c"># ---------------------------------------------------------------------------</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">65</td>
@@ -865,6 +902,46 @@
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">66</td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">=head1 AUTHOR</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">67</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">68</td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">Frank Seitz, L&lt;http://fseitz.de/&gt;</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">69</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">70</td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">=cut</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">71</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">72</td>
+    <td class="sdoc-code-td-line"><span class="pt-c"># ---------------------------------------------------------------------------</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">73</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">74</td>
+    <td class="sdoc-code-td-line"><span class="pt-n">1</span><span class="pt-sc">;</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">75</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">76</td>
     <td class="sdoc-code-td-line"><span class="pt-c"># eof</span></td>
   </tr>
   </table>
