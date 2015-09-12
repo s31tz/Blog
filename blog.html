@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-09-11 20:17:29
+    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-09-12 08:34:20
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -503,7 +503,7 @@
     Leider funktioniert diese Implementierung nicht!
   </p>
   <p class="sdoc-para-p">
-    Wir stellen folgendes fest:
+    Denn wir stellen folgendes fest:
   </p>
   <ul class="sdoc-list-ul">
     <li class="sdoc-list-li-point" style="list-style-type:disc">
@@ -513,17 +513,10 @@
     </li>
     <li class="sdoc-list-li-point" style="list-style-type:disc">
       <p class="sdoc-para-p">
-        Ist die Datei UTF-8 kodiert, bricht der Code wahlweise mit einer der
-        beiden Fehlermeldungen
+        Ist die Datei UTF-8 kodiert, bricht der Code mit der Fehlermeldung
       </p>
       <div class="sdoc-code-div">
         <pre class="sdoc-code-pre">ERROR: utf8 or iso-8859-1</pre>
-      </div>
-      <p class="sdoc-para-p">
-        oder
-      </p>
-      <div class="sdoc-code-div">
-        <pre class="sdoc-code-pre">ERROR: iso-8859-1 or utf8</pre>
       </div>
       <p class="sdoc-para-p">
         ab, d.h. der Methode <tt class="sdoc-seg-c">guess()</tt> war es nicht möglich, das Encoding
@@ -549,13 +542,13 @@
     Ist die Unterscheidung von UTF-8 und ISO-8859-1 also nicht möglich?
   </p>
   <p class="sdoc-para-p">
-    Doch, sie ist möglich, wenn auch nicht nach den formalen Kriterien,
+    Doch, sie ist möglich, wenn auch nicht nach den allein formalen Kriterien,
     die <tt class="sdoc-seg-c">Encode::Guess</tt> anwendet. Denn auch wenn UTF-8 formal gültiges
-    ISO-8859-1 ist, so gilt nicht die Umkehrung, dass jeder ISO-8859-1
+    ISO-8859-1 ist, gilt nicht die Umkehrung, dass jeder ISO-8859-1
     Text valides UTF-8 darstellt. Es ist sogar <i class="sdoc-seg-i">sehr unwahrscheinlich</i>,
     dass ein realer ISO-8859-1 Text, gleichzeitig valides UTF-8
     darstellt. Unter Berücksichtigung dieser Tatsache können wir die
-    Erkennung von ISO-8859-1 vs. UTF-8 realisieren:
+    Erkennung von ISO-8859-1 und UTF-8 folgendermaßen realisieren:
   </p>
   <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
   <tr class="sdoc-code-tr-odd">
@@ -620,7 +613,7 @@
     <dt class="sdoc-list-dt">Zeile 5-7:</dt>
     <dd class="sdoc-list-dd">
       <p class="sdoc-para-p">
-        Falls kein Unicode-Encoding erkannt wurde, muss es sich um ISO-8859-1
+        Falls kein Unicode-Encoding erkannt wurde, muss es sich um eine ISO-8859-1
         Datei handeln, denn andere Encodings erwarten wir nicht. Wir dekodieren
         den Text ohne Encoder-Objekt mit der Funktion <tt class="sdoc-seg-c">Encode::decode()</tt>.
       </p>
@@ -919,7 +912,7 @@
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">70</td>
-    <td class="sdoc-code-td-line"><span class="pt-pd">=cut</span></td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">=head1 COPYRIGHT</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">71</td>
@@ -927,7 +920,7 @@
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">72</td>
-    <td class="sdoc-code-td-line"><span class="pt-c"># ---------------------------------------------------------------------------</span></td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">Copyright &copy; 2015 Frank Seitz</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">73</td>
@@ -935,7 +928,7 @@
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">74</td>
-    <td class="sdoc-code-td-line"><span class="pt-n">1</span><span class="pt-sc">;</span></td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">=head1 LICENSE</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">75</td>
@@ -943,6 +936,42 @@
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">76</td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">This code is free software. You can redistribute it and/or modify</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">77</td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">it under the same terms as Perl itself.</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">78</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">79</td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">=cut</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">80</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">81</td>
+    <td class="sdoc-code-td-line"><span class="pt-c"># ---------------------------------------------------------------------------</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">82</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">83</td>
+    <td class="sdoc-code-td-line"><span class="pt-n">1</span><span class="pt-sc">;</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">84</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">85</td>
     <td class="sdoc-code-td-line"><span class="pt-c"># eof</span></td>
   </tr>
   </table>
