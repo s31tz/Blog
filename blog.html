@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-09-12 08:34:20
+    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-09-13 08:34:14
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -468,7 +468,7 @@
         Der Inhalt der Datei steht auf der Variable <tt class="sdoc-seg-c">$text</tt> (das Einlesen hat
         vorher stattgefunden und ist hier nicht wiedergegeben). Die Methode
         <tt class="sdoc-seg-c">guess()</tt> versucht das Encoding zu ermitteln und liefert im
-        Erfolgsfall ein entsprechendes Decoder-Objekt. Im Fehlerfall liefert
+        Erfolgsfall ein passendes Decoder-Objekt. Im Fehlerfall liefert
         die Methode eine Fehlermeldung (also eine Zeichenkette).
       </p>
     </dd>
@@ -508,7 +508,7 @@
   <ul class="sdoc-list-ul">
     <li class="sdoc-list-li-point" style="list-style-type:disc">
       <p class="sdoc-para-p">
-        Ist die Datei ISO-8859-1 kodiert, läuft der Code problemlos.
+        Ist die Datei ISO-8859-1 kodiert, läuft die Sache problemlos.
       </p>
     </li>
     <li class="sdoc-list-li-point" style="list-style-type:disc">
@@ -542,12 +542,12 @@
     Ist die Unterscheidung von UTF-8 und ISO-8859-1 also nicht möglich?
   </p>
   <p class="sdoc-para-p">
-    Doch, sie ist möglich, wenn auch nicht nach den allein formalen Kriterien,
+    Doch, sie ist möglich, wenn auch nicht nach den rein formalen Kriterien,
     die <tt class="sdoc-seg-c">Encode::Guess</tt> anwendet. Denn auch wenn UTF-8 formal gültiges
     ISO-8859-1 ist, gilt nicht die Umkehrung, dass jeder ISO-8859-1
     Text valides UTF-8 darstellt. Es ist sogar <i class="sdoc-seg-i">sehr unwahrscheinlich</i>,
     dass ein realer ISO-8859-1 Text, gleichzeitig valides UTF-8
-    darstellt. Unter Berücksichtigung dieser Tatsache können wir die
+    ist. Unter Berücksichtigung dieser Tatsache können wir die
     Erkennung von ISO-8859-1 und UTF-8 folgendermaßen realisieren:
   </p>
   <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
@@ -627,7 +627,8 @@
     </dd>
   </dl>
   <p class="sdoc-para-p">
-    Dieser Ansatz funktioniert.
+    Dieser Ansatz ("Wenn etwas wie UTF-8 aussieht, ist es auch UTF-8, sonst
+    sehen wir es als ISO-8859-1 an") funktioniert.
   </p>
   <p class="sdoc-para-p">
     Das Ganze als vollständige Implementierung einer Perl-Klasse <tt class="sdoc-seg-c">File</tt>
@@ -844,7 +845,7 @@
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">53</td>
-    <td class="sdoc-code-td-line">        <span class="pt-c"># Wir dekodieren Latin1</span></td>
+    <td class="sdoc-code-td-line">        <span class="pt-c"># Erwarteter Fehler: Wir dekodieren Latin1</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">54</td>

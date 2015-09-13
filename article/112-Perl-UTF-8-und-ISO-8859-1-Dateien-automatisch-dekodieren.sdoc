@@ -63,7 +63,7 @@ Erläuterung:
   Der Inhalt der Datei steht auf der Variable C{$text} (das Einlesen hat
   vorher stattgefunden und ist hier nicht wiedergegeben). Die Methode
   C{guess()} versucht das Encoding zu ermitteln und liefert im
-  Erfolgsfall ein entsprechendes Decoder-Objekt. Im Fehlerfall liefert
+  Erfolgsfall ein passendes Decoder-Objekt. Im Fehlerfall liefert
   die Methode eine Fehlermeldung (also eine Zeichenkette).
 
 [Zeile 3-5:]
@@ -81,7 +81,7 @@ Leider funktioniert diese Implementierung nicht!
 
 Denn wir stellen folgendes fest:
 
-* Ist die Datei ISO-8859-1 kodiert, läuft der Code problemlos.
+* Ist die Datei ISO-8859-1 kodiert, läuft die Sache problemlos.
 
 * Ist die Datei UTF-8 kodiert, bricht der Code mit der Fehlermeldung
 
@@ -103,12 +103,12 @@ ISO-8859-1 testen zu wollen.
 
 Ist die Unterscheidung von UTF-8 und ISO-8859-1 also nicht möglich?
 
-Doch, sie ist möglich, wenn auch nicht nach den allein formalen Kriterien,
+Doch, sie ist möglich, wenn auch nicht nach den rein formalen Kriterien,
 die C{Encode::Guess} anwendet. Denn auch wenn UTF-8 formal gültiges
 ISO-8859-1 ist, gilt nicht die Umkehrung, dass jeder ISO-8859-1
 Text valides UTF-8 darstellt. Es ist sogar I{sehr unwahrscheinlich},
 dass ein realer ISO-8859-1 Text, gleichzeitig valides UTF-8
-darstellt. Unter Berücksichtigung dieser Tatsache können wir die
+ist. Unter Berücksichtigung dieser Tatsache können wir die
 Erkennung von ISO-8859-1 und UTF-8 folgendermaßen realisieren:
 
   %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
@@ -143,7 +143,8 @@ Erläuterung:
   Falls ein sonstiger Fehler eingetreten ist, brechen wir mit
   einer Exception ab.
 
-Dieser Ansatz funktioniert.
+Dieser Ansatz ("Wenn etwas wie UTF-8 aussieht, ist es auch UTF-8, sonst
+sehen wir es als ISO-8859-1 an") funktioniert.
 
 Das Ganze als vollständige Implementierung einer Perl-Klasse C{File}
 mit einer einzelnen Methode C{decode()}:
@@ -201,7 +202,7 @@ mit einer einzelnen Methode C{decode()}:
           $text = $dec->decode($text);
       }
       elsif ($dec =~ /No appropriate encodings found/i) {
-          # Wir dekodieren Latin1
+          # Erwarteter Fehler: Wir dekodieren Latin1
           $text = Encode::decode('iso-8859-1',$text);
       }
       else {
