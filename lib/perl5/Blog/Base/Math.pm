@@ -351,6 +351,61 @@ sub readableNumber {
 
 # -----------------------------------------------------------------------------
 
+=head2 valueToPixelX() - Transformiere Wert in X-Pixelkoordinate
+
+=head3 Synopsis
+
+    $x = $class->valueToPixelX($width,$xMin,$xMax,$xVal);
+
+=head3 Alias
+
+valueToPixel()
+
+=head3 Description
+
+Transformiere Wert $xVal in eine Pixelkoordinate auf einer X-Pixelachse
+der Breite $width. Das Minimum des Wertebereichs ist $xMin und das Maximum
+ist $xMax. Die gelieferten Werte liegen im Bereich 0 .. $width-1.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub valueToPixelX {
+    my ($class,$width,$xMin,$xMax,$xVal) = @_;
+    return sprintf '%.0f',($xVal-$xMin)*($width-1)/($xMax-$xMin);
+}
+
+{
+    no warnings 'once';
+    *valueToPixel = \&valueToPixelX;
+}
+
+# -----------------------------------------------------------------------------
+
+=head2 valueToPixelY() - Transformiere Wert in Y-Pixelkoordinate
+
+=head3 Synopsis
+
+    $y = $class->valueToPixelY($height,$yMin,$yMax,$yVal);
+
+=head3 Description
+
+Transformiere Wert $yVal in eine Pixelkoordinate auf einer Y-Pixelachse
+der Höhe $height. Das Minimum des Wertebereichs ist $yMin und das Maximum
+ist $yMax. Die gelieferten Werte liegen im Bereich $height-1 .. 0.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub valueToPixelY {
+    my ($class,$height,$yMin,$yMax,$yVal) = @_;
+    return sprintf '%.0f',$height-1-($yVal-$yMin)*($height-1)/($yMax-$yMin);
+}
+
+# -----------------------------------------------------------------------------
+
 =head2 worldToPixelFactor() - Umrechnungsfaktor Welt- in Pixelkoordinaten
 
 =head3 Synopsis

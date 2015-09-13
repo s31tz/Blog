@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-09-13 08:34:14
+    Copyright © 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-09-13 15:18:29
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -384,14 +384,14 @@
     </a>
   </p>
   <p class="sdoc-para-p">
-    Das in Westeuropa weit verbreitete Character Encoding ISO-8859-1
-    (Latin1) wird zunehmend durch das umfassendere UTF-8 abgelöst. Oftmals
-    treten Textdateien - z.B. Quelltexte - in verschiedenen Encodings
-    auf. Wenn ein- und dasselbe Programm mit ISO-8859-1 <i class="sdoc-seg-i">und</i> UTF-8
-    umgehen soll, wirft dies ein Problem auf. Denn um eine Textdatei
-    korrekt verarbeiten zu können, muss der Text gemäß seines Encodings
-    dekodiert werden. Das Encoding ist der Datei von außen aber nicht
-    anzusehen.
+    Das in Westeuropa weit verbreitete Character Encoding Latin1
+    (ISO-8859-1) wird zunehmend durch das umfassendere Unicode
+    (insbesondere UTF-8) abgelöst. Oftmals treten daher Textdateien -
+    z.B. Quelltexte - in verschiedenen Encodings auf. Wenn ein- und
+    dasselbe Programm mit verschiedenen Encodings umgehen soll, wirft dies
+    ein Problem auf. Denn um eine Textdatei korrekt verarbeiten zu können,
+    muss der Text gemäß seines Encodings dekodiert werden. Das Encoding
+    ist der Datei von außen aber nicht anzusehen.
   </p>
   <p class="sdoc-para-p">
     Idealerweise sollte ein Programm sowohl mit ISO-8859-1 als auch mit
@@ -508,7 +508,7 @@
   <ul class="sdoc-list-ul">
     <li class="sdoc-list-li-point" style="list-style-type:disc">
       <p class="sdoc-para-p">
-        Ist die Datei ISO-8859-1 kodiert, läuft die Sache problemlos.
+        Ist die Datei ISO-8859-1 kodiert, gelingt das Dekodieren.
       </p>
     </li>
     <li class="sdoc-list-li-point" style="list-style-type:disc">
@@ -547,8 +547,8 @@
     ISO-8859-1 ist, gilt nicht die Umkehrung, dass jeder ISO-8859-1
     Text valides UTF-8 darstellt. Es ist sogar <i class="sdoc-seg-i">sehr unwahrscheinlich</i>,
     dass ein realer ISO-8859-1 Text, gleichzeitig valides UTF-8
-    ist. Unter Berücksichtigung dieser Tatsache können wir die
-    Erkennung von ISO-8859-1 und UTF-8 folgendermaßen realisieren:
+    ergibt. Unter Berücksichtigung dieser Tatsache können wir die
+    Erkennung von ISO-8859-1 und UTF-8 verbessern:
   </p>
   <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
   <tr class="sdoc-code-tr-odd">
@@ -628,7 +628,7 @@
   </dl>
   <p class="sdoc-para-p">
     Dieser Ansatz ("Wenn etwas wie UTF-8 aussieht, ist es auch UTF-8, sonst
-    sehen wir es als ISO-8859-1 an") funktioniert.
+    betrachten wir es als ISO-8859-1") funktioniert.
   </p>
   <p class="sdoc-para-p">
     Das Ganze als vollständige Implementierung einer Perl-Klasse <tt class="sdoc-seg-c">File</tt>
@@ -817,162 +817,158 @@
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">46</td>
-    <td class="sdoc-code-td-line">    <span class="pt-c"># $Encode::Guess::NoUTFAutoGuess = 1;</span></td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">my</span> <span class="pt-i">$dec</span> = <span class="pt-w">Encode::Guess</span><span class="pt-w">-&gt;guess</span><span class="pt-s">(</span><span class="pt-i">$text</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">47</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">my</span> <span class="pt-i">$dec</span> = <span class="pt-w">Encode::Guess</span><span class="pt-w">-&gt;guess</span><span class="pt-s">(</span><span class="pt-i">$text</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">if</span> <span class="pt-s">(</span><span class="pt-k">ref</span> <span class="pt-i">$dec</span><span class="pt-s">)</span> <span class="pt-s">{</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">48</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">if</span> <span class="pt-s">(</span><span class="pt-k">ref</span> <span class="pt-i">$dec</span><span class="pt-s">)</span> <span class="pt-s">{</span></td>
+    <td class="sdoc-code-td-line">        <span class="pt-c"># Wir dekodieren Unicode</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">49</td>
-    <td class="sdoc-code-td-line">        <span class="pt-c"># Wir dekodieren Unicode</span></td>
+    <td class="sdoc-code-td-line">        <span class="pt-i">$text</span> = <span class="pt-i">$dec</span><span class="pt-i">-&gt;decode</span><span class="pt-s">(</span><span class="pt-i">$text</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">50</td>
-    <td class="sdoc-code-td-line">        <span class="pt-i">$text</span> = <span class="pt-i">$dec</span><span class="pt-i">-&gt;decode</span><span class="pt-s">(</span><span class="pt-i">$text</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
+    <td class="sdoc-code-td-line">    <span class="pt-s">}</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">51</td>
-    <td class="sdoc-code-td-line">    <span class="pt-s">}</span></td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">elsif</span> <span class="pt-s">(</span><span class="pt-i">$dec</span> =~ <span class="pt-q">/No appropriate encodings found/i</span><span class="pt-s">)</span> <span class="pt-s">{</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">52</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">elsif</span> <span class="pt-s">(</span><span class="pt-i">$dec</span> =~ <span class="pt-q">/No appropriate encodings found/i</span><span class="pt-s">)</span> <span class="pt-s">{</span></td>
+    <td class="sdoc-code-td-line">        <span class="pt-c"># Erwarteter Fehler: Wir dekodieren Latin1</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">53</td>
-    <td class="sdoc-code-td-line">        <span class="pt-c"># Erwarteter Fehler: Wir dekodieren Latin1</span></td>
+    <td class="sdoc-code-td-line">        <span class="pt-i">$text</span> = <span class="pt-i">Encode::decode</span><span class="pt-s">(</span><span class="pt-q">&#39;iso-8859-1&#39;</span><span class="pt-cm">,</span><span class="pt-i">$text</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">54</td>
-    <td class="sdoc-code-td-line">        <span class="pt-i">$text</span> = <span class="pt-i">Encode::decode</span><span class="pt-s">(</span><span class="pt-q">&#39;iso-8859-1&#39;</span><span class="pt-cm">,</span><span class="pt-i">$text</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
+    <td class="sdoc-code-td-line">    <span class="pt-s">}</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">55</td>
-    <td class="sdoc-code-td-line">    <span class="pt-s">}</span></td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">else</span> <span class="pt-s">{</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">56</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">else</span> <span class="pt-s">{</span></td>
+    <td class="sdoc-code-td-line">        <span class="pt-c"># Unerwarteter Fehler</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">57</td>
-    <td class="sdoc-code-td-line">        <span class="pt-c"># Unerwarteter Fehler</span></td>
+    <td class="sdoc-code-td-line">        <span class="pt-k">die</span> <span class="pt-q">&quot;ERROR: $dec\n&quot;</span><span class="pt-sc">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">58</td>
-    <td class="sdoc-code-td-line">        <span class="pt-k">die</span> <span class="pt-q">&quot;ERROR: $dec\n&quot;</span><span class="pt-sc">;</span></td>
+    <td class="sdoc-code-td-line">    <span class="pt-s">}</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">59</td>
-    <td class="sdoc-code-td-line">    <span class="pt-s">}</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">60</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">return</span> <span class="pt-i">$text</span><span class="pt-sc">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">61</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">return</span> <span class="pt-i">$text</span><span class="pt-sc">;</span></td>
+    <td class="sdoc-code-td-line"><span class="pt-s">}</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">62</td>
-    <td class="sdoc-code-td-line"><span class="pt-s">}</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">63</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line"><span class="pt-c"># ---------------------------------------------------------------------------</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">64</td>
-    <td class="sdoc-code-td-line"><span class="pt-c"># ---------------------------------------------------------------------------</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">65</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">=head1 AUTHOR</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">66</td>
-    <td class="sdoc-code-td-line"><span class="pt-pd">=head1 AUTHOR</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">67</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">Frank Seitz, L&lt;http://fseitz.de/&gt;</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">68</td>
-    <td class="sdoc-code-td-line"><span class="pt-pd">Frank Seitz, L&lt;http://fseitz.de/&gt;</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">69</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">=head1 COPYRIGHT</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">70</td>
-    <td class="sdoc-code-td-line"><span class="pt-pd">=head1 COPYRIGHT</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">71</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">Copyright &copy; 2015 Frank Seitz</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">72</td>
-    <td class="sdoc-code-td-line"><span class="pt-pd">Copyright &copy; 2015 Frank Seitz</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">73</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">=head1 LICENSE</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">74</td>
-    <td class="sdoc-code-td-line"><span class="pt-pd">=head1 LICENSE</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">75</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">This code is free software. You can redistribute it and/or modify</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">76</td>
-    <td class="sdoc-code-td-line"><span class="pt-pd">This code is free software. You can redistribute it and/or modify</span></td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">it under the same terms as Perl itself.</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">77</td>
-    <td class="sdoc-code-td-line"><span class="pt-pd">it under the same terms as Perl itself.</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">78</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line"><span class="pt-pd">=cut</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">79</td>
-    <td class="sdoc-code-td-line"><span class="pt-pd">=cut</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">80</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line"><span class="pt-c"># ---------------------------------------------------------------------------</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">81</td>
-    <td class="sdoc-code-td-line"><span class="pt-c"># ---------------------------------------------------------------------------</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">82</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line"><span class="pt-n">1</span><span class="pt-sc">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">83</td>
-    <td class="sdoc-code-td-line"><span class="pt-n">1</span><span class="pt-sc">;</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">84</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">85</td>
     <td class="sdoc-code-td-line"><span class="pt-c"># eof</span></td>
   </tr>
   </table>

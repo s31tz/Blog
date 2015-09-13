@@ -11,14 +11,14 @@
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"
 
-Das in Westeuropa weit verbreitete Character Encoding ISO-8859-1
-(Latin1) wird zunehmend durch das umfassendere UTF-8 abgelöst. Oftmals
-treten Textdateien - z.B. Quelltexte - in verschiedenen Encodings
-auf. Wenn ein- und dasselbe Programm mit ISO-8859-1 I{und} UTF-8
-umgehen soll, wirft dies ein Problem auf. Denn um eine Textdatei
-korrekt verarbeiten zu können, muss der Text gemäß seines Encodings
-dekodiert werden. Das Encoding ist der Datei von außen aber nicht
-anzusehen.
+Das in Westeuropa weit verbreitete Character Encoding Latin1
+(ISO-8859-1) wird zunehmend durch das umfassendere Unicode
+(insbesondere UTF-8) abgelöst. Oftmals treten daher Textdateien -
+z.B. Quelltexte - in verschiedenen Encodings auf. Wenn ein- und
+dasselbe Programm mit verschiedenen Encodings umgehen soll, wirft dies
+ein Problem auf. Denn um eine Textdatei korrekt verarbeiten zu können,
+muss der Text gemäß seines Encodings dekodiert werden. Das Encoding
+ist der Datei von außen aber nicht anzusehen.
 
 Idealerweise sollte ein Programm sowohl mit ISO-8859-1 als auch mit
 UTF-8 umgehen können, und zwar am besten so, dass das Encoding
@@ -81,7 +81,7 @@ Leider funktioniert diese Implementierung nicht!
 
 Denn wir stellen folgendes fest:
 
-* Ist die Datei ISO-8859-1 kodiert, läuft die Sache problemlos.
+* Ist die Datei ISO-8859-1 kodiert, gelingt das Dekodieren.
 
 * Ist die Datei UTF-8 kodiert, bricht der Code mit der Fehlermeldung
 
@@ -108,8 +108,8 @@ die C{Encode::Guess} anwendet. Denn auch wenn UTF-8 formal gültiges
 ISO-8859-1 ist, gilt nicht die Umkehrung, dass jeder ISO-8859-1
 Text valides UTF-8 darstellt. Es ist sogar I{sehr unwahrscheinlich},
 dass ein realer ISO-8859-1 Text, gleichzeitig valides UTF-8
-ist. Unter Berücksichtigung dieser Tatsache können wir die
-Erkennung von ISO-8859-1 und UTF-8 folgendermaßen realisieren:
+ergibt. Unter Berücksichtigung dieser Tatsache können wir die
+Erkennung von ISO-8859-1 und UTF-8 verbessern:
 
   %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
   my $dec = Encode::Guess->guess($text);
@@ -144,7 +144,7 @@ Erläuterung:
   einer Exception ab.
 
 Dieser Ansatz ("Wenn etwas wie UTF-8 aussieht, ist es auch UTF-8, sonst
-sehen wir es als ISO-8859-1 an") funktioniert.
+betrachten wir es als ISO-8859-1") funktioniert.
 
 Das Ganze als vollständige Implementierung einer Perl-Klasse C{File}
 mit einer einzelnen Methode C{decode()}:
@@ -195,7 +195,6 @@ mit einer einzelnen Methode C{decode()}:
 
       # Encoding ermitteln und Text dekodieren
 
-      # $Encode::Guess::NoUTFAutoGuess = 1;
       my $dec = Encode::Guess->guess($text);
       if (ref $dec) {
           # Wir dekodieren Unicode
