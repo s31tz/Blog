@@ -11,17 +11,8 @@
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"
 
-Das in Westeuropa weit verbreitete Character Encoding Latin1
-(ISO-8859-1) wird zunehmend durch das umfassendere Unicode
-(insbesondere UTF-8) abgelöst. Oftmals treten daher Textdateien -
-z.B. Quelltexte - in verschiedenen Encodings auf. Wenn ein- und
-dasselbe Programm mit verschiedenen Encodings umgehen soll, wirft dies
-ein Problem auf. Denn um eine Textdatei korrekt verarbeiten zu können,
-muss der Text gemäß seines Encodings dekodiert werden. Das Encoding
-ist der Datei von außen aber nicht anzusehen.
-
 Idealerweise sollte ein Programm sowohl mit ISO-8859-1 als auch mit
-UTF-8 umgehen können, und zwar am besten so, dass das Encoding
+UTF-8 Dateien umgehen können, und zwar am besten so, dass das Encoding
 I{nicht} explizit angegeben werden muss.
 
 Lässt sich dies realisieren?
@@ -67,7 +58,7 @@ Erläuterung:
   die Methode eine Fehlermeldung (also eine Zeichenkette).
 
 [Zeile 3-5:]
-  Fehlerbehandlung. Falls wir eine Fehlermeldung erhalten haben, brechen
+  Fehlerbehandlung. Falls wir eine Fehlermeldung erhalten, brechen
   wir mit einer Exception ab. Zwei mögliche Fehlerfälle sind:
 
   1. Der Text entspricht I{keinem} der geprüften Encodings.
@@ -238,6 +229,8 @@ mit einer einzelnen Methode C{decode()}:
 
 = Links
 
+* U{"http://perldoc.perl.org/perluniintro.html",\
+    text="Perl Unicode introduction"}
 * U{"http://perldoc.perl.org/Encode/Guess.html",text="Encode::Guess"}
 
 # eof
