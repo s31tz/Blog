@@ -351,6 +351,61 @@ sub readableNumber {
 
 # -----------------------------------------------------------------------------
 
+=head2 valueToPixelFactor() - Umrechnungsfaktor Wertebereich in Pixelkoordinaten
+
+=head3 Synopsis
+
+    $factor = $class->valueToPixelFactor($length,$min,$max)
+
+=head3 Returns
+
+Faktor
+
+=head3 Description
+
+Liefere den Faktor für die Umrechung von Wertebereich in Pixelkoordinaten.
+Die Werte werden transformiert auf einen Bildschirmabschnitt
+der Länge $length, dessen Randpunkte den Werten $min und $max
+entsprechen.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub valueToPixelFactor {
+    my ($class,$size,$min,$max) = @_;
+    return ($size-1)/($max-$min);
+}
+
+# -----------------------------------------------------------------------------
+
+=head2 valueToWorldFactor() - Umrechnungsfaktor von Pixel in Wertebereich
+
+=head3 Synopsis
+
+    $factor = $class->valueToWorldFactor($length,$min,$max);
+
+=head3 Returns
+
+Faktor
+
+=head3 Description
+
+Liefere den Faktor für die Umrechung von Pixel in Werte
+entlang eines Bildschirmabschnitts der Länge $length, dessen Randpunkt
+dem Werteberich $min und $max entsprechen.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub valueToWorldFactor {
+    my ($class,$length,$min,$max) = @_;
+    return 1/R1::Math->valueToPixelFactor($length,$min,$max);
+}
+
+# -----------------------------------------------------------------------------
+
 =head2 valueToPixelX() - Transformiere Wert in X-Pixelkoordinate
 
 =head3 Synopsis
@@ -402,129 +457,6 @@ ist $yMax. Die gelieferten Werte liegen im Bereich $height-1 .. 0.
 sub valueToPixelY {
     my ($class,$height,$yMin,$yMax,$yVal) = @_;
     return sprintf '%.0f',$height-1-($yVal-$yMin)*($height-1)/($yMax-$yMin);
-}
-
-# -----------------------------------------------------------------------------
-
-=head2 worldToPixelFactor() - Umrechnungsfaktor Welt- in Pixelkoordinaten
-
-=head3 Synopsis
-
-    $factor = $class->worldToPixelFactor($length,$min,$max)
-
-=head3 Returns
-
-Faktor
-
-=head3 Description
-
-Liefere den Faktor für die Umrechung von Welt- in Pixelkoordinaten.
-Die Weltkoordinaten werden transformiert auf einen Bildschirmabschnitt
-der Länge $length, dessen Randpunkte den Werten $min und $max
-entsprechen.
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub worldToPixelFactor {
-    my ($class,$size,$min,$max) = @_;
-    return ($size-1)/($max-$min);
-}
-
-# -----------------------------------------------------------------------------
-
-=head2 worldToPixelX() - Transformiere Weltkoordinate in X-Pixelkoordinate
-
-=head3 Synopsis
-
-    $x = $class->worldToPixelX($width,$xFac,$xMin,$xVal);
-
-=head3 Alias
-
-worldToPixel()
-
-=head3 Returns
-
-X-Position
-
-=head3 Description
-
-Transformiere Weltkoordinate $xVal in eine Pixelkoordinate
-auf einer X-Pixelachse der Breite $width. Das Weltkoordinaten-Minimum
-ist $xMin und der Umrechnungsfaktor ist $xFac, welcher von
-Methode worldToPixelFactor() geliefert wird. Die gelieferten
-Werte sollen im Bereich 0 .. $width-1 liegen.
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub worldToPixelX {
-    my ($class,$width,$xFac,$xMin,$xVal) = @_;
-    return sprintf '%.0f',($xVal-$xMin)*$xFac;
-}
-
-{
-    no warnings 'once';
-    *worldToPixel = \&worldToPixelX;
-}
-
-# -----------------------------------------------------------------------------
-
-=head2 worldToPixelY() - Transformiere Weltkoordinate in Y-Pixelkoordinate
-
-=head3 Synopsis
-
-    $y = $class->worldToPixelY($height,$yFac,$yMin,$yVal);
-
-=head3 Returns
-
-Y-Position
-
-=head3 Description
-
-Transformiere Weltkoordinate $yVal in eine Pixelkoordinate
-auf einer Y-Pixelachse der Höhe $height. Das Weltkoordinaten-Minimum
-ist $yMin und der Umrechnungsfaktor ist $yFac, welcher von
-Methode worldToPixelFactor() geliefert wird. Die gelieferten
-Werte sollen im Bereich $height-1 .. 0 liegen.
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub worldToPixelY {
-    my ($class,$height,$yFac,$yMin,$yVal) = @_;
-    my $y = sprintf '%.0f',($yVal-$yMin)*$yFac;
-    return $height-1-$y;
-}
-
-# -----------------------------------------------------------------------------
-
-=head2 pixelToWorldFactor() - Umrechnungsfaktor von Pixel- in Weltkoordinaten
-
-=head3 Synopsis
-
-    $factor = $class->pixelToWorldFactor($length,$min,$max);
-
-=head3 Returns
-
-Faktor
-
-=head3 Description
-
-Liefere den Faktor für die Umrechung von Pixel- in Weltkoordinaten
-entlang eines Bildschirmabschnitts der Länge $length, dessen Randpunkt
-den Weltkoordinaten $min und $max entsprechen.
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub pixelToWorldFactor {
-    my ($class,$size,$min,$max) = @_;
-    return 1/R1::Math->worldToPixelFactor($size,$min,$max);
 }
 
 # -----------------------------------------------------------------------------

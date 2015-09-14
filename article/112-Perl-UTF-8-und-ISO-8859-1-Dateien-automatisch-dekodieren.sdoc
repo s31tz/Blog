@@ -12,8 +12,8 @@
     width=94 height=47 url="http://www.perl.org/"
 
 Idealerweise sollte ein Programm sowohl mit ISO-8859-1 als auch mit
-UTF-8 Dateien umgehen können, und zwar am besten so, dass das Encoding
-I{nicht} explizit angegeben werden muss.
+UTF-8 Input-Dateien umgehen können, und zwar am besten so, dass das
+Encoding I{nicht} explizit angegeben werden muss.
 
 Lässt sich dies realisieren?
 
