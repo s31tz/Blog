@@ -83,7 +83,7 @@ Denn wir stellen folgendes fest:
 
 Woran liegt das?
 
-Die Ursache für den Abbruch ist, dass jede UTF-8-Datei I{formal}
+Die Ursache ist, dass jede UTF-8-Datei I{formal}
 auch eine ISO-8859-1-Datei ist. Denn I{jede} Datei ist I{formal} eine
 ISO-8859-1-Datei, selbst eine Binärdatei wie z.B. ein JPEG-Bild. Das
 liegt daran, dass ISO-8859-1 ein Ein-Byte-Encoding ist, bei dem alle
@@ -94,13 +94,15 @@ ISO-8859-1 testen zu wollen.
 
 Ist die Unterscheidung von UTF-8 und ISO-8859-1 also nicht möglich?
 
-Doch, sie ist möglich, wenn auch nicht nach den rein formalen Kriterien,
-die C{Encode::Guess} anwendet. Denn auch wenn UTF-8 formal gültiges
-ISO-8859-1 ist, gilt nicht die Umkehrung, dass jeder ISO-8859-1
+Doch, sie ist möglich, wenn auch nicht mit den Mechanismen von
+C{Encode::Guess} allein. Denn auch wenn UTF-8 formal gültiges
+ISO-8859-1 darstellt, gilt nicht die Umkehrung, dass jeder ISO-8859-1
 Text valides UTF-8 darstellt. Es ist sogar I{sehr unwahrscheinlich},
-dass ein realer ISO-8859-1 Text, gleichzeitig valides UTF-8
-ergibt. Unter Berücksichtigung dieser Tatsache können wir die
-Erkennung von ISO-8859-1 und UTF-8 verbessern:
+dass ein realer ISO-8859-1 Text, gleichzeitig valides UTF-8 ergibt,
+beinahe ebensowenig, wie dass ein ISO-8859-1 Text ein JPEG-Bild ergibt.
+
+Unter Berücksichtigung dieser Tatsache können wir die Unterscheidung
+von ISO-8859-1 und UTF-8 hinreichend sicher vornehmen:
 
   %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
   my $dec = Encode::Guess->guess($text);
@@ -128,13 +130,14 @@ Erläuterung:
 [Zeile 5-7:]
   Falls kein Unicode-Encoding erkannt wurde, muss es sich um eine ISO-8859-1
   Datei handeln, denn andere Encodings erwarten wir nicht. Wir dekodieren
-  den Text ohne Encoder-Objekt mit der Funktion C{Encode::decode()}.
+  den Text ohne Encoder-Objekt (alternativ) mit der Funktion
+  C{Encode::decode()}.
 
 [Zeile 8-10:]
   Falls ein sonstiger Fehler eingetreten ist, brechen wir mit
   einer Exception ab.
 
-Dieser Ansatz ("Wenn etwas wie UTF-8 aussieht, ist es auch UTF-8, sonst
+Dieser Ansatz ("Wenn etwas nach UTF-8 aussieht, ist es auch UTF-8, sonst
 betrachten wir es als ISO-8859-1") funktioniert.
 
 Das Ganze als vollständige Implementierung einer Perl-Klasse C{File}
