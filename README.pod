@@ -13,6 +13,10 @@ veröffentlicht habe.
 
 =item *
 
+L<Wertebereich in Bildschirmkoordinaten umrechnen|http://fseitz.de/blog/index.php?/archives/0-x.html>
+
+=item *
+
 L<Perl: UTF-8 und ISO-8859-1 Dateien erkennen und automatisch dekodieren|http://fseitz.de/blog/index.php?/archives/124-x.html>
 
 =item *
