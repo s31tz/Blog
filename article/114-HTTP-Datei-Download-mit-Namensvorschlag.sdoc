@@ -1,0 +1,41 @@
+# Date: 2015-09-16
+
+%Document:
+  title="HTTP: Datei-Download mit Namensvorschlag"
+  generateAnchors=0
+  utf8=1
+
+# id=126
+
+%Figure: file="IMGDIR/http-logo-192x100.png" width=84 height=44 \
+  url="https://de.wikipedia.org/wiki/Liste_der_HTTP-Headerfelder"
+
+Eine Datei per HTTP-Response vom Server zum Client transferieren, mit
+Dateinamens-Vorschlag C{FILE_NAME}:
+
+Per Location Redirection
+
+  Location: URL
+  Content-Disposition: attachment; filename="FILE_NAME"
+
+Per direkter Übertragung
+
+  Content-Type: TYPE/SUBTYPE
+  Content-Disposition: attachment; filename="FILE_NAME"
+
+  FILE_CONTENT
+
+Die direkte Übertragung hat den Vorteil, dass wenn die Datei nach dem
+Download nicht mehr gebraucht wird, sie serverseitig sofort gelöscht
+werden kann. Das ist bei einer Location Redirection nicht möglich, da
+der Client sie asynchron abruft.
+
+= Links
+
+* U{"http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1",\
+    text="Content-Disposition in RFC2616 (HTTP/1.1)"}
+
+* U{"https://de.wikipedia.org/wiki/Liste_der_HTTP-Headerfelder",\
+    text="Liste der HTTP-Header"}
+
+# eof
