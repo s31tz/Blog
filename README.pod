@@ -17,7 +17,7 @@ L<HTTP: Datei-Download mit Namensvorschlag|http://fseitz.de/blog/index.php?/arch
 
 =item *
 
-L<Wertebereich in Bildschirmkoordinaten umrechnen|http://fseitz.de/blog/index.php?/archives/125-x.html>
+L<XY-Plot: Bildschirmkoordinaten berechnen|http://fseitz.de/blog/index.php?/archives/125-x.html>
 
 =item *
 

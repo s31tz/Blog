@@ -25,17 +25,17 @@ Per direkter Übertragung
 
   FILE_CONTENT
 
-Die direkte Übertragung hat den Vorteil, dass wenn die Datei nach dem
-Download nicht mehr gebraucht wird, sie serverseitig sofort gelöscht
-werden kann. Das ist bei einer Location Redirection nicht möglich, da
-der Client sie asynchron abruft.
+Die direkte Übertragung hat den Vorteil, dass die Datei nach dem
+Download serverseitig sofort gelöscht werden kann, falls sie nicht
+mehr gebraucht wird. Das ist bei einer Location Redirection nicht
+möglich, da der Client sie asynchron abruft.
 
 = Links
 
 * U{"http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1",\
-    text="Content-Disposition in RFC2616 (HTTP/1.1)"}
+    text="Content-Disposition - RFC 2616 (June 1999)"}
 
-* U{"https://de.wikipedia.org/wiki/Liste_der_HTTP-Headerfelder",\
-    text="Liste der HTTP-Header"}
+* U{"http://tools.ietf.org/html/rfc6266#section-1",\
+    text="Content-Disposition - RFC 6266 (June 2011)"}
 
 # eof

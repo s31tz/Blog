@@ -79,9 +79,10 @@ die dem Bezugselement direkt untergeordnet sind. Die Pseudoklasse
 C{*:first-child} schränkt diese Menge auf das erste Kindelement
 ein (der Stern kann auch weggelassen werden).
 
-Beispiel: Jedes erste Unterelement eines C{<dd>}-Definitionsabschnitts
-soll keinen oberen Außenabstand besitzen, sondern direkt an den
-Definitionsterminus C{<dt>} anschließen:
+Beispiel: Jedes erste Unterelement C{<Y>} eines
+C{<dd>}-Definitionsabschnitts soll keinen oberen Außenabstand
+besitzen, sondern direkt an den Definitionsterminus C{<dt>}
+anschließen:
 
 HTML:
 

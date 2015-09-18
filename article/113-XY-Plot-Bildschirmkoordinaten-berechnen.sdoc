@@ -1,0 +1,39 @@
+# Date: 2015-09-16
+
+%Document:
+  title="XY-Plot: Bildschirmkoordinaten berechnen"
+  generateAnchors=0
+  utf8=1
+
+# id=125
+
+%Figure: file="IMGDIR/diagramm-logo-181x100.png" width="80" height="44"
+
+Koordinaten eines (Raster-)Bildes der Breite C{width} und der Höhe
+C{height}:
+
+%Figure: file="IMGDIR/pixelkoordinaten.png"
+
+Der Ursprung C{(0,0)} des Bild-Koordinatensystems ist oben
+links. Eine Bild-Koordinate bezeichnen wir mit C{(posX,posY)},
+wobei C{posX} und C{posY} ganzzahlig sind.
+
+Bei der Erzeugung eines XY-Plot bilden wir zwei beliebige numerische
+Wertebereiche C{minX .. maxX} (X-Wertebereich) und C{minY .. maxY}
+(Y-Wertebereich) auf das Bild-Koordinatensystem ab. Dem XY-Plot liegt
+dabei ein kartesisches Koordinatensystem zugrunde, dessen Ursprung
+C{(minX,minY)} I{unten} links ist.
+
+Koordinate C{posX} zu einem Wert C{x} aus dem X-Wertebereich C{minX .. maxX}:
+
+# posX = round((x-minX)*(width-1)/(maxX-minX))
+%Figure: \
+    file="IMGDIR/xpos-funktion-545x21.png" width="415" height="16"
+
+Koordinate C{posY} zu einem Wert C{y} aus dem Y-Wertebereich C{minY .. maxY}:
+
+# posY = round(height-1-(y-minY)*(height-1)/(maxY-minY))
+%Figure: \
+    file="IMGDIR/ypos-funktion-661x21.png" width="504" height="16"
+
+# eof
