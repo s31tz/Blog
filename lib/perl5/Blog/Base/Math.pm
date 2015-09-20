@@ -4,6 +4,7 @@ use base qw/Blog::Base::Object/;
 use strict;
 use warnings;
 
+use Math::Trig ();
 use Scalar::Util ();
 use POSIX ();
 
@@ -37,7 +38,7 @@ sub pi {
 
 # -----------------------------------------------------------------------------
 
-=head2 degreeToRad() - Wandele Grad in Rad
+=head2 degreeToRad() - Wandele Grad in Bogenmaß (rad)
 
 =head3 Synopsis
 
@@ -50,6 +51,23 @@ sub pi {
 sub degreeToRad {
     my ($class,$degree) = @_;
     return $degree*$class->pi/180;
+}
+
+# -----------------------------------------------------------------------------
+
+=head2 radToDegree() - Wandele Bogenmaß (rad) in Grad
+
+=head3 Synopsis
+
+    $degree = $class->radToDegree($rad);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub radToDegree {
+    my ($class,$rad) = @_;
+    return 180/$class->pi*$rad;
 }
 
 # -----------------------------------------------------------------------------
@@ -95,6 +113,92 @@ sub geoToDegree {
     }
 
     return $deg;
+}
+
+# -----------------------------------------------------------------------------
+
+=head2 geoDistance() - Entfernung zw. zwei Punkten auf der Erdoberfäche
+
+=head3 Synopsis
+
+    $km = $class->geoDistance($lat1,$lon1,$lat2,$lon2);
+
+=head3 Description
+
+Berechne die Entfernung zwischen den beiden Geokoordinaten ($lat1,$lon1)
+und (lat2,$lon2) und liefere die Distanz in Kilometern zurück. Die Angabe
+der Geokoordinaten ist in Grad.
+
+=head3 Examples
+
+Abstand zw. zwei Längengraden (359. und 360.) am Äquator:
+
+    sprintf '%.2f',Blog::Base::Math->geoDistance(0,359,0,360);
+    # -> 111.12
+
+Abstand zw. zwei Längengraden am Pol:
+
+    Blog::Base::Math->geoDistance(90,359,90,360);
+    # -> 0
+
+=head3 See Also
+
+=over 2
+
+=item *
+
+L<Prof. Dirk Reichhardt - Hinweise zur Berechnung von Abständen|http://wwwlehre.dhbw-stuttgart.de/~reichard/content/vorlesungen/lbs/uebungen/abstandsberechnung.pdf>
+
+=item *
+
+L<Blog Martin Kompf - Entfernungsberechnung|http://www.kompf.de/gps/distcalc.html>
+
+=back
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub geoDistance {
+    my ($class,$lat1,$lon1,$lat2,$lon2) = @_;
+
+    # Wir rechnen im Bogenmaß
+
+    $lat1 = $class->degreeToRad($lat1);
+    $lon1 = $class->degreeToRad($lon1);
+    $lat2 = $class->degreeToRad($lat2);
+    $lon2 = $class->degreeToRad($lon2);
+
+    return 1.852*60*$class->radToDegree(Math::Trig::acos(
+        sin($lat1)*sin($lat2)+cos($lat1)*cos($lat2)*cos($lon2-$lon1)));
+}
+
+# -----------------------------------------------------------------------------
+
+=head2 latitudeDistance() - Abstand zwischen zwei Längengraden
+
+=head3 Synopsis
+
+    $km = $class->latitudeDistance($lat);
+
+=head3 Description
+
+Liefere den Abstand zwischen zwei Längengraden bei Breitengrad $lat.
+Die Methode ist eigentlich nicht nötig, da sie einen Spezialfall der
+Mehode geoDistance() behandelt. Die Formel stammt von Herrn Petersen.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub latitudeDistance {
+    my ($class,$lat) = @_;
+
+    $lat = $class->degreeToRad($lat); # Breite im Bogenmaß
+    my $d = $class->degreeToRad(1);   # 1 Grad im Bogenmaß
+
+    return 1.852*60*$class->radToDegree(
+        Math::Trig::acos((sin($lat)**2+cos($lat)**2*cos($d))));
 }
 
 # -----------------------------------------------------------------------------
@@ -379,11 +483,11 @@ sub valueToPixelFactor {
 
 # -----------------------------------------------------------------------------
 
-=head2 valueToWorldFactor() - Umrechnungsfaktor von Pixel in Wertebereich
+=head2 pixelToValueFactor() - Umrechnungsfaktor von Pixel in Wertebereich
 
 =head3 Synopsis
 
-    $factor = $class->valueToWorldFactor($length,$min,$max);
+    $factor = $class->pixelToValueFactor($length,$min,$max);
 
 =head3 Returns
 
@@ -399,7 +503,7 @@ dem Werteberich $min und $max entsprechen.
 
 # -----------------------------------------------------------------------------
 
-sub valueToWorldFactor {
+sub pixelToValueFactor {
     my ($class,$length,$min,$max) = @_;
     return 1/R1::Math->valueToPixelFactor($length,$min,$max);
 }

@@ -24,7 +24,7 @@ angeht. Diese Anforderung gibt es in zwei Ausprägungen:
 Diese beiden Element-Anordnungen erfordern unterschiedliche
 CSS-Selektoren.
 
-= Element folgt auf Bezugselement
+= 1. Element folgt auf Bezugselement
 
   %Code: ln=1 filter="./blog-highlight html %FORMAT%"
   <X>...</X>
@@ -56,7 +56,7 @@ einen oberen Außenabstand von 0.5em erhalten:
   }
   .
 
-= Element ist Bezugselement untergeordnet
+= 2. Element ist Bezugselement untergeordnet
 
   %Code: ln=1 filter="./blog-highlight html %FORMAT%"
   <X>
