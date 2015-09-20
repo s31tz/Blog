@@ -14,7 +14,7 @@ C{height}:
 
 %Figure: file="IMGDIR/pixelkoordinaten.png"
 
-Der Ursprung C{(0,0)} des Bild-Koordinatensystems ist oben
+Der Ursprung C{(0, 0)} des Bild-Koordinatensystems ist oben
 links. Eine Bild-Koordinate bezeichnen wir mit C{(posX, posY)},
 wobei C{posX} und C{posY} ganzzahlig sind.
 
