@@ -212,10 +212,6 @@ mit einer einzelnen Methode C{decode()}:
 
   Frank Seitz, L<http://fseitz.de/>
 
-  =head1 COPYRIGHT
-
-  Copyright © 2015 Frank Seitz
-
   =head1 LICENSE
 
   This code is free software. You can redistribute it and/or modify

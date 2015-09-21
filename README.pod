@@ -13,6 +13,10 @@ veröffentlicht habe.
 
 =item *
 
+L<Entfernung zwischen zwei Punkten auf der Erdoberfläche berechnen|http://fseitz.de/blog/index.php?/archives/127-x.html>
+
+=item *
+
 L<HTTP: Datei-Download mit Namensvorschlag|http://fseitz.de/blog/index.php?/archives/126-x.html>
 
 =item *
