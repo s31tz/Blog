@@ -16,6 +16,10 @@ Blog::Base::Sdoc::Figure - Bild
 
 L<Blog::Base::Sdoc::Node|../../Blog::Base/Sdoc/Node.html>
 
+=head1 DESCRIPTION
+
+Ein Objekt der Klasse repräsentiert eine Abbildung.
+
 =head1 ATTRIBUTES
 
 =over 4
@@ -53,10 +57,6 @@ Zentriere Abbildung
 Mache Bild zu einem Link auf $url.
 
 =back
-
-=head1 DESCRIPTION
-
-Ein Objekt der Klasse repräsentiert eine Abbildung.
 
 =head1 METHODS
 
@@ -180,14 +180,14 @@ sub dump {
         my $url = $self->{'url'};
         return $h->tag('p',
             class=>"$cssPrefix-fig-p",
-            style=>$center? 'text-align: center': '',
+            style=>$center? 'text-align: center': undef,
             $h->tag('a',
                 -ignoreTagIf=>!$url,
                 href=>$url,
                 $h->tag('img',
-                    -nl=>1,
+                    -nl=>0,
                     class=>"$cssPrefix-fig-img",
-                    style=>$style,
+                    style=>$style || undef,
                     src=>$self->{'file'},
                     width=>$self->{'width'},
                     height=>$self->{'height'},
