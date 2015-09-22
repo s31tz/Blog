@@ -1,0 +1,43 @@
+# Date: 2015-09-21
+
+%Document:
+  title="Entfernung zwischen zwei Punkten auf der Erdoberfläche berechnen"
+  generateAnchors=0
+  utf8=1
+
+# id=127
+
+%Figure: file="IMGDIR/earth-100x100.png" width="54" height="54"
+
+Für die Skalierung von Grafik-Elementen, die in Ground Overlays für
+Google Earth einzusetzen waren, stand ich vor der Notwendigkeit,
+Abstände auf der Erdoberfläche berechnen zu müssen. Die folgende
+Formel hat mir dies ermöglicht.
+
+Die Entfernung (in km) zwischen zwei Punkten auf der Erdoberfläche lässt
+sich mit folgender Formel berechnen:
+
+%Figure: \
+    file="IMGDIR/erddistanz-funktion-708x20.png" width="566" height="16"
+
+Die Formel liefert die Länge des Großkeisbogens zwischen zwei
+Punkten (I{lat1}, I{lon1}) und (I{lat2}, I{lon2}) auf einer Kugel mit
+einem Radius von 6371 Kilometern. Da die Erde keine perfekte Kugel ist
+(6371 km ist der I{mittlere} Radius), stellt die Berechnung
+eine Näherung dar, die vor allem für größere Distanzen geeignet ist.
+
+Die Formel geht davon aus, dass die trigonometrischen Funktionen
+C{acos()}, C{sin()}, C{cos()} im Bogenmaß (rad) rechnen, was für
+Programmiersprachen typischerweise der Fall ist. Liegen
+I{lat1}, I{lon1}, I{lat2}, I{lon2} in Grad vor, was bei
+Geopositionen üblich ist, müssen diese vor der Einsetzung ins
+Bogenmaß umgerechnet, also mit Pi/180 multipliziert werden.
+
+%Figure: \
+    file="IMGDIR/degree-to-rad-187x21.png" width="142" height="16"
+
+Begründung und Herleitung der Formel:
+U{"http://www.kompf.de/gps/distcalc.html",target="_top",\
+text="Blog Martin Kompf - Entfernungsberechnung"}
+
+# eof

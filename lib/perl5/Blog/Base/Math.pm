@@ -129,6 +129,13 @@ Berechne die Entfernung zwischen den beiden Geokoordinaten ($lat1,$lon1)
 und (lat2,$lon2) und liefere die Distanz in Kilometern zurück. Die Angabe
 der Geokoordinaten ist in Grad.
 
+Der Berechnung liegt die Formel zugrunde:
+
+    km = 1.852*60*180/pi*acos(
+        sin($lat1*pi/180)*sin($lat2*pi/180)+
+        cos($lat1*pi/180)*cos($lat2*pi/180)*cos(($lon2-$lon1)*pi/180)
+    )
+
 =head3 Examples
 
 Abstand zw. zwei Längengraden (359. und 360.) am Äquator:
@@ -171,6 +178,11 @@ sub geoDistance {
 
     return 1.852*60*$class->radToDegree(Math::Trig::acos(
         sin($lat1)*sin($lat2)+cos($lat1)*cos($lat2)*cos($lon2-$lon1)));
+
+    # 6371
+    # 6366.7
+    #return 6371*Math::Trig::acos(sin($lat1)*sin($lat2)+
+    #    cos($lat1)*cos($lat2)*cos($lon2-$lon1));
 }
 
 # -----------------------------------------------------------------------------
