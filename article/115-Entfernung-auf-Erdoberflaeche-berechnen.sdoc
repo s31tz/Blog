@@ -12,12 +12,12 @@
   orthographic-projection"
 
 Für die Skalierung von Grafik-Elementen, die in Ground Overlays für
-Google Earth eingetragen werden sollten, stand ich vor der Notwendigkeit,
+Google Earth eingetragen werden sollen, stand ich vor der Notwendigkeit,
 Abstände auf der Erdoberfläche berechnen zu müssen. Die folgende
 Formel hat mir dies ermöglicht.
 
 Die Entfernung (in km) zwischen zwei Punkten auf der Erdoberfläche lässt
-sich mit folgender Formel berechnen:
+sich folgendermaßen berechnen:
 
 %Figure: \
     file="IMGDIR/erddistanz-funktion-708x20.png" width="566" height="16"

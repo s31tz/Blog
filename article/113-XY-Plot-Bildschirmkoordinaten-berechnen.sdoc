@@ -1,7 +1,7 @@
 # Date: 2015-09-16
 
 %Document:
-  title="XY-Plot: Bildschirmkoordinaten berechnen"
+  title="Bildschirmkoordinaten von XY-Plots berechnen"
   generateAnchors=0
   utf8=1
 
@@ -31,7 +31,7 @@ C{minX .. maxX}:
 %Figure: \
     file="IMGDIR/xpos-funktion-545x21.png" width="415" height="16"
     url="http://latex2png.com?latex=posX%20=%20round%28%28x-minX%29\cdot\
-    %28width-1%29/%28maxX-minX%29%29&res=150&color=999999"
+    %28width-1%29/%28maxX-minX%29%29&amp;res=150&amp;color=999999"
 
 Bild-Koordinate C{posY} zu einem Wert C{y} aus dem Y-Wertebereich
 C{minY .. maxY}:
@@ -40,6 +40,7 @@ C{minY .. maxY}:
 %Figure: \
     file="IMGDIR/ypos-funktion-661x21.png" width="504" height="16"
     url="http://latex2png.com/?latex=posY%20=%20round%28height-1-%28\
-    y-minY%29\cdot%28height-1%29/%28maxY-minY%29%29&res=150&color=999999"
+    y-minY%29\cdot%28height-1%29/%28maxY-minY%29%29&amp;res=150&amp;\
+    color=999999"
 
 # eof
