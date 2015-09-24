@@ -22,13 +22,15 @@ sich folgendermaßen berechnen:
 %Figure: \
     file="IMGDIR/erddistanz-funktion-708x20.png" width="566" height="16"
 
-Die Formel liefert die Länge des Großkeisbogens zwischen zwei
-Punkten (I{lat1}, I{lon1}) und (I{lat2}, I{lon2}) auf einer Kugel mit
-einem Radius von 6371 Kilometern. Da die Erde keine perfekte Kugel ist
-(6371 km ist der I{mittlere} Radius), stellt die Berechnung
-eine Näherung dar, die vor allem für größere Distanzen geeignet ist.
-Möchte man die Seemeile (= 1,852 km) als fundamentales Abstandsmaß für das
-Geosystem zugrundelegen, ersetzt man 6371 durch
+Die Formel liefert die Länge des Großkeisbogens zwischen zwei Punkten
+(I{lat1}, I{lon1}) und (I{lat2}, I{lon2}) auf einer Kugel mit einem
+Radius von 6371 Kilometern. Da die Erde keine perfekte Kugel ist (6371
+km ist der I{mittlere} Radius), stellt die Berechnung eine Näherung
+dar, die vor allem für größere Distanzen geeignet ist.  Möchte man die
+Seemeile (= 1,852 km) als fundamentales Abstandsmaß für das Geosystem
+zugrundelegen (der geliefert Wert ist nach wie vor km, aber der
+Erdumfang wird als das 60*360-fache einer Seemeile definiert), ersetzt
+man 6371 durch
 
 %Figure: \
     file="IMGDIR/erdradius-seemeile-149x21.png" width="114" height="16"
