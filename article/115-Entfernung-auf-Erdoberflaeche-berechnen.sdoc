@@ -12,7 +12,7 @@
   orthographic-projection"
 
 Für die Skalierung von Grafik-Elementen, die in Ground Overlays für
-Google Earth eingetragen werden sollen, stand ich vor der Notwendigkeit,
+Google Earth eingetragen werden sollten, stand ich vor der Notwendigkeit,
 Abstände auf der Erdoberfläche berechnen zu müssen. Die folgende
 Formel hat mir dies ermöglicht.
 

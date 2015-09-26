@@ -10,8 +10,8 @@
 %Figure: file="IMGDIR/http-logo-192x100.png" width=84 height=44 \
   url="https://de.wikipedia.org/wiki/Liste_der_HTTP-Headerfelder"
 
-Eine Datei per HTTP-Response vom Server zum Client transferieren, mit
-Dateinamens-Vorschlag C{FILE_NAME}:
+Eine Datei per HTTP-Response mit Dateinamens-Vorschlag C{FILE_NAME}
+vom Server zum Client zu transferieren geht so:
 
 Per Location Redirection
 
