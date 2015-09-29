@@ -111,7 +111,7 @@ for my $file (reverse Blog::Base::Path->glob("*.sdoc")) {
 
     # Text manipulieren
 
-    $text =~ s/^.*^# id=\d+\s+//sm; # Anfang wegschneiden
+    $text =~ s/^.*^# Categories:[^\n]*\n+//sm; # Anfang wegschneiden
     $text =~ s/^(=+)/=$1/mg;        # Abschnitte eine Ebene tiefer
     $text =~ s/IMGDIR/$imageDir/g;  # Bildverzeichnis eintragen
     $text =~ s/^# eof\n//m;         # # eof entfernen

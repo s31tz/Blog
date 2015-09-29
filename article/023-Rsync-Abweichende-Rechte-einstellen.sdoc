@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=26
+# Id: 26
+# Categories: Linux/Unix, Shell
 
 %Figure: file="IMGDIR/rsync-logo-205x100.jpg" \
   width="103" height="50" url="https://rsync.samba.org/"

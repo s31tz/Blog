@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=46
+# Id: 46
+# Categories: Datenbanken, MySQL
 
 %Figure: file="IMGDIR/mysql-logo-170x115.png" \
   width="74" height="50" url="http://www.mysql.de/"

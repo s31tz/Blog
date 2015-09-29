@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=61
+# Id: 61
+# Categories: Video/Audio, Video
 
 %Figure: file="IMGDIR/video-camera-168x100.png"
   width="76" height="45" url="https://wiki.ubuntuusers.de/dvgrab"

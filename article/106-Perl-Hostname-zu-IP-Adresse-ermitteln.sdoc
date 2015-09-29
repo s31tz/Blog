@@ -6,7 +6,8 @@
   utf8=1
   minLnWidth=2
 
-# id=114
+# Id: 114
+# Categories: Perl, Netzwerk, TCP/IP
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"

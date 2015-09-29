@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=81
+# Id: 81
+# Categories: Datenbanken, PostgreSQL
 
 %Figure: file="IMGDIR/postgresql-logo-95x51.png" \
   width="95" height="51" url="http://www.postgresql.org/"

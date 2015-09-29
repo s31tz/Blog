@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=79
+# Id: 79
+# Categories: Linux/Unix
 
 %Figure: file="IMGDIR/java-logo-160x100.png" \
   width="96" height="60" url="https://www.java.com/"

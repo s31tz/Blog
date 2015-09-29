@@ -144,7 +144,7 @@ for my $file (Blog::Base::Path->glob("*.sdoc")) {
     my $mtime = Blog::Base::Path->mtime($file);
     my $text = Encode::decode('utf8',Blog::Base::Path->read($file));
 
-    my ($id) = $text =~ /^# id=(\d+)/m;
+    my ($id) = $text =~ /^# (?:id=|Id: )(\d+)/m;
     if (!$id) {
         # Neuer Eintrag: Daten für Serendipity ausgeben
         warn "WARNING: Datei enthält keine id: $file\n";
@@ -174,6 +174,42 @@ for my $file (Blog::Base::Path->glob("*.sdoc")) {
                 -where,id=>$id,
             );
             $n++;
+
+            # Kategorien und Kategoriezuordnungen aktualisieren
+            # Im Blog-Artikel: "# Categories: CATEGORY1, CATEGORY2, ...
+
+            $db->delete('serendipity_entrycat',entryid=>$ent->id);
+            if (my ($categories) = $text =~ /^# Categories: (.*)/m) {
+                for my $category (split /,\s*/,$categories) {
+                    my $cat = $db->lookup(
+                        -from=>'serendipity_category',
+                        -where,category_name=>$category,
+                        -new=>1,
+                    );
+                    if ($cat->rowStatus eq 'I') {
+                        $cat->set(
+                            categoryid=>$db->nextValue(
+                                'serendipity_category_categoryid_seq'),
+                            category_name=>$category,
+                        );
+                        $db->insert('serendipity_category',$cat);
+                        print "Neue Kategorie: $category\n";
+                    }
+                    my $eca = $db->lookup(
+                        -from=>'serendipity_entrycat',
+                        -where,entryid=>$ent->id,
+                            categoryid=>$cat->categoryid,
+                        -new=>1,
+                    );
+                    if ($eca->rowStatus eq 'I') {
+                        $eca->set(
+                            entryid=>$ent->id,
+                            categoryid=>$cat->categoryid,
+                        );
+                        $db->insert('serendipity_entrycat',$eca);
+                    }
+                }
+            }
         }
     }
 }

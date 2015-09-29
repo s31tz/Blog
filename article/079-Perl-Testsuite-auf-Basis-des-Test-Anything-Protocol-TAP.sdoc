@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=95
+# Id: 95
+# Categories: Perl
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=96 height=48 url="http://www.perl.org/"

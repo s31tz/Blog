@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=110
+# Id: 110
+# Categories: LaTeX
 
 %Figure: file="IMGDIR/latex-logo-320x133.png" \
     width="106" height="44" url="http://www.latex-project.org/"

@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=97
+# Id: 97
+# Categories: Netzwerk, SSH, MySQL
 
 # 0.65
 %Figure: file="IMGDIR/ssh-logo-90x78.png" \

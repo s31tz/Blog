@@ -102,7 +102,7 @@ for my $file (reverse Blog::Base::Path->glob("*.sdoc")) {
     my ($title) = $text =~ /title="(.*?)"/;
 
     # Serendipity-Id des Artikels
-    my ($id) = $text =~ /^# id=(\d+)/m;
+    my ($id) = $text =~ /^# (?:id=|Id: )(\d+)/m;
 
     $code .= sprintf qq|* U{"$urlFmt",text="%s"}\n\n|,$id,$title;
 }

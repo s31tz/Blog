@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=121
+# Id: 121
+# Categories: Linux/Unix, Shell
 
 # Breite: 0.256 Höhe: 0.225 (absichtlich gestreckt)
 %Figure: file="IMGDIR/unix-390x118.jpg"

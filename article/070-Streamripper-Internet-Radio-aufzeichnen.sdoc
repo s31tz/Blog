@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=86
+# Id: 86
+# Categories: Video/Audio, Audio, Netzwerk
 
 %Figure: file="IMGDIR/streamripper-logo-570x90.png" \
     width="285" height="45" url="http://streamripper.sourceforge.net/"

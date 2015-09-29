@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=18
+# Id: 18
+# Categories: Linux/Unix, Shell, Netzwerk, SSH
 
 %Figure: file="IMGDIR/rsync-logo-205x100.jpg" \
   width="103" height="50" url="https://rsync.samba.org/"

@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=25
+# Id: 25
+# Categories: Google Earth
 
 %Figure: file="IMGDIR/google-earth-logo-358x102.png" \
     width="147" height="42" url="https://www.google.com/earth/"

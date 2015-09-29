@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=53
+# Id: 53
+# Categories: Web, HTTP, Perl
 
 %Figure: file="IMGDIR/mod_perl-logo-375x78.png" \
     width="192" height="40" url="http://perl.apache.org/"

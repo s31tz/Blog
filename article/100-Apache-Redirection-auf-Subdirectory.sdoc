@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=27
+# Id: 27
+# Categories: Apache
 
 %Figure: file="IMGDIR/apache-logo-200x60.png" \
     width="153" height="46" url="http://httpd.apache.org/"

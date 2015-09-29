@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=76
+# Id: 76
+# Categories: Linux/Unix, Debian
 
 %Figure: file="IMGDIR/debian_splash_590x124.png" width="508" height="107" \
   url="https://www.debian.org/"

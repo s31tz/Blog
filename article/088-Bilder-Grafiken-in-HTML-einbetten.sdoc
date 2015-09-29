@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=103
+# Id: 103
+# Categories: Web, HTML
 
 %Figure: file="IMGDIR/valid-xhtml10.png" \
   width="88" height="31" url="http://www.w3.org/"

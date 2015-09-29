@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=89
+# Id: 89
+# Categories: Video/Audio, Video
 
 %Figure: file="IMGDIR/kdenlive-89x96.png" \
     width="54" height="58" url="https://kdenlive.org/"

@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=31
+# Id: 31
+# Categories: Linux/Unix
 
 %Figure: file="IMGDIR/gnu-logo-102x100.png" \
   width="71" height="70" url="http://www.gnu.org/"

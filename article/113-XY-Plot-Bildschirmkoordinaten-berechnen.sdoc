@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=125
+# Id: 125
+# Categories: Grafik
 
 %Figure: file="IMGDIR/diagramm-logo-181x100.png" width="80" height="44"
 

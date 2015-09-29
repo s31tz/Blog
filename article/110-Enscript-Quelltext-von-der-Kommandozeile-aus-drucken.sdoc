@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=122
+# Id: 122
+# Categories: Text, Enscript
 
 %Figure: file="IMGDIR/printer-icon-118x100.png" \
   width="64" height="54" url="http://swoolley.org/man.cgi/1/enscript"

@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=62
+# Id: 62
+# Categories: Datenbanken, Oracle
 
 %Figure: file="IMGDIR/database-114x100.png" \
   width="80" height="70" url="https://docs.oracle.com/en/"

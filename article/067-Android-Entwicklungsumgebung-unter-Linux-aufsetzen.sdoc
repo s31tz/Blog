@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=78
+# Id: 78
+# Categories: Linux/Unix
 
 %Figure: file="IMGDIR/droid-75x90.png" width="50" height="60" \
   url="http://developer.android.com/"

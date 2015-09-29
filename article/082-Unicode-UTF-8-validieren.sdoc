@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=99
+# Id: 99
+# Categories: UTF-8
 
 # 0.3
 %Figure: file="IMGDIR/unicode-logo-220x220.png" \

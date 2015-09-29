@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=60
+# Id: 60
+# Categories: SVN
 
 %Figure: file="IMGDIR/svn-374x51.jpg" \
     width=224 height=31 url="https://subversion.apache.org/"

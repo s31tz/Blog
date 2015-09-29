@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=113
+# Id: 113
+# Categories: Perl, HTTP
 
 %Figure: file="IMGDIR/speedy-167x61.png" \
     width="101" height="37" url="http://search.cpan.org/~horrocks/\

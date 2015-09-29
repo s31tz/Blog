@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=106
+# Id: 106
+# Categories: Minecraft
 
 %Figure: file="IMGDIR/minecraft-1373x230.png" \
     width="227" height="38" url="https://minecraft.net/"

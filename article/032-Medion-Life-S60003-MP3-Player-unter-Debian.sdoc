@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=38
+# Id: 38
+# Categories: Video/Audio, Audio
 
 %Figure: file="IMGDIR/mp3-player-115x100.png" \
     width="64" height="56" url=""

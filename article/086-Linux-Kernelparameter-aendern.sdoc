@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=101
+# Id: 101
+# Categories: Linux/Unix
 
 # 0.35
 %Figure: file="IMGDIR/linux-logo-370x158.jpg" \

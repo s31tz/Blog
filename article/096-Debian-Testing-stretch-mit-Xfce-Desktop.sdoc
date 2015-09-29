@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=108
+# Id: 108
+# Categories: Linux/Unix, Debian
 
 %Figure: file="IMGDIR/xfce-300x300.png" width="95" \
     height="95" url="http://www.xfce.org/"

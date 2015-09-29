@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=74
+# Id: 74
+# Categories: Netzwerk, HTTPS
 
 %Figure: file="IMGDIR/https-396x100.png" \
     width="158" height="40" url=""

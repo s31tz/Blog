@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=88
+# Id: 88
+# Categories: Linux/Unix
 
 %Figure: file="IMGDIR/usb-stick-219x100.png" width="88" height="40"
   url="http://manpages.debian.org/cgi-bin/man.cgi?query=tune2fs"

@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=56
+# Id: 56
+# Categories: Linux/Unix, Netzwerk, VPN
 
 %Figure: file="IMGDIR/cisco-vpnclient-100x100.png" \
   width="65" height="65" url=""

@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=59
+# Id: 59
+# Categories: Video/Audio, Audio
 
 %Figure: file="IMGDIR/audacity-logo-373x135.jpg" \
     width="154" height="56" url="http://web.audacityteam.org/"

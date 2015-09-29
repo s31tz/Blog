@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=63
+# Id: 63
+# Categories: UTF-8
 
 %Figure: file="IMGDIR/unicode-logo-220x220.png" \
   width="66" height="66" url="http://unicode-table.com/en/"

@@ -5,19 +5,19 @@
   generateAnchors=0
   utf8=1
 
-# id=127
+# Id: 127
+# Categories: Google Earth
 
 %Figure: file="IMGDIR/earth-100x100.png" width="54" height="54" \
   url="http://gmt.soest.hawaii.edu/doc/latest/GMT_Tutorial.html#\
   orthographic-projection"
 
 Für die Skalierung von Grafik-Elementen, die in Ground Overlays für
-Google Earth eingetragen werden sollten, stand ich vor der Notwendigkeit,
+Google Earth platziert werden sollten, stand ich vor der Notwendigkeit,
 Abstände auf der Erdoberfläche berechnen zu müssen. Die folgende
 Formel hat mir dies ermöglicht.
 
-Die Entfernung (in km) zwischen zwei Punkten auf der Erdoberfläche lässt
-sich folgendermaßen berechnen:
+Die Entfernung (in km) zwischen zwei Punkten auf der Erdoberfläche:
 
 %Figure: \
     file="IMGDIR/erddistanz-funktion-708x20.png" width="566" height="16"

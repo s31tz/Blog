@@ -6,7 +6,8 @@
   utf8=1
   minLnWidth=2
 
-# id=84
+# Id: 84
+# Categories: Perl, UTF-8
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=96 height=48 url="http://www.perl.org/"

@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=45
+# Id: 45
+# Categories: Web, JavaScript
 
 %Figure: file="IMGDIR/javascript-logo-100x100.png" \
   width="50" height="50" url="https://en.wikipedia.org/wiki/JavaScript"

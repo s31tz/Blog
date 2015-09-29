@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=70
+# Id: 70
+# Categories: Video/Audio, Video
 
 %Figure: file="IMGDIR/handbrake-logo-100x100.png"
   width="65" height="65" url="https://handbrake.fr/"

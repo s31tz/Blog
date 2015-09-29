@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=66
+# Id: 66
+# Categories: Datenbanken, SQL
 
 %Figure: file="IMGDIR/sql-icon-86x100.png" width="48" height="56" \
   url=""

@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=75
+# Id: 75
+# Categories: Linux/Unix, Netzwerk, WebDAV
 
 %Figure: file="IMGDIR/strato-hidrive-456x100.png" \
     width="173" height="38" url="https://hidrive.strato.com/"

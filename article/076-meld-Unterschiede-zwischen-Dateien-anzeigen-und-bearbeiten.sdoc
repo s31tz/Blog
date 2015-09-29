@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=92
+# Id: 92
+# Categories: Linux/Unix
 
 %Figure: file="IMGDIR/meld-84x84.png" \
   width=56 height=56 url="http://meldmerge.org/"

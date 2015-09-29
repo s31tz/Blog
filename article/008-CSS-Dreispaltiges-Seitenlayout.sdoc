@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=7
+# Id: 7
+# Categories: Web, CSS
 
 %Figure: file="IMGDIR/valid-css.png" \
   width="88" height="31" url="http://www.w3.org/TR/tr-groups-all\

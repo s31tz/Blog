@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=107
+# Id: 107
+# Categories: Grafik
 
 %Figure: file="IMGDIR/imagemagick-logo-464x240.png" \
     width="184" height="95" url="http://www.imagemagick.org/"

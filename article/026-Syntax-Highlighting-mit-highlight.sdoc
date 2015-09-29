@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=30
+# Id: 30
+# Categories: Linux/Unix
 
 %Figure: file="IMGDIR/highlight-logo-100x100.png" \
   width="60" height="60" url="http://www.andre-simon.de/"

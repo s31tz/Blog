@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=72
+# Id: 72
+# Categories: Mobiltelefon
 
 %Figure: file="IMGDIR/mobile-phone-74x100.png" \
     width="47" height="64" url="https://de.wikipedia.org/wiki/USSD-Codes"

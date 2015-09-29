@@ -21,6 +21,11 @@ Blog::Base::Sdoc::Section - Abschnitt
 
 L<Blog::Base::Sdoc::Node|../../Blog::Base/Sdoc/Node.html>
 
+=head1 DESCRIPTION
+
+Ein Objekt der Klasse repräsentiert einen Abschnitt im
+Sdoc-Parsingbaum.
+
 =head1 ATTRIBUTES
 
 =over 4
@@ -51,11 +56,6 @@ Titel des Abschnitts.
 Verlinkungsschlüssel.
 
 =back
-
-=head1 DESCRIPTION
-
-Ein Objekt der Klasse repräsentiert einen Abschnitt im
-Sdoc-Parsingbaum.
 
 =head1 METHODS
 

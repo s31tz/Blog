@@ -5,7 +5,8 @@
   generateAnchors=0
   utf8=1
 
-# id=14
+# Id: 14
+# Categories: Grafik
 
 G{"IMGDIR/misc-videos-icon-128x128.png",style="margin-left: 2em",\
   width="50",height="50"}
