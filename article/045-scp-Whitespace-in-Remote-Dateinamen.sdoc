@@ -6,7 +6,7 @@
   utf8=1
 
 # Id: 48
-# Categories: Netzwerk, SSH
+# Categories: Netz, SSH
 
 %Figure: file="IMGDIR/ssh-logo-90x78.png" \
     width=58 height=50 url="http://www.openssh.com/"

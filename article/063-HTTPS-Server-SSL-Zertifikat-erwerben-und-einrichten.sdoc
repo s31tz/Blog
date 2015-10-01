@@ -6,7 +6,7 @@
   utf8=1
 
 # Id: 74
-# Categories: Netzwerk, HTTPS
+# Categories: Netz, HTTPS
 
 %Figure: file="IMGDIR/https-396x100.png" \
     width="158" height="40" url=""

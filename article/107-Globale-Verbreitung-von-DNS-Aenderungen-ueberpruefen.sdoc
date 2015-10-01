@@ -6,7 +6,7 @@
   utf8=1
 
 # Id: 116
-# Categories: Netzwerk, DNS
+# Categories: Netz, DNS
 
 %Figure: file="IMGDIR/dns-logo-100x100.jpg" \
     width="60" height="60" url="https://www.whatsmydns.net/"

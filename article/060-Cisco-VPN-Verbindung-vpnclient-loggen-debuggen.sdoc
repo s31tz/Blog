@@ -6,7 +6,7 @@
   utf8=1
 
 # Id: 55
-# Categories: Netzwerk, VPN
+# Categories: Netz, VPN
 
 %Figure: file="IMGDIR/cisco-vpnclient-100x100.png" \
   width="65" height="65" url=""

@@ -6,7 +6,7 @@
   utf8=1
 
 # Id: 118
-# Categories: Web, Perl, Netzwerk, SOAP
+# Categories: Web, Perl, Netz, SOAP
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"

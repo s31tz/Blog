@@ -6,7 +6,7 @@
   utf8=1
 
 # Id: 87
-# Categories: Linux/Unix, Netzwerk, TCP/IP
+# Categories: Linux/Unix, Netz, TCP/IP
 
 %Figure: file="IMGDIR/network-118x102.png" width="65" height="56" \
   url="http://tldp.org/LDP/nag2/x-087-2-iface.netstat.html"

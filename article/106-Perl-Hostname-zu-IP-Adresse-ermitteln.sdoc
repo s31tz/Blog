@@ -7,7 +7,7 @@
   minLnWidth=2
 
 # Id: 114
-# Categories: Perl, Netzwerk, TCP/IP
+# Categories: Perl, Netz, TCP/IP
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"

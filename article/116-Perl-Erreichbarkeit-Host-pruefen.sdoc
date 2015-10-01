@@ -1,0 +1,39 @@
+# Date: 2015-10-01
+
+%Document:
+  title="Perl: Erreichbarkeit eines Host prüfen"
+  generateAnchors=0
+  utf8=1
+
+# Id: 128
+# Categories: Perl, Netz, TCP/IP
+
+%Figure: file="IMGDIR/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+Mitunter möchte man wissen, ob ein bestimmter Host erreichbar ist,
+z.B. vor Beginn von Regressionstests gegen Services des Host. Diese
+Prüfung kann in Perl mittels des Core-Moduls
+U{"http://perldoc.perl.org/Net/Ping.html",text="Net::Ping"}
+durchgeführt werden.
+
+  %Code: ln=1 bg=2 filter="./blog-highlight perl %FORMAT%"
+  use Net::Ping;
+
+  my $p = Net::Ping->new;
+  my $isAlive = $p->ping($host);
+  $p->close;
+
+  if ($isAlive) {
+      print "Host $host ist erreichbar\n";
+  }
+  .
+
+Per Default baut die Klasse per TCP eine Verbindung zum echo-Port
+auf. Für andere Möglichkeiten (Test per UDP, ICMP, ...) siehe Doku.
+
+= Links
+
+* Dokumentation U{"http://perldoc.perl.org/Net/Ping.html",text="Net::Ping"}
+
+# eof

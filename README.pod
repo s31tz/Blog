@@ -13,6 +13,10 @@ veröffentlicht habe.
 
 =item *
 
+L<Perl: Erreichbarkeit eines Host prüfen|http://fseitz.de/blog/index.php?/archives/128-x.html>
+
+=item *
+
 L<Entfernung zwischen zwei Punkten auf der Erdoberfläche berechnen|http://fseitz.de/blog/index.php?/archives/127-x.html>
 
 =item *

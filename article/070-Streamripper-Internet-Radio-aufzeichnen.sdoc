@@ -6,7 +6,7 @@
   utf8=1
 
 # Id: 86
-# Categories: Video/Audio, Audio, Netzwerk
+# Categories: Video/Audio, Audio, Netz
 
 %Figure: file="IMGDIR/streamripper-logo-570x90.png" \
     width="285" height="45" url="http://streamripper.sourceforge.net/"

@@ -6,7 +6,7 @@
   utf8=1
 
 # Id: 97
-# Categories: Netzwerk, SSH, MySQL
+# Categories: Netz, SSH, MySQL
 
 # 0.65
 %Figure: file="IMGDIR/ssh-logo-90x78.png" \
