@@ -477,10 +477,6 @@ L<Eröffnung des Blog|http://fseitz.de/blog/index.php?/archives/3-x.html>
 
 =back
 
-=head1 DOWNLOAD
-
-$ git clone https://github.com/s31tz/Blog.git
-
 =head1 AUTHOR
 
 Frank Seitz, L<http://fseitz.de>

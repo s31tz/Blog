@@ -6,6 +6,7 @@ use warnings;
 
 use IPC::Open3 ();
 use Blog::Base::Shell;
+use Blog::Base::Option;
 
 # -----------------------------------------------------------------------------
 
@@ -27,7 +28,18 @@ L<Blog::Base::Object|../Blog::Base/Object.html>
 
 =head4 Synopsis
 
-    ($out,$err) = Blog::Base::IPC->filter($cmd,$in);
+    ($out,$err) = Blog::Base::IPC->filter($cmd,$in,@opt);
+
+=head4 Options
+
+=over 4
+
+=item -ignoreError => $bool (Default: 0)
+
+Ignoriere Exitcode von Kommando $cmd. D.h. es wird keine Exception
+geworfen, wenn das Kommando fehlschlägt.
+
+=back
 
 =head4 Description
 
@@ -40,7 +52,18 @@ $err auf stdout bzw. stderr.
 # -----------------------------------------------------------------------------
 
 sub filter {
-    my ($class,$cmd,$in) = @_;
+    my $class = shift;
+    my $cmd = shift;
+    my $in = shift;
+    # @_: @opt
+
+    my $ignoreError = 0;
+
+    if (@_) {
+        Blog::Base::Option->extract(\@_,
+            -ignoreError=>\$ignoreError,
+        );
+    }
 
     local (*W,*R,*E,$/);
     my $pid = IPC::Open3::open3(\*W,\*R,\*E,$cmd);
@@ -63,8 +86,11 @@ sub filter {
     close E;
 
     waitpid $pid,0;
-    # FIXME: checkError nach Blog::Base::IPC verlagern, in checkExit umbenennen
-    Blog::Base::Shell->checkError($?,$err,$cmd);
+    if (!$ignoreError) {
+        # FIXME: checkError nach Blog::Base::IPC verlagern,
+        # in checkExit umbenennen
+        Blog::Base::Shell->checkError($?,$err,$cmd);
+    }
 
     return  ($out,$err);
 }

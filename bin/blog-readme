@@ -110,10 +110,6 @@ for my $file (reverse Blog::Base::Path->glob("*.sdoc")) {
 my $year = POSIX::strftime('%Y',localtime);
 
 $code .= sprintf <<'__EOT__',
-= DOWNLOAD
-
-$ git clone https://github.com/s31tz/Blog.git
-
 = AUTHOR
 
 Frank Seitz, U{http://fseitz.de}

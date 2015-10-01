@@ -251,7 +251,13 @@ sub help {
 
     # my $binDir = $self->perlDir;
     # my $str = Blog::Base::Shell->exec("perldoc $0");
-    my ($str) = Blog::Base::IPC->filter("pod2text $0");
+    my ($str) = eval{Blog::Base::IPC->filter("pod2text $0")};
+
+    # Fehler "unable to format" tritt auf, wenn der Quelltext kein POD enthält
+
+    if ($@ && $@ !~ /unable to format/) {
+        die $@;
+    }
 
     return $str;
 }
