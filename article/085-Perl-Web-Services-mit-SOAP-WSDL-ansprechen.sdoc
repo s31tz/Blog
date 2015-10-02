@@ -12,10 +12,10 @@
     width=94 height=47 url="http://www.perl.org/"
 
 Das Perl-Modul U{"http://search.cpan.org/~swalters/SOAP-WSDL/",
-text="SOAP::WDSL"} stellt Mittel bereit, um Web Services
-ansprechen zu können, für die eine WDSL-Definition existiert.
+text="SOAP::WSDL"} stellt Mittel bereit, um Web Services
+ansprechen zu können, für die eine WSDL-Definition existiert.
 
-Der bevorzugte Weg ist, aus der WDSL-Definition eine Client-Schnittstelle zu
+Der bevorzugte Weg ist, aus der WSDL-Definition eine Client-Schnittstelle zu
 generieren und diese zur Interaktion mit dem Web-Service zu nutzen.
 Die generierte Schnittstelle ist objektorientiert, besteht also aus einer
 Sammlung von Klassen.

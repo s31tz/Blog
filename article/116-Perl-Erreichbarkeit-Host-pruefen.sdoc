@@ -29,11 +29,12 @@ durchgeführt werden.
   }
   .
 
-Per Default baut die Klasse per TCP eine Verbindung zum echo-Port
-auf. Für andere Möglichkeiten (Test per UDP, ICMP, ...) siehe Doku.
+Per Default versucht die Klasse per TCP eine Verbindung zum echo-Port
+aufzubauen. Für andere Möglichkeiten (Test per UDP, ICMP, ...) siehe
+Doku.
 
 = Links
 
-* Dokumentation U{"http://perldoc.perl.org/Net/Ping.html",text="Net::Ping"}
+* Doku U{"http://perldoc.perl.org/Net/Ping.html",text="Net::Ping"}
 
 # eof
