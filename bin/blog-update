@@ -166,47 +166,61 @@ for my $file (Blog::Base::Path->glob("*.sdoc")) {
         printf "Aktualisiere: %s\n",$file;
 
         if (!$dryRun) {
+            # Draft-Eigenschft ermitteln
+
+            my $isDraft = 'f';
+            if ($text =~ /^# (?:Draft: )(.+)/m) {
+                if ($1 eq 'yes') {
+                    $isDraft = 't';
+                }
+            }
+
+            # Artikel aktualisieren
+
             my ($title,$html) = $convertFile->($file);
             $db->update('serendipity_entries',
                 title=>Encode::encode('iso-8859-1',$title),
                 body=>Encode::encode('iso-8859-1',$html),
                 last_modified=>$mtime,
+                isdraft=>$isDraft,
                 -where,id=>$id,
             );
             $n++;
 
-            # Kategorien und Kategoriezuordnungen aktualisieren
-            # Im Blog-Artikel: "# Categories: CATEGORY1, CATEGORY2, ...
+            if ($isDraft eq 'f') {
+                # Kategorien und Kategoriezuordnungen aktualisieren
+                # Im Blog-Artikel: "# Categories: CATEGORY1, CATEGORY2, ...
 
-            $db->delete('serendipity_entrycat',entryid=>$ent->id);
-            if (my ($categories) = $text =~ /^# Categories: (.*)/m) {
-                for my $category (split /,\s*/,$categories) {
-                    my $cat = $db->lookup(
-                        -from=>'serendipity_category',
-                        -where,category_name=>$category,
-                        -new=>1,
-                    );
-                    if ($cat->rowStatus eq 'I') {
-                        $cat->set(
-                            categoryid=>$db->nextValue(
-                                'serendipity_category_categoryid_seq'),
-                            category_name=>$category,
+                $db->delete('serendipity_entrycat',entryid=>$ent->id);
+                if (my ($categories) = $text =~ /^# Categories: (.*)/m) {
+                    for my $category (split /,\s*/,$categories) {
+                        my $cat = $db->lookup(
+                            -from=>'serendipity_category',
+                            -where,category_name=>$category,
+                            -new=>1,
                         );
-                        $db->insert('serendipity_category',$cat);
-                        print "Neue Kategorie: $category\n";
-                    }
-                    my $eca = $db->lookup(
-                        -from=>'serendipity_entrycat',
-                        -where,entryid=>$ent->id,
-                            categoryid=>$cat->categoryid,
-                        -new=>1,
-                    );
-                    if ($eca->rowStatus eq 'I') {
-                        $eca->set(
-                            entryid=>$ent->id,
-                            categoryid=>$cat->categoryid,
+                        if ($cat->rowStatus eq 'I') {
+                            $cat->set(
+                                categoryid=>$db->nextValue(
+                                    'serendipity_category_categoryid_seq'),
+                                category_name=>$category,
+                            );
+                            $db->insert('serendipity_category',$cat);
+                            print "Neue Kategorie: $category\n";
+                        }
+                        my $eca = $db->lookup(
+                            -from=>'serendipity_entrycat',
+                            -where,entryid=>$ent->id,
+                                categoryid=>$cat->categoryid,
+                            -new=>1,
                         );
-                        $db->insert('serendipity_entrycat',$eca);
+                        if ($eca->rowStatus eq 'I') {
+                            $eca->set(
+                                entryid=>$ent->id,
+                                categoryid=>$cat->categoryid,
+                            );
+                            $db->insert('serendipity_entrycat',$eca);
+                        }
                     }
                 }
             }

@@ -97,6 +97,14 @@ for my $file (reverse Blog::Base::Path->glob("*.sdoc")) {
     $num += 0;
     my $text = Blog::Base::Path->read($file);
 
+    # Drafts übergehen wir
+
+    if ($text =~ /^# (?:Draft: )(.+)/m) {
+        if ($1 eq 'yes') {
+            next;
+        }
+    }
+
     # Zeitpunkt der jüngsten Änderung
 
     my $mtime = Blog::Base::Path->mtime($file);

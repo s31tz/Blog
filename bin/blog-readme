@@ -98,6 +98,14 @@ my $urlFmt = 'http://fseitz.de/blog/index.php?/archives/%d-x.html';
 for my $file (reverse Blog::Base::Path->glob("*.sdoc")) {
     my $text = Encode::decode('utf-8',Blog::Base::Path->read($file));
 
+    # Drafts übergehen wir
+
+    if ($text =~ /^# (?:Draft: )(.+)/m) {
+        if ($1 eq 'yes') {
+            next;
+        }
+    }
+
     # Titel des Artikels bestimmen
     my ($title) = $text =~ /title="(.*?)"/;
 

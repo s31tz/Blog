@@ -2034,9 +2034,9 @@ eine C<ORDER BY> Klausel hinzugefügt.
 
 =item *
 
-Im Skalarkontext wird ein Objekt der Klasse C<<Blog::Base::Array>> oder
-der Klasse C<<Blog::Base::Hash>> geliefert. Letzteres, wenn Option
-C<<-hash=>1>> angegeben ist.
+Im Skalarkontext wird ein Objekt der Klasse C<< Blog::Base::Array >> oder
+der Klasse C<< Blog::Base::Hash >> geliefert. Letzteres, wenn Option
+C<< -hash=>1 >> angegeben ist.
 
 =back
 

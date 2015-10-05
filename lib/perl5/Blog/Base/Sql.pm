@@ -51,16 +51,6 @@ generiert das CREATE TABLE Statement
 
 (man beachte die Abbildung der Kolumnentypen)
 
-=head1 ATTRIBUTES
-
-=over 4
-
-=item dbms => $dbmsName (Default: keiner)
-
-Name des DBMS.
-
-=back
-
 =head1 DESCRIPTION
 
 =head2 Zweck der Klasse
@@ -78,6 +68,16 @@ Folgende DBMSe werden von der Klasse unterstützt:
     PostgreSQL
     SQLite
     MySQL
+
+=head1 ATTRIBUTES
+
+=over 4
+
+=item dbms => $dbmsName (Default: keiner)
+
+Name des DBMS.
+
+=back
 
 =head1 METHODS
 

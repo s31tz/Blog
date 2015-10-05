@@ -17,7 +17,7 @@ Google Earth platziert werden sollten, stand ich vor der Notwendigkeit,
 Abstände auf der Erdoberfläche berechnen zu müssen. Die folgende
 Formel hat mir dies ermöglicht.
 
-Die Entfernung (in km) zwischen zwei Punkten auf der Erdoberfläche:
+Entfernung (in km) zwischen zwei Punkten auf der Erdoberfläche:
 
 %Figure: \
     file="IMGDIR/erddistanz-funktion-708x20.png" width="566" height="16"

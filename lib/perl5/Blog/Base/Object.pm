@@ -3,6 +3,8 @@ package Blog::Base::Object;
 use strict;
 use warnings;
 
+use Blog::Base::Stacktrace;
+
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -56,10 +58,6 @@ sub bless {
 =head4 Synopsis
 
     $obj->rebless($class);
-
-=head4 Returns
-
-Die Methode liefert keinen Wert zurück.
 
 =head4 Description
 
@@ -147,12 +145,26 @@ sub addMethod {
 =head4 Synopsis
 
     $this->throw;
-    $this->throw(@keyVal);
-    $this->throw($msg,@keyVal);
+    $this->throw(@opt,@keyVal);
+    $this->throw($msg,@opt,@keyVal);
+
+=head4 Options
+
+=over 4
+
+=item -stacktrace => $bool (Default: 1)
+
+Ergänze den Exception-Text um einen Stacktrace.
+
+=item -warning => $bool (Default: 0)
+
+Wirf keine Exception, sondern gib lediglich eine Warnung aus.
+
+=back
 
 =head4 Description
 
-Wirf Exception mit dem Fehlertext $msg und den hinzugefügten
+Wirf eine Exception mit dem Fehlertext $msg und den hinzugefügten
 Schlüssel/Wert-Paaren @keyVal. Die Methode kehrt nicht zurück.
 
 =cut
@@ -241,25 +253,6 @@ sub throw {
         die $msg;
     }
 
-    # Generiere Stacktrace
-
-    my @frames;
-    my $i = 0;
-    while (my (undef,$file,$line,$sub) = caller $i++) {
-        # $file =~ s|.*/||;
-        push @frames,[$file,$line,$sub];
-    }
-
-    $i = 0;
-    my $stack = '';
-    for my $frame (reverse @frames) {
-        my ($file,$line,$sub) = @$frame;
-        $sub .= "()" if $sub ne '(eval)';
-        $stack .= sprintf "%s%s [%s %s]\n",('  'x$i++),$sub,$file,$line;
-    }
-    chomp $stack;
-    $stack =~ s/^/    /gm;
-
     # Generiere Meldung
 
     $msg =~ s/^/    /mg;
@@ -267,56 +260,19 @@ sub throw {
     if ($keyVal) {
         $str .= $keyVal;
     }
+
     if ($stacktrace) {
+        # Generiere Stacktrace
+
+        my $stack = Blog::Base::Stacktrace->asString;
+        chomp $stack;
+        $stack =~ s/^/    /gm;
         $str .= "Stacktrace:\n$stack\n";
     }
 
     # Wirf Exception
 
     die $str;
-}
-
-# -----------------------------------------------------------------------------
-
-=head3 throwMsg() - Wirf Exception als einfache Meldung (ohne Stacktrace etc.)
-
-=head4 Synopsis
-
-    $this->throwMsg($msg,@keyVal);
-
-=head4 Description
-
-Wirf Exception mit dem Fehlertext $msg und den hinzugefügten
-Schlüssel/Wert-Paaren @keyVal. Die Methode kehrt nicht zurück.
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub throwMsg {
-    my $class = ref $_[0]? ref(shift): shift;
-    my $msg = shift;
-    # @_: @keyVal
-
-    # Schlüssel/Wert-Paare
-
-    my $str;
-    for (my $i = 0; $i < @_; $i += 2) {
-        my $key = $_[$i];
-        my $val = $_[$i+1];
-        if (defined $val && $val ne '') {
-            $val =~ s/\s+$//;    # Whitespace am Ende entfernen
-            $str .= ', ' if $str;
-            $str .= "$key: $val";
-        }
-    }
-    if ($str) {
-        $msg .= " ($str)";
-    }
-    $msg =~ s/\s+$//;
-
-    # Wirf Exception
-    die "$msg\n";
 }
 
 # -----------------------------------------------------------------------------
