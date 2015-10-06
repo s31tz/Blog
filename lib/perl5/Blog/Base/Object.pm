@@ -42,7 +42,7 @@ Der Aufruf ist äquivalent zu:
 
 =head4 Example
 
-    $hash = Blog::Base::Hash->bless({});
+    $hash = Hash->bless({});
 
 =cut
 
@@ -275,7 +275,7 @@ diesen zurück. Die Klasse muss bereits geladen worden sein.
 =head4 Example
 
     $path = Blog::Base::Object->classFile;
-    # <PFAD>/R1/Object.pm
+    # <PFAD>Blog::Base/Object.pm
 
 =cut
 
