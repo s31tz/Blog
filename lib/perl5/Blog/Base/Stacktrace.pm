@@ -15,8 +15,8 @@ Blog::Base::Stacktrace - Generiere und visualisiere einen Stacktrace
 
     use Blog::Base::Stacktrace;
     
-    my $st = Blog::Base::Stacktrace->new;  # generiere Stacktrace
-    print $st->asString,"\n";  # visualisiere Stacktrace
+    my $st = Blog::Base::Stacktrace->new; # generiere Stacktrace
+    print $st->asString,"\n";       # visualisiere Stacktrace
     
     -or-
     
@@ -31,7 +31,7 @@ Stacktrace-Objektes.
 Die Klasse kann zum Debuggen verwendet werden oder bei der Erzeugung
 von Exceptions.
 
-Folgendes Beispielprogramm (test.pl):
+Folgendes Beispielprogramm (test.pl)
 
      1: #!/usr/bin/env perl
      2: 
@@ -51,7 +51,7 @@ Folgendes Beispielprogramm (test.pl):
     16: 
     17: a();
 
-erzeugt die Ausgabe:
+erzeugt die Ausgabe
 
     main::a() [+17 ./test.pl]
       main::b() [+6 ./test.pl]
@@ -87,14 +87,16 @@ $i erreicht werden.
 
 =head1 METHODS
 
-=head2 new() - Konstruktor
+=head2 Instanziierung
 
-=head3 Synopsis
+=head3 new() - Konstruktor
+
+=head4 Synopsis
 
     $st = $class->new;
     $st = $class->new($i);
 
-=head3 Arguments
+=head4 Arguments
 
 =over 4
 
@@ -106,7 +108,7 @@ alle Frames berücksichtigt.
 
 =back
 
-=head3 Description
+=head4 Description
 
 Instanziiere ein Stacktrace-Objekt und liefere eine Referenz auf diese
 Objekt zurück. Das Stacktrace-Objekt repräsentiert die Aufruf-Hierarchie
@@ -132,14 +134,16 @@ sub new {
 
 # -----------------------------------------------------------------------------
 
-=head2 asString() - Visualisiere Stacktrace-Objekt
+=head2 Externe Repräsentation
 
-=head3 Synopsis
+=head3 asString() - Visualisiere Stacktrace-Objekt
+
+=head4 Synopsis
 
     $str = $st->asString;
     $str = $class->asString($i);
 
-=head3 Arguments
+=head4 Arguments
 
 =over 4
 
@@ -149,7 +153,7 @@ Siehe new().
 
 =back
 
-=head3 Description
+=head4 Description
 
 Visualisiere das Stacktrace-Objekt in Form einer Zeichenkette und liefere
 diese zurück. Aufbau der Zeichenkette siehe Abschnitt DESCRIPTION.
