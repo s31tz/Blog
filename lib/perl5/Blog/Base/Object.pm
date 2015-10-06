@@ -11,7 +11,7 @@ use Blog::Base::Stacktrace;
 
 =head1 NAME
 
-Blog::Base::Object - Basisklasse aller Klassen der Klassenbibliothek
+Blog::Base::Object - Basisklasse für alle Klassen der Klassenbibliothek
 
 =head1 SYNOPSIS
 
@@ -21,13 +21,15 @@ Blog::Base::Object - Basisklasse aller Klassen der Klassenbibliothek
 
 =head1 METHODS
 
-=head2 bless() - Blesse Objekt
+=head2 Instanziierung
 
-=head3 Synopsis
+=head3 bless() - Blesse Objekt auf Klasse
+
+=head4 Synopsis
 
     $obj = $class->bless($ref);
 
-=head3 Description
+=head4 Description
 
 Objektorientierte Syntax für bless(). Blesse Objekt (Referenz) $ref auf
 Klasse $class und liefere die geblesste Referenz zurück. Dies geht
@@ -38,7 +40,7 @@ Der Aufruf ist äquivalent zu:
 
     $obj = bless $ref,$class;
 
-=head3 Example
+=head4 Example
 
     $hash = Blog::Base::Hash->bless({});
 
@@ -53,13 +55,13 @@ sub bless {
 
 # -----------------------------------------------------------------------------
 
-=head2 rebless() - Blesse Objekt auf eine andere Klasse
+=head3 rebless() - Blesse Objekt auf eine andere Klasse um
 
-=head3 Synopsis
+=head4 Synopsis
 
     $obj->rebless($class);
 
-=head3 Description
+=head4 Description
 
 Blesse Objekt $obj auf Klasse $class um.
 
@@ -67,7 +69,7 @@ Der Aufruf ist äquivalent zu:
 
     bless $obj,$class;
 
-=head3 Example
+=head4 Example
 
     $hash->rebless('MyClass');
 
@@ -83,15 +85,17 @@ sub rebless {
 
 # -----------------------------------------------------------------------------
 
-=head2 throw() - Wirf Exception
+=head2 Exceptions
 
-=head3 Synopsis
+=head3 throw() - Wirf Exception
+
+=head4 Synopsis
 
     $this->throw;
     $this->throw(@opt,@keyVal);
     $this->throw($msg,@opt,@keyVal);
 
-=head3 Options
+=head4 Options
 
 =over 4
 
@@ -105,10 +109,11 @@ Wirf keine Exception, sondern gib lediglich eine Warnung aus.
 
 =back
 
-=head3 Description
+=head4 Description
 
 Wirf eine Exception mit dem Fehlertext $msg und den hinzugefügten
-Schlüssel/Wert-Paaren @keyVal. Die Methode kehrt nicht zurück.
+Schlüssel/Wert-Paaren @keyVal. Die Methode kehrt nur zurück, wenn
+Option -warning gesetzt ist.
 
 =cut
 
@@ -220,47 +225,19 @@ sub throw {
 
 # -----------------------------------------------------------------------------
 
-=head2 classFile() - Liefere Pfad der .pm-Fatei
+=head2 Sonstiges
 
-=head3 Synopsis
+=head3 addMethod() - Füge Methode zu Klasse hinzu
 
-    $dir = $this->classFile;
-
-=head3 Description
-
-Ermitte den Pfad der .pm-Datei der Klasse und liefere diesen zurück.
-
-=head3 Example
-
-    $path = Blog::Base::Object->classFile;
-    # <PFAD>/R1/Object.pm
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub classFile {
-    my $class = ref $_[0]? ref shift: shift;
-
-    $class =~ s|::|/|g;
-    $class .= '.pm';
-
-    return $INC{$class} || $class->throw;
-}
-
-# -----------------------------------------------------------------------------
-
-=head2 addMethod() - Füge Methode zur Klasse hinzu
-
-=head3 Synopsis
+=head4 Synopsis
 
     $this->addMethod($name,$ref);
 
-=head3 Description
+=head4 Description
 
 Füge Codereferenz $ref unter dem Namen $name zur Klasse $this hinzu.
 
-=head3 Example
+=head4 Example
 
     MyClass->addMethod('myMethod',sub {
         my $self = shift;
@@ -280,6 +257,37 @@ sub addMethod {
     *{"$class\::$name"} = $ref;
 
     return;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 classFile() - Liefere Pfad der .pm-Datei
+
+=head4 Synopsis
+
+    $dir = $this->classFile;
+
+=head4 Description
+
+Ermitte den Pfad der .pm-Datei der Klasse $this und liefere
+diesen zurück. Die Klasse muss bereits geladen worden sein.
+
+=head4 Example
+
+    $path = Blog::Base::Object->classFile;
+    # <PFAD>/R1/Object.pm
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub classFile {
+    my $class = ref $_[0]? ref shift: shift;
+
+    $class =~ s|::|/|g;
+    $class .= '.pm';
+
+    return $INC{$class} || $class->throw;
 }
 
 # -----------------------------------------------------------------------------
