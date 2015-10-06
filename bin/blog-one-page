@@ -16,8 +16,6 @@ use Blog::Base::Sdoc;
 
 # -----------------------------------------------------------------------------
 
-=encoding utf8
-
 =head1 NAME
 
 blog-one-page - Erzeuge eine HTML-Seite mit allen Artikeln
@@ -50,7 +48,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright © 2015 Frank Seitz
+Copyright (C) 2015 Frank Seitz
 
 =cut
 
@@ -149,7 +147,7 @@ my $year = POSIX::strftime('%Y',localtime);
 my $date = POSIX::strftime('%Y-%m-%d',localtime);
 my $mtime = POSIX::strftime('%Y-%m-%d %H:%M:%S',localtime($maxMtime));
 
-# ACHTUNG: \xc2\xa9 kann nicht durch © ersetzt werden!
+# ACHTUNG: \xc2\xa9 kann nicht durch (C) ersetzt werden!
 
 $sdoc = <<"__EOT__";
 %Document:

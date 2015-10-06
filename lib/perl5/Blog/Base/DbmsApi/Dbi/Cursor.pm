@@ -18,6 +18,10 @@ Blog::Base::DbmsApi::Dbi::Cursor - DBI Datenbank-Cursor
 
 L<Blog::Base::DbmsApi::Cursor|../../../Blog::Base/DbmsApi/Cursor.html>
 
+=head1 DESCRIPTION
+
+Ein Objekt der Klasse repräsentiert einen DBI-Datenbank-Cursor.
+
 =head1 ATTRIBUTES
 
 =over 4
@@ -45,10 +49,6 @@ Anzahl der getroffenen Datensätze.
 Id nach INSERT in Tabelle mit AUTOINCREMENT-Kolumne (MySQL, SQLite)
 
 =back
-
-=head1 DESCRIPTION
-
-Ein Objekt der Klasse repräsentiert einen DBI-Datenbank-Cursor.
 
 =head1 METHODS
 
@@ -297,7 +297,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright © 2015 Frank Seitz
+Copyright (C) 2015 Frank Seitz
 
 =cut
 

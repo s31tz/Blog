@@ -26,6 +26,11 @@ Blog::Base::DbmsApi::Dbi::Database - Datenbankverbindung über den DBI-Layer
 
 L<Blog::Base::DbmsApi::Database|../../../Blog::Base/DbmsApi/Database.html>
 
+=head1 DESCRIPTION
+
+Ein Objekt der Klasse Blog::Base::DbmsApi::Dbi::Database repräsentiert eine
+Verbindung zu einer Relationalen Datenbank über den DBI-Layer.
+
 =head1 ATTRIBUTES
 
 =over 4
@@ -39,11 +44,6 @@ DBI Database Handle.
 Name des DBMS, für DBMS-spezifische Fallunterscheidungen.
 
 =back
-
-=head1 DESCRIPTION
-
-Ein Objekt der Klasse Blog::Base::DbmsApi::Dbi::Database repräsentiert eine
-Verbindung zu einer Relationalen Datenbank über den DBI-Layer.
 
 =head1 METHODS
 
@@ -489,7 +489,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright © 2015 Frank Seitz
+Copyright (C) 2015 Frank Seitz
 
 =cut
 

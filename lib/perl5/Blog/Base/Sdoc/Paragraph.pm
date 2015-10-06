@@ -19,6 +19,11 @@ Blog::Base::Sdoc::Paragraph - Paragraph
 
 L<Blog::Base::Sdoc::Node|../../Blog::Base/Sdoc/Node.html>
 
+=head1 DESCRIPTION
+
+Ein Objekt der Klasse repräsentiert einen Paragraph im
+Sdoc-Parsingbaum.
+
 =head1 ATTRIBUTES
 
 =over 4
@@ -36,11 +41,6 @@ Verweis auf übergeordneten Knoten.
 Text des Paragraphs.
 
 =back
-
-=head1 DESCRIPTION
-
-Ein Objekt der Klasse repräsentiert einen Paragraph im
-Sdoc-Parsingbaum.
 
 =head1 METHODS
 
@@ -182,7 +182,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright © 2015 Frank Seitz
+Copyright (C) 2015 Frank Seitz
 
 =cut
 

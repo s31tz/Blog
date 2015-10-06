@@ -428,7 +428,7 @@ abgefragt werden. Z.B.
 
     -select=>@titles oder -oderBy=>@titles
 
-Mittels der Option C<<-type=>$type>> kann ein anderer Typbezeichner
+Mittels der Option C<< -type=>$type >> kann ein anderer Typbezeichner
 anstelle von "$foreignTable,$foreignKeyColumn" für den Satz an
 Kinddatensätzen vereinbart werden.
 
@@ -528,7 +528,7 @@ zugeordnet und kann per
 
 abgefragt werden.
 
-Mittels der Option C<<-type=>$type>> kann ein anderer Typbezeichner
+Mittels der Option C<< -type=>$type >> kann ein anderer Typbezeichner
 anstelle von "$foreignKeyColumn" für den Parent-Datensatz
 vereinbart werden.
 
@@ -685,7 +685,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright © 2015 Frank Seitz
+Copyright (C) 2015 Frank Seitz
 
 =cut
 

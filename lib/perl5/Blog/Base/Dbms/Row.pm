@@ -52,11 +52,11 @@ Datensatz-Klasse ab. Es gelten die Defaults:
 
 =item *
 
-Tabellenklasse bei Objekt-Datensätzen: C<<Blog::Base::Dbms::ResultSet::Object>>
+Tabellenklasse bei Objekt-Datensätzen: C<< Blog::Base::Dbms::ResultSet::Object >>
 
 =item *
 
-Tabellenklasse bei Array-Datensätzen: C<<Blog::Base::Dbms::ResultSet::Array>>
+Tabellenklasse bei Array-Datensätzen: C<< Blog::Base::Dbms::ResultSet::Array >>
 
 =back
 
@@ -161,7 +161,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright © 2015 Frank Seitz
+Copyright (C) 2015 Frank Seitz
 
 =cut
 

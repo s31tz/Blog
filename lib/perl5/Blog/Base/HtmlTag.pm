@@ -22,57 +22,6 @@ Blog::Base::HtmlTag - Klasse zur Generierung von HTML-Code
 
 L<Blog::Base::Hash|../Blog::Base/Hash.html>
 
-=head1 ATTRIBUTES
-
-=over 4
-
-=item checkLevel => 0|1|2 (Default: 1)
-
-Umfang der Element/Attribut-Prüfung.
-
-=over 4
-
-=item 0
-
-keine Prüfung
-
-=item 1
-
-prüfe Element-Typ
-
-=item 2
-
-prüfe Element-Typ und Attributnamen
-
-=back
-
-Wird ein Fehler festgestellt, wird eine Exception geworfen.
-
-=item embedImages => $bool (Default: 0)
-
-Füge Bilddaten direkt in HTML ein.
-
-=item htmlVersion => 'html-4.01'|'xhtml-1.0' (Default: 'xhtml-1.0')
-
-HTML-Version. Beginnt die Versionsangabe mit 'xhtml' wird das
-HTML gemäß den Regeln für XHTML generiert, andernfalls für
-klassisches HTML. Die Versionsnummer wird bei der Generierung
-des DOCTYPE herangezogen.
-
-=item indentation => $n (Default: undef)
-
-Forciere eine Content-Einrückung um $n Leerzeichen. Bei indentation=>0
-wird nicht eingerückt. Ist indentation nicht gesetzt, gilt die
-Einrückung, die als Argument bei der Tag-Methode angegeben ist bzw.
-die in der Methode tag() als Default vorgegeben ist.
-
-=item uppercase => $bool (Default: 0)
-
-Erzeuge Tag- und Attribut-Namen in Großschreibung. Diese Setzung
-wird nur bei klassischem HTML - nicht bei XHTML - beachtet.
-
-=back
-
 =head1 DESCRIPTION
 
 =head2 Zweck der Klasse
@@ -442,6 +391,57 @@ Der generierte Code sieht dann so aus:
 
 Ist XHTML ('xhtml-1.0') eingestellt, hat die Option uppercase=>1
 keinen Einfluss.
+
+=head1 ATTRIBUTES
+
+=over 4
+
+=item checkLevel => 0|1|2 (Default: 1)
+
+Umfang der Element/Attribut-Prüfung.
+
+=over 4
+
+=item 0
+
+keine Prüfung
+
+=item 1
+
+prüfe Element-Typ
+
+=item 2
+
+prüfe Element-Typ und Attributnamen
+
+=back
+
+Wird ein Fehler festgestellt, wird eine Exception geworfen.
+
+=item embedImages => $bool (Default: 0)
+
+Füge Bilddaten direkt in HTML ein.
+
+=item htmlVersion => 'html-4.01'|'xhtml-1.0' (Default: 'xhtml-1.0')
+
+HTML-Version. Beginnt die Versionsangabe mit 'xhtml' wird das
+HTML gemäß den Regeln für XHTML generiert, andernfalls für
+klassisches HTML. Die Versionsnummer wird bei der Generierung
+des DOCTYPE herangezogen.
+
+=item indentation => $n (Default: undef)
+
+Forciere eine Content-Einrückung um $n Leerzeichen. Bei indentation=>0
+wird nicht eingerückt. Ist indentation nicht gesetzt, gilt die
+Einrückung, die als Argument bei der Tag-Methode angegeben ist bzw.
+die in der Methode tag() als Default vorgegeben ist.
+
+=item uppercase => $bool (Default: 0)
+
+Erzeuge Tag- und Attribut-Namen in Großschreibung. Diese Setzung
+wird nur bei klassischem HTML - nicht bei XHTML - beachtet.
+
+=back
 
 =cut
 
@@ -1831,7 +1831,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright © 2008-2015 Frank Seitz
+Copyright (C) 2008-2015 Frank Seitz
 
 =cut
 

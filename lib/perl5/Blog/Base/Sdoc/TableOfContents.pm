@@ -18,6 +18,11 @@ Blog::Base::Sdoc::TableOfContents - Inhaltsverzeichnis
 
 L<Blog::Base::Sdoc::Node|../../Blog::Base/Sdoc/Node.html>
 
+=head1 DESCRIPTION
+
+Ein Objekt der Klasse repräsentiert das Inhaltsverzeichnis des
+Dokuments.
+
 =head1 ATTRIBUTES
 
 =over 4
@@ -35,11 +40,6 @@ Tiefe des Inhaltsverzeichnisses
 Überschrift.
 
 =back
-
-=head1 DESCRIPTION
-
-Ein Objekt der Klasse repräsentiert das Inhaltsverzeichnis des
-Dokuments.
 
 =head1 METHODS
 
@@ -172,7 +172,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright © 2015 Frank Seitz
+Copyright (C) 2015 Frank Seitz
 
 =cut
 

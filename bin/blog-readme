@@ -47,7 +47,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright © 2015 Frank Seitz
+Copyright (C) 2015 Frank Seitz
 
 =cut
 
@@ -112,7 +112,7 @@ for my $file (reverse Blog::Base::Path->glob("*.sdoc")) {
     # Serendipity-Id des Artikels
     my ($id) = $text =~ /^# (?:id=|Id: )(\d+)/m;
 
-    $code .= sprintf qq|* U{"$urlFmt",text="%s"}\n\n|,$id,$title;
+    $code .= sprintf qq|* %s (U{"$urlFmt",text="Artikel"})\n\n|,$title,$id;
 }
 
 my $year = POSIX::strftime('%Y',localtime);
@@ -124,7 +124,7 @@ Frank Seitz, U{http://fseitz.de}
 
 = COPYRIGHT
 
-Copyright © 2010-%s Frank Seitz
+Copyright (C) 2010-%s Frank Seitz
 
 # eof
 __EOT__

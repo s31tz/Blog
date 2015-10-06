@@ -20,6 +20,11 @@ Blog::Base::Sdoc::Include - Include-Block
 
 L<Blog::Base::Sdoc::Node|../../Blog::Base/Sdoc/Node.html>
 
+=head1 DESCRIPTION
+
+Ein Objekt der Klasse repräsentiert eine extrene Quelle,
+die einen Teil des Dokuments liefert.
+
 =head1 ATTRIBUTES
 
 =over 4
@@ -29,11 +34,6 @@ L<Blog::Base::Sdoc::Node|../../Blog::Base/Sdoc/Node.html>
 Verweis auf übergeordneten Knoten.
 
 =back
-
-=head1 DESCRIPTION
-
-Ein Objekt der Klasse repräsentiert eine extrene Quelle,
-die einen Teil des Dokuments liefert.
 
 =head1 METHODS
 
@@ -162,7 +162,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright © 2015 Frank Seitz
+Copyright (C) 2015 Frank Seitz
 
 =cut
 

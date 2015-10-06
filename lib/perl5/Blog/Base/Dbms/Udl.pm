@@ -51,6 +51,18 @@ UDL als String:
 
     print $udl->asString,"\n"; # $udlStr
 
+=head1 DESCRIPTION
+
+Ein Universal Database Locator (UDL) adressiert eine Datenbank,
+wie ein Universal Resource Locator eine Web-Resource adressiert.
+
+Ein UDL hat folgenden Aufbau:
+
+    api#dbms:db%user:password@host:port;opts
+
+Ein Objekt der Klasse kapselt einen UDL und bietet Methoden,
+um auf die einzelnen Komponenten zuzugreifen.
+
 =head1 ATTRIBUTES
 
 =over 4
@@ -88,18 +100,6 @@ Der Port, über welchen die Netzverbindung aufgebaut wird.
 Referenz auf Hash mit den Optionen.
 
 =back
-
-=head1 DESCRIPTION
-
-Ein Universal Database Locator (UDL) adressiert eine Datenbank,
-wie ein Universal Resource Locator eine Web-Resource adressiert.
-
-Ein UDL hat folgenden Aufbau:
-
-    api#dbms:db%user:password@host:port;opts
-
-Ein Objekt der Klasse kapselt einen UDL und bietet Methoden,
-um auf die einzelnen Komponenten zuzugreifen.
 
 =head1 METHODS
 
@@ -561,7 +561,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright © 2015 Frank Seitz
+Copyright (C) 2015 Frank Seitz
 
 =cut
 

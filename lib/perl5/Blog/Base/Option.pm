@@ -42,9 +42,9 @@ Bindestriche gesetzt würden. Dies bei Gelegenheit so realisieren.
 
 =item -mode => 'strict'|'sloppy' (Default: 'strict')
 
-Im Falle von C<<-mode=>'strict'>> (dem Default), wird eine Exception
+Im Falle von C<< -mode=>'strict' >> (dem Default), wird eine Exception
 ausgelöst, wenn eine unbekannte Option vorkommt. Im Falle von
-C<<-mode=>'sloppy'>> wird das Argument stillschweigend übergangen.
+C<< -mode=>'sloppy' >> wird das Argument stillschweigend übergangen.
 
 =item -properties => $bool (Default: 0)
 
@@ -299,7 +299,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright © 2015 Frank Seitz
+Copyright (C) 2015 Frank Seitz
 
 =cut
 

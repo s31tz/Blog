@@ -321,7 +321,7 @@ sub varDir {
 
 Andere Layouts sind möglich und könnten von der Klasse ebenfalls
 behandelt werden. Bei Bedarf den Konstruktor um eine Option
-C<<-layout=>$layout>> erweitern und das betreffende Layout innerhalb
+C<< -layout=>$layout >> erweitern und das betreffende Layout innerhalb
 des Konstruktors behandeln. Beispiele:
 
 Installation mit Unterscheidung nach Versionsnummer:
@@ -361,7 +361,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright © 2015 Frank Seitz
+Copyright (C) 2015 Frank Seitz
 
 =cut
 

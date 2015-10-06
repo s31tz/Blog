@@ -3,26 +3,24 @@ package Blog::Base::Stacktrace;
 use strict;
 use warnings;
 
-our $VERSION = 1.01;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
 
 =head1 NAME
 
-Blog::Base::Stacktrace - Generate and visualize a stacktrace
+Blog::Base::Stacktrace - Generiere und visualisiere einen Stacktrace
 
 =head1 SYNOPSIS
 
     use Blog::Base::Stacktrace;
     
-    my $st = Blog::Base::Stacktrace->new;  # generate stacktrace
-    print $st->asString,"\n";  # visualize stacktrace
+    my $st = Blog::Base::Stacktrace->new;  # generiere Stacktrace
+    print $st->asString,"\n";  # visualisiere Stacktrace
     
     -or-
     
-    print Blog::Base::Stacktrace->asString,"\n";  # in one call
+    print Blog::Base::Stacktrace->asString,"\n";  # in einem Aufruf
 
 =head1 DESCRIPTION
 
@@ -183,17 +181,13 @@ sub asString {
 
 # -----------------------------------------------------------------------------
 
-=head1 VERSION
-
-1.01
-
 =head1 AUTHOR
 
 Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright © 2011-2015 Frank Seitz
+Copyright (C) 2011-2015 Frank Seitz
 
 =cut
 
