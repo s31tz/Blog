@@ -125,7 +125,7 @@ sub user {
 
 =head4 Description
 
-Liefere die User-Id (UID) Benutzers mit dem Namen $user.
+Liefere die User-Id (UID) des Benutzers mit dem Namen $user.
 
 =cut
 

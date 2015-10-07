@@ -72,7 +72,7 @@ sub cwd {
 
 # -----------------------------------------------------------------------------
 
-=head3 euid() - Liefere/setze effektive User-Id
+=head3 euid() - Liefere/setze Effektive User-Id
 
 =head4 Synopsis
 
@@ -83,6 +83,9 @@ sub cwd {
 
 Liefere die Effektive User-Id (EUID) des Prozesses. Ist ein Argument
 angegeben, setze die EUID auf die betreffende User-Id.
+
+Um die Effektive User-Id zu ermitteln, kann auch einfach die globale
+Perl-Variable $> abgefragt werden.
 
 =head4 Examples
 
@@ -123,6 +126,8 @@ sub euid {
 
 # -----------------------------------------------------------------------------
 
+=head2 Sonstiges
+
 =head3 user() - Name des Benutzers
 
 =head4 Synopsis
@@ -145,8 +150,6 @@ sub user {
 
 # -----------------------------------------------------------------------------
 
-=head2 Sonstiges
-
 =head3 modules() - Liste der geladenen Perl Moduldateien
 
 =head4 Synopsis
@@ -165,7 +168,11 @@ Referenz auf die Liste.
     /home/fs/lib/perl5/Prty/Object.pm
     /home/fs/lib/perl5/Prty/Process.pm
     /home/fs/lib/perl5/Prty/Stacktrace.pm
+    /home/fs/lib/perl5/Prty/System.pm
     /usr/lib/x86_64-linux-gnu/perl/5.20/Cwd.pm
+    /usr/lib/x86_64-linux-gnu/perl/5.20/Socket.pm
+    /usr/lib/x86_64-linux-gnu/perl/5.20/Sys/Hostname.pm
+    /usr/share/perl/5.20/Carp.pm
     /usr/share/perl/5.20/Exporter.pm
     /usr/share/perl/5.20/XSLoader.pm
     /usr/share/perl/5.20/base.pm
