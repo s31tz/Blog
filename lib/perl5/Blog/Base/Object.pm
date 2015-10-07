@@ -298,7 +298,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2015 Frank Seitz
+Copyright (C) 2011-2015 Frank Seitz
 
 =cut
 

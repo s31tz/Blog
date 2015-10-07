@@ -20,7 +20,7 @@ Blog::Base::Stacktrace - Generiere und visualisiere einen Stacktrace
     
     -or-
     
-    print Blog::Base::Stacktrace->asString,"\n";  # in einem Aufruf
+    print Blog::Base::Stacktrace->asString,"\n"; # in einem Aufruf
 
 =head1 DESCRIPTION
 
