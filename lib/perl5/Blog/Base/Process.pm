@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 use Cwd ();
-use Blog::Base::Array;
+use Blog::Base::System;
 
 # -----------------------------------------------------------------------------
 
@@ -13,7 +13,7 @@ use Blog::Base::Array;
 
 =head1 NAME
 
-Blog::Base::Process - Informationen über den laufenden Prozess
+Blog::Base::Process - Information über den laufenden Prozess
 
 =head1 BASE CLASS
 
@@ -21,43 +21,30 @@ L<Blog::Base::Object|../Blog::Base/Object.html>
 
 =head1 METHODS
 
-=head2 setUid() - Setze (effektive) User-Id
+=head2 Prozess-Eigenschaften
 
-=head3 Synopsis
+=head3 cwd() - Liefere/setze aktuelles Verzeichnis
 
-    $class->setUid($uid);
-
-=head3 Description
-
-Setze die Effektive User-Id (EUID) auf ID $uid.
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub setUid {
-    my $this = shift;
-    my $uid = shift;
-
-    $> = $uid;
-    if ($> != $uid) {
-        $this->throw(
-            q{PROCESS-00001: Kann Effektive User-Id nicht setzen},
-            UID=>$<,
-            EUID=>$>,
-            NewEUID=>$uid,
-            Error=>"$!",
-        );
-    };
-}
-
-# -----------------------------------------------------------------------------
-
-=head2 cwd() - Liefere das Current Working Directory
-
-=head3 Synopsis
+=head4 Synopsis
 
     $dir = $this->cwd;
+    $this->cwd($dir);
+
+=head4 Description
+
+Liefere das aktuelle Verzeichnis ("current working directory") des
+Prozesses. Ist ein Argument angegeben, wechsele in das betreffende
+Verzeichnis.
+
+=head4 Examples
+
+Ermittele aktuelles Verzeichnis:
+
+    $dir = Blog::Base::Process->cwd;
+
+Wechsele Verzeichnis:
+
+    Blog::Base::Process->cwd('/tmp');
 
 =cut
 
@@ -65,36 +52,142 @@ sub setUid {
 
 sub cwd {
     my $this = shift;
-    return Cwd::getcwd;
+    # @_: $dir
+
+    if (!@_) {
+        return Cwd::cwd;
+    }
+
+    my $dir = shift;
+    CORE::chdir $dir or do {
+        $this->throw(
+            q{PROC-00001: Cannot change directory},
+            Argument=>$dir,
+            CurrentWorkingDirectory=>Cwd::cwd,
+        );
+    };
+
+    return;
 }
 
 # -----------------------------------------------------------------------------
 
-=head2 perlModules() - Liste der geladenen Perl-Module
+=head3 euid() - Liefere/setze effektive User-Id
 
-=head3 Synopsis
+=head4 Synopsis
 
-    @arr|$arr = $this->perlModules;
+    $uid = $class->euid;
+    $class->euid($uid);
 
-=head3 Description
+=head4 Description
 
-Liefere die Liste der Namen der geladenen Perl-Module. Die Liste ist
-alphabetisch sortiert. Im Skalarkontext liefere eine Referenz auf
-die Liste.
+Liefere die Effektive User-Id (EUID) des Prozesses. Ist ein Argument
+angegeben, setze die EUID auf die betreffende User-Id.
+
+=head4 Examples
+
+Liefere aktuelle EUID:
+
+    $uid = Blog::Base::Process->euid;
+
+Setze EUID:
+
+    Blog::Base::Process->euid(1000);
 
 =cut
 
 # -----------------------------------------------------------------------------
 
-sub perlModules {
+sub euid {
+    my $this = shift;
+    # @_: $uid
+
+    if (!@_) {
+        return $>;
+    }
+
+    my $uid = shift;
+    $> = $uid;
+    if ($> != $uid) {
+        $this->throw(
+            q{PROC-00002: Cannot set EUID},
+            UID=>$<,
+            EUID=>$>,
+            NewEUID=>$uid,
+            Error=>"$!",
+        );
+    };
+
+    return;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 user() - Name des Benutzers
+
+=head4 Synopsis
+
+    $user = $this->user;
+
+=head4 Description
+
+Liefere den Namen des Benutzers, unter dessen Rechten der laufende
+Prozess ausgeführt wird.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub user {
+    my $this = shift;
+    return Blog::Base::System->user($>);
+}
+
+# -----------------------------------------------------------------------------
+
+=head2 Sonstiges
+
+=head3 modules() - Liste der geladenen Perl Moduldateien
+
+=head4 Synopsis
+
+    @arr|$arr = $this->modules;
+
+=head4 Description
+
+Liefere die Liste der Pfade der geladenen Perl Moduldateien.
+Die Liste ist alphabetisch sortiert. Im Skalarkontext liefere eine
+Referenz auf die Liste.
+
+=head4 Example
+
+    $ perl -MBlog::Base::Process -e 'printf "%s\n",join "\n",Blog::Base::Process->modules'
+    /home/fs/lib/perl5/Prty/Object.pm
+    /home/fs/lib/perl5/Prty/Process.pm
+    /home/fs/lib/perl5/Prty/Stacktrace.pm
+    /usr/lib/x86_64-linux-gnu/perl/5.20/Cwd.pm
+    /usr/share/perl/5.20/Exporter.pm
+    /usr/share/perl/5.20/XSLoader.pm
+    /usr/share/perl/5.20/base.pm
+    /usr/share/perl/5.20/strict.pm
+    /usr/share/perl/5.20/vars.pm
+    /usr/share/perl/5.20/warnings.pm
+    /usr/share/perl/5.20/warnings/register.pm
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub modules {
     my $this = shift;
 
     my @arr;
-    for my $key (sort keys %INC) {
+    for my $key (sort values %INC) {
         push @arr,$key;
     }
+    @arr = sort @arr;
 
-    return wantarray? @arr: Blog::Base::Array->bless(\@arr);
+    return wantarray? @arr: \@arr;
 }
 
 # -----------------------------------------------------------------------------
