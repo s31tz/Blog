@@ -59,12 +59,12 @@ sub hostname {
 
 # -----------------------------------------------------------------------------
 
-=head3 ipAddress() - IP des Systems oder zu Hostname
+=head3 ip() - IP des Systems oder zu Hostname
 
 =head4 Synopsis
 
-    $ip = $this->ipAddress;
-    $ip = $this->ipAddress($hostname);
+    $ip = $this->ip;
+    $ip = $this->ip($hostname);
 
 =head4 Description
 
@@ -78,11 +78,52 @@ den Blog::Base::System->hostname() liefert.
 
 # -----------------------------------------------------------------------------
 
-sub ipAddress {
+sub ip {
     my $this = shift;
     my $host = shift || $this->hostname;
 
     return Socket::inet_ntoa(scalar gethostbyname $host);
+}
+
+# -----------------------------------------------------------------------------
+
+=head2 Encoding
+
+=head3 encoding() - Character-Encoding der Umgebung
+
+=head4 Synopsis
+
+    $encoding = $this->encoding;
+
+=head4 Description
+
+Liefere das in der Umgebung eingestellte Character-Encoding. In dieses
+Encoding sollten Ausgaben auf das Terminal gewandelt werden.
+
+Wir ermitteln das Encoding durch Aufruf der internen Funktion
+_get_locale_encoding() des Pragmas encoding.
+
+=head4 Example
+
+Gib non-ASCII-Zeichen im Encoding der Umgebung auf STDOUT aus:
+
+    my $str = 'äöüßÄÖÜ';
+    my $encoding = Blog::Base::System->encoding;
+    binmode STDOUT,":encoding($encoding)";
+    print $str,"\n";
+
+=head4 See Also
+
+Pragma encoding
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub encoding {
+    my $this = shift;
+    require encoding;
+    return encoding::_get_locale_encoding();
 }
 
 # -----------------------------------------------------------------------------
@@ -141,38 +182,6 @@ sub uid {
             Error=>"$!",
         );
     };
-}
-
-# -----------------------------------------------------------------------------
-
-=head2 Encoding
-
-=head3 encoding() - Character-Encoding der Umgebung
-
-=head4 Synopsis
-
-    $encoding = $this->encoding;
-
-=head4 Description
-
-Liefere das eingestellte Character-Encoding. Das Encoding wird mittels
-der internen Funktion _get_locale_encoding() des Pragmas encoding
-ermittelt. Auf dieses Encoding sollte u.a. das Terminal eingestellt sein
-und Ausgaben aufs Terminal sollten entsprechend in dieses Encoding
-gewandelt werden.
-
-=head4 See Also
-
-Pragma encoding
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub encoding {
-    my $this = shift;
-    require encoding;
-    return encoding::_get_locale_encoding();
 }
 
 # -----------------------------------------------------------------------------

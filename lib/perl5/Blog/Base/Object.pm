@@ -261,7 +261,7 @@ sub addMethod {
 
 # -----------------------------------------------------------------------------
 
-=head3 classFile() - Liefere Pfad der .pm-Datei
+=head3 classFile() - Pfad der .pm-Datei
 
 =head4 Synopsis
 
