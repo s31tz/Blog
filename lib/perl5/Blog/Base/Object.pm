@@ -275,7 +275,8 @@ diesen zurück. Die Klasse muss bereits geladen worden sein.
 =head4 Example
 
     $path = Blog::Base::Object->classFile;
-    # <PFAD>Blog::Base/Object.pm
+    ==>
+    <PFAD>Blog::Base/Object.pm
 
 =cut
 

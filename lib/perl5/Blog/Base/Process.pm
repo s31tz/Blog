@@ -13,7 +13,7 @@ use Blog::Base::System;
 
 =head1 NAME
 
-Blog::Base::Process - Information über den laufenden Prozess
+Blog::Base::Process - Informationen über den laufenden Prozess
 
 =head1 BASE CLASS
 
@@ -38,7 +38,7 @@ Verzeichnis.
 
 =head4 Examples
 
-Ermittele aktuelles Verzeichnis:
+Liefere aktuelles Verzeichnis:
 
     $dir = Blog::Base::Process->cwd;
 
