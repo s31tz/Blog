@@ -23,7 +23,7 @@ L<Blog::Base::Object|../Blog::Base/Object.html>
 
 =head2 Prozess-Eigenschaften
 
-=head3 cwd() - Liefere/setze aktuelles Verzeichnis
+=head3 cwd() - Aktuelles Verzeichnis (Liefern/Setzen)
 
 =head4 Synopsis
 
@@ -72,7 +72,7 @@ sub cwd {
 
 # -----------------------------------------------------------------------------
 
-=head3 euid() - Liefere/setze Effektive User-Id
+=head3 euid() - Effektive User-Id (Liefern/Setzen)
 
 =head4 Synopsis
 
@@ -126,9 +126,7 @@ sub euid {
 
 # -----------------------------------------------------------------------------
 
-=head2 Sonstiges
-
-=head3 user() - Name des Benutzers
+=head3 user() - Benutzername
 
 =head4 Synopsis
 
@@ -136,7 +134,7 @@ sub euid {
 
 =head4 Description
 
-Liefere den Namen des Benutzers, unter dessen Rechten der laufende
+Liefere den Namen des Benutzers, unter dessen Rechten der
 Prozess ausgeführt wird.
 
 =cut
@@ -146,55 +144,6 @@ Prozess ausgeführt wird.
 sub user {
     my $this = shift;
     return Blog::Base::System->user($>);
-}
-
-# -----------------------------------------------------------------------------
-
-=head3 modules() - Liste der geladenen Perl Moduldateien
-
-=head4 Synopsis
-
-    @arr|$arr = $this->modules;
-
-=head4 Description
-
-Liefere die Liste der Pfade der geladenen Perl Moduldateien.
-Die Liste ist alphabetisch sortiert. Im Skalarkontext liefere eine
-Referenz auf die Liste.
-
-=head4 Example
-
-    $ perl -MBlog::Base::Process -e 'printf "%s\n",join "\n",Blog::Base::Process->modules'
-    /home/fs/lib/perl5/Prty/Object.pm
-    /home/fs/lib/perl5/Prty/Process.pm
-    /home/fs/lib/perl5/Prty/Stacktrace.pm
-    /home/fs/lib/perl5/Prty/System.pm
-    /usr/lib/x86_64-linux-gnu/perl/5.20/Cwd.pm
-    /usr/lib/x86_64-linux-gnu/perl/5.20/Socket.pm
-    /usr/lib/x86_64-linux-gnu/perl/5.20/Sys/Hostname.pm
-    /usr/share/perl/5.20/Carp.pm
-    /usr/share/perl/5.20/Exporter.pm
-    /usr/share/perl/5.20/XSLoader.pm
-    /usr/share/perl/5.20/base.pm
-    /usr/share/perl/5.20/strict.pm
-    /usr/share/perl/5.20/vars.pm
-    /usr/share/perl/5.20/warnings.pm
-    /usr/share/perl/5.20/warnings/register.pm
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub modules {
-    my $this = shift;
-
-    my @arr;
-    for my $key (sort values %INC) {
-        push @arr,$key;
-    }
-    @arr = sort @arr;
-
-    return wantarray? @arr: \@arr;
 }
 
 # -----------------------------------------------------------------------------
