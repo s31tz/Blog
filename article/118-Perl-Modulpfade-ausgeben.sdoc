@@ -1,0 +1,35 @@
+# Date: 2015-10-08
+
+%Document:
+  title="Perl: Modulpfade ermitteln"
+  generateAnchors=0
+  utf8=1
+
+# Id: 130
+# Draft: no
+# Categories: Perl
+
+%Figure: file="IMGDIR/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+Manchmal möchte man für ein Programm wissen, woher genau der
+Perl-Interpreter die Module geladen hat. Aus dem laufenden Programm
+heraus lässt sich dies mit folgender Zeile ermitteln:
+
+  say join "\n",sort values %INC;
+
+Die Anweisung gibt die Liste der Pfade aller geladenen Module sortiert
+aus.
+
+Dasselbe auf der Kommandozeile, falls einen interessiert, welche
+Module ein bestimmtes Modul C{<MODULE>} zusätzlich lädt:
+
+  $ perl -M5.010 -M<MODULE> -e 'say join "\n",sort values %INC'
+
+= Links
+
+* U{"http://perldoc.perl.org/perlvar.html#%INC",text="%INC"}
+* U{"http://perldoc.perl.org/functions/say.html",text="say()"}
+* U{"http://perldoc.perl.org/perlrun.html#*-m*[*-*]_module_",text="-M"}
+
+# eof
