@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use utf8;
 
-use Blog::Base::Hash;
+use Blog::Base::Hash1;
 
 # -----------------------------------------------------------------------------
 
@@ -188,7 +188,7 @@ sub extract {
 
     # Options-Hash initialisieren
 
-    my $opt = Blog::Base::Hash->new;
+    my $opt = Blog::Base::Hash1->new;
     %$opt = @_;
 
     # Argumente auswerten und auf Options-Hash schreiben

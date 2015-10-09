@@ -1,10 +1,10 @@
 package Blog::Base::Html;
-use base qw/Blog::Base::Hash/;
+use base qw/Blog::Base::Hash1/;
 
 use strict;
 use warnings;
 
-use Blog::Base::Hash;
+use Blog::Base::Hash1;
 
 # -----------------------------------------------------------------------------
 
@@ -16,7 +16,7 @@ Blog::Base::Html - Basisklasse für HTML-Komponenten
 
 =head1 BASE CLASS
 
-L<Blog::Base::Hash|../Blog::Base/Hash.html>
+L<Blog::Base::Hash1|../Blog::Base/Hash1.html>
 
 =head1 ATTRIBUTES
 

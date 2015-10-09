@@ -1,12 +1,11 @@
 # Date: 2010-10-21
+# Id: 42
+# Categories: HTTP, Apache, Perl
 
 %Document:
   title="Perl: Apache2::Reload installieren"
   generateAnchors=0
   utf8=1
-
-# Id: 42
-# Categories: HTTP, Apache, Perl
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"

@@ -1,12 +1,12 @@
 package Blog::Base::Sdoc::Node;
-use base qw/Blog::Base::Hash/;
+use base qw/Blog::Base::Hash1/;
 
 use strict;
 use warnings;
 
 use Blog::Base::Array;
 use Blog::Base::String;
-use Blog::Base::Hash;
+use Blog::Base::Hash1;
 use Blog::Base::Pod;
 
 # -----------------------------------------------------------------------------
@@ -19,7 +19,7 @@ Blog::Base::Sdoc::Node - Basisklasse für die Knoten eines Sdoc-Dokuments (abstr
 
 =head1 BASE CLASS
 
-L<Blog::Base::Hash|../../Blog::Base/Hash.html>
+L<Blog::Base::Hash1|../../Blog::Base/Hash1.html>
 
 =head1 DESCRIPTION
 
@@ -467,7 +467,7 @@ sub graphicSegment {
     my $str = shift;
     # @_: @args
 
-    my $attH = Blog::Base::Hash->new(
+    my $attH = Blog::Base::Hash1->new(
         width=>undef,
         height=>undef,
         title=>undef,
@@ -533,7 +533,7 @@ sub urlSegment {
     my $str = shift;
     # @_: @args
 
-    my $attH = Blog::Base::Hash->new(
+    my $attH = Blog::Base::Hash1->new(
         text=>undef,
         target=>undef,
     );
@@ -578,7 +578,7 @@ sub linkSegment {
     my $str = shift;
     # @_: @args
 
-    my $attH = Blog::Base::Hash->new(
+    my $attH = Blog::Base::Hash1->new(
         text=>undef,
     );
     $attH->lockKeys;

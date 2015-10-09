@@ -1,12 +1,11 @@
 # Date: 2010-05-19
+# Id: 38
+# Categories: Video/Audio, Audio
 
 %Document:
   title="Medion Life S60003 MP3 Player unter Debian"
   generateAnchors=0
   utf8=1
-
-# Id: 38
-# Categories: Video/Audio, Audio
 
 %Figure: file="IMGDIR/mp3-player-115x100.png" \
     width="64" height="56" url=""

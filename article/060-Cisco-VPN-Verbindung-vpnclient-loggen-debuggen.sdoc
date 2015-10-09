@@ -1,12 +1,11 @@
 # Date: 2011-04-27
+# Id: 55
+# Categories: Netz, VPN
 
 %Document:
   title="Cisco VPN-Verbindung (vpnclient) loggen/debuggen"
   generateAnchors=0
   utf8=1
-
-# Id: 55
-# Categories: Netz, VPN
 
 %Figure: file="IMGDIR/cisco-vpnclient-100x100.png" \
   width="65" height="65" url=""

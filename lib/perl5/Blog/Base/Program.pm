@@ -1,5 +1,5 @@
 package Blog::Base::Program;
-use base qw/Blog::Base::Misc Blog::Base::Hash Blog::Base::Shell/;
+use base qw/Blog::Base::Misc Blog::Base::Hash1 Blog::Base::Shell/;
 
 use strict;
 use warnings;
@@ -29,7 +29,7 @@ L<Blog::Base::Misc|../Blog::Base/Misc.html>
 
 =item *
 
-L<Blog::Base::Hash|../Blog::Base/Hash.html>
+L<Blog::Base::Hash1|../Blog::Base/Hash1.html>
 
 =item *
 

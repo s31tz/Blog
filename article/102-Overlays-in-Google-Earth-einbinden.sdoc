@@ -1,12 +1,11 @@
 # Date: 2010-01-28
+# Id: 25
+# Categories: Google Earth
 
 %Document:
   title="Overlays in Google Earth einbinden"
   generateAnchors=0
   utf8=1
-
-# Id: 25
-# Categories: Google Earth
 
 %Figure: file="IMGDIR/google-earth-logo-358x102.png" \
     width="147" height="42" url="https://www.google.com/earth/"

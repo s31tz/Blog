@@ -17,10 +17,10 @@ REGEX und gib die Wortliste sortiert aus (GNU grep):
 
   $ grep -oPhr REGEX DIR | sort | uniq
 
-  -o - gib nur den durch REGEX gematchten Textteil aus
-  -P - interpretiere REGEX als einen Perl-Regex
-  -h - unterdrücke die Ausgabe des Dateinamens
-  -r - durchsuche Verzeichnis DIR rekursiv
+* C{-o} : gib nur den durch REGEX gematchten Textteil aus
+* C{-P} : interpretiere REGEX als einen Perl-Regex
+* C{-h} : unterdrücke die Ausgabe des Dateinamens
+* C{-r} : durchsuche Verzeichnis DIR rekursiv
 
 Soll die Menge der Dateien näher eingeschränkt werden, lässt sich dies
 durch ein vorgeschaltetes C{find} erreichen (Option C{-r} bei

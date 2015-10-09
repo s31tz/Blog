@@ -1,12 +1,11 @@
 # Date: 2015-09-16
+# Id: 126
+# Categories: Web, HTTP
 
 %Document:
   title="HTTP: Datei-Download mit Namensvorschlag"
   generateAnchors=0
   utf8=1
-
-# Id: 126
-# Categories: Web, HTTP
 
 %Figure: file="IMGDIR/http-logo-192x100.png" width=84 height=44 \
   url="https://de.wikipedia.org/wiki/Liste_der_HTTP-Headerfelder"

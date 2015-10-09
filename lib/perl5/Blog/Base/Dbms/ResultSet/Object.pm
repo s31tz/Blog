@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 use Blog::Base::Option;
-use Blog::Base::Hash;
+use Blog::Base::Hash1;
 use Blog::Base::Array;
 use Blog::Base::Math;
 
@@ -79,7 +79,7 @@ sich in der Resultatliste an der Stelle seines ersten Auftretens.
 
 =item -hash => $bool (Default: 0)
 
-Liefere einen Hash bzw. eine Hashreferenz (Blog::Base::Hash) mit den
+Liefere einen Hash bzw. eine Hashreferenz (Blog::Base::Hash1) mit den
 Kolumnenwerten als Schlüssel und 1 als Wert.
 
 =item -notNull => $bool (Default: 0)
@@ -128,7 +128,7 @@ sub values {
         return @arr;
     }
     elsif ($hash) {
-        return Blog::Base::Hash->bless({@arr});
+        return Blog::Base::Hash1->new({@arr});
     }
     else {
         return Blog::Base::Array->bless(\@arr);
@@ -155,7 +155,7 @@ sub index {
         $idx{$row->$key} = $row;
     }
 
-    return wantarray? %idx: Blog::Base::Hash->bless(\%idx);
+    return wantarray? %idx: Blog::Base::Hash1->new(\%idx);
 }
 
 # -----------------------------------------------------------------------------

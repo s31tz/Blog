@@ -1,5 +1,5 @@
 package Blog::Base::Dbms::ResultSet;
-use base qw/Blog::Base::Hash/;
+use base qw/Blog::Base::Hash1/;
 
 use strict;
 use warnings;
@@ -20,7 +20,7 @@ Blog::Base::Dbms::ResultSet - Liste von Datensätzen (abstrakte Basisklasse)
 
 =head1 BASE CLASS
 
-L<Blog::Base::Hash|../../Blog::Base/Hash.html>
+L<Blog::Base::Hash1|../../Blog::Base/Hash1.html>
 
 =head1 DESCRIPTION
 

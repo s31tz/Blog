@@ -1,12 +1,11 @@
 # Date: 2011-05-25
+# Id: 61
+# Categories: Video/Audio, Video
 
 %Document:
   title="dvgrab: Video von miniDV-Camcorder lesen"
   generateAnchors=0
   utf8=1
-
-# Id: 61
-# Categories: Video/Audio, Video
 
 %Figure: file="IMGDIR/video-camera-168x100.png"
   width="76" height="45" url="https://wiki.ubuntuusers.de/dvgrab"

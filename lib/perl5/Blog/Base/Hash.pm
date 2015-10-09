@@ -13,92 +13,32 @@ use Scalar::Util ();
 
 =head1 NAME
 
-Blog::Base::Hash - Hash-Klasse
+Blog::Base::Hash - Sicherer Hash
 
 =head1 BASE CLASS
 
 L<Blog::Base::Object|../Blog::Base/Object.html>
 
-=head1 SYNOPSIS
-
-In objektorientierter Syntax:
-
-    my $hash = Blog::Base::Hash->new(a=>1,b=>2,c=>3);
-    
-    $hash->set(d=>4);
-    my $d = $hash->get('d');
-
-In Standard-Perl-Syntax:
-
-    my $hash = bless {a=>1,b=>2,c=>3},'Blog::Base::Hash';
-    
-    $hash->{'d'} = 4;
-    my $d = $hash->{'d'};
-
-=head1 DESCRIPTION
-
-Die Klasse bildet eine objektorientierte Hülle für einen gewöhnlichen
-Perl-Hash. Ein Perl-Hash, der auf Blog::Base::Hash geblesst wird, wird zu
-einem Objekt der Klasse Blog::Base::Hash. Dieser kann wahlweise über die Methoden
-der Klasse angesprochen werden oder wie jeder andere Perl-Hash in
-der üblichen Perl-Syntax.
-
-=head2 Objektinstantiierung
-
-Verschiedene äquivalente Möglichkeiten der Objektinstantiierung:
-
-    my $hash = Blog::Base::Hash->new(a=>1,b=>2,c=>3);
-
-oder
-
-    my %hash = (a=>1,b=>2,c=>3);
-    my $hash = Blog::Base::Hash->bless(\%hash);
-
-oder
-
-    my %hash = (a=>1,b=>2,c=>3);
-    my $hash = bless \%hash,'Blog::Base::Hash';
-
-oder
-
-    my $hash = bless {a=>1,b=>2,c=>3},'Blog::Base::Hash';
-
-=head2 Vorteile
-
-Vorteile der Verwendung der Klasse Blog::Base::Hash gegenüber einem
-ungeblessten Perl-Hash:
-
-=over 2
-
-=item *
-
-mehr Hash-Operationen
-
-=item *
-
-vererbbare Schnittstelle
-
-=back
-
 =head1 METHODS
 
-=head2 Konstruktor/Destruktor
+=head2 Instanziierung
 
-=head3 new() - Instantiiere Hash
+=head3 new() - Instanziiere Hash
 
 =head4 Synopsis
 
-    $hash = $class->new; # [1]
-    $hash = $class->new(@keyVal); # [2]
-    $hash = $class->new(\@keys,\@vals[,$val]); # [3]
-    $hash = $class->new(\@keys[,$val]); # [4]
+    $h = $class->new; # [1]
+    $h = $class->new(@keyVal); # [2]
+    $h = $class->new(\@keys,\@vals[,$val]); # [3]
+    $h = $class->new(\@keys[,$val]); # [4]
+    $h = $class->new(\%hash); # [5]
 
 =head4 Description
 
-Instantiiere ein Hash-Objekt, setze die Schlüssel/Wert-Paare
+Instanziiere ein Hash-Objekt, setze die Schlüssel/Wert-Paare
 und liefere eine Referenz auf dieses Objekt zurück.
 
-[1] Leerer Hash
+[1] Leerer Hash.
 
 [2] Die Argumentliste ist eine Abfolge von Schlüssel/Wert-Paaren.
 
@@ -109,6 +49,8 @@ Ist ein Wert CL<lt>undef>, wird stattdessen $val gesetzt, falls angegeben.
 alle Werte auf diesen Wert gesetzt. Ist $val nicht angegeben,
 werden alle Werte auf C<undef> gesetzt.
 
+[5] Blesse den Hash %hash auf Blog::Base::Hash.
+
 =cut
 
 # -----------------------------------------------------------------------------
@@ -117,50 +59,61 @@ sub new {
     my $class = shift;
     # @_: Argumente
 
-    my %hash;
+    my $h;
     if (!ref $_[0]) {
-        # Aufruf: $hash = $class->new;
-        # Aufruf: $hash = $class->new(@keyVal);
+        # Aufruf: $h = $class->new;
+        # Aufruf: $h = $class->new(@keyVal);
 
+        $h = \my %h;
         while (@_) {
             my $key = shift;
-            $hash{$key} = shift;
+            $h{$key} = shift;
         }
     }
+    elsif (Scalar::Util::reftype($_[0]) eq 'HASH') {
+        # Aufruf: $h = $class->new(\%hash);
+        $h = bless shift,$class;
+    }
     else {
-        # Aufruf: $hash = $class->new(\@keys,...);
+        # Aufruf: $h = $class->new(\@keys,...);
         my $keyA = shift;
 
+        $h = \my %h;
         if (ref $_[0]) {
-            # Aufruf: $hash = $class->new(\@keys,\@vals,...);
+            # Aufruf: $h = $class->new(\@keys,\@vals,...);
             my $valA = shift;
 
             if (@_) {
-                # Aufruf: $hash = $class->new(\@keys,\@vals,$val);
+                # Aufruf: $h = $class->new(\@keys,\@vals,$val);
                 my $val = shift;
 
                 my $i = 0;
                 for my $key (@$keyA) {
-                    $hash{$key} = $valA->[$i++];
-                    if (!defined $hash{$key}) {
-                        $hash{$key} = $val;
+                    $h{$key} = $valA->[$i++];
+                    if (!defined $h{$key}) {
+                        $h{$key} = $val;
                     }
                 }
             }
             else {
-                # Aufruf: $hash = $class->new(\@keys,\@vals);
-                @hash{@$keyA} = @$valA;
+                # Aufruf: $h = $class->new(\@keys,\@vals);
+                @h{@$keyA} = @$valA;
             }
         }
         else {
-            # Aufruf: $hash = $class->new(\@keys[,$val]);
+            # Aufruf: $h = $class->new(\@keys[,$val]);
 
             my $val = shift;
-            @hash{@$keyA} = ($val) x @$keyA;
+            @h{@$keyA} = ($val) x @$keyA;
         }
     }
 
-    return bless \%hash,$class;
+    # Sperre Schlüssel gegen Änderungen
+
+    bless $h,$class;
+    $h->lockKeys;
+
+    return $h;
 }
 
 # -----------------------------------------------------------------------------
@@ -173,8 +126,8 @@ sub new {
 
 =head4 Description
 
-Zerstöre den Hash, gib sämtlichen Speicher frei (sofern keine
-weitere Referenz auf den Hash existiert). Die Methode liefert keinen
+Zerstöre den Hash und gib sämtlichen Speicher frei, sofern keine
+weitere Referenz auf den Hash existiert. Die Methode liefert keinen
 Wert zurück.
 
 Alternative Formulierung:
@@ -217,9 +170,29 @@ sub get {
     my $self = shift;
 
     my @arr;
-    while (@_) {
-        my $key = shift;
-        push @arr,$self->{$key};
+    if (Hash::Util::hash_locked(%$self)) {
+        # Restricted Hash -> Exception-Handling
+
+        while (@_) {
+            my $key = shift;
+            my $val = eval {$self->{$key}};
+            if ($@) {
+                $self->throw(
+                    q{HASH-00001: Illegal get() access},
+                    Key=>$key,
+                    Value=>$val,
+                );
+            }
+            push @arr,$val;
+        }
+    }
+    else {
+        # Hash mit freiem Zugriff
+
+        while (@_) {
+            my $key = shift;
+            push @arr,$self->{$key};
+        }
     }
 
     return wantarray? @arr: $arr[0];
@@ -280,12 +253,69 @@ sub set {
     my $self = shift;
     # @_: @keyVal
 
-    while (@_) {
-        my $key = shift;
-        $self->{$key} = shift;
+    if (Hash::Util::hash_locked(%$self)) {
+        # Restricted Hash -> Exception-Handling
+
+        while (@_) {
+            my $key = shift;
+            my $val = shift;
+            eval {$self->{$key} = $val};
+            if ($@) {
+                $self->throw(
+                    q{HASH-00001: Illegal set() access},
+                    Key=>$key,
+                    Value=>$val,
+                );
+            }
+        }
+    }
+    else {
+        # Hash mit freiem Zugriff
+
+        while (@_) {
+            my $key = shift;
+            $self->{$key} = shift;
+        }
     }
 
     return;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 add() -  Erweitere Hash um Schlüssel/wert-Paare
+
+=head4 Synopsis
+
+    $val = $h->add($key=>$val);
+    @vals = $h->add(@keyVal);
+
+=head4 Description
+
+Erweitere den Hash um die angegebenen Schlüssel/Wert-Paare und liefere
+die gesetzten Werte zurück. In skalarem Kontext liefere nur den
+ersten Wert.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub add {
+    my $self = shift;
+    # @_: @keyVal
+
+    my $isLocked = Hash::Util::hash_locked(%$self);
+    if ($isLocked) {
+        Hash::Util::unlock_keys(%$self);
+    }
+
+    my @arr = $self->set(@_);
+
+    if ($isLocked) {
+        Hash::Util::lock_keys(%$self);
+    }
+
+    return wantarray? @arr: $arr[0];
 }
 
 # -----------------------------------------------------------------------------
@@ -333,7 +363,18 @@ wird durch das Leeren nicht verändert.
 
 sub clear {
     my $self = shift;
+
+    # my $isLocked = Hash::Util::hash_locked(%$self);
+    # if ($isLocked) {
+    #     Hash::Util::unlock_keys(%$self);
+    # }
+
     %$self = ();
+
+    # if ($isLocked) {
+    #     Hash::Util::lock_keys(%$self);
+    # }
+
     return;
 }
 
@@ -362,9 +403,18 @@ sub delete {
     my $self = shift;
     # @_: @keys
 
+    # my $isLocked = Hash::Util::hash_locked(%$self);
+    # if ($isLocked) {
+    #     Hash::Util::unlock_keys(%$self);
+    # }
+
     for my $key (@_) {
         CORE::delete $self->{$key};
     }
+
+    # if ($isLocked) {
+    #     Hash::Util::lock_keys(%$self);
+    # }
 
     return;
 }
@@ -402,16 +452,12 @@ sub isEmpty {
 
 =head4 Synopsis
 
-    $bool = $hash->exists($key);
+    $bool = $h->exists($key);
 
 =head4 Description
 
 Prüfe, ob der angegebene Schlüssel im Hash existiert. Wenn ja,
-liefere "wahr", andernfalls "falsch".
-
-Alternative Formulierung:
-
-    $bool = exists $hash->{$key};
+liefere 1, andernfalls 0.
 
 =cut
 
@@ -419,7 +465,19 @@ Alternative Formulierung:
 
 sub exists {
     my ($self,$key) = @_;
-    return CORE::exists $self->{$key};
+
+    # my $isLocked = Hash::Util::hash_locked(%$self);
+    # if ($isLocked) {
+    #     Hash::Util::unlock_keys(%$self);
+    # }
+
+    my $r = CORE::exists $self->{$key};
+
+    # if ($isLocked) {
+    #     Hash::Util::lock_keys(%$self);
+    # }
+
+    return $r? 1: 0;
 }
 
 # -----------------------------------------------------------------------------
@@ -449,8 +507,7 @@ Alternative Formulierung:
 
 sub lockKeys {
     my $self = shift;
-    if ($] >= 5.01) { Hash::Util::lock_ref_keys($self) } # ab Perl 5.10
-    else { Hash::Util::lock_keys(%$self) }
+    Hash::Util::lock_keys(%$self);
     return;
 }
 
@@ -477,9 +534,31 @@ Alternative Formulierung:
 
 sub unlockKeys {
     my $self = shift;
-    if ($] >= 5.01) { Hash::Util::unlock_ref_keys($self) } # ab Perl 5.10
-    else { Hash::Util::unlock_keys(%$self) }
+    Hash::Util::unlock_keys(%$self);
     return;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 isLocked() - Prüfe, ob Hash gelockt ist
+
+=head4 Synopsis
+
+    $bool = $hash->isLocked;
+
+=head4 Description
+
+Alternative Formulierung:
+
+    Hash::Util::hash_locked(%$hash);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub isLocked {
+    my $self = shift;
+    return Hash::Util::hash_locked(%$self)? 1: 0;
 }
 
 # -----------------------------------------------------------------------------
@@ -531,9 +610,16 @@ sub buckets {
     # Element hinzufügen.
 
     unless ($n = scalar %$self) {
+        my $isLocked = $self->isLocked;
+        if ($isLocked) {
+            $self->unlockKeys;
+        }
         $self->{"this_is_a_pseudo_key_$$"} = 1;
         $n = scalar %$self;
         delete $self->{"this_is_a_pseudo_key_$$"};
+        if ($isLocked) {
+            $self->lockKeys;
+        }
     }
     $n =~ s|.*/||;
 
@@ -580,7 +666,7 @@ sub bucketsUsed {
 
 =head4 Description
 
-Kopiere Hash, d.h. instantiiere einen neuen Hash mit den
+Kopiere Hash, d.h. instanziiere einen neuen Hash mit den
 gleichen Schlüssel/Wert-Paaren. Es wird I<nicht> rekursiv kopiert,
 sondern eine "shallow copy" erzeugt.
 
@@ -595,10 +681,16 @@ sub copy {
     my $self = shift;
     # @_: @keyVal
 
+    my $isLocked = Hash::Util::hash_locked(%$self);
+
     my %hash = %$self;
     my $hash = bless \%hash,ref $self;
     if (@_) {
         $hash->set(@_);
+    }
+
+    if ($isLocked) {
+        Hash::Util::lock_keys(%$self);
     }
 
     return $hash;
@@ -615,7 +707,7 @@ sub copy {
 =head4 Description
 
 Liefere die Liste aller Schlüssel. Im Skalarkontext liefere eine
-Referenz auf die Liste (geblesst auf Blog::Base::Array).
+Referenz auf die Liste.
 
 Die Reihenfolge der Schlüssel ist undefiniert.
 
@@ -630,7 +722,7 @@ Alternative Formulierung:
 sub keys {
     my $self = shift;
     my @keys = CORE::keys %$self;
-    return wantarray? @keys: bless \@keys,'Blog::Base::Array';
+    return wantarray? @keys: \@keys;
 }
 
 # -----------------------------------------------------------------------------

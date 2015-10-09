@@ -1,12 +1,11 @@
 # Date: 2013-03-05
+# Id: 96
+# Categories: Perl
 
 %Document:
   title="Perl: Module installieren mit cpanm"
   generateAnchors=0
   utf8=1
-
-# Id: 96
-# Categories: Perl
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=96 height=48 url="http://www.perl.org/"

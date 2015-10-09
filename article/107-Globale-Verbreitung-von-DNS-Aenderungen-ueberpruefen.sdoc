@@ -1,12 +1,11 @@
 # Date: 2015-07-11
+# Id: 116
+# Categories: Netz, DNS
 
 %Document:
   title="Globale Verbreitung von DNS-Änderungen überprüfen"
   generateAnchors=0
   utf8=1
-
-# Id: 116
-# Categories: Netz, DNS
 
 %Figure: file="IMGDIR/dns-logo-100x100.jpg" \
     width="60" height="60" url="https://www.whatsmydns.net/"

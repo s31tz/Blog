@@ -1,12 +1,11 @@
 # Date: 2012-02-09
+# Id: 79
+# Categories: Linux/Unix
 
 %Document:
   title="Java SE 7 JDK unter Linux installieren"
   generateAnchors=0
   utf8=1
-
-# Id: 79
-# Categories: Linux/Unix
 
 %Figure: file="IMGDIR/java-logo-160x100.png" \
   width="96" height="60" url="https://www.java.com/"

@@ -1,13 +1,12 @@
 # Date: 2015-10-08
+# Id: 130
+# Draft: no
+# Categories: Perl
 
 %Document:
   title="Perl: Modulpfade ermitteln"
   generateAnchors=0
   utf8=1
-
-# Id: 130
-# Draft: no
-# Categories: Perl
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"

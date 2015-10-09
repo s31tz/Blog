@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 use Blog::Base::Array;
-use Blog::Base::Hash;
+use Blog::Base::Hash1;
 
 # -----------------------------------------------------------------------------
 
@@ -163,7 +163,7 @@ sub index {
         $idx{$row->[$idx]} = $row;
     }
 
-    return wantarray? %idx: Blog::Base::Hash->bless(\%idx);
+    return wantarray? %idx: Blog::Base::Hash1->new(\%idx);
 }
 
 # -----------------------------------------------------------------------------

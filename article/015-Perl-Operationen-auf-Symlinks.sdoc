@@ -1,12 +1,11 @@
 # Date: 2010-01-20
+# Id: 17
+# Categories: Perl
 
 %Document:
   title="Perl: Operationen auf Symlinks"
   generateAnchors=0
   utf8=1
-
-# Id: 17
-# Categories: Perl
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"

@@ -1,12 +1,11 @@
 # Date: 2010-01-15
+# Id: 14
+# Categories: Grafik
 
 %Document:
   title="Iconsammlungen"
   generateAnchors=0
   utf8=1
-
-# Id: 14
-# Categories: Grafik
 
 G{"IMGDIR/misc-videos-icon-128x128.png",style="margin-left: 2em",\
   width="50",height="50"}

@@ -1,12 +1,11 @@
 # Date: 2010-03-05
+# Id: 33
+# Categories: Perl
 
 %Document:
   title="Perl: Crash bei Umleitung von STDERR auf Skalare Variable"
   generateAnchors=0
   utf8=1
-
-# Id: 33
-# Categories: Perl
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"

@@ -11,7 +11,7 @@ use utf8;
 use DBI;
 use Blog::Base::DbmsApi::Dbi::Cursor;
 use Blog::Base::Misc;
-use Blog::Base::Hash;
+use Blog::Base::Hash1;
 use Blog::Base::Array;
 
 # -----------------------------------------------------------------------------
@@ -238,7 +238,7 @@ sub new {
             $class->throw('Not implemented');
         }
     }
-    my $hash = Blog::Base::Hash->new(
+    my $hash = Blog::Base::Hash1->new(
         dbh=>$dbh,
         dbms=>$dbms,
         # Strict-Umschaltung

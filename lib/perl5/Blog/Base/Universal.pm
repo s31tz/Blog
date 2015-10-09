@@ -47,7 +47,7 @@ Blog::Base::Misc-Klassenbibliothek.
          ^      ^
          |      |
 
-    Blog::Base::Array    Blog::Base::Hash   ...
+    Blog::Base::Array    Blog::Base::Hash1   ...
      <Methoden>      <Methoden>
 
 =cut
@@ -344,7 +344,7 @@ Erzeuge in $class den Hash %H:
 
 die Referenz kann geblesst werden:
 
-    bless $ref,'Blog::Base::Hash';
+    bless $ref,'Blog::Base::Hash1';
 
 =back
 
@@ -877,7 +877,7 @@ Der Aufruf ist äquivalent zu:
 
 =head4 Example
 
-    $hash = Blog::Base::Hash->bless({});
+    $hash = Blog::Base::Hash1->bless({});
 
 =cut
 

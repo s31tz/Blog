@@ -1,12 +1,11 @@
 # Date: 2015-08-02
+# Id: 123
+# Categories: GnuPG
 
 %Document:
   title="GnuPG: Verschlüsseln, entschlüsseln und andere Operationen"
   generateAnchors=0
   utf8=1
-
-# Id: 123
-# Categories: GnuPG
 
 %Figure: file="IMGDIR/gnupg-logo-331x100.png" \
   width="146" height="44" url="https://www.gnupg.org/"

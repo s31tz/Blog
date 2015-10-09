@@ -1,13 +1,12 @@
 # Date: 2015-09-10
+# Id: 124
+# Categories: Perl, UTF-8
 
 %Document:
   title="Perl: UTF-8 und ISO-8859-1 Dateien erkennen und automatisch dekodieren"
   generateAnchors=0
   utf8=1
   minLnWidth=2
-
-# Id: 124
-# Categories: Perl, UTF-8
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"

@@ -1,12 +1,11 @@
 # Date: 2015-06-18
+# Id: 111
+# Categories: Linux/Unix
 
 %Document:
   title="fslint: Datei-Dubletten finden"
   generateAnchors=0
   utf8=1
-
-# Id: 111
-# Categories: Linux/Unix
 
 %Figure: file="IMGDIR/fslint-icon-48x48.png" \
     width="48" height="48" url="http://www.pixelbeat.org/fslint/"

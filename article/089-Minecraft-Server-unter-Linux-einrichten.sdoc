@@ -1,12 +1,11 @@
 # Date: 2014-12-14
+# Id: 106
+# Categories: Minecraft
 
 %Document:
   title="Minecraft-Server unter Linux einrichten"
   generateAnchors=0
   utf8=1
-
-# Id: 106
-# Categories: Minecraft
 
 %Figure: file="IMGDIR/minecraft-1373x230.png" \
     width="227" height="38" url="https://minecraft.net/"

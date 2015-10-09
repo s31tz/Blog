@@ -1,12 +1,11 @@
 # Date: 2014-06-29
+# Id: 102
+# Categories: SVN
 
 %Document:
   title="Leeres lokales SVN-Repository anlegen"
   generateAnchors=0
   utf8=1
-
-# Id: 102
-# Categories: SVN
 
 %Figure: file="IMGDIR/svn-374x51.jpg" \
     width=224 height=31 url="https://subversion.apache.org/"

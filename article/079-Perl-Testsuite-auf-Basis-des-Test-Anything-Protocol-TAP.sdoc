@@ -1,12 +1,11 @@
 # Date: 2013-03-05
+# Id: 95
+# Categories: Perl
 
 %Document:
   title="Perl: Testsuite auf Basis des Test Anything Protocol (TAP)"
   generateAnchors=0
   utf8=1
-
-# Id: 95
-# Categories: Perl
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=96 height=48 url="http://www.perl.org/"

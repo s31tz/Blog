@@ -1,12 +1,11 @@
 # Date: 2011-04-29
+# Id: 58
+# Categories: Video/Audio, Audio
 
 %Document:
   title="ffmpeg: Lautstärke anheben oder verringern"
   generateAnchors=0
   utf8=1
-
-# Id: 58
-# Categories: Video/Audio, Audio
 
 %Figure: file="IMGDIR/ffmpeg-logo-250x63.png" \
   width="134" height="36" url="https://www.ffmpeg.org/"

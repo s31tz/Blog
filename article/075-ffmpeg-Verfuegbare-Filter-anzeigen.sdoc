@@ -1,12 +1,11 @@
 # Date: 2012-10-07
+# Id: 91
+# Categories: Video/Audio, Video
 
 %Document:
   title="ffmpeg: Verfügbare Filter anzeigen"
   generateAnchors=0
   utf8=1
-
-# Id: 91
-# Categories: Video/Audio, Video
 
 %Figure: file="IMGDIR/ffmpeg-logo-250x63.png" \
   width="134" height="36" url="https://www.ffmpeg.org/"

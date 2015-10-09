@@ -1,12 +1,11 @@
 # Date: 2015-06-30
+# Id: 112
+# Categories: Grafik
 
 %Document:
   title="Helligkeit von Farben des RGB-Farbraums berechnen"
   generateAnchors=0
   utf8=1
-
-# Id: 112
-# Categories: Grafik
 
 %Figure: file="IMGDIR/rgb-logo-300x290.png" \
     width="54" height="52" url="https://de.wikipedia.org/wiki/RGB-Farbraum"

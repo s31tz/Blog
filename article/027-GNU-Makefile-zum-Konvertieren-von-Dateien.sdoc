@@ -1,12 +1,11 @@
 # Date: 2010-02-09
+# Id: 31
+# Categories: Linux/Unix
 
 %Document:
   title="GNU Makefile zum Konvertieren von Dateien"
   generateAnchors=0
   utf8=1
-
-# Id: 31
-# Categories: Linux/Unix
 
 %Figure: file="IMGDIR/gnu-logo-102x100.png" \
   width="71" height="70" url="http://www.gnu.org/"

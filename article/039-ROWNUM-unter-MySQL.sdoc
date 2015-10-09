@@ -1,12 +1,11 @@
 # Date: 2010-10-28
+# Id: 44
+# Categories: Datenbanken, MySQL, SQL
 
 %Document:
   title="ROWNUM unter MySQL"
   generateAnchors=0
   utf8=1
-
-# Id: 44
-# Categories: Datenbanken, MySQL, SQL
 
 %Figure: file="IMGDIR/mysql-logo-170x115.png" \
   width="74" height="50" url="http://www.mysql.de/"

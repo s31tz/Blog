@@ -1,12 +1,11 @@
 # Date: 2014-07-28
+# Id: 105
+# Categories: Linux/Unix, Shell
 
 %Document:
   title="Unix Epoch in lesbare Zeitangabe wandeln und umgekehrt"
   generateAnchors=0
   utf8=1
-
-# Id: 105
-# Categories: Linux/Unix, Shell
 
 # Breite: 0.256 Höhe: 0.225 (absichtlich gestreckt)
 %Figure: file="IMGDIR/unix-390x118.jpg" \

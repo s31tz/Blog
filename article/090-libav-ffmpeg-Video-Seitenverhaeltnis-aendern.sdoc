@@ -1,12 +1,11 @@
 # Date: 2015-05-30
+# Id: 109
+# Categories: Video/Audio, Video
 
 %Document:
   title="libav/ffmpeg: Video-Seitenverhältnis ändern"
   generateAnchors=0
   utf8=1
-
-# Id: 109
-# Categories: Video/Audio, Video
 
 %Figure: file="IMGDIR/libav-logo-484x140.png" \
     width="121" height="35" url="https://libav.org/"

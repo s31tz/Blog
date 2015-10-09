@@ -1,12 +1,11 @@
 # Date: 2012-02-07
+# Id: 77
+# Categories: Text, Kindle
 
 %Document:
   title="Notizen zu Amazons eBook-Reader Kindle 4"
   generateAnchors=0
   utf8=1
-
-# Id: 77
-# Categories: Text, Kindle
 
 %Figure: file="IMGDIR/kindle-4-225x300.jpg" width="225" height="300"
 

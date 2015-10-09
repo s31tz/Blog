@@ -1,12 +1,11 @@
 # Date: 2013-05-24
+# Id: 99
+# Categories: UTF-8
 
 %Document:
   title="Unicode: UTF-8 validieren"
   generateAnchors=0
   utf8=1
-
-# Id: 99
-# Categories: UTF-8
 
 # 0.3
 %Figure: file="IMGDIR/unicode-logo-220x220.png" \

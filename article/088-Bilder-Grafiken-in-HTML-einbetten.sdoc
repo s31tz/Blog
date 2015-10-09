@@ -1,12 +1,11 @@
 # Date: 2014-06-30
+# Id: 103
+# Categories: Web, HTML
 
 %Document:
   title="Bilder / Grafiken in HTML einbetten"
   generateAnchors=0
   utf8=1
-
-# Id: 103
-# Categories: Web, HTML
 
 %Figure: file="IMGDIR/valid-xhtml10.png" \
   width="88" height="31" url="http://www.w3.org/"

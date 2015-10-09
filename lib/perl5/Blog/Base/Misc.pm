@@ -7,7 +7,7 @@ use utf8;
 use Blog::Base::Object;
 use Blog::Base::Universal;
 use Blog::Base::Misc;
-use Blog::Base::Hash;
+use Blog::Base::Hash1;
 use Scalar::Util ();
 
 # -----------------------------------------------------------------------------
@@ -556,7 +556,7 @@ sub argExtract {
         # Return-Hash mit Defaultwerten initialisieren
         # und Wert-Referenz auf Options-Hash speichern
 
-        $hash = Blog::Base::Hash->new;
+        $hash = Blog::Base::Hash1->new;
         for (my $i = 0; $i < @_; $i += 2) {
             my $optKey = $_[$i];
             $optKey =~ s/^-+//; # führende - entfernen

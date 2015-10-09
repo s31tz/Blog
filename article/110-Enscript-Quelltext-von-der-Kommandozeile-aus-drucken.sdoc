@@ -1,12 +1,11 @@
 # Date: 2015-07-28
+# Id: 122
+# Categories: Text, Enscript
 
 %Document:
   title="Enscript: Quelltext von der Kommandozeile aus drucken"
   generateAnchors=0
   utf8=1
-
-# Id: 122
-# Categories: Text, Enscript
 
 %Figure: file="IMGDIR/printer-icon-118x100.png" \
   width="64" height="54" url="http://swoolley.org/man.cgi/1/enscript"

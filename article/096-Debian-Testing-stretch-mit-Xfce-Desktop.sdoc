@@ -1,12 +1,11 @@
 # Date: 2015-05-23
+# Id: 108
+# Categories: Linux/Unix, Debian
 
 %Document:
   title="Debian Testing (stretch) mit Xfce Desktop"
   generateAnchors=0
   utf8=1
-
-# Id: 108
-# Categories: Linux/Unix, Debian
 
 %Figure: file="IMGDIR/xfce-300x300.png" width="95" \
     height="95" url="http://www.xfce.org/"

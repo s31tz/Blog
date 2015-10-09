@@ -1,10 +1,10 @@
 package Blog::Base::Dbms::Udl;
-use base qw/Blog::Base::Hash/;
+use base qw/Blog::Base::Hash1/;
 
 use strict;
 use warnings;
 
-use Blog::Base::Hash;
+use Blog::Base::Hash1;
 
 # -----------------------------------------------------------------------------
 
@@ -16,7 +16,7 @@ Blog::Base::Dbms::Udl - Universal Database Locator
 
 =head1 BASE CLASS
 
-L<Blog::Base::Hash|../../Blog::Base/Hash.html>
+L<Blog::Base::Hash1|../../Blog::Base/Hash1.html>
 
 =head1 SYNOPSIS
 
@@ -134,7 +134,7 @@ sub new {
         host=>'',
         port=>'',
         # FIXME: auf Blog::Base::OrderedHash umstellen
-        opts=>Blog::Base::Hash->new,
+        opts=>Blog::Base::Hash1->new,
     );
     $self->lockKeys;
 

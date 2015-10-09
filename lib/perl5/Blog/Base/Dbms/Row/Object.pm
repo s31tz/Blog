@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use utf8;
 
-use Blog::Base::Hash;
+use Blog::Base::Hash1;
 use Blog::Base::Option;
 use Blog::Base::Array;
 use Blog::Base::Dbms::ResultSet;
@@ -88,7 +88,7 @@ sub new {
         }
     }
 
-    my $hash = Blog::Base::Hash->new($titleA,$valueA? $valueA: (),'');
+    my $hash = Blog::Base::Hash1->new($titleA,$valueA? $valueA: (),'');
 
     # Ist die Titel-Liste ungeblesst, blessen wir sie
 
@@ -441,7 +441,7 @@ sub getSet {
             # Datensatz-Attribute als auch zusätzliche Attribute.
 
             unless ($self->[3]) {
-                $self->[3] = Blog::Base::Hash->new;
+                $self->[3] = Blog::Base::Hash1->new;
             }
 
             # warn "UPDATE $key: '$oldVal' => '$val'\n";
@@ -1160,7 +1160,7 @@ sub copyData {
     }
 
     if ($ignore) {
-        $ignore = Blog::Base::Hash->new($ignore,1);
+        $ignore = Blog::Base::Hash1->new($ignore,1);
     }
 
     # Operation ausführen. Die Methode operiert allein auf den

@@ -1,12 +1,11 @@
 # Date: 2010-01-09
+# Id: 7
+# Categories: Web, CSS
 
 %Document:
   title="CSS: Dreispaltiges Seitenlayout"
   generateAnchors=0
   utf8=1
-
-# Id: 7
-# Categories: Web, CSS
 
 %Figure: file="IMGDIR/valid-css.png" \
   width="88" height="31" url="http://www.w3.org/TR/tr-groups-all\

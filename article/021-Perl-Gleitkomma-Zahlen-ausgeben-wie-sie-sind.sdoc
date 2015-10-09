@@ -1,13 +1,12 @@
 # Date: 2010-01-27
+# Id: 24
+# Categories: Perl
 
 %Document:
   title="Perl: Gleitkomma-Zahlen ausgeben wie sie sind"
   generateAnchors=0
   utf8=1
   minLnWidth=2
-
-# Id: 24
-# Categories: Perl
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"

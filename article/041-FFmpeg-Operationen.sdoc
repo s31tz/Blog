@@ -1,12 +1,11 @@
 # Date: 2011-10-19
+# Id: 68
+# Categories: Video/Audio, Video
 
 %Document:
   title="FFmpeg Operationen"
   generateAnchors=0
   utf8=1
-
-# Id: 68
-# Categories: Video/Audio, Video
 
 %Figure: file="IMGDIR/ffmpeg-logo-250x63.png" \
   width="134" height="36" url="https://www.ffmpeg.org/"

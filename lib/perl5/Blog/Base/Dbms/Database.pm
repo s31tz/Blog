@@ -1,5 +1,5 @@
 package Blog::Base::Dbms::Database;
-use base qw/Blog::Base::Hash/;
+use base qw/Blog::Base::Hash1/;
 
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ use Blog::Base::Dbms::Cursor;
 use Blog::Base::DbmsApi::Database;
 use Blog::Base::Sql;
 use POSIX ();
-use Blog::Base::Hash;
+use Blog::Base::Hash1;
 use Blog::Base::FileHandle;
 use Time::HiRes ();
 use Blog::Base::String;
@@ -28,7 +28,7 @@ Blog::Base::Dbms::Database - Verbindung zu einer Relationalen Datenbank
 
 =head1 BASE CLASS
 
-L<Blog::Base::Hash|../../Blog::Base/Hash.html>
+L<Blog::Base::Hash1|../../Blog::Base/Hash1.html>
 
 =head1 DESCRIPTION
 
@@ -163,8 +163,8 @@ sub new {
         udlObj=>$udlObj,
         sqlClass=>$sqlClass,
         sqlObj=>$sqlObj,
-        titleListCache=>Blog::Base::Hash->new,
-        nullRowCache=>Blog::Base::Hash->new,
+        titleListCache=>Blog::Base::Hash1->new,
+        nullRowCache=>Blog::Base::Hash1->new,
         utf8=>$utf8,
         schema=>undef,
         log=>$log,
@@ -2035,7 +2035,7 @@ eine C<ORDER BY> Klausel hinzugefügt.
 =item *
 
 Im Skalarkontext wird ein Objekt der Klasse C<< Blog::Base::Array >> oder
-der Klasse C<< Blog::Base::Hash >> geliefert. Letzteres, wenn Option
+der Klasse C<< Blog::Base::Hash1 >> geliefert. Letzteres, wenn Option
 C<< -hash=>1 >> angegeben ist.
 
 =back
@@ -2132,7 +2132,7 @@ sub values {
         return @arr;
     }
     elsif ($hash) {
-        return Blog::Base::Hash->bless({@arr});
+        return Blog::Base::Hash1->new({@arr});
     }
     else {
         return Blog::Base::Array->bless(\@arr);

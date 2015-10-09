@@ -1,12 +1,11 @@
 # Date: 2010-01-07
+# Id: 15
+# Categories: Web
 
 %Document:
   title="Änderungen an Serendipity"
   generateAnchors=0
   utf8=1
-
-# Id: 15
-# Categories: Web
 
 %Figure: file="IMGDIR/serendipity-logo-268x56.png" \
     width="182" height="38" url="http://www.s9y.org/"

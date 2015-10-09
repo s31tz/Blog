@@ -1,12 +1,11 @@
 # Date: 2013-01-11
+# Id: 93
+# Categories: CSS
 
 %Document:
   title="CSS: Erstes Kind- bzw. Folgeelement gestalten"
   generateAnchors=0
   utf8=1
-
-# Id: 93
-# Categories: CSS
 
 %Figure: file="IMGDIR/valid-css.png" \
   width="88" height="31" url="http://www.w3.org/TR/tr-groups-all#\

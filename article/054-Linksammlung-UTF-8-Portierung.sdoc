@@ -1,12 +1,11 @@
 # Date: 2011-08-29
+# Id: 63
+# Categories: UTF-8
 
 %Document:
   title="Linksammlung: UTF-8 Portierung"
   generateAnchors=0
   utf8=1
-
-# Id: 63
-# Categories: UTF-8
 
 %Figure: file="IMGDIR/unicode-logo-220x220.png" \
   width="66" height="66" url="http://unicode-table.com/en/"

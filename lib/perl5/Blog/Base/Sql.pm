@@ -1,5 +1,5 @@
 package Blog::Base::Sql;
-use base qw/Blog::Base::Hash/;
+use base qw/Blog::Base::Hash1/;
 
 use strict;
 use warnings;
@@ -8,7 +8,7 @@ use utf8;
 use Blog::Base::Misc;
 use Blog::Base::Array;
 use Blog::Base::Scalar;
-use Blog::Base::Hash;
+use Blog::Base::Hash1;
 use Blog::Base::Option;
 use Blog::Base::String;
 use Scalar::Util ();
@@ -23,7 +23,7 @@ Blog::Base::Sql - Klasse zur Generierung von SQL
 
 =head1 BASE CLASS
 
-L<Blog::Base::Hash|../Blog::Base/Hash.html>
+L<Blog::Base::Hash1|../Blog::Base/Hash1.html>
 
 =head1 SYNOPSIS
 
@@ -856,7 +856,7 @@ sub columnDef {
     my $self = shift;
     # @_: @typeSpec
 
-    my $keyVal = Blog::Base::Hash->new(
+    my $keyVal = Blog::Base::Hash1->new(
         default=>undef,
         null=>undef,
         notNull=>undef,

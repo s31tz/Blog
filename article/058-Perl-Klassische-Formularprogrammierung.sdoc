@@ -1,12 +1,11 @@
 # Date: 2011-10-14
+# Id: 67
+# Categories: Perl, Web
 
 %Document:
   title="Perl: Klassische Formularprogrammierung"
   generateAnchors=0
   utf8=1
-
-# Id: 67
-# Categories: Perl, Web
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"

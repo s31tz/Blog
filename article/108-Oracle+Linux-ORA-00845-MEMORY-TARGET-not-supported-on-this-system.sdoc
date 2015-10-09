@@ -1,12 +1,11 @@
 # Date: 2011-08-19
+# Id: 62
+# Categories: Datenbanken, Oracle
 
 %Document:
   title="Oracle+Linux: ORA-00845: MEMORY_TARGET not supported on this system"
   generateAnchors=0
   utf8=1
-
-# Id: 62
-# Categories: Datenbanken, Oracle
 
 %Figure: file="IMGDIR/database-114x100.png" \
   width="80" height="70" url="https://docs.oracle.com/en/"

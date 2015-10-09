@@ -1,12 +1,11 @@
 # Date: 2013-06-04
+# Id: 119
+# Categories: Web, JavaScript
 
 %Document:
   title="JavaScript: Existenz eines Bildes prüfen"
   generateAnchors=0
   utf8=1
-
-# Id: 119
-# Categories: Web, JavaScript
 
 %Figure: file="IMGDIR/javascript-logo-100x100.png" \
   width="50" height="50" url="https://en.wikipedia.org/wiki/JavaScript"

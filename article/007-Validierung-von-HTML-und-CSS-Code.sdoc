@@ -1,12 +1,11 @@
 # Date: 2010-01-09
+# Id: 9
+# Categories: Web, HTML, CSS
 
 %Document:
   title="Validierung von HTML- und CSS-Code"
   generateAnchors=0
   utf8=1
-
-# Id: 9
-# Categories: Web, HTML, CSS
 
 Das W3C stellt zwei Services zur Validierung von HTML- und CSS-Code
 zur Verfügung:

@@ -1,12 +1,11 @@
 # Date: 2014-07-26
+# Id: 104
+# Categories: Linux/Unix, Shell
 
 %Document:
   title="Dateibaum chronologisch sortiert anzeigen"
   generateAnchors=0
   utf8=1
-
-# Id: 104
-# Categories: Linux/Unix, Shell
 
 # Breite: 0.256 Höhe: 0.225 (absichtlich gestreckt)
 %Figure: file="IMGDIR/unix-390x118.jpg" \

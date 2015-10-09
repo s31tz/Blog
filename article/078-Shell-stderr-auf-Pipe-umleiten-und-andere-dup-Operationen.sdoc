@@ -1,12 +1,11 @@
 # Date: 2013-02-19
+# Id: 94
+# Categories: Linux/Unix, Shell
 
 %Document:
   title="Shell: stderr auf Pipe umleiten und andere dup-Operationen"
   generateAnchors=0
   utf8=1
-
-# Id: 94
-# Categories: Linux/Unix, Shell
 
 %Figure: file="IMGDIR/bash-222x51.jpg" \
   width="130" height="30" url="http://www.gnu.org/software/bash/"

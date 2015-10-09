@@ -1,12 +1,11 @@
 # Date: 2012-03-23
+# Id: 85
+# Categories: Datenbanken, Oracle, PostgreSQL
 
 %Document:
   title="Lookup-Trigger für Oracle und PostgreSQL"
   generateAnchors=0
   utf8=1
-
-# Id: 85
-# Categories: Datenbanken, Oracle, PostgreSQL
 
 %Figure: file="IMGDIR/postgresql-logo-95x51.png" \
   width="95" height="51" url="http://www.postgresql.org/"

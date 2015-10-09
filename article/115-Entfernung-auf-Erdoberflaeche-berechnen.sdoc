@@ -1,12 +1,11 @@
 # Date: 2015-09-21
+# Id: 127
+# Categories: Google Earth
 
 %Document:
   title="Entfernung zwischen zwei Punkten auf der Erdoberfläche berechnen"
   generateAnchors=0
   utf8=1
-
-# Id: 127
-# Categories: Google Earth
 
 %Figure: file="IMGDIR/earth-100x100.png" width="54" height="54" \
   url="http://gmt.soest.hawaii.edu/doc/latest/GMT_Tutorial.html#\

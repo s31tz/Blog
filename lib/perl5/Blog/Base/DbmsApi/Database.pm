@@ -2,7 +2,7 @@ package Blog::Base::DbmsApi::Database;
 BEGIN {
     $INC{'Blog::Base/DbmsApi/Database.pm'} ||= __FILE__;
 }
-use base qw/Blog::Base::Hash/;
+use base qw/Blog::Base::Hash1/;
 
 use strict;
 use warnings;
@@ -19,7 +19,7 @@ Blog::Base::DbmsApi::Database - Abstrakte Basisklasse für Datenbank-Verbindunge
 
 =head1 BASE CLASS
 
-L<Blog::Base::Hash|../../Blog::Base/Hash.html>
+L<Blog::Base::Hash1|../../Blog::Base/Hash1.html>
 
 =head1 METHODS
 

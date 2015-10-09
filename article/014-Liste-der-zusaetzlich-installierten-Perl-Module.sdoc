@@ -1,12 +1,11 @@
 # Date: 2010-01-19
+# Id: 16
+# Categories: Perl
 
 %Document:
   title="Liste der zusätzlich installierten Perl-Module"
   generateAnchors=0
   utf8=1
-
-# Id: 16
-# Categories: Perl
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"

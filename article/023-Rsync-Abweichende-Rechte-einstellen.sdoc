@@ -1,12 +1,11 @@
 # Date: 2010-01-29
+# Id: 26
+# Categories: Linux/Unix, Shell
 
 %Document:
   title="Rsync: Abweichende Rechte einstellen"
   generateAnchors=0
   utf8=1
-
-# Id: 26
-# Categories: Linux/Unix, Shell
 
 %Figure: file="IMGDIR/rsync-logo-205x100.jpg" \
   width="103" height="50" url="https://rsync.samba.org/"

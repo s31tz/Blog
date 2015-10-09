@@ -1,12 +1,11 @@
 # Date: 2010-02-05
+# Id: 29
+# Categories: Perl
 
 %Document:
   title="Syntax-Highlighting mit perltidy"
   generateAnchors=0
   utf8=1
-
-# Id: 29
-# Categories: Perl
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"

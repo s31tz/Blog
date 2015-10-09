@@ -1,12 +1,11 @@
 # Date: 2015-10-01
+# Id: 128
+# Categories: Perl, Netz, TCP/IP
 
 %Document:
   title="Perl: Erreichbarkeit eines Host prüfen"
   generateAnchors=0
   utf8=1
-
-# Id: 128
-# Categories: Perl, Netz, TCP/IP
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"

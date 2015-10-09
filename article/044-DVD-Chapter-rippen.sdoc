@@ -1,12 +1,11 @@
 # Date: 2011-12-03
+# Id: 70
+# Categories: Video/Audio, Video
 
 %Document:
   title="DVD-Chapter rippen"
   generateAnchors=0
   utf8=1
-
-# Id: 70
-# Categories: Video/Audio, Video
 
 %Figure: file="IMGDIR/handbrake-logo-100x100.png"
   width="65" height="65" url="https://handbrake.fr/"

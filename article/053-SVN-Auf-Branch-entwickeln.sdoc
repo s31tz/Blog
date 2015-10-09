@@ -1,12 +1,11 @@
 # Date: 2011-05-11
+# Id: 60
+# Categories: SVN
 
 %Document:
   title="SVN: Auf Branch entwickeln"
   generateAnchors=0
   utf8=1
-
-# Id: 60
-# Categories: SVN
 
 %Figure: file="IMGDIR/svn-374x51.jpg" \
     width=224 height=31 url="https://subversion.apache.org/"

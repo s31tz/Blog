@@ -1,12 +1,11 @@
 # Date: 2011-12-29
+# Id: 74
+# Categories: Netz, HTTPS
 
 %Document:
   title="HTTPS-Server: SSL-Zertifikat erwerben und einrichten"
   generateAnchors=0
   utf8=1
-
-# Id: 74
-# Categories: Netz, HTTPS
 
 %Figure: file="IMGDIR/https-396x100.png" \
     width="158" height="40" url=""

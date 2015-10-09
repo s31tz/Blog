@@ -1,12 +1,11 @@
 # Date: 2010-01-11
+# Id: 10
+# Categories: Web, CSS
 
 %Document:
   title="CSS: Text-Eingabefelder gestalten"
   generateAnchors=0
   utf8=1
-
-# Id: 10
-# Categories: Web, CSS
 
 %Figure: file="IMGDIR/valid-css.png" \
   width="88" height="31" url="http://www.w3.org/TR/tr-groups-all\

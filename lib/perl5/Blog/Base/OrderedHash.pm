@@ -4,7 +4,7 @@ use base qw/Blog::Base::Object/;
 use strict;
 use warnings;
 
-use Blog::Base::Hash;
+use Blog::Base::Hash1;
 use Blog::Base::Array;
 
 # -----------------------------------------------------------------------------
@@ -48,7 +48,7 @@ zurück.
 sub new {
     my $class = shift;
 
-    my $self = bless [Blog::Base::Hash->new,Blog::Base::Array->new],$class;
+    my $self = bless [Blog::Base::Hash1->new,Blog::Base::Array->new],$class;
     $self->set(@_);
 
     return $self;

@@ -1,12 +1,11 @@
 # Date: 2014-05-31
+# Id: 101
+# Categories: Linux/Unix
 
 %Document:
   title="Linux Kernelparameter ändern"
   generateAnchors=0
   utf8=1
-
-# Id: 101
-# Categories: Linux/Unix
 
 # 0.35
 %Figure: file="IMGDIR/linux-logo-370x158.jpg" \

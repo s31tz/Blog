@@ -1,12 +1,11 @@
 # Date: 2010-01-26
+# Id: 22
+# Categories: Web, HTML
 
 %Document:
   title="HTML: String in Entity-Schreibweise wandeln"
   generateAnchors=0
   utf8=1
-
-# Id: 22
-# Categories: Web, HTML
 
 %Figure: file="IMGDIR/valid-xhtml10.png" \
     width="88" height="31" url="http://www.w3.org/"

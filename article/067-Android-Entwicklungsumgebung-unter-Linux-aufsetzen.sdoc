@@ -1,12 +1,11 @@
 # Date: 2012-02-09
+# Id: 78
+# Categories: Linux/Unix
 
 %Document:
   title="Android: Entwicklungsumgebung unter Linux aufsetzen"
   generateAnchors=0
   utf8=1
-
-# Id: 78
-# Categories: Linux/Unix
 
 %Figure: file="IMGDIR/droid-75x90.png" width="50" height="60" \
   url="http://developer.android.com/"

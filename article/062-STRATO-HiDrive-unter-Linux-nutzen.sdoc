@@ -1,12 +1,11 @@
 # Date: 2011-12-30
+# Id: 75
+# Categories: Linux/Unix, Netz, WebDAV
 
 %Document:
   title="STRATO HiDrive unter Linux nutzen"
   generateAnchors=0
   utf8=1
-
-# Id: 75
-# Categories: Linux/Unix, Netz, WebDAV
 
 %Figure: file="IMGDIR/strato-hidrive-456x100.png" \
     width="173" height="38" url="https://hidrive.strato.com/"

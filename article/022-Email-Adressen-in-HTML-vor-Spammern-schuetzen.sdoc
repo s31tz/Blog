@@ -1,12 +1,11 @@
 # Date: 2010-01-26
+# Id: 23
+# Categories: Web, HTML
 
 %Document:
   title="Email-Adressen in HTML vor Spammern schützen"
   generateAnchors=0
   utf8=1
-
-# Id: 23
-# Categories: Web, HTML
 
 %Figure: file="IMGDIR/valid-xhtml10.png" \
     width="88" height="31" url="http://www.w3.org/"

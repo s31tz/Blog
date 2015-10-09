@@ -1,12 +1,11 @@
 # Date: 2015-06-04
+# Id: 110
+# Categories: LaTeX
 
 %Document:
   title="LaTeX: Briefe mit scrlttr2 ohne Einrückung setzen"
   generateAnchors=0
   utf8=1
-
-# Id: 110
-# Categories: LaTeX
 
 %Figure: file="IMGDIR/latex-logo-320x133.png" \
     width="106" height="44" url="http://www.latex-project.org/"

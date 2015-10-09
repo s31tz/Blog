@@ -113,15 +113,15 @@ for my $file (reverse Blog::Base::Path->glob("*.sdoc")) {
     # Titel des Artikels bestimmen
 
     my ($title) = $text =~ /title="(.*?)"/;
-    $title = "$num. $title";
+    $title = sprintf "%03d. $title",$num;
 
     # Text manipulieren
 
-    $text =~ s/^.*^# Categories:[^\n]*\n+//sm; # Anfang wegschneiden
-    $text =~ s/^(=+)/=$1/mg;        # Abschnitte eine Ebene tiefer
-    $text =~ s/IMGDIR/$imageDir/g;  # Bildverzeichnis eintragen
-    $text =~ s/^# eof\n//m;         # # eof entfernen
-    $text =~ s/\s+$//;              # Whitespace am Ende entfernen
+    $text =~ s/.*^%Document:.*?\n\n//sm; # Anfang wegschneiden
+    $text =~ s/^(=+)/=$1/mg;         # Abschnitte eine Ebene tiefer
+    $text =~ s/IMGDIR/$imageDir/g;   # Bildverzeichnis eintragen
+    $text =~ s/^# eof\n//m;          # # eof entfernen
+    $text =~ s/\s+$//;               # Whitespace am Ende entfernen
 
     if ($sdoc) {
         $sdoc .= "\n\n";
