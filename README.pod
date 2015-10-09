@@ -13,6 +13,10 @@ veröffentlicht habe.
 
 =item *
 
+L<Grep: Finde in Dateibaum Worte eines bestimmten Musters|https://github.com/s31tz/Blog/blob/master/article/119-Finde-in-Dateibaum-Worte-eines-bestimmten-Musters.sdoc>
+
+=item *
+
 L<Perl: Modulpfade ermitteln|https://github.com/s31tz/Blog/blob/master/article/118-Perl-Modulpfade-ausgeben.sdoc>
 
 =item *

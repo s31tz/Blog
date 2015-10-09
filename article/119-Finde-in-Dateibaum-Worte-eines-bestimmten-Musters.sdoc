@@ -1,0 +1,49 @@
+# Date: 2015-10-09
+# Id: 131
+# Draft: no
+# Categories: Linux/Unix, Shell
+
+%Document:
+  title="Grep: Finde in Dateibaum Worte eines bestimmten Musters"
+  generateAnchors=0
+  utf8=1
+
+# Breite: 0.256 Höhe: 0.225 (absichtlich gestreckt)
+%Figure: file="IMGDIR/unix-390x118.jpg"
+  width="100" height="27" url="http://www.unix.org/"
+
+Finde innerhalb des Dateibaums DIR alle Vorkommen des Wortmusters
+REGEX und gib die Wortliste sortiert aus (GNU grep):
+
+  $ grep -oPhr REGEX DIR | sort | uniq
+
+  -o - gib nur den durch REGEX gematchten Textteil aus
+  -P - interpretiere REGEX als einen Perl-Regex
+  -h - unterdrücke die Ausgabe des Dateinamens
+  -r - durchsuche Verzeichnis DIR rekursiv
+
+Soll die Menge der Dateien näher eingeschränkt werden, lässt sich dies
+durch ein vorgeschaltetes C{find} erreichen (Option C{-r} bei
+C{grep} entfällt dann):
+
+  $ find DIR -type f ... | xargs grep -oPh REGEX | sort | uniq
+
+= Anwendungsfall
+
+Finde in Dateibaum app mit Perl-Quelltexten die Namen aller verwendeten
+Klassen, die mit "R1::" beginnen:
+
+  $ grep -oPhr 'R1::[:\w]+' app | sort | uniq
+  R1::AppHome
+  R1::Array
+  R1::CheckValue
+  R1::ClassLoader
+  R1::Config
+  R1::Dbms::Database
+  ...
+
+= Links
+
+* U{"http://swoolley.org/man.cgi?q=grep",text="grep(1) man page"}
+
+# eof
