@@ -3,6 +3,8 @@ package Blog::Base::Object;
 use strict;
 use warnings;
 
+use Scalar::Util ();
+use Hash::Util ();
 use Blog::Base::Stacktrace;
 
 # -----------------------------------------------------------------------------
@@ -50,7 +52,18 @@ Der Aufruf ist äquivalent zu:
 
 sub bless {
     my ($class,$ref) = @_;
-    return CORE::bless $ref,$class;
+
+    my $refType = Scalar::Util::reftype($ref);
+    if ($refType && $refType eq 'HASH' && Hash::Util::hash_locked(%$ref)) {
+        Hash::Util::unlock_keys(%$ref);
+        $ref = CORE::bless $ref,$class;
+        Hash::Util::lock_keys(%$ref)
+    }
+    else {
+        $ref = CORE::bless $ref,$class;
+    }
+
+    return $ref;
 }
 
 # -----------------------------------------------------------------------------
@@ -79,7 +92,7 @@ Der Aufruf ist äquivalent zu:
 
 sub rebless {
     my ($self,$class) = @_;
-    CORE::bless $self,$class;
+    $class->bless($self);
     return;
 }
 

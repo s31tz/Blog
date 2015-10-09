@@ -14,7 +14,7 @@ use 5.010;
 
 =head1 NAME
 
-Blog::Base::System - Informationen über das System und seine Umgebung
+Blog::Base::System - Information über das System und seine Umgebung
 
 =head1 BASE CLASS
 
