@@ -610,16 +610,9 @@ sub buckets {
     # Element hinzufügen.
 
     unless ($n = scalar %$self) {
-        my $isLocked = $self->isLocked;
-        if ($isLocked) {
-            $self->unlockKeys;
-        }
-        $self->{"this_is_a_pseudo_key_$$"} = 1;
+        $self->add(this_is_a_pseudo_key=>1);
         $n = scalar %$self;
-        delete $self->{"this_is_a_pseudo_key_$$"};
-        if ($isLocked) {
-            $self->lockKeys;
-        }
+        $self->delete('this_is_a_pseudo_key');
     }
     $n =~ s|.*/||;
 
@@ -681,16 +674,13 @@ sub copy {
     my $self = shift;
     # @_: @keyVal
 
-    my $isLocked = Hash::Util::hash_locked(%$self);
-
     my %hash = %$self;
     my $hash = bless \%hash,ref $self;
     if (@_) {
         $hash->set(@_);
     }
-
-    if ($isLocked) {
-        Hash::Util::lock_keys(%$self);
+    if (Hash::Util::hash_locked(%$self)) {
+        Hash::Util::lock_keys(%$hash);
     }
 
     return $hash;
