@@ -146,7 +146,7 @@ sub destroy {
 
 =head2 Getter/Setter
 
-=head3 get() - Liefere Werte zu Schlüsseln
+=head3 get() - Liefere Werte
 
 =head4 Synopsis
 
@@ -200,7 +200,7 @@ sub get {
 
 # -----------------------------------------------------------------------------
 
-=head3 try() - Liefere Werte zu Schlüsseln
+=head3 try() - Liefere Werte ohne Exception
 
 =head4 Synopsis
 
