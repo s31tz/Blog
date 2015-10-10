@@ -3,6 +3,7 @@ use base qw/Blog::Base::Object/;
 
 use strict;
 use warnings;
+use utf8;
 
 use Hash::Util ();
 use Scalar::Util ();
@@ -13,11 +14,52 @@ use Scalar::Util ();
 
 =head1 NAME
 
-Blog::Base::Hash - Sicherer Hash
+Blog::Base::Hash - Zugriffssicherer Hash
 
 =head1 BASE CLASS
 
 L<Blog::Base::Object|../Blog::Base/Object.html>
+
+=head1 SYNOPSIS
+
+Klasse laden:
+
+    use Blog::Base::Hash;
+
+Objekt-Instanziierung:
+
+    my $h = Blog::Base::Hash->new(a=>1,b=>1,c=>3);
+
+Werte abfragen oder setzen:
+
+    my $v = $h->get('a'); # oder: $v = $h->{'a'};
+    $h->set(b=>2);        # oder: $h->{'b'} = 2;
+
+Unerlaubte Zugriffe:
+
+    $v = $h->get('d');    # Exception!
+    $h->set(d=>4);        # Exception!
+
+Erlaubte Zugriffe;
+
+    $v = $h->try('d');    # undef
+    $h->add(d=>4);
+
+=head1 DESCRIPTION
+
+Ein Objekt dieser Klasse repräsentiert einen I<Zugriffssicheren Hash>,
+d.h. einen Hash, dessen Schlüsselvorrat bei der Instanziierung
+festgelegt wird. Ein lesender oder schreibender Zugriff mit einem
+Schlüssel, der nicht zu dem Schlüsselvorrat gehört, ist nicht erlaubt
+und führt zu einer Exception.
+
+Der Zugriffsschutz beruht auf der Funktionalität des
+L<Restricted Hash|http://perldoc.perl.org/Hash/Util.html#Restricted-hash>.
+
+Abgesehen vom Zugriffsschutz verhält sich ein Hash-Objekt dieser
+Klasse wie einer normaler Hash und kann auch so angesprochen werden.
+Bei den Methoden ist der entsprechende konventionelle Zugriff als
+C<Alternative Formulierung> angegeben.
 
 =head1 METHODS
 
@@ -27,29 +69,43 @@ L<Blog::Base::Object|../Blog::Base/Object.html>
 
 =head4 Synopsis
 
-    $h = $class->new; # [1]
-    $h = $class->new(@keyVal); # [2]
+    $h = $class->new;                       # [1]
+    $h = $class->new(@keyVal);              # [2]
     $h = $class->new(\@keys,\@vals[,$val]); # [3]
-    $h = $class->new(\@keys[,$val]); # [4]
-    $h = $class->new(\%hash); # [5]
+    $h = $class->new(\@keys[,$val]);        # [4]
+    $h = $class->new(\%hash);               # [5]
 
 =head4 Description
 
 Instanziiere ein Hash-Objekt, setze die Schlüssel/Wert-Paare
 und liefere eine Referenz auf dieses Objekt zurück.
 
-[1] Leerer Hash.
+=over 4
 
-[2] Die Argumentliste ist eine Abfolge von Schlüssel/Wert-Paaren.
+=item [1]
 
-[3] Schlüssel und Werte befinden sich in getrennten Arrays.
-Ist ein Wert CL<lt>undef>, wird stattdessen $val gesetzt, falls angegeben.
+Leerer Hash.
 
-[4] Nur die Schlüssel sind angegeben. Ist $val angegeben, werden
+=item [2]
+
+Die Argumentliste ist eine Aufzählung von Schlüssel/Wert-Paaren.
+
+=item [3]
+
+Schlüssel und Werte befinden sich in getrennten Arrays.
+Ist ein Wert C<undef>, wird $val gesetzt, falls angegeben.
+
+=item [4]
+
+Nur die Schlüssel sind angegeben. Ist $val angegeben, werden
 alle Werte auf diesen Wert gesetzt. Ist $val nicht angegeben,
 werden alle Werte auf C<undef> gesetzt.
 
-[5] Blesse den Hash %hash auf Blog::Base::Hash.
+=item [5]
+
+Blesse den Hash %hash auf Klasse Blog::Base::Hash.
+
+=back
 
 =cut
 
@@ -118,49 +174,24 @@ sub new {
 
 # -----------------------------------------------------------------------------
 
-=head3 destroy() - Zerstöre Hash
-
-=head4 Synopsis
-
-    $hash->destroy;
-
-=head4 Description
-
-Zerstöre den Hash und gib sämtlichen Speicher frei, sofern keine
-weitere Referenz auf den Hash existiert. Die Methode liefert keinen
-Wert zurück.
-
-Alternative Formulierung:
-
-    $hash = undef;
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub destroy {
-    $_[0] = undef;
-}
-
-# -----------------------------------------------------------------------------
-
 =head2 Getter/Setter
 
-=head3 get() - Liefere Werte
+=head3 get() - Werte abfragen
 
 =head4 Synopsis
 
-    $val = $hash->get($key);
-    @vals = $hash->get(@keys);
+    $val = $h->get($key);
+    @vals = $h->get(@keys);
 
 =head4 Description
 
 Liefere die Werte zu den angegebenen Schlüsseln. In skalarem Kontext
 liefere keine Liste, sondern den Wert des ersten Schlüssels.
 
-Alternative Formulierung (für ein Schlüssel/Wert-Paar):
+Alternative Formulierung:
 
-    $val = $hash->{$key};
+    $val = $h->{$key};    # ein Schlüssel
+    @vals = @{$h}{@keys}; # mehrere Schlüssel
 
 =cut
 
@@ -178,7 +209,7 @@ sub get {
             my $val = eval {$self->{$key}};
             if ($@) {
                 $self->throw(
-                    q{HASH-00001: Illegal get() access},
+                    q{HASH-00001: Unzulässiger Lesezugriff},
                     Key=>$key,
                     Value=>$val,
                 );
@@ -200,17 +231,60 @@ sub get {
 
 # -----------------------------------------------------------------------------
 
-=head3 try() - Liefere Werte ohne Exception
+=head3 getRef() - Referenz auf Wert
 
 =head4 Synopsis
 
-    $val = $hash->try($key);
-    @vals = $hash->try(@keys);
+    $valS = $h->getRef($key);
 
 =head4 Description
 
-Wie get(), nur dass im Falle eines Restricted Hash keine Exception
-bei nicht-existentem Schlüssel generiert, sondern undef geliefert wird.
+Liefere nicht den Wert zum Schlüssel $key, sondern eine Referenz auf
+den Wert.
+
+Dies kann praktisch sein, wenn der Wert manipuliert werden soll. Die
+Manipulation kann dann über die Referenz erfolgen und der Wert muss
+nicht erneut zugewiesen werden.
+
+Alternative Formulierung:
+
+    $valS = \$h->{$key};
+
+=head4 Example
+
+Newline an Wert anhängen mit getRef():
+
+    $valS = $h->getRef('x');
+    $$valS .= "\n";
+
+Dasselbe ohne getRef():
+
+    $val = $h->get('x');
+    $val .= "\n";
+    $val->set(x=>$val);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub getRef {
+    my ($self,$key) = @_;
+    return \$self->{$key};
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 try() - Werte abfragen ohne Exception
+
+=head4 Synopsis
+
+    $val = $h->try($key);
+    @vals = $h->try(@keys);
+
+=head4 Description
+
+Wie get(), nur dass im Falle eines unerlaubten Schlüssels
+keine Exception geworfen, sondern C<undef> geliefert wird.
 
 =cut
 
@@ -234,16 +308,16 @@ sub try {
 
 =head4 Synopsis
 
-    $hash->set(@keyVal);
+    $h->set(@keyVal);
 
 =head4 Description
 
-Setze die angegebenen Schlüssel/Wert-Paare. Die Methode liefert keinen
-Wert zurück.
+Setze die angegebenen Schlüssel/Wert-Paare.
 
-Alternative Formulierung (für ein Schlüssel/Wert-Paar):
+Alternative Formulierung:
 
-    $hash->{$key} = $val;
+    $h->{$key} = $val;    # ein Schlüssel/Wert-Paar
+    @{$h}{@keys} = @vals; # mehrere Schlüssel/Wert-Paare
 
 =cut
 
@@ -262,7 +336,7 @@ sub set {
             eval {$self->{$key} = $val};
             if ($@) {
                 $self->throw(
-                    q{HASH-00001: Illegal set() access},
+                    q{HASH-00001: Unzulässiger Schreibzugriff},
                     Key=>$key,
                     Value=>$val,
                 );
@@ -283,7 +357,7 @@ sub set {
 
 # -----------------------------------------------------------------------------
 
-=head3 add() -  Erweitere Hash um Schlüssel/wert-Paare
+=head3 add() -  Setze Schlüssel/Wert-Paare ohne Exception
 
 =head4 Synopsis
 
@@ -292,9 +366,9 @@ sub set {
 
 =head4 Description
 
-Erweitere den Hash um die angegebenen Schlüssel/Wert-Paare und liefere
-die gesetzten Werte zurück. In skalarem Kontext liefere nur den
-ersten Wert.
+Wie set(), nur dass im Falle eines unerlaubten Schlüssels keine
+Exception generiert, sondern der Hash um das Schlüssel/Wert-Paar
+erweitert wird.
 
 =cut
 
@@ -320,39 +394,201 @@ sub add {
 
 # -----------------------------------------------------------------------------
 
-=head3 getRef() - Liefere Referenz auf Attribut
+=head3 apply() - Wende Subroutine auf Schlüssel/Wert-Paar an
 
 =head4 Synopsis
 
-    $valS = $hash->getRef($key);
+    $val = $h->apply($key,$sub);
+
+=head4 Description
+
+Wende Subroutine $sub auf den Wert des Schlüssels $key an. Die
+Subroutine hat die Struktur:
+
+    sub {
+        my ($h,$key) = @_;
+        ...
+        return $val;
+    }
+
+Der Rückgabewert der Subroutine wird an Schlüssel $key zugewiesen.
+
+=head4 Example
+
+Methode increment() mit apply() realisiert:
+
+    $val = $h->apply($key,sub {
+        my ($h,$key) = @_;
+        return $h->{$key}+1;
+    });
 
 =cut
 
 # -----------------------------------------------------------------------------
 
-sub getRef {
-    my ($self,$key) = @_;
-    return \$self->{$key};
+sub apply {
+    my ($self,$key,$sub) = @_;
+    return $self->{$key} = $sub->($self,$key);
+}
+
+# -----------------------------------------------------------------------------
+
+=head2 Schlüssel
+
+=head3 keys() - Liste der Schlüssel
+
+=head4 Synopsis
+
+    @keys|$keyA = $h->keys;
+
+=head4 Description
+
+Liefere die Liste aller Schlüssel. Die Liste ist unsortiert.
+Im Skalarkontext liefere eine Referenz auf die Liste.
+
+Die Reihenfolge der Schlüssel ist undefiniert.
+
+Alternative Formulierung:
+
+    @keys = keys %$h;
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub keys {
+    my $self = shift;
+    my @keys = CORE::keys %$self;
+    return wantarray? @keys: \@keys;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 size() - Anzahl der Schlüssel
+
+=head4 Synopsis
+
+    $n = $h->size;
+
+=head4 Description
+
+Liefere die Anzahl der Schlüssel/Wert-Paare des Hash.
+
+Alternative Formulierung:
+
+    $n = keys %$h;
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub size {
+    my $self = shift;
+    return scalar CORE::keys %$self;
+}
+
+# -----------------------------------------------------------------------------
+
+=head2 Kopieren
+
+=head3 copy() - Kopiere Hash
+
+=head4 Synopsis
+
+    $h2 = $h->copy;
+    $h2 = $h->copy(@keyVal);
+
+=head4 Description
+
+Kopiere Hash, d.h. instanziiere einen neuen Hash mit den
+gleichen Schlüssel/Wert-Paaren. Es wird I<nicht> rekursiv kopiert,
+sondern eine "shallow copy" erzeugt.
+
+Sind Schlüssel/Wert-Paare @keyVal angegeben, werden
+diese nach dem Kopieren per set() auf dem neuen Hash gesetzt.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub copy {
+    my $self = shift;
+    # @_: @keyVal
+
+    my %hash = %$self;
+    my $h = bless \%hash,ref $self;
+    if (@_) {
+        $h->set(@_);
+    }
+    if (Hash::Util::hash_locked(%$self)) {
+        Hash::Util::lock_keys(%$h);
+    }
+
+    return $h;
 }
 
 # -----------------------------------------------------------------------------
 
 =head2 Löschen
 
+=head3 delete() - Entferne Schlüssel/Wert-Paare
+
+=head4 Synopsis
+
+    $h->delete(@keys);
+
+=head4 Description
+
+Entferne die Schlüssel @keys (und ihre Werte) aus dem Hash. An der Menge
+der zulässigen Schlüssel ändert sich dadurch nichts!
+
+Alternative Formulierung:
+
+    delete $h->{$key};   # einzelner Schlüssel
+    delete @{$h}{@keys}; # mehrere Schlüssel
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub delete {
+    my $self = shift;
+    # @_: @keys
+
+    # my $isLocked = Hash::Util::hash_locked(%$self);
+    # if ($isLocked) {
+    #     Hash::Util::unlock_keys(%$self);
+    # }
+
+    # CORE::delete @{$self}->{@_}; # Warum geht dies nicht?
+
+    for (@_) {
+        CORE::delete $self->{$_};
+    }
+
+    # if ($isLocked) {
+    #     Hash::Util::lock_keys(%$self);
+    # }
+
+    return;
+}
+
+# -----------------------------------------------------------------------------
+
 =head3 clear() - Leere Hash
 
 =head4 Synopsis
 
-    $hash->clear;
+    $h->clear;
 
 =head4 Description
 
-Leere Hash, d.h. entferne alle Schlüssel/Wert-Paare. Die Methode
-liefert keinen Wert zurück.
+Leere Hash, d.h. entferne alle Schlüssel/Wert-Paare. An der Menge der
+zulässigen Schlüssel ändert sich dadurch nichts!
 
 Alternative Formulierung:
 
-    %$hash = ();
+    %$h = ();
 
 Anmerkung: Die interne Größe des Hash (Anzahl der allozierten Buckets)
 wird durch das Leeren nicht verändert.
@@ -380,73 +616,7 @@ sub clear {
 
 # -----------------------------------------------------------------------------
 
-=head3 delete() - Entferne einzelne Schlüssel
-
-=head4 Synopsis
-
-    $hash->delete(@keys);
-
-=head4 Description
-
-Entferne die Schlüssel @keys aus dem Hash. Die Methode liefert keinen
-Wert zurück.
-
-Alternative Formulierung (für einen einzelnen Key):
-
-    delete $hash->{$key};
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub delete {
-    my $self = shift;
-    # @_: @keys
-
-    # my $isLocked = Hash::Util::hash_locked(%$self);
-    # if ($isLocked) {
-    #     Hash::Util::unlock_keys(%$self);
-    # }
-
-    for my $key (@_) {
-        CORE::delete $self->{$key};
-    }
-
-    # if ($isLocked) {
-    #     Hash::Util::lock_keys(%$self);
-    # }
-
-    return;
-}
-
-# -----------------------------------------------------------------------------
-
 =head2 Tests
-
-=head3 isEmpty() - Teste auf leeren Hash
-
-=head4 Synopsis
-
-    $bool = $hash->isEmpty;
-
-=head4 Description
-
-Liefere "wahr", wenn der Hash leer ist, andernfalls "falsch".
-
-Alternative Formulierung:
-
-    $bool = %$hash;
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub isEmpty {
-    my $self = shift;
-    return %$self? 0: 1;
-}
-
-# -----------------------------------------------------------------------------
 
 =head3 exists() - Prüfe Schlüssel auf Existenz
 
@@ -457,7 +627,7 @@ sub isEmpty {
 =head4 Description
 
 Prüfe, ob der angegebene Schlüssel im Hash existiert. Wenn ja,
-liefere 1, andernfalls 0.
+liefere I<wahr>, andernfalls I<falsch>.
 
 =cut
 
@@ -482,24 +652,74 @@ sub exists {
 
 # -----------------------------------------------------------------------------
 
-=head2 Locking
-
-=head3 lockKeys() - Locke Keys
+=head3 isEmpty() - Prüfe auf leeren Hash
 
 =head4 Synopsis
 
-    $hash->lockKeys;
+    $bool = $->isEmpty;
 
 =head4 Description
 
-Locke die Keys des Hash. Anschließend kann kein weiterer Key
-hinzugefügt werden, kein existierender gelöscht werden und
-kein nicht-existierender gelesen werden. All dies führt zu
-einer Exception. Die Methode liefert keinen Wert zurück.
+Prüfe, ob der Hash leer ist. Wenn ja, liefere I<wahr>,
+andernfalls I<falsch>.
 
 Alternative Formulierung:
 
-    Hash::Util::lock_keys(%$hash);
+    $bool = %$h;
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub isEmpty {
+    my $self = shift;
+    return %$self? 0: 1;
+}
+
+# -----------------------------------------------------------------------------
+
+=head2 Sperren
+
+=head3 isLocked() - Prüfe, ob Hash gesperrt ist
+
+=head4 Synopsis
+
+    $bool = $h->isLocked;
+
+=head4 Description
+
+Prüfe, ob der Hash gelockt ist. Wenn ja, liefere I<wahr>,
+andernfalls I<falsch>.
+
+Alternative Formulierung:
+
+    Hash::Util::hash_locked(%$h);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub isLocked {
+    my $self = shift;
+    return Hash::Util::hash_locked(%$self);
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 lockKeys() - Sperre Hash
+
+=head4 Synopsis
+
+    $h->lockKeys;
+
+=head4 Description
+
+Sperre den Hash. Anschließend kann kein weiterer Schlüssel zugegriffen
+werden. Wird dies versucht, wird eine Exception geworfen.
+
+Alternative Formulierung:
+
+    Hash::Util::lock_keys(%$h);
 
 =cut
 
@@ -513,20 +733,20 @@ sub lockKeys {
 
 # -----------------------------------------------------------------------------
 
-=head3 unlockKeys() - Unlocke Keys
+=head3 unlockKeys() - Entsperre Hash
 
 =head4 Synopsis
 
-    $hash->unlockKeys;
+    $h->unlockKeys;
 
 =head4 Description
 
-Unlocke die Keys des Hash. Anschließend kann der Hash wieder beliebig
-manipuliert werden. Die Methode liefert keinen Wert zurück.
+Entsperre den Hash. Anschließend kann der Hash uneingeschränkt
+manipuliert werden.
 
 Alternative Formulierung:
 
-    Hash::Util::unlock_keys(%$hash);
+    Hash::Util::unlock_keys(%$h);
 
 =cut
 
@@ -540,37 +760,70 @@ sub unlockKeys {
 
 # -----------------------------------------------------------------------------
 
-=head3 isLocked() - Prüfe, ob Hash gelockt ist
+=head2 Sonstiges
+
+=head3 increment() - Inkrementiere Integer-Wert
 
 =head4 Synopsis
 
-    $bool = $hash->isLocked;
+    $n = $h->increment($key);
 
 =head4 Description
 
+Inkrementiere (Integer-)Wert zu Schlüssel $key und liefere das
+Resultat zurück.
+
 Alternative Formulierung:
 
-    Hash::Util::hash_locked(%$hash);
+    $n = ++$h->{$key};
 
 =cut
 
 # -----------------------------------------------------------------------------
 
-sub isLocked {
-    my $self = shift;
-    return Hash::Util::hash_locked(%$self)? 1: 0;
+sub increment {
+    my ($self,$key) = @_;
+    return ++$self->{$key};
 }
 
 # -----------------------------------------------------------------------------
 
-=head2 Hash-Buckets
+=head3 weaken() - Erzeuge schwache Referenz
+
+=head4 Synopsis
+
+    $h->weaken(@keys);
+
+=head4 Description
+
+Mache die Werte der Schlüssel @keys zu schwachen Referenzen.
+Die Methode liefert keinen Wert zurück.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub weaken {
+    my $self = shift;
+    # @_: @keys
+
+    for (@_) {
+        Scalar::Util::weaken($self->{$_});
+    }
+
+    return;
+}
+
+# -----------------------------------------------------------------------------
+
+=head2 Interna
 
 =head3 buckets() - Ermittele/Vergrößere Bucketanzahl
 
 =head4 Synopsis
 
-    $n = $hash->buckets;
-    $n = $hash->buckets($m);
+    $n = $h->buckets;
+    $n = $h->buckets($m);
 
 =head4 Description
 
@@ -621,11 +874,11 @@ sub buckets {
 
 # -----------------------------------------------------------------------------
 
-=head3 bucketsUsed() - Liefere Anzahl der genutzten Buckets
+=head3 bucketsUsed() - Anzahl der genutzten Buckets
 
 =head4 Synopsis
 
-    $n = $hash->bucketsUsed;
+    $n = $h->bucketsUsed;
 
 =head4 Description
 
@@ -644,153 +897,6 @@ sub bucketsUsed {
     }
 
     return $n;
-}
-
-# -----------------------------------------------------------------------------
-
-=head2 Sonstige Methoden
-
-=head3 copy() - Kopiere Hash
-
-=head4 Synopsis
-
-    $hash2 = $hash->copy;
-    $hash2 = $hash->copy(@keyVal);
-
-=head4 Description
-
-Kopiere Hash, d.h. instanziiere einen neuen Hash mit den
-gleichen Schlüssel/Wert-Paaren. Es wird I<nicht> rekursiv kopiert,
-sondern eine "shallow copy" erzeugt.
-
-Sind Schlüssel/Wert-Paare @keyVal angegeben, werden
-diese nach dem Kopieren per set() auf dem neuen Hash gesetzt.
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub copy {
-    my $self = shift;
-    # @_: @keyVal
-
-    my %hash = %$self;
-    my $hash = bless \%hash,ref $self;
-    if (@_) {
-        $hash->set(@_);
-    }
-    if (Hash::Util::hash_locked(%$self)) {
-        Hash::Util::lock_keys(%$hash);
-    }
-
-    return $hash;
-}
-
-# -----------------------------------------------------------------------------
-
-=head3 keys() - Liefere Liste der Schlüssel
-
-=head4 Synopsis
-
-    $arr|@arr = $hash->keys;
-
-=head4 Description
-
-Liefere die Liste aller Schlüssel. Im Skalarkontext liefere eine
-Referenz auf die Liste.
-
-Die Reihenfolge der Schlüssel ist undefiniert.
-
-Alternative Formulierung:
-
-    @arr = keys %$hash;
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub keys {
-    my $self = shift;
-    my @keys = CORE::keys %$self;
-    return wantarray? @keys: \@keys;
-}
-
-# -----------------------------------------------------------------------------
-
-=head3 increment() - Inkrementiere Wert
-
-=head4 Synopsis
-
-    $n = $hash->increment($key);
-
-=head4 Description
-
-Inkrementiere Wert zu Schlüssel $key und liefere das Resultat zurück.
-
-Alternative Formulierung:
-
-    $n = ++$hash->{$key};
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub increment {
-    my ($self,$key) = @_;
-    return ++$self->{$key};
-}
-
-# -----------------------------------------------------------------------------
-
-=head3 size() - Liefere Anzahl der Schlüssel/Wert-Paare
-
-=head4 Synopsis
-
-    $n = $hash->size;
-
-=head4 Description
-
-Liefere die Anzahl der Schlüssel/Wert-Paare des Hash.
-
-Alternative Formulierung:
-
-    $n = keys %$hash;
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub size {
-    my $self = shift;
-    return scalar CORE::keys %$self;
-}
-
-# -----------------------------------------------------------------------------
-
-=head3 weaken() - Erzeuge schwache Referenzen
-
-=head4 Synopsis
-
-    $hash->weaken(@keys);
-
-=head4 Description
-
-Mache die Werte der Schlüssel @keys zu schwachen Referenzen.
-Die Methode liefert keinen Wert zurück.
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub weaken {
-    my $self = shift;
-    # @_: @keys
-
-    for (@_) {
-        Scalar::Util::weaken($self->{$_});
-    }
-
-    return;
 }
 
 # -----------------------------------------------------------------------------
