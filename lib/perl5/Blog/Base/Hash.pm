@@ -61,6 +61,16 @@ Klasse wie einer normaler Hash und kann auch so angesprochen werden.
 Bei den Methoden ist der entsprechende konventionelle Zugriff als
 C<Alternative Formulierung> angegeben.
 
+=cut
+
+# -----------------------------------------------------------------------------
+
+our $Debug = 0;
+our $GetCount = 0;
+our $SetCount = 0;
+
+# -----------------------------------------------------------------------------
+
 =head1 METHODS
 
 =head2 Instanziierung
@@ -201,7 +211,7 @@ sub get {
     my $self = shift;
 
     my @arr;
-    if (Hash::Util::hash_locked(%$self)) {
+    if ($Debug && Hash::Util::hash_locked(%$self)) {
         # Restricted Hash -> Exception-Handling
 
         while (@_) {
@@ -225,6 +235,7 @@ sub get {
             push @arr,$self->{$key};
         }
     }
+    $GetCount++;
 
     return wantarray? @arr: $arr[0];
 }
@@ -296,7 +307,7 @@ sub try {
     my @arr;
     while (@_) {
         my $key = shift;
-        push @arr,exists($self->{$key})? $self->{$key}: undef;
+        push @arr,CORE::exists $self->{$key}? $self->{$key}: undef;
     }
 
     return wantarray? @arr: $arr[0];
@@ -327,7 +338,7 @@ sub set {
     my $self = shift;
     # @_: @keyVal
 
-    if (Hash::Util::hash_locked(%$self)) {
+    if ($Debug && Hash::Util::hash_locked(%$self)) {
         # Restricted Hash -> Exception-Handling
 
         while (@_) {
@@ -351,6 +362,7 @@ sub set {
             $self->{$key} = shift;
         }
     }
+    $SetCount++;
 
     return;
 }
@@ -762,7 +774,7 @@ sub unlockKeys {
 
 =head2 Sonstiges
 
-=head3 increment() - Inkrementiere Integer-Wert
+=head3 increment() - Inkrementiere (Integer-)Wert
 
 =head4 Synopsis
 
@@ -900,6 +912,99 @@ sub bucketsUsed {
 }
 
 # -----------------------------------------------------------------------------
+
+=head2 Debugging
+
+=head3 debug() - Schalte Debug-Modus ein/aus
+
+=head4 Synopsis
+
+    $bool = $this->debug;
+    $bool = $this->debug($bool);
+
+=head4 Description
+
+Ist Debug-Modus eingeschaltet, wird bei einem unerlaubten Zugriff
+via $h->get() oder $h->set() eine Exception mit Stacktrace
+geworfen. Per Default ist der Debug-Modus ausgeschaltet, um den
+Zugriffs-Overhead zu verringern. Siehe Abschnitt Benchmark.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub debug {
+    my $self = shift;
+    # @_: $bool
+
+    if (@_) {
+        $Debug = shift;
+    }
+
+    return $Debug;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 getCount() - Anzahl der get-Aufrufe
+
+=head4 Synopsis
+
+    $n = $this->getCount;
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub getCount {
+    my $self = shift;
+    return $GetCount;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 setCount() - Anzahl der set-Aufrufe
+
+=head4 Synopsis
+
+    $n = $this->setCount;
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub setCount {
+    my $self = shift;
+    return $SetCount;
+}
+
+# -----------------------------------------------------------------------------
+
+=head1 DETAILS
+
+=head2 Benchmark
+
+    A - Hash: $h{$k}
+    B - Hash: eval{$h{$k}}
+    C - Restricted Hash: $h{$k}
+    D - Restricted Hash: eval{$h{$k}}
+    E - Prty::Hash: $h->{$k}
+    F - Prty::Hash: $h->get($k)
+    
+           Rate    F    D    B    E    C    A
+    F 1438849/s   -- -75% -75% -82% -84% -84%
+    D 5649718/s 293%   --  -1% -30% -36% -38%
+    B 5681818/s 295%   1%   -- -30% -36% -37%
+    E 8064516/s 460%  43%  42%   --  -9% -11%
+    C 8849558/s 515%  57%  56%  10%   --  -3%
+    A 9090909/s 532%  61%  60%  13%   3%   --
+
+Den Hash via $h->get() zuzugreifen (F) ist etwa fünf Mal langsamer als
+der einfachste Hash-Lookup (A). Per $h->get() können dennoch ca.
+1.400.000 Lookups pro Sekunde ausgeführt werden. Bei eingeschaltetem
+Debug-Modus halbiert sich diese Anzahl wegen des eval{} in etwa,
+daher ist der Debug-Modus per Default ausgeschaltet.
+Siehe Methode debug().
 
 =head1 AUTHOR
 
