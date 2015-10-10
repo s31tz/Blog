@@ -984,6 +984,9 @@ sub setCount {
 
 =head2 Benchmark
 
+Anzahl Zugriffe pro Sekunde im Vergleich zwischen verschiedenen
+Zugriffsmethoden:
+
     A - Hash: $h{$k}
     B - Hash: eval{$h{$k}}
     C - Restricted Hash: $h{$k}
@@ -999,12 +1002,15 @@ sub setCount {
     C 8849558/s 515%  57%  56%  10%   --  -3%
     A 9090909/s 532%  61%  60%  13%   3%   --
 
-Den Hash via $h->get() zuzugreifen (F) ist etwa fünf Mal langsamer als
-der einfachste Hash-Lookup (A). Per $h->get() können dennoch ca.
-1.400.000 Lookups pro Sekunde ausgeführt werden. Bei eingeschaltetem
-Debug-Modus halbiert sich diese Anzahl wegen des eval{} in etwa,
-daher ist der Debug-Modus per Default ausgeschaltet.
-Siehe Methode debug().
+Den Hash via $h->get() zuzugreifen (F) ist etwa fünf Mal langsamer
+als der einfachste Hash-Lookup (A). Wird auf den Methodenaufruf
+verzichtet und per $h->{$key} zugegriffen (E), beschleunigt sich
+der Zugriff um 460%. Es ist also ratsam, intern per $h->{$key}
+zuzugreifen. Per $h->get() können immerhin ca. 1.400.000 Lookups
+pro Sekunde ausgeführt werden. Bei nicht-zugriffsintensiven Anwendungen
+ist das vermutlich schnell genug. Bei eingeschaltetem Debug-Modus
+halbiert sich diese Anzahl wegen des eval{} in etwa, daher ist der
+Debug-Modus per Default ausgeschaltet. Siehe Methode $h->debug().
 
 =head1 AUTHOR
 
