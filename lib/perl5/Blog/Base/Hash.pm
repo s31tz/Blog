@@ -952,6 +952,10 @@ sub debug {
 
     $n = $this->getCount;
 
+=head4 Description
+
+Liefere die Anzahl der get-Aufrufe seit Start des Programms.
+
 =cut
 
 # -----------------------------------------------------------------------------
@@ -969,6 +973,10 @@ sub getCount {
 
     $n = $this->setCount;
 
+=head4 Description
+
+Liefere die Anzahl der set-Aufrufe seit Start des Programms.
+
 =cut
 
 # -----------------------------------------------------------------------------
@@ -984,33 +992,75 @@ sub setCount {
 
 =head2 Benchmark
 
-Anzahl Zugriffe pro Sekunde im Vergleich zwischen verschiedenen
+Anzahl Zugriffe pro CPU-Sekunde im Vergleich zwischen verschiedenen
 Zugriffsmethoden:
 
-    A - Hash: $h{$k}
-    B - Hash: eval{$h{$k}}
-    C - Restricted Hash: $h{$k}
-    D - Restricted Hash: eval{$h{$k}}
+    A - Hash: $h->{$k}
+    B - Hash: eval{$h->{$k}}
+    C - Restricted Hash: $h->{$k}
+    D - Restricted Hash: eval{$h->{$k}}
     E - Prty::Hash: $h->{$k}
     F - Prty::Hash: $h->get($k)
     
            Rate    F    D    B    E    C    A
-    F 1438849/s   -- -75% -75% -82% -84% -84%
-    D 5649718/s 293%   --  -1% -30% -36% -38%
-    B 5681818/s 295%   1%   -- -30% -36% -37%
-    E 8064516/s 460%  43%  42%   --  -9% -11%
-    C 8849558/s 515%  57%  56%  10%   --  -3%
-    A 9090909/s 532%  61%  60%  13%   3%   --
+    F 1401111/s   -- -71% -74% -82% -83% -84%
+    D 4879104/s 248%   --  -8% -37% -40% -44%
+    B 5297295/s 278%   9%   -- -32% -35% -39%
+    E 7803910/s 457%  60%  47%   --  -4% -11%
+    C 8104988/s 478%  66%  53%   4%   --  -7%
+    A 8745272/s 524%  79%  65%  12%   8%   --
 
-Den Hash via $h->get() zuzugreifen (F) ist etwa fünf Mal langsamer
+Den Hash via $h->get() zuzugreifen (F) ist ca. 85% langsamer
 als der einfachste Hash-Lookup (A). Wird auf den Methodenaufruf
-verzichtet und per $h->{$key} zugegriffen (E), beschleunigt sich
-der Zugriff um 460%. Es ist also ratsam, intern per $h->{$key}
-zuzugreifen. Per $h->get() können immerhin ca. 1.400.000 Lookups
-pro Sekunde ausgeführt werden. Bei nicht-zugriffsintensiven Anwendungen
-ist das vermutlich schnell genug. Bei eingeschaltetem Debug-Modus
-halbiert sich diese Anzahl wegen des eval{} in etwa, daher ist der
-Debug-Modus per Default ausgeschaltet. Siehe Methode $h->debug().
+verzichtet und per $h->{$key} zugegriffen (E), ist der Zugriff nur
+11% langsamer. Es ist also ratsam, intern per $h->{$key}
+zuzugreifen. Per $h->get() können immerhin 1.400.000 Lookups pro
+CPU-Sekunde ausgeführt werden. Bei nicht-zugriffsintensiven
+Anwendungen ist das vermutlich schnell genug. Bei eingeschaltetem
+Debug-Modus halbiert sich diese Anzahl wegen des eval{} in etwa,
+daher ist der Debug-Modus per Default ausgeschaltet. Siehe Methode
+$h->debug(). Die Anzahl der Aufrufe von $h->get() und $h->set()
+wird intern gezählt und kann per $class->getCount() und
+$class->setCount() abgefragt werden.
+
+Das Benchmark-Programm (bench-hash):
+
+     1: #!/usr/bin/env perl
+     2: 
+     3: use strict;
+     4: use warnings;
+     5: 
+     6: use Benchmark;
+     7: use Hash::Util;
+     8: use Prty::Hash;
+     9: 
+    10: my $h1 = {0=>'a',1=>'b',2=>'c',3=>'d',4=>'e',5=>'f'};
+    11: my $h2 = Hash::Util::lock_ref_keys({0=>'a',1=>'b',2=>'c',3=>'d',4=>'e',5=>'f'});
+    12: my $h3 = Prty::Hash->new({0=>'a',1=>'b',2=>'c',3=>'d',4=>'e',5=>'f'});
+    13: 
+    14: my $i = 0;
+    15: Benchmark::cmpthese(-10,{
+    16:     A=>sub {
+    17:         $h1->{$i++%5};
+    18:     },
+    19:     B=>sub {
+    20:         eval{$h1->{$i++%5}};
+    21:     },
+    22:     C=>sub {
+    23:         $h2->{$i++%5};
+    24:     },
+    25:     D=>sub {
+    26:         eval{$h2->{$i++%5}};
+    27:     },
+    28:     E=>sub {
+    29:         $h3->{$i++%5};
+    30:     },
+    31:     F=>sub {
+    32:         $h3->get($i++%5);
+    33:     },
+    34: });
+    35: 
+    36: # eof
 
 =head1 AUTHOR
 
