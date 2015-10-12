@@ -11,9 +11,9 @@
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"
 
-Manchmal möchte man für ein Programm wissen, woher genau der
-Perl-Interpreter die Module geladen hat. Aus dem laufenden Programm
-heraus lässt sich dies mit folgender Zeile ermitteln:
+Manchmal möchte man für ein Perl-Programm wissen, woher genau der
+Perl-Interpreter die Module lädt. Aus dem laufenden Programm
+heraus lässt sich dies mit folgender Zeile bestimmen:
 
   say join "\n",sort values %INC;
 
@@ -21,7 +21,7 @@ Die Anweisung gibt die Liste der Pfade aller geladenen Module sortiert
 aus.
 
 Dasselbe auf der Kommandozeile, falls einen interessiert, welche
-Module ein bestimmtes Modul C{<MODULE>} zusätzlich lädt:
+Module ein bestimmtes Modul C{<MODULE>} lädt:
 
   $ perl -M5.010 -M<MODULE> -e 'say join "\n",sort values %INC'
 

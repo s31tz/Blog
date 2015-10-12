@@ -4,7 +4,7 @@ use base qw/Blog::Base::Object/;
 use strict;
 use warnings;
 
-use Blog::Base::Program;
+use Blog::Base::Program1;
 
 # -----------------------------------------------------------------------------
 
@@ -245,7 +245,7 @@ sub symlinkRelative {
         else {
             # Wenn $symlink absolut ist, $path das aktuelle
             # Verzeichnis voranstellen.
-            $path = sprintf '%s/%s',Blog::Base::Program->cwd,$path;
+            $path = sprintf '%s/%s',Blog::Base::Program1->cwd,$path;
         }
     }
     if ($verbose) {

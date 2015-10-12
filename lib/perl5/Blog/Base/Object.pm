@@ -266,6 +266,7 @@ sub addMethod {
     my $name = shift;
     my $ref = shift;
 
+    no warnings 'redefine';
     no strict 'refs';
     *{"$class\::$name"} = $ref;
 

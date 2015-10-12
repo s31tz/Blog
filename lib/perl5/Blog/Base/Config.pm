@@ -6,7 +6,7 @@ use warnings;
 
 use Blog::Base::Scalar;
 use Blog::Base::Misc;
-use Blog::Base::Program;
+use Blog::Base::Program1;
 
 # -----------------------------------------------------------------------------
 
@@ -217,7 +217,7 @@ sub try {
             # Platzhalter suchen und ersetzen
             for my $key ($val =~ /%(\w+)%/g) {
                 if ($key eq 'CWD') {
-                    $val =~ s/%CWD%/Blog::Base::Program->cwd/e;
+                    $val =~ s/%CWD%/Blog::Base::Program1->cwd/e;
                 }
                 else {
                     $val =~ s/%$key%/$self->get($key)/e;

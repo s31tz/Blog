@@ -15,6 +15,7 @@ use Blog::Base::Array;
 use Blog::Base::Misc;
 use Blog::Base::DirHandle;
 use Blog::Base::FileHandle;
+use Blog::Base::Path;
 use Encode::Guess ();
 use Fcntl qw/:DEFAULT/;
 use Blog::Base::Shell;
@@ -721,6 +722,10 @@ sub newlineStr {
 
 =over 4
 
+=item -delete => $bool (Default: 0)
+
+Lösche Datei nach dem Lesen.
+
 =item -maxLines => $n (Default: 0)
 
 Lies höchstens $n Zeilen. Die Zählung beginnt nach den
@@ -753,12 +758,14 @@ sub read {
 
     # Optionen
 
+    my $delete = 0;
     my $maxLines = 0;
     my $skip = undef;
     my $skipLines = 0;
 
     if (@_) {
         Blog::Base::Misc->argExtract(\@_,
+            -delete=>\$delete,
             -maxLines=>\$maxLines,
             -skip=>\$skip,
             -skipLines=>\$skipLines,
@@ -786,6 +793,10 @@ sub read {
     }
 
     $fh->close;
+
+    if ($delete) {
+        Blog::Base::Path->delete($$self);
+    }
 
     return $data;
 }

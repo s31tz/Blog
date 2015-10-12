@@ -23,12 +23,12 @@ Fehlerbehandlung. Im Fehlerfall werfen diese eine Exception.
 
 =head1 METHODS
 
-=head2 autoflush() - Aktiviere Autoflush auf Dateihandle
+=head2 autoFlush() - Aktiviere Autoflush auf Dateihandle
 
 =head3 Synopsis
 
-    Blog::Base::Perl->autoflush($fh);
-    Blog::Base::Perl->autoflush($fh,$bool);
+    $this->autoFlush($fh);
+    $this->autoFlush($fh,$bool);
 
 =head3 Returns
 
@@ -44,13 +44,13 @@ Der Aufruf ohne Parameter ist äquivalent zu
 
 =head3 Example
 
-    Blog::Base::Perl->autoflush(*STDOUT);
+    Blog::Base::Perl->autoFlush(*STDOUT);
 
 =cut
 
 # -----------------------------------------------------------------------------
 
-sub autoflush {
+sub autoFlush {
     my $class = shift;
     my $fh = shift;
     my $bool = @_? shift: 1;
@@ -321,7 +321,7 @@ loadClass()
 sub use {
     my ($class,$useClass,$sloppy) = @_;
 
-    eval "use $useClass ()";
+    eval "CORE::use $useClass ()";
     if ($@) {
         $@ =~ s/ at .*//s; # unnütze/störende Information abschneiden
         if ($sloppy) {
