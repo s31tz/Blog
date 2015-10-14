@@ -50,6 +50,11 @@ C<< -mode=>'sloppy' >> wird das Argument stillschweigend übergangen.
 
 Die Optionen beginnen nicht mit einem Bindestrich (-).
 
+=item -simpleMessage => $bool (Default: 0)
+
+Wirf im Falle eines Fehlers eine einzeilige statt einer mehrzeiligen
+Exception.
+
 =back
 
 =head3 Description
@@ -155,6 +160,7 @@ sub extract {
     my $hashObject = 0;
     my $mode = 'strict';
     my $properties = 0;
+    my $simpleMessage = 0;
 
     # Methoden-Optionen verarbeiten
 
@@ -170,9 +176,15 @@ sub extract {
         elsif ($key eq '-hashObject') {
             $hashObject = shift;
         }
+        elsif ($key eq '-simpleMessage') {
+            $simpleMessage = shift;
+        }
         else {
+            if ($simpleMessage) {
+                die "Ungültige Methodenoption: $key\n";
+            }
             $class->throw(
-                q{OPT-00001: Ungültige Methodenoption},
+                q{OPT-00002: Ungültige Methodenoption},
                 Option=>$key,
             );
         }
@@ -253,8 +265,11 @@ sub extract {
                 $i += $skip;
                 next;
             }
+            if ($simpleMessage) {
+                die "Ungültige Option: $optKey\n";
+            }
             $class->throw(
-                q{OPT-00002: Ungültige Option},
+                q{OPT-00001: Ungültige Option},
                 Option=>$optKey,
             );
         };

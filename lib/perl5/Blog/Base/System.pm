@@ -107,10 +107,9 @@ _get_locale_encoding() des Pragmas encoding.
 
 Gib non-ASCII-Zeichen im Encoding der Umgebung auf STDOUT aus:
 
-    my $str = 'äöüßÄÖÜ';
     my $encoding = Blog::Base::System->encoding;
     binmode STDOUT,":encoding($encoding)";
-    print $str,"\n";
+    print "äöüßÄÖÜ\n";
 
 =head4 See Also
 

@@ -667,14 +667,7 @@ Funktionsbeschreibung siehe Perl-Dokumentation (perldoc -f binmode).
 # -----------------------------------------------------------------------------
 
 sub binmode {
-    my $self = shift;
-    # @_: $layer
-
-    my $r = @_? CORE::binmode($self,$_[0]): CORE::binmode($self);
-    if (!defined $r) {
-        $self->throw(q{FH-00012: binmode fehlgeschlagen},Errstr=>$!);
-    }
-
+    Blog::Base::Perl->binmode(@_);
     return;
 }
 
