@@ -160,7 +160,7 @@ $sdoc = <<"__EOT__";
   generateAnchors=0
   utf8=1
 
-Copyright (C) $year Frank Seitz, U{http://fseitz.de/}, Last update: $mtime
+Copyright (C) 2010-$year Frank Seitz, U{http://fseitz.de/}, Last update: $mtime
 
 %TableOfContents:
   maxDepth=1
