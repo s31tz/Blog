@@ -28,7 +28,7 @@ durchgeführt werden.
   }
   .
 
-Per Default versucht die Klasse per TCP eine Verbindung zum echo-Port
+Per Default versucht die Klasse via TCP eine Verbindung zum echo-Port
 aufzubauen. Für andere Möglichkeiten (Test per UDP, ICMP, ...) siehe
 Doku.
 
