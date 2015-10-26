@@ -60,7 +60,7 @@ Erklärung: Ist der Wert von C{theAttribute} definiert, wird er
 unmittelbar geliefert. Ist er nicht definiert, wird der C{do}-Block
 ausgeführt. Dessen letzter berechneter Wert wird zuerst an das
 Attribut zugewiesen (C{=}) und dann von der Methode geliefert
-(C{return}).
+(C{return}). Den Defined-Or-Operator C{//} gibt es seit Perl 5.10.
 
 = Links
 
