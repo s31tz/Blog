@@ -87,7 +87,7 @@ Blog::Base::Process->cwd($articleDir);
 my $code = <<'__EOT__';
 = NAME
 
-Blog - Blog articles
+Blog - Blog Articles
 
 = DESCRIPTION
 

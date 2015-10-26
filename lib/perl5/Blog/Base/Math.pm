@@ -436,39 +436,6 @@ sub roundMinMax {
 
 # -----------------------------------------------------------------------------
 
-=head2 readableNumber() - Zahl mit Trenner an Tausender-Stellen
-
-=head3 Synopsis
-
-    $str = $class->readableNumber($x);
-    $str = $class->readableNumber($x,$sep);
-
-=head3 Example
-
-    1 -> 1
-    12 -> 12
-    12345 -> 12.345
-    -12345678 -> -12.345.678
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub readableNumber {
-    my $class = shift;
-    my $x = shift;
-    my $sep = shift || '.';
-
-    if ($sep eq '.') {
-        $x =~ s/\./,/;
-    }
-    1 while $x =~ s/^([-+]?\d+)(\d{3})/$1$sep$2/;
-
-    return $x;
-}
-
-# -----------------------------------------------------------------------------
-
 =head2 valueToPixelFactor() - Umrechnungsfaktor Wertebereich in Pixelkoordinaten
 
 =head3 Synopsis

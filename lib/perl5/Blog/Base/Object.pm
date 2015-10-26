@@ -15,7 +15,7 @@ use Blog::Base::Stacktrace;
 
 =head1 NAME
 
-Blog::Base::Object - Basisklasse für alle Klassen der Klassenbibliothek
+Blog::Base::Object - Basisklasse aller Klassen der Klassenbibliothek
 
 =head1 SYNOPSIS
 

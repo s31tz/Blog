@@ -15,7 +15,7 @@ use Blog::Base::Hash;
 
 =head1 NAME
 
-Blog::Base::Option - Verarbeitung von Programm- und Methoden-Argumenten
+Blog::Base::Option - Verarbeitung von Programm- und Methoden-Optionen
 
 =head1 BASE CLASS
 
