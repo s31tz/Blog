@@ -1,0 +1,71 @@
+# Date: 2015-10-26
+# Id: 132
+# Draft: no
+# Categories: Perl
+
+%Document:
+  title="Perl: Objektattributwert beim ersten Zugriff berechnen"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+Ein Hash-Objekt besitzt ein Attribut C{theAttribute}, das von einer
+gleichnamigen Attributmethode gekapselt wird. Das Attribut erhält bei
+der Objekt-Instanziierung keinen Wert. Der Wert wird stattdessen beim
+ersten Zugriff berechnet. Alle weiteren Zugriffe liefern den
+berechneten Wert.
+
+Ein naheliegender Ansatz, dies in Perl zu implementieren, ist:
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    sub theAttribute {
+        my $self = shift;
+
+        if (!defined $self->{'theAttribute'}) {
+            ...
+            $self->{'theAttribute'} = $val;
+        }
+
+        return $self->{'theAttribute'};
+    }
+  .
+
+Hierbei ist C{$val} der in Abschnitt C{...} berechnete Attributwert
+(der auf dem Attribut gecached wird).
+
+Diese Lösung ist relativ hässlich, da der Ausdruck
+
+  %Code: filter="./blog-highlight perl %FORMAT%"
+    $self->{'theAttribute'}
+  .
+
+gleich drei Mal auftaucht.
+
+Zum Glück lässt sich das Gleiche auch wesentlich eleganter erreichen:
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    sub theAttribute {
+        my $self = shift;
+
+        return $self->{'theAttribute'} //= do {
+            ...
+            $val;
+        };
+    }
+  .
+
+Erklärung: Ist der Wert von C{theAttribute} definiert, wird er
+unmittelbar geliefert. Ist er nicht definiert, wird der C{do}-Block
+ausgeführt. Dessen letzter berechneter Wert wird zuerst an das
+Attribut zugewiesen (C{=}) und dann von der Methode geliefert
+(C{return}).
+
+= Links
+
+* U{"http://perldoc.perl.org/functions/do.html",text="do-Block"}
+* U{"http://perldoc.perl.org/perlop.html#Logical-Defined-Or",\
+    text="Operator //"}
+
+# eof
