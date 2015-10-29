@@ -13,479 +13,479 @@ veröffentlicht habe.
 
 =item *
 
-L<Perl: Objektattributwert beim ersten Zugriff berechnen|https://github.com/s31tz/Blog/blob/master/article/120-Perl-Objektattributwert-beim-ersten-Zugriff-berechnen.sdoc>
+L<Perl: Objektattributwert beim ersten Zugriff berechnen|https://github.com/s31tz/Blog/blob/master/article/120-Perl-Objektattributwert-beim-ersten-Zugriff-berechnen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/132-x.html>)
 
 =item *
 
-L<Grep: Finde in Dateibaum Worte eines bestimmten Musters|https://github.com/s31tz/Blog/blob/master/article/119-Finde-in-Dateibaum-Worte-eines-bestimmten-Musters.sdoc>
+L<Grep: Finde in Dateibaum Worte eines bestimmten Musters|https://github.com/s31tz/Blog/blob/master/article/119-Finde-in-Dateibaum-Worte-eines-bestimmten-Musters.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/131-x.html>)
 
 =item *
 
-L<Perl: Modulpfade ermitteln|https://github.com/s31tz/Blog/blob/master/article/118-Perl-Modulpfade-ausgeben.sdoc>
+L<Perl: Modulpfade ermitteln|https://github.com/s31tz/Blog/blob/master/article/118-Perl-Modulpfade-ausgeben.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/130-x.html>)
 
 =item *
 
-L<Perl: Erreichbarkeit eines Host prüfen|https://github.com/s31tz/Blog/blob/master/article/116-Perl-Erreichbarkeit-Host-pruefen.sdoc>
+L<Perl: Erreichbarkeit eines Host prüfen|https://github.com/s31tz/Blog/blob/master/article/116-Perl-Erreichbarkeit-Host-pruefen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/128-x.html>)
 
 =item *
 
-L<Entfernung zwischen zwei Punkten auf der Erdoberfläche berechnen|https://github.com/s31tz/Blog/blob/master/article/115-Entfernung-auf-Erdoberflaeche-berechnen.sdoc>
+L<Entfernung zwischen zwei Punkten auf der Erdoberfläche berechnen|https://github.com/s31tz/Blog/blob/master/article/115-Entfernung-auf-Erdoberflaeche-berechnen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/127-x.html>)
 
 =item *
 
-L<HTTP: Datei-Download mit Namensvorschlag|https://github.com/s31tz/Blog/blob/master/article/114-HTTP-Datei-Download-mit-Namensvorschlag.sdoc>
+L<HTTP: Datei-Download mit Namensvorschlag|https://github.com/s31tz/Blog/blob/master/article/114-HTTP-Datei-Download-mit-Namensvorschlag.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/126-x.html>)
 
 =item *
 
-L<Bildschirmkoordinaten von XY-Plots berechnen|https://github.com/s31tz/Blog/blob/master/article/113-XY-Plot-Bildschirmkoordinaten-berechnen.sdoc>
+L<Bildschirmkoordinaten von XY-Plots berechnen|https://github.com/s31tz/Blog/blob/master/article/113-XY-Plot-Bildschirmkoordinaten-berechnen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/125-x.html>)
 
 =item *
 
-L<Perl: UTF-8 und ISO-8859-1 Dateien erkennen und automatisch dekodieren|https://github.com/s31tz/Blog/blob/master/article/112-Perl-UTF-8-und-ISO-8859-1-Dateien-automatisch-dekodieren.sdoc>
+L<Perl: UTF-8 und ISO-8859-1 Dateien erkennen und automatisch dekodieren|https://github.com/s31tz/Blog/blob/master/article/112-Perl-UTF-8-und-ISO-8859-1-Dateien-automatisch-dekodieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/124-x.html>)
 
 =item *
 
-L<GnuPG: Verschlüsseln, entschlüsseln und andere Operationen|https://github.com/s31tz/Blog/blob/master/article/111-GnuPG-Datei-verschluesseln.sdoc>
+L<GnuPG: Verschlüsseln, entschlüsseln und andere Operationen|https://github.com/s31tz/Blog/blob/master/article/111-GnuPG-Datei-verschluesseln.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/123-x.html>)
 
 =item *
 
-L<Enscript: Quelltext von der Kommandozeile aus drucken|https://github.com/s31tz/Blog/blob/master/article/110-Enscript-Quelltext-von-der-Kommandozeile-aus-drucken.sdoc>
+L<Enscript: Quelltext von der Kommandozeile aus drucken|https://github.com/s31tz/Blog/blob/master/article/110-Enscript-Quelltext-von-der-Kommandozeile-aus-drucken.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/122-x.html>)
 
 =item *
 
-L<Globale in-place Textersetzung mit sed oder Perl|https://github.com/s31tz/Blog/blob/master/article/109-Globale-Textersetzung.sdoc>
+L<Globale in-place Textersetzung mit sed oder Perl|https://github.com/s31tz/Blog/blob/master/article/109-Globale-Textersetzung.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/121-x.html>)
 
 =item *
 
-L<Oracle+Linux: ORA-00845: MEMORY_TARGET not supported on this system|https://github.com/s31tz/Blog/blob/master/article/108-Oracle+Linux-ORA-00845-MEMORY-TARGET-not-supported-on-this-system.sdoc>
+L<Oracle+Linux: ORA-00845: MEMORY_TARGET not supported on this system|https://github.com/s31tz/Blog/blob/master/article/108-Oracle+Linux-ORA-00845-MEMORY-TARGET-not-supported-on-this-system.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/62-x.html>)
 
 =item *
 
-L<Globale Verbreitung von DNS-Änderungen überprüfen|https://github.com/s31tz/Blog/blob/master/article/107-Globale-Verbreitung-von-DNS-Aenderungen-ueberpruefen.sdoc>
+L<Globale Verbreitung von DNS-Änderungen überprüfen|https://github.com/s31tz/Blog/blob/master/article/107-Globale-Verbreitung-von-DNS-Aenderungen-ueberpruefen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/116-x.html>)
 
 =item *
 
-L<Perl: Hostname zu IP-Adresse ermitteln|https://github.com/s31tz/Blog/blob/master/article/106-Perl-Hostname-zu-IP-Adresse-ermitteln.sdoc>
+L<Perl: Hostname zu IP-Adresse ermitteln|https://github.com/s31tz/Blog/blob/master/article/106-Perl-Hostname-zu-IP-Adresse-ermitteln.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/114-x.html>)
 
 =item *
 
-L<Perl: Speedy (CGI-SpeedyCGI) unter Perl 5.10 und höher kompilieren|https://github.com/s31tz/Blog/blob/master/article/105-Perl-Speedy-CGI-SpeedyCGI-unter-Perl-5.10-und-hoeher-kompilieren.sdoc>
+L<Perl: Speedy (CGI-SpeedyCGI) unter Perl 5.10 und höher kompilieren|https://github.com/s31tz/Blog/blob/master/article/105-Perl-Speedy-CGI-SpeedyCGI-unter-Perl-5.10-und-hoeher-kompilieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/113-x.html>)
 
 =item *
 
-L<Helligkeit von Farben des RGB-Farbraums berechnen|https://github.com/s31tz/Blog/blob/master/article/104-Helligkeit-von-Farben-des-RGB-Farbraums-berechnen.sdoc>
+L<Helligkeit von Farben des RGB-Farbraums berechnen|https://github.com/s31tz/Blog/blob/master/article/104-Helligkeit-von-Farben-des-RGB-Farbraums-berechnen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/112-x.html>)
 
 =item *
 
-L<Apache: Bessere access.log-Datei definieren|https://github.com/s31tz/Blog/blob/master/article/103-Apache-Bessere-access.log-Datei-definieren.sdoc>
+L<Apache: Bessere access.log-Datei definieren|https://github.com/s31tz/Blog/blob/master/article/103-Apache-Bessere-access.log-Datei-definieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/117-x.html>)
 
 =item *
 
-L<Overlays in Google Earth einbinden|https://github.com/s31tz/Blog/blob/master/article/102-Overlays-in-Google-Earth-einbinden.sdoc>
+L<Overlays in Google Earth einbinden|https://github.com/s31tz/Blog/blob/master/article/102-Overlays-in-Google-Earth-einbinden.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/25-x.html>)
 
 =item *
 
-L<Apache: Aufsetzen einer CGI Webapplikation|https://github.com/s31tz/Blog/blob/master/article/101-Apache-Eine-CGI-Webapplikation-aufsetzen.sdoc>
+L<Apache: Aufsetzen einer CGI Webapplikation|https://github.com/s31tz/Blog/blob/master/article/101-Apache-Eine-CGI-Webapplikation-aufsetzen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/115-x.html>)
 
 =item *
 
-L<Apache: Redirection auf Subdirectory|https://github.com/s31tz/Blog/blob/master/article/100-Apache-Redirection-auf-Subdirectory.sdoc>
+L<Apache: Redirection auf Subdirectory|https://github.com/s31tz/Blog/blob/master/article/100-Apache-Redirection-auf-Subdirectory.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/27-x.html>)
 
 =item *
 
-L<PostgreSQL: Installation und Konfiguration|https://github.com/s31tz/Blog/blob/master/article/099-PostgreSQL-Installation-und-Konfiguration.sdoc>
+L<PostgreSQL: Installation und Konfiguration|https://github.com/s31tz/Blog/blob/master/article/099-PostgreSQL-Installation-und-Konfiguration.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/6-x.html>)
 
 =item *
 
-L<Perl: Text im richtigen Character Encoding ausgeben|https://github.com/s31tz/Blog/blob/master/article/098-Perl-Text-im-richtigen-Character-Encoding-ausgeben.sdoc>
+L<Perl: Text im richtigen Character Encoding ausgeben|https://github.com/s31tz/Blog/blob/master/article/098-Perl-Text-im-richtigen-Character-Encoding-ausgeben.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/84-x.html>)
 
 =item *
 
-L<LaTeX: Briefe mit scrlttr2 ohne Einrückung setzen|https://github.com/s31tz/Blog/blob/master/article/097-LaTeX-Briefe-mit-scrlttr2-ohne-Einrueckung-setzen.sdoc>
+L<LaTeX: Briefe mit scrlttr2 ohne Einrückung setzen|https://github.com/s31tz/Blog/blob/master/article/097-LaTeX-Briefe-mit-scrlttr2-ohne-Einrueckung-setzen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/110-x.html>)
 
 =item *
 
-L<Debian Testing (stretch) mit Xfce Desktop|https://github.com/s31tz/Blog/blob/master/article/096-Debian-Testing-stretch-mit-Xfce-Desktop.sdoc>
+L<Debian Testing (stretch) mit Xfce Desktop|https://github.com/s31tz/Blog/blob/master/article/096-Debian-Testing-stretch-mit-Xfce-Desktop.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/108-x.html>)
 
 =item *
 
-L<Unix Epoch in lesbare Zeitangabe wandeln und umgekehrt|https://github.com/s31tz/Blog/blob/master/article/095-Unix-Epoch-in-lesbare-Zeitangabe-wandeln-und-umgekehrt.sdoc>
+L<Unix Epoch in lesbare Zeitangabe wandeln und umgekehrt|https://github.com/s31tz/Blog/blob/master/article/095-Unix-Epoch-in-lesbare-Zeitangabe-wandeln-und-umgekehrt.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/105-x.html>)
 
 =item *
 
-L<fslint: Datei-Dubletten finden|https://github.com/s31tz/Blog/blob/master/article/094-fslint-Datei-Dubletten-finden.sdoc>
+L<fslint: Datei-Dubletten finden|https://github.com/s31tz/Blog/blob/master/article/094-fslint-Datei-Dubletten-finden.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/111-x.html>)
 
 =item *
 
-L<Audacity: YouTube-Sperre verhindern|https://github.com/s31tz/Blog/blob/master/article/093-Audacity-YouTube-Sperre-verhindern.sdoc>
+L<Audacity: YouTube-Sperre verhindern|https://github.com/s31tz/Blog/blob/master/article/093-Audacity-YouTube-Sperre-verhindern.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/59-x.html>)
 
 =item *
 
-L<Dateibaum chronologisch sortiert anzeigen|https://github.com/s31tz/Blog/blob/master/article/092-Dateibaum-chronologisch-sortiert-anzeigen.sdoc>
+L<Dateibaum chronologisch sortiert anzeigen|https://github.com/s31tz/Blog/blob/master/article/092-Dateibaum-chronologisch-sortiert-anzeigen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/104-x.html>)
 
 =item *
 
-L<Operationen auf Bildern|https://github.com/s31tz/Blog/blob/master/article/091-Operationen-auf-Bildern.sdoc>
+L<Operationen auf Bildern|https://github.com/s31tz/Blog/blob/master/article/091-Operationen-auf-Bildern.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/107-x.html>)
 
 =item *
 
-L<libav/ffmpeg: Video-Seitenverhältnis ändern|https://github.com/s31tz/Blog/blob/master/article/090-libav-ffmpeg-Video-Seitenverhaeltnis-aendern.sdoc>
+L<libav/ffmpeg: Video-Seitenverhältnis ändern|https://github.com/s31tz/Blog/blob/master/article/090-libav-ffmpeg-Video-Seitenverhaeltnis-aendern.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/109-x.html>)
 
 =item *
 
-L<Minecraft-Server unter Linux einrichten|https://github.com/s31tz/Blog/blob/master/article/089-Minecraft-Server-unter-Linux-einrichten.sdoc>
+L<Minecraft-Server unter Linux einrichten|https://github.com/s31tz/Blog/blob/master/article/089-Minecraft-Server-unter-Linux-einrichten.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/106-x.html>)
 
 =item *
 
-L<Bilder / Grafiken in HTML einbetten|https://github.com/s31tz/Blog/blob/master/article/088-Bilder-Grafiken-in-HTML-einbetten.sdoc>
+L<Bilder / Grafiken in HTML einbetten|https://github.com/s31tz/Blog/blob/master/article/088-Bilder-Grafiken-in-HTML-einbetten.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/103-x.html>)
 
 =item *
 
-L<Leeres lokales SVN-Repository anlegen|https://github.com/s31tz/Blog/blob/master/article/087-Leeres-lokales-SVN-Repository-anlegen.sdoc>
+L<Leeres lokales SVN-Repository anlegen|https://github.com/s31tz/Blog/blob/master/article/087-Leeres-lokales-SVN-Repository-anlegen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/102-x.html>)
 
 =item *
 
-L<Linux Kernelparameter ändern|https://github.com/s31tz/Blog/blob/master/article/086-Linux-Kernelparameter-aendern.sdoc>
+L<Linux Kernelparameter ändern|https://github.com/s31tz/Blog/blob/master/article/086-Linux-Kernelparameter-aendern.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/101-x.html>)
 
 =item *
 
-L<Perl: Web Services mit SOAP::WSDL ansprechen|https://github.com/s31tz/Blog/blob/master/article/085-Perl-Web-Services-mit-SOAP-WSDL-ansprechen.sdoc>
+L<Perl: Web Services mit SOAP::WSDL ansprechen|https://github.com/s31tz/Blog/blob/master/article/085-Perl-Web-Services-mit-SOAP-WSDL-ansprechen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/118-x.html>)
 
 =item *
 
-L<Eclipse: EPIC-Plugin für Perl installieren|https://github.com/s31tz/Blog/blob/master/article/084-Eclipse-EPIC-Plugin-fuer-Perl-installieren.sdoc>
+L<Eclipse: EPIC-Plugin für Perl installieren|https://github.com/s31tz/Blog/blob/master/article/084-Eclipse-EPIC-Plugin-fuer-Perl-installieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/120-x.html>)
 
 =item *
 
-L<JavaScript: Existenz eines Bildes prüfen|https://github.com/s31tz/Blog/blob/master/article/083-JavaScript-Existenz-eines-Bildes-pruefen.sdoc>
+L<JavaScript: Existenz eines Bildes prüfen|https://github.com/s31tz/Blog/blob/master/article/083-JavaScript-Existenz-eines-Bildes-pruefen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/119-x.html>)
 
 =item *
 
-L<Unicode: UTF-8 validieren|https://github.com/s31tz/Blog/blob/master/article/082-Unicode-UTF-8-validieren.sdoc>
+L<Unicode: UTF-8 validieren|https://github.com/s31tz/Blog/blob/master/article/082-Unicode-UTF-8-validieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/99-x.html>)
 
 =item *
 
-L<SSH: Über SSH-Tunnel mit MySQL Datenbank verbinden|https://github.com/s31tz/Blog/blob/master/article/081-SSH-Ueber-SSH-Tunnel-mit-MySQL-Datenbank-verbinden.sdoc>
+L<SSH: Über SSH-Tunnel mit MySQL Datenbank verbinden|https://github.com/s31tz/Blog/blob/master/article/081-SSH-Ueber-SSH-Tunnel-mit-MySQL-Datenbank-verbinden.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/97-x.html>)
 
 =item *
 
-L<Perl: Module installieren mit cpanm|https://github.com/s31tz/Blog/blob/master/article/080-Perl-Module-installieren-mit-cpanm.sdoc>
+L<Perl: Module installieren mit cpanm|https://github.com/s31tz/Blog/blob/master/article/080-Perl-Module-installieren-mit-cpanm.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/96-x.html>)
 
 =item *
 
-L<Perl: Testsuite auf Basis des Test Anything Protocol (TAP)|https://github.com/s31tz/Blog/blob/master/article/079-Perl-Testsuite-auf-Basis-des-Test-Anything-Protocol-TAP.sdoc>
+L<Perl: Testsuite auf Basis des Test Anything Protocol (TAP)|https://github.com/s31tz/Blog/blob/master/article/079-Perl-Testsuite-auf-Basis-des-Test-Anything-Protocol-TAP.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/95-x.html>)
 
 =item *
 
-L<Shell: stderr auf Pipe umleiten und andere dup-Operationen|https://github.com/s31tz/Blog/blob/master/article/078-Shell-stderr-auf-Pipe-umleiten-und-andere-dup-Operationen.sdoc>
+L<Shell: stderr auf Pipe umleiten und andere dup-Operationen|https://github.com/s31tz/Blog/blob/master/article/078-Shell-stderr-auf-Pipe-umleiten-und-andere-dup-Operationen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/94-x.html>)
 
 =item *
 
-L<CSS: Erstes Kind- bzw. Folgeelement gestalten|https://github.com/s31tz/Blog/blob/master/article/077-CSS-Erstes-Kind-bzw.-Folgeelement-gestalten.sdoc>
+L<CSS: Erstes Kind- bzw. Folgeelement gestalten|https://github.com/s31tz/Blog/blob/master/article/077-CSS-Erstes-Kind-bzw.-Folgeelement-gestalten.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/93-x.html>)
 
 =item *
 
-L<meld: Unterschiede zwischen Dateien anzeigen und bearbeiten|https://github.com/s31tz/Blog/blob/master/article/076-meld-Unterschiede-zwischen-Dateien-anzeigen-und-bearbeiten.sdoc>
+L<meld: Unterschiede zwischen Dateien anzeigen und bearbeiten|https://github.com/s31tz/Blog/blob/master/article/076-meld-Unterschiede-zwischen-Dateien-anzeigen-und-bearbeiten.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/92-x.html>)
 
 =item *
 
-L<ffmpeg: Verfügbare Filter anzeigen|https://github.com/s31tz/Blog/blob/master/article/075-ffmpeg-Verfuegbare-Filter-anzeigen.sdoc>
+L<ffmpeg: Verfügbare Filter anzeigen|https://github.com/s31tz/Blog/blob/master/article/075-ffmpeg-Verfuegbare-Filter-anzeigen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/91-x.html>)
 
 =item *
 
-L<ffmpeg: Video deinterlacen|https://github.com/s31tz/Blog/blob/master/article/074-ffmpeg-Video-deinterlacen.sdoc>
+L<ffmpeg: Video deinterlacen|https://github.com/s31tz/Blog/blob/master/article/074-ffmpeg-Video-deinterlacen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/90-x.html>)
 
 =item *
 
-L<Film mit kdenlive/MLT in Teilen rendern|https://github.com/s31tz/Blog/blob/master/article/073-Film-mit-kdenlive-MLT-in-Teilen-rendern.sdoc>
+L<Film mit kdenlive/MLT in Teilen rendern|https://github.com/s31tz/Blog/blob/master/article/073-Film-mit-kdenlive-MLT-in-Teilen-rendern.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/89-x.html>)
 
 =item *
 
-L<Wechseldatenträger mit Ext[234]-Dateisystem ein Label geben|https://github.com/s31tz/Blog/blob/master/article/072-Wechseldatentraeger-mit-Ext-234-Dateisystem-ein-Label-geben.sdoc>
+L<Wechseldatenträger mit Ext[234]-Dateisystem ein Label geben|https://github.com/s31tz/Blog/blob/master/article/072-Wechseldatentraeger-mit-Ext-234-Dateisystem-ein-Label-geben.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/88-x.html>)
 
 =item *
 
-L<Liste der geöffneten TCP-Ports|https://github.com/s31tz/Blog/blob/master/article/071-Liste-der-geoeffneten-TCP-Ports.sdoc>
+L<Liste der geöffneten TCP-Ports|https://github.com/s31tz/Blog/blob/master/article/071-Liste-der-geoeffneten-TCP-Ports.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/87-x.html>)
 
 =item *
 
-L<Streamripper: Internet-Radio aufzeichnen|https://github.com/s31tz/Blog/blob/master/article/070-Streamripper-Internet-Radio-aufzeichnen.sdoc>
+L<Streamripper: Internet-Radio aufzeichnen|https://github.com/s31tz/Blog/blob/master/article/070-Streamripper-Internet-Radio-aufzeichnen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/86-x.html>)
 
 =item *
 
-L<Lookup-Trigger für Oracle und PostgreSQL|https://github.com/s31tz/Blog/blob/master/article/069-Lookup-Trigger-fuer-Oracle-und-PostgreSQL.sdoc>
+L<Lookup-Trigger für Oracle und PostgreSQL|https://github.com/s31tz/Blog/blob/master/article/069-Lookup-Trigger-fuer-Oracle-und-PostgreSQL.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/85-x.html>)
 
 =item *
 
-L<PostgreSQL: Notizen zum psql Kommando-Interpreter|https://github.com/s31tz/Blog/blob/master/article/068-PostgreSQL-Notizen-zum-psql-Kommando-Interpreter.sdoc>
+L<PostgreSQL: Notizen zum psql Kommando-Interpreter|https://github.com/s31tz/Blog/blob/master/article/068-PostgreSQL-Notizen-zum-psql-Kommando-Interpreter.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/81-x.html>)
 
 =item *
 
-L<Android: Entwicklungsumgebung unter Linux aufsetzen|https://github.com/s31tz/Blog/blob/master/article/067-Android-Entwicklungsumgebung-unter-Linux-aufsetzen.sdoc>
+L<Android: Entwicklungsumgebung unter Linux aufsetzen|https://github.com/s31tz/Blog/blob/master/article/067-Android-Entwicklungsumgebung-unter-Linux-aufsetzen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/78-x.html>)
 
 =item *
 
-L<Java SE 7 JDK unter Linux installieren|https://github.com/s31tz/Blog/blob/master/article/066-Java-SE-7-JDK-unter-Linux-installieren.sdoc>
+L<Java SE 7 JDK unter Linux installieren|https://github.com/s31tz/Blog/blob/master/article/066-Java-SE-7-JDK-unter-Linux-installieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/79-x.html>)
 
 =item *
 
-L<Notizen zu Amazons eBook-Reader Kindle 4|https://github.com/s31tz/Blog/blob/master/article/065-Notizen-zu-Amazons-eBook-Reader-Kindle-4.sdoc>
+L<Notizen zu Amazons eBook-Reader Kindle 4|https://github.com/s31tz/Blog/blob/master/article/065-Notizen-zu-Amazons-eBook-Reader-Kindle-4.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/77-x.html>)
 
 =item *
 
-L<Debian GNU/Linux von USB-Stick booten|https://github.com/s31tz/Blog/blob/master/article/064-Debian-GNU-Linux-von-USB-Stick-booten.sdoc>
+L<Debian GNU/Linux von USB-Stick booten|https://github.com/s31tz/Blog/blob/master/article/064-Debian-GNU-Linux-von-USB-Stick-booten.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/76-x.html>)
 
 =item *
 
-L<HTTPS-Server: SSL-Zertifikat erwerben und einrichten|https://github.com/s31tz/Blog/blob/master/article/063-HTTPS-Server-SSL-Zertifikat-erwerben-und-einrichten.sdoc>
+L<HTTPS-Server: SSL-Zertifikat erwerben und einrichten|https://github.com/s31tz/Blog/blob/master/article/063-HTTPS-Server-SSL-Zertifikat-erwerben-und-einrichten.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/74-x.html>)
 
 =item *
 
-L<STRATO HiDrive unter Linux nutzen|https://github.com/s31tz/Blog/blob/master/article/062-STRATO-HiDrive-unter-Linux-nutzen.sdoc>
+L<STRATO HiDrive unter Linux nutzen|https://github.com/s31tz/Blog/blob/master/article/062-STRATO-HiDrive-unter-Linux-nutzen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/75-x.html>)
 
 =item *
 
-L<Nexus S i9023 mit unvollständigem Android Release von Amazon|https://github.com/s31tz/Blog/blob/master/article/061-Nexus-S-i9023-mit-unvollstaendigem-Android-Release-von-Amazon.sdoc>
+L<Nexus S i9023 mit unvollständigem Android Release von Amazon|https://github.com/s31tz/Blog/blob/master/article/061-Nexus-S-i9023-mit-unvollstaendigem-Android-Release-von-Amazon.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/71-x.html>)
 
 =item *
 
-L<Cisco VPN-Verbindung (vpnclient) loggen/debuggen|https://github.com/s31tz/Blog/blob/master/article/060-Cisco-VPN-Verbindung-vpnclient-loggen-debuggen.sdoc>
+L<Cisco VPN-Verbindung (vpnclient) loggen/debuggen|https://github.com/s31tz/Blog/blob/master/article/060-Cisco-VPN-Verbindung-vpnclient-loggen-debuggen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/55-x.html>)
 
 =item *
 
-L<Cisco vpnclient unter Linux Kernel 2.6.38+|https://github.com/s31tz/Blog/blob/master/article/059-Cisco-vpnclient-unter-Linux-Kernel-2.6.38+.sdoc>
+L<Cisco vpnclient unter Linux Kernel 2.6.38+|https://github.com/s31tz/Blog/blob/master/article/059-Cisco-vpnclient-unter-Linux-Kernel-2.6.38+.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/56-x.html>)
 
 =item *
 
-L<Perl: Klassische Formularprogrammierung|https://github.com/s31tz/Blog/blob/master/article/058-Perl-Klassische-Formularprogrammierung.sdoc>
+L<Perl: Klassische Formularprogrammierung|https://github.com/s31tz/Blog/blob/master/article/058-Perl-Klassische-Formularprogrammierung.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/67-x.html>)
 
 =item *
 
-L<SQL: Dubletten finden|https://github.com/s31tz/Blog/blob/master/article/057-SQL-Doubletten-finden.sdoc>
+L<SQL: Dubletten finden|https://github.com/s31tz/Blog/blob/master/article/057-SQL-Doubletten-finden.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/66-x.html>)
 
 =item *
 
-L<MySQL: Data Directory neu aufsetzen|https://github.com/s31tz/Blog/blob/master/article/056-MySQL-Data-Directory-neu-aufsetzen.sdoc>
+L<MySQL: Data Directory neu aufsetzen|https://github.com/s31tz/Blog/blob/master/article/056-MySQL-Data-Directory-neu-aufsetzen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/65-x.html>)
 
 =item *
 
-L<MySQL: Mehrere Instanzen auf einem Server|https://github.com/s31tz/Blog/blob/master/article/055-MySQL-Mehrere-Instanzen-auf-einem-Server.sdoc>
+L<MySQL: Mehrere Instanzen auf einem Server|https://github.com/s31tz/Blog/blob/master/article/055-MySQL-Mehrere-Instanzen-auf-einem-Server.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/64-x.html>)
 
 =item *
 
-L<Linksammlung: UTF-8 Portierung|https://github.com/s31tz/Blog/blob/master/article/054-Linksammlung-UTF-8-Portierung.sdoc>
+L<Linksammlung: UTF-8 Portierung|https://github.com/s31tz/Blog/blob/master/article/054-Linksammlung-UTF-8-Portierung.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/63-x.html>)
 
 =item *
 
-L<SVN: Auf Branch entwickeln|https://github.com/s31tz/Blog/blob/master/article/053-SVN-Auf-Branch-entwickeln.sdoc>
+L<SVN: Auf Branch entwickeln|https://github.com/s31tz/Blog/blob/master/article/053-SVN-Auf-Branch-entwickeln.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/60-x.html>)
 
 =item *
 
-L<ffmpeg: Lautstärke anheben oder verringern|https://github.com/s31tz/Blog/blob/master/article/052-ffmpeg-Lautstaerke-anheben-oder-verringern.sdoc>
+L<ffmpeg: Lautstärke anheben oder verringern|https://github.com/s31tz/Blog/blob/master/article/052-ffmpeg-Lautstaerke-anheben-oder-verringern.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/58-x.html>)
 
 =item *
 
-L<Linksammlung Video und Audio|https://github.com/s31tz/Blog/blob/master/article/051-Linksammlung-Video-und-Audio.sdoc>
+L<Linksammlung Video und Audio|https://github.com/s31tz/Blog/blob/master/article/051-Linksammlung-Video-und-Audio.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/57-x.html>)
 
 =item *
 
-L<Oracle 11g unter Linux installieren|https://github.com/s31tz/Blog/blob/master/article/050-Oracle-11g-unter-Linux-installieren.sdoc>
+L<Oracle 11g unter Linux installieren|https://github.com/s31tz/Blog/blob/master/article/050-Oracle-11g-unter-Linux-installieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/54-x.html>)
 
 =item *
 
-L<mod_perl: Eigenen Perl-Interpreter für Virtual Host|https://github.com/s31tz/Blog/blob/master/article/049-mod-perl-Eigenen-Perl-Interpreter-fuer-Virtual-Host.sdoc>
+L<mod_perl: Eigenen Perl-Interpreter für Virtual Host|https://github.com/s31tz/Blog/blob/master/article/049-mod-perl-Eigenen-Perl-Interpreter-fuer-Virtual-Host.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/53-x.html>)
 
 =item *
 
-L<Finde Dateinamen mit Sonderzeichen|https://github.com/s31tz/Blog/blob/master/article/048-Finde-Dateinamen-mit-Sonderzeichen.sdoc>
+L<Finde Dateinamen mit Sonderzeichen|https://github.com/s31tz/Blog/blob/master/article/048-Finde-Dateinamen-mit-Sonderzeichen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/52-x.html>)
 
 =item *
 
-L<Seamonkey installieren (Unix)|https://github.com/s31tz/Blog/blob/master/article/047-Seamonkey-installieren-Unix.sdoc>
+L<Seamonkey installieren (Unix)|https://github.com/s31tz/Blog/blob/master/article/047-Seamonkey-installieren-Unix.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/51-x.html>)
 
 =item *
 
-L<FONIC: Klingelzeit verlängern, Kontostand abfragen etc.|https://github.com/s31tz/Blog/blob/master/article/046-FONIC-Klingelzeit-verlaengern-Kontostand-abfragen-etc..sdoc>
+L<FONIC: Klingelzeit verlängern, Kontostand abfragen etc.|https://github.com/s31tz/Blog/blob/master/article/046-FONIC-Klingelzeit-verlaengern-Kontostand-abfragen-etc..sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/72-x.html>)
 
 =item *
 
-L<scp: Whitespace in Remote-Dateinamen|https://github.com/s31tz/Blog/blob/master/article/045-scp-Whitespace-in-Remote-Dateinamen.sdoc>
+L<scp: Whitespace in Remote-Dateinamen|https://github.com/s31tz/Blog/blob/master/article/045-scp-Whitespace-in-Remote-Dateinamen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/48-x.html>)
 
 =item *
 
-L<DVD-Chapter rippen|https://github.com/s31tz/Blog/blob/master/article/044-DVD-Chapter-rippen.sdoc>
+L<DVD-Chapter rippen|https://github.com/s31tz/Blog/blob/master/article/044-DVD-Chapter-rippen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/70-x.html>)
 
 =item *
 
-L<MySQL: Bessere Antwortzeiten durch bessere Query-Pläne|https://github.com/s31tz/Blog/blob/master/article/043-MySQL-Bessere-Antwortzeiten-durch-bessere-Query-Plaene.sdoc>
+L<MySQL: Bessere Antwortzeiten durch bessere Query-Pläne|https://github.com/s31tz/Blog/blob/master/article/043-MySQL-Bessere-Antwortzeiten-durch-bessere-Query-Plaene.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/47-x.html>)
 
 =item *
 
-L<MySQL: Remote-Zugriff einrichten|https://github.com/s31tz/Blog/blob/master/article/042-MySQL-Remote-Zugriff-einrichten.sdoc>
+L<MySQL: Remote-Zugriff einrichten|https://github.com/s31tz/Blog/blob/master/article/042-MySQL-Remote-Zugriff-einrichten.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/46-x.html>)
 
 =item *
 
-L<FFmpeg Operationen|https://github.com/s31tz/Blog/blob/master/article/041-FFmpeg-Operationen.sdoc>
+L<FFmpeg Operationen|https://github.com/s31tz/Blog/blob/master/article/041-FFmpeg-Operationen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/68-x.html>)
 
 =item *
 
-L<Cookies per JavaScript setzen|https://github.com/s31tz/Blog/blob/master/article/040-Cookies-per-JavaScript-setzen.sdoc>
+L<Cookies per JavaScript setzen|https://github.com/s31tz/Blog/blob/master/article/040-Cookies-per-JavaScript-setzen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/45-x.html>)
 
 =item *
 
-L<ROWNUM unter MySQL|https://github.com/s31tz/Blog/blob/master/article/039-ROWNUM-unter-MySQL.sdoc>
+L<ROWNUM unter MySQL|https://github.com/s31tz/Blog/blob/master/article/039-ROWNUM-unter-MySQL.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/44-x.html>)
 
 =item *
 
-L<Javascript: HTML-Formular abbrechen|https://github.com/s31tz/Blog/blob/master/article/038-Javascript-HTML-Formular-abbrechen.sdoc>
+L<Javascript: HTML-Formular abbrechen|https://github.com/s31tz/Blog/blob/master/article/038-Javascript-HTML-Formular-abbrechen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/43-x.html>)
 
 =item *
 
-L<Perl: Apache2::Reload installieren|https://github.com/s31tz/Blog/blob/master/article/037-Perl-Apache2-Reload-installieren.sdoc>
+L<Perl: Apache2::Reload installieren|https://github.com/s31tz/Blog/blob/master/article/037-Perl-Apache2-Reload-installieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/42-x.html>)
 
 =item *
 
-L<CSS: Listen portabel einrücken|https://github.com/s31tz/Blog/blob/master/article/036-CSS-Listen-portabel-einruecken.sdoc>
+L<CSS: Listen portabel einrücken|https://github.com/s31tz/Blog/blob/master/article/036-CSS-Listen-portabel-einruecken.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/41-x.html>)
 
 =item *
 
-L<HTML-Konstrukte mit CSS gestalten|https://github.com/s31tz/Blog/blob/master/article/035-HTML-Konstrukte-mit-CSS-gestalten.sdoc>
+L<HTML-Konstrukte mit CSS gestalten|https://github.com/s31tz/Blog/blob/master/article/035-HTML-Konstrukte-mit-CSS-gestalten.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/40-x.html>)
 
 =item *
 
-L<dvgrab: Video von miniDV-Camcorder lesen|https://github.com/s31tz/Blog/blob/master/article/034-dvgrab-Video-von-miniDV-Camcorder-lesen.sdoc>
+L<dvgrab: Video von miniDV-Camcorder lesen|https://github.com/s31tz/Blog/blob/master/article/034-dvgrab-Video-von-miniDV-Camcorder-lesen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/61-x.html>)
 
 =item *
 
-L<Perl: POD als Programm-Hilfetext|https://github.com/s31tz/Blog/blob/master/article/033-Perl-POD-als-Programm-Hilfetext.sdoc>
+L<Perl: POD als Programm-Hilfetext|https://github.com/s31tz/Blog/blob/master/article/033-Perl-POD-als-Programm-Hilfetext.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/39-x.html>)
 
 =item *
 
-L<Medion Life S60003 MP3 Player unter Debian|https://github.com/s31tz/Blog/blob/master/article/032-Medion-Life-S60003-MP3-Player-unter-Debian.sdoc>
+L<Medion Life S60003 MP3 Player unter Debian|https://github.com/s31tz/Blog/blob/master/article/032-Medion-Life-S60003-MP3-Player-unter-Debian.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/38-x.html>)
 
 =item *
 
-L<Perl: Plus / Minus Unendlich|https://github.com/s31tz/Blog/blob/master/article/031-Perl-Plus-Minus-Unendlich.sdoc>
+L<Perl: Plus / Minus Unendlich|https://github.com/s31tz/Blog/blob/master/article/031-Perl-Plus-Minus-Unendlich.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/37-x.html>)
 
 =item *
 
-L<Perl: Dirhandles objektorientiert|https://github.com/s31tz/Blog/blob/master/article/030-Perl-Dirhandles-objektorientiert.sdoc>
+L<Perl: Dirhandles objektorientiert|https://github.com/s31tz/Blog/blob/master/article/030-Perl-Dirhandles-objektorientiert.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/35-x.html>)
 
 =item *
 
-L<Perl: Filehandles objektorientiert|https://github.com/s31tz/Blog/blob/master/article/029-Perl-Filehandles-objektorientiert.sdoc>
+L<Perl: Filehandles objektorientiert|https://github.com/s31tz/Blog/blob/master/article/029-Perl-Filehandles-objektorientiert.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/34-x.html>)
 
 =item *
 
-L<Perl: Crash bei Umleitung von STDERR auf Skalare Variable|https://github.com/s31tz/Blog/blob/master/article/028-Perl-Crash-bei-Umleitung-von-STDERR-auf-Skalare-Variable.sdoc>
+L<Perl: Crash bei Umleitung von STDERR auf Skalare Variable|https://github.com/s31tz/Blog/blob/master/article/028-Perl-Crash-bei-Umleitung-von-STDERR-auf-Skalare-Variable.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/33-x.html>)
 
 =item *
 
-L<GNU Makefile zum Konvertieren von Dateien|https://github.com/s31tz/Blog/blob/master/article/027-GNU-Makefile-zum-Konvertieren-von-Dateien.sdoc>
+L<GNU Makefile zum Konvertieren von Dateien|https://github.com/s31tz/Blog/blob/master/article/027-GNU-Makefile-zum-Konvertieren-von-Dateien.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/31-x.html>)
 
 =item *
 
-L<Syntax-Highlighting mit highlight|https://github.com/s31tz/Blog/blob/master/article/026-Syntax-Highlighting-mit-highlight.sdoc>
+L<Syntax-Highlighting mit highlight|https://github.com/s31tz/Blog/blob/master/article/026-Syntax-Highlighting-mit-highlight.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/30-x.html>)
 
 =item *
 
-L<Syntax-Highlighting mit perltidy|https://github.com/s31tz/Blog/blob/master/article/025-Syntax-Highlighting-mit-perltidy.sdoc>
+L<Syntax-Highlighting mit perltidy|https://github.com/s31tz/Blog/blob/master/article/025-Syntax-Highlighting-mit-perltidy.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/29-x.html>)
 
 =item *
 
-L<Perl: Effizient Zeichen zählen|https://github.com/s31tz/Blog/blob/master/article/024-Perl-Effizient-Zeichen-zaehlen.sdoc>
+L<Perl: Effizient Zeichen zählen|https://github.com/s31tz/Blog/blob/master/article/024-Perl-Effizient-Zeichen-zaehlen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/28-x.html>)
 
 =item *
 
-L<Rsync: Abweichende Rechte einstellen|https://github.com/s31tz/Blog/blob/master/article/023-Rsync-Abweichende-Rechte-einstellen.sdoc>
+L<Rsync: Abweichende Rechte einstellen|https://github.com/s31tz/Blog/blob/master/article/023-Rsync-Abweichende-Rechte-einstellen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/26-x.html>)
 
 =item *
 
-L<Email-Adressen in HTML vor Spammern schützen|https://github.com/s31tz/Blog/blob/master/article/022-Email-Adressen-in-HTML-vor-Spammern-schuetzen.sdoc>
+L<Email-Adressen in HTML vor Spammern schützen|https://github.com/s31tz/Blog/blob/master/article/022-Email-Adressen-in-HTML-vor-Spammern-schuetzen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/23-x.html>)
 
 =item *
 
-L<Perl: Gleitkomma-Zahlen ausgeben wie sie sind|https://github.com/s31tz/Blog/blob/master/article/021-Perl-Gleitkomma-Zahlen-ausgeben-wie-sie-sind.sdoc>
+L<Perl: Gleitkomma-Zahlen ausgeben wie sie sind|https://github.com/s31tz/Blog/blob/master/article/021-Perl-Gleitkomma-Zahlen-ausgeben-wie-sie-sind.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/24-x.html>)
 
 =item *
 
-L<HTML: String in Entity-Schreibweise wandeln|https://github.com/s31tz/Blog/blob/master/article/020-HTML-String-in-Entity-Schreibweise-wandeln.sdoc>
+L<HTML: String in Entity-Schreibweise wandeln|https://github.com/s31tz/Blog/blob/master/article/020-HTML-String-in-Entity-Schreibweise-wandeln.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/22-x.html>)
 
 =item *
 
-L<SSH: Timeout unterbinden|https://github.com/s31tz/Blog/blob/master/article/019-SSH-Timeout-unterbinden.sdoc>
+L<SSH: Timeout unterbinden|https://github.com/s31tz/Blog/blob/master/article/019-SSH-Timeout-unterbinden.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/21-x.html>)
 
 =item *
 
-L<SSH: Automatisch einloggen|https://github.com/s31tz/Blog/blob/master/article/018-SSH-Automatisch-einloggen.sdoc>
+L<SSH: Automatisch einloggen|https://github.com/s31tz/Blog/blob/master/article/018-SSH-Automatisch-einloggen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/20-x.html>)
 
 =item *
 
-L<PostgreSQL: TIMESTAMP nach EPOCH wandeln und zurück|https://github.com/s31tz/Blog/blob/master/article/017-PostgreSQL-TIMESTAMP-nach-EPOCH-wandeln-und-zurueck.sdoc>
+L<PostgreSQL: TIMESTAMP nach EPOCH wandeln und zurück|https://github.com/s31tz/Blog/blob/master/article/017-PostgreSQL-TIMESTAMP-nach-EPOCH-wandeln-und-zurueck.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/19-x.html>)
 
 =item *
 
-L<Verzeichnisse via rsync abgleichen|https://github.com/s31tz/Blog/blob/master/article/016-Verzeichnisse-via-rsync-abgleichen.sdoc>
+L<Verzeichnisse via rsync abgleichen|https://github.com/s31tz/Blog/blob/master/article/016-Verzeichnisse-via-rsync-abgleichen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/18-x.html>)
 
 =item *
 
-L<Perl: Operationen auf Symlinks|https://github.com/s31tz/Blog/blob/master/article/015-Perl-Operationen-auf-Symlinks.sdoc>
+L<Perl: Operationen auf Symlinks|https://github.com/s31tz/Blog/blob/master/article/015-Perl-Operationen-auf-Symlinks.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/17-x.html>)
 
 =item *
 
-L<Liste der zusätzlich installierten Perl-Module|https://github.com/s31tz/Blog/blob/master/article/014-Liste-der-zusaetzlich-installierten-Perl-Module.sdoc>
+L<Liste der zusätzlich installierten Perl-Module|https://github.com/s31tz/Blog/blob/master/article/014-Liste-der-zusaetzlich-installierten-Perl-Module.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/16-x.html>)
 
 =item *
 
-L<Iconsammlungen|https://github.com/s31tz/Blog/blob/master/article/013-Iconsammlungen.sdoc>
+L<Iconsammlungen|https://github.com/s31tz/Blog/blob/master/article/013-Iconsammlungen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/14-x.html>)
 
 =item *
 
-L<Unicode: ISO-8859-1 nach UTF-8 konvertieren|https://github.com/s31tz/Blog/blob/master/article/012-Unicode-ISO-8859-1-nach-UTF-8-konvertieren.sdoc>
+L<Unicode: ISO-8859-1 nach UTF-8 konvertieren|https://github.com/s31tz/Blog/blob/master/article/012-Unicode-ISO-8859-1-nach-UTF-8-konvertieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/12-x.html>)
 
 =item *
 
-L<Speicherbedarf von Perl-Variablen|https://github.com/s31tz/Blog/blob/master/article/011-Speicherbedarf-von-Perl-Variablen.sdoc>
+L<Speicherbedarf von Perl-Variablen|https://github.com/s31tz/Blog/blob/master/article/011-Speicherbedarf-von-Perl-Variablen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/11-x.html>)
 
 =item *
 
-L<CSS: Text-Eingabefelder gestalten|https://github.com/s31tz/Blog/blob/master/article/010-CSS-Text-Eingabefelder-gestalten.sdoc>
+L<CSS: Text-Eingabefelder gestalten|https://github.com/s31tz/Blog/blob/master/article/010-CSS-Text-Eingabefelder-gestalten.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/10-x.html>)
 
 =item *
 
-L<CSS: Table Cellspacing unterdrücken|https://github.com/s31tz/Blog/blob/master/article/009-CSS-Table-Cellspacing-unterdruecken.sdoc>
+L<CSS: Table Cellspacing unterdrücken|https://github.com/s31tz/Blog/blob/master/article/009-CSS-Table-Cellspacing-unterdruecken.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/8-x.html>)
 
 =item *
 
-L<CSS: Dreispaltiges Seitenlayout|https://github.com/s31tz/Blog/blob/master/article/008-CSS-Dreispaltiges-Seitenlayout.sdoc>
+L<CSS: Dreispaltiges Seitenlayout|https://github.com/s31tz/Blog/blob/master/article/008-CSS-Dreispaltiges-Seitenlayout.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/7-x.html>)
 
 =item *
 
-L<Validierung von HTML- und CSS-Code|https://github.com/s31tz/Blog/blob/master/article/007-Validierung-von-HTML-und-CSS-Code.sdoc>
+L<Validierung von HTML- und CSS-Code|https://github.com/s31tz/Blog/blob/master/article/007-Validierung-von-HTML-und-CSS-Code.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/9-x.html>)
 
 =item *
 
-L<Änderungen an Serendipity|https://github.com/s31tz/Blog/blob/master/article/006-Aenderungen-an-Serendipity.sdoc>
+L<Änderungen an Serendipity|https://github.com/s31tz/Blog/blob/master/article/006-Aenderungen-an-Serendipity.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/15-x.html>)
 
 =item *
 
-L<Style der Serendipity Admin-Oberfläche ändern|https://github.com/s31tz/Blog/blob/master/article/005-Style-der-Serendipity-Admin-Oberflaeche-aendern.sdoc>
+L<Style der Serendipity Admin-Oberfläche ändern|https://github.com/s31tz/Blog/blob/master/article/005-Style-der-Serendipity-Admin-Oberflaeche-aendern.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/4-x.html>)
 
 =item *
 
-L<Perl-Interpreter über Shebang-Zeile suchen|https://github.com/s31tz/Blog/blob/master/article/004-Perl-Interpreter-ueber-Shebang-Zeile-suchen.sdoc>
+L<Perl-Interpreter über Shebang-Zeile suchen|https://github.com/s31tz/Blog/blob/master/article/004-Perl-Interpreter-ueber-Shebang-Zeile-suchen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/1-x.html>)
 
 =item *
 
-L<Installation von Serendipity|https://github.com/s31tz/Blog/blob/master/article/003-Installation-von-Serendipity.sdoc>
+L<Installation von Serendipity|https://github.com/s31tz/Blog/blob/master/article/003-Installation-von-Serendipity.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/2-x.html>)
 
 =item *
 
-L<Haftungsausschluss|https://github.com/s31tz/Blog/blob/master/article/002-Haftungsausschluss.sdoc>
+L<Haftungsausschluss|https://github.com/s31tz/Blog/blob/master/article/002-Haftungsausschluss.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/80-x.html>)
 
 =item *
 
-L<Eröffnung des Blog|https://github.com/s31tz/Blog/blob/master/article/001-Eroeffnung-des-Blog.sdoc>
+L<Eröffnung des Blog|https://github.com/s31tz/Blog/blob/master/article/001-Eroeffnung-des-Blog.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/3-x.html>)
 
 =back
 

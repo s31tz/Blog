@@ -97,7 +97,7 @@ veröffentlicht habe.
 __EOT__
 
 my $fmt1 = 'https://github.com/s31tz/Blog/blob/master/article/%s';
-# my $fmt2 = 'http://fseitz.de/blog/index.php?/archives/%d-x.html';
+my $fmt2 = 'http://fseitz.de/blog/index.php?/archives/%d-x.html';
 
 for my $file (reverse Blog::Base::Path->glob("*.sdoc")) {
     my $text = Encode::decode('utf-8',Blog::Base::Path->read($file));
@@ -116,9 +116,9 @@ for my $file (reverse Blog::Base::Path->glob("*.sdoc")) {
     # Serendipity-Id des Artikels
     my ($id) = $text =~ /^# (?:id=|Id: )(\d+)/m;
 
-    #$code .= sprintf qq|* U{"$fmt1",text="%s"} (U{"$fmt2",text="Artikel"})\n\n|,
-    #    $file,$title,$id;
-    $code .= sprintf qq|* U{"$fmt1",text="%s"}\n\n|,$file,$title;
+    $code .= sprintf qq|* U{"$fmt1",text="%s"} (U{"$fmt2",text="Article"})\n\n|,
+        $file,$title,$id;
+    # $code .= sprintf qq|* U{"$fmt1",text="%s"}\n\n|,$file,$title;
 }
 
 my $year = POSIX::strftime('%Y',localtime);

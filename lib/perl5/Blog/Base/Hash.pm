@@ -1007,12 +1007,12 @@ sub bucketsUsed {
 
 =head2 Debugging
 
-=head3 debug() - Schalte Debug-Modus ein/aus
+=head3 debugMode() - Schalte Debug-Modus ein/aus
 
 =head4 Synopsis
 
-    $bool = $this->debug;
-    $bool = $this->debug($bool);
+    $bool = $this->debugMode;
+    $bool = $this->debugMode($bool);
 
 =head4 Description
 
@@ -1025,7 +1025,7 @@ Zugriffs-Overhead zu verringern. Siehe Abschnitt Benchmark.
 
 # -----------------------------------------------------------------------------
 
-sub debug {
+sub debugMode {
     my $self = shift;
     # @_: $bool
 
@@ -1111,7 +1111,7 @@ CPU-Sekunde ausgeführt werden. Bei nicht-zugriffsintensiven
 Anwendungen ist das vermutlich schnell genug. Bei eingeschaltetem
 Debug-Modus halbiert sich diese Anzahl wegen des eval{} in etwa,
 daher ist der Debug-Modus per Default ausgeschaltet. Siehe Methode
-$h->debug(). Die Anzahl der Aufrufe von $h->get() und $h->set()
+$h->[ANCHOR NOT FOUND](). Die Anzahl der Aufrufe von $h->get() und $h->set()
 wird intern gezählt und kann per $class->getCount() und
 $class->setCount() abgefragt werden.
 
