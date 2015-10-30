@@ -44,7 +44,7 @@ Diese Lösung ist relativ hässlich, da der Ausdruck
 
 gleich drei Mal auftaucht.
 
-Zum Glück lässt sich die Sache auch eleganter lösen:
+Perl wäre nicht Perl, wenn sich die Sache nicht auch eleganter lösen ließe:
 
   %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
     sub theAttribute {
