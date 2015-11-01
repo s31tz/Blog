@@ -17,6 +17,10 @@ heraus lässt sich dies mit folgender Zeile bestimmen:
 
   say join "\n",sort values %INC;
 
+Oder mit C{print}:
+
+  print join("\n",sort values %INC),"\n";
+
 Die Anweisung gibt die Liste der Pfade aller geladenen Module sortiert
 aus.
 

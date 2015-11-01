@@ -211,35 +211,35 @@ Alternative Formulierung:
 
 sub get {
     my $self = shift;
+    # @_: @keys
 
-    my @arr;
-    if ($Debug && Hash::Util::hash_locked(%$self)) {
-        # Restricted Hash -> Exception-Handling
-
+    $GetCount++;
+    if ($Debug) {
+        my @arr;
         while (@_) {
             my $key = shift;
             my $val = eval {$self->{$key}};
             if ($@) {
                 $self->throw(
-                    q{HASH-00001: Unzulässiger Lesezugriff},
+                    q{HASH-00003: Unzulässiger Lesezugriff},
                     Key=>$key,
                     Value=>$val,
                 );
             }
             push @arr,$val;
         }
+        return wantarray? @arr: $arr[0];
     }
-    else {
-        # Hash mit freiem Zugriff
-
+    elsif (wantarray) {
+        my @arr;
         while (@_) {
             my $key = shift;
             push @arr,$self->{$key};
         }
+        return @arr;
     }
-    $GetCount++;
 
-    return wantarray? @arr: $arr[0];
+    return $self->{$_[0]};
 }
 
 # -----------------------------------------------------------------------------
@@ -281,8 +281,7 @@ Dasselbe ohne getRef():
 # -----------------------------------------------------------------------------
 
 sub getRef {
-    my ($self,$key) = @_;
-    return \$self->{$key};
+    return \$_[0]->{$_[1]};
 }
 
 # -----------------------------------------------------------------------------
@@ -305,14 +304,18 @@ keine Exception geworfen, sondern C<undef> geliefert wird.
 
 sub try {
     my $self = shift;
+    # @_: @keys
 
-    my @arr;
-    while (@_) {
-        my $key = shift;
-        push @arr,CORE::exists $self->{$key}? $self->{$key}: undef;
+    if (wantarray) {
+        my @arr;
+        while (@_) {
+            my $key = shift;
+            push @arr,CORE::exists $self->{$key}? $self->{$key}: undef;
+        }
+        return @arr;
     }
 
-    return wantarray? @arr: $arr[0];
+    return CORE::exists $self->{$_[0]}? $self->{$_[0]}: undef
 }
 
 # -----------------------------------------------------------------------------
@@ -349,7 +352,7 @@ sub set {
             eval {$self->{$key} = $val};
             if ($@) {
                 $self->throw(
-                    q{HASH-00001: Unzulässiger Schreibzugriff},
+                    q{HASH-00004: Unzulässiger Schreibzugriff},
                     Key=>$key,
                     Value=>$val,
                 );
@@ -756,6 +759,32 @@ sub exists {
 
 # -----------------------------------------------------------------------------
 
+=head3 defined() - Prüfe Wert auf Existenz
+
+=head4 Synopsis
+
+    $bool = $h->defined($key);
+
+=head4 Description
+
+Prüfe, ob der angegebene Schlüssel im Hash einen Wert hat. Wenn ja,
+liefere I<wahr>, andernfalls I<falsch>.
+
+Alternative Formulierung:
+
+    $bool = defined $h->{$key};
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub defined {
+    my ($self,$key) = @_;
+    return CORE::defined $self->{$key}? 1: 0;
+}
+
+# -----------------------------------------------------------------------------
+
 =head3 isEmpty() - Prüfe auf leeren Hash
 
 =head4 Synopsis
@@ -865,6 +894,35 @@ sub unlockKeys {
 # -----------------------------------------------------------------------------
 
 =head2 Sonstiges
+
+=head3 arraySize() - Größe des referenzierten Arrays
+
+=head4 Synopsis
+
+    $n = $h->arraySize($key);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub arraySize {
+    my ($self,$key) = @_;
+
+    if (!defined $self->{$key}) {
+        return 0;
+    }
+    elsif (Scalar::Util::reftype($self->{$key}) eq 'ARRAY') {
+        return @{$self->{$key}};
+    }
+    
+    $self->throw(
+        q{HASH-00005: Keine Array-Referenz},
+        Key=>$key,
+        Class=>ref($self),
+    );
+}
+
+# -----------------------------------------------------------------------------
 
 =head3 increment() - Inkrementiere (Integer-)Wert
 
@@ -1108,10 +1166,10 @@ verzichtet und per $h->{$key} zugegriffen (E), ist der Zugriff nur
 11% langsamer. Es ist also ratsam, intern per $h->{$key}
 zuzugreifen. Per $h->get() können immerhin 1.400.000 Lookups pro
 CPU-Sekunde ausgeführt werden. Bei nicht-zugriffsintensiven
-Anwendungen ist das vermutlich schnell genug. Bei eingeschaltetem
+Anwendungen ist das sicherlich schnell genug. Bei eingeschaltetem
 Debug-Modus halbiert sich diese Anzahl wegen des eval{} in etwa,
 daher ist der Debug-Modus per Default ausgeschaltet. Siehe Methode
-$h->[ANCHOR NOT FOUND](). Die Anzahl der Aufrufe von $h->get() und $h->set()
+$h->debugMode(). Die Anzahl der Aufrufe von $h->get() und $h->set()
 wird intern gezählt und kann per $class->getCount() und
 $class->setCount() abgefragt werden.
 

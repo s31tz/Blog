@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-10-31 00:11:04
+    Copyright (C) 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-11-01 15:48:12
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -551,6 +551,12 @@
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">say join "\n",sort values %INC;</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Oder mit <tt class="sdoc-seg-c">print</tt>:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">print join("\n",sort values %INC),"\n";</pre>
   </div>
   <p class="sdoc-para-p">
     Die Anweisung gibt die Liste der Pfade aller geladenen Module sortiert
