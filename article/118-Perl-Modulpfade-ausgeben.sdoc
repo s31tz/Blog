@@ -17,7 +17,7 @@ heraus lässt sich dies mit folgender Zeile bestimmen:
 
   say join "\n",sort values %INC;
 
-Oder mit C{print}:
+Dasselbe mit C{print}:
 
   print join("\n",sort values %INC),"\n";
 
