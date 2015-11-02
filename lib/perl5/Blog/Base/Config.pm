@@ -144,7 +144,7 @@ sub new {
         %cfg = Blog::Base::Perl->perlDoFile($cfgFile);
     }
 
-    my $self = $class->bless(\%cfg);
+    my $self = bless \%cfg,$class;
     # $self->lockKeys;
 
     return $self;

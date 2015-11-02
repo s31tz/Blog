@@ -253,7 +253,8 @@ sub new {
         Warn=>undef,
     );
 
-    return $class->bless($hash);
+    # return $class->bless($hash);
+    return bless $hash,$class;
 }
 
 # -----------------------------------------------------------------------------

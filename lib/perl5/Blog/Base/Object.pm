@@ -55,14 +55,13 @@ Der Aufruf ist äquivalent zu:
 sub bless {
     my ($class,$ref) = @_;
 
-    if (Scalar::Util::reftype($ref) eq 'HASH' &&
-            Hash::Util::hash_locked(%$ref)) { # Performance
+    # Portabler Weg, der auch vor hash_locked() funktioniert
+
+    eval {CORE::bless $ref,$class};
+    if ($@) {
         Hash::Util::unlock_keys(%$ref);
-        $ref = CORE::bless $ref,$class;
-        Hash::Util::lock_keys(%$ref)
-    }
-    else {
-        $ref = CORE::bless $ref,$class;
+        CORE::bless $ref,$class;
+        Hash::Util::lock_keys(%$ref);
     }
 
     return $ref;

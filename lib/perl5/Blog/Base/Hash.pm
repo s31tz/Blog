@@ -662,20 +662,9 @@ sub delete {
     my $self = shift;
     # @_: @keys
 
-    # my $isLocked = Hash::Util::hash_locked(%$self);
-    # if ($isLocked) {
-    #     Hash::Util::unlock_keys(%$self);
-    # }
-
-    # CORE::delete @{$self}->{@_}; # Warum geht dies nicht?
-
     for (@_) {
         CORE::delete $self->{$_};
     }
-
-    # if ($isLocked) {
-    #     Hash::Util::lock_keys(%$self);
-    # }
 
     return;
 }
@@ -706,18 +695,7 @@ wird durch das Leeren nicht verändert.
 
 sub clear {
     my $self = shift;
-
-    # my $isLocked = Hash::Util::hash_locked(%$self);
-    # if ($isLocked) {
-    #     Hash::Util::unlock_keys(%$self);
-    # }
-
     %$self = ();
-
-    # if ($isLocked) {
-    #     Hash::Util::lock_keys(%$self);
-    # }
-
     return;
 }
 
@@ -742,19 +720,7 @@ liefere I<wahr>, andernfalls I<falsch>.
 
 sub exists {
     my ($self,$key) = @_;
-
-    # my $isLocked = Hash::Util::hash_locked(%$self);
-    # if ($isLocked) {
-    #     Hash::Util::unlock_keys(%$self);
-    # }
-
-    my $r = CORE::exists $self->{$key};
-
-    # if ($isLocked) {
-    #     Hash::Util::lock_keys(%$self);
-    # }
-
-    return $r? 1: 0;
+    return CORE::exists $self->{$key}? 1: 0;
 }
 
 # -----------------------------------------------------------------------------
