@@ -184,11 +184,16 @@ Die Basisklassen werden per "use base" geladen.
 sub createClass {
     my ($class,$newClass,@baseClasses) = @_;
 
-    eval "package $newClass; use base qw/@baseClasses/";
+    my $code = "package $newClass";
+    if (@baseClasses) {
+        $code .= "; use base qw/@baseClasses/";
+    }
+
+    eval $code;
     if ($@) {
         $class->throw(
-            q{PERL-00003: Basisklassen laden fehlgeschlagen},
-            BaseClasses=>"@baseClasses",
+            q{PERL-00003: Klasse erzeugen fehlgeschlagen},
+            Code=>$code,
             Error=>$@,
         );
     }
