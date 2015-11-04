@@ -164,6 +164,40 @@ sub print {
 
 =head2 Klassen/Packages
 
+=head3 createClass() - Erzeuge Klasse
+
+=head4 Synopsis
+
+    $class->createClass($newClass,@baseClasses);
+
+=head4 Description
+
+Erzeuge Klasse $newClass und definiere die Klassen @baseClasses
+als deren Basisklassen. Die Methode liefert keinen Wert zurück.
+
+Die Basisklassen werden per "use base" geladen.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub createClass {
+    my ($class,$newClass,@baseClasses) = @_;
+
+    eval "package $newClass; use base qw/@baseClasses/";
+    if ($@) {
+        $class->throw(
+            q{PERL-00003: Basisklassen laden fehlgeschlagen},
+            BaseClasses=>"@baseClasses",
+            Error=>$@,
+        );
+    }
+
+    return;
+}
+
+# -----------------------------------------------------------------------------
+
 =head3 classExists() - Prüfe Existenz von Klasse/Package
 
 =head4 Synopsis
