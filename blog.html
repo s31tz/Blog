@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-11-05 17:56:52
+    Copyright (C) 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-11-05 17:57:23
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -502,9 +502,12 @@
     Ist die Objektstruktur komplexer als ein Hash, lässt sich die
     Semantik von
   </p>
-  <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre">$self-&gt;{$key} //= do { ... };</pre>
-  </div>
+  <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">1</td>
+    <td class="sdoc-code-td-line"><span class="pt-i">$self</span>-&gt;{<span class="pt-i">$key</span>} //= <span class="pt-k">do</span> <span class="pt-s">{</span> ... <span class="pt-s">}</span><span class="pt-sc">;</span></td>
+  </tr>
+  </table>
   <p class="sdoc-para-p">
     auch als Objektmethode mit einer anonymen Subroutine als Parameter
     realisieren:
