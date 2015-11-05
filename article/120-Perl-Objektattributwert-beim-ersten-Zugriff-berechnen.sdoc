@@ -95,7 +95,7 @@ Angewendet auf obiges Beispiel:
     sub theAttribute {
         my $self = shift;
 
-        return $self->compute(theAttribute=>sub {
+        return $self->compute('theAttribute',sub {
             ...
             $val;
         });
