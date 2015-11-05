@@ -68,7 +68,7 @@ Semantik von
 
   $self->{$key} //= do { ... };
 
-auch als Objektmethode C{memoize()} mittels einer anonymen Subroutine
+auch als Objektmethode mit einer anonymen Subroutine als Parameter
 realisieren:
 
   %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
@@ -89,7 +89,7 @@ Hierbei sind C{get()} und C{set()} die Methoden zum Abfragen und
 Setzen des Attributwerts. Natürlich kann der Zugriff auf das Attribut
 - in Abhängigkeit von der Klasse - auch anders realisert sein.
 
-Angewendet auf obiges Beispiel:
+Übertragen auf obiges Beispiel:
 
   %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
     sub theAttribute {
