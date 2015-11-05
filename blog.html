@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-11-05 13:17:50
+    Copyright (C) 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-11-05 13:25:34
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -506,7 +506,8 @@
     <pre class="sdoc-code-pre">$self-&gt;{$key} //= do { ... };</pre>
   </div>
   <p class="sdoc-para-p">
-    auch als Objektmethode implementieren:
+    auch als Objektmethode <tt class="sdoc-seg-c">compute()</tt> mit einer anonymen Subroutine
+    realisieren:
   </p>
   <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
   <tr class="sdoc-code-tr-odd">
@@ -556,8 +557,8 @@
   </table>
   <p class="sdoc-para-p">
     Hierbei sind <tt class="sdoc-seg-c">get()</tt> und <tt class="sdoc-seg-c">set()</tt> die Methoden zum Abfragen und
-    setzen des Attributwerts. Natürlich kann der Zugriff - in Abhängigkeit
-    von der Klasse - auch anders realisert sein.
+    Setzen des Attributwerts. Natürlich kann der Zugriff auf das Attribut
+    - in Abhängigkeit von der Klasse - auch anders realisert sein.
   </p>
   <p class="sdoc-para-p">
     Angewendet auf obiges Beispiel:
@@ -577,7 +578,7 @@
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">4</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">return</span> <span class="pt-i">$self</span><span class="pt-i">-&gt;compute</span><span class="pt-s">(</span><span class="pt-q">&#39;theAttribute&#39;</span><span class="pt-cm">,</span><span class="pt-k">sub</span> <span class="pt-s">{</span></td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">return</span> <span class="pt-i">$self</span><span class="pt-i">-&gt;compute</span><span class="pt-s">(</span><span class="pt-i">theAttribute</span><span class="pt-cm">=&gt;</span><span class="pt-k">sub</span> <span class="pt-s">{</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">5</td>

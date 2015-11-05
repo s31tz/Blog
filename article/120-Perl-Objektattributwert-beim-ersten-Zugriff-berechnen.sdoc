@@ -68,7 +68,8 @@ Semantik von
 
   $self->{$key} //= do { ... };
 
-auch als Objektmethode implementieren:
+auch als Objektmethode C{compute()} mit einer anonymen Subroutine
+realisieren:
 
   %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
     sub compute {
@@ -85,8 +86,8 @@ auch als Objektmethode implementieren:
   .
 
 Hierbei sind C{get()} und C{set()} die Methoden zum Abfragen und
-setzen des Attributwerts. Natürlich kann der Zugriff - in Abhängigkeit
-von der Klasse - auch anders realisert sein.
+Setzen des Attributwerts. Natürlich kann der Zugriff auf das Attribut
+- in Abhängigkeit von der Klasse - auch anders realisert sein.
 
 Angewendet auf obiges Beispiel:
 
@@ -94,7 +95,7 @@ Angewendet auf obiges Beispiel:
     sub theAttribute {
         my $self = shift;
 
-        return $self->compute('theAttribute',sub {
+        return $self->compute(theAttribute=>sub {
             ...
             $val;
         });
