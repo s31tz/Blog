@@ -931,7 +931,7 @@ sub arraySize {
 
 =head4 Synopsis
 
-    $val = $h->push($key,$val);
+    $h->push($key,$val);
 
 =head4 Arguments
 
@@ -950,7 +950,7 @@ Wert, der zum Array am Ende hinzugefügt wird.
 =head4 Description
 
 Füge Wert $val zur Arraykomponente $key hinzu. Die Methode liefert
-den hinzugefügten Wert zurück.
+keinen Wert zurück.
 
 =cut
 
@@ -958,7 +958,8 @@ den hinzugefügten Wert zurück.
 
 sub push {
     my ($self,$key,$val) = @_;
-    push @{$self->{$key}},$val;
+    CORE::push @{$self->{$key}},$val;
+    return;
 }
 
 # -----------------------------------------------------------------------------
