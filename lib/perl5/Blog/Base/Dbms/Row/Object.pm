@@ -315,9 +315,9 @@ sub addAttribute {
 
     while (@_) {
         my $key = shift;
+        # erzeuge DS-Attribut, wenn es nicht existiert
         if (!exists $self->[0]->{$key}) {
-            # erzeuge DS-Attribut, wenn es nicht existiert
-            $self->[0]->{$key} = '';
+             $self->[0]->{$key} = '';
         }
     }
 
@@ -352,8 +352,8 @@ sub add {
 
     while (@_) {
         my $key = shift;
+        # erzeuge DS-Attribut, wenn es nicht existiert
         if (!exists $self->[0]->{$key}) {
-            # erzeuge DS-Attribut, wenn es nicht existiert
             $self->[0]->{$key} = '';
         }
         $self->$key(shift);
@@ -365,6 +365,35 @@ sub add {
 {
     no warnings 'once';
     *setValue = \&add;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 memoize() - Füge Datensatz-Attribute mit berechnetem Wert hinzu
+
+=head4 Synopsis
+
+    $val = $row->memoize($key,$sub);
+
+=head4 Description
+
+Existiert das Datensatz-Attribut $key, liefere seinen Wert.
+Andernfalls berechne dessen Wert mittels der anonymen Subroutine $sub
+und speichere ihn auf dem Attribut.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub memoize {
+    my ($self,$key,$sub) = @_;
+
+    if (!$self->exists($key)) {
+        my $val = $self->$sub($key);
+        $self->add($key=>$val);
+    }
+
+    return $self->$key;
 }
 
 # -----------------------------------------------------------------------------
@@ -382,10 +411,12 @@ sub add {
 
 =item *
 
-Eine einfache Attributmethode. Setzt voraus, dass das Attribut vorhanden
-ist. Falls dies nicht der Fall ist, kann es mit $row->setValue(xxx=>$val)
-eingeführt werden. Diese Form der Attributmethode wird von selbst
-per AUTOLOAD erzeugt, braucht also nicht implementiert werden
+Implementierung einer einfachen Attributmethode
+
+Dies setzt voraus, dass das Attribut vorhanden ist. Falls dies
+nicht der Fall ist, kann es mit $row->add(xxx=>$val) eingeführt
+werden. Diese Form der Attributmethode wird von selbst per
+AUTOLOAD erzeugt, braucht also nicht implementiert werden
 
     sub xxx {
         return shift->getSet(xxx=>@_);

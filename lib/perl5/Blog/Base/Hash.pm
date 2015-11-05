@@ -411,6 +411,36 @@ sub add {
 
 # -----------------------------------------------------------------------------
 
+=head3 memoize() - Cache Wert auf berechnetem Attribut
+
+=head4 Synopsis
+
+    $val = $h->memoize($key,$sub);
+
+=head4 Description
+
+Besitzt das Attribut $key einen Wert, liefere ihn. Andernfalls
+berechne den Wert mittels der Subroutine $sub und cache ihn
+auf dem Attribut.
+
+Die Methode ist nützlich, um in Objektmethoden eingebettet zu werden,
+die einen berechneten Wert liefern, der nicht immer wieder neu
+gerechnet werden soll.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub memoize {
+    my ($self,$key,$sub) = @_;
+
+    return $self->{$key} //= do {
+        $self->$sub($key);
+    };
+}
+
+# -----------------------------------------------------------------------------
+
 =head3 apply() - Wende Subroutine auf Schlüssel/Wert-Paar an
 
 =head4 Synopsis
