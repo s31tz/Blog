@@ -427,16 +427,23 @@ Die Methode ist nützlich, um in Objektmethoden eingebettet zu werden,
 die einen berechneten Wert liefern, der nicht immer wieder neu
 gerechnet werden soll.
 
+Alternative Formulierungen:
+
+    $val = $self->{$key} //= $self->$sub($key);
+
+oder
+
+    $val = $h->{$key} //= do {
+        # Implementierung der Subroutine
+    };
+
 =cut
 
 # -----------------------------------------------------------------------------
 
 sub memoize {
     my ($self,$key,$sub) = @_;
-
-    return $self->{$key} //= do {
-        $self->$sub($key);
-    };
+    return $self->{$key} //= $self->$sub($key);
 }
 
 # -----------------------------------------------------------------------------
@@ -916,6 +923,42 @@ sub arraySize {
         Key=>$key,
         Class=>ref($self),
     );
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 push() - Füge Element zu Arraykomponente hinzu
+
+=head4 Synopsis
+
+    $val = $h->push($key,$val);
+
+=head4 Arguments
+
+=over 4
+
+=item $key
+
+Arraykomponente.
+
+=item $val
+
+Wert, der zum Array am Ende hinzugefügt wird.
+
+=back
+
+=head4 Description
+
+Füge Wert $val zur Arraykomponente $key hinzu. Die Methode liefert
+den hinzugefügten Wert zurück.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub push {
+    my ($self,$key,$val) = @_;
+    push @{$self->{$key}},$val;
 }
 
 # -----------------------------------------------------------------------------
