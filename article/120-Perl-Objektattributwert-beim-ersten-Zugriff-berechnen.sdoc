@@ -66,7 +66,7 @@ Attribut zugewiesen (C{=}) und dann von der Methode geliefert
 Ist die Objektstruktur komplexer als ein Hash, lässt sich die
 Semantik von
 
-  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  %Code: filter="./blog-highlight perl %FORMAT%"
     $self->{$key} //= do { ... };
   .
 
