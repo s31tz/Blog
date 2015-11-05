@@ -253,7 +253,7 @@ Füge Codereferenz $ref unter dem Namen $name zur Klasse $this hinzu.
 
 =head4 Example
 
-    MyClass->addMethod('myMethod',sub {
+    MyClass->addMethod(myMethod=>sub {
         my $self = shift;
         return 4711;
     });

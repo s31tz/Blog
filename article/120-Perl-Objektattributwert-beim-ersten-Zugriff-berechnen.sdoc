@@ -44,7 +44,7 @@ Diese Lösung ist relativ hässlich, da der Ausdruck
 
 gleich drei Mal auftaucht.
 
-Perl wäre nicht Perl, wenn sich die Sache nicht auch eleganter lösen ließe:
+Zum Glück lässt sich die Sache auch eleganter lösen:
 
   %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
     sub theAttribute {
@@ -62,6 +62,44 @@ unmittelbar geliefert. Ist er nicht definiert, wird der C{do}-Block
 ausgeführt. Dessen letzter berechneter Wert wird erst an das
 Attribut zugewiesen (C{=}) und dann von der Methode geliefert
 (C{return}). Den Defined-Or-Operator C{//} gibt es seit Perl 5.10.
+
+Ist die Objektstruktur komplexer als ein Hash, lässt sich die
+Semantik von
+
+  $self->{$key} //= do { ... };
+
+auch als Objektmethode implementieren:
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    sub compute {
+        my ($self,$key,$sub) = @_;
+
+        my $val = $self->get($key);
+        if (!defined $val) {
+            $val = $self->$sub($key);
+            $self->set($key=>$val);
+        }
+
+        return $val;
+    }
+  .
+
+Hierbei sind C{get()} und C{set()} die Methoden zum Abfragen und
+setzen des Attributwerts. Natürlich kann der Zugriff - in Abhängigkeit
+von der Klasse - auch anders realisert sein.
+
+Angewendet auf obiges Beispiel:
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    sub theAttribute {
+        my $self = shift;
+
+        return $self->compute('theAttribute',sub {
+            ...
+            $val;
+        });
+    }
+  .
 
 = Links
 
