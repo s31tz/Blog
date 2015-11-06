@@ -664,9 +664,10 @@ sub copy {
     if (@_) {
         $h->set(@_);
     }
-    if (Hash::Util::hash_locked(%$self)) {
-        Hash::Util::lock_keys(%$h);
-    }
+    # Läuft bei HZG nicht, da Perl 5.10.0 - hash_locked() existiert da nicht
+    # if (Hash::Util::hash_locked(%$self)) {
+    #     Hash::Util::lock_keys(%$h);
+    # }
 
     return $h;
 }

@@ -55,7 +55,7 @@ Der Aufruf ist äquivalent zu:
 sub bless {
     my ($class,$ref) = @_;
 
-    # Portabler Weg, der auch vor hash_locked() funktioniert
+    # Portabler Weg, der auch ohne hash_locked() funktioniert
 
     eval {CORE::bless $ref,$class};
     if ($@) {

@@ -476,7 +476,7 @@ sub selectChilds {
     # Eltern-Datensätze um Kind-Typ erweitern
 
     for my $row ($self->rows) {
-        $row->addChildRowType($type,$rowClass,$titleA);
+        $row->addChildType($type,$rowClass,$titleA);
     }
 
     # Indiziere Eltern-Datensätze nach Primärschlüssel
@@ -487,7 +487,7 @@ sub selectChilds {
         my $parentRow = $idx{$key} || die;
 
         # Kind-Datensatz zum Elterndatensatz hinzufügen
-        $parentRow->addChildRow($type,$childRow);
+        $parentRow->addChild($type,$childRow);
     }
 
     return wantarray? $tab->rows: $tab;
@@ -576,7 +576,7 @@ sub selectParents {
         if (my $parentId = $row->$foreignKeyColumn) {
            $parentRow = $idx{$parentId} || $self->throw;
         }
-        $row->addParentRow($foreignKeyColumn=>$parentRow);
+        $row->addParent($foreignKeyColumn=>$parentRow);
     }
 
     return wantarray? $tab->rows: $tab;

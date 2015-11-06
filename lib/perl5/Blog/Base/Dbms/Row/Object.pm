@@ -836,21 +836,43 @@ sub modificationInfo {
 
 =head2 Eltern-Datensätze
 
-=head3 addParentRow() - Füge Eltern-Datensatz hinzu
+=head3 parentExists() - Prüfe, ob Eltern-Datensatz existiert
 
 =head4 Synopsis
 
-    $row->addParentRow($type,$parentRow);
+    $row = $row->parentExists($type);
 
 =head4 Description
 
-Füge Datensatz $parentRow als Eltern-Dtensatz vom Typ $type hinzu.
+Prüfe, ob ein Eltern-Datensätze vom Typ $type existiert.
+Falls ja, liefere I<wahr>, andernfalls I<falsch>.
 
 =cut
 
 # -----------------------------------------------------------------------------
 
-sub addParentRow {
+sub parentExists {
+    my ($self,$type) = @_;
+    return CORE::exists $self->[5]->{$type}? 1: 0;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 addParent() - Füge Eltern-Datensatz hinzu
+
+=head4 Synopsis
+
+    $row->addParent($type,$parentRow);
+
+=head4 Description
+
+Füge Datensatz $parentRow als Eltern-Datensatz vom Typ $type hinzu.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub addParent {
     my ($self,$type,$parentRow) = @_;
     $self->[5]->{$type} = $parentRow;
     return;
@@ -866,7 +888,8 @@ sub addParentRow {
 
 =head4 Description
 
-Liefere den Eltern-Datensatz vom Typ $type.
+Liefere den Eltern-Datensatz vom Typ $type. Existiert keine
+Elterndatensatz vom Typ $type, liefere einen Nullwert (= Leerstring).
 
 =cut
 
@@ -874,18 +897,40 @@ Liefere den Eltern-Datensatz vom Typ $type.
 
 sub parent {
     my ($self,$type) = @_;
-    return $self->[5]->{$type} || $self->throw;
+    return $self->[5]->{$type} || '';
 }
 
 # -----------------------------------------------------------------------------
 
 =head2 Kind-Datensätze
 
-=head3 addChildRowType() - Füge Kind-Datensatz-Typ hinzu
+=head3 childTypeExists() - Prüfe, ob Kind-Datensatz-Typ existiert
 
 =head4 Synopsis
 
-    $tab = $row->addChildRowType($type,$rowClass,\@titles);
+    $bool = $row->childTypeExists($type);
+
+=head4 Description
+
+Prüfe, ob Kind-Datensätze des Typs $type zum Datensatz hinzugefügt
+werden können. Falls ja, liefere I<wahr>, andernfalls I<falsch>.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub childTypeExists {
+    my ($self,$type) = @_;
+    return CORE::exists $self->[4]->{$type}? 1: 0;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 addChildType() - Füge Kind-Datensatz-Typ hinzu
+
+=head4 Synopsis
+
+    $tab = $row->addChildType($type,$rowClass,\@titles);
 
 =head4 Description
 
@@ -901,7 +946,7 @@ die Menge der zugeordenten Kind-Objekte vom Typ $type.
 
 # -----------------------------------------------------------------------------
 
-sub addChildRowType {
+sub addChildType {
     my ($self,$type,$rowClass,$titleA) = @_;
     return $self->[4]->{$type} =
         Blog::Base::Dbms::ResultSet->new($rowClass,$titleA);
@@ -909,11 +954,11 @@ sub addChildRowType {
 
 # -----------------------------------------------------------------------------
 
-=head3 addChildRow() - Füge Kind-Datensatz hinzu
+=head3 addChild() - Füge Kind-Datensatz hinzu
 
 =head4 Synopsis
 
-    $row->addChildRow($type,$childRow);
+    $row->addChild($type,$childRow);
 
 =head4 Description
 
@@ -923,7 +968,7 @@ Füge Datensatz $childRow als Kinddatensatz vom Typ $type hinzu.
 
 # -----------------------------------------------------------------------------
 
-sub addChildRow {
+sub addChild {
     my ($self,$type,$childRow) = @_;
     $self->[4]->{$type}->push($childRow);
     return;
