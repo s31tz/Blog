@@ -6,8 +6,8 @@
 %Document:
   title="Perl: Objektattributwert beim ersten Zugriff berechnen"
   generateAnchors=0
-  utf8=1
   minLnWidth=2
+  utf8=1
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"
