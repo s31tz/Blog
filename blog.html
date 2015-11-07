@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-11-07 17:37:22
+    Copyright (C) 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-11-07 17:49:01
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -423,7 +423,7 @@
     (Kind-Entität) referenziert, implementiert die Modell-Klasse der
     Eltern-Entität eine Methode, die alle Kind-Objekte des Eltern-Objekts
     liefert und die Kind-Klasse implementiert eine Methode, die das
-    Eltern-Objekt des Kind-Objekts liefert.
+    Eltern-Objekt zum Kind-Objekt liefert.
   </p>
   <h2 class="sdoc-sec-h2">Beispiel<a id="section_1_1"></a></h2>
   <p class="sdoc-para-p">
@@ -433,9 +433,10 @@
   </p>
   <h3 class="sdoc-sec-h3">Klasse ORMapper<a id="section_1_1_1"></a></h3>
   <p class="sdoc-para-p">
-    Die OR-Mapper-Klasse <tt class="sdoc-seg-c">ORMapper</tt> erhält eine Methode <tt class="sdoc-seg-c">personByPK()</tt>,
-    die zu einem Person-Primärschlüssel das betreffende Person-Objekt
-    liefert:
+    Die OR-Mapper-Klasse <tt class="sdoc-seg-c">ORMapper</tt> erhält neben den Methoden
+    <tt class="sdoc-seg-c">personen()</tt> und <tt class="sdoc-seg-c">emailadressen()</tt>, die die jeweilige Entitätsmenge
+    liefern, eine Methode <tt class="sdoc-seg-c">personByPK()</tt>, die zu einem
+    Person-Primärschlüssel das betreffende Person-Objekt liefert:
   </p>
   <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
   <tr class="sdoc-code-tr-odd">

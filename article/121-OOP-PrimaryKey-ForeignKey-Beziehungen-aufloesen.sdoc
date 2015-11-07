@@ -33,7 +33,7 @@ Entitätstyp (Eltern-Entität) von einem anderen Entitätstyp
 (Kind-Entität) referenziert, implementiert die Modell-Klasse der
 Eltern-Entität eine Methode, die alle Kind-Objekte des Eltern-Objekts
 liefert und die Kind-Klasse implementiert eine Methode, die das
-Eltern-Objekt des Kind-Objekts liefert.
+Eltern-Objekt zum Kind-Objekt liefert.
 
 = Beispiel
 
@@ -43,9 +43,10 @@ eine oder mehrere Email-Adressen besitzen.
 
 == Klasse ORMapper
 
-Die OR-Mapper-Klasse C{ORMapper} erhält eine Methode C{personByPK()},
-die zu einem Person-Primärschlüssel das betreffende Person-Objekt
-liefert:
+Die OR-Mapper-Klasse C{ORMapper} erhält neben den Methoden
+C{personen()} und C{emailadressen()}, die die jeweilige Entitätsmenge
+liefern, eine Methode C{personByPK()}, die zu einem
+Person-Primärschlüssel das betreffende Person-Objekt liefert:
 
   %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
     sub personByPk {
