@@ -59,7 +59,7 @@ liefert:
             return \%h;
         });
 
-        return $h->{$pk};
+        return $h->{$pk} || die "Person not found: $pk\n";
     }
   .
 
