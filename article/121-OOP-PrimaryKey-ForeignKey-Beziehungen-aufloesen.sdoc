@@ -79,7 +79,7 @@ alle Kind-Objekte der Klasse C{EmailAdresse} zur Person liefert.
                 $per->set(emailadresseA=>[]);
             }
             for my $ema ($orm->emailadessen) {
-                my $per = $orm->personByPk($tel->personFk);
+                my $per = $orm->personByPk($ema->personFk);
                 $per->push(emailadresseA=>$ema);
             }
             return $self->get('emailadresseA');
