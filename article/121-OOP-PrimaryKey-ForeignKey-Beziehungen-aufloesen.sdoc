@@ -4,7 +4,7 @@
 # Categories: OOP,Perl
 
 %Document:
-  title="OOP: Primär/Fremdschlüssel-Beziehungen beim OR-Mapping auflösen"
+  title="OOP: Beim OR-Mapping Primär/Fremdschlüssel-Beziehungen auflösen"
   generateAnchors=0
   minLnWidth=2
   utf8=1

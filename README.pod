@@ -13,7 +13,7 @@ veröffentlicht habe.
 
 =item *
 
-L<OOP: Primär/Fremdschlüssel-Beziehungen beim OR-Mapping auflösen|https://github.com/s31tz/Blog/blob/master/article/121-OOP-PrimaryKey-ForeignKey-Beziehungen-aufloesen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/133-x.html>)
+L<OOP: Beim OR-Mapping Primär/Fremdschlüssel-Beziehungen auflösen|https://github.com/s31tz/Blog/blob/master/article/121-OOP-PrimaryKey-ForeignKey-Beziehungen-aufloesen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/133-x.html>)
 
 =item *
 
