@@ -1,0 +1,106 @@
+# Date: 2015-11-07
+# Id: 133
+# Draft: no
+# Categories: OOP,Perl
+
+%Document:
+  title="OOP: Primär/Fremdschlüssel-Beziehungen beim OR-Mapping auflösen"
+  generateAnchors=0
+  minLnWidth=2
+  utf8=1
+
+%Figure: file="IMGDIR/oop-74x100.jpg" width=52 height=60
+  url="https://de.wikipedia.org/wiki/Objektorientierte_Programmierung"
+
+Sollen Entitäten aus einer externen Repräsentation - z.B. als Datensätze
+einer Relationalen Datenbank - in Objektstrukturen überführt werden,
+müssen u.a. die Primär/Fremdschlüssel-Beziehungen in Objektreferenzen
+übersetzt werden. x
+
+Wir gehen von einer OR-Mapper-Klasse aus, die die Entitäten dynamisch
+lädt, wenn diese erstmalig zugegriffen werden.
+
+Für jeden Entitätstyp implementiert die OR-Mapper-Klasse
+
+1. eine Methode, die alle Entitäten eines Typs lädt, in Objekte
+   der betreffenden Modell-Klasse überführt und intern cached,
+
+2. eine Methode, die zum Primärschlüssel das betreffende Objekt
+   der Modell-Klasse liefert.
+
+Zu jedem Entitätstyp gibt es ferner eine Modell-Klasse. Wird der
+Entitätstyp (Eltern-Entität) von einem anderen Entitätstyp
+(Kind-Entität) referenziert, implementiert die Modell-Klasse der
+Eltern-Entität eine Methode, die alle Kind-Objekte des Eltern-Objekts
+liefert und die Kind-Klasse implementiert eine Methode, die das
+Eltern-Objekt des Kind-Objekts liefert.
+
+= Beispiel
+
+Die Entitätstypen C{Person} und C{EmailAdresse} stehen in
+einer 1:n-Beziehung. Eine Person kann keine, eine oder mehrere
+Email-Adressen besitzen.
+
+== Klasse ORMapper
+
+Die OR-Mapper-Klasse C{ORMapper} erhält eine Methode C{personByPK()},
+die zu einem Person-Primärschlüssel das betreffende Person-Objekt
+liefert:
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    sub personByPk {
+        my ($self,$pk) = @_;
+
+        my $h = $self->memoize('personH',sub {
+            my %h;
+            for my $per ($self->personen) {
+                $h{$per->pk} = $per;
+            }
+            return \%h;
+        });
+
+        return $h->{$pk};
+    }
+  .
+
+== Klasse Person
+
+Die Modell-Klasse C{Person} erhält eine Methode C{emailadressen()}, die
+alle Kind-Objekte der Klasse C{EmailAdresse} zur Person liefert.
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    sub emailadressen {
+        my $self = shift;
+
+        my $arr = $self->memoize('emailadresseA',sub {
+            my $orm = $self->orMapper;
+            for my $per ($orm->personen) {
+                $per->set(emailadresseA=>[]);
+            }
+            for my $ema ($orm->emailadessen) {
+                my $per = $orm->personByPk($tel->personFk);
+                $per->push(emailadresseA=>$ema);
+            }
+            return $self->get('emailadresseA');
+        });
+
+        return wantarray? @$arr: $arr;
+    }
+  .
+
+== Klasse EmailAdresse
+
+Die Modell-Klasse C{EmailAdresse} erhält eine Methode C{person()}, die
+das Eltern-Objekt der Klasse C{Person} zur Emailadresse liefert.
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    sub person {
+        my $self = shift;
+
+        return $self->memoize('person',sub {
+            return $self->orMapper->personByPk($self->personFk);
+        });
+    }
+  .
+
+# eof
