@@ -37,9 +37,9 @@ Eltern-Objekt des Kind-Objekts liefert.
 
 = Beispiel
 
-Die Entitätstypen C{Person} und C{EmailAdresse} stehen in
-einer 1:n-Beziehung. Eine Person kann keine, eine oder mehrere
-Email-Adressen besitzen.
+Ein einfaches Beispiel. Die Entitätstypen C{Person} und
+C{EmailAdresse} stehen in einer 1:n-Beziehung. Eine Person kann keine,
+eine oder mehrere Email-Adressen besitzen.
 
 == Klasse ORMapper
 
