@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-11-07 18:38:59
+    Copyright (C) 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-11-07 19:29:27
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -536,34 +536,30 @@
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">10</td>
-    <td class="sdoc-code-td-line">            <span class="pt-k">my</span> <span class="pt-i">$per</span> = <span class="pt-i">$orm</span><span class="pt-i">-&gt;personByPk</span><span class="pt-s">(</span><span class="pt-i">$ema</span><span class="pt-i">-&gt;personFk</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
+    <td class="sdoc-code-td-line">            <span class="pt-i">$orm</span><span class="pt-i">-&gt;personByPk</span><span class="pt-s">(</span><span class="pt-i">$ema</span><span class="pt-i">-&gt;personFk</span><span class="pt-s">)</span><span class="pt-i">-&gt;push</span><span class="pt-s">(</span><span class="pt-w">emailadresseA</span><span class="pt-cm">=&gt;</span><span class="pt-i">$ema</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">11</td>
-    <td class="sdoc-code-td-line">            <span class="pt-i">$per</span><span class="pt-i">-&gt;push</span><span class="pt-s">(</span><span class="pt-w">emailadresseA</span><span class="pt-cm">=&gt;</span><span class="pt-i">$ema</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
+    <td class="sdoc-code-td-line">        <span class="pt-s">}</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">12</td>
-    <td class="sdoc-code-td-line">        <span class="pt-s">}</span></td>
+    <td class="sdoc-code-td-line">        <span class="pt-k">return</span> <span class="pt-i">$self</span><span class="pt-i">-&gt;get</span><span class="pt-s">(</span><span class="pt-q">&#39;emailadresseA&#39;</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">13</td>
-    <td class="sdoc-code-td-line">        <span class="pt-k">return</span> <span class="pt-i">$self</span><span class="pt-i">-&gt;get</span><span class="pt-s">(</span><span class="pt-q">&#39;emailadresseA&#39;</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
+    <td class="sdoc-code-td-line">    <span class="pt-s">}</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">14</td>
-    <td class="sdoc-code-td-line">    <span class="pt-s">}</span><span class="pt-s">)</span><span class="pt-sc">;</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">15</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line">    <span class="pt-k">return</span> <span class="pt-k">wantarray</span>? <span class="pt-i">@$arr</span><span class="pt-co">:</span> <span class="pt-i">$arr</span><span class="pt-sc">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">16</td>
-    <td class="sdoc-code-td-line">    <span class="pt-k">return</span> <span class="pt-k">wantarray</span>? <span class="pt-i">@$arr</span><span class="pt-co">:</span> <span class="pt-i">$arr</span><span class="pt-sc">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">17</td>
     <td class="sdoc-code-td-line"><span class="pt-s">}</span></td>
   </tr>
   </table>
