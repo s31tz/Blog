@@ -15,7 +15,7 @@
 Sollen Entitäten aus einer externen Repräsentation - z.B. als Datensätze
 einer Relationalen Datenbank - in Objektstrukturen überführt werden,
 müssen u.a. die Primär/Fremdschlüssel-Beziehungen in Objektreferenzen
-übersetzt werden. x
+übersetzt werden.
 
 Wir gehen von einer OR-Mapper-Klasse aus, die die Entitäten dynamisch
 lädt, wenn diese erstmalig zugegriffen werden.
