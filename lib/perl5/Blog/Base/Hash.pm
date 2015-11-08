@@ -448,11 +448,11 @@ sub memoize {
 
 # -----------------------------------------------------------------------------
 
-=head3 apply() - Wende Subroutine auf Schlüssel/Wert-Paar an
+=head3 compute() - Wende Subroutine auf Schlüssel/Wert-Paar an
 
 =head4 Synopsis
 
-    $val = $h->apply($key,$sub);
+    $val = $h->compute($key,$sub);
 
 =head4 Description
 
@@ -471,7 +471,7 @@ Der Rückgabewert der Subroutine wird an Schlüssel $key zugewiesen.
 
 Methode increment() mit apply() realisiert:
 
-    $val = $h->apply($key,sub {
+    $val = $h->compute($key,sub {
         my ($h,$key) = @_;
         return $h->{$key}+1;
     });
@@ -480,7 +480,7 @@ Methode increment() mit apply() realisiert:
 
 # -----------------------------------------------------------------------------
 
-sub apply {
+sub compute {
     my ($self,$key,$sub) = @_;
     return $self->{$key} = $sub->($self,$key);
 }
