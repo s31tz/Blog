@@ -18,7 +18,9 @@ müssen u.a. die Primär/Fremdschlüssel-Beziehungen in Objektreferenzen
 übersetzt werden.
 
 Wir gehen von einer OR-Mapper-Klasse aus, die die Entitäten dynamisch
-lädt, wenn diese erstmalig zugegriffen werden.
+lädt, wenn diese erstmalig zugegriffen werden. Diese On-Demand-Logik
+wollen wir auch bei der Auflösung von Primär/Fremdschlüssel-Beziehungen
+realisieren.
 
 Für jeden Entitätstyp implementiert die OR-Mapper-Klasse
 
