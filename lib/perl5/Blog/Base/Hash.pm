@@ -429,7 +429,7 @@ gerechnet werden soll.
 
 Alternative Formulierungen:
 
-    $val = $self->{$key} //= $self->$sub($key);
+    $val = $h->{$key} //= $h->$sub($key);
 
 oder
 
@@ -473,7 +473,7 @@ Methode increment() mit apply() realisiert:
 
     $val = $h->compute($key,sub {
         my ($h,$key) = @_;
-        return $h->{$key}+1;
+        return $h->{$key}+1; # nicht $h->{$key}++!
     });
 
 =cut
@@ -995,12 +995,14 @@ sub increment {
 
 =head4 Synopsis
 
-    $h->weaken(@keys);
+    $ref = $h->weaken($key);
+    $ref = $h->weaken($key=>$ref);
 
 =head4 Description
 
-Mache die Werte der Schlüssel @keys zu schwachen Referenzen.
-Die Methode liefert keinen Wert zurück.
+Mache die Referenz von Schlüssel $key zu einer schwachen Referenz
+und liefere sie zurück. Ist eine Referenz $ref als Parameter angegeben,
+setze die Referenz zuvor.
 
 =cut
 
@@ -1008,13 +1010,15 @@ Die Methode liefert keinen Wert zurück.
 
 sub weaken {
     my $self = shift;
-    # @_: @keys
+    my $key = shift;
+    # @_: $ref
 
-    for (@_) {
-        Scalar::Util::weaken($self->{$_});
+    if (@_) {
+        $self->{$key} = shift;
     }
+    Scalar::Util::weaken($self->{$key});
 
-    return;
+    return $self->{$key};
 }
 
 # -----------------------------------------------------------------------------

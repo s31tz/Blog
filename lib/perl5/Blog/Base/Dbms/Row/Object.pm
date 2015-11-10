@@ -1330,24 +1330,25 @@ sub save {
 
 # -----------------------------------------------------------------------------
 
-=head3 weaken() - Erzeuge schwache Referenz auf Attributwert
+=head3 weaken() - Erzeuge schwache Referenz
 
 =head4 Synopsis
 
-    $row->weaken($key);
+    $ref = $row->weaken($key);
+    $ref = $row->weaken($key=>$ref);
 
 =head4 Description
 
-Mache den Wert von Schlüssel $key zu einer schwachen Referenz.
-Die Methode liefert keinen Wert zurück.
+Mache die Referenz von Schlüssel $key zu einer schwachen Referenz
+und liefere sie zurück. Ist eine Referenz $ref als Parameter angegeben,
+setze die Referenz zuvor.
 
 =cut
 
 # -----------------------------------------------------------------------------
 
 sub weaken {
-    shift->[0]->weaken(shift);
-    return;
+    return shift->[0]->weaken(@_);
 }
 
 # -----------------------------------------------------------------------------
