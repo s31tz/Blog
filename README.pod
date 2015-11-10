@@ -13,10 +13,6 @@ veröffentlicht habe.
 
 =item *
 
-L<OOP: Beim OR-Mapping Primär/Fremdschlüssel-Beziehungen auflösen|https://github.com/s31tz/Blog/blob/master/article/121-OOP-PrimaryKey-ForeignKey-Beziehungen-aufloesen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/133-x.html>)
-
-=item *
-
 L<Perl: Objektattributwert beim ersten Zugriff berechnen|https://github.com/s31tz/Blog/blob/master/article/120-Perl-Objektattributwert-beim-ersten-Zugriff-berechnen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/132-x.html>)
 
 =item *
