@@ -286,6 +286,30 @@ sub getRef {
 
 # -----------------------------------------------------------------------------
 
+=head3 getArray() - Liefere Array
+
+=head4 Synopsis
+
+    @arr|$arr = $h->getArray($key);
+
+=head4 Description
+
+Liefere die Liste von Werten des Schlüssels $key. Im Skalarkontext
+liefere eine Referenz auf die Liste (der Aufruf hat dann die gleiche
+Wirkung wie der Aufruf von $h->get()). Der Wert von $key muss
+eine Array-Referenz sein.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub getArray {
+    my ($self,$key) = @_;
+    return wantarray? @{$self->{$key}}: $self->{$key};
+}
+
+# -----------------------------------------------------------------------------
+
 =head3 try() - Werte abfragen ohne Exception
 
 =head4 Synopsis
