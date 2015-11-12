@@ -154,7 +154,6 @@ sub new {
             if (@_) {
                 # Aufruf: $h = $class->new(\@keys,\@vals,$val);
                 my $val = shift;
-
                 my $i = 0;
                 for my $key (@$keyA) {
                     $h{$key} = $valA->[$i++];
