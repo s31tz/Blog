@@ -10,7 +10,7 @@ use strict;
 use warnings;
 use utf8;
 
-use DBI;
+use DBI ();
 use Blog::Base::DbmsApi::Dbi::Cursor;
 use Blog::Base::Misc;
 use Blog::Base::Hash1;

@@ -326,6 +326,43 @@ sub addAttribute {
 
 # -----------------------------------------------------------------------------
 
+=head3 removeColumn() - Entferne Datensatz-Kolumne(n)
+
+=head4 Synopsis
+
+    $row->removeColumn(@keys);
+
+=head4 Description
+
+Entferne die Kolumnen @keys aus dem Datensatz. Die Methode liefert
+keinen Wert zurück.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub removeColumn {
+    my $self = shift;
+    # @_: @keyVal
+
+    my $valueH = $self->[0];
+    my $titleA = $self->[1];
+    while (@_) {
+        my $key = shift;
+        CORE::delete $valueH->{$key};
+        for (my $i = 0; $i < @$titleA; $i++) {
+            if ($titleA->[$i] eq $key) {
+                CORE::splice @$titleA,$i,1;
+                last;
+            }
+        }
+    }
+
+    return;
+}
+
+# -----------------------------------------------------------------------------
+
 =head3 add() - Setze Datensatz-Attribute forciert
 
 =head4 Synopsis
