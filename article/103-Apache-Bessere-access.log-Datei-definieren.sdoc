@@ -13,7 +13,7 @@
 C{31.16.4.127 - - [15/Jul/2015:12:27:34 +0200] "GET /path/script.cgi?a=b HTTP/1.1" 302 583 "http://host.domain/page" "Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0 Iceweasel/38.1.0"}
 
 Der Aufbau der C{access.log}-Datei, die ein Apache HTTP-Server per
-Default schreibt, lässt in mehrfacher Hinsicht zu wünschen übrig:
+Default schreibt, ist in mehrfacher Hinsicht suboptimal:
 
 * B{Information ist unpraktisch formatiert:} Der
   Request-Zeitpunkt wird als C{[15/Jul/2015:12:27:34 +0200]} (Formatelement
