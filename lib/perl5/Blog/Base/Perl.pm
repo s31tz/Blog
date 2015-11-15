@@ -654,11 +654,50 @@ sub removePod {
     my $this = shift;
     my $codeR = ref $_[0]? shift: \shift;
 
-    my $replace = sub {
-        my ($ws1,$ws2) = @_;
-        return $ws1 =~ tr/\n// > 1? $1: $2;
-    };
-    $$codeR =~ s/(\s*)^=[a-z].*?^=cut(\s*\n)/$replace->($1,$2)/msge;
+    $$codeR =~ s{
+        (\n*)              # Leerzeilen vor POD-Abschnitt
+        ^=[a-z].*?^=cut\n  # POD-Abschnitt
+        (\n*)              # Leerzeilen nach POD-Abschnitt
+    }{
+        # Erhalte die Leerzeilen davor, wenn vorhanden, sonst danach
+        length($1) > 1? $1: "\n$2"
+    }msgex;
+
+    return $$codeR;
+}
+
+# -----------------------------------------------------------------------------
+
+=head2 Kommentar
+
+=head3 removeComment() - Entferne Kommentare aus Quelltext
+
+=head4 Synopsis
+
+    $newCode = $this->removeComment($code);
+    $this->removeComment(\$code);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub removeComment {
+    my $this = shift;
+    my $codeR = ref $_[0]? shift: \shift;
+
+    # Ganzzeilige Kommentare
+
+    $$codeR =~ s{
+        (\n*)                # Leerzeilen vor Kommentarblock
+        (?:^[\t ]*\# .*\n)+  # Block von ganzzeiligen Kommentaren
+        (\n*)                # Leerzeilen nach Kommentarblock
+    }{
+        # Erhalte die Leerzeilen davor, wenn vorhanden, sonst danach
+        length($1) > 1? $1: "\n$2"
+    }mgex;
+
+    # Teilzeilige Kommentare
+    $$codeR =~ s/[\t ]# .*//g;
 
     return $$codeR;
 }
