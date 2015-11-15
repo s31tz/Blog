@@ -629,12 +629,22 @@ sub additionalIncPaths {
 
 =head2 POD
 
-=head3 removePod() - Entferne POD aus Quelltext
+=head3 removePod() - Entferne POD-Abschnitte aus Quelltext
 
 =head4 Synopsis
 
-    $this->removePod(\$code);
     $newCode = $this->removePod($code);
+    $this->removePod(\$code);
+
+=head4 Description
+
+Entferne alle POD-Abschnitte aus dem Quelltext $code und liefere
+den resultierenden Quelltext zurück. Wird eine Referenz auf
+den Quelltext übergeben, erfolgt die Manipulation in-place.
+
+Die Leerzeilen nach dem POD-Abschnitt werden entfernt, wenn sich
+vor dem POD-Abschnitt bereits Leerzeilen befinden, andernfalls
+bleiben sie erhalten.
 
 =cut
 
@@ -648,11 +658,8 @@ sub removePod {
         my ($ws1,$ws2) = @_;
         return $ws1 =~ tr/\n// > 1? $1: $2;
     };
-    $$codeR =~ s/(\s*)^=[a-z].*?^=cut(\s*)/$replace->($1,$2)/msge;
+    $$codeR =~ s/(\s*)^=[a-z].*?^=cut(\s*\n)/$replace->($1,$2)/msge;
 
-    if (!defined wantarray) {
-        return;
-    }
     return $$codeR;
 }
 
