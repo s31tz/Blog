@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-11-15 09:43:23
+    Copyright (C) 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-11-15 09:44:33
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -2259,8 +2259,8 @@
     Aufgrund dieser Ungereimtheiten definiert man sich am besten ein
     eigenes Logfile-Format. Zum Glück ist dies mit der Apache-Direktive
     <tt class="sdoc-seg-c">LogFormat</tt> leicht möglich. Ich verwende folgende Definition, mit
-    einem senkrechten Strich als eindeutigem Feldtrenner (hier auf
-    zwei Zeilen umbrochen):
+    einem senkrechten Strich als eindeutigem Feldtrenner (die Definition
+    ist hier auf zwei Zeilen umbrochen):
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">LogFormat "%{%Y-%m-%d %H:%M:%S}t|%h|%&gt;s|%L|%D|%I|%O|%{Content-Type}o|&#10;    %m|%v|%p|%U%q|%H|%{Referer}i|%{User-Agent}i" NAME</pre>

@@ -54,8 +54,8 @@ Default schreibt, ist in mehrfacher Hinsicht suboptimal:
 Aufgrund dieser Ungereimtheiten definiert man sich am besten ein
 eigenes Logfile-Format. Zum Glück ist dies mit der Apache-Direktive
 C{LogFormat} leicht möglich. Ich verwende folgende Definition, mit
-einem senkrechten Strich als eindeutigem Feldtrenner (hier auf
-zwei Zeilen umbrochen):
+einem senkrechten Strich als eindeutigem Feldtrenner (die Definition
+ist hier auf zwei Zeilen umbrochen):
 
   LogFormat "%{%Y-%m-%d %H:%M:%S}t|%h|%>s|%L|%D|%I|%O|%{Content-Type}o|
       %m|%v|%p|%U%q|%H|%{Referer}i|%{User-Agent}i" NAME
