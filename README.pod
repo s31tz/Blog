@@ -13,6 +13,10 @@ veröffentlicht habe.
 
 =item *
 
+L<Perl: POD-Abschnitte aus Perl-Quelltext entfernen|https://github.com/s31tz/Blog/blob/master/article/122-Perl-POD-aus-Quelltext-entfernen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/134-x.html>)
+
+=item *
+
 L<Perl: Objektattributwert beim ersten Zugriff berechnen|https://github.com/s31tz/Blog/blob/master/article/120-Perl-Objektattributwert-beim-ersten-Zugriff-berechnen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/132-x.html>)
 
 =item *

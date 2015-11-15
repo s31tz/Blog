@@ -1,0 +1,22 @@
+# Date: 2015-11-15
+# Id: 134
+# Draft: no
+# Categories: Perl
+
+%Document:
+  title="Perl: POD-Abschnitte aus Perl-Quelltext entfernen"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+Statement zum Entfernen sämtlicher POD-Abschnitte aus einem Perl-Quelltext:
+
+  $src =~ s/^=[a-z].*?^=cut\n*//msg;
+
+= Links
+
+* U{"http://perldoc.perl.org/perlpod.html",text="POD"}
+
+# eof
