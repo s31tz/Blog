@@ -36,7 +36,7 @@ Default schreibt, ist in mehrfacher Hinsicht suboptimal:
   (URL-Pfad und Query-String können zusammengelegt werden).
 
 * B{Interessante Information fehlt:} Z.B. fehlt die Ausführungsdauer
-  des Requests, was bei der Performance-Optimierung
+  des Requests, die insbesondere bei der Performance-Optimierung
   von dynmisch generierten Inhalten hilfreich ist, sowie Hostname und
   Port, an die der Request gegangen ist, was bei einem
   VirtualHost-Setup von Nutzen sein kann. Auch der Content-Type der
