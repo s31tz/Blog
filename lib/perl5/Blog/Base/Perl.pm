@@ -627,6 +627,37 @@ sub additionalIncPaths {
 
 # -----------------------------------------------------------------------------
 
+=head2 POD
+
+=head3 removePod() - Entferne POD aus Quelltext
+
+=head4 Synopsis
+
+    $this->removePod(\$code);
+    $newCode = $this->removePod($code);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub removePod {
+    my $this = shift;
+    my $codeR = ref $_[0]? shift: \shift;
+
+    my $replace = sub {
+        my ($ws1,$ws2) = @_;
+        return $ws1 =~ tr/\n// > 1? $1: $2;
+    };
+    $$codeR =~ s/(\s*)^=[a-z].*?^=cut(\s*)/$replace->($1,$2)/msge;
+
+    if (!defined wantarray) {
+        return;
+    }
+    return $$codeR;
+}
+
+# -----------------------------------------------------------------------------
+
 =head1 AUTHOR
 
 Frank Seitz, L<http://fseitz.de/>

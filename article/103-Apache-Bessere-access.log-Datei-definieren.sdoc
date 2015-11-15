@@ -40,7 +40,7 @@ Default schreibt, ist in mehrfacher Hinsicht suboptimal:
   von dynmisch generierten Inhalten hilfreich ist, sowie Hostname und
   Port, an die der Request gegangen ist, was bei einem
   VirtualHost-Setup von Nutzen sein kann. Auch der Content-Type der
-  Response kann interessant sein, um die Logeinträge besser
+  Response kann interessant sein, um die Logeinträge danach
   filtern zu können.
 
 * B{Zeilen lassen sich schlecht in ihre Teilinformationen
