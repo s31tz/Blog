@@ -627,6 +627,57 @@ sub additionalIncPaths {
 
 # -----------------------------------------------------------------------------
 
+=head2 Kommentare
+
+=head3 removeComment() - Entferne Kommentare aus Quelltext
+
+=head4 Synopsis
+
+    $newCode = $this->removeComment($code);
+    $this->removeComment(\$code);
+
+=head4 Description
+
+Entferne Perl-Kommentare aus Quelltext $code und liefere das Resultat
+zurück. Wird eine Referenz auf den Quelltext übergeben, erfolgt
+die Manipulation in-place.
+
+Als Perl-Kommentare werden erkannt und entfernt
+
+Sonderfall Parameter-Dokumentation:
+
+    ^[\t ]*# \@_: .*\n
+
+Ganzzeiliger Kommentar:
+
+    ^[\t ]*# .*\n+
+
+Teilzeiliger Kommentar
+
+    [\t ]+# .*
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub removeComment {
+    my $this = shift;
+    my $ref = ref $_[0]? shift: \shift;
+
+    # Sonderbehandlung für "# @_: ..." Kommentare
+    $$ref =~ s/^[\t ]*# \@_: .*\n//mg;
+
+    # Ganzzeiliger Kommentar
+    $$ref =~ s/^[\t ]*# .*\n+//mg;
+
+    # Teilzeilige Kommentare
+    $$ref =~ s/[\t ]+# .*//g;
+
+    return $$ref;
+}
+
+# -----------------------------------------------------------------------------
+
 =head2 POD
 
 =head3 removePod() - Entferne POD-Abschnitte aus Quelltext
@@ -642,9 +693,8 @@ Entferne alle POD-Abschnitte aus dem Quelltext $code und liefere
 den resultierenden Quelltext zurück. Wird eine Referenz auf
 den Quelltext übergeben, erfolgt die Manipulation in-place.
 
-Die Leerzeilen nach dem POD-Abschnitt werden entfernt, wenn sich
-vor dem POD-Abschnitt bereits Leerzeilen befinden, andernfalls
-bleiben sie erhalten.
+Befinden sich Leerzeilen über- I<und> unterhalb des POD-Abschnitts,
+werden die Leerzeilen unterhalb des POD-Abschnitts mit entfernt.
 
 =cut
 
@@ -652,54 +702,19 @@ bleiben sie erhalten.
 
 sub removePod {
     my $this = shift;
-    my $codeR = ref $_[0]? shift: \shift;
+    my $ref = ref $_[0]? shift: \shift;
 
-    $$codeR =~ s{
+    $$ref =~ s{
         (\n*)              # Leerzeilen vor POD-Abschnitt
         ^=[a-z].*?^=cut\n  # POD-Abschnitt
         (\n*)              # Leerzeilen nach POD-Abschnitt
     }{
-        # Erhalte die Leerzeilen davor, wenn vorhanden, sonst danach
-        length($1) > 1? $1: "\n$2"
+        length($1) > 1 && length($2)? $1: "$1$2"
     }msgex;
 
-    return $$codeR;
-}
+    # $$ref =~ s/^=[a-z].*?^=cut\n*//msg;
 
-# -----------------------------------------------------------------------------
-
-=head2 Kommentar
-
-=head3 removeComment() - Entferne Kommentare aus Quelltext
-
-=head4 Synopsis
-
-    $newCode = $this->removeComment($code);
-    $this->removeComment(\$code);
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub removeComment {
-    my $this = shift;
-    my $codeR = ref $_[0]? shift: \shift;
-
-    # Ganzzeilige Kommentare
-
-    $$codeR =~ s{
-        (\n*)                # Leerzeilen vor Kommentarblock
-        (?:^[\t ]*\# .*\n)+  # Block von ganzzeiligen Kommentaren
-        (\n*)                # Leerzeilen nach Kommentarblock
-    }{
-        # Erhalte die Leerzeilen davor, wenn vorhanden, sonst danach
-        length($1) > 1? $1: "\n$2"
-    }mgex;
-
-    # Teilzeilige Kommentare
-    $$codeR =~ s/[\t ]# .*//g;
-
-    return $$codeR;
+    return $$ref;
 }
 
 # -----------------------------------------------------------------------------
