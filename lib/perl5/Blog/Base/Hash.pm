@@ -897,12 +897,16 @@ sub lockKeys {
 
 =head4 Synopsis
 
-    $h->unlockKeys;
+    $h = $h->unlockKeys;
 
 =head4 Description
 
 Entsperre den Hash. Anschließend kann der Hash uneingeschränkt
-manipuliert werden.
+manipuliert werden. Die Methode liefert eine Referenz auf den Hash
+zurück. Damit kann der Hash gleich nach der Instanziierung
+entsperrt werden:
+
+    return Blog::Base::Hash->new(...)->unlockKeys;
 
 Alternative Formulierung:
 
@@ -915,7 +919,7 @@ Alternative Formulierung:
 sub unlockKeys {
     my $self = shift;
     Hash::Util::unlock_keys(%$self);
-    return;
+    return $self;
 }
 
 # -----------------------------------------------------------------------------
