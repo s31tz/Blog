@@ -4,19 +4,45 @@
 # Categories: Perl
 
 %Document:
-  title="Perl: POD-Abschnitte aus Perl-Quelltext entfernen"
+  title="Perl: POD-Abschnitte und Kommentare aus Perl-Quelltext entfernen"
   generateAnchors=0
   utf8=1
 
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"
 
-Statement zum Entfernen sämtlicher POD-Abschnitte aus einem Perl-Quelltext:
+Entferne POD-Abschnitte aus Perl-Quelltext:
 
   $src =~ s/^=[a-z].*?^=cut\n*//msg;
 
+Entferne ganzzeilige Kommentare aus Perl-Quelltext:
+
+  $src =~ s/^[\t ]*#.*\n+//mg;
+
+Entferne teilzeilige Kommentare aus Perl-Quelltext:
+
+  $src =~ s/[\t ]+# .*//g;
+
+Diese Operationen sind nützlich, wenn man einen Perl-Quelltext ohne
+Dokumentation und Kommentare ausliefern möchte, oder wenn man
+entscheiden möchte, ob eine Quelltextänderung den Programmcode
+betroffen hat (und nicht nur die Dokumentatation), der Code also
+getestet werden muss.
+
+Als teilzeiliger Kommentar wird lediglich die Abfolge
+CODE-WHITESPACE-HASH-SPACE-COMMENT akzeptiert. Dies ist eine
+Einschränkung, um die Wahrscheinlichkeit von Fehlerkennungen
+zu minimieren. Siehe folgenden Disclaimer.
+
+Disclaimer: Ohne ein echtes Parsing gemäß der Grammatik der Sprache
+ist ein 100% sicheres Operieren auf einem Quelltext nicht
+möglich. Obige Pattern können theoretisch den Inhalt von
+String-Literalen matchen. Dies ist unwahrscheinlich, kann im
+Einzelfall aber immer durch Änderung des Literals - z.B. durch Einsatz
+von Backslashes - behoben werden.
+
 = Links
 
-* U{"http://perldoc.perl.org/perlpod.html",text="POD"}
+* U{"http://perldoc.perl.org/perlpod.html",text="POD Format"}
 
 # eof
