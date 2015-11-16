@@ -693,8 +693,7 @@ Entferne alle POD-Abschnitte aus dem Quelltext $code und liefere
 den resultierenden Quelltext zurück. Wird eine Referenz auf
 den Quelltext übergeben, erfolgt die Manipulation in-place.
 
-Befinden sich Leerzeilen über- I<und> unterhalb des POD-Abschnitts,
-werden die Leerzeilen unterhalb des POD-Abschnitts mit entfernt.
+Leezeilen unterhalb des POD-Abschnitts werden ebenfalls entfernt.
 
 =cut
 
@@ -704,15 +703,7 @@ sub removePod {
     my $this = shift;
     my $ref = ref $_[0]? shift: \shift;
 
-    $$ref =~ s{
-        (\n*)              # Leerzeilen vor POD-Abschnitt
-        ^=[a-z].*?^=cut\n  # POD-Abschnitt
-        (\n*)              # Leerzeilen nach POD-Abschnitt
-    }{
-        length($1) > 1 && length($2)? $1: "$1$2"
-    }msgex;
-
-    # $$ref =~ s/^=[a-z].*?^=cut\n*//msg;
+    $$ref =~ s/^=[a-z].*?^=cut\n*//msg;
 
     return $$ref;
 }
