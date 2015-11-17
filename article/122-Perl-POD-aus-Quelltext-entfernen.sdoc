@@ -32,9 +32,9 @@ getestet werden muss.
 Als teilzeiliger Kommentar wird lediglich die Abfolge
 CODE-WHITESPACE-HASH-SPACE-COMMENT akzeptiert. Dies ist eine
 Einschränkung, um die Wahrscheinlichkeit von Fehlerkennungen
-zu minimieren. Siehe folgenden Disclaimer.
+zu minimieren. Siehe folgende Einschränkung.
 
-B{Disclaimer:} Ohne ein echtes Parsing gemäß der Grammatik der Sprache
+B{Einschränkung:} Ohne ein echtes Parsing gemäß der Grammatik der Sprache
 ist ein 100% sicheres Operieren auf einem Quelltext nicht
 möglich. Obige Pattern können theoretisch den Inhalt von
 String-Literalen matchen. Dies ist unwahrscheinlich, kann im
