@@ -26,7 +26,7 @@ Entferne teilzeilige Kommentare aus Perl-Quelltext:
 Diese Operationen sind nützlich, wenn man einen Perl-Quelltext ohne
 Dokumentation und Kommentare ausliefern möchte, oder wenn man
 entscheiden möchte, ob eine Quelltextänderung den Programmcode
-betroffen hat (und nicht nur die Dokumentatation), der Code also
+betroffen hat (und nicht nur die Dokumentation), der Code also
 getestet werden muss.
 
 Als teilzeiliger Kommentar wird lediglich der Pattern
