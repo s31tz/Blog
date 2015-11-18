@@ -39,7 +39,7 @@ ist ein 100% sicheres Operieren auf einem Quelltext nicht
 möglich. Obige Pattern können theoretisch den Inhalt von
 String-Literalen matchen. Dies ist unwahrscheinlich, kann im
 Einzelfall aber immer durch Änderung des Literals - z.B. durch Einsatz
-von Backslashes - vermieden werden.
+von Backslashes - verhindert werden.
 
 = Links
 
