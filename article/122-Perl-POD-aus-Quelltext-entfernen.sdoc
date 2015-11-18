@@ -38,9 +38,9 @@ B{Einschränkung:} Ohne ein echtes Parsing gemäß der Grammatik einer
 Sprache ist ein 100% sicheres Operieren auf einem Quelltext nicht
 möglich - insbesondere bei Perl, das eine sehr facettenreiche Syntax
 hat. Obige Pattern können theoretisch auch den Inhalt von
-String-Literalen matchen. Dies ist relativ unwahrscheinlich. Im
-Einzelfall kann dies jedoch immer durch Änderung des Literals -
-z.B. durch Backslashes - verhindert werden.
+String-Literalen matchen. Dies ist aber relativ unwahrscheinlich. Im
+Einzelfall kann eine Fehlerkennung durch Änderung des Literals -
+z.B. durch Backslashes - korrigiert werden.
 
 = Links
 
