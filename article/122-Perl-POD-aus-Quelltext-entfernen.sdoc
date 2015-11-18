@@ -30,9 +30,10 @@ betroffen hat (und nicht nur die Dokumentation), der Code also
 getestet werden muss.
 
 Als teilzeiliger Kommentar wird lediglich der Pattern
-WHITESPACE-HASH-SPACE-TEXT akzeptiert. Dies ist eine Einschränkung, um
-die Wahrscheinlichkeit von Fehl-Erkennungen zu minimieren. Siehe
-folgende Einschränkung.
+WHITESPACE-HASH-SPACE-TEXT akzeptiert. Die Kommentare sollten
+entsprechend verfasst sein. Dies ist eine Einschränkung, um die
+Wahrscheinlichkeit von Fehl-Erkennungen zu minimieren. Siehe folgende
+Einschränkung.
 
 B{Einschränkung:} Ohne ein echtes Parsing gemäß der Grammatik einer
 Sprache ist ein 100% sicheres Operieren auf einem Quelltext nicht
