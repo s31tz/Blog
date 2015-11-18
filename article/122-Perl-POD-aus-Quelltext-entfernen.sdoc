@@ -39,7 +39,7 @@ B{Einschränkung:} Ohne ein echtes Parsing gemäß der Grammatik einer
 Sprache ist ein 100% sicheres Operieren auf einem Quelltext nicht
 möglich - insbesondere bei Perl, das eine sehr facettenreiche Syntax
 hat. Obige Pattern können theoretisch auch den Inhalt von
-String-Literalen matchen. Dies ist aber relativ unwahrscheinlich. Im
+String-Literalen matchen. Dies ist jedoch relativ unwahrscheinlich. Im
 Einzelfall kann eine Fehl-Erkennung durch Änderung des Literals -
 z.B. durch Einstreuen von Backslashes - korrigiert werden.
 
