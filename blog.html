@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-11-18 10:20:07
+    Copyright (C) 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-11-18 12:23:36
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -416,18 +416,19 @@
     getestet werden muss.
   </p>
   <p class="sdoc-para-p">
-    Als teilzeiliger Kommentar wird lediglich die Abfolge
+    Als teilzeiliger Kommentar wird lediglich der Pattern
     WHITESPACE-HASH-SPACE-TEXT akzeptiert. Dies ist eine Einschränkung, um
-    die Wahrscheinlichkeit von Fehlerkennungen zu minimieren. Siehe
+    die Wahrscheinlichkeit von Fehl-Erkennungen zu minimieren. Siehe
     folgende Einschränkung.
   </p>
   <p class="sdoc-para-p">
-    <b class="sdoc-seg-b">Einschränkung:</b> Ohne ein echtes Parsing gemäß der Grammatik der Sprache
-    ist ein 100% sicheres Operieren auf einem Quelltext nicht
-    möglich. Obige Pattern können theoretisch den Inhalt von
-    String-Literalen matchen. Dies ist unwahrscheinlich, kann im
-    Einzelfall aber immer durch Änderung des Literals - z.B. durch Einsatz
-    von Backslashes - verhindert werden.
+    <b class="sdoc-seg-b">Einschränkung:</b> Ohne ein echtes Parsing gemäß der Grammatik einer
+    Sprache ist ein 100% sicheres Operieren auf einem Quelltext nicht
+    möglich - insbesondere bei Perl, das eine sehr facettenreiche Syntax
+    hat. Obige Pattern können theoretisch auch den Inhalt von
+    String-Literalen matchen. Dies ist relativ unwahrscheinlich. Im
+    Einzelfall kann dies jedoch immer durch Änderung des Literals -
+    z.B. durch Backslashes - verhindert werden.
   </p>
   <h2 class="sdoc-sec-h2">Links<a id="section_1_1"></a></h2>
   <ul class="sdoc-list-ul">
