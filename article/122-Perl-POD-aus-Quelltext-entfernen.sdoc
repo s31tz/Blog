@@ -31,7 +31,7 @@ der Code also getestet werden muss.
 
 Als teilzeiliger Kommentar wird lediglich der Pattern
 WHITESPACE-HASH-SPACE-TEXT akzeptiert. Die Kommentare sollten
-formuliert verfasst sein. Dies ist eine Einschränkung, um die
+entsprechend formuliert sein. Dies ist eine Einschränkung, um die
 Wahrscheinlichkeit von Fehl-Erkennungen zu minimieren. Siehe folgende
 Einschränkung.
 
