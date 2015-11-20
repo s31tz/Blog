@@ -31,8 +31,9 @@ der Code also getestet werden muss.
 
 Als teilzeiliger Kommentar wird lediglich der Pattern
 WHITESPACE-HASH-SPACE-TEXT akzeptiert. Die Kommentare sollten
-entsprechend formuliert sein. Dies dient dazu, die Wahrscheinlichkeit
-von Fehl-Erkennungen zu minimieren. Siehe folgende Einschränkung.
+entsprechend dieser Konvention verfasst sein. Dies dient dazu, die
+Wahrscheinlichkeit von Fehl-Erkennungen zu minimieren. Siehe folgende
+Einschränkung.
 
 B{Einschränkung:} Ohne ein echtes Parsing gemäß der Grammatik einer
 Sprache ist ein 100% sicheres Operieren auf einem Quelltext nicht
