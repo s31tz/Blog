@@ -40,7 +40,7 @@ möglich - insbesondere bei Perl, das eine sehr facettenreiche Syntax
 hat. Obige Pattern können auch den Inhalt von String-Literalen
 matchen. Dies dürfte nur sehr selten auftreten. Im Einzelfall
 kann eine Fehl-Erkennung durch Änderung des Literals - z.B. durch
-Einstreuen von Backslashes - behoben werden.
+Einstreuen von Backslashes - korrigiert werden.
 
 = Links
 
