@@ -13,19 +13,19 @@
 
 Entferne POD-Abschnitte aus Perl-Quelltext:
 
-  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  %Code: filter="./blog-highlight perl %FORMAT%"
   $src =~ s/^=[a-z].*?^=cut\n*//msg;
   .
 
 Entferne ganzzeilige Kommentare aus Perl-Quelltext:
 
-  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  %Code: filter="./blog-highlight perl %FORMAT%"
   $src =~ s/^[\t ]*#.*\n+//mg;
   .
 
 Entferne teilzeilige Kommentare aus Perl-Quelltext:
 
-  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  %Code: filter="./blog-highlight perl %FORMAT%"
   $src =~ s/[\t ]+# .*//g;
   .
 
