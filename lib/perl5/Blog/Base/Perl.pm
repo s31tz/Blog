@@ -7,6 +7,7 @@ use strict;
 use warnings;
 
 use Blog::Base::Object;
+use Scalar::Util ();
 
 # -----------------------------------------------------------------------------
 

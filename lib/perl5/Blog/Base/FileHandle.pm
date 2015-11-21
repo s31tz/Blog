@@ -7,8 +7,8 @@ use strict;
 use warnings;
 use utf8;
 
-use Scalar::Util ();
 use Blog::Base::Option;
+use Scalar::Util ();
 use Blog::Base::Perl;
 use Fcntl qw(:flock);
 

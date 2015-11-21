@@ -7,8 +7,8 @@ use strict;
 use warnings;
 use utf8;
 
-use Hash::Util ();
 use Scalar::Util ();
+use Hash::Util ();
 
 # -----------------------------------------------------------------------------
 
@@ -138,7 +138,7 @@ sub new {
             $h{$key} = shift;
         }
     }
-    elsif ((Scalar::Util::reftype($_[0]) || '') eq 'HASH') { # Performance
+    elsif ((Scalar::Util::reftype($_[0]) || '') eq 'HASH') { # Perform.
         # Aufruf: $h = $class->new(\%hash);
         $h = bless shift,$class;
     }

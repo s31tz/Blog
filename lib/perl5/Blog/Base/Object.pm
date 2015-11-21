@@ -5,7 +5,6 @@ package Blog::Base::Object;
 use strict;
 use warnings;
 
-use Scalar::Util ();
 use Hash::Util ();
 use Blog::Base::Stacktrace;
 

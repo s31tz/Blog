@@ -6,7 +6,7 @@ use base qw/Blog::Base::Object/;
 use strict;
 use warnings;
 
-use Encode::Guess ();
+use Encode ();
 use Blog::Base::Option;
 
 # -----------------------------------------------------------------------------
