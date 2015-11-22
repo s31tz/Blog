@@ -6,8 +6,8 @@ use base qw/Blog::Base::Object/;
 use strict;
 use warnings;
 
-use Sys::Hostname ();
 use Socket ();
+use Sys::Hostname ();
 use 5.010;
 
 # -----------------------------------------------------------------------------

@@ -5,6 +5,7 @@ package Blog::Base::ApplicationPaths;
 use strict;
 use warnings;
 
+use Cwd ();
 use Hash::Util ();
 
 # -----------------------------------------------------------------------------
