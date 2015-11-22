@@ -41,7 +41,7 @@ entsprechend verfasst sein. Dies dient dazu, die Wahrscheinlichkeit
 von Fehl-Erkennungen zu minimieren. Siehe folgende Einschränkung.
 
 B{Einschränkung:} Ohne ein echtes Parsing gemäß der Grammatik einer
-Sprache sind 100% sichere Operationen auf einem Quelltext nicht
+Sprache sind absolut sichere Operationen auf einem Quelltext nicht
 möglich - insbesondere bei Perl, das eine sehr facettenreiche Syntax
 hat. Obige Pattern können auch den Inhalt von String-Literalen
 matchen. Dies dürfte nur sehr selten auftreten. Im Einzelfall kann
