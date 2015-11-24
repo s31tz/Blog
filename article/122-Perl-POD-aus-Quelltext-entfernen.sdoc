@@ -41,7 +41,7 @@ dient dazu, die Wahrscheinlichkeit von Fehl-Erkennungen zu
 minimieren. Siehe folgende Einschränkung.
 
 Einschränkung: Ohne ein echtes Parsing gemäß der Grammatik einer
-Sprache sind absolut sichere Operationen auf einem Quelltext nicht
+Sprache sind I{absolut sichere} Operationen auf einem Quelltext nicht
 möglich - insbesondere bei Perl, das eine sehr facettenreiche Syntax
 hat. Obige Pattern können, auch wenn dies unwahrscheinlich ist, den
 Inhalt von String-Literalen matchen. Im Einzelfall kann eine
