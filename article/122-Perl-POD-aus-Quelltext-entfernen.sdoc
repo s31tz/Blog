@@ -40,7 +40,7 @@ akzeptiert. Die Kommentare sollten entsprechend verfasst sein. Dies
 dient dazu, die Wahrscheinlichkeit von Fehl-Erkennungen zu
 minimieren. Siehe folgende Einschränkung.
 
-B{Einschränkung:} Ohne ein echtes Parsing gemäß der Grammatik einer
+Einschränkung: Ohne ein echtes Parsing gemäß der Grammatik einer
 Sprache sind absolut sichere Operationen auf einem Quelltext nicht
 möglich - insbesondere bei Perl, das eine sehr facettenreiche Syntax
 hat. Obige Pattern können, auch wenn dies unwahrscheinlich ist, den
