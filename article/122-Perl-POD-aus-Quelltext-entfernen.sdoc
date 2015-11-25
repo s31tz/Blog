@@ -4,7 +4,7 @@
 # Categories: Perl
 
 %Document:
-  title="Perl: POD-Abschnitte und Kommentare aus Perl-Quelltext entfernen"
+  title="Perl: Dokumentation und Kommentare aus Perl-Quelltext entfernen"
   generateAnchors=0
   utf8=1
 
