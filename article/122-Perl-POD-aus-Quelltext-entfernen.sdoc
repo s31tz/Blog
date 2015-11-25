@@ -36,7 +36,7 @@ betroffen hat (und nicht nur die Dokumentation und die Kommentare),
 der Code also getestet werden muss.
 
 Als teilzeiliger Kommentar wird der Pattern WHITESPACE-HASH-SPACE-TEXT
-akzeptiert. Die Kommentare sollten entsprechend verfasst sein. Dies
+akzeptiert. Die Kommentare müssen entsprechend verfasst sein. Dies
 hat den Zweck, die Möglichkeit von Fehl-Erkennungen zu
 beschränken. Siehe folgende Warnung.
 
