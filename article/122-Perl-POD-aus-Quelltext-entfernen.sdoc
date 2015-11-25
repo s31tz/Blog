@@ -38,11 +38,11 @@ der Code also getestet werden muss.
 Als teilzeiliger Kommentar wird der Pattern WHITESPACE-HASH-SPACE-TEXT
 akzeptiert. Die Kommentare sollten entsprechend verfasst sein. Dies
 hat den Zweck, die Möglichkeit von Fehl-Erkennungen zu
-beschränken. Siehe folgende Einschränkung.
+beschränken. Siehe folgende Warnung.
 
-Einschränkung: Ohne ein echtes Parsing gemäß der Grammatik einer
-Sprache sind I{absolut sichere} Operationen auf einem Quelltext nicht
-möglich - insbesondere bei Perl, das eine sehr facettenreiche Syntax
+Warnung: Ohne ein echtes Parsing gemäß der Grammatik einer Sprache
+sind I{absolut sichere} Operationen auf einem Quelltext nicht möglich
+- insbesondere bei Perl, das eine sehr facettenreiche Syntax
 hat. Obige Pattern können, auch wenn dies unwahrscheinlich ist, den
 Inhalt von String-Literalen matchen. Im Einzelfall kann eine
 Fehl-Erkennung durch Änderung des Literals - z.B. durch Einstreuen von
