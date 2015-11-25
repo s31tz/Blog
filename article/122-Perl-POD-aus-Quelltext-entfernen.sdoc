@@ -35,7 +35,7 @@ entscheiden möchte, ob eine Quelltextänderung getestet werden muss,
 was der Fall ist, wenn nicht nur die Dokumentation und Kommentare von
 der Änderung betroffen sind.
 
-Als teilzeiliger Kommentar wird der Pattern WHITESPACE-HASH-SPACE-TEXT
+Als teilzeiliger Kommentar wird die Abfolge WHITESPACE-HASH-SPACE-TEXT
 akzeptiert. Die Kommentare müssen entsprechend verfasst sein. Dies
 hat den Zweck, die Möglichkeit von Fehl-Erkennungen zu
 beschränken. Siehe folgende Warnung.
