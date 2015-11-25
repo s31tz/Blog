@@ -45,8 +45,8 @@ sind I{absolut sichere} Operationen auf einem Quelltext nicht möglich
 - insbesondere bei Perl, das eine sehr facettenreiche Syntax
 hat. Obige Pattern können, auch wenn dies unwahrscheinlich ist, den
 Inhalt von String-Literalen matchen. Im Einzelfall kann eine
-Fehl-Erkennung durch Änderung des Literals - z.B. durch Einstreuen von
-Backslashes - korrigiert werden.
+Fehl-Erkennung jedoch durch Änderung des Literals - z.B. durch
+Einstreuen von Backslashes - korrigiert werden.
 
 = Links
 
