@@ -31,9 +31,10 @@ Entferne teilzeilige Kommentare aus Perl-Quelltext:
 
 Diese Operationen sind nützlich, wenn man einen Perl-Quelltext ohne
 Dokumentation und Kommentare ausliefern möchte, oder wenn man
-entscheiden möchte, ob eine Quelltextänderung getestet werden muss,
-was der Fall ist, wenn nicht nur die Dokumentation und Kommentare von
-der Änderung betroffen sind.
+entscheiden möchte, ob eine Quelltextänderung getestet werden muss.
+Dies ist der Fall, wenn Änderungen an dem Teil des Quelltextes
+vorhanden existieren, der übrig bleibt, wenn Dokumentation und
+Kommentare entfernt wurden.
 
 Als teilzeiliger Kommentar wird die Abfolge WHITESPACE-HASH-SPACE-TEXT
 akzeptiert. Die Kommentare müssen entsprechend verfasst sein. Dies
