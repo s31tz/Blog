@@ -118,7 +118,8 @@ sub dump {
     }
     elsif ($format eq 'pod') {
         # return "=pod\n\nB<$title>\n\n";
-        return "B<$title>\n\n";
+        # return "B<$title>\n\n";
+        return "=head$level $title\n\n";
     }
     elsif ($format eq 'man') {
         return "    $title\n\n";
