@@ -33,7 +33,7 @@ Diese Operationen sind nützlich, wenn man einen Perl-Quelltext ohne
 Dokumentation und Kommentare ausliefern möchte, oder wenn man
 entscheiden möchte, ob eine Quelltextänderung getestet werden muss.
 Dies ist der Fall, wenn Änderungen in dem Teil des Quelltextes
-existieren, der übrig bleibt, wenn man die Dokumentation und die
+existieren, der übrig bleibt, wenn man die Dokumentation und
 Kommentare entfernt.
 
 Als teilzeiliger Kommentar wird die Abfolge WHITESPACE-HASH-SPACE-TEXT
