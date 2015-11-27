@@ -4,7 +4,7 @@
 # Categories: Perl
 
 %Document:
-  title="Perl: Dokumentation und Kommentare aus Perl-Quelltext entfernen"
+  title="Perl: Dokumentation und Kommentare aus Perl-Quelltexten entfernen"
   generateAnchors=0
   utf8=1
 
