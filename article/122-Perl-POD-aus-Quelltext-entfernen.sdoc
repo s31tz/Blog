@@ -34,7 +34,7 @@ Dokumentation und Kommentare ausliefern möchte, oder wenn man
 entscheiden möchte, ob eine Quelltextänderung getestet werden muss.
 Dies ist der Fall, wenn Änderungen in dem Teil des Quelltextes
 existieren, der übrig bleibt, wenn man die Dokumentation und
-Kommentare entfernt.
+die Kommentare entfernt.
 
 Als teilzeiliger Kommentar wird die Abfolge WHITESPACE-HASH-SPACE-TEXT
 akzeptiert. Die Kommentare müssen entsprechend verfasst sein. Dies
@@ -47,7 +47,7 @@ sind I{absolut sichere} Operationen auf einem Quelltext nicht möglich
 hat. Obige Pattern können, auch wenn dies unwahrscheinlich ist, den
 Inhalt von String-Literalen matchen. Im Einzelfall kann eine
 Fehl-Erkennung durch Änderung des Literals - z.B. durch
-Einstreuen von Backslashes - verhindert werden.
+Einstreuen von Backslashes - unterbunden werden.
 
 = Links
 
