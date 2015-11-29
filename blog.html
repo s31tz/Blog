@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-11-29 09:36:21
+    Copyright (C) 2010-2015 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2015-11-29 09:41:45
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -419,9 +419,15 @@
   <p class="sdoc-para-p">
     Als teilzeiliger Kommentar wird die Abfolge WHITESPACE-HASH-SPACE-TEXT
     akzeptiert. Die Kommentare müssen entsprechend verfasst sein, damit
-    sie entfernt werden. Diese Einschränkung hat den Zweck, die
-    Möglichkeit von Fehl-Erkennungen zu vermindern. Siehe folgende
-    Warnung.
+    sie entfernt werden. Diese Einschränkung hat den Zweck,
+    Fehl-Erkennungen zu vermeiden, denn
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre"><span class="pt-i">$src</span> =~ <span class="pt-q">s/#.*//g</span><span class="pt-sc">;</span>&#10;</pre>
+  </div>
+  <p class="sdoc-para-p">
+    wäre zu gefährlich, denn dieser Regex würde nach <i class="sdoc-seg-i">jedem</i> Hash-Zeichen
+    abschneiden. Siehe auch folgende Warnung.
   </p>
   <p class="sdoc-para-p">
     Warnung: Ohne ein echtes Parsing gemäß der Grammatik einer Sprache

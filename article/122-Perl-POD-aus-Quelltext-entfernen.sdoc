@@ -38,9 +38,15 @@ die Kommentare entfernt.
 
 Als teilzeiliger Kommentar wird die Abfolge WHITESPACE-HASH-SPACE-TEXT
 akzeptiert. Die Kommentare müssen entsprechend verfasst sein, damit
-sie entfernt werden. Diese Einschränkung hat den Zweck, die
-Möglichkeit von Fehl-Erkennungen zu vermindern. Siehe folgende
-Warnung.
+sie entfernt werden. Diese Einschränkung hat den Zweck,
+Fehl-Erkennungen zu vermeiden, denn
+
+  %Code: filter="./blog-highlight perl %FORMAT%"
+  $src =~ s/#.*//g;
+  .
+
+wäre zu gefährlich, denn dieser Regex würde nach I{jedem} Hash-Zeichen
+abschneiden. Siehe auch folgende Warnung.
 
 Warnung: Ohne ein echtes Parsing gemäß der Grammatik einer Sprache
 sind I{absolut sichere} Operationen auf einem Quelltext nicht möglich
