@@ -37,9 +37,10 @@ existieren, der übrig bleibt, wenn man die Dokumentation und
 die Kommentare entfernt.
 
 Als teilzeiliger Kommentar wird die Abfolge WHITESPACE-HASH-SPACE-TEXT
-akzeptiert. Die Kommentare müssen entsprechend verfasst sein. Dies
-hat den Zweck, die Wahrscheinlichkeit von Fehl-Erkennungen zu
-minimieren. Siehe folgende Warnung.
+akzeptiert. Die Kommentare müssen entsprechend verfasst sein, damit
+sie entfernt werden. Diese Einschränkung hat den Zweck, die
+Möglichkeit von Fehl-Erkennungen zu vermindern. Siehe folgende
+Warnung.
 
 Warnung: Ohne ein echtes Parsing gemäß der Grammatik einer Sprache
 sind I{absolut sichere} Operationen auf einem Quelltext nicht möglich
