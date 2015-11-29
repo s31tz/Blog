@@ -45,8 +45,8 @@ Fehl-Erkennungen zu vermeiden, denn
   $src =~ s/#.*//g;
   .
 
-wäre zu gefährlich, da dieser Regex nach I{jedem} HASH abschneiden
-würde. Siehe auch folgende Warnung.
+wäre zu gefährlich, da dieser Regex nach I{jedem} HASH
+abschneidet. Siehe auch folgende Warnung.
 
 Warnung: Ohne ein echtes Parsing gemäß der Grammatik einer Sprache
 sind I{absolut sichere} Operationen auf einem Quelltext nicht möglich
