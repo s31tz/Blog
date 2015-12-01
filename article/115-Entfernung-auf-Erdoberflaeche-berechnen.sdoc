@@ -14,14 +14,14 @@
 Für die Skalierung von Grafik-Elementen, die in Ground Overlays für
 Google Earth platziert werden sollten, stand ich vor der Notwendigkeit,
 Abstände auf der Erdoberfläche berechnen zu müssen. Die folgende
-Formel hat mir dies ermöglicht.
+Gleichung hat mir dies ermöglicht.
 
 Entfernung (in km) zwischen zwei Punkten auf der Erdoberfläche:
 
 %Figure: \
     file="IMGDIR/erddistanz-funktion-708x20.png" width="566" height="16"
 
-Die Formel liefert die Länge des Großkeisbogens zwischen zwei Punkten
+Die Gleichung liefert die Länge des Großkeisbogens zwischen zwei Punkten
 (I{lat1}, I{lon1}) und (I{lat2}, I{lon2}) auf einer Kugel mit einem
 Radius von 6371 Kilometern. Da die Erde keine perfekte Kugel ist (6371
 km ist der I{mittlere} Radius), stellt die Berechnung eine Näherung
