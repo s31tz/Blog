@@ -19,7 +19,7 @@ Gleichung hat mir dies ermöglicht.
 Entfernung (in km) zwischen zwei Punkten auf der Erdoberfläche:
 
 %Figure: \
-    file="IMGDIR/erddistanz-funktion-708x20.png" width="566" height="16"
+  file="IMGDIR/erddistanz-funktion-708x20.png" width="566" height="16"
 
 Die Gleichung liefert die Länge des Großkeisbogens zwischen zwei Punkten
 (I{lat1}, I{lon1}) und (I{lat2}, I{lon2}) auf einer Kugel mit einem
@@ -32,7 +32,7 @@ Erdumfang wird als das 60*360-fache einer Seemeile definiert), ersetzt
 man 6371 durch
 
 %Figure: \
-    file="IMGDIR/erdradius-seemeile-149x21.png" width="114" height="16"
+  file="IMGDIR/erdradius-seemeile-149x21.png" width="114" height="16"
 
 Die Formel geht davon aus, dass die trigonometrischen Funktionen
 C{acos()}, C{sin()}, C{cos()} im Bogenmaß (rad) rechnen, was für
@@ -42,7 +42,7 @@ Geopositionen üblich ist, müssen diese vor der Einsetzung ins
 Bogenmaß umgerechnet, also mit Pi/180 multipliziert werden.
 
 %Figure: \
-    file="IMGDIR/degree-to-rad-187x21.png" width="142" height="16"
+  file="IMGDIR/degree-to-rad-187x21.png" width="142" height="16"
 
 Begründung und Herleitung der Formel:
 U{"http://www.kompf.de/gps/distcalc.html",target="_top",\
