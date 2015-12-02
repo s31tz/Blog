@@ -12,11 +12,11 @@
 %Figure: file="IMGDIR/perl-130x65.png" \
     width=94 height=47 url="http://www.perl.org/"
 
-Ein Hash-Objekt besitzt ein Attribut C{theAttribute}, das von einer
-gleichnamigen Attributmethode gekapselt wird. Das Attribut erhält bei
-der Objekt-Instanziierung keinen Wert. Der Wert wird stattdessen beim
-ersten Zugriff berechnet. Alle weiteren Zugriffe liefern den
-berechneten Wert.
+Anforderung: Ein Hash-Objekt besitzt ein Attribut C{theAttribute}, das
+von einer gleichnamigen Attributmethode gekapselt wird. Das Attribut
+erhält bei der Objekt-Instanziierung keinen Wert. Der Wert wird
+stattdessen beim ersten Zugriff berechnet. Alle weiteren Zugriffe
+liefern den berechneten Wert.
 
 Ein naheliegender Ansatz, dies in Perl zu implementieren, ist:
 
