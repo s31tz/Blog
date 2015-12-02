@@ -99,7 +99,7 @@ Angewendet auf obiges Beispiel:
 
         return $self->memoize('theAttribute',sub {
             ...
-            return $val;
+            $val;
         });
     }
   .
