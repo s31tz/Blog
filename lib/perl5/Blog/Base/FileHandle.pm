@@ -622,6 +622,34 @@ sub unlock {
 
 # -----------------------------------------------------------------------------
 
+=head2 Encoding
+
+=head3 setEncoding() - Setze Encoding
+
+=head4 Synopsis
+
+    $fh->setEncoding($encoding);
+
+=head4 Description
+
+Definiere für Filehandle $fh das Encoding $encoding. D.h. alle Daten
+werden automatisch gemäß diesem Encoding beim Schreiben encodiert
+bzw. beim Lesen dekodiert.
+
+Die Methode liefert keinen Wert zurück.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub setEncoding {
+    my ($self,$encoding) = @_;
+    $self->binmode(sprintf ':encoding(%s)',$encoding);
+    return;
+}
+
+# -----------------------------------------------------------------------------
+
 =head2 Verschiedenes
 
 =head3 autoFlush() - Schalte Filehandle in ungepufferten Modus
