@@ -38,7 +38,7 @@ Kommentare entfernt.
 
 Als teilzeiliger Kommentar wird die Abfolge WHITESPACE-HASH-SPACE-TEXT
 akzeptiert. Ein teilzeiliger Kommentar muss entsprechend verfasst sein,
-sonst bleibt er stehen. Diese Einschränkung hat den Zweck,
+sonst wird er nicht entfernt. Diese Einschränkung hat den Zweck,
 Fehl-Erkennungen zu vermeiden, denn
 
   %Code: filter="./blog-highlight perl %FORMAT%"
