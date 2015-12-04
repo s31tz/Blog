@@ -14,6 +14,7 @@ use Blog::Base::FileHandle;
 use Blog::Base::Option;
 use Blog::Base::String;
 use Fcntl qw/:DEFAULT/;
+use Encode ();
 use File::Find ();
 use Blog::Base::DirHandle;
 use Blog::Base::Shell;
@@ -477,6 +478,10 @@ sub writeIfDifferent {
 
 =over 4
 
+=item -decode => $encoding
+
+Dekodiere die Dateinamen gemäß dem angegebenen Encoding.
+
 =item -follow => $bool (Default: 1)
 
 Folge Symbolic Links.
@@ -533,6 +538,7 @@ sub find {
 
     # Optionen
 
+    my $decode = undef;
     my $follow = 1;
     my $olderThan = 0;
     my $pattern = undef;
@@ -543,6 +549,7 @@ sub find {
 
     if (@_) {
         Blog::Base::Option->extract(\@_,
+            -decode=>\$decode,
             -follow=>\$follow,
             -olderThan=>\$olderThan,
             -pattern=>\$pattern,
@@ -608,7 +615,12 @@ sub find {
 
         $File::Find::name =~ s|^\./||; # ./ am Anfang entfernen
 
-        push @paths,$File::Find::name;
+        if ($decode) {
+            push @paths,Encode::decode($decode,$File::Find::name);
+        }
+        else {
+            push @paths,$File::Find::name;
+        }
     };
     File::Find::find({wanted=>$sub,follow=>$follow},$dir);
 
