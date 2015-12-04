@@ -12,7 +12,7 @@
 
 = Neuere ffmpeg-Versionen
 
-Lautstärke per Audio-Filter ändern:
+Die Lautstärke kann per Audio-Filter geändert werden:
 
   $ ffmpeg ... -af volume=FACTOR ...
 
