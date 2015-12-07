@@ -1174,7 +1174,7 @@ sub split {
     $dir = $1 if $path =~ s|(.*)/||;
     $file = $path;
 
-    $ext = $1 if $path =~ s/\.(.*?)$//;
+    $ext = $1 if $path =~ s/\.([^.]+)$//;
     $base = $path;
 
     return ($dir,$file,$base,$ext);
