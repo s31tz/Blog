@@ -537,6 +537,9 @@ sub dump {
         #else {
         #    $str .= "=encoding iso-8859-1\n\n";
         #}
+        if ($title) {
+            $str .= "=head1 $title\n\n";
+        }
         $str .= $childs;
         $str =~ s/\s+$/\n/;
         return $str;
