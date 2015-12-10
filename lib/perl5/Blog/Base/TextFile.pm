@@ -38,10 +38,10 @@ L<Blog::Base::FileHandle>
 
 =head1 DESCRIPTION
 
-Ein Objekt der Klasse repräsentiert eine Textdatei, die aus einer
-Liste von Zeilen besteht. Die Zeilen sind ihrerseits Objekte (per
-Default der Klasse Blog::Base::TextFile::Line). Die Klasse stellt
-Methoden zur Manipulation der Zeilenliste zur Verfügung.
+Ein Objekt der Klasse repräsentiert eine Textdatei als ein
+Array von Zeilen. Die Zeilen sind ihrerseits Objekte (per
+Default Objekte der Klasse Blog::Base::TextFile::Line). Die Klasse stellt
+Methoden zur Manipulation des Arrays von Zeilen zur Verfügung.
 
 =head1 METHODS
 
