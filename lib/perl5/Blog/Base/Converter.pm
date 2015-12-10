@@ -217,6 +217,58 @@ sub epochToTimestamp {
 
 # -----------------------------------------------------------------------------
 
+=head2 Array/Hash
+
+=head3 stringToKeyVal() - Wandele Zeichenkette in Schüssel/Wert-Paare
+
+=head4 Synopsis
+
+    $arr|@arr = $class->stringToKeyVal($str);
+
+=head4 Description
+
+Liefere die in der Zeichenkette enthaltenen Schlüssel/Wert-Paare.
+
+Die Schlüssel/Wert-Paare haben die Form:
+
+    KEY="VAL"
+
+Wenn VAL kein Whitespace enthält, können die Anführungsstriche
+weggelassen werden:
+
+    KEY=VAL
+
+=head4 Example
+
+    q| var1=val1 var2="val2a val2b" var3=val3 var4="val4" |;
+    ==>
+    ('var1','val1','var2','val2a val2b','var3','val3','var4','val4')
+
+=head4 Caveats
+
+Wenn VAL mit einem doppelten Anführungsstrich beginnt, darf VAL
+keine doppelten Anführungsstiche enthalten.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub stringToKeyVal {
+    my ($class,$str) = @_;
+
+    my @arr;
+    while ($str =~ s/^\s*(\w+)=//) {
+        push @arr,$1;
+        $str =~ s/^"([^"]*)"// || $str =~ s/^\{([^}]*)\}// ||
+            $str =~ s/^(\S*)//;
+        push @arr,$1;
+    }
+
+    return wantarray? @arr: bless \@arr,'Blog::Base::Array';
+}
+
+# -----------------------------------------------------------------------------
+
 =head1 AUTHOR
 
 Frank Seitz, L<http://fseitz.de/>

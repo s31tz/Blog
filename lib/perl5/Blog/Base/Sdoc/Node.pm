@@ -7,8 +7,7 @@ use strict;
 use warnings;
 
 use Blog::Base::Array;
-use Blog::Base::String;
-use Blog::Base::String1;
+use Blog::Base::Converter;
 use Blog::Base::Hash1;
 use Blog::Base::Pod;
 
@@ -34,11 +33,7 @@ L<Blog::Base::Array>
 
 =item *
 
-L<Blog::Base::String>
-
-=item *
-
-L<Blog::Base::String1>
+L<Blog::Base::Converter>
 
 =item *
 
@@ -220,7 +215,7 @@ sub nextType {
     if ($type eq 'Object') {
         ($type,$arr) = $self->parseObjectSpec($doc);
     }
-    $arr ||= []; # Blog::Base::Array->new;
+    $arr ||= Blog::Base::Array->new;
 
     if ($type eq 'Item') {
         # Wenn das nächste Element ein Item ist, prüfen wir, ob
@@ -293,8 +288,7 @@ sub parseObjectSpec {
         }
         $str .= $doc->shiftLine->text;
     }
-    # warn "TYPE=[$type] KEYVAL=[$str]\n";
-    my $arr = Blog::Base::String1->extractKeyVal($str);
+    my $arr = Blog::Base::Converter->stringToKeyVal($str);
 
     return ($type,$arr);
 }

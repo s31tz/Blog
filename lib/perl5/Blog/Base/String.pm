@@ -123,29 +123,29 @@ Zeichenkette "in place" manipuliert und nichts zurückgegeben.
 
 =over 2
 
-=item o
+=item *
 
 NEWLINEs am Anfang werden entfernt.
 
-=item o
+=item *
 
 Whitespace (SPACEs, TABs, NEWLINEs) am Ende wird entfernt.
 Das Resultat endet also grundsätzlich nicht mit einem NEWLINE.
 
-=item o
+=item *
 
 Die Methode kehrt zurück, wenn $str anschließend nicht mit wenigstens
 einem Whitespace-Zeichen beginnt, denn dann existiert keine
 Einrückung, die zu entfernen wäre.
 
-=item o
+=item *
 
 Die Einrückung von $str ist die längste Folge von SPACEs
 und TABs, die allen Zeilen von $str gemeinsam ist,
 ausgenommen Leerzeilen. Diese Einrückung wird am Anfang
 aller Zeilen von $str entfernt.
 
-=item o
+=item *
 
 Eine Leerzeile ist eine Zeile, die nur aus Whitespace besteht.
 
