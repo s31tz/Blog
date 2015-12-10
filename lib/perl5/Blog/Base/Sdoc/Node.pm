@@ -220,7 +220,7 @@ sub nextType {
     if ($type eq 'Object') {
         ($type,$arr) = $self->parseObjectSpec($doc);
     }
-    $arr ||= Blog::Base::Array->new;
+    $arr ||= []; # Blog::Base::Array->new;
 
     if ($type eq 'Item') {
         # Wenn das nächste Element ein Item ist, prüfen wir, ob
@@ -444,7 +444,7 @@ sub select {
         }
     }
 
-    my $nodes = Blog::Base::Array->new;
+    my $nodes = []; # Blog::Base::Array->new;
     push @$nodes,$self if $match;
 
     if ($self->exists('childs')) {

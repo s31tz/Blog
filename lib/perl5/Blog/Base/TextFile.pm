@@ -7,7 +7,7 @@ use strict;
 use warnings;
 use utf8;
 
-use Blog::Base::Misc;
+use Blog::Base::Option;
 use Blog::Base::FileHandle;
 
 # -----------------------------------------------------------------------------
@@ -28,7 +28,7 @@ L<Blog::Base::Object>
 
 =item *
 
-L<Blog::Base::Misc>
+L<Blog::Base::Option>
 
 =item *
 
@@ -114,7 +114,7 @@ sub new {
     my $skip = undef;
 
     if (@_) {
-        Blog::Base::Misc->argExtract(\@_,
+        Blog::Base::Option->extract(\@_,
             -lineClass=>\$lineClass,
             -lineContinuation=>\$lineContinuation,
             -skip=>\$skip,

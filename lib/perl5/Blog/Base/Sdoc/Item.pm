@@ -115,7 +115,7 @@ sub new {
 
     my $self = $class->SUPER::new(
         type=>'Item',
-        childs=>Blog::Base::Array->new,
+        childs=>[], # Blog::Base::Array->new,
         anchors=>Blog::Base::OrderedHash->new,
         label=>$label, # Punktsymbol, Nummer oder Text
         key=>$key,

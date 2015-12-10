@@ -129,7 +129,7 @@ sub new {
 
     my $self = $class->SUPER::new(
         type=>'Section',
-        childs=>Blog::Base::Array->new,
+        childs=>[], # Blog::Base::Array->new,
         anchors=>Blog::Base::OrderedHash->new,
         level=>$level+$root->{'deeperSections'}, # $level nur hier ändern!
         number=>undef,

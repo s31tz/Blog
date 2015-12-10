@@ -81,7 +81,7 @@ sub new {
 
     my $self = $class->SUPER::new(
         type=>'List',
-        childs=>Blog::Base::Array->new,
+        childs=>[], # Blog::Base::Array->new,
         itemType=>$itemType,
         simple=>0,
     );

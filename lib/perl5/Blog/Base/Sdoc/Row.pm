@@ -60,7 +60,8 @@ sub new {
     my ($class,$doc,$parent,$attH,$rowNum) = @_;
 
     my $text = $doc->shiftLine->text;
-    my $firstRow = $parent->childs->size? 0: 1;
+    # my $firstRow = $parent->childs->size? 0: 1;
+    my $firstRow = @{$parent->childs}? 0: 1;
 
     # 1. Schritt: | am Anfang und am Ende entfernen
 

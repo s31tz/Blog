@@ -81,7 +81,7 @@ sub new {
 
     my $self = $class->SUPER::new(
         type=>'Table',
-        childs=>Blog::Base::Array->new,
+        childs=>[], # Blog::Base::Array->new,
         alignment=>[], # Default-Ausrichtung, wird sukzessive gesetzt
         number=>undef,
         title=>'',

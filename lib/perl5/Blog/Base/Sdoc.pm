@@ -26,10 +26,11 @@ use Blog::Base::Sdoc::Item;
 use Blog::Base::Sdoc::Quote;
 use Blog::Base::Sdoc::PageBreak;
 use Blog::Base::HtmlTag;
-use Blog::Base::Misc;
 use Blog::Base::TextFile;
 use Blog::Base::OrderedHash;
+use Blog::Base::Option;
 use Blog::Base::Array;
+use Blog::Base::Object;
 use Blog::Base::Path;
 
 # -----------------------------------------------------------------------------
@@ -126,10 +127,6 @@ L<Blog::Base::HtmlTag>
 
 =item *
 
-L<Blog::Base::Misc>
-
-=item *
-
 L<Blog::Base::TextFile>
 
 =item *
@@ -138,7 +135,15 @@ L<Blog::Base::OrderedHash>
 
 =item *
 
+L<Blog::Base::Option>
+
+=item *
+
 L<Blog::Base::Array>
+
+=item *
+
+L<Blog::Base::Object>
 
 =item *
 
@@ -264,7 +269,7 @@ sub new {
     my $utf8 = 0;
 
     if (@_) {
-        Blog::Base::Misc->argExtract(\@_,
+        Blog::Base::Option->extract(\@_,
             -baseUrl=>\$baseUrl,
             -centerTablesAndFigures=>\$centerTablesAndFigures,
             -comments=>\$comments,
@@ -293,7 +298,7 @@ sub new {
     my $self = $class->SUPER::new(
         type=>'Document',
         parent=>undef,
-        childs=>Blog::Base::Array->new,
+        childs=>[], # Blog::Base::Array->new,
         anchorsGlob=>Blog::Base::OrderedHash->new,
         generateAnchors=>1,
         html4=>$html4,
@@ -531,7 +536,7 @@ an den Aufrufer zurück.
 # -----------------------------------------------------------------------------
 
 sub dump {
-    my ($class,$self,$isClassMethod) = Blog::Base::Misc->argThis(shift);
+    my ($class,$self,$isClassMethod) = Blog::Base::Object->this(shift);
     my $format = shift;
 
     # Dokument instantiieren, wenn als Klassenmethode gerufen

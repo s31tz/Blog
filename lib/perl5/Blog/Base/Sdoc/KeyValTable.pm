@@ -83,7 +83,7 @@ sub new {
 
     my $self = $class->SUPER::new(
         type=>'KeyValTable',
-        childs=>Blog::Base::Array->new,
+        childs=>[], # Blog::Base::Array->new,
     );
     $self->parent($parent);
     $self->lockKeys;

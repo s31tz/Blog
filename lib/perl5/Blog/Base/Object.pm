@@ -321,6 +321,86 @@ sub classFile {
 
 # -----------------------------------------------------------------------------
 
+=head3 this() - Liefere Klassenname und Objektreferenz
+
+=head4 Synopsis
+
+    ($class,$self,$isClassMethod) = Blog::Base::Object->this($this);
+    $class = Blog::Base::Object->this($this);
+
+=head4 Description
+
+Liefere Klassenname und Objektreferenz zu Parameter $this und zeige
+auf dem dritten Rückgabewert an, ob die Methode als Klassen- oder
+Objektmethode gerufen wurde.
+
+Ist $this ein Klassenname (eine Zeichenkette) liefere den Namen selbst
+und als Objektreferenz undef und als dritten Rückgabewert 1. Ist
+$this eine Objektreferenz, liefere den Klassennamen zur Objektreferenz
+sowie die Objektreferenz selbst und als dritten Rückgabewert 0.
+
+=head4 Example
+
+=over 2
+
+=item *
+
+Klassen- sowie Objektmethode:
+
+    sub myMethod {
+        my ($class,$self) = Blog::Base::Object->this(shift);
+    
+        if ($self) {
+            # Aufruf als Objektmethode
+        }
+        else {
+            # Aufruf als Klassenmethode
+        }
+    }
+
+=item *
+
+Klassenmethode, die als Objektmethode gerufen werden kann:
+
+    sub mymethod {
+        my $class = Blog::Base::Object->this(shift);
+        ...
+    }
+
+=item *
+
+Objektmethode, die als Klassenmethode gerufen werden kann:
+
+    sub myMethod {
+        my ($class,$self,$isClassMethod) = Blog::Base::Object->this(shift);
+    
+        $self = $class->new(@_);
+    
+        # Ab hier ist mittels $self nicht mehr feststellbar,
+        # ob die Methode als Klassen- oder Objektmethode gerufen wurde.
+        # Die Variable $isclassmethod zeigt es an.
+    
+        $self->specialMethod if $isClassMethod;
+        ...
+    }
+
+=back
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub this {
+    my ($class,$this) = @_;
+
+    if (wantarray) {
+        return ref $this? (ref($this),$this,0): ($this,undef,1);
+    }
+    return ref $this || $this;
+}
+
+# -----------------------------------------------------------------------------
+
 =head1 AUTHOR
 
 Frank Seitz, L<http://fseitz.de/>

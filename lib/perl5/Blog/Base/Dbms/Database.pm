@@ -13,6 +13,7 @@ use Blog::Base::Dbms::Cursor;
 use Blog::Base::DbmsApi::Database;
 use Blog::Base::Sql;
 use POSIX ();
+use Blog::Base::Object;
 use Blog::Base::Hash1;
 use Blog::Base::FileHandle;
 use Time::HiRes ();
@@ -59,6 +60,10 @@ L<Blog::Base::Sql>
 =item *
 
 POSIX
+
+=item *
+
+L<Blog::Base::Object>
 
 =item *
 
@@ -151,7 +156,7 @@ Dies ist nützlich, wenn eine parallele Transaktion benötigt wird.
 # -----------------------------------------------------------------------------
 
 sub new {
-    my ($class,$self) = Blog::Base::Misc->argThis(shift);
+    my ($class,$self) = Blog::Base::Object->this(shift);
 
     # Optionen
 

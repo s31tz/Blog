@@ -85,7 +85,7 @@ sub new {
 
     my $self = $class->SUPER::new(
         type=>'Box',
-        childs=>Blog::Base::Array->new,
+        childs=>[], # Blog::Base::Array->new,
         title=>undef,
     );
     $self->parent($parent);
