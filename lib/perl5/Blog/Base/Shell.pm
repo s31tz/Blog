@@ -28,6 +28,32 @@ Blog::Base::Shell - Ausführung von Shell-Kommandos
 
 L<Blog::Base::Hash>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+Time::HiRes
+
+=item *
+
+L<Blog::Base::Option>
+
+=item *
+
+L<Blog::Base::Converter>
+
+=item *
+
+L<Blog::Base::Path>
+
+=item *
+
+L<Blog::Base::Process>
+
+=back
+
 =head1 METHODS
 
 =head2 Konstruktor/Destruktor

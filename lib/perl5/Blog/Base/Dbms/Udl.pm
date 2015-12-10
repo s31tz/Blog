@@ -20,6 +20,10 @@ Blog::Base::Dbms::Udl - Universal Database Locator
 
 L<Blog::Base::Hash1>
 
+=head1 IMPORT
+
+L<Blog::Base::Hash1>
+
 =head1 SYNOPSIS
 
 Klasse laden:

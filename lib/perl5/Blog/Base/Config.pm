@@ -21,6 +21,20 @@ Blog::Base::Config - Konfigurationsdatei in "Perl Object Notation"
 
 L<Blog::Base::Hash>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::Perl>
+
+=item *
+
+L<Blog::Base::Process>
+
+=back
+
 =head1 SYNOPSIS
 
     use Blog::Base::Config;

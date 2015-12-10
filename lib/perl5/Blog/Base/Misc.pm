@@ -20,6 +20,32 @@ use Scalar::Util ();
 
 Blog::Base::Misc - Klassenbibliothek
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::Object>
+
+=item *
+
+L<Blog::Base::Universal>
+
+=item *
+
+L<Blog::Base::Misc>
+
+=item *
+
+L<Blog::Base::Hash1>
+
+=item *
+
+Scalar::Util
+
+=back
+
 =head1 SYNOPSIS
 
     #!/usr/bin/env perl

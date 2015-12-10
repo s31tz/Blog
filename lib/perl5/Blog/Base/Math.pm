@@ -22,6 +22,24 @@ Blog::Base::Math - Mathematische Funktionen
 
 L<Blog::Base::Object>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+Math::Trig
+
+=item *
+
+Scalar::Util
+
+=item *
+
+POSIX
+
+=back
+
 =head1 METHODS
 
 =head2 pi() - Liefere PI

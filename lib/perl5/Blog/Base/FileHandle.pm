@@ -24,6 +24,28 @@ Blog::Base::FileHandle - Datei-Handle
 
 L<Blog::Base::Object>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::Option>
+
+=item *
+
+Scalar::Util
+
+=item *
+
+L<Blog::Base::Perl>
+
+=item *
+
+Fcntl
+
+=back
+
 =head1 SYNOPSIS
 
 Datei schreiben:

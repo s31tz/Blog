@@ -21,6 +21,10 @@ Blog::Base::Array - Array-Klasse
 
 L<Blog::Base::Object>
 
+=head1 IMPORT
+
+L<Blog::Base::Perl>
+
 =head1 SYNOPSIS
 
     my $arr = Blog::Base::Array->new(qw/d g j a/);

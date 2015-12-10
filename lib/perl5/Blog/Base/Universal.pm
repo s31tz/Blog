@@ -18,6 +18,28 @@ use Blog::Base::Misc;
 
 Blog::Base::Universal - Erweiterungen von UNIVERSAL
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::Object>
+
+=item *
+
+L<Blog::Base::Perl>
+
+=item *
+
+L<Blog::Base::Array>
+
+=item *
+
+L<Blog::Base::Misc>
+
+=back
+
 =head1 DESCRIPTION
 
 FIXME: Diese Klasse auflösen und auf andere Klassen verteilen,

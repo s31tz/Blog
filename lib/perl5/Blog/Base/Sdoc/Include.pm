@@ -22,6 +22,24 @@ Blog::Base::Sdoc::Include - Include-Block
 
 L<Blog::Base::Sdoc::Node>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::IPC>
+
+=item *
+
+L<Blog::Base::TextFile>
+
+=item *
+
+L<Blog::Base::Path>
+
+=back
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert eine extrene Quelle,

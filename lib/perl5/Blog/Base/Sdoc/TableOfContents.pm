@@ -20,6 +20,10 @@ Blog::Base::Sdoc::TableOfContents - Inhaltsverzeichnis
 
 L<Blog::Base::Sdoc::Node>
 
+=head1 IMPORT
+
+L<Blog::Base::OrderedHash>
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert das Inhaltsverzeichnis des

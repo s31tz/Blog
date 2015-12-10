@@ -24,6 +24,32 @@ Blog::Base::Dbms::ResultSet - Liste von Datensätzen (abstrakte Basisklasse)
 
 L<Blog::Base::Hash1>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+Time::HiRes
+
+=item *
+
+L<Blog::Base::Array>
+
+=item *
+
+L<Blog::Base::Misc>
+
+=item *
+
+L<Blog::Base::FileHandle>
+
+=item *
+
+L<Blog::Base::ColumnFormat>
+
+=back
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert eine Liste von gleichartigen

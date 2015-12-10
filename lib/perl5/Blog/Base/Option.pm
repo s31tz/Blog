@@ -21,6 +21,10 @@ Blog::Base::Option - Verarbeitung von Programm- und Methoden-Optionen
 
 L<Blog::Base::Object>
 
+=head1 IMPORT
+
+L<Blog::Base::Hash>
+
 =head1 METHODS
 
 =head2 extract() - Extrahiere Optionen aus Argumentliste

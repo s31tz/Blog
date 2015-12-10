@@ -22,6 +22,24 @@ Blog::Base::String - Operationen auf Zeichenketten
 
 L<Blog::Base::Object>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+Encode::Guess
+
+=item *
+
+Encode
+
+=item *
+
+L<Blog::Base::Option>
+
+=back
+
 =head1 METHODS
 
 =head2 Encoding

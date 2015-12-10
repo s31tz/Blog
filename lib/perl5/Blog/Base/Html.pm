@@ -20,6 +20,10 @@ Blog::Base::Html - Basisklasse für HTML-Komponenten
 
 L<Blog::Base::Hash1>
 
+=head1 IMPORT
+
+L<Blog::Base::Hash1>
+
 =head1 ATTRIBUTES
 
 =over 4

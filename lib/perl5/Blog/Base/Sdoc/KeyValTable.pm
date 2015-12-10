@@ -21,6 +21,20 @@ Blog::Base::Sdoc::KeyValTable - KeyValue-Tabelle
 
 L<Blog::Base::Sdoc::Node>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::Array>
+
+=item *
+
+L<Blog::Base::Sdoc::KeyValRow>
+
+=back
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert eine Tabelle aus

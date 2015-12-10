@@ -20,6 +20,10 @@ Blog::Base::Dbms::Row - Basisklasse Datensatz (abstrakt)
 
 L<Blog::Base::Object>
 
+=head1 IMPORT
+
+L<Blog::Base::Universal>
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert einen Datensatz.

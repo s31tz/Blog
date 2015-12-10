@@ -22,6 +22,20 @@ Blog::Base::TextFile - Textdatei als Array von Zeilen
 
 L<Blog::Base::Object>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::Misc>
+
+=item *
+
+L<Blog::Base::FileHandle>
+
+=back
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert eine Textdatei, die aus einer

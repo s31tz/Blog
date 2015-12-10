@@ -20,6 +20,10 @@ Blog::Base::Image - Operationen auf Bildern
 
 L<Blog::Base::Object>
 
+=head1 IMPORT
+
+L<Blog::Base::FileHandle>
+
 =head1 METHODS
 
 =head2 type() - Liefere Typ einer Bilddatei

@@ -22,6 +22,20 @@ Blog::Base::Hash - Zugriffssicherer Hash mit automatisch generierten Attributmet
 
 L<Blog::Base::Object>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+Scalar::Util
+
+=item *
+
+Hash::Util
+
+=back
+
 =head1 SYNOPSIS
 
 Klasse laden:

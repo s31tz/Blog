@@ -8,6 +8,7 @@ use warnings;
 
 use Blog::Base::Object;
 use Scalar::Util ();
+use Blog::Base::FileHandle;
 
 # -----------------------------------------------------------------------------
 
@@ -20,6 +21,24 @@ Blog::Base::Perl - Erweiterte und abgesicherte Perl-Operationen
 =head1 BASE CLASS
 
 L<Blog::Base::Object>
+
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::Object>
+
+=item *
+
+Scalar::Util
+
+=item *
+
+L<Blog::Base::FileHandle>
+
+=back
 
 =head1 DESCRIPTION
 
@@ -680,6 +699,46 @@ sub removeComment {
 # -----------------------------------------------------------------------------
 
 =head2 POD
+
+=head3 extractPod() - Extrahiere POD-Dokumentation aus Perl-Quelltext
+
+=head4 Synopsis
+
+    $pod = $this->extractPod($file);
+    $pod = $this->extractPod(\$code);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub extractPod {
+    my ($this,$input) = @_;
+
+    my $pod = '';
+
+    my $inPod = 0;
+    my $fh = Blog::Base::FileHandle->new('<',$input);
+    while (<$fh>) {
+        if (/^=cut/) {
+            $inPod = 0;
+            next;
+        }
+        elsif (/^=[a-z]/) {
+            $inPod = 1;
+        }
+        if ($inPod) {
+            $pod .= $_;
+        }
+    }
+    $fh->close;
+
+    $pod =~ s/\s+$//;
+    $pod .= "\n";
+
+    return $pod;
+}
+
+# -----------------------------------------------------------------------------
 
 =head3 removePod() - Entferne POD-Abschnitte aus Quelltext
 

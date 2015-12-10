@@ -24,6 +24,28 @@ Blog::Base::HtmlTag - Klasse zur Generierung von HTML-Code
 
 L<Blog::Base::Hash1>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+MIME::Base64
+
+=item *
+
+L<Blog::Base::String>
+
+=item *
+
+L<Blog::Base::Image>
+
+=item *
+
+L<Blog::Base::Path>
+
+=back
+
 =head1 DESCRIPTION
 
 =head2 Zweck der Klasse

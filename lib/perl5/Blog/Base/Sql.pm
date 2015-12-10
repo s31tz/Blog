@@ -27,6 +27,40 @@ Blog::Base::Sql - Klasse zur Generierung von SQL
 
 L<Blog::Base::Hash1>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::Misc>
+
+=item *
+
+L<Blog::Base::Array>
+
+=item *
+
+L<Blog::Base::Hash1>
+
+=item *
+
+L<Blog::Base::Option>
+
+=item *
+
+L<Blog::Base::String>
+
+=item *
+
+Scalar::Util
+
+=item *
+
+L<Blog::Base::Perl>
+
+=back
+
 =head1 SYNOPSIS
 
 Das Programm

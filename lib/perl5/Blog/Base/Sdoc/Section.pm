@@ -22,6 +22,20 @@ Blog::Base::Sdoc::Section - Abschnitt
 
 L<Blog::Base::Sdoc::Node>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::Array>
+
+=item *
+
+L<Blog::Base::OrderedHash>
+
+=back
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert einen Abschnitt im

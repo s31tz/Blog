@@ -27,6 +27,44 @@ Blog::Base::Dbms::Cursor - Datenbank-Cursor
 
 L<Blog::Base::Hash1>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::Dbms::Row::Array>
+
+=item *
+
+L<Blog::Base::Dbms::Row::Object>
+
+=item *
+
+L<Blog::Base::Dbms::ResultSet::Array>
+
+=item *
+
+L<Blog::Base::Dbms::ResultSet::Object>
+
+=item *
+
+Time::HiRes
+
+=item *
+
+L<Blog::Base::Dbms::Database>
+
+=item *
+
+L<Blog::Base::Array>
+
+=item *
+
+L<Blog::Base::Dbms::Cursor>
+
+=back
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert das Resultat einer

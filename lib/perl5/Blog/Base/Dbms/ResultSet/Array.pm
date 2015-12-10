@@ -21,6 +21,20 @@ Blog::Base::Dbms::ResultSet::Array - Liste von Datensätzen in Array-Repräsenta
 
 L<Blog::Base::Dbms::ResultSet>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::Array>
+
+=item *
+
+L<Blog::Base::Hash1>
+
+=back
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert eine Liste von gleichartigen

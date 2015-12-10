@@ -20,6 +20,10 @@ Blog::Base::DbmsApi::Dbi::Cursor - DBI Datenbank-Cursor
 
 L<Blog::Base::DbmsApi::Cursor>
 
+=head1 IMPORT
+
+L<Blog::Base::Array>
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert einen DBI-Datenbank-Cursor.

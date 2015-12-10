@@ -23,6 +23,10 @@ Blog::Base::DbmsApi::Database - Abstrakte Basisklasse für Datenbank-Verbindunge
 
 L<Blog::Base::Hash1>
 
+=head1 IMPORT
+
+L<Blog::Base::DbmsApi::Dbi::Database>
+
 =head1 METHODS
 
 =head2 Konstruktor/Destruktor

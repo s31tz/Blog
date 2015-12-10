@@ -21,6 +21,10 @@ Blog::Base::Converter - Konvertierung von Werten
 
 L<Blog::Base::Object>
 
+=head1 IMPORT
+
+Time::Local
+
 =head1 METHODS
 
 =head2 Zeichenkette

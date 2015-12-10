@@ -21,6 +21,20 @@ Blog::Base::OrderedHash - Hash mit geordneten Schlüsseln
 
 L<Blog::Base::Object>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::Hash1>
+
+=item *
+
+L<Blog::Base::Array>
+
+=back
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert einen geordneten Hash. Ein geordneter

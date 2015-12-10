@@ -20,6 +20,10 @@ Blog::Base::Sdoc::List - Liste
 
 L<Blog::Base::Sdoc::Node>
 
+=head1 IMPORT
+
+L<Blog::Base::Array>
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert eine Liste im Sdoc-Parsingbaum.

@@ -28,6 +28,32 @@ Blog::Base::DbmsApi::Dbi::Database - Datenbankverbindung über den DBI-Layer
 
 L<Blog::Base::DbmsApi::Database>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+DBI
+
+=item *
+
+L<Blog::Base::DbmsApi::Dbi::Cursor>
+
+=item *
+
+L<Blog::Base::Misc>
+
+=item *
+
+L<Blog::Base::Hash1>
+
+=item *
+
+L<Blog::Base::Array>
+
+=back
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse Blog::Base::DbmsApi::Dbi::Database repräsentiert eine

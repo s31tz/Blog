@@ -16,6 +16,20 @@ use Hash::Util ();
 
 Blog::Base::ApplicationPaths - Pfade einer Unix-Applikation
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+Cwd
+
+=item *
+
+Hash::Util
+
+=back
+
 =head1 SYNOPSIS
 
     # Homedir: <prefix>/opt/<application>

@@ -22,6 +22,28 @@ Blog::Base::System - Information über das System und seine Umgebung
 
 L<Blog::Base::Object>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+Socket
+
+=item *
+
+Sys::Hostname
+
+=item *
+
+encoding
+
+=item *
+
+5.010
+
+=back
+
 =head1 METHODS
 
 =head2 Host

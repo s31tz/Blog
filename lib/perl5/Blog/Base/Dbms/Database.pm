@@ -32,6 +32,60 @@ Blog::Base::Dbms::Database - Verbindung zu einer Relationalen Datenbank
 
 L<Blog::Base::Hash1>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::Misc>
+
+=item *
+
+L<Blog::Base::Dbms::Udl>
+
+=item *
+
+L<Blog::Base::Dbms::Cursor>
+
+=item *
+
+L<Blog::Base::DbmsApi::Database>
+
+=item *
+
+L<Blog::Base::Sql>
+
+=item *
+
+POSIX
+
+=item *
+
+L<Blog::Base::Hash1>
+
+=item *
+
+L<Blog::Base::FileHandle>
+
+=item *
+
+Time::HiRes
+
+=item *
+
+L<Blog::Base::String>
+
+=item *
+
+L<Blog::Base::Option>
+
+=item *
+
+L<Blog::Base::Array>
+
+=back
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert eine Verbindung zu einer

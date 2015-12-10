@@ -21,6 +21,20 @@ Blog::Base::Sdoc::Box - Beispiel
 
 L<Blog::Base::Sdoc::Node>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::TextFile>
+
+=item *
+
+L<Blog::Base::Array>
+
+=back
+
 =head1 ATTRIBUTES
 
 =over 4

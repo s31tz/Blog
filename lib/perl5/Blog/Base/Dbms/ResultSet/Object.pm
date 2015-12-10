@@ -23,6 +23,28 @@ Blog::Base::Dbms::ResultSet::Object - Liste von Datensätzen in Objekt-Repräsen
 
 L<Blog::Base::Dbms::ResultSet>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::Option>
+
+=item *
+
+L<Blog::Base::Hash1>
+
+=item *
+
+L<Blog::Base::Array>
+
+=item *
+
+L<Blog::Base::Math>
+
+=back
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert eine Liste von gleichartigen

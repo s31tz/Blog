@@ -23,6 +23,28 @@ Blog::Base::Help - Programm-Dokumentation
 
 L<Blog::Base::Object>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+Encode
+
+=item *
+
+L<Blog::Base::Option>
+
+=item *
+
+L<Blog::Base::Converter>
+
+=item *
+
+L<Blog::Base::FileHandle>
+
+=back
+
 =head1 METHODS
 
 =head2 text() - Liefere Programm-Dokumentation

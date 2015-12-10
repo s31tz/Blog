@@ -20,6 +20,10 @@ Blog::Base::Sdoc::Quote - Quote
 
 L<Blog::Base::Sdoc::Node>
 
+=head1 IMPORT
+
+L<Blog::Base::Pod>
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert einen Zitat-Abschnitt

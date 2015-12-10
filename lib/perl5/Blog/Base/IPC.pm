@@ -22,6 +22,24 @@ Blog::Base::IPC - Interprozesskommunikation
 
 L<Blog::Base::Object>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+IPC::Open3
+
+=item *
+
+L<Blog::Base::Shell>
+
+=item *
+
+L<Blog::Base::Option>
+
+=back
+
 =head1 METHODS
 
 =head2 Methods

@@ -21,6 +21,20 @@ Blog::Base::Process - Information über den laufenden Prozess
 
 L<Blog::Base::Object>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+Cwd
+
+=item *
+
+L<Blog::Base::System>
+
+=back
+
 =head1 METHODS
 
 =head2 Prozess-Eigenschaften

@@ -24,6 +24,28 @@ Blog::Base::Sdoc::Code - Code-Block
 
 L<Blog::Base::Sdoc::Node>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::String>
+
+=item *
+
+L<Blog::Base::IPC>
+
+=item *
+
+L<Blog::Base::Html::Listing>
+
+=item *
+
+L<Blog::Base::Path>
+
+=back
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert einen Code-Abschniit

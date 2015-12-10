@@ -16,6 +16,20 @@ use Blog::Base::Stacktrace;
 
 Blog::Base::Object - Basisklasse für alle Klassen der Klassenbibliothek
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+Hash::Util
+
+=item *
+
+L<Blog::Base::Stacktrace>
+
+=back
+
 =head1 SYNOPSIS
 
     package MyClass;

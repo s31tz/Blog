@@ -20,6 +20,10 @@ Blog::Base::Html::Listing - Programm-Listing in HTML
 
 L<Blog::Base::Html>
 
+=head1 IMPORT
+
+L<Blog::Base::FileHandle>
+
 =head1 SYNOPSIS
 
     use Blog::Base::Html::Listing;

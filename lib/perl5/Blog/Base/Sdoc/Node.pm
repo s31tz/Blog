@@ -24,6 +24,32 @@ Blog::Base::Sdoc::Node - Basisklasse für die Knoten eines Sdoc-Dokuments (abstr
 
 L<Blog::Base::Hash1>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::Array>
+
+=item *
+
+L<Blog::Base::String>
+
+=item *
+
+L<Blog::Base::String1>
+
+=item *
+
+L<Blog::Base::Hash1>
+
+=item *
+
+L<Blog::Base::Pod>
+
+=back
+
 =head1 DESCRIPTION
 
 Die Klasse dient als Basisklasse für die Knotenklassen eines

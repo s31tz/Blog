@@ -21,6 +21,20 @@ Blog::Base::Sdoc::Table - Tabelle
 
 L<Blog::Base::Sdoc::Node>
 
+=head1 IMPORT
+
+=over 2
+
+=item *
+
+L<Blog::Base::Array>
+
+=item *
+
+L<Blog::Base::Sdoc::Row>
+
+=back
+
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert eine Tabelle im Sdoc-Parsingbaum.
