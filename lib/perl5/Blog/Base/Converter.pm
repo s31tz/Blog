@@ -264,7 +264,7 @@ sub stringToKeyVal {
         push @arr,$1;
     }
 
-    return wantarray? @arr: bless \@arr,'Blog::Base::Array';
+    return wantarray? @arr: \@arr;
 }
 
 # -----------------------------------------------------------------------------

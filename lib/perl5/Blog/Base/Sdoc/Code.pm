@@ -102,11 +102,11 @@ sub new {
     if (@$att) {
         # Aufruf über %Code:
 
-        if (my $i = $att->extractPair('listing')) {
+        if (my $i = $att->extractKeyVal('listing')) {
             push @$att,ln=>$i,bg=>2;
         }
 
-        my $stop = $att->extractPair('stop');
+        my $stop = $att->extractKeyVal('stop');
         if (!defined $stop) {
             if ($att->index('exec') >= 0 || $att->index('file') >= 0) {
                 $stop = '';  # Default für exec und file
@@ -115,7 +115,7 @@ sub new {
                 $stop = '.'; # normaler Default
             }
         }
-        my $indentation = ' ' x $att->extractPair('indentation');
+        my $indentation = ' ' x $att->extractKeyVal('indentation');
 
         my $reStop = $stop eq ''? qr/^$/: qr/^\Q$indentation$stop\E$/;
         my $reIndentation = qr/^$|^\Q$indentation/;
