@@ -16,7 +16,7 @@ use Blog::Base::Prty::ApplicationPaths;
 use Blog::Base::Prty::Config;
 use Blog::Base::Prty::Process;
 use Blog::Base::Prty::Path;
-use Blog::Base::R1::Sdoc;
+use Blog::Base::Prty::Sdoc;
 
 # -----------------------------------------------------------------------------
 
@@ -90,7 +90,7 @@ L<Blog::Base::Prty::Path>
 
 =item *
 
-L<Blog::Base::R1::Sdoc>
+L<Blog::Base::Prty::Sdoc>
 
 =back
 
@@ -188,6 +188,6 @@ POSIX::strftime('%Y',localtime);
 
 binmode STDOUT,':encoding(utf8)';
 print $format eq 'sdoc'? $code:
-    Blog::Base::R1::Sdoc->new(\$code,-utf8=>1)->dump($format);
+    Blog::Base::Prty::Sdoc->new(\$code,-utf8=>1)->dump($format);
 
 # eof

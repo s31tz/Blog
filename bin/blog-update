@@ -9,7 +9,7 @@ use utf8;
 use FindBin qw/$Bin/;;
 use lib "$Bin/../lib/perl5";
 use open OUT=>':locale';
-use Blog::Base::R1::Sdoc;
+use Blog::Base::Prty::Sdoc;
 use Blog::Base::Prty::Option;
 use Blog::Base::R1::Help;
 use Blog::Base::Prty::ApplicationPaths;
@@ -88,7 +88,7 @@ open
 
 =item *
 
-L<Blog::Base::R1::Sdoc>
+L<Blog::Base::Prty::Sdoc>
 
 =item *
 
@@ -137,7 +137,7 @@ Copyright (C) 2015 Frank Seitz
 my $convertFile = sub {
     my $file = shift;
 
-    my $sdoc =  Blog::Base::R1::Sdoc->new("$file",-utf8=>1);
+    my $sdoc =  Blog::Base::Prty::Sdoc->new("$file",-utf8=>1);
     my $html = Encode::decode('utf-8',$sdoc->dump('ehtml'));
     $html =~ s|<h1.*?>(.*?)</h1>\n+||;
     my $title = $1;
