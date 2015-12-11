@@ -231,22 +231,22 @@ Liefere die in der Zeichenkette enthaltenen Schlüssel/Wert-Paare.
 
 Die Schlüssel/Wert-Paare haben die Form:
 
-    KEY="VAL"
+    $key="$val"
 
-Wenn VAL kein Whitespace enthält, können die Anführungsstriche
+Wenn $val kein Whitespace enthält, können die Anführungsstriche
 weggelassen werden:
 
-    KEY=VAL
+    $key=$val
 
 =head4 Example
 
-    q| var1=val1 var2="val2a val2b" var3=val3 var4="val4" |;
-    ==>
-    ('var1','val1','var2','val2a val2b','var3','val3','var4','val4')
+    $class->stringToKeyVal(q|var1=val1 var2="val2"|);
+    =>
+    ('var1','val1','var2','val2a')
 
 =head4 Caveats
 
-Wenn VAL mit einem doppelten Anführungsstrich beginnt, darf VAL
+Wenn $val mit einem doppelten Anführungsstrich beginnt, darf $val
 keine doppelten Anführungsstiche enthalten.
 
 =cut

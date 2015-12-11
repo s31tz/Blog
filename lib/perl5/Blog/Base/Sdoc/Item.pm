@@ -7,7 +7,6 @@ use strict;
 use warnings;
 
 use Blog::Base::TextFile;
-use Blog::Base::Array;
 use Blog::Base::OrderedHash;
 
 # -----------------------------------------------------------------------------
@@ -29,10 +28,6 @@ L<Blog::Base::Sdoc::Node>
 =item *
 
 L<Blog::Base::TextFile>
-
-=item *
-
-L<Blog::Base::Array>
 
 =item *
 
@@ -115,7 +110,7 @@ sub new {
 
     my $self = $class->SUPER::new(
         type=>'Item',
-        childs=>[], # Blog::Base::Array->new,
+        childs=>[],
         anchors=>Blog::Base::OrderedHash->new,
         label=>$label, # Punktsymbol, Nummer oder Text
         key=>$key,

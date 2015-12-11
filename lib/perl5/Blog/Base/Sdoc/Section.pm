@@ -7,7 +7,6 @@ use strict;
 use warnings;
 use utf8;
 
-use Blog::Base::Array;
 use Blog::Base::OrderedHash;
 
 # -----------------------------------------------------------------------------
@@ -24,17 +23,7 @@ L<Blog::Base::Sdoc::Node>
 
 =head1 IMPORT
 
-=over 2
-
-=item *
-
-L<Blog::Base::Array>
-
-=item *
-
 L<Blog::Base::OrderedHash>
-
-=back
 
 =head1 DESCRIPTION
 
@@ -129,7 +118,7 @@ sub new {
 
     my $self = $class->SUPER::new(
         type=>'Section',
-        childs=>[], # Blog::Base::Array->new,
+        childs=>[],
         anchors=>Blog::Base::OrderedHash->new,
         level=>$level+$root->{'deeperSections'}, # $level nur hier ändern!
         number=>undef,

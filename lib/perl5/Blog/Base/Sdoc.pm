@@ -29,7 +29,6 @@ use Blog::Base::HtmlTag;
 use Blog::Base::TextFile;
 use Blog::Base::OrderedHash;
 use Blog::Base::Option;
-use Blog::Base::Array;
 use Blog::Base::Object;
 use Blog::Base::Path;
 
@@ -136,10 +135,6 @@ L<Blog::Base::OrderedHash>
 =item *
 
 L<Blog::Base::Option>
-
-=item *
-
-L<Blog::Base::Array>
 
 =item *
 
@@ -298,7 +293,7 @@ sub new {
     my $self = $class->SUPER::new(
         type=>'Document',
         parent=>undef,
-        childs=>[], # Blog::Base::Array->new,
+        childs=>[],
         anchorsGlob=>Blog::Base::OrderedHash->new,
         generateAnchors=>1,
         html4=>$html4,

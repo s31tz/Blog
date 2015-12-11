@@ -6,7 +6,6 @@ use base qw/Blog::Base::Sdoc::Node/;
 use strict;
 use warnings;
 
-use Blog::Base::Array;
 use Blog::Base::Sdoc::Row;
 
 # -----------------------------------------------------------------------------
@@ -23,17 +22,7 @@ L<Blog::Base::Sdoc::Node>
 
 =head1 IMPORT
 
-=over 2
-
-=item *
-
-L<Blog::Base::Array>
-
-=item *
-
 L<Blog::Base::Sdoc::Row>
-
-=back
 
 =head1 DESCRIPTION
 
@@ -81,7 +70,7 @@ sub new {
 
     my $self = $class->SUPER::new(
         type=>'Table',
-        childs=>[], # Blog::Base::Array->new,
+        childs=>[],
         alignment=>[], # Default-Ausrichtung, wird sukzessive gesetzt
         number=>undef,
         title=>'',

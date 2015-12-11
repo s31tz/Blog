@@ -7,7 +7,6 @@ use strict;
 use warnings;
 
 use Blog::Base::TextFile;
-use Blog::Base::Array;
 
 # -----------------------------------------------------------------------------
 
@@ -23,17 +22,7 @@ L<Blog::Base::Sdoc::Node>
 
 =head1 IMPORT
 
-=over 2
-
-=item *
-
 L<Blog::Base::TextFile>
-
-=item *
-
-L<Blog::Base::Array>
-
-=back
 
 =head1 ATTRIBUTES
 
@@ -85,7 +74,7 @@ sub new {
 
     my $self = $class->SUPER::new(
         type=>'Box',
-        childs=>[], # Blog::Base::Array->new,
+        childs=>[],
         title=>undef,
     );
     $self->parent($parent);

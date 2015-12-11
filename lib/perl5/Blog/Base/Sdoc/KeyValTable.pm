@@ -6,7 +6,6 @@ use base qw/Blog::Base::Sdoc::Node/;
 use strict;
 use warnings;
 
-use Blog::Base::Array;
 use Blog::Base::Sdoc::KeyValRow;
 
 # -----------------------------------------------------------------------------
@@ -23,17 +22,7 @@ L<Blog::Base::Sdoc::Node>
 
 =head1 IMPORT
 
-=over 2
-
-=item *
-
-L<Blog::Base::Array>
-
-=item *
-
 L<Blog::Base::Sdoc::KeyValRow>
-
-=back
 
 =head1 DESCRIPTION
 
@@ -83,7 +72,7 @@ sub new {
 
     my $self = $class->SUPER::new(
         type=>'KeyValTable',
-        childs=>[], # Blog::Base::Array->new,
+        childs=>[],
     );
     $self->parent($parent);
     $self->lockKeys;

@@ -6,8 +6,6 @@ use base qw/Blog::Base::Sdoc::Node/;
 use strict;
 use warnings;
 
-use Blog::Base::Array;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -19,10 +17,6 @@ Blog::Base::Sdoc::List - Liste
 =head1 BASE CLASS
 
 L<Blog::Base::Sdoc::Node>
-
-=head1 IMPORT
-
-L<Blog::Base::Array>
 
 =head1 DESCRIPTION
 
@@ -81,7 +75,7 @@ sub new {
 
     my $self = $class->SUPER::new(
         type=>'List',
-        childs=>[], # Blog::Base::Array->new,
+        childs=>[],
         itemType=>$itemType,
         simple=>0,
     );

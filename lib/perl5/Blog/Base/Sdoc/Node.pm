@@ -8,7 +8,6 @@ use warnings;
 
 use Blog::Base::Array;
 use Blog::Base::Converter;
-use Blog::Base::Array;
 use Blog::Base::Hash1;
 use Blog::Base::Pod;
 
@@ -35,10 +34,6 @@ L<Blog::Base::Array>
 =item *
 
 L<Blog::Base::Converter>
-
-=item *
-
-L<Blog::Base::Array>
 
 =item *
 
@@ -443,7 +438,7 @@ sub select {
         }
     }
 
-    my $nodes = []; # Blog::Base::Array->new;
+    my $nodes = [];
     push @$nodes,$self if $match;
 
     if ($self->exists('childs')) {
