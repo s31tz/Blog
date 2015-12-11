@@ -9,14 +9,14 @@ use utf8;
 use FindBin qw/$Bin/;;
 use lib "$Bin/../lib/perl5";
 use open OUT=>':locale';
-use Blog::Base::Sdoc;
-use Blog::Base::Option;
-use Blog::Base::Help;
-use Blog::Base::ApplicationPaths;
-use Blog::Base::Config;
-use Blog::Base::Dbms::Database;
-use Blog::Base::Process;
-use Blog::Base::Path;
+use Blog::Base::R1::Sdoc;
+use Blog::Base::Prty::Option;
+use Blog::Base::R1::Help;
+use Blog::Base::Prty::ApplicationPaths;
+use Blog::Base::Prty::Config;
+use Blog::Base::R1::Dbms::Database;
+use Blog::Base::Prty::Process;
+use Blog::Base::Prty::Path;
 
 # -----------------------------------------------------------------------------
 
@@ -88,35 +88,35 @@ open
 
 =item *
 
-L<Blog::Base::Sdoc>
+L<Blog::Base::R1::Sdoc>
 
 =item *
 
-L<Blog::Base::Option>
+L<Blog::Base::Prty::Option>
 
 =item *
 
-L<Blog::Base::Help>
+L<Blog::Base::R1::Help>
 
 =item *
 
-L<Blog::Base::ApplicationPaths>
+L<Blog::Base::Prty::ApplicationPaths>
 
 =item *
 
-L<Blog::Base::Config>
+L<Blog::Base::Prty::Config>
 
 =item *
 
-L<Blog::Base::Dbms::Database>
+L<Blog::Base::R1::Dbms::Database>
 
 =item *
 
-L<Blog::Base::Process>
+L<Blog::Base::Prty::Process>
 
 =item *
 
-L<Blog::Base::Path>
+L<Blog::Base::Prty::Path>
 
 =back
 
@@ -137,7 +137,7 @@ Copyright (C) 2015 Frank Seitz
 my $convertFile = sub {
     my $file = shift;
 
-    my $sdoc =  Blog::Base::Sdoc->new("$file",-utf8=>1);
+    my $sdoc =  Blog::Base::R1::Sdoc->new("$file",-utf8=>1);
     my $html = Encode::decode('utf-8',$sdoc->dump('ehtml'));
     $html =~ s|<h1.*?>(.*?)</h1>\n+||;
     my $title = $1;
@@ -154,25 +154,25 @@ my $dryRun = 0;
 my $verbose = 0;
 my $help = 0;
 
-Blog::Base::Option->extract(\@ARGV,
+Blog::Base::Prty::Option->extract(\@ARGV,
     -dryRun=>\$dryRun,
     -verbose=>\$verbose,
     -help=>\$help,
 );
 if ($help) {
-    Blog::Base::Help->exit;
+    Blog::Base::R1::Help->exit;
 }
 elsif (@ARGV) {
-    Blog::Base::Help->exit(10,'ERROR: Too many arguments');
+    Blog::Base::R1::Help->exit(10,'ERROR: Too many arguments');
 }
 
 # Konfiguration
 
-my $app = Blog::Base::ApplicationPaths->new;
-my $cfg = Blog::Base::Config->new($app->etcDir('blog.conf'));
+my $app = Blog::Base::Prty::ApplicationPaths->new;
+my $cfg = Blog::Base::Prty::Config->new($app->etcDir('blog.conf'));
 
 # Datenbankverbindung aufbauen
-my $db = Blog::Base::Dbms::Database->new($cfg->get('Udl'),
+my $db = Blog::Base::R1::Dbms::Database->new($cfg->get('Udl'),
     -utf8=>1,
     -log=>$verbose,
 );
@@ -188,14 +188,14 @@ my %idIdx = $entT->index('id');
 # Ins Artikelverzeichnis wechseln
 
 my $articleDir = $app->homeDir('article');
-Blog::Base::Process->cwd($articleDir);
+Blog::Base::Prty::Process->cwd($articleDir);
 
 # Artikeldateien lesen
 
 my $n = 0; # Anzahl aktualisierter Artikel
-for my $file (Blog::Base::Path->glob("*.sdoc")) {
-    my $mtime = Blog::Base::Path->mtime($file);
-    my $text = Encode::decode('utf8',Blog::Base::Path->read($file));
+for my $file (Blog::Base::Prty::Path->glob("*.sdoc")) {
+    my $mtime = Blog::Base::Prty::Path->mtime($file);
+    my $text = Encode::decode('utf8',Blog::Base::Prty::Path->read($file));
 
     my ($id) = $text =~ /^# (?:id=|Id: )(\d+)/m;
     if (!$id) {

@@ -9,13 +9,13 @@ use FindBin qw/$Bin/;
 use lib "$Bin/../lib/perl5";
 use open OUT=>':locale';
 use POSIX ();
-use Blog::Base::Option;
-use Blog::Base::Help;
-use Blog::Base::ApplicationPaths;
-use Blog::Base::Config;
-use Blog::Base::Process;
-use Blog::Base::Path;
-use Blog::Base::Sdoc;
+use Blog::Base::Prty::Option;
+use Blog::Base::R1::Help;
+use Blog::Base::Prty::ApplicationPaths;
+use Blog::Base::Prty::Config;
+use Blog::Base::Prty::Process;
+use Blog::Base::Prty::Path;
+use Blog::Base::R1::Sdoc;
 
 # -----------------------------------------------------------------------------
 
@@ -67,31 +67,31 @@ POSIX
 
 =item *
 
-L<Blog::Base::Option>
+L<Blog::Base::Prty::Option>
 
 =item *
 
-L<Blog::Base::Help>
+L<Blog::Base::R1::Help>
 
 =item *
 
-L<Blog::Base::ApplicationPaths>
+L<Blog::Base::Prty::ApplicationPaths>
 
 =item *
 
-L<Blog::Base::Config>
+L<Blog::Base::Prty::Config>
 
 =item *
 
-L<Blog::Base::Process>
+L<Blog::Base::Prty::Process>
 
 =item *
 
-L<Blog::Base::Path>
+L<Blog::Base::Prty::Path>
 
 =item *
 
-L<Blog::Base::Sdoc>
+L<Blog::Base::R1::Sdoc>
 
 =back
 
@@ -114,39 +114,39 @@ my $format = 'html';
 my $verbose = 0;
 my $help = 0;
 
-Blog::Base::Option->extract(\@ARGV,
+Blog::Base::Prty::Option->extract(\@ARGV,
     -embed=>\$embed,
     -format=>\$format,
     -verbose=>\$verbose,
     -help=>\$help,
 );
 if ($help) {
-    Blog::Base::Help->exit;
+    Blog::Base::R1::Help->exit;
 }
 elsif (@ARGV) {
-    Blog::Base::Help->exit(10,'ERROR: Too many arguments');
+    Blog::Base::R1::Help->exit(10,'ERROR: Too many arguments');
 }
 
 # Konfiguration
 
-my $app = Blog::Base::ApplicationPaths->new;
-my $cfg = Blog::Base::Config->new($app->etcDir('blog.conf'));
+my $app = Blog::Base::Prty::ApplicationPaths->new;
+my $cfg = Blog::Base::Prty::Config->new($app->etcDir('blog.conf'));
 
 my $articleDir = $app->homeDir('article');
 my $imageDir = $app->homeDir('image');
 my $cssDir = $app->homeDir('css');
 
 # Ins Artikelverzeichnis wechseln
-Blog::Base::Process->cwd($articleDir);
+Blog::Base::Prty::Process->cwd($articleDir);
 
 # Artikeldateien zusammenfügen
 
 my $sdoc = '';
 my $maxMtime = 0;
-for my $file (reverse Blog::Base::Path->glob("*.sdoc")) {
+for my $file (reverse Blog::Base::Prty::Path->glob("*.sdoc")) {
     my ($num) = $file =~ m|(\d+)-[^/]+.sdoc|;
     $num += 0;
-    my $text = Blog::Base::Path->read($file);
+    my $text = Blog::Base::Prty::Path->read($file);
 
     # Drafts übergehen wir
 
@@ -158,7 +158,7 @@ for my $file (reverse Blog::Base::Path->glob("*.sdoc")) {
 
     # Zeitpunkt der jüngsten Änderung
 
-    my $mtime = Blog::Base::Path->mtime($file);
+    my $mtime = Blog::Base::Prty::Path->mtime($file);
     if ($mtime > $maxMtime) {
         $maxMtime = $mtime;
     }
@@ -225,7 +225,7 @@ if ($format eq 'sdoc') {
 }
 else {
     print Encode::decode('utf-8',
-        Blog::Base::Sdoc->new(\$sdoc,-utf8=>1)->dump('html'));
+        Blog::Base::R1::Sdoc->new(\$sdoc,-utf8=>1)->dump('html'));
 }
 
 # eof
