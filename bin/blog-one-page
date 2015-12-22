@@ -15,7 +15,7 @@ use Blog::Base::Prty::ApplicationPaths;
 use Blog::Base::Prty::Config;
 use Blog::Base::Prty::Process;
 use Blog::Base::Prty::Path;
-use Blog::Base::Prty::Sdoc;
+use Blog::Base::Prty::Sdoc::Document;
 
 # -----------------------------------------------------------------------------
 
@@ -91,7 +91,7 @@ L<Blog::Base::Prty::Path>
 
 =item *
 
-L<Blog::Base::Prty::Sdoc>
+L<Blog::Base::Prty::Sdoc::Document>
 
 =back
 
@@ -225,7 +225,7 @@ if ($format eq 'sdoc') {
 }
 else {
     print Encode::decode('utf-8',
-        Blog::Base::Prty::Sdoc->new(\$sdoc,-utf8=>1)->dump('html'));
+        Blog::Base::Prty::Sdoc::Document->new(\$sdoc,-utf8=>1)->dump('html'));
 }
 
 # eof
