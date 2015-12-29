@@ -51,10 +51,10 @@ auch folgende Warnung.
 Warnung: Ohne ein echtes Parsing gemäß der Grammatik einer Sprache
 sind I{absolut sichere} Operationen auf einem Quelltext nicht möglich
 - insbesondere bei Perl, das eine sehr facettenreiche Syntax
-hat. Obige Pattern können, auch wenn dies unwahrscheinlich ist, den
-Inhalt von String-Literalen matchen. Im Einzelfall kann eine
-Fehl-Erkennung durch Änderung des Literals - z.B. durch
-Einstreuen von Backslashes - verhindert werden.
+hat. Obige Pattern können in besonderen Fällen den Inhalt von
+String-Literalen matchen. Im Einzelfall kann so eine Fehl-Erkennung
+durch Änderung des Literals - z.B. durch Einstreuen von Backslashes -
+verhindert werden.
 
 = Links
 
