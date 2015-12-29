@@ -32,7 +32,7 @@ Entferne teilzeilige Kommentare aus Perl-Quelltext:
 Diese Operationen sind nützlich, wenn man einen Perl-Quelltext ohne
 Dokumentation und Kommentare ausliefern möchte, oder wenn man
 entscheiden möchte, ob eine Quelltextänderung getestet werden muss.
-Letzteres ist angeraten, wenn Änderungen in dem Teil des Quelltextes
+Letzteres ist ratsam, wenn Änderungen in dem Teil des Quelltextes
 existieren, der übrig bleibt, wenn man die Dokumentation und die
 Kommentare entfernt.
 
