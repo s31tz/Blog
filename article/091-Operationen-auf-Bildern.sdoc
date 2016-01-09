@@ -74,7 +74,7 @@ Wert von C{-crop} bei Wandlung von 16:9 nach 4:3:
   | 1920x1080 | 1440x1080 | 1440x1080+240+0  | 0 .. 480        |
   | 1280x720  | 960x720   | 960x720+160+0    | 0 .. 320        |
 
-WIDTH = HEIGHT / 9 * 16
+WIDTH = HEIGHT / 3 * 4
 
 = Höchauflösende 4:3-Bilder in 16:9-Videoformat (HD) wandeln
 
@@ -90,7 +90,7 @@ Bereich C{YOFFS}: 0 .. 360
 
 Bereich C{YOFFS}: 0 .. 240
 
-HEIGHT = WIDTH / 4 * 3
+HEIGHT = WIDTH / 16 * 9
 
 = Links
 
