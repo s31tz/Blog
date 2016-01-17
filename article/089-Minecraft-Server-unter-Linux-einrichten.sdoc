@@ -119,7 +119,8 @@ Hierbei ist:
     Der Benutzername.
 
 [LEVEL:]
-    Der Berechtigungs-Level. Vier Level werden unterschieden:
+    Der Berechtigungs-Level. Vier Level werden unterschieden, von denen
+    4 den größten Umfang an Rechten besitzt:
 
     [1:]
         Can bypass spawn protection.
