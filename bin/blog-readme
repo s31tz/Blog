@@ -173,7 +173,7 @@ for my $file (reverse Blog::Base::Prty::Path->glob("*.sdoc")) {
 
 my $year = POSIX::strftime('%Y',localtime);
 
-$code .= sprintf <<'__EOT__',
+$code .= sprintf <<'__EOT__';
 = AUTHOR
 
 Frank Seitz, U{http://fseitz.de}
@@ -184,7 +184,6 @@ Copyright (C) Frank Seitz
 
 # eof
 __EOT__
-POSIX::strftime('%Y',localtime);
 
 binmode STDOUT,':encoding(utf8)';
 print $format eq 'sdoc'? $code:
