@@ -41,4 +41,19 @@ Dienste (Ports) übertragen werden.
 Ein weiterer Artikel zu dem Thema:
 U{http://www.revsys.com/writings/quicktips/ssh-tunnel.html}
 
+= phpMyAdmin
+
+Um mit einer lokalen phpMyAdmin-Applikation über den Tunnel
+auf die Remote-Datenbank zugreifen zu können, wird eine
+entsprechende Server-Definition in der phpMyAdmin-Konfiguration
+vereinbart, z.B. in C{/etc/phpmyadmin/conf.d/<Server-Name>.php}:
+    
+  <?php
+
+  $cfg['Servers'][$i]['verbose'] = '<Server-Name>';
+  $cfg['Servers'][$i]['host'] = '127.0.0.1';
+  $cfg['Servers'][$i]['port'] = '3305';
+  $cfg['Servers'][$i]['connect_type'] = 'tcp';
+  $i++;
+    
 # eof
