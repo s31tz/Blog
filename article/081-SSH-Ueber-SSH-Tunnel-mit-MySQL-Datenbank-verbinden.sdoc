@@ -55,5 +55,15 @@ vereinbart, z.B. in C{/etc/phpmyadmin/conf.d/<Server-Name>.php}:
   $cfg['Servers'][$i]['port'] = '3305';
   $cfg['Servers'][$i]['connect_type'] = 'tcp';
   $i++;
+
+Das Timeout hochsetzen:
+
+  $cfg['LoginCookieValidity'] = <Wert in Sekunden>;
+
+Z.B. ein Tag:
+
+  $cfg['LoginCookieValidity'] = 86400;
+    
+0 bedeutet nicht unendlich, sondern sofortiges Logout!
     
 # eof
