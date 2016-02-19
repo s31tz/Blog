@@ -13,6 +13,10 @@ veröffentlicht habe.
 
 =item *
 
+L<TeamViewer unter Debian (64bit/multiarch) installieren|https://github.com/s31tz/Blog/blob/master/article/124-Teamviewer-unter-Debian-installieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/136-x.html>)
+
+=item *
+
 L<Perl: Dokumentation und Kommentare aus Perl-Quelltexten entfernen|https://github.com/s31tz/Blog/blob/master/article/122-Perl-POD-aus-Quelltext-entfernen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/134-x.html>)
 
 =item *
