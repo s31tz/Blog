@@ -12,7 +12,7 @@ use Blog::Base::Prty::Option;
 use Blog::Base::R1::Help;
 use Blog::Base::Prty::ApplicationPaths;
 use Blog::Base::Prty::Config;
-use Blog::Base::R1::Dbms::Database;
+use Blog::Base::Prty::Database::Connection;
 use Blog::Base::Prty::Process;
 use Blog::Base::Prty::Path;
 
@@ -106,7 +106,7 @@ L<Blog::Base::Prty::Config>
 
 =item *
 
-L<Blog::Base::R1::Dbms::Database>
+L<Blog::Base::Prty::Database::Connection>
 
 =item *
 
@@ -170,7 +170,7 @@ my $app = Blog::Base::Prty::ApplicationPaths->new;
 my $cfg = Blog::Base::Prty::Config->new($app->etcDir('blog.conf'));
 
 # Datenbankverbindung aufbauen
-my $db = Blog::Base::R1::Dbms::Database->new($cfg->get('Udl'),
+my $db = Blog::Base::Prty::Database::Connection->new($cfg->get('Udl'),
     -utf8=>1,
     -log=>$verbose,
 );
