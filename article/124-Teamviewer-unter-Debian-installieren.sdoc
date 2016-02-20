@@ -1,0 +1,45 @@
+# Date: 2016-02-16
+# Id: 136
+# Draft: no
+# Categories: TeamViewer
+
+%Document:
+  title="TeamViewer unter Debian (64bit/multiarch) installieren"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/teamviewer-100x100.jpg" \
+    width=50 height=50 url="http://www.teamviewer.com/"
+
+TeamViewer kann nicht per C{apt-get} installiert werden. Das
+Debian-Paket muss stattdessen von der Download-Seite des Herstellers
+heruntergeladen und manuell installiert werden. Zu beachten ist, dass
+auf neueren 64bit-Debian-Systemen (mit Multiarch-Support) das
+i386-Paket installiert werden muss (siehe "Hinweise zur Installation"
+auf der Download-Seite).
+
+= Download
+     
+Debian-Paket von
+U{"https://www.teamviewer.com/de/download/linux.aspx",
+text="Download-Seite"} herunterladen. Der Dateiname lautet aktuell
+C{teamviewer_11.0.53191_i386.deb}.
+
+= Installation
+    
+  # dpkg --add-architecture i386
+  # apt-get update
+  # gdebi teamviewer_11.0.53191_i386.deb
+  ...
+  Do you want to install the software package? [y/N]:y
+  ...
+
+Sollte C{gdebi} nicht installiert sein, kann dies mit
+
+  # apt-get install gdebi
+
+nachgeholt werden. Das Programm installiert lokal vorliegende
+Debian-Pakete und löst automatisch alle Abhängigkeiten auf (was C{dpkg
+-i} nicht macht).
+
+# eof
