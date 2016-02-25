@@ -12,7 +12,7 @@
 %Figure: file="IMGDIR/mysql-logo-170x115.png" \
   width="74" height="50" url="http://www.mysql.de/"
 
-Der reinen Datenbank-Lehre nach ist es strikt verboten, mehrere Werte
+Der reinen Datenbank-Lehre nach ist es strikt verboten mehrere Werte
 in einer Kolumne zu speichern. Sowas kommt in der Realität trotzdem
 vor, sogar bei Fremdschlüssel-Kolumnen. D.h. die
 Fremdschlüssel-Kolumne referenziert in dem Fall nicht nur eine,
@@ -44,18 +44,16 @@ zwischen C{TableA.Id} und C{TableB.TableA_Id} nur manchmal gegeben ist.
 
 Die Selektion
         
-  %Code: filter="./blog-highlight sql %FORMAT%"
   SELECT
       b.id b_id
       , a.id a_id
   FROM
-      tableA a
-      INNER JOIN tableB b
+      TableA a
+      INNER JOIN TableB b
       ON a.id = b.tablea_id
   ORDER BY
       b.id
       , a.id
-  .
     
 liefert das I{falsche} Resultat
     
@@ -84,14 +82,14 @@ Die Selektion
       b.id b_id
       , a.id a_id
   FROM
-      tableA a
-      INNER JOIN tableB b
+      TableA a
+      INNER JOIN TableB b
       ON FIND_IN_SET(a.id, b.tablea_id) > 0
   ORDER BY
       b.id
       , a.id
-
-liefert das richtiges Resultat
+ 
+liefert das richtige Resultat
 
   +------+------+
   | b_id | a_id |
