@@ -37,7 +37,7 @@ C{TableB.TableA_Id} auf I{mehrere} Zeilen in C{TableA} verweist.
 Wäre C{TableB.TableA_Id} eine normale Fremdschlüssel-Kolumne mit
 I{einem} Wert sähe die Join-Codition so aus:
 
-  a.id = b.tablea_id
+  TableA.id = TableB.tablea_id
 
 Diese Bedingung ist hier nicht anwendbar, da eine Identität (C{=})
 zwischen C{TableA.Id} und C{TableB.TableA_Id} nur manchmal gegeben ist.
@@ -74,7 +74,7 @@ MySQL besitzt jedoch eine Funktion C{find_in_set()}, mit deren Hilfe
 eine Join-Condition formuliert werden kann, die die mehrwertigen
 Verweise korrekt auflöst:
 
-  FIND_IN_SET(a.id, b.tablea_id) > 0
+  FIND_IN_SET(TableA.id, TableB.tablea_id) > 0
 
 Die Selektion
     
