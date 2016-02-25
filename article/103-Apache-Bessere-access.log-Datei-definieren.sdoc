@@ -83,7 +83,7 @@ ursprünglichen Format nicht vor):
 
 Ein weiteres interessantes Formatelement ist
 
-  %{COOKIE}C ...........: Wert des Cookie COOKIE
+  %{COOKIE}C .......... + Wert des Cookie COOKIE
 
 das in Anwendungen, die Cookies nutzen, nützlich sein kann. Ich füge
 es bei Bedarf am Ende hinzu.
