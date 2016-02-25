@@ -27,7 +27,7 @@ C{TableB.TableA_Id} auf I{mehrere} Zeilen in C{TableA} verweist.
 
   TableA    TableB
 
-  Id        Id TableA_Id
+  id        id tablea_id
   --        -- ---------
   1         1  2,3
   2         2  3
