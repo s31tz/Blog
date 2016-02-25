@@ -43,7 +43,7 @@ Diese Bedingung ist hier nicht anwendbar, da eine Identität (C{=})
 zwischen C{TableA.Id} und C{TableB.TableA_Id} nur manchmal gegeben ist.
 
 Die Selektion
-        
+
   SELECT
       b.id b_id
       , a.id a_id
@@ -54,9 +54,10 @@ Die Selektion
   ORDER BY
       b.id
       , a.id
+  
+liefert ein I{falsches} Resultat
     
-liefert das I{falsche} Resultat
-    
+  %Code: class="code-div-no-border"
   +------+------+
   | b_id | a_id |
   +------+------+
@@ -64,11 +65,13 @@ liefert das I{falsche} Resultat
   |    2 |    3 | erwartet
   |    3 |    1 | zweifelhaft
   +------+------+
+  .
 
 Da MySQL bei numerischen Identitäts-Vergleichen eine laxe Auffassung
-hat und den numerischen Anfang zum Vergleich heranzieht, auch wenn der
-Wert insgesamt keine Zahl darstellt, ist die Ergebnismenge
-zusätzlich zweifelhaft.
+hat und gegen den numerischen Anfang einer Zeichenkette vergleicht,
+auch wenn die Zeichenkette insgesamt keine Zahl darstellt, ist die
+Ergebnismenge zusätzlich zweifelhaft. Statt der erwarten einen
+Zeile werden drei Zeilen geliefert.
     
 MySQL besitzt jedoch eine Funktion C{find_in_set()}, mit deren Hilfe
 eine Join-Condition formuliert werden kann, die die mehrwertigen
@@ -89,8 +92,9 @@ Die Selektion
       b.id
       , a.id
  
-liefert das richtige Resultat
+liefert das korrekte Resultat
 
+  %Code: class="code-div-no-border"
   +------+------+
   | b_id | a_id |
   +------+------+
@@ -102,7 +106,8 @@ liefert das richtige Resultat
   |    3 |    3 |
   |    3 |    4 |
   +------+------+
-    
+  .
+        
 = Links
 
 * U{"http://dev.mysql.com/doc/refman/5.7/en/string-functions.html\
