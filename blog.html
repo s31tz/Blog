@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-02-26 13:37:00
+    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-02-26 16:20:02
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -791,7 +791,7 @@
     <tt class="sdoc-seg-c">grep</tt> entfällt dann):
   </p>
   <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre">$ find DIR -type f ... | xargs grep -oPh REGEX | sort | uniq</pre>
+    <pre class="sdoc-code-pre">$ find DIR -type f -print0 | xargs -0 grep -oPh REGEX | sort | uniq</pre>
   </div>
   <h2 class="sdoc-sec-h2">Anwendungsfall<a id="section_5_1"></a></h2>
   <p class="sdoc-para-p">

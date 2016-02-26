@@ -26,7 +26,7 @@ Soll die Menge der Dateien näher eingeschränkt werden, lässt sich dies
 durch ein vorgeschaltetes C{find} erreichen (Option C{-r} bei
 C{grep} entfällt dann):
 
-  $ find DIR -type f ... | xargs grep -oPh REGEX | sort | uniq
+  $ find DIR -type f -print0 | xargs -0 grep -oPh REGEX | sort | uniq
 
 = Anwendungsfall
 
