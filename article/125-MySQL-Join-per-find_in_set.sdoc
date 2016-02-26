@@ -34,7 +34,7 @@ C{TableB.tablea_id} auf I{mehrere} Zeilen in C{TableA} verweist.
   4         4  NULL
     
 Wäre C{TableB.tablea_id} eine normale Fremdschlüssel-Kolumne mit
-I{einem} Wert sähe die Join-Codition so aus:
+I{einem} Wert sähe die Join-Condition so aus:
 
   TableA.id = TableB.tablea_id
 
@@ -56,7 +56,7 @@ Die Selektion
   
 liefert ein I{falsches} Resultat
     
-  %Code: class="code-div-no-border"
+  %Code: class="code-pre-no-border"
   +------+------+
   | b_id | a_id |
   +------+------+
@@ -79,7 +79,7 @@ Verweise korrekt auflöst:
   FIND_IN_SET(TableA.id, TableB.tablea_id) > 0
 
 Die Selektion
-    
+
   SELECT
       b.id b_id
       , a.id a_id
@@ -93,7 +93,7 @@ Die Selektion
  
 liefert das korrekte Resultat
 
-  %Code: class="code-div-no-border"
+  %Code: class="code-pre-no-border"
   +------+------+
   | b_id | a_id |
   +------+------+
