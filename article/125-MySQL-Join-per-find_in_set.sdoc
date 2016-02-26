@@ -23,7 +23,7 @@ Funktion C{find_in_set()} eine Join-Condition zu formulieren.
 = Beispiel
     
 Gegeben zwei Tabellen C{TableA} und C{TableB}, wobei Kolumne
-C{TableB.TableA_Id} auf I{mehrere} Zeilen in C{TableA} verweist.
+C{TableB.tablea_id} auf I{mehrere} Zeilen in C{TableA} verweist.
 
   TableA    TableB
 
@@ -34,13 +34,13 @@ C{TableB.TableA_Id} auf I{mehrere} Zeilen in C{TableA} verweist.
   3         3  1,2,3,4
   4         4  NULL
     
-Wäre C{TableB.TableA_Id} eine normale Fremdschlüssel-Kolumne mit
+Wäre C{TableB.tablea_id} eine normale Fremdschlüssel-Kolumne mit
 I{einem} Wert sähe die Join-Codition so aus:
 
   TableA.id = TableB.tablea_id
 
 Diese Bedingung ist hier nicht anwendbar, da eine Identität (C{=})
-zwischen C{TableA.Id} und C{TableB.TableA_Id} nur manchmal gegeben ist.
+zwischen C{TableA.id} und C{TableB.tablea_id} nur manchmal gegeben ist.
 
 Die Selektion
 
