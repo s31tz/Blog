@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-02-26 16:20:02
+    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-02-26 16:46:20
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -793,6 +793,9 @@
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">$ find DIR -type f -print0 | xargs -0 grep -oPh REGEX | sort | uniq</pre>
   </div>
+  <ul class="sdoc-list-ul">
+    <li class="sdoc-list-li-point" style="list-style-type:disc"><tt class="sdoc-seg-c">-print0</tt> ... <tt class="sdoc-seg-c">-0</tt> : Pfade mit Whitespace etc. werden korrekt behandelt</li>
+  </ul>
   <h2 class="sdoc-sec-h2">Anwendungsfall<a id="section_5_1"></a></h2>
   <p class="sdoc-para-p">
     Finde in Dateibaum app mit Perl-Quelltexten die Namen aller verwendeten

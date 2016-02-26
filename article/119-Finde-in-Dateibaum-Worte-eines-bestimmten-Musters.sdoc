@@ -28,6 +28,8 @@ C{grep} entfällt dann):
 
   $ find DIR -type f -print0 | xargs -0 grep -oPh REGEX | sort | uniq
 
+* C{-print0} ... C{-0} : Pfade mit Whitespace etc. werden korrekt behandelt
+    
 = Anwendungsfall
 
 Finde in Dateibaum app mit Perl-Quelltexten die Namen aller verwendeten
