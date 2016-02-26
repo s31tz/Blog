@@ -4,8 +4,7 @@
 # Categories: Datenbanken, MySQL
 
 %Document:
-  title="MySQL: Join mit mehrwertiger Fremdschlüsselkolumne \
-    durch find_in_set()"
+  title="MySQL: Join mit mehrwertiger Fremdschlüsselkolumne durch find_in_set()"
   generateAnchors=0
   utf8=1
 
