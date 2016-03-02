@@ -12,16 +12,16 @@
   width="74" height="50" url="http://www.mysql.de/"
 
 Der reinen Datenbank-Lehre nach ist es strikt verboten mehrere Werte
-in einer Kolumne zu speichern. Sowas kommt in der Realität trotzdem
-vor, sogar bei Fremdschlüssel-Kolumnen. D.h. die
-Fremdschlüssel-Kolumne referenziert in dem Fall nicht nur eine,
+auf einem Attribut zu speichern. Sowas kommt in der Realität trotzdem
+vor, sogar bei Fremdschlüssel-Attributen. D.h. das
+Fremdschlüssel-Attribut referenziert in dem Fall nicht nur eine,
 sondern I{mehrere} Zeilen. Die gute Nachricht ist, dass MySQL es
 erlaubt, für so ein - ansich unterlaubtes - Design mithilfe der
 Funktion C{find_in_set()} eine Join-Condition zu formulieren.
 
 = Beispiel
     
-Gegeben zwei Tabellen C{TableA} und C{TableB}, wobei Kolumne
+Gegeben zwei Tabellen C{TableA} und C{TableB}, wobei Attribut
 C{TableB.tablea_id} auf I{mehrere} Zeilen in C{TableA} verweist.
 
   TableA    TableB
@@ -33,7 +33,7 @@ C{TableB.tablea_id} auf I{mehrere} Zeilen in C{TableA} verweist.
   3         3  1,2,3,4
   4         4  NULL
     
-Wäre C{TableB.tablea_id} eine normale Fremdschlüssel-Kolumne mit
+Wäre C{TableB.tablea_id} ein normales Fremdschlüssel-Attribut mit
 I{einem} Wert sähe die Join-Condition so aus:
 
   TableA.id = TableB.tablea_id

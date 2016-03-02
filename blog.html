@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-02-26 16:46:20
+    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-03-02 17:40:34
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -394,23 +394,23 @@
   </p>
   <p class="sdoc-para-p">
     Der reinen Datenbank-Lehre nach ist es strikt verboten mehrere Werte
-    in einer Kolumne zu speichern. Sowas kommt in der Realität trotzdem
-    vor, sogar bei Fremdschlüssel-Kolumnen. D.h. die
-    Fremdschlüssel-Kolumne referenziert in dem Fall nicht nur eine,
+    auf einem Attribut zu speichern. Sowas kommt in der Realität trotzdem
+    vor, sogar bei Fremdschlüssel-Attributen. D.h. das
+    Fremdschlüssel-Attribut referenziert in dem Fall nicht nur eine,
     sondern <i class="sdoc-seg-i">mehrere</i> Zeilen. Die gute Nachricht ist, dass MySQL es
     erlaubt, für so ein - ansich unterlaubtes - Design mithilfe der
     Funktion <tt class="sdoc-seg-c">find_in_set()</tt> eine Join-Condition zu formulieren.
   </p>
   <h2 class="sdoc-sec-h2">Beispiel<a id="section_1_1"></a></h2>
   <p class="sdoc-para-p">
-    Gegeben zwei Tabellen <tt class="sdoc-seg-c">TableA</tt> und <tt class="sdoc-seg-c">TableB</tt>, wobei Kolumne
+    Gegeben zwei Tabellen <tt class="sdoc-seg-c">TableA</tt> und <tt class="sdoc-seg-c">TableB</tt>, wobei Attribut
     <tt class="sdoc-seg-c">TableB.tablea_id</tt> auf <i class="sdoc-seg-i">mehrere</i> Zeilen in <tt class="sdoc-seg-c">TableA</tt> verweist.
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">TableA    TableB&#10;&#10;id        id tablea_id&#10;--        -- ---------&#10;1         1  2,3&#10;2         2  3&#10;3         3  1,2,3,4&#10;4         4  NULL</pre>
   </div>
   <p class="sdoc-para-p">
-    Wäre <tt class="sdoc-seg-c">TableB.tablea_id</tt> eine normale Fremdschlüssel-Kolumne mit
+    Wäre <tt class="sdoc-seg-c">TableB.tablea_id</tt> ein normales Fremdschlüssel-Attribut mit
     <i class="sdoc-seg-i">einem</i> Wert sähe die Join-Condition so aus:
   </p>
   <div class="sdoc-code-div">
