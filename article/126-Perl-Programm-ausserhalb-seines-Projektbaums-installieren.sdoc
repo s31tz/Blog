@@ -1,0 +1,71 @@
+# Date: 2016-03-07
+# Id: 138
+# Draft: no
+# Categories: Perl
+
+%Document:
+  title="Perl: Programm außerhalb seines Projektbaums verfügbar machen"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/perl-raptor-310x100.png" \
+  width=143 height=46 url="http://www.perl.org/"
+
+= Augangslage
+    
+Gegeben ein Perl-Projekt C{myproject} mit einem eigenen
+Projektverzeichnis C{PREFIX/myproject} und einer Unix-typischen
+Unterverzeichnisstruktur mit den Verzeichnissen C{bin}, C{lib} usw.
+
+  PREFIX/myproject/bin/myprogram
+                   lib/perl5/MyClass.pm
+                   ...
+    
+C{PREFIX} ist ein beliebiger Verzeichnis-Pfad. Im Unterverzeichnis
+C{bin} sind die Programme des Projektes installiert (hier ein Programm
+C{myprogram}) und in Unterverzeichnis C{lib/perl5} die Module (hier
+ein Modul C{MyClass.pm}).
+
+Wir wollen das Programm C{myprogram} nun außerhalb des Projektbaums
+verfügbar machen, z.B. damit es über einen allgemeinen Suchpfad
+aufrufbar ist, oder - falls es ein CGI-Programm ist - um es in eine
+Web-Verzeichnisstruktur einzufügen, ohne dass wir einen ScripAlias
+definieren können oder wollen.
+
+= Problem
+    
+Das Problem: Außerhalb des Projektbaums installiert, verliert das
+Programm den Bezug zum Projektverzeichnis und kann die anderen
+Verzeichnisse des Baums, wie z.B. das Modulverzeichnis C{lib/perl5}
+nicht ohne Weiteres adressieren. Man könnte den Pfad zum
+Projektverzeichnis auf einer Environment-Variablen definieren, die
+das Programm auswertet, aber das ist umständlich.
+
+= Lösung
+    
+Ein eleganterer Weg ist, das Programm per Symlink außerhalb des
+Projektbaums zu installieren und den I{realen} Installationspfad des
+Programms mittels der Variable C{$RealBin} des (Core-)Moduls
+C{FindBin} zu ermitteln.
+
+  $ ln -s PREFIX/myproject/bin/myprogram /usr/local/bin/myprogram
+
+Der Anfang von C{myprogram}:
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    use FindBin qw/$RealBin/;
+    use lib "$RealBin/../lib/perl5";
+
+    use MyClass;
+  .
+
+Der Pfad C{$RealBin} ist das Verzeichnis, in dem das aufgerufene
+Programm sich befindet, und zwar I{nach Auflösung aller Symlinks}. D.h.
+der Pfad ist stets
+
+  PREFIX/myproject/bin
+
+auch wenn das Programm über den Symlink C{/usr/local/bin/myprogram}
+aufgerufen wird.
+    
+# eof
