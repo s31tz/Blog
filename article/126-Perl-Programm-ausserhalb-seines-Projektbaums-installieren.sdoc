@@ -50,9 +50,10 @@ C{FindBin} zu ermitteln.
 
   $ ln -s PREFIX/myproject/bin/myprogram /usr/local/bin/myprogram
 
-Der Anfang von C{myprogram}:
+Am Anfang von C{myprogram}, I{vor} dem Laden der projektspezifischen
+Module:
 
-  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  %Code: filter="./blog-highlight perl %FORMAT%"
     use FindBin qw/$RealBin/;
     use lib "$RealBin/../lib/perl5";
 
