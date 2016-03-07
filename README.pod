@@ -13,6 +13,10 @@ veröffentlicht habe.
 
 =item *
 
+L<Perl: Programm außerhalb seines Projektbaums verfügbar machen|https://github.com/s31tz/Blog/blob/master/article/126-Perl-Programm-ausserhalb-seines-Projektbaums-installieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/138-x.html>)
+
+=item *
+
 L<MySQL: Join mit mehrwertiger Fremdschlüsselkolumne durch find_in_set()|https://github.com/s31tz/Blog/blob/master/article/125-MySQL-Join-per-find_in_set.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/137-x.html>)
 
 =item *

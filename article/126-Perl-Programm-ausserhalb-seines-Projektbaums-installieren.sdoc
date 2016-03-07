@@ -11,7 +11,7 @@
 %Figure: file="IMGDIR/perl-raptor-310x100.png" \
   width=143 height=46 url="http://www.perl.org/"
 
-= Augangslage
+= Ausgangslage
     
 Gegeben ein Perl-Projekt C{myproject} mit einem eigenen
 Projektverzeichnis C{PREFIX/myproject} und einer Unix-typischen
