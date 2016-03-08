@@ -13,7 +13,7 @@ veröffentlicht habe.
 
 =item *
 
-L<Perl: Programm außerhalb seines Projektbaums verfügbar machen|https://github.com/s31tz/Blog/blob/master/article/126-Perl-Programm-ausserhalb-seines-Projektbaums-installieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/138-x.html>)
+L<Perl: Programm außerhalb des Projektbaums verfügbar machen|https://github.com/s31tz/Blog/blob/master/article/126-Perl-Programm-ausserhalb-seines-Projektbaums-installieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/138-x.html>)
 
 =item *
 
