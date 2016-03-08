@@ -43,8 +43,8 @@ das Programm auswertet, aber das ist umständlich.
 
 = Lösung
     
-Ein eleganterer Weg ist, das Programm per Symlink außerhalb des
-Projektbaums zu installieren und den I{realen} Installationspfad des
+Ein eleganterer Weg ist, das Programm 1. per Symlink außerhalb des
+Projektbaums zu installieren und 2. den I{realen} Installationspfad des
 Programms mittels der Variable C{$RealBin} des (Core-)Moduls
 C{FindBin} zu ermitteln.
 
