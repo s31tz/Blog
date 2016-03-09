@@ -38,20 +38,20 @@ Das Problem: Außerhalb des Projektbaums installiert, verliert das
 Programm den Bezug zum Projektverzeichnis und kann die anderen
 Verzeichnisse des Baums, wie z.B. das Modulverzeichnis C{lib/perl5}
 nicht ohne Weiteres adressieren. Man könnte den Pfad zum
-Projektverzeichnis auf einer Environment-Variablen definieren, die
-das Programm auswertet, aber das ist umständlich.
+Projektverzeichnis auf einer Environment-Variablen definieren, aber
+das ist umständlich.
 
 = Lösung
     
-Ein eleganterer Weg ist, das Programm 1. per Symlink außerhalb des
-Projektbaums zu installieren und 2. den I{realen} Installationspfad des
+Ein eleganterer Weg ist, das Programm per Symlink außerhalb des
+Projektbaums zu installieren und den I{realen} Installationspfad des
 Programms mittels der Variable C{$RealBin} des (Core-)Moduls
 C{FindBin} zu ermitteln.
 
   $ ln -s PREFIX/myproject/bin/myprogram /usr/local/bin/myprogram
 
-Am Anfang von C{myprogram}, I{vor} dem Laden der projektspezifischen
-Module:
+Am Anfang von C{myprogram}, I{vor} dem Laden des projektspezifischen
+Moduls C{MyClass}, fügen wir die beiden Zeilen ein:
 
   %Code: filter="./blog-highlight perl %FORMAT%"
     use FindBin qw/$RealBin/;
@@ -66,7 +66,7 @@ der Pfad ist stets
 
   PREFIX/myproject/bin
 
-auch wenn das Programm über den Symlink C{/usr/local/bin/myprogram}
+auch wenn das Programm über den Pfad C{/usr/local/bin/myprogram}
 aufgerufen wird.
     
 # eof

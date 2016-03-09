@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-03-08 12:50:58
+    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-03-09 20:04:58
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -421,13 +421,13 @@
     Programm den Bezug zum Projektverzeichnis und kann die anderen
     Verzeichnisse des Baums, wie z.B. das Modulverzeichnis <tt class="sdoc-seg-c">lib/perl5</tt>
     nicht ohne Weiteres adressieren. Man könnte den Pfad zum
-    Projektverzeichnis auf einer Environment-Variablen definieren, die
-    das Programm auswertet, aber das ist umständlich.
+    Projektverzeichnis auf einer Environment-Variablen definieren, aber
+    das ist umständlich.
   </p>
   <h2 class="sdoc-sec-h2">Lösung<a id="section_1_3"></a></h2>
   <p class="sdoc-para-p">
-    Ein eleganterer Weg ist, das Programm 1. per Symlink außerhalb des
-    Projektbaums zu installieren und 2. den <i class="sdoc-seg-i">realen</i> Installationspfad des
+    Ein eleganterer Weg ist, das Programm per Symlink außerhalb des
+    Projektbaums zu installieren und den <i class="sdoc-seg-i">realen</i> Installationspfad des
     Programms mittels der Variable <tt class="sdoc-seg-c">$RealBin</tt> des (Core-)Moduls
     <tt class="sdoc-seg-c">FindBin</tt> zu ermitteln.
   </p>
@@ -435,8 +435,8 @@
     <pre class="sdoc-code-pre">$ ln -s PREFIX/myproject/bin/myprogram /usr/local/bin/myprogram</pre>
   </div>
   <p class="sdoc-para-p">
-    Am Anfang von <tt class="sdoc-seg-c">myprogram</tt>, <i class="sdoc-seg-i">vor</i> dem Laden der projektspezifischen
-    Module:
+    Am Anfang von <tt class="sdoc-seg-c">myprogram</tt>, <i class="sdoc-seg-i">vor</i> dem Laden des projektspezifischen
+    Moduls <tt class="sdoc-seg-c">MyClass</tt>, fügen wir die beiden Zeilen ein:
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre"><span class="pt-k">use</span> <span class="pt-w">FindBin</span> <span class="pt-q">qw/$RealBin/</span><span class="pt-sc">;</span>&#10;<span class="pt-k">use</span> <span class="pt-w">lib</span> <span class="pt-q">&quot;$RealBin/../lib/perl5&quot;</span><span class="pt-sc">;</span>&#10;&#10;<span class="pt-k">use</span> <span class="pt-w">MyClass</span><span class="pt-sc">;</span>&#10;</pre>
@@ -450,7 +450,7 @@
     <pre class="sdoc-code-pre">PREFIX/myproject/bin</pre>
   </div>
   <p class="sdoc-para-p">
-    auch wenn das Programm über den Symlink <tt class="sdoc-seg-c">/usr/local/bin/myprogram</tt>
+    auch wenn das Programm über den Pfad <tt class="sdoc-seg-c">/usr/local/bin/myprogram</tt>
     aufgerufen wird.
   </p>
   <h1 class="sdoc-sec-h1">125. MySQL: Join mit mehrwertiger Fremdschlüsselkolumne durch find_in_set()<a id="section_2"></a></h1>
