@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-03-09 20:04:58
+    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-03-10 16:43:44
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -2222,6 +2222,19 @@
   <p class="sdoc-para-p">
     Dann kompilieren die Quellen fehlerfrei. Getestet unter Perl 5.20.2.
   </p>
+  <p class="sdoc-para-p">
+    Ein weiteres Problem tritt bei Perl 5.22.1 auf, mit gcc 5.3.1 auf:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">In file included from ../src/speedy_inc.h:90:0,&#10;                 from speedy.h:2,&#10;                 from speedy_backend_main.c:24:&#10;../src/speedy_file.h:54:19: warning: inline function&#10;    ‘speedy_file_set_state’ declared but never defined&#10; SPEEDY_INLINE int speedy_file_set_state(int new_state);&#10;                   ^</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Dies lässt sich dadurch beheben, dass in <tt class="sdoc-seg-c">src/speedy_inc.h</tt>
+    die Macro-Definition <tt class="sdoc-seg-c">SPEEDY_INLINE</tt> geändert wird zu
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">#ifdef __GNUC__&#10;#define SPEEDY_INLINE /* __inline__ */&#10;#else&#10;#define SPEEDY_INLINE&#10;#endif</pre>
+  </div>
   <h1 class="sdoc-sec-h1">104. Helligkeit von Farben des RGB-Farbraums berechnen<a id="section_20"></a></h1>
   <p class="sdoc-fig-p">
     <a href="https://de.wikipedia.org/wiki/RGB-Farbraum"><img class="sdoc-fig-img" src="data:image/png;base64,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" width="54" height="52" alt="" /></a>

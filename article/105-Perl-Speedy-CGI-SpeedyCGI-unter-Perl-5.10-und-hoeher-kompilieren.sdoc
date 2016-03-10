@@ -41,4 +41,23 @@ ersetzt werden.
 
 Dann kompilieren die Quellen fehlerfrei. Getestet unter Perl 5.20.2.
 
+Ein weiteres Problem tritt bei Perl 5.22.1 auf, mit gcc 5.3.1 auf:
+
+  In file included from ../src/speedy_inc.h:90:0,
+                   from speedy.h:2,
+                   from speedy_backend_main.c:24:
+  ../src/speedy_file.h:54:19: warning: inline function
+      ‘speedy_file_set_state’ declared but never defined
+   SPEEDY_INLINE int speedy_file_set_state(int new_state);
+                     ^
+
+Dies lässt sich dadurch beheben, dass in C{src/speedy_inc.h}
+die Macro-Definition C{SPEEDY_INLINE} geändert wird zu
+
+  #ifdef __GNUC__
+  #define SPEEDY_INLINE /* __inline__ */
+  #else
+  #define SPEEDY_INLINE
+  #endif
+
 # eof
