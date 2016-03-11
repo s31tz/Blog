@@ -34,7 +34,7 @@ definieren können oder wollen.
 
 = Problem
     
-Das Problem: Außerhalb des Projektbaums installiert, verliert das
+Das Problem: Außerhalb des Projektbaums installiert verliert das
 Programm den Bezug zum Projektverzeichnis und kann die anderen
 Verzeichnisse des Baums, wie z.B. das Modulverzeichnis C{lib/perl5}
 nicht ohne Weiteres adressieren. Man könnte den Pfad zum
