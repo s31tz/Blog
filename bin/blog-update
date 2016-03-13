@@ -68,56 +68,6 @@ Es wurden keine Artikel aktualisiert
 
 =back
 
-=head1 IMPORT
-
-=over 2
-
-=item *
-
-FindBin
-
-=item *
-
-lib
-
-=item *
-
-open
-
-=item *
-
-L<Blog::Base::Prty::Sdoc::Document>
-
-=item *
-
-L<Blog::Base::Prty::Option>
-
-=item *
-
-L<Blog::Base::R1::Help>
-
-=item *
-
-L<Blog::Base::Prty::ApplicationPaths>
-
-=item *
-
-L<Blog::Base::Prty::Config>
-
-=item *
-
-L<Blog::Base::Prty::Database::Connection>
-
-=item *
-
-L<Blog::Base::Prty::Process>
-
-=item *
-
-L<Blog::Base::Prty::Path>
-
-=back
-
 =head1 AUTHOR
 
 Frank Seitz, L<http://fseitz.de/>
