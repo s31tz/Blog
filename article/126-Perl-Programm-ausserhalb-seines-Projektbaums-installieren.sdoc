@@ -23,8 +23,8 @@ Unterverzeichnisstruktur mit den Verzeichnissen C{bin}, C{lib} usw.
     
 C{PREFIX} ist ein beliebiger Verzeichnis-Pfad. Im Unterverzeichnis
 C{bin} sind die Programme des Projektes installiert (hier ein Programm
-C{myprogram}) und in Unterverzeichnis C{lib/perl5} die Module (hier
-ein Modul C{MyClass.pm}).
+C{myprogram}) und in Unterverzeichnis C{lib/perl5} die Module des
+Projektes (hier ein Modul C{MyClass.pm}).
 
 Wir wollen das Programm C{myprogram} nun außerhalb des Projektbaums
 verfügbar machen, z.B. damit es über einen allgemeinen Suchpfad
