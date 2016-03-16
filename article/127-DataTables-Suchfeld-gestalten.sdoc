@@ -1,0 +1,50 @@
+# Date: 2016-03-16
+# Id: 139
+# Draft: no
+# Categories: DataTables, jQuery, JavaScript
+
+%Document:
+  title="DataTables: Filter-Suchfeld positionieren und gestalten"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/datatables-198x60.png" \
+  width=158 height=48 url="https://datatables.net/"
+
+Ein leistungsfähiges Table-Plug-In für jQuery ist
+U{"https://datatables.net/",text="DataTables"}. Es kann in
+vielfältiger Weise konfiguriert werden. Einige Anpassungen im
+Zusammenhang mit dem Filter-Suchfeld sind allerdings schlecht
+dokumentiert. Das Filter-Suchfeld ist per Default mit dem Label-Text
+"Search:" beschriftet und befindet sich rechts über der Tabelle. Hier,
+wie dies geändert werden kann.
+        
+Label-Text setzen (JS):
+
+  %Code: filter="./blog-highlight js %FORMAT%"
+    $('#ID').DataTable({
+      ...
+      'language': {
+        'search': 'LABEL:'
+      }
+    });
+  .
+
+Suchfeld mittig positionieren (CSS):
+
+  %Code: filter="./blog-highlight css %FORMAT%"
+    #ID_filter {
+        float: left;
+    }
+  .
+    
+Suchfeld links positionieren (CSS):
+
+  %Code: filter="./blog-highlight css %FORMAT%"
+    #ID_filter {
+        text-align: center;
+        width: 100%;
+    }
+  .
+        
+# eof
