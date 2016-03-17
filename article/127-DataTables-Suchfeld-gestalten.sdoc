@@ -17,7 +17,7 @@ vielfältiger Weise konfiguriert werden. Einige Anpassungen im
 Zusammenhang mit dem Filter-Suchfeld sind allerdings schlecht
 dokumentiert. Das Filter-Suchfeld ist per Default mit dem Label-Text
 "Search:" beschriftet und befindet sich rechts über der Tabelle. Hier
-beschreibe ich, wie dies geändert werden kann.
+die Beschreibung, wie dies geändert werden kann.
         
 Label-Text setzen (JS):
 
