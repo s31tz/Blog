@@ -47,4 +47,12 @@ Suchfeld mittig positionieren (CSS):
     }
   .
 
+Größe des Suchfelds ändern (CSS):
+
+  %Code: filter="./blog-highlight css %FORMAT%"
+    #ID_filter input[type="search"] {
+        width: WIDTH;
+    }
+  .
+
 # eof
