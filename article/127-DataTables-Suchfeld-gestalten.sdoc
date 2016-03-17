@@ -11,7 +11,7 @@
 %Figure: file="IMGDIR/datatables-198x60.png" \
   width=158 height=48 url="https://datatables.net/"
 
-Ein leistungsfähiges Table-Plug-In für jQuery ist
+Ein leistungsfähiges jQuery Table Plug-In ist
 U{"https://datatables.net/",text="DataTables"}. Es kann in
 vielfältiger Weise konfiguriert werden. Einige Anpassungen im
 Zusammenhang mit dem Filter-Suchfeld sind allerdings schlecht
