@@ -18,8 +18,8 @@ Zusammenhang mit dem Filter-Suchfeld sind allerdings schlecht
 dokumentiert. Das Filter-Suchfeld ist per Default mit dem Label-Text
 "Search:" beschriftet und befindet sich rechts über der Tabelle. Hier
 die Beschreibung, wie dies geändert werden kann. Darin sind C{ID},
-C{LABEL} und C{WIDTH} Platzhalter für die Tabellen-Id, den Label-Text
-und die CSS Breitenangabe (einschl. Einheit).
+C{LABEL} und C{WIDTH} Platzhalter für die frei wählbaren Angaben
+Tabellen-Id, Label-Text, Breite (mit Einheit).
         
 Label-Text setzen (JS):
 
