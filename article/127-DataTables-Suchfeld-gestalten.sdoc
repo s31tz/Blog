@@ -17,7 +17,9 @@ vielfältiger Weise konfiguriert werden. Einige Anpassungen im
 Zusammenhang mit dem Filter-Suchfeld sind allerdings schlecht
 dokumentiert. Das Filter-Suchfeld ist per Default mit dem Label-Text
 "Search:" beschriftet und befindet sich rechts über der Tabelle. Hier
-die Beschreibung, wie dies geändert werden kann.
+die Beschreibung, wie dies geändert werden kann. Darin sind C{ID},
+C{LABEL} und C{WIDTH} Platzhalter für die Tabellen-Id, den Label-Text
+und die CSS Breitenangabe (einschl. Einheit).
         
 Label-Text setzen (JS):
 
@@ -25,7 +27,7 @@ Label-Text setzen (JS):
     $('#ID').DataTable({
       ...
       'language': {
-        'search': 'LABEL:'
+        'search': 'LABEL'
       }
     });
   .
