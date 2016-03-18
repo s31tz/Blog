@@ -25,10 +25,10 @@ Label-Text setzen (JS):
 
   %Code: filter="./blog-highlight js %FORMAT%"
     $('#ID').DataTable({
-      ...
-      'language': {
-        'search': 'LABEL'
-      }
+        ...
+        'language': {
+            'search': 'LABEL'
+        }
     });
   .
 
