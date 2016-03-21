@@ -13,7 +13,7 @@ veröffentlicht habe.
 
 =item *
 
-L<DataTables: Hover Color selbst einstellen|https://github.com/s31tz/Blog/blob/master/article/128-DataTables-Hover-Farbe-aendern.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/140-x.html>)
+L<DataTables: Hover Color selbst definieren|https://github.com/s31tz/Blog/blob/master/article/128-DataTables-Hover-Farbe-aendern.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/140-x.html>)
 
 =item *
 
