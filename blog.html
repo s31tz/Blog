@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-03-21 17:20:57
+    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-03-21 19:41:53
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -402,8 +402,7 @@
     <tt class="sdoc-seg-c">stripe</tt> auf den dunkleren Zeilen kaum sichtbar ist.
   </p>
   <p class="sdoc-para-p">
-    Hier der CSS-Code, mit dem sich die Hover-Farbe unabhängig definieren
-    lässt:
+    Hier der CSS-Code, mit dem sich die Hover-Farbe überschrieben wird:
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre"><span class="hl kwd">#ID</span> <span class="hl kwb">tbody tr</span><span class="hl opt">:</span>hover <span class="hl opt">{</span>&#10;    <span class="hl kwa">background-color</span><span class="hl opt">:</span> COLOR<span class="hl opt">;</span>&#10;<span class="hl opt">}</span>&#10;</pre>
@@ -411,13 +410,13 @@
   <p class="sdoc-para-p">
     Hierbei ist <tt class="sdoc-seg-c">ID</tt> die DOM-Id der Tabelle und <tt class="sdoc-seg-c">COLOR</tt> die gewünschte
     Farbe. Die Hover-Farbe ist per Default auf das sehr helle Grau
-    <tt class="sdoc-seg-c">#f6f6f6</tt> eingestellt. Wählt man stattdessen das dunklere <tt class="sdoc-seg-c">#e8e8e8</tt>,
+    <tt class="sdoc-seg-c">#f6f6f6</tt> eingestellt. Wählt man stattdessen z.B. das dunklere <tt class="sdoc-seg-c">#e8e8e8</tt>,
     ist die Hervorhebung deutlich erkennbar.
   </p>
   <p class="sdoc-para-p">
     Obige CSS-Regel überschreibt den Defaultwert, da sie eine höhere
     Priorität als die DataTables-eigene Regel hat. Sie gilt auch dann,
-    wenn die Class Option <tt class="sdoc-seg-c">hover</tt> nicht gewählt ist.
+    wenn die Class Option <tt class="sdoc-seg-c">hover</tt> nicht gesetzt ist.
   </p>
   <h1 class="sdoc-sec-h1">127. DataTables: Filter-Suchfeld positionieren und gestalten<a id="section_2"></a></h1>
   <p class="sdoc-fig-p">
