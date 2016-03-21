@@ -17,9 +17,9 @@ vielfältiger Weise konfiguriert werden. Einige Anpassungen im
 Zusammenhang mit dem Filter-Suchfeld sind allerdings schlecht
 dokumentiert. Das Filter-Suchfeld ist per Default mit dem Label-Text
 "Search:" beschriftet und befindet sich rechts über der Tabelle. Hier
-eine kurze Beschreibung, wie dies geändert werden kann. Im Folgenden
-sind C{ID}, C{LABEL} und C{WIDTH} Platzhalter für die frei wählbaren
-Angaben DOM-Id, Label-Text, Breite (einschl. Einheit).
+eine kurze Beschreibung, wie dieses Setup geändert werden kann. Im
+folgenden Code sind C{ID}, C{LABEL} und C{WIDTH} Platzhalter für die
+frei wählbaren Angaben DOM-Id, Label-Text, CSS-Breite.
         
 Label-Text setzen (JS):
 
