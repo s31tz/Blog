@@ -44,8 +44,8 @@ Suchfeld mittig positionieren (CSS):
 
   %Code: filter="./blog-highlight css %FORMAT%"
     #ID_filter {
-        text-align: center;
         width: 100%;
+        text-align: center;
     }
   .
 
