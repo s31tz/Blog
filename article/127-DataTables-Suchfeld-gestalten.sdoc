@@ -57,4 +57,9 @@ Größe des Suchfelds ändern (CSS):
     }
   .
 
+= Links
+
+* U{"https://datatables.net/",text="DataTables"}
+* U{"https://jquery.com/",text="jQuery"}
+
 # eof
