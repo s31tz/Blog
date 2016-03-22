@@ -29,7 +29,7 @@ Hierbei ist C{DIR} das Wurzelverzeichnis des untersuchten Dateibaums.
 Für jede Datei wird eine Zeile ausgegeben, bestehend aus der mtime
 in ISO-ähnlicher Darstellung (C{%T+}) und dem Pfad (C{%p}) der Datei.
 
-Details siehe U{"http://unixhelp.ed.ac.uk/CGI/man-cgi?find",\
+Details siehe U{"http://swoolley.org/man.cgi?q=find",\
     text="find(1) Manpage"}
 
 # eof
