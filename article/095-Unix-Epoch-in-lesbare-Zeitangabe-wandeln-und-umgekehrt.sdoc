@@ -45,7 +45,7 @@ Der aktuelle Zeitpunkt als Epoch-Wert:
   $ date +%s
   1406548003
 
-Details siehe U{"http://unixhelp.ed.ac.uk/CGI/man-cgi?date",\
+Details siehe U{"http://swoolley.org/man.cgi?q=date",\
     text="date(1) Manpage"}
 
 # eof
