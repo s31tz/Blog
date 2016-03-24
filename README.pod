@@ -505,7 +505,7 @@ L<Installation von Serendipity|https://github.com/s31tz/Blog/blob/master/article
 
 =item *
 
-L<Haftungsausschluss|https://github.com/s31tz/Blog/blob/master/article/002-Haftungsausschluss.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/80-x.html>)
+L<Disclaimer|https://github.com/s31tz/Blog/blob/master/article/002-Haftungsausschluss.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/80-x.html>)
 
 =item *
 
