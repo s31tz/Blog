@@ -1,0 +1,49 @@
+# Date: 2016-03-21
+# Id: 140
+# Draft: no
+# Categories: DataTables, jQuery, JavaScript
+
+%Document:
+  title="DataTables: Hover Color definieren"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/datatables-198x60.png" \
+  width=158 height=48 url="https://datatables.net/"
+
+Mit der Class Option C{hover} kann beim jQuery Plug-In
+U{"https://datatables.net/",text="DataTables"} eingestellt werden,
+dass die Tabellen-Zeile unter der Maus hervorgehoben wird. Leider ist
+die Hervorhebung so schwach, dass sie in Kombination mit Class Option
+C{stripe} auf den dunkleren Zeilen kaum sichtbar ist.
+
+Hier der CSS-Code, mit dem sich die Hover-Farbe ändern lässt:
+
+  %Code: filter="./blog-highlight css %FORMAT%"
+    #ID.dataTable.hover tbody tr:hover,
+    #ID.dataTable.display tbody tr:hover {
+        background-color: COLOR;
+    }
+  .
+
+Hierbei ist C{ID} die DOM-Id der Tabelle und C{COLOR} die gewünschte
+Farbe. Die Hover-Farbe ist per Default auf das sehr helle Grau
+C{#f6f6f6} eingestellt. Wählt man z.B. das dunklere C{#e8e8e8}, ist
+die Hervorhebung deutlich erkennbar.
+
+Soll die Hover-Farbe für alle DataTables gelten:
+
+  %Code: filter="./blog-highlight css %FORMAT%"
+    table.dataTable.hover tbody tr:hover,
+    table.dataTable.display tbody tr:hover {
+        background-color: COLOR;
+    }
+  .
+
+= Links
+
+* U{"https://datatables.net/",text="DataTables"}
+* U{"https://datatables.net/manual/styling/classes",text="Class Options"}
+* U{"https://jquery.com/",text="jQuery"}
+    
+# eof
