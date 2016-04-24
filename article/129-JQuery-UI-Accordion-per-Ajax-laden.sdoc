@@ -1,0 +1,96 @@
+# Date: 2016-03-21
+# Id: 141
+# Draft: no
+# Categories: jQuery UI, jQuery, JavaScript
+
+%Document:
+  title="jQuery UI: Accordion Panels per Ajax laden"
+  generateAnchors=0
+  utf8=1
+  minLnWidth=2
+
+%Figure: file="IMGDIR/jquery-ui-79x79.png" \
+  width=54 height=54 url="http://jqueryui.com/"
+
+Die jQuery UI Widgets Tabs und Accordion könnten - bis auf die
+Ausrichtung ihrer Reiter (Tabs horizontal, Accordion vertikal) -
+identisch sein. Sind sie aber nicht. Während das Tabs-Widget das Laden
+von Inhalten per Ajax direkt unterstützt, ist dies beim
+Accordion-Widget nicht vorgesehen. Es ist jedoch möglich, dies durch
+einen C{beforeActivate} Event-Handler und einige zusätzliche Maßnahmen
+zu realisieren.
+
+= Struktur des Accordion
+    
+  %Code: listing=1 filter="./blog-highlight html %FORMAT%"
+  <div id="ID">
+    <h3><a href="URL">TITLE</a></h3>
+    <div></div>
+    ...
+  </div>
+  .
+
+C{ID} ist die DOM-Id des Panel. Den C{TITLE} haben wir in einen
+C{a}-Tag eingefasst, dessen C{href}-Attribut den C{URL} definiert, von
+dem wir den Inhalt des Accordion-Panel per Ajax abrufen.
+   
+= Instanziierung des Accordion
+    
+  %Code: listing=1 filter="./blog-highlight js %FORMAT%"
+  $('#ID').accordion({
+    beforeActivate: function (event,ui) {
+      var url = ui.newHeader.find('a').attr('href');
+      if (url)
+        ui.newPanel.load(url);
+    },
+    active: false,
+    collapsible: true,
+    heightStyle: 'content'
+  });
+  .
+
+Das Laden des Panel-Inhalts per Ajax realisiert der
+C{beforeActivate}-Handler, den wir bei der Instanziierung des
+Accordion-Widget definieren (Zeilen 2-6). Wir nutzen den
+C{beforeActivate}-Handler und I{nicht} den C{activate}-Handler,
+da dieser gerufen wird I{bevor} der Reiter geöffnet wird. D.h. beim
+Öffnen ist der Inhalt bereits geladen, was wesentlich besser
+aussieht, als wenn dies nach dem Öffnen geschieht.
+
+Die Setzungen
+
+    active: false
+    collapsible: true
+
+bewirken in dieser Kombination, dass zunächst alle Reiter geschlossen
+bleiben, denn das initiale Öffnen feuert I{nicht} die
+C{beforeActivate}- und C{activate}-Events. Das initiale Öffnen
+realisieren wir durch das Auslösen eines Click-Event nach der
+Accordion-Instanziierung (s.u.).
+
+Die Setzung
+
+    heightStyle: 'content'
+
+bewirkt, dass die Höhe des Panel automatisch an den geladenen Inhalt
+angepasst wird. Dies ist wichtig, da der Inhalt vorab nicht bekannt
+ist.
+    
+= Öffnen des ersten Accordion-Reiters
+    
+  %Code: listing=1 filter="./blog-highlight js %FORMAT%"
+  $('#ID a:first').trigger('click');
+  .
+
+Den ersten Accordion-Reiter öffnen wir durch das Auslösen eines
+Click-Event, so als hätte der Anwender auf den ersten Reiter geklickt.
+Auf diese Weise wird sichergestellt, dass der C{beforeActivate}-Handler
+gerufen wird.
+    
+Links:
+
+* U{"https://jqueryui.com/",text="jQuery UI"}
+* U{"https://jqueryui.com/accordion",text="Accordion Demo"}
+* U{"http://api.jqueryui.com/accordion/",text="Accordion API"}
+
+# eof
