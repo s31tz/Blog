@@ -86,7 +86,7 @@ ist.
 
 Den ersten Accordion-Reiter öffnen wir durch das Auslösen eines
 Click-Event, so als hätte der Anwender auf den ersten Reiter geklickt.
-Auf diese Weise wird sichergestellt, dass der C{beforeActivate}-Handler
+Auf diese Weise ist sichergestellt, dass der C{beforeActivate}-Handler
 gerufen und damit der Inhalt geladen wird.
     
 Links:
