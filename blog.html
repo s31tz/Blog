@@ -232,7 +232,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-04-25 07:22:59
+    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-04-25 07:31:41
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -402,9 +402,10 @@
   </tr>
   </table>
   <p class="sdoc-para-p">
-    <tt class="sdoc-seg-c">ID</tt> ist die DOM-Id des Accordion. Den <tt class="sdoc-seg-c">TITLE</tt> haben wir in einen
-    <tt class="sdoc-seg-c">a</tt>-Tag eingefasst, dessen <tt class="sdoc-seg-c">href</tt>-Attribut den <tt class="sdoc-seg-c">URL</tt> definiert, von
-    dem wir den Inhalt des Accordion-Panel per Ajax abrufen.
+    <tt class="sdoc-seg-c">ID</tt> ist die DOM-Id des Accordion. Der <tt class="sdoc-seg-c">TITLE</tt> des Reiters wird in
+    einen <tt class="sdoc-seg-c">a</tt>-Tag eingefasst, dessen <tt class="sdoc-seg-c">href</tt>-Attribut den <tt class="sdoc-seg-c">URL</tt>
+    definiert, von dem wir den Inhalt des Accordion-Panel per Ajax
+    abrufen.
   </p>
   <h2 class="sdoc-sec-h2">Instanziierung des Accordion<a id="section_1_2"></a></h2>
   <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
@@ -453,10 +454,10 @@
     Das Laden des Panel-Inhalts per Ajax realisiert der
     <tt class="sdoc-seg-c">beforeActivate</tt>-Handler, den wir bei der Instanziierung des
     Accordion-Widget definieren (Zeilen 2-6). Wir nutzen den
-    <tt class="sdoc-seg-c">beforeActivate</tt>-Handler und <i class="sdoc-seg-i">nicht</i> den <tt class="sdoc-seg-c">activate</tt>-Handler,
-    da dieser gerufen wird <i class="sdoc-seg-i">bevor</i> der Reiter geöffnet wird. D.h. beim
-    Öffnen ist der Inhalt bereits geladen, was wesentlich besser
-    aussieht, als wenn dies nach dem Öffnen geschieht.
+    <tt class="sdoc-seg-c">beforeActivate</tt>-Handler und <i class="sdoc-seg-i">nicht</i> den <tt class="sdoc-seg-c">activate</tt>-Handler, da er
+    <i class="sdoc-seg-i">vor</i> dem Öffnen des Reiters gerufen wird. D.h. beim Öffnen ist der
+    Inhalt bereits geladen, was einen wesentlich flüssigeren Ablauf
+    ergibt, als wenn dies erst nach dem Öffnen geschieht.
   </p>
   <p class="sdoc-para-p">
     Die Setzungen

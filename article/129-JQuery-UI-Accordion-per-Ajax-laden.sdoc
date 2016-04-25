@@ -30,9 +30,10 @@ zu realisieren.
   </div>
   .
 
-C{ID} ist die DOM-Id des Accordion. Den C{TITLE} haben wir in einen
-C{a}-Tag eingefasst, dessen C{href}-Attribut den C{URL} definiert, von
-dem wir den Inhalt des Accordion-Panel per Ajax abrufen.
+C{ID} ist die DOM-Id des Accordion. Der C{TITLE} des Reiters wird in
+einen C{a}-Tag eingefasst, dessen C{href}-Attribut den C{URL}
+definiert, von dem wir den Inhalt des Accordion-Panel per Ajax
+abrufen.
    
 = Instanziierung des Accordion
     
@@ -52,10 +53,10 @@ dem wir den Inhalt des Accordion-Panel per Ajax abrufen.
 Das Laden des Panel-Inhalts per Ajax realisiert der
 C{beforeActivate}-Handler, den wir bei der Instanziierung des
 Accordion-Widget definieren (Zeilen 2-6). Wir nutzen den
-C{beforeActivate}-Handler und I{nicht} den C{activate}-Handler,
-da dieser gerufen wird I{bevor} der Reiter geöffnet wird. D.h. beim
-Öffnen ist der Inhalt bereits geladen, was wesentlich besser
-aussieht, als wenn dies nach dem Öffnen geschieht.
+C{beforeActivate}-Handler und I{nicht} den C{activate}-Handler, da er
+I{vor} dem Öffnen des Reiters gerufen wird. D.h. beim Öffnen ist der
+Inhalt bereits geladen, was einen wesentlich flüssigeren Ablauf
+ergibt, als wenn dies erst nach dem Öffnen geschieht.
 
 Die Setzungen
 
