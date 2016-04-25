@@ -232,7 +232,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-04-25 07:31:41
+    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-04-25 09:54:18
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -374,7 +374,7 @@
     Ausrichtung ihrer Reiter (Tabs horizontal, Accordion vertikal) -
     identisch sein. Sind sie aber nicht. Während das Tabs-Widget das Laden
     von Inhalten per Ajax direkt unterstützt, ist dies beim
-    Accordion-Widget nicht der Fall. Es ist jedoch möglich, dies durch
+    Accordion-Widget nicht vorgesehen. Es ist jedoch möglich, dies durch
     einen <tt class="sdoc-seg-c">beforeActivate</tt> Event-Handler und einige zusätzliche Maßnahmen
     zu realisieren.
   </p>
@@ -456,8 +456,8 @@
     Accordion-Widget definieren (Zeilen 2-6). Wir nutzen den
     <tt class="sdoc-seg-c">beforeActivate</tt>-Handler und <i class="sdoc-seg-i">nicht</i> den <tt class="sdoc-seg-c">activate</tt>-Handler, da er
     <i class="sdoc-seg-i">vor</i> dem Öffnen des Reiters gerufen wird. D.h. beim Öffnen ist der
-    Inhalt bereits geladen, was einen wesentlich flüssigeren Ablauf
-    ergibt, als wenn dies erst nach dem Öffnen geschieht.
+    Inhalt bereits geladen, was einen flüssigeren Ablauf ergibt, als wenn
+    dies erst nach dem Öffnen geschieht.
   </p>
   <p class="sdoc-para-p">
     Die Setzungen
