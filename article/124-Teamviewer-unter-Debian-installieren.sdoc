@@ -42,4 +42,15 @@ nachgeholt werden. Das Programm installiert lokal vorliegende
 Debian-Pakete und löst automatisch alle Abhängigkeiten auf (was C{dpkg
 -i} nicht macht).
 
+= Keine Verbindung
+
+Es kommt vor, dass der TeamViewer-Client keine Connection herstellen
+kann und die Meldung anzeigt
+
+  Not ready. Check your connection.
+
+Dies ließ sich bei mir durch einen Neustart des Dämons beheben
+
+  # teamviewer daemon restart
+        
 # eof
