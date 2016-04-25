@@ -49,7 +49,7 @@ kann und die Meldung anzeigt
 
   Not ready. Check your connection.
 
-Dies ließ sich bei mir durch einen Neustart des Dämons beheben
+Dies lässt sich u.U. durch einen Neustart des Dämons beheben
 
   # teamviewer daemon restart
         
