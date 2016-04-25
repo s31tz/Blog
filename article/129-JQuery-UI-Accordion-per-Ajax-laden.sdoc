@@ -56,7 +56,7 @@ C{beforeActivate}-Handler, den wir bei der Instanziierung des
 Accordion-Widget definieren (Zeilen 2-6). Wir nutzen den
 C{beforeActivate}-Handler und I{nicht} den C{activate}-Handler, da er
 I{vor} dem Öffnen des Reiters gerufen wird. D.h. zum Zeitpunkt des
-Öffnens ist der Inhalt bereits geladen, was einen flüssigeren Ablauf
+Öffnens ist der Inhalt bereits geladen, was einen flüssigen Ablauf
 ergibt.
 
 Die Setzungen
