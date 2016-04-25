@@ -30,7 +30,7 @@ zu realisieren.
   </div>
   .
 
-C{ID} ist die DOM-Id des Panel. Den C{TITLE} haben wir in einen
+C{ID} ist die DOM-Id des Accordion. Den C{TITLE} haben wir in einen
 C{a}-Tag eingefasst, dessen C{href}-Attribut den C{URL} definiert, von
 dem wir den Inhalt des Accordion-Panel per Ajax abrufen.
    
