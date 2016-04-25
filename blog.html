@@ -232,7 +232,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-04-25 09:56:43
+    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-04-25 10:01:32
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -456,9 +456,9 @@
     <tt class="sdoc-seg-c">beforeActivate</tt>-Handler, den wir bei der Instanziierung des
     Accordion-Widget definieren (Zeilen 2-6). Wir nutzen den
     <tt class="sdoc-seg-c">beforeActivate</tt>-Handler und <i class="sdoc-seg-i">nicht</i> den <tt class="sdoc-seg-c">activate</tt>-Handler, da er
-    <i class="sdoc-seg-i">vor</i> dem Öffnen des Reiters gerufen wird. D.h. beim Öffnen ist der
-    Inhalt bereits geladen, was einen flüssigeren Ablauf ergibt, als wenn
-    dies erst nach dem Öffnen geschieht.
+    <i class="sdoc-seg-i">vor</i> dem Öffnen des Reiters gerufen wird. D.h. zum Zeitpunkt des
+    Öffnens ist der Inhalt bereits geladen, was einen flüssigeren Ablauf
+    ergibt.
   </p>
   <p class="sdoc-para-p">
     Die Setzungen
@@ -495,7 +495,7 @@
     Den ersten Accordion-Reiter öffnen wir durch das Auslösen eines
     Click-Event, so als hätte der Anwender auf den ersten Reiter geklickt.
     Auf diese Weise wird sichergestellt, dass der <tt class="sdoc-seg-c">beforeActivate</tt>-Handler
-    gerufen wird.
+    gerufen und damit der Inhalt geladen wird.
   </p>
   <p class="sdoc-para-p">
     Links:

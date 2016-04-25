@@ -55,9 +55,9 @@ Das Laden des Panel-Inhalts per Ajax realisiert der
 C{beforeActivate}-Handler, den wir bei der Instanziierung des
 Accordion-Widget definieren (Zeilen 2-6). Wir nutzen den
 C{beforeActivate}-Handler und I{nicht} den C{activate}-Handler, da er
-I{vor} dem Öffnen des Reiters gerufen wird. D.h. beim Öffnen ist der
-Inhalt bereits geladen, was einen flüssigeren Ablauf ergibt, als wenn
-dies erst nach dem Öffnen geschieht.
+I{vor} dem Öffnen des Reiters gerufen wird. D.h. zum Zeitpunkt des
+Öffnens ist der Inhalt bereits geladen, was einen flüssigeren Ablauf
+ergibt.
 
 Die Setzungen
 
@@ -87,7 +87,7 @@ ist.
 Den ersten Accordion-Reiter öffnen wir durch das Auslösen eines
 Click-Event, so als hätte der Anwender auf den ersten Reiter geklickt.
 Auf diese Weise wird sichergestellt, dass der C{beforeActivate}-Handler
-gerufen wird.
+gerufen und damit der Inhalt geladen wird.
     
 Links:
 
