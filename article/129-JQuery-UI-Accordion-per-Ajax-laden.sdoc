@@ -33,7 +33,8 @@ zu realisieren.
 C{ID} ist die DOM-Id des Accordion. Der C{TITLE} des Reiters wird in
 einen C{a}-Tag eingefasst, dessen C{href}-Attribut den C{URL}
 definiert, von dem wir den Inhalt des Accordion-Panel per Ajax
-abrufen.
+abrufen. Der C{div}-Container für den Panel-Content ist leer, dieser
+wird per Ajax gefüllt.
    
 = Instanziierung des Accordion
     
