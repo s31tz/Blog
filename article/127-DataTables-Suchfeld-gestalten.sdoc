@@ -73,7 +73,7 @@ Das Suchfeld, das DataTables per Default erzeugt, sollte man in dem
 Fall unterdrücken:
 
   %Code: filter="./blog-highlight js %FORMAT%"
-    $('#dataTable').DataTable({
+    $('#ID').DataTable({
         dom: 't', // nur die Tabelle selbst, ohne Suchfeld etc.
         ...
     });
