@@ -60,12 +60,22 @@ Größe des Suchfelds ändern (CSS):
 Eigenes Suchfeld definieren:
 
   %Code: filter="./blog-highlight html %FORMAT%"
-    <input type="text" id="searchField" size="30" maxlength="30">
+    <input type="text" id="searchField" ...>
   .
 
   %Code: filter="./blog-highlight js %FORMAT%"
     $('#searchField').on('keyup',function () {
         tab.search(this.value).draw();
+    });
+  .
+
+Das Suchfeld, das vom DataTable-Objekt per Default erzeugt wird,
+sollte man in dem Fall unterdrücken:
+
+  %Code: filter="./blog-highlight js %FORMAT%"
+    $('#dataTable').DataTable({
+        dom: 't', // nur die Tabelle selbst, ohne Suchfeld etc.
+        ...
     });
   .
     
