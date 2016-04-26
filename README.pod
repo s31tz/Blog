@@ -13,6 +13,10 @@ veröffentlicht habe.
 
 =item *
 
+L<CSS: Header beliebiger Höhe am oberen Seitenrand fixieren|https://github.com/s31tz/Blog/blob/master/article/130-CSS-Fixierten-Seitenheader.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/142-x.html>)
+
+=item *
+
 L<jQuery UI: Accordion Panels per Ajax laden|https://github.com/s31tz/Blog/blob/master/article/129-JQuery-UI-Accordion-per-Ajax-laden.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/141-x.html>)
 
 =item *
