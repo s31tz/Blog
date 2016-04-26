@@ -12,13 +12,14 @@
 %Figure: file="IMGDIR/jquery-ui-79x79.png" \
   width=54 height=54 url="http://jqueryui.com/"
 
-Die jQuery UI Widgets Tabs und Accordion könnten - bis auf die
-Ausrichtung ihrer Reiter (Tabs horizontal, Accordion vertikal) -
+Die jQuery UI Widgets U{"http://jqueryui.com/tabs/",text="Tabs"} und
+U{"http://jqueryui.com/accordion/",text="Accordion"} könnten - bis auf
+die Ausrichtung ihrer Reiter (Tabs horizontal, Accordion vertikal) -
 identisch sein. Sind sie aber nicht. Während das Tabs-Widget das Laden
 von Inhalten per Ajax direkt unterstützt, ist dies beim
 Accordion-Widget nicht vorgesehen. Es ist jedoch möglich, dies durch
-einen C{beforeActivate} Event-Handler und einige zusätzliche Maßnahmen
-zu realisieren.
+einen C{beforeActivate} Event-Handler und bestimmte Einstellungen zu
+realisieren.
 
 = Struktur des Accordion
     
