@@ -69,7 +69,7 @@ Eigenes Suchfeld definieren:
     });
   .
 
-Das Suchfeld, das DataTables per Default erzeugt, unterdrücken:
+Das von DataTables erzeugte Suchfeld unterdrücken:
 
   %Code: filter="./blog-highlight js %FORMAT%"
     $('#ID').DataTable({
