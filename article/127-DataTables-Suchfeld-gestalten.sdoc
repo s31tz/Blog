@@ -69,8 +69,8 @@ Eigenes Suchfeld definieren:
     });
   .
 
-Das Suchfeld, das vom DataTable-Objekt per Default erzeugt wird,
-sollte man in dem Fall unterdrücken:
+Das Suchfeld, das DataTables per Default erzeugt, sollte man in dem
+Fall unterdrücken:
 
   %Code: filter="./blog-highlight js %FORMAT%"
     $('#dataTable').DataTable({
