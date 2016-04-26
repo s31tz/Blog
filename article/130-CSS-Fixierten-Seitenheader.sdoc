@@ -1,0 +1,43 @@
+# Date: 2016-04-26
+# Id: 142
+# Draft: no
+# Categories: CSS, JavaScript, jQuery
+
+%Document:
+  title="CSS: Header beliebiger Höhe am oberen Seitenrand fixieren"
+  generateAnchors=0
+  utf8=1
+  minLnWidth=2
+
+%Figure: file="IMGDIR/html-and-css-166x100.png" \
+  width=90 height=54 url="http://jqueryui.com/"
+
+Header mit beliebigem Inhalt:
+    
+  %Code: listing=1 filter="./blog-highlight html %FORMAT%"
+    <div id="header">
+        CONTENT
+    </div>
+  .
+
+Header am Seitenanfang fixieren:
+    
+  %Code: listing=1 filter="./blog-highlight css %FORMAT%"
+    #header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+        background-color: COLOR;
+    }
+  .
+
+Platz am Seitenanfang für den Header reservieren:
+    
+  %Code: listing=1 filter="./blog-highlight js %FORMAT%"
+    $(function () {
+        $('body').css('margin-top',$('#header').outerHeight());
+    });
+  .
+
+# eof
