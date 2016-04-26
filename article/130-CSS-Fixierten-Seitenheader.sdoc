@@ -32,7 +32,7 @@ Header am Seitenanfang fixieren:
     }
   .
 
-Für den Header Platz am Seitenanfang reservieren:
+Platz für den Header am Seitenanfang reservieren:
     
   %Code: listing=1 filter="./blog-highlight js %FORMAT%"
     $(function () {
