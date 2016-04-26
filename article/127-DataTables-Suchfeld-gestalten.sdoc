@@ -17,9 +17,9 @@ vielfältiger Weise konfiguriert werden. Einige Anpassungen im
 Zusammenhang mit dem Filter-Suchfeld sind allerdings schlecht
 dokumentiert. Das Filter-Suchfeld ist per Default mit dem Label-Text
 "Search:" beschriftet und befindet sich rechts über der Tabelle. Hier
-eine kurze Beschreibung, wie dies geändert werden kann. Im folgenden
-Code stehen C{ID}, C{LABEL} und C{WIDTH} für die frei wählbaren
-Angaben DOM-Id der Tabelle, Label-Text und CSS-Breite.
+eine kurze Beschreibung, wie dieses Setup geändert werden kann. Im
+folgenden Code stehen C{ID}, C{LABEL} und C{WIDTH} für die frei
+wählbaren Angaben DOM-Id der Tabelle, Label-Text und CSS-Breite.
         
 Label-Text setzen (JS):
 
@@ -57,6 +57,18 @@ Größe des Suchfelds ändern (CSS):
     }
   .
 
+Eigenes Suchfeld definieren:
+
+  %Code: filter="./blog-highlight html %FORMAT%"
+    <input type="text" id="searchField" size="30" maxlength="30">
+  .
+
+  %Code: filter="./blog-highlight js %FORMAT%"
+    $('#searchField').on('keyup',function () {
+        tab.search(this.value).draw();
+    });
+  .
+    
 = Links
 
 * U{"https://datatables.net/",text="DataTables"}

@@ -232,7 +232,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-04-26 06:13:31
+    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-04-26 15:56:33
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -552,9 +552,9 @@
     Zusammenhang mit dem Filter-Suchfeld sind allerdings schlecht
     dokumentiert. Das Filter-Suchfeld ist per Default mit dem Label-Text
     "Search:" beschriftet und befindet sich rechts über der Tabelle. Hier
-    eine kurze Beschreibung, wie dies geändert werden kann. Im folgenden
-    Code stehen <tt class="sdoc-seg-c">ID</tt>, <tt class="sdoc-seg-c">LABEL</tt> und <tt class="sdoc-seg-c">WIDTH</tt> für die frei wählbaren
-    Angaben DOM-Id der Tabelle, Label-Text und CSS-Breite.
+    eine kurze Beschreibung, wie dieses Setup geändert werden kann. Im
+    folgenden Code stehen <tt class="sdoc-seg-c">ID</tt>, <tt class="sdoc-seg-c">LABEL</tt> und <tt class="sdoc-seg-c">WIDTH</tt> für die frei
+    wählbaren Angaben DOM-Id der Tabelle, Label-Text und CSS-Breite.
   </p>
   <p class="sdoc-para-p">
     Label-Text setzen (JS):
@@ -579,6 +579,15 @@
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre"><span class="hl kwd">#ID_filter</span> <span class="hl kwb">input</span><span class="hl opt">[</span>type<span class="hl opt">=</span><span class="hl str">&quot;search&quot;</span><span class="hl opt">] {</span>&#10;    <span class="hl kwa">width</span><span class="hl opt">:</span> WIDTH<span class="hl opt">;</span>&#10;<span class="hl opt">}</span>&#10;</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Eigenes Suchfeld definieren:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre"><span class="hl kwa">&lt;input</span> <span class="hl kwb">type</span>=<span class="hl str">&quot;text&quot;</span> <span class="hl kwb">id</span>=<span class="hl str">&quot;searchField&quot;</span> <span class="hl kwb">size</span>=<span class="hl str">&quot;30&quot;</span> <span class="hl kwb">maxlength</span>=<span class="hl str">&quot;30&quot;</span><span class="hl kwa">&gt;</span>&#10;</pre>
+  </div>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre"><span class="hl opt">$(</span><span class="hl str">'#searchField'</span><span class="hl opt">).</span><span class="hl kwd">on</span><span class="hl opt">(</span><span class="hl str">'keyup'</span><span class="hl opt">,</span><span class="hl kwa">function</span> <span class="hl opt">() {</span>&#10;    tab<span class="hl opt">.</span><span class="hl kwd">search</span><span class="hl opt">(</span><span class="hl kwa">this</span><span class="hl opt">.</span>value<span class="hl opt">).</span><span class="hl kwd">draw</span><span class="hl opt">();</span>&#10;<span class="hl opt">});</span>&#10;</pre>
   </div>
   <h2 class="sdoc-sec-h2">Links<a id="section_3_1"></a></h2>
   <ul class="sdoc-list-ul">
