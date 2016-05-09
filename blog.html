@@ -232,7 +232,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-05-07 15:02:22
+    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-05-09 11:32:27
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -3873,6 +3873,31 @@
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre"># java -version&#10;java version "1.8.0_45"&#10;Java(TM) SE Runtime Environment (build 1.8.0_45-b14)&#10;Java HotSpot(TM) 64-Bit Server VM (build 25.45-b02, mixed mode)</pre>
+  </div>
+  <h2 class="sdoc-sec-h2">Nvidia Grafikkarte mit Bumblebee<a id="section_32_10"></a></h2>
+  <p class="sdoc-para-p">
+    Installation:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre"># apt-get install bumblebee bumblebee-nvidia&#10;# shutdown -r now</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Grafikanwendung starten:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">$ optirun CMD</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Status der Nvidia-Karte prüfen:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre"># cat /proc/acpi/bbswitch</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Weitere Infos:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">* U{https://wiki.ubuntuusers.de/Hybrid-Grafikkarten/Bumblebee/}</pre>
   </div>
   <h1 class="sdoc-sec-h1">095. Unix Epoch in lesbare Zeitangabe wandeln und umgekehrt<a id="section_33"></a></h1>
   <p class="sdoc-fig-p">
