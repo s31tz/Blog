@@ -1,0 +1,36 @@
+# Date: 2016-05-10
+# Id: 143
+# Draft: yes
+# Categories: Debian, Hardware
+
+%Document:
+  title="Debian: HP Color LaserJet Pro MFP M277dw einrichten"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/printer-icon-118x100.png" \
+  width="64" height="54" url="http://hplipopensource.com/"
+
+HPLIB (HP Linux Imaging and Printing) installieren:
+
+  # apt-get install hplip
+
+Verfügbarkeit des Druckers via USB, Ethernet, WLAN prüfen:
+    
+  $ hp-probe
+    
+Treiber-Download, Drucker und Fax einrichten:
+
+  $ hp-setup -i
+
+Drucker zum Default-Drucker machen (lpr/lpq):
+
+  $ lpoptions -d PRINTER
+
+Drucker unter CUPS einrichten: U{http://localhost:631}
+    
+= Links
+
+* U{"http://hplipopensource.com/",text="HPLIB Homepage"}
+
+# eof
