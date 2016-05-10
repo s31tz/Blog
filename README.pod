@@ -13,6 +13,10 @@ veröffentlicht habe.
 
 =item *
 
+L<Debian: HP Color LaserJet Pro MFP M277dw einrichten|https://github.com/s31tz/Blog/blob/master/article/131-Color-LaserJet-Pro-MFP-M277dw-unter-Debian.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/143-x.html>)
+
+=item *
+
 L<CSS: Header beliebiger Höhe am oberen Seitenrand fixieren|https://github.com/s31tz/Blog/blob/master/article/130-CSS-Fixierten-Seitenheader.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/142-x.html>)
 
 =item *
