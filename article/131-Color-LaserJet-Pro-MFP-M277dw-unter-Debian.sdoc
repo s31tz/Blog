@@ -24,7 +24,7 @@ HPLIB (HP Linux Imaging and Printing) installieren:
 
 Überprüfung der Abhängigkeiten, Permissions etc. von HPLIP (diese
 sind durch die Installation per apt-get - was ungewöhnlich ist -
-nicht sicher gestellt):
+nicht sicher gestellt (fehlende Pakete können nachinstalliert werden):
 
   $ hp-check
     
@@ -58,15 +58,15 @@ kann.
 
   $ hp-scan [OPTIONS]
 
-  --file=FILE.EXT         - Ausgabedatei (EXT: pdf, png, jpg)
-  --adf                   - automatische Dokumentenzufuhr nutzen
-  --size=SIZE             - Seitengröße (z.B. a4)
-  --mode=MODE             - Scan-Modus. Werte: gray, color, lineart
-  --resolution=DPI        - Auflösung. Default: 300
-  --resize=PERCENT        - Größe ändern. Wertebereich: 1 .. 400
-  --contrast=CONTRAST     - Kontrast
-  --brightness=BRIGHTNESS - Helligkeit
-  --dest=DESTINATION      - Werte: file, email
+    --file=FILE.EXT         - Ausgabedatei (EXT: pdf, png, jpg)
+    --adf                   - automatische Dokumentenzufuhr nutzen
+    --size=SIZE             - Seitengröße (z.B. a4)
+    --mode=MODE             - Scan-Modus. Werte: gray, color, lineart
+    --resolution=DPI        - Auflösung. Default: 300
+    --resize=PERCENT        - Größe ändern. Wertebereich: 1 .. 400
+    --contrast=CONTRAST     - Kontrast
+    --brightness=BRIGHTNESS - Helligkeit
+    --dest=DESTINATION      - Werte: file, email
     
 = Links
 
