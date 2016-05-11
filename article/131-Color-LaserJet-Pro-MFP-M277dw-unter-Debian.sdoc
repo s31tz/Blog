@@ -36,7 +36,7 @@ Drucker zum Default-Drucker machen (lpr/lpq):
 Drucker unter CUPS einrichten: U{http://localhost:631},
 "Adding Printers and Classes | Add Printer"
 
-Direkt in lokale Datei scannen, Endung bestimmt den Typ:
+Direkt in lokale Datei scannen, die Endung bestimmt das Dateiformat:
 
   $ hp-scan -oFILE.pdf
   $ hp-scan -oFILE.jpg
