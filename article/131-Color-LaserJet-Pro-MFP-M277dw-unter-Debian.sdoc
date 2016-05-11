@@ -33,19 +33,34 @@ Drucker zum Default-Drucker machen (lpr/lpq):
 
   $ lpoptions -d PRINTER
 
+Setup direkt auf dem Drucker unter seiner IP im lokalen Netz,
+z.B. U{http://192.168.178.47/}.
+    
 Drucker unter CUPS einrichten: U{http://localhost:631},
 "Adding Printers and Classes | Add Printer"
 
-Direkt in lokale Datei scannen, die Endung bestimmt das Dateiformat:
-
-  $ hp-scan -oFILE.pdf
-  $ hp-scan -oFILE.jpg
-  $ hp-scan -oFILE.png
-    
 GUI-Programm mit allerlei Funktionen:
 
   $ hp-toolbox
         
+= Scannen
+
+Mit dem Programm C{hp-scan} kann vom Flachbett oder über den
+Dokumenteneinzug gescannt und das Ergebnis lokal gespeichert oder per
+E-Mail verschickt werden:
+
+  $ hp-scan [OPTIONS]
+
+  --file=FILE.EXT         - Ausgabedatei (EXT: pdf, png, jpg)
+  --adf                   - automatische Dokumentenzufuhr nutzen
+  --size=SIZE             - Seitengröße (z.B. a4)
+  --mode=MODE             - Scan-Modus. Werte: gray, color, lineart
+  --resolution=DPI        - Auflösung. Default: 300
+  --resize=PERCENT        - Größe ändern. Wertebereich: 1 .. 400
+  --contrast=CONTRAST     - Kontrast
+  --brightness=BRIGHTNESS - Helligkeit
+  --dest=DESTINATION      - Werte: file, email, printer
+    
 = Links
 
 * U{"http://hplipopensource.com/",text="HPLIB Homepage"}
