@@ -29,14 +29,14 @@ Treiber-Download, Drucker und Fax einrichten:
 
   $ hp-setup -i
 
-Drucker zum Default-Drucker machen (lpr/lpq):
-
-  $ lpoptions -d PRINTER
-
 Setup des Druckers unter seiner IP im lokalen Netz,
 z.B. U{http://192.168.178.47/}.
 
 Der Drucker unter CUPS: U{http://localhost:631},
+
+Drucker zum Default-Drucker machen (lpr/lpq):
+
+  $ lpoptions -d PRINTER
 
 GUI-Programm mit allerlei Funktionen:
 
