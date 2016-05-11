@@ -11,6 +11,13 @@
 %Figure: file="IMGDIR/printer-icon-118x100.png" \
   width="61" height="52" url="http://hplipopensource.com/"
 
+= Drucker-Konfiguration
+    
+Setup des Druckers unter seiner IP im lokalen Netz,
+z.B. U{http://192.168.178.47/}.
+
+= Linux-Treiber und Hilfsprogramme
+    
 HPLIB (HP Linux Imaging and Printing) installieren:
 
   # apt-get install hplip hplib-gui hplib-doc
@@ -29,19 +36,18 @@ Treiber-Download, Drucker und Fax einrichten:
 
   $ hp-setup -i
 
-Setup des Druckers unter seiner IP im lokalen Netz,
-z.B. U{http://192.168.178.47/}.
+GUI-Programm mit allerlei Funktionen:
 
+  $ hp-toolbox
+
+= CUPS
+            
 Der Drucker unter CUPS: U{http://localhost:631},
 
 Drucker zum Default-Drucker machen (lpr/lpq):
 
   $ lpoptions -d PRINTER
 
-GUI-Programm mit allerlei Funktionen:
-
-  $ hp-toolbox
-        
 = Scannen
 
 Mit dem Programm C{hp-scan} kann vom Flachbett oder über den
