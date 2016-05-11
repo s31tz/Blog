@@ -232,7 +232,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-05-11 08:34:12
+    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-05-11 11:20:06
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -378,6 +378,14 @@
     <pre class="sdoc-code-pre"># apt-get install hplip hplib-gui hplib-doc</pre>
   </div>
   <p class="sdoc-para-p">
+    Überprüfung der Abhängigkeiten, Permissions etc. von HPLIP (diese
+    sind durch die Installation per apt-get - was ungewöhnlich ist -
+    nicht sicher gestellt):
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">$ hp-check</pre>
+  </div>
+  <p class="sdoc-para-p">
     Verfügbarkeit des Druckers via USB, Ethernet, WLAN prüfen:
   </p>
   <div class="sdoc-code-div">
@@ -399,6 +407,18 @@
     Drucker unter CUPS einrichten: <a class="sdoc-seg-u" href="http://localhost:631">http://localhost:631</a>,
     "Adding Printers and Classes | Add Printer"
   </p>
+  <p class="sdoc-para-p">
+    Direkt in lokale Datei scannen:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">$ hp-scan</pre>
+  </div>
+  <p class="sdoc-para-p">
+    GUI-Programm mit allerlei Funktionen:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">$ hp-toolbox</pre>
+  </div>
   <h2 class="sdoc-sec-h2">Links<a id="section_1_1"></a></h2>
   <ul class="sdoc-list-ul">
     <li class="sdoc-list-li-point" style="list-style-type:disc"><a class="sdoc-seg-u" href="http://hplipopensource.com/">HPLIB Homepage</a></li>

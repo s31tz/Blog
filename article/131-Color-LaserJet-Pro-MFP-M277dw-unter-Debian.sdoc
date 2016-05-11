@@ -15,6 +15,12 @@ HPLIB (HP Linux Imaging and Printing) installieren:
 
   # apt-get install hplip hplib-gui hplib-doc
 
+Überprüfung der Abhängigkeiten, Permissions etc. von HPLIP (diese
+sind durch die Installation per apt-get - was ungewöhnlich ist -
+nicht sicher gestellt):
+
+  $ hp-check
+    
 Verfügbarkeit des Druckers via USB, Ethernet, WLAN prüfen:
     
   $ hp-probe
@@ -29,7 +35,15 @@ Drucker zum Default-Drucker machen (lpr/lpq):
 
 Drucker unter CUPS einrichten: U{http://localhost:631},
 "Adding Printers and Classes | Add Printer"
+
+Direkt in lokale Datei scannen:
+
+  $ hp-scan
     
+GUI-Programm mit allerlei Funktionen:
+
+  $ hp-toolbox
+        
 = Links
 
 * U{"http://hplipopensource.com/",text="HPLIB Homepage"}
