@@ -45,8 +45,10 @@ GUI-Programm mit allerlei Funktionen:
 = Scannen
 
 Mit dem Programm C{hp-scan} kann vom Flachbett oder über den
-Dokumenteneinzug gescannt und das Ergebnis lokal gespeichert oder per
-E-Mail verschickt werden:
+Dokumenteneinzug gescannt und das Ergebnis lokal gespeichert werden,
+ohne mit einem USB-Stick hantieren zu müssen. Außerdem hat es diverse
+Optionen, mit denen auf das Scan-Ergebnis Einfluss genommen werden
+kann.
 
   $ hp-scan [OPTIONS]
 
@@ -58,7 +60,7 @@ E-Mail verschickt werden:
   --resize=PERCENT        - Größe ändern. Wertebereich: 1 .. 400
   --contrast=CONTRAST     - Kontrast
   --brightness=BRIGHTNESS - Helligkeit
-  --dest=DESTINATION      - Werte: file, email, printer
+  --dest=DESTINATION      - Werte: file, email
     
 = Links
 
