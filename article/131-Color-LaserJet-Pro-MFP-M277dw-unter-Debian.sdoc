@@ -36,9 +36,11 @@ Drucker zum Default-Drucker machen (lpr/lpq):
 Drucker unter CUPS einrichten: U{http://localhost:631},
 "Adding Printers and Classes | Add Printer"
 
-Direkt in lokale Datei scannen:
+Direkt in lokale Datei scannen, Endung bestimmt den Typ:
 
-  $ hp-scan
+  $ hp-scan -oFILE.pdf
+  $ hp-scan -oFILE.jpg
+  $ hp-scan -oFILE.png
     
 GUI-Programm mit allerlei Funktionen:
 
@@ -48,5 +50,7 @@ GUI-Programm mit allerlei Funktionen:
 
 * U{"http://hplipopensource.com/",text="HPLIB Homepage"}
 * U{"https://launchpad.net/hplip",text="HPLIB Projektseite"}
+* U{"http://www.amazon.de/LaserJet-Multifunktionsdrucker-Farblaserdrucker-\
+  Kopierer-Ethernet/dp/B00TON9V2C",text="HP Laserjet MFP M277dw bei Amazon"}
 
 # eof
