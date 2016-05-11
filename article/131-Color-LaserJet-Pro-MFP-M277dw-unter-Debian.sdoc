@@ -27,7 +27,8 @@ Drucker zum Default-Drucker machen (lpr/lpq):
 
   $ lpoptions -d PRINTER
 
-Drucker unter CUPS einrichten: U{http://localhost:631}
+Drucker unter CUPS einrichten: U{http://localhost:631},
+"Adding Printers and Classes | Add Printer"
     
 = Links
 
