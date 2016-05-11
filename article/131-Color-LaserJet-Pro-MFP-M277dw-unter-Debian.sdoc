@@ -13,7 +13,7 @@
 
 HPLIB (HP Linux Imaging and Printing) installieren:
 
-  # apt-get install hplip
+  # apt-get install hplip hplib-gui hplib-doc
 
 Verfügbarkeit des Druckers via USB, Ethernet, WLAN prüfen:
     
