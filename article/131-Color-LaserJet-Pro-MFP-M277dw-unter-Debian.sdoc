@@ -33,7 +33,7 @@ Drucker zum Default-Drucker machen (lpr/lpq):
 
   $ lpoptions -d PRINTER
 
-Setup-Seiten auf dem Drucker unter seiner IP im lokalen Netz,
+Setup des Druckers unter seiner IP im lokalen Netz,
 z.B. U{http://192.168.178.47/}.
 
 Der Drucker unter CUPS: U{http://localhost:631},
