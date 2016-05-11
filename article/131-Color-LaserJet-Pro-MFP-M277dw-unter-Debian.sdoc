@@ -14,7 +14,7 @@
 = Drucker-Konfiguration
     
 Setup des Druckers unter seiner IP im lokalen Netz,
-z.B. U{http://192.168.178.47/}.
+z.B. U{http://192.168.178.47/}
 
 = Linux-Treiber und Hilfsprogramme
     
@@ -44,7 +44,7 @@ GUI-Programm mit allerlei Funktionen:
             
 Der Drucker unter CUPS: U{http://localhost:631},
 
-Drucker zum Default-Drucker machen (lpr/lpq):
+Drucker zum Default-Drucker machen (für lpr/lpq):
 
   $ lpoptions -d PRINTER
 
