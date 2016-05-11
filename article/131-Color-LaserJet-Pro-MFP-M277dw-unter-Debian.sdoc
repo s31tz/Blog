@@ -42,7 +42,7 @@ GUI-Programm mit allerlei Funktionen:
 
 = CUPS
             
-Der Drucker unter CUPS: U{http://localhost:631},
+Der Drucker unter CUPS: U{http://localhost:631}
 
 Drucker zum Default-Drucker machen (für lpr/lpq):
 
