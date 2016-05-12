@@ -68,7 +68,7 @@ einem PDF-Dokument (Dateiendung C{.pdf}) zusammen:
   $ hp-scan --adf --size=a4 --mode=color --resolution=150 --file=FILE.pdf
 
 Im Falle von PDF sind die Auflösungen 75, 100, 150, 200, 300 DPI möglich,
-bei JPG/PNG bis zu 1200 DPI.
+bei JPG oder PNG bis zu 1200 DPI.
     
 = Links
 
