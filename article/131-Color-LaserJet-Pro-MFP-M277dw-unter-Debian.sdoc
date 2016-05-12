@@ -40,7 +40,7 @@ einrichten:
 
   $ hp-setup -i
 
-GUI-Programm mit allerlei Funktionen:
+HP Device Manger:
 
   $ hp-toolbox
 
