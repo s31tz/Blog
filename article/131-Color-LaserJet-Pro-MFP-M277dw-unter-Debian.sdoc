@@ -22,6 +22,8 @@ HPLIB (HP Linux Imaging and Printing) installieren:
 
   # apt-get install hplip hplib-gui hplib-doc
 
+Lokale Dokumentation: U{file:///usr/share/doc/hplip-doc/setup.html}
+        
 Überprüfung der Abhängigkeiten, Permissions etc. von HPLIP und
 Nachinstallation von fehlenden Paketen (dies ist in diesem speziellen
 Fall durch die Installation per apt-get - was ungewöhnlich ist - nicht
@@ -33,8 +35,6 @@ Verfügbarkeit des Druckers via USB, Ethernet, WLAN prüfen:
     
   $ hp-probe
 
-Lokale Dokumentation: U{file:///usr/share/doc/hplip-doc/setup.html}
-        
 Treiber des Druckers herunterladen und Drucker und Fax rudimentär
 einrichten:
 
