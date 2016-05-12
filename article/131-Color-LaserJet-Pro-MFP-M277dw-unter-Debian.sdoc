@@ -22,7 +22,7 @@ HPLIB (HP Linux Imaging and Printing) installieren:
 
   # apt-get install hplip hplib-gui hplib-doc
 
-Lokale Dokumentation: U{file:///usr/share/doc/hplip-doc/setup.html}
+Lokale Dokumentation: U{/usr/share/doc/hplip-doc/setup.html}
         
 Überprüfung der Abhängigkeiten, Permissions etc. von HPLIP und
 Nachinstallation von fehlenden Paketen (dies ist in diesem speziellen
