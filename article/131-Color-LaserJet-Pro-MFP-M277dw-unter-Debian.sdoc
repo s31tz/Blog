@@ -33,7 +33,8 @@ Verfügbarkeit des Druckers via USB, Ethernet, WLAN prüfen:
     
   $ hp-probe
     
-Treiber-Download, Drucker und Fax einrichten:
+Treiber des Druckers herunterladen und Drucker und Fax rudimentär
+einrichten:
 
   $ hp-setup -i
 
@@ -53,9 +54,9 @@ Drucker zum Default-Drucker machen (für lpr/lpq):
 
 Mit dem Programm C{hp-scan} kann vom Flachbett oder über den
 Dokumenteneinzug gescannt und das Ergebnis lokal gespeichert werden,
-ohne mit einem USB-Stick hantieren zu müssen. Außerdem hat das
-Programm diverse Optionen, mit denen auf das Scan-Ergebnis Einfluss
-genommen werden kann.
+ohne mit einem USB-Stick hantieren zu müssen. Außerdem hat es diverse
+Optionen, mit denen auf das Scan-Ergebnis Einfluss genommen werden
+kann.
 
   $ hp-scan [OPTIONS]
 
