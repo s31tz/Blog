@@ -32,7 +32,9 @@ sicher gestellt):
 Verfügbarkeit des Druckers via USB, Ethernet, WLAN prüfen:
     
   $ hp-probe
-    
+
+Lokale Dokumentation: U{file:///usr/share/doc/hplip-doc/setup.html}
+        
 Treiber des Druckers herunterladen und Drucker und Fax rudimentär
 einrichten:
 
