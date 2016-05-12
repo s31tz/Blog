@@ -61,9 +61,9 @@ Programm diverse Optionen, mit denen auf das Scan-Ergebnis Einfluss
 genommen werden kann (C{$ man hp-scan}).
 
 Beispiel: Scanne alle A4-Seiten (C{--size=a4}), die auf der
-automatischen Dokumentenzufuhr eingelegt sind (C{--adf}) in Farbe
+automatischen Dokumentenzufuhr (C{--adf}) eingelegt sind in Farbe
 (C{--mode=color}) mit 150 DPI (C{--resolution=150}) und füge sie zu
-einem PDF-Dokument (wegen der Dateiendung .pdf) zusammen:
+einem PDF-Dokument (Dateiendung C{.pdf}) zusammen:
 
   $ hp-scan --adf --size=a4 --mode=color --resolution=150 --file=FILE.pdf
 
