@@ -58,7 +58,7 @@ Mit dem Programm C{hp-scan} kann vom Flachbett oder über den
 Dokumenteneinzug gescannt und das Ergebnis lokal gespeichert werden,
 ohne mit einem USB-Stick hantieren zu müssen. Außerdem hat das
 Programm diverse Optionen, mit denen auf das Scan-Ergebnis Einfluss
-genommen werden kann.
+genommen werden kann (C{man hp-scan}).
 
 Scanne alle A4-Seiten (C{--size=a4}), die auf der automatischen
 Dokumentenzufuhr eingelegt sind (C{--adf}) in Farbe (C{--mode=color})
