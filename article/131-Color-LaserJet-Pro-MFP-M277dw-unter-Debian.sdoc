@@ -13,7 +13,7 @@
 
 = Drucker-Konfiguration
     
-Setup des Druckers unter seiner IP im lokalen Netz,
+Konfigurationsprogramm des Druckers unter seiner IP im lokalen Netz,
 z.B. U{http://192.168.178.47/}
 
 = Linux-Treiber und Hilfsprogramme
