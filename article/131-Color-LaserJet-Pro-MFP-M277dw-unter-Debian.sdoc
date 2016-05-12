@@ -22,9 +22,10 @@ HPLIB (HP Linux Imaging and Printing) installieren:
 
   # apt-get install hplip hplib-gui hplib-doc
 
-Überprüfung der Abhängigkeiten, Permissions etc. von HPLIP (diese
-sind durch die Installation per apt-get - was ungewöhnlich ist -
-nicht sicher gestellt (fehlende Pakete können nachinstalliert werden)):
+Überprüfung der Abhängigkeiten, Permissions etc. von HPLIP und
+Nachinstallation von fehlenden Paketen (dies ist hier durch die
+Installation per apt-get - was ungewöhnlich ist - nicht sicher
+gestellt):
 
   $ hp-check
     
