@@ -24,7 +24,7 @@ HPLIB (HP Linux Imaging and Printing) installieren:
 
 Überprüfung der Abhängigkeiten, Permissions etc. von HPLIP (diese
 sind durch die Installation per apt-get - was ungewöhnlich ist -
-nicht sicher gestellt (fehlende Pakete können nachinstalliert werden):
+nicht sicher gestellt (fehlende Pakete können nachinstalliert werden)):
 
   $ hp-check
     
