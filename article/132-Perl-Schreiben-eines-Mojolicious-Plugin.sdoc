@@ -10,7 +10,7 @@
   minLnWidth=2
 
 %Figure: file="IMGDIR/mojolicious-logo-386x90.png" \
-  width=206 height=48 url="http://mojolicious.org/"
+  width=189 height=44 url="http://mojolicious.org/"
 
 Über die Plugin-Schnittstelle kann Mojolicious oder eine
 Mojolicious-Applikation um jede denkbare Funktionalität erweitert
