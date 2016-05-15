@@ -1,0 +1,117 @@
+# Date: 2016-05-14
+# Id: 144
+# Draft: no
+# Categories: Mojolicious, Perl
+
+%Document:
+  title="Ein Plugin für Mojolicious schreiben"
+  generateAnchors=0
+  utf8=1
+  minLnWidth=2
+
+%Figure: file="IMGDIR/mojolicious-logo-386x90.png" \
+  width=206 height=48 url="http://mojolicious.org/"
+
+Über die Plugin-Schnittstelle kann Mojolicious oder eine
+Mojolicious-Applikation um jede denkbare Funktionalität erweitert
+werden. Die Plugin-Schnittstelle ist sehr einfach gehalten. Denn sie
+gibt nur vor, I{wie} eine Funktionalität zum System hinzugefügt wird,
+nicht jedoch, I{um welche Art} von Funktionalität es sich handelt.
+
+Die Implementierung eines Mojolicious-Plugin erfolgt in zwei
+Schritten:
+
+1. Durch Ableitung von Mojolicious::Plugin wird eine Subklasse - die
+   Plugin-Klasse - gebildet.
+2. In der Plugin-Klasse wird die Methode register() implementiert.
+
+In der Dokumentation zur Basisklasse
+U{"https://metacpan.org/pod/Mojolicious::Plugin",text="Mojolicious::Plugin"}
+wird die Implementierung so beschrieben:
+    
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    package Mojolicious::Plugin::MyPlugin;
+    use Mojo::Base 'Mojolicious::Plugin';
+
+    sub register {
+        my ($self, $app, $conf) = @_;
+
+        # Magic here! :)
+    }
+  .
+
+Der Aufwand der Plugin-Implementierung besteht natürlich darin, den
+mit
+
+  %Code: filter="./blog-highlight perl %FORMAT%"
+    # Magic here! :)
+  .
+    
+bezeichneten Teil mit Leben zu füllen.
+
+Ist das Plugin implementiert, kann es durch einen einzigen Aufruf zu
+einer Applikation hinzugefügt werden:
+    
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    $app->plugin(MyPlugin => \%config);
+  .
+
+Der analoge Aufruf unter
+U{"https://metacpan.org/pod/Mojolicious::Lite",text="Mojolicious::Lite"}:
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    plugin MyPlugin => \%config;
+  .
+
+Hierbei ist C{%config} ein Hash mit Schlüssel/Wert-Paaren -
+typischerweise als Hash-Literal angegeben - durch den das Plugin
+konfiguriert werden kann. Ist keine Konfigurierung nötig, kann das
+Argument weggelassen werden.
+
+= Beispiel
+
+Als einfaches Beispiel implementieren wir ein Plugin C{PrintUrl}, das
+bei jedem Request den Request-URL auf STDERR ausgibt. Dies erreichen
+wir, indem wir in der Methode C{register()} einen C{before_dispatch}
+Handler aufsetzen, der genau dies tut.
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    package Mojolicious::Plugin::PrintUrl;
+    Mojo::Base 'Mojolicious::Plugin';
+
+    sub register {
+        my ($self, $app, $conf) = @_;
+
+        $app->hook(before_dispatch=>sub {
+            my $c = shift;
+            warn $c->req->url,"\n";
+        });
+
+        return;
+    }
+  .
+
+Das Plugin wird durch
+    
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    $app->plugin('PrintUrl');
+  .
+
+oder im Falle von Mojolicious::Lite durch
+    
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    plugin 'PrintUrl';
+  .
+
+in der Applikation aktiviert. Eine Konfiguration ist bei den Aufrufen
+nicht angegeben, das das Plugin keine Konfigurierungsmöglichkeit
+anbietet.
+       
+= Links zu Mojolicious
+
+* U{"http://mojolicious.org/",text="Homepage des Mojolicious-Projekts"}
+* U{"https://metacpan.org/release/Mojolicious",text="Quellen \
+  und Dokumentation auf metacpan"}
+* U{"https://github.com/kraih/mojo",text="Repository auf GitHub"}
+    
+# eof
