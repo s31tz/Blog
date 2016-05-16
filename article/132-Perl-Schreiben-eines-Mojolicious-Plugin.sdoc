@@ -21,13 +21,13 @@ nicht jedoch, I{um welche Art} von Funktionalität es sich handelt.
 Die Implementierung eines Mojolicious-Plugin erfolgt in zwei
 Schritten:
 
-1. Durch Ableitung von Mojolicious::Plugin wird eine Subklasse - die
-   Plugin-Klasse - gebildet.
+1. Durch Ableitung von
+   U{"https://metacpan.org/pod/Mojolicious::Plugin",text="Mojolicious::Plugin"}
+   wird eine Subklasse - die Plugin-Klasse - gebildet.
 2. In der Plugin-Klasse wird die Methode register() implementiert.
 
-In der Dokumentation zur Basisklasse
-U{"https://metacpan.org/pod/Mojolicious::Plugin",text="Mojolicious::Plugin"}
-wird die Implementierung so beschrieben:
+In der Dokumentation zur Basisklasse Mojolicious::Plugin wird die
+Implementierung so beschrieben:
     
   %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
     package Mojolicious::Plugin::MyPlugin;
