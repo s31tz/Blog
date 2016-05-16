@@ -4,7 +4,7 @@
 # Categories: Mojolicious, Perl
 
 %Document:
-  title="Mojolicious: Ein Plugin für Mojolicious schreiben"
+  title="Ein Plugin für Mojolicious schreiben"
   generateAnchors=0
   utf8=1
   minLnWidth=2
@@ -66,25 +66,25 @@ U{"https://metacpan.org/pod/Mojolicious::Lite",text="Mojolicious::Lite"}:
 Hierbei ist C{%config} ein Hash mit Schlüssel/Wert-Paaren -
 typischerweise als Hash-Literal angegeben - durch den das Plugin
 konfiguriert werden kann. Ist keine Konfigurierung nötig, kann das
-Argument weggelassen werden.
+Argument auch weggelassen werden.
 
 = Beispiel
 
-Als einfaches Beispiel implementieren wir ein Plugin C{PrintUrl}, das
-bei jedem Request den Request-URL auf STDERR ausgibt. Dies erreichen
-wir, indem wir in der Methode C{register()} einen C{before_dispatch}
+Als einfaches Beispiel implementieren wir ein Plugin C{Hello}, das
+bei jedem Request die Zeichenkette 'Hello' ins Log ausgibt. Dies erreichen
+wir, indem wir in der Methode C{register()} einen C{before_routes}
 Handler aufsetzen, der genau dies tut.
 
   %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
-    package Mojolicious::Plugin::PrintUrl;
+    package Mojolicious::Plugin::Hello;
     Mojo::Base 'Mojolicious::Plugin';
 
     sub register {
         my ($self, $app, $conf) = @_;
 
-        $app->hook(before_dispatch=>sub {
+        $app->hook(before_routes=>sub {
             my $c = shift;
-            warn $c->req->url,"\n";
+            $c->app->log-debug(''Hello');
         });
 
         return;
@@ -94,18 +94,18 @@ Handler aufsetzen, der genau dies tut.
 Das Plugin wird durch
     
   %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
-    $app->plugin('PrintUrl');
+    $app->plugin('Hello');
   .
 
 oder im Falle von Mojolicious::Lite durch
     
   %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
-    plugin 'PrintUrl';
+    plugin 'Hello';
   .
 
 in der Applikation aktiviert. Eine Konfiguration ist bei den Aufrufen
-nicht angegeben, das das Plugin keine Konfigurierungsmöglichkeit
-anbietet.
+nicht angegeben, da das Plugin keine Konfigurierungsmöglichkeit
+vorsieht.
        
 = Links zu Mojolicious
 
