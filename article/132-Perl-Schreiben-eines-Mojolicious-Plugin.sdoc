@@ -84,7 +84,7 @@ Handler aufsetzen, der genau dies tut.
 
         $app->hook(before_routes=>sub {
             my $c = shift;
-            $c->app->log-debug(''Hello');
+            $c->app->log->debug(''Hello');
         });
 
         return;
