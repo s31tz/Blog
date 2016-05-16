@@ -49,8 +49,8 @@ mit
     
 bezeichneten Teil mit Leben zu füllen.
 
-Ist das Plugin implementiert, kann es durch einen einzigen Aufruf zu
-einer Applikation hinzugefügt werden:
+Ist das Plugin implementiert, kann es durch einen einzigen Aufruf zur
+Applikation hinzugefügt werden:
     
   %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
     $app->plugin(MyPlugin => \%config);
