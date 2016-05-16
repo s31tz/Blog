@@ -70,10 +70,10 @@ Argument auch weggelassen werden.
 
 = Beispiel
 
-Als einfaches Beispiel implementieren wir ein Plugin C{Hello}, das
-bei jedem Request die Zeichenkette 'Hello' ins Log ausgibt. Dies erreichen
-wir, indem wir in der Methode C{register()} einen C{before_routes}
-Handler aufsetzen, der genau dies tut.
+Als einfaches Beispiel implementieren wir ein Plugin C{Hello}, das bei
+jedem hereinkommenden Request die Zeichenkette 'Hello' ins Log
+ausgibt. Dies erreichen wir, indem wir in der Methode C{register()}
+einen C{before_routes} Handler aufsetzen, der genau dies tut.
 
   %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
     package Mojolicious::Plugin::Hello;
@@ -106,7 +106,7 @@ oder im Falle von Mojolicious::Lite durch
 in der Applikation aktiviert. Eine Konfiguration ist bei den Aufrufen
 nicht angegeben, da das Plugin keine Konfigurierungsmöglichkeit
 vorsieht.
-       
+    
 = Links zu Mojolicious
 
 * U{"http://mojolicious.org/",text="Homepage des Mojolicious-Projekts"}
