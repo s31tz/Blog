@@ -65,7 +65,7 @@ U{"https://metacpan.org/pod/Mojolicious::Lite",text="Mojolicious::Lite"}:
 
 Hierbei ist C{%config} ein Hash mit Schlüssel/Wert-Paaren -
 typischerweise als Hash-Literal angegeben - durch den das Plugin
-konfiguriert werden kann. Ist keine Konfigurierung des Plugin nötig,
+konfiguriert wird. Ist keine Konfigurierung des Plugin nötig,
 kann das Argument weggelassen werden.
 
 = Beispiel
