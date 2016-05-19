@@ -49,8 +49,8 @@ mit
     
 bezeichneten Teil mit Leben zu füllen.
 
-Ist das Plugin implementiert, kann es durch einen einzigen Aufruf zur
-Applikation hinzugefügt werden:
+Ist das Plugin implementiert, wird es durch einen einzigen Aufruf zur
+Applikation hinzugefügt:
     
   %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
     $app->plugin(MyPlugin => \%config);
@@ -73,7 +73,7 @@ kann das Argument weggelassen werden.
 Als einfaches Beispiel implementieren wir ein Plugin C{Hello}, das bei
 jedem hereinkommenden Request die Zeichenkette 'Hello' und die
 IP-Adresse des Aufrufers ins Log ausgibt. Dies erreichen wir, indem
-wir in der Methode C{register()} einen C{before_routes} Handler
+wir in der Methode C{register()} einen C{before_routes}-Handler
 aufsetzen, der genau dies tut.
 
   %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
