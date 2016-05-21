@@ -114,5 +114,7 @@ vorsieht.
 * U{"https://metacpan.org/release/Mojolicious",text="Quellen \
   und Dokumentation auf meta::cpan"}
 * U{"https://github.com/kraih/mojo",text="Repository auf GitHub"}
-    
+* U{"https://metacpan.org/search?p=1&q=mojolicious%3A%3Aplugin&\
+  search_type=modules&size=500",text="Mojolicious Plugins"}
+        
 # eof
