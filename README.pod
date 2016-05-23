@@ -6,8 +6,7 @@ Blog - Blog Articles
 
 =head1 DESCRIPTION
 
-Die Quellen der Artikel, die ich auf meinem Blog L<http://fseitz.de/blog>
-veröffentlicht habe.
+Die Quellen der Artikel meines Blog L<http://fseitz.de/blog>.
 
 =over 2
 
