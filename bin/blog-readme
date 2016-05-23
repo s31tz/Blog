@@ -2,7 +2,6 @@
 
 use strict;
 use warnings;
-use utf8;
 
 use FindBin qw/$Bin/;
 use lib "$Bin/../lib/perl5";
@@ -85,8 +84,7 @@ Blog - Blog Articles
 
 = DESCRIPTION
 
-Die Quellen der Artikel, die ich auf meinem Blog U{http://fseitz.de/blog}
-veröffentlicht habe.
+Die Quellen der Artikel meines Blog U{http://fseitz.de/blog}.
 
 __EOT__
 
