@@ -12,7 +12,7 @@ Die Quellen der Artikel meines Blog L<http://fseitz.de/blog>.
 
 =item *
 
-L<Mojolicious: Ein Plugin für Mojolicious schreiben|https://github.com/s31tz/Blog/blob/master/article/132-Perl-Schreiben-eines-Mojolicious-Plugin.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/144-x.html>)
+L<Ein Plugin für Mojolicious schreiben|https://github.com/s31tz/Blog/blob/master/article/132-Perl-Schreiben-eines-Mojolicious-Plugin.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/144-x.html>)
 
 =item *
 
