@@ -4,7 +4,7 @@
 # Categories: Mojolicious, Perl
 
 %Document:
-  title="Plugins für Mojolicious schreiben"
+  title="Ein Plugin für Mojolicious schreiben"
   generateAnchors=0
   utf8=1
   minLnWidth=2
