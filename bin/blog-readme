@@ -84,7 +84,7 @@ Blog - Blog Articles
 
 = DESCRIPTION
 
-Die Quellen der Artikel meines Blog U{http://fseitz.de/blog}.
+Die Quellen der Artikel meines Blog U{http://fseitz.de/blog}
 
 __EOT__
 
@@ -115,18 +115,18 @@ for my $file (reverse Blog::Base::Prty::Path->glob("*.sdoc")) {
 
 my $year = POSIX::strftime('%Y',localtime);
 
-$code .= sprintf <<'__EOT__';
+$code .= sprintf <<'__EOT__',(localtime)[5]+1900;
 = AUTHOR
 
 Frank Seitz, U{http://fseitz.de}
 
 = COPYRIGHT
 
-Copyright (C) Frank Seitz
+Copyright (C) %s Frank Seitz
 
 # eof
 __EOT__
-
+    
 binmode STDOUT,':encoding(utf8)';
 print $format eq 'sdoc'? $code:
     Blog::Base::Prty::Sdoc::Document->new(\$code,-utf8=>1)->dump($format);
