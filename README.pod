@@ -6,7 +6,7 @@ Blog - Blog Articles
 
 =head1 DESCRIPTION
 
-Die Quellen der Artikel meines Blog L<http://fseitz.de/blog>.
+Die Quellen der Artikel meines Blog L<http://fseitz.de/blog>
 
 =over 2
 
@@ -534,4 +534,4 @@ Frank Seitz, L<http://fseitz.de>
 
 =head1 COPYRIGHT
 
-Copyright (C) Frank Seitz
+Copyright (C) 2016 Frank Seitz
