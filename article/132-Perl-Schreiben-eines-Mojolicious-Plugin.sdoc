@@ -40,8 +40,8 @@ Implementierung so beschrieben:
     }
   .
 
-Der Aufwand der Plugin-Implementierung besteht natürlich darin, den
-mit
+Der Aufwand der Plugin-Implementierung besteht natürlich darin,
+den mit
 
   %Code: filter="./blog-highlight perl %FORMAT%"
     # Magic here! :)
