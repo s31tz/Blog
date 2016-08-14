@@ -75,6 +75,16 @@ Pfeil oben rechts.
 
 = Skype
 
+2016-08-14
+    
+Debian-Paket (skypeforlinux-64-alpha.deb) von skype.com herunterladen
+(Link siehe U{https://wiki.debian.org/skype}). Installation:
+
+  # apt-get update
+  # gdebi skypeforlinux-64-alpha.deb
+
+2015-05-23
+    
 Installation (32-Bit-Programm auf 64-Bit-System):
 
   # dpkg --add-architecture i386
