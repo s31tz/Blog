@@ -12,7 +12,7 @@ Die Quellen der Artikel des Blog  L<http://fseitz.de/blog>
 
 =item *
 
-L<ffmpeg: Audiodateien konkatenieren|https://github.com/s31tz/Blog/blob/master/article/134-ffmpeg-audiodateien-konkatenieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/146-x.html>)
+L<ffmpeg: Audio-Dateien konkatenieren|https://github.com/s31tz/Blog/blob/master/article/134-ffmpeg-audiodateien-konkatenieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/146-x.html>)
 
 =item *
 
