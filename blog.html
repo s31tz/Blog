@@ -234,7 +234,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-09-03 10:37:22
+    Copyright (C) 2010-2016 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2016-09-18 20:02:12
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -5131,7 +5131,7 @@
     Installation hinzufügen:
   </p>
   <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre">$ ~/bin/cpanm &lt;module&gt;</pre>
+    <pre class="sdoc-code-pre">$ ~/bin/cpanm MODULE</pre>
   </div>
   <p class="sdoc-para-p">
     Abhängkeiten von anderen Modulen werden erkannt und rekursiv
@@ -5143,6 +5143,19 @@
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">cd ~/bin&#10;curl -LO http://xrl.us/cpanm&#10;chmod +x cpanm&#10;# edit shebang if you don't have /usr/bin/env</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Modul MODULE mit allen zusätzlich benötigten (non-core) Modulen in
+    Verzeichnis DIR installieren:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">$ cpanm -L DIR MODULE</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Z.B.
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">$ cpanm -L perl5 File::Rsync&#10;--&gt; Working on File::Rsync&#10;Fetching http://www.cpan.org/authors/id/L/LE/LEAKIN/File-Rsync-0.49.tar.gz ... OK&#10;Configuring File-Rsync-0.49 ... OK&#10;==&gt; Found dependencies: IPC::Run3&#10;--&gt; Working on IPC::Run3&#10;Fetching http://www.cpan.org/authors/id/R/RJ/RJBS/IPC-Run3-0.048.tar.gz ... OK&#10;Configuring IPC-Run3-0.048 ... OK&#10;Building and testing IPC-Run3-0.048 ... OK&#10;Successfully installed IPC-Run3-0.048&#10;Building and testing File-Rsync-0.49 ... OK&#10;Successfully installed File-Rsync-0.49&#10;2 distributions installed</pre>
   </div>
   <h1 class="sdoc-sec-h1">079. Perl: Testsuite auf Basis des Test Anything Protocol (TAP)<a id="section_52"></a></h1>
   <p class="sdoc-fig-p">

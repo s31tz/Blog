@@ -27,7 +27,7 @@ und der Installation von C{cpanm} per
 kann man jedes (naja, fast jedes) CPAN-Modul mit einem simplen Aufruf zur
 Installation hinzufügen:
 
-  $ ~/bin/cpanm <module>
+  $ ~/bin/cpanm MODULE
 
 Abhängkeiten von anderen Modulen werden erkannt und rekursiv
 aufgelöst.
@@ -41,4 +41,25 @@ installieren (aus U{"http://search.cpan.org/~miyagawa/App-cpanminus/lib\
   chmod +x cpanm
   # edit shebang if you don't have /usr/bin/env
 
+Modul MODULE mit allen zusätzlich benötigten (non-core) Modulen in
+Verzeichnis DIR installieren:
+
+  $ cpanm -L DIR MODULE
+
+Z.B.
+
+  $ cpanm -L perl5 File::Rsync
+  --> Working on File::Rsync
+  Fetching http://www.cpan.org/authors/id/L/LE/LEAKIN/File-Rsync-0.49.tar.gz ... OK
+  Configuring File-Rsync-0.49 ... OK
+  ==> Found dependencies: IPC::Run3
+  --> Working on IPC::Run3
+  Fetching http://www.cpan.org/authors/id/R/RJ/RJBS/IPC-Run3-0.048.tar.gz ... OK
+  Configuring IPC-Run3-0.048 ... OK
+  Building and testing IPC-Run3-0.048 ... OK
+  Successfully installed IPC-Run3-0.048
+  Building and testing File-Rsync-0.49 ... OK
+  Successfully installed File-Rsync-0.49
+  2 distributions installed
+        
 # eof
