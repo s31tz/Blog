@@ -42,7 +42,8 @@ installieren (aus U{"http://search.cpan.org/~miyagawa/App-cpanminus/lib\
   # edit shebang if you don't have /usr/bin/env
 
 Modul MODULE mit allen zusätzlich benötigten (non-core) Modulen in
-Verzeichnis DIR installieren:
+Verzeichnis DIR installieren, um sie auf eine andere Maschine zu
+übertragen:
 
   $ cpanm -L DIR MODULE
 
