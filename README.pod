@@ -12,6 +12,10 @@ Die Quellen der Artikel des Blog  L<http://fseitz.de/blog>
 
 =item *
 
+L<Perl: Einen Offline-Mirror des CPAN erstellen|https://github.com/s31tz/Blog/blob/master/article/135-Einen-Offline-Mirror-des-CPAN-erstellen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/147-x.html>)
+
+=item *
+
 L<ffmpeg: Audio-Dateien konkatenieren|https://github.com/s31tz/Blog/blob/master/article/134-ffmpeg-audiodateien-konkatenieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/146-x.html>)
 
 =item *
