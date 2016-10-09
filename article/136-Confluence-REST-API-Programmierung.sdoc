@@ -8,7 +8,7 @@
   generateAnchors=0
   utf8=1
 
-%Figure: file="IMGDIR/confluence-logo-320x50.png" width="230" height="36"
+%Figure: file="IMGDIR/confluence-logo-320x50.png" width="205" height="32"
   url="https://docs.atlassian.com/confluence/REST/latest/"
 
 Wer sich als Admin mit Confluence befassen oder gegen die
