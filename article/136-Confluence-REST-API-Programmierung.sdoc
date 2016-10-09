@@ -1,6 +1,6 @@
 # Date: 2016-10-02
 # Id: 148
-# Draft: yes
+# Draft: no
 # Categories: Confluence
 
 %Document:
@@ -12,9 +12,10 @@
   url="https://docs.atlassian.com/confluence/REST/latest/"
 
 Wer sich als Admin mit Confluence befassen oder gegen die
-REST-Schnittstelle programmieren möchte oder einfach eine Testinstanz
-braucht, ohne selbst über eine Confluence-Instanz zu verfügen, kann
-sich beim Hersteller eine kostenlose Cloud-Instanz zulegen:
+REST-Schnittstelle programmieren möchte oder einfach eine temporäre
+Testinstanz braucht, ohne selbst über eine Confluence-Instanz zu
+verfügen, kann sich beim Hersteller eine kostenlose Cloud-Instanz
+zulegen:
 
 U{"https://www.atlassian.com/ondemand/signup/form?\
   product=confluence.ondemand",text="Confluence Cloud Server (free trial)"}
