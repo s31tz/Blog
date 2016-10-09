@@ -4,7 +4,7 @@
 # Categories: Confluence
 
 %Document:
-  title="Confluence: Kostenlose Cloud-Installation"
+  title="Confluence: Kostenlose Cloud-Instanz"
   generateAnchors=0
   utf8=1
 
@@ -17,7 +17,6 @@ braucht, ohne selbst über eine Confluence-Instanz zu verfügen, kann
 sich beim Hersteller eine kostenlose Cloud-Instanz zulegen:
 U{"https://www.atlassian.com/ondemand/signup/form?\
   product=confluence.ondemand",text="Confluence Cloud Server (free trial)"}
-
 Nach dem Ausfüllen des Formulars und Bestätigung einer Email steht
 einem eine Confluence Cloud-Instanz eine Woche kostenlos zur
 Verfügung. Danach kann man die Instanz kostenpflichtig weiter führen
