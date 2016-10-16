@@ -12,6 +12,10 @@ Die Quellen der Artikel des Blog  L<http://fseitz.de/blog>
 
 =item *
 
+L<Git: Ein lokales Verzeichnis auf GitHub veröffentlichen|https://github.com/s31tz/Blog/blob/master/article/137-Git-Ein-lokales-Verzeichnis-auf-GitHub-veroeffentlichen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/149-x.html>)
+
+=item *
+
 L<Confluence: Kostenlose Cloud-Instanz|https://github.com/s31tz/Blog/blob/master/article/136-Confluence-REST-API-Programmierung.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/148-x.html>)
 
 =item *
