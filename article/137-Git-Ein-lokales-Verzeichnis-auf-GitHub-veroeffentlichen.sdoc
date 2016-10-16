@@ -1,0 +1,54 @@
+# Date: 2016-10-16
+# Id: 149
+# Draft: no
+# Categories: Version Control, Git
+
+%Document:
+  title="Git: Ein lokales Verzeichnis auf GitHub veröffentlichen"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/git-logo-240x100.png" width="106" height="44"
+  url="https://git-scm.com/"
+    
+= 1. Lokales Verzeichnis unter die Kontrolle von Git stellen
+
+  $ cd DIR
+  $ git init
+  $ git add .
+  $ git commit -m "Erstes Commit"
+
+(Dieser Schritt kann natürlich übersprungen werden, wenn das
+Verzeichnis bereits unter der Kontrolle von Git steht.)
+
+= 2. Neues Repository auf GitHub anlegen
+        
+Auf U{"https://github.com/",text="GitHub"} einloggen und ein leeres
+Repository unter dem Menüpunkt C{+ | New Repository} erstellen. GitHub
+empfiehlt, in diesem Schritt keine C{README}-, C{license}- oder
+C{.gitignore}-Datei generieren zu lassen, um Konflikte mit eventuell
+schon existierenden lokalen Dateien auszuschließen.
+
+= 3. Repositories verknüpfen und Daten übertragen
+
+  $ git remote add origin URL
+  $ git push origin master
+
+Hierbei ist C{URL} die Adresse des GitHub-Repository, die nach dessen
+Anlegen in Schritt 2. im oberen Teil der Seite angezeigt wird.
+
+= Der Datenfluss bei einigen wichtigen Git-Kommandos
+    
+%Figure: file="IMGDIR/git-data-transport-commands-480x404.png"
+  width="480" height="404"
+  url="http://blog.osteele.com/posts/2008/05/my-git-workflow/"
+        
+= Links
+
+* U{"https://help.github.com/articles/adding-an-existing-project-to-github\
+  -using-the-command-line/#platform-linux",text="GitHub - Adding an existing \
+  project to GitHub using the command line"}
+* U{"https://git-scm.com/book/en/v2",text="Pro Git (Buch über Git, \
+  freie Online-Version)"}
+
+# eof
