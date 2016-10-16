@@ -32,12 +32,12 @@ schon existierenden lokalen Dateien auszuschließen.
 = 3. Repositories verknüpfen und Daten übertragen
 
   $ git remote add origin URL
-  $ git push origin master
+  $ git push -u origin master
 
 Hierbei ist C{URL} die Adresse des GitHub-Repository, die nach dessen
 Anlegen in Schritt 2. im oberen Teil der Seite angezeigt wird.
 
-= Der Datenfluss bei einigen wichtigen Git-Kommandos
+= Der Datenfluss bei den wichtigsten Git-Kommandos
     
 %Figure: file="IMGDIR/git-data-transport-commands-480x404.png"
   width="480" height="404"
