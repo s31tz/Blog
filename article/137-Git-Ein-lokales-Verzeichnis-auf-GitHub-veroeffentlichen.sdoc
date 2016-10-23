@@ -37,7 +37,7 @@ schon existierenden lokalen Dateien auszuschließen.
 Hierbei ist C{URL} die Adresse des GitHub-Repository, die nach dessen
 Anlegen in Schritt 2. im oberen Teil der Seite angezeigt wird.
 
-= Der Datenfluss der wichtigsten Git-Kommandos
+= Datenfluss der wichtigsten Git-Kommandos
     
 %Figure: file="IMGDIR/git-data-transport-commands-480x404.png"
   width="480" height="404"
