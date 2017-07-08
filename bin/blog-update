@@ -58,11 +58,11 @@ nach HTML und aktualisiert die betreffenden Artikel auf der Datenbank.
 
 =over 4
 
-=item 0
+=item Z<>0
 
 Es wurden Artikel aktualisiert
 
-=item 1
+=item Z<>1
 
 Es wurden keine Artikel aktualisiert
 
