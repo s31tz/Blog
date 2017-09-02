@@ -12,6 +12,24 @@
 
 Spezielle Anpassungen nach Installation von Debian Testing mit Xfce Desktop.
 
+= Desktop-Verzeichnisse verlegen
+
+Beim ersten Login werden verschiedene Standardverzeichnisse im
+Home-Verzeichnis des Benutzers angelegt:
+
+  Desktop
+  Documents
+  Downloads
+  Music
+  Pictures
+  Public
+  Templates
+  Videos
+
+Die Pfade dieser Verzeichnisse können benutzerspezifisch in der Datei
+C{~/.config/user-dirs.dirs} umdefiniert werden. Eine globale
+Umdefinition ist in C{/etc/xdg/user-dirs.defaults} möglich.
+
 = Emacs Keybindings auf Eingabefeldern
 
 Emacs-Tastaturkommandos sind auf den Eingabefeldern der GUI-Applikationen

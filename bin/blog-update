@@ -34,7 +34,7 @@ blog-update [OPTIONS]
 
 =item --dry-run
 
-Zeige die Liste der Artikel, die zu aktualisierenden sind, aber
+Zeige die Liste der Artikel, die zu aktualisieren sind, aber
 aktualisiere sie nicht.
 
 =item --verbose
