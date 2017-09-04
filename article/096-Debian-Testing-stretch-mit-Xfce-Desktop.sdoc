@@ -30,6 +30,26 @@ Die Pfade dieser Verzeichnisse können benutzerspezifisch in der Datei
 C{~/.config/user-dirs.dirs} umdefiniert werden. Eine globale
 Umdefinition ist in C{/etc/xdg/user-dirs.defaults} möglich.
 
+= Exim4 - Smarthost konfigurieren
+
+Exim4 so konfigurieren, dass sämtliche Mail an einen Smarthost
+delegiert wird, mit:
+    
+  # dpkg-reconfigure exim4-config
+
+Option auswhlen: "mail sent by smarthost; no local mail"
+
+Das Programm schreibt am Ende die Konfigurationsinformation in die
+Datei C{/etc/exim4/update-exim4.conf.conf}.
+
+Die Authentisierung auf dem Smarthost wird in die Datei
+C{/etc/exim4/passwd.client} eingetragen. Hat der Server keine
+TLS-Verschlüsselung wird die Macro-Definition
+
+    AUTH_CLIENT_ALLOW_NOTLS_PASSWORDS='yes'
+
+zur Datei C{/etc/exim4/update-exim4.conf.conf} hinzugefügt.
+    
 = Emacs Keybindings auf Eingabefeldern
 
 Emacs-Tastaturkommandos sind auf den Eingabefeldern der GUI-Applikationen
