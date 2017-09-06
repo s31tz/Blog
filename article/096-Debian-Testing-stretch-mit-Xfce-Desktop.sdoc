@@ -30,6 +30,13 @@ Die Pfade dieser Verzeichnisse können benutzerspezifisch in der Datei
 C{~/.config/user-dirs.dirs} umdefiniert werden. Eine globale
 Umdefinition ist in C{/etc/xdg/user-dirs.defaults} möglich.
 
+= System Sounds aktivieren, in Thunderbird bei Mailempfang
+
+1. Settings / Appearance / Settings / Enable event sounds
+2. Thunderbird: Preferences / General / Play a sound
+3. Soundfiles unter: /usr/share/sounds
+4. Pulse Audio Volume Control: Playback / System Sounds hochdrehen
+    
 = Exim4 - Smarthost konfigurieren
 
 Exim4 so konfigurieren, dass sämtliche Mail an einen Smarthost
