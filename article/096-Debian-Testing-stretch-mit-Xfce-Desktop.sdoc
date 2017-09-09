@@ -29,6 +29,7 @@ Home-Verzeichnis des Benutzers angelegt:
 Die Pfade dieser Verzeichnisse können benutzerspezifisch in der Datei
 C{~/.config/user-dirs.dirs} umdefiniert werden. Eine globale
 Umdefinition ist in C{/etc/xdg/user-dirs.defaults} möglich.
+Siehe auch keyboard(1).
 
 = Dead Keys und Caps Lock eleminieren
 
