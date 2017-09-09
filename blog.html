@@ -234,7 +234,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2017 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2017-09-06 18:03:14
+    Copyright (C) 2010-2017 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2017-09-09 11:37:53
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -4207,7 +4207,20 @@
     <tt class="sdoc-seg-c">~/.config/user-dirs.dirs</tt> umdefiniert werden. Eine globale
     Umdefinition ist in <tt class="sdoc-seg-c">/etc/xdg/user-dirs.defaults</tt> möglich.
   </p>
-  <h2 class="sdoc-sec-h2">System Sounds aktivieren, in Thunderbird bei Mailempfang<a id="section_38_2"></a></h2>
+  <h2 class="sdoc-sec-h2">Dead Keys und Caps Lock eleminieren<a id="section_38_2"></a></h2>
+  <p class="sdoc-para-p">
+    Unter Debian wird diese Einstellung in der Datei <tt class="sdoc-seg-c">/etc/default/keyboard</tt>
+    vorgenommen. Die Konfiguration gilt sowohl für die Console als auch
+    unter X11.
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">XKBMODEL="pc105"&#10;XKBLAYOUT="de"&#10;XKBVARIANT="nodeadkeys" &lt;-- schaltet Dead Keys ab&#10;XKBOPTIONS="caps:none" &lt;-- schaltet Caps Lock ab&#10;BACKSPACE="guess"</pre>
+  </div>
+  <p class="sdoc-para-p">
+    In <tt class="sdoc-seg-c">/usr/share/X11/xkb/rules/xorg.lst</tt> sind alle Einstellmöglichkeiten
+    (model, layout, variant, option) aufgezählt.
+  </p>
+  <h2 class="sdoc-sec-h2">System Sounds aktivieren, in Thunderbird bei Mailempfang<a id="section_38_3"></a></h2>
   <ol class="sdoc-list-ol">
     <li class="sdoc-list-li-num">
       <p class="sdoc-para-p">
@@ -4230,7 +4243,7 @@
       </p>
     </li>
   </ol>
-  <h2 class="sdoc-sec-h2">Exim4 - Smarthost konfigurieren<a id="section_38_3"></a></h2>
+  <h2 class="sdoc-sec-h2">Exim4 - Smarthost konfigurieren<a id="section_38_4"></a></h2>
   <p class="sdoc-para-p">
     Exim4 so konfigurieren, dass sämtliche Mail an einen Smarthost
     delegiert wird, mit:
@@ -4256,7 +4269,7 @@
   <p class="sdoc-para-p">
     zur Datei <tt class="sdoc-seg-c">/etc/exim4/update-exim4.conf.conf</tt> hinzugefügt.
   </p>
-  <h2 class="sdoc-sec-h2">Emacs Keybindings auf Eingabefeldern<a id="section_38_4"></a></h2>
+  <h2 class="sdoc-sec-h2">Emacs Keybindings auf Eingabefeldern<a id="section_38_5"></a></h2>
   <p class="sdoc-para-p">
     Emacs-Tastaturkommandos sind auf den Eingabefeldern der GUI-Applikationen
     verfügbar, wenn als globale Einstellung vorgenommen wird:
@@ -4264,7 +4277,7 @@
   <p class="sdoc-para-p">
     <tt class="sdoc-seg-c">Applications / Settings / Settings Editor / xsettings / Gtk / KeyThemeName / Edit / Value=Emacs</tt>
   </p>
-  <h2 class="sdoc-sec-h2">Flash-Plugin für Iceweasel<a id="section_38_5"></a></h2>
+  <h2 class="sdoc-sec-h2">Flash-Plugin für Iceweasel<a id="section_38_6"></a></h2>
   <p class="sdoc-para-p">
     Das Flash-Plugin für den Mozilla-Abkömmling <tt class="sdoc-seg-c">Iceweasel</tt> kann bei Adobe
     heruntergeladen werden: <a class="sdoc-seg-u" href="https://get.adobe.com/flashplayer/">https://get.adobe.com/flashplayer/</a>.
@@ -4281,7 +4294,7 @@
     aktiviert werden. Andernfalls wird es ab dem nächsten Neustart des
     Browsers genutzt.
   </p>
-  <h2 class="sdoc-sec-h2">Kernel-Modul für Intel WLAN-Adapter<a id="section_38_6"></a></h2>
+  <h2 class="sdoc-sec-h2">Kernel-Modul für Intel WLAN-Adapter<a id="section_38_7"></a></h2>
   <p class="sdoc-para-p">
     Das Kernel-Modul für den Intel WLAN-Adapter (meines Rechners) ist
     proprietär und wird daher bei der Debian-Installation nicht
@@ -4292,7 +4305,7 @@
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre"># apt-get install firmware-iwlwifi</pre>
   </div>
-  <h2 class="sdoc-sec-h2">Kernel-Modul für Realtek Ethernet-Karte<a id="section_38_7"></a></h2>
+  <h2 class="sdoc-sec-h2">Kernel-Modul für Realtek Ethernet-Karte<a id="section_38_8"></a></h2>
   <p class="sdoc-para-p">
     Dasselbe wie für den WLAN-Adapter gilt für die Ethernetkarte. Das Fehlen
     des Moduls rtl8411-2.fw wird beim Booten bemängelt, es scheint jedoch nicht
@@ -4302,7 +4315,7 @@
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre"># apt-get install firmware-realtek</pre>
   </div>
-  <h2 class="sdoc-sec-h2">Netzwerkmanager<a id="section_38_8"></a></h2>
+  <h2 class="sdoc-sec-h2">Netzwerkmanager<a id="section_38_9"></a></h2>
   <p class="sdoc-para-p">
     <a class="sdoc-seg-u" href="http://www.xfce.org/">Xfce</a> hat keinen eigenen
     Netzwerkmanager für die Verwaltung von LAN- und WLAN-Verbindungen. Ein
@@ -4326,7 +4339,7 @@
     eingetragen. Das Menü zum Aufruf des Dialogs verbirgt sich hinter dem
     Pfeil oben rechts.
   </p>
-  <h2 class="sdoc-sec-h2">Skype<a id="section_38_9"></a></h2>
+  <h2 class="sdoc-sec-h2">Skype<a id="section_38_10"></a></h2>
   <p class="sdoc-para-p">
     2016-08-14
   </p>
@@ -4349,7 +4362,7 @@
   <p class="sdoc-para-p">
     Siehe: <a class="sdoc-seg-u" href="https://wiki.debian.org/skype">https://wiki.debian.org/skype</a>
   </p>
-  <h2 class="sdoc-sec-h2">Vim<a id="section_38_10"></a></h2>
+  <h2 class="sdoc-sec-h2">Vim<a id="section_38_11"></a></h2>
   <p class="sdoc-para-p">
     Per Default ist ein einfacher vi-Klon installiert, der im Insert-Mode
     die Escape-Sequenzen der Pfeiltasten nicht behandelt. Vim hat dieses
@@ -4363,7 +4376,7 @@
     zu schauen und dort weitere Optionen zu aktivieren, z.B. Mausunterstützung
     und Syntax-Highlighting.
   </p>
-  <h2 class="sdoc-sec-h2">Bell abschalten<a id="section_38_11"></a></h2>
+  <h2 class="sdoc-sec-h2">Bell abschalten<a id="section_38_12"></a></h2>
   <p class="sdoc-para-p">
     Die Bell unterliegt nicht den Soundeinstellungen und ist extrem laut. Mit
   </p>
@@ -4375,7 +4388,7 @@
     unter <tt class="sdoc-seg-c">Applications / Settings / Session and Startup / Application
     Autostart / Add</tt> zu den Autostart-Kommandos hinzugefügt werden.
   </p>
-  <h2 class="sdoc-sec-h2">Java 8<a id="section_38_12"></a></h2>
+  <h2 class="sdoc-sec-h2">Java 8<a id="section_38_13"></a></h2>
   <p class="sdoc-para-p">
     Quelle definieren:
   </p>
@@ -4394,7 +4407,7 @@
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre"># java -version&#10;java version "1.8.0_45"&#10;Java(TM) SE Runtime Environment (build 1.8.0_45-b14)&#10;Java HotSpot(TM) 64-Bit Server VM (build 25.45-b02, mixed mode)</pre>
   </div>
-  <h2 class="sdoc-sec-h2">Nvidia Grafikkarte mit Bumblebee<a id="section_38_13"></a></h2>
+  <h2 class="sdoc-sec-h2">Nvidia Grafikkarte mit Bumblebee<a id="section_38_14"></a></h2>
   <p class="sdoc-para-p">
     Installation:
   </p>

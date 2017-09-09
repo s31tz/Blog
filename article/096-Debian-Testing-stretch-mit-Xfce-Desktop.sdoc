@@ -30,6 +30,21 @@ Die Pfade dieser Verzeichnisse können benutzerspezifisch in der Datei
 C{~/.config/user-dirs.dirs} umdefiniert werden. Eine globale
 Umdefinition ist in C{/etc/xdg/user-dirs.defaults} möglich.
 
+= Dead Keys und Caps Lock eleminieren
+
+Unter Debian wird diese Einstellung in der Datei C{/etc/default/keyboard}
+vorgenommen. Die Konfiguration gilt sowohl für die Console als auch
+unter X11.
+
+  XKBMODEL="pc105"
+  XKBLAYOUT="de"
+  XKBVARIANT="nodeadkeys" <-- schaltet Dead Keys ab
+  XKBOPTIONS="caps:none" <-- schaltet Caps Lock ab
+  BACKSPACE="guess"
+
+In C{/usr/share/X11/xkb/rules/xorg.lst} sind alle Einstellmöglichkeiten
+(model, layout, variant, option) aufgezählt.
+
 = System Sounds aktivieren, in Thunderbird bei Mailempfang
 
 1. Settings / Appearance / Settings / Enable event sounds
