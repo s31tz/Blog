@@ -8,7 +8,7 @@
   generateAnchors=0
   utf8=1
 
-%Figure: file="IMGDIR/docker-682x163.png" width="234" height="56"
+%Figure: file="IMGDIR/docker-682x163.png" width="218" height="52"
   url="http://docker.com/"
 
 Wer U{"http://docker.com/",text="Docker"} unter Debian installieren
@@ -36,6 +36,46 @@ Installation:
 Test:
 
   # docker run hello-world
+
+Verzeichnisbaum mit den Docker-Bewegungsdaten:
+
+  /var/lib/docker
+
+Liste aller existierenden Container:
+
+  # docker ps -a
+
+Liste der aktuell ausgeführten Container:
+
+  # docker ps
+
+Lösche einen oder mehrere Container (CONTAINER = Name oder Id):
+
+  # docker rm CONTAINER ...
+
+Liste der lokal vorrätigen Images:
+
+  # docker image ls
+
+Image-Konfiguration ansehen:
+
+  # docker inspect TERM
+
+Image in TAR speichern:
+
+  # docker image save IMAGE >FILE.tar
+
+Docker-Image im globalen Repository (Docker Hub) suchen:
+
+  # docker search TERM
+
+Globales Repository von Docker-Images (Account ist ratsam):
+
+* U{"https://hub.docker.com/"}
+
+Doku zu den offiziellen Docker-Images: 
+
+* U{"https://github.com/docker-library/docs/"}
 
 = Links
 
