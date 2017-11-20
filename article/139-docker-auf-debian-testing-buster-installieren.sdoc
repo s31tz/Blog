@@ -1,0 +1,46 @@
+# Date: 2017-11-20
+# Id: 151
+# Draft: no
+# Categories: Docker
+
+%Document:
+  title="Docker unter Debian Testing (buster) installieren"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/docker-682x163.png" width="234" height="56"
+  url="http://docker.com/"
+
+Wer U{"http://docker.com/",text="Docker"} unter Debian installieren
+möchte, findet das Paket (docker-ce) nicht im Debian Repository,
+sondern muss es von einem Docker-Server installieren. Die
+entsprechende Installationsanleitung findet sich
+U{"https://docs.docker.com/engine/installation/linux/docker-ce/debian/",\
+text="hier"}. Es gibt allerdings nur Pakete für die vergangenen
+Stable-Releases von Debian (Stretch, Jessie, Wheezy), nicht für das
+aktuelle Testing-Release (Buster). Das macht aber nichts, das Paket
+für das letzte Stable-Release (Stretch) funktioniert auch unter
+Buster.
+
+Installation:
+
+  # apt-get install apt-transport-https ca-certificates curl gnupg2 \
+      software-properties-common
+  # curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+  # apt-key fingerprint 0EBFCD88
+  # vi /etc/apt/sources.list # die folgende Zeile hinzufügen
+  deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+  # apt-get update
+  # apt-get install docker-ce
+
+Test:
+
+  # docker run hello-world
+
+= Links
+
+* U{"http://docker.com/",text="Docker Homepage"}
+* U{"https://docs.docker.com/engine/installation/linux/docker-ce/debian/",\
+    text="Get Docker CE for Debian"}
+    
+# eof

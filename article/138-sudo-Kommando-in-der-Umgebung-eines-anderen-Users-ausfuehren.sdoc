@@ -1,0 +1,20 @@
+# Date: 2016-10-24
+# Id: 150
+# Draft: yes
+# Categories: Linux/Unix
+
+%Document:
+  title="sudo: Ein Kommando in der Umgebung eines anderen Users ausführen"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/sudo-logo-124x146.png" width="51" height="60"
+  url="http://www.sudo.ws/"
+
+  $ sudo -u USER -i CMD
+        
+= Links
+
+* U{"http://www.sudo.ws/",text="Sudo Homepage"}
+    
+# eof

@@ -1,0 +1,24 @@
+# Date: 2016-09-03
+# Id: 146
+# Draft: no
+# Categories: Video/Audio, Audio
+
+%Document:
+  title="ffmpeg: Audio-Dateien konkatenieren"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/ffmpeg-logo-250x63.png" \
+  width="134" height="36" url="https://www.ffmpeg.org/"
+
+MP3-Dateien können mit dem concat-Protokoll konkateniert
+werden, die Bitraten müssen nicht übereinstimmen:
+    
+  $ ffmpeg -i "concat:INPUT1.mp3|INPUT2.mp3|..." -c copy OUTPUT.mp3
+
+= Links
+
+* U{"https://trac.ffmpeg.org/wiki/Concatenate",\
+    text="Concatenating media files"}
+    
+# eof

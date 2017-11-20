@@ -1,0 +1,83 @@
+# Date: 2015-10-01
+# Id: 129
+# Draft: yes
+# Categories: OOP
+
+%Document:
+  title="OOP: Eine Klasse (möglichst) schmerzfrei überarbeiten"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/oop-74x100.jpg" width=52 height=60
+  url="https://de.wikipedia.org/wiki/Objektorientierte_Programmierung"
+
+= Die Ausgangslage
+
+Eine viel genutzte Klasse - nennen wir sie C{A} - ist über längere
+Zeit gewachsen. Es kommt das Bedürfnis auf, sie zu überarbeiten, in
+dem Sinne, dass sie verschlankt und besser auf ihre Aufgabe
+zugeschnitten werden soll. D.h.
+
+* ihre Kernfunktionalität soll erhalten bleiben
+* einige Teilfunktionalitäten werden (voraussichtlich) geändert
+* einige Teilfunktionalitäten werden (voraussichtlich) entfallen
+
+Worin die Änderungen an der öffentlichen Schnittstelle der Klasse
+genau bestehen, ist vorab nicht klar. Dies wird sich erst im Laufe des
+kreativen Prozesses der Umarbeitung herausstellen.
+
+= Problem 1: Abhängigkeiten
+
+Da die Schnittstelle der Klasse voraussichtlich geändert wird, kann es
+passieren, dass abhängiger Code nicht mehr funktioniert und angepasst
+werden muss. Dies behindert den - nicht zwangsläufig geradlinig
+verlaufenden - Umarbeitungsprozess, und zwar umso mehr, je mehr
+abhängiger Code existiert.
+
+Um dem zu entgehen, lassen wir Klasse C{A} unverändert und führen
+stattdessen eine Klasse C{N} (für "neu") ein, die die Klasse C{A}
+später ersetzen soll. Da Klasse C{N} zunächst ungenutzt ist,
+können wir die neue Schnittstelle ungestört ausarbeiten.
+
+= Problem 2: Redundanz
+
+Wie beginnen wir mit Klasse C{N}? Am einfachsten wäre es, Klasse C{A}
+zu kopieren und die Kopie in C{N} umzubenennen. Dies hätte allerdings den
+Nachteil, dass der gesamte Code redundant in Klasse C{A} I{und}
+Klasse C{N} vorhanden wäre. Zwischenzeitliche Änderungen an
+C{A} müssten in C{N} nachgezogen werden.
+
+= Problem 3: Testbarkeit
+
+Desweiteren wissen wir nicht, ob unsere Änderungen an C{N}
+funktionieren, da die Klasse ja ungenutzt ist. Wir könnten den Testcode
+von Klasse C{A} - vorausgesetzt wir haben welchen - ebenfalls kopieren,
+was die Code-Redundanz allerdings weiter erhöhen würde.
+
+= Problem 4: Migration
+
+Ein weiteres Problem, wenn wir C{N} als Kopie von C{A} anlegen, wäre,
+dass kein Migrationspfad von C{A} nach C{N} führt. Beide Klassen wären
+gänzlich unabhängig. Nach Abschluss der Umarbeitung von C{N} müsste
+jeglicher Code, der C{A} nutzt, nach C{N} portiert werden, was
+aufwändig sein kann.
+
+= Lösung
+
+Ein wesentlich besserer Ansatz ist, wenn wir C{N} in der
+Vererbungshierarchie (unmittelbar) über C{A} einfügen. Wir gehen in drei
+Schritten vor:
+
+1. Wir machen C{N} zur Basisklasse von C{A}. C{N} ist zunächst I{leer},
+   besitzt also keine Member und Methoden.
+2. Wir verschieben die Funktionalität, die gleich bleibt, von C{A} nach C{N}.
+   Bis hierher haben wir funktional nichts geändert. Sämtlicher Code,
+   der auf C{A} - und nun auch auf C{N} - aufbaut, sollte unverändert
+   funktionieren.
+3. Wir nehmen die beabsichtigten Änderungen an C{N} vor, wobei wir darauf
+   achten, dass die Kompatibilität von C{A} abwärts gewahrt bleibt.
+4. Zum Schluss haben wir die Möglichkeit, C{A} aufzulösen, wenn die
+   überarbeitete Klasse C{N} die gesamte Funktionalität von C{A} abdeckt,
+   oder wir lassen C{A}, auf das Minimum reduziert, bestehen.
+
+# eof

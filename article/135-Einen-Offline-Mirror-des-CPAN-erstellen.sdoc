@@ -1,0 +1,64 @@
+# Date: 2016-09-25
+# Id: 147
+# Draft: no
+# Categories: Perl
+
+%Document:
+  title="Perl: Einen Offline-Mirror des CPAN erstellen"
+  generateAnchors=0
+  utf8=1
+
+G{"IMGDIR/cpan-logo-250x77.png",\
+  width="130",height="40",style="margin-left: 2em"}
+# G{"IMGDIR/perl-raptor-310x100.png",\
+#   width="144",height="50",style="margin-left: 1em; margin-bottom: 0px"}
+
+1. CPAN::Mini installieren
+
+      $ cpanm CPAN::Mini
+
+2. Konfigurationsdatei erstellen
+
+      $ vi ~/.minicpanrc
+      local: MINICPAN
+      remote: MIRROR
+      exact_mirror: 1
+
+3. Offline-Mirror aufbauen bzw. aktualisieren
+
+      $ minicpan
+
+4. Ein Modul aus dem Offline-Mirror standardmäßig installieren
+
+      $ cpanm --mirror MINICPAN --mirror-only MODULE
+
+   oder "self contained" in ein bestimmtes Verzeichnis
+
+      $ cpanm --mirror MINICPAN --mirror-only -L DIR MODULE
+
+Hierbei ist:
+
+[MINICPAN]:
+    Der Pfad des Verzeichnisses, in dem wir unseren CPAN
+    Offline-Mirror speichern, z.B. der Pfad eines gemounteten
+    USB-Sticks.
+
+[MIRROR]:
+    Der URL des CPAN-Mirrors, aus dem wir unseren Offline-Mirror
+    befüllen (Liste der verfügbaren Sites siehe
+    U{http://www.cpan.org/SITES.html}).
+    
+[MODULE]:
+    Ein Perl-Modul, das wir aus unserem Offline-Mirror installieren.
+
+[DIR]:
+    Ein lokales Verzeichnis, in das wir Perl-Module installieren.
+
+= Links
+
+* U{"https://metacpan.org/release/CPAN-Mini",\
+    text="CPAN::Mini - Create a minimal mirror of CPAN"}
+* U{"https://metacpan.org/release/App-cpanminus",\
+    text="cpanm - Get, unpack build and install modules from CPAN"}
+
+# eof

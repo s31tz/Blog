@@ -1,0 +1,143 @@
+# Date: 2016-02-10
+# Id: 135
+# Draft: yes
+# Categories: Perl, SOAP, WSDL
+
+%Document:
+  title="Perl: Web Service mit SOAP+WSDL realisieren"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/perl-130x65.png" \
+    width=94 height=47 url="http://www.perl.org/"
+
+= Einleitung
+
+Wir wollen in Perl einen Web Service mit
+U{"https://de.wikipedia.org/wiki/SOAP", text="SOAP"} über HTTP
+realisieren, der sich selbst in
+U{"https://de.wikipedia.org/wiki/Web_Services_Description_Language",
+text="WSDL"} beschreibt. Dies ist erstaunlich unkompliziert, wenn man
+weiß wie es geht.
+
+= Vorbereitung
+
+Zur Lösung der Aufgabe nutzen wir zwei Perl-Pakete:
+
+* U{"https://metacpan.org/release/SOAP-Lite",text="SOAP::Lite"}
+  - Toolkit für SOAP-Server und -Clients
+* U{"https://metacpan.org/release/Pod-WSDL",text="Pod::WSDL"}
+  - WSDL-Generator
+
+Diese gehören nicht zum Perl-Core, müssen daher zusätzlich installiert
+werden.
+
+Unter Debian:
+
+  # apt-get install libsoap-lite-perl libpod-wsdl-perl
+
+In eine beliebige Perl-Installation (mit cpanm):
+
+  $ cpanm SOAP::Lite Pod::WSDL
+    
+= Implementierung des Servers
+
+Am einfachsten (und m.E. klarsten) ist es, wenn die Server-Schnittstelle,
+also die Methoden, die ein Client aufrufen kann, in einer einzigen
+Klasse zusammengefasst sind. Diese Schnittstellen-Klasse erfüllt in etwa
+die Aufgabe, die der Controller im MVC-Modell hat. Damit ist natürlich nicht
+gemeint, dass der Service lediglich über einer Klasse operiert, sondern,
+dass I{der Zugriff} auf alle Objekte von einer Klasse organisiert wird.
+Der SOAP-Server sieht in dem Fall so aus:
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    #!/usr/bin/env perl
+
+    use SOAP::Lite;
+
+    SOAP::Transport::HTTP::CGI->dispatch_to(
+        'MyWebService',
+    )->handle;
+
+    # eof
+  .
+
+Hierbei ist
+U{"https://metacpan.org/pod/distribution/SOAP-Lite/lib/SOAP/Transport.pod",
+text="SOAP::Transport::HTTP::CGI"} eine Klasse aus dem Paket
+SOAP::Lite, die SOAP-Requests über HTTP/CGI empfängt und beantwortet,
+und C{'MyWebService'} ist der (frei wählbare) Name der
+Schnittstellen-Klasse. Diese Schnittstellen-Klasse wird wie jede
+andere Perl-Klasse implementiert. Beispiel:
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    package MyWebService;
+
+    sub hello {
+        my ($class,$arg) = @_;
+        return "Hello $arg!";
+    }
+
+    # eof
+  .
+
+Die Klasse definiert hier eine einzige Methode C{hello()},
+die nun remote von einem SOAP-Client aufgerufen werden kann. Der Client
+in Perl sieht so aus:
+
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    #!/usr/bin/env perl
+
+    use SOAP::Lite;
+    
+    my $srv = SOAP::Lite
+        ->uri('http://host.domain/MyWebService')
+        ->proxy('http://host.domain/my-web-service')
+
+    print $srv->hello('world'),"\n";
+    
+    # eof
+  .
+
+Der Aufruf des Client produziert die Ausgabe
+
+    $ ./my-web-client
+    Hello world!
+
+
+    
+  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+    package MyWebService;
+
+    =begin WSDL
+
+    _IN arg $string
+    _RETURN $string
+    
+    =end WSDL
+    
+    =cut
+    
+    sub hello {
+        my ($class,$arg) = @_;
+        return "Hello $arg!";
+    }
+
+    # eof
+  .
+
+Eine Besonderheit in der Klassendefinition besteht in dem
+POD-Abschnitt C{=begin WSDL ... =end WSDL}. Dieser beschreibt die
+Signatur, also die Argumente und den Returnwert der Methode. Diese
+Beschreibung wird SOAP-Server selbst nicht benötigt, aber von
+Pod::WDSL, um die Schnittstellen-Beschreibung in WDSL zu
+generieren. Dazu weiter unten mehr.
+
+= Links
+
+* U{"https://metacpan.org/release/SOAP-Lite",\
+    text="SOAP::Lite - Toolkit für SOAP"}
+* U{"https://metacpan.org/release/Pod-WSDL",\
+    text="Pod::WSDL - WSDL-Generator"}
+
+# eof
