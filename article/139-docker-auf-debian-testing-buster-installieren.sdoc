@@ -79,11 +79,11 @@ Image im globalen Repository (Docker Hub) suchen:
 
   $ docker search TERM
 
-Lokales Netz (Class B) erzeugen:
+Netz (Class B) erzeugen:
 
   $ docker network create NAME
 
-Liste der lokalen Netze:
+Liste der Netze:
 
   $ docker network ls
 
