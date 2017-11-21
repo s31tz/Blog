@@ -234,7 +234,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2017 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2017-11-20 18:53:12
+    Copyright (C) 2010-2017 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2017-11-21 18:11:19
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -409,49 +409,82 @@
     <pre class="sdoc-code-pre">/var/lib/docker</pre>
   </div>
   <p class="sdoc-para-p">
-    Liste aller existierenden Container:
+    Füge user USER zur Gruppe docker hinzu, damit dieser neben root
+    ebenfalls mit Docker arbeiten kann:
   </p>
   <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre"># docker ps -a</pre>
+    <pre class="sdoc-code-pre"># usermod -G docker USER</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Liste aller Container, einschließlich der beendeten:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">$ docker ps -a</pre>
   </div>
   <p class="sdoc-para-p">
     Liste der aktuell ausgeführten Container:
   </p>
   <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre"># docker ps</pre>
+    <pre class="sdoc-code-pre">$ docker ps</pre>
   </div>
   <p class="sdoc-para-p">
     Lösche einen oder mehrere Container (CONTAINER = Name oder Id):
   </p>
   <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre"># docker rm CONTAINER ...</pre>
+    <pre class="sdoc-code-pre">$ docker rm CONTAINER ...</pre>
   </div>
   <p class="sdoc-para-p">
     Liste der lokal vorrätigen Images:
   </p>
   <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre"># docker image ls</pre>
+    <pre class="sdoc-code-pre">$ docker image ls</pre>
   </div>
   <p class="sdoc-para-p">
     Image-Konfiguration ansehen:
   </p>
   <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre"># docker inspect TERM</pre>
+    <pre class="sdoc-code-pre">$ docker inspect IMAGE</pre>
   </div>
   <p class="sdoc-para-p">
     Image in TAR speichern:
   </p>
   <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre"># docker image save IMAGE &gt;FILE.tar</pre>
+    <pre class="sdoc-code-pre">$ docker image save IMAGE &gt;FILE.tar</pre>
   </div>
   <p class="sdoc-para-p">
-    Docker-Image im globalen Repository (Docker Hub) suchen:
+    Image in Dateisystem entpacken (undocker siehe
+    <a class="sdoc-seg-u" href="http://blog.oddbit.com/2015/02/13/unpacking-docker-images/">http://blog.oddbit.com/2015/02/13/unpacking-docker-images/</a>):
   </p>
   <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre"># docker search TERM</pre>
+    <pre class="sdoc-code-pre">$ docker image save IMAGE | undocker -o DIR</pre>
   </div>
   <p class="sdoc-para-p">
-    Globales Repository von Docker-Images (Account ist ratsam):
+    Image im globalen Repository (Docker Hub) suchen:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">$ docker search TERM</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Lokales Netz (Class B) erzeugen:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">$ docker network create NAME</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Liste der lokalen Netze:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">$ docker network ls</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Lösche ein oder mehrere Netze:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">$ docker network rm</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Globales Repository von Docker-Images (Account anlegen ist ratsam,
+    ist kostenlos):
   </p>
   <ul class="sdoc-list-ul">
     <li class="sdoc-list-li-point" style="list-style-type:disc"><a class="sdoc-seg-u" href="https://hub.docker.com/">https://hub.docker.com/</a></li>
