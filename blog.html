@@ -234,7 +234,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2017 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2017-11-21 21:39:10
+    Copyright (C) 2010-2017 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2017-11-22 08:18:42
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -416,19 +416,19 @@
     <pre class="sdoc-code-pre"># usermod -G docker USER</pre>
   </div>
   <p class="sdoc-para-p">
-    Liste aller Container, einschließlich der beendeten:
-  </p>
-  <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre">$ docker ps -a</pre>
-  </div>
-  <p class="sdoc-para-p">
     Liste der aktuell ausgeführten Container:
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">$ docker ps</pre>
   </div>
   <p class="sdoc-para-p">
-    Lösche einen oder mehrere Container (CONTAINER = Name oder Id):
+    Liste aller Container, einschließlich der beendeten:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">$ docker ps -a</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Lösche einen oder mehrere Container:
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">$ docker rm CONTAINER ...</pre>
@@ -452,8 +452,7 @@
     <pre class="sdoc-code-pre">$ docker image save IMAGE &gt;FILE.tar</pre>
   </div>
   <p class="sdoc-para-p">
-    Image in Dateisystem entpacken (undocker siehe
-    <a class="sdoc-seg-u" href="http://blog.oddbit.com/2015/02/13/unpacking-docker-images/">http://blog.oddbit.com/2015/02/13/unpacking-docker-images/</a>):
+    Image in Dateisystem entpacken (<a class="sdoc-seg-u" href="http://blog.oddbit.com/2015/02/13/unpacking-docker-images/">undocker</a>):
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">$ docker image save IMAGE | undocker -o DIR</pre>
@@ -465,7 +464,7 @@
     <pre class="sdoc-code-pre">$ docker search TERM</pre>
   </div>
   <p class="sdoc-para-p">
-    Netz (Class B) erzeugen:
+    Lokales Netz (Class B) erzeugen:
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">$ docker network create NAME</pre>
@@ -483,8 +482,7 @@
     <pre class="sdoc-code-pre">$ docker network rm</pre>
   </div>
   <p class="sdoc-para-p">
-    Globales Repository von Docker-Images (Account anlegen ist ratsam,
-    ist kostenlos):
+    Globales Repository von Docker-Images (Account ist kostenlos):
   </p>
   <ul class="sdoc-list-ul">
     <li class="sdoc-list-li-point" style="list-style-type:disc"><a class="sdoc-seg-u" href="https://hub.docker.com/">https://hub.docker.com/</a></li>

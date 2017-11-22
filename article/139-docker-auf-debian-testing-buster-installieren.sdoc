@@ -46,15 +46,15 @@ ebenfalls mit Docker arbeiten kann:
 
   # usermod -G docker USER
 
-Liste aller Container, einschließlich der beendeten:
-
-  $ docker ps -a
-
 Liste der aktuell ausgeführten Container:
 
   $ docker ps
 
-Lösche einen oder mehrere Container (CONTAINER = Name oder Id):
+Liste aller Container, einschließlich der beendeten:
+
+  $ docker ps -a
+
+Lösche einen oder mehrere Container:
 
   $ docker rm CONTAINER ...
 
@@ -70,8 +70,8 @@ Image in TAR speichern:
 
   $ docker image save IMAGE >FILE.tar
 
-Image in Dateisystem entpacken (undocker siehe
-U{http://blog.oddbit.com/2015/02/13/unpacking-docker-images/}):
+Image in Dateisystem entpacken (U{"http://blog.oddbit.com/2015/02/13/\
+unpacking-docker-images/",text="undocker"}):
 
   $ docker image save IMAGE | undocker -o DIR
 
@@ -79,7 +79,7 @@ Image im globalen Repository (Docker Hub) suchen:
 
   $ docker search TERM
 
-Netz (Class B) erzeugen:
+Lokales Netz (Class B) erzeugen:
 
   $ docker network create NAME
 
@@ -91,8 +91,7 @@ Lösche ein oder mehrere Netze:
 
   $ docker network rm
 
-Globales Repository von Docker-Images (Account anlegen ist ratsam,
-ist kostenlos):
+Globales Repository von Docker-Images (Account ist kostenlos):
 
 * U{"https://hub.docker.com/"}
 
