@@ -234,7 +234,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2017 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2017-11-22 08:18:42
+    Copyright (C) 2010-2017 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2017-11-22 11:50:56
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -452,7 +452,8 @@
     <pre class="sdoc-code-pre">$ docker image save IMAGE &gt;FILE.tar</pre>
   </div>
   <p class="sdoc-para-p">
-    Image in Dateisystem entpacken (<a class="sdoc-seg-u" href="http://blog.oddbit.com/2015/02/13/unpacking-docker-images/">undocker</a>):
+    Image in Dateisystem entpacken (mit dem Zusatzprogramm
+    <a class="sdoc-seg-u" href="http://blog.oddbit.com/2015/02/13/\ unpacking-docker-images/">undocker</a>):
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">$ docker image save IMAGE | undocker -o DIR</pre>
@@ -462,6 +463,12 @@
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">$ docker search TERM</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Image erstellen:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">$ mkdir my-app&#10;$ cd my-app&#10;$ vi Dockerfile&#10;...&#10;$ docker build -t my-app .</pre>
   </div>
   <p class="sdoc-para-p">
     Lokales Netz (Class B) erzeugen:

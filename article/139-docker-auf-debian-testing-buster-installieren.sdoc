@@ -70,14 +70,23 @@ Image in TAR speichern:
 
   $ docker image save IMAGE >FILE.tar
 
-Image in Dateisystem entpacken (U{"http://blog.oddbit.com/2015/02/13/\
-unpacking-docker-images/",text="undocker"}):
+Image in Dateisystem entpacken (mit dem Zusatzprogramm
+U{"http://blog.oddbit.com/2015/02/13/\ unpacking-docker-images/",\
+text="undocker"}):
 
   $ docker image save IMAGE | undocker -o DIR
 
 Image im globalen Repository (Docker Hub) suchen:
 
   $ docker search TERM
+
+Image erstellen:
+
+  $ mkdir my-app
+  $ cd my-app
+  $ vi Dockerfile
+  ...
+  $ docker build -t my-app .
 
 Lokales Netz (Class B) erzeugen:
 
