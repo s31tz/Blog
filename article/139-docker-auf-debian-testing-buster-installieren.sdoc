@@ -80,7 +80,7 @@ Image im globalen Repository (Docker Hub) suchen:
 
   $ docker search TERM
 
-Image erstellen:
+Eigenes Image erstellen:
 
   $ mkdir my-app
   $ cd my-app
