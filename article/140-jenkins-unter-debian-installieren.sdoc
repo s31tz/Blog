@@ -1,0 +1,31 @@
+# Date: 2017-12-05
+# Id: 
+# Draft: yes
+# Categories: Jenkins
+
+%Document:
+  title="Jenkins unter Debian installieren"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/jenkins-396x127.png" width="187" height="60"
+  url="https://jenkins-ci.org/"
+
+Wer U{"https://jenkins-ci.org/",text="Jenkins"} unter Debian installieren
+möchte, findet das Paket (jenkins) nicht im Debian Repository,
+sondern muss es von einem Jenkins-Server installieren.
+
+Installation:
+
+  # curl -fsSL http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | \
+    apt-key add -
+  # echo deb http://pkg.jenkins-ci.org/debian binary/ \
+    > /etc/apt/sources.list.d/jenkins.list
+  # apt-get update
+  # apt-get install jenkins
+
+= Links
+
+* U{"https://jenkins-ci.org/",text="Jenkins Homepage"}
+    
+# eof
