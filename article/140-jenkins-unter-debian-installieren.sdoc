@@ -15,14 +15,16 @@ Wer U{"https://jenkins-ci.org/",text="Jenkins"} unter Debian installieren
 möchte, findet das Paket (jenkins) nicht im Debian Repository,
 sondern muss es von einem Jenkins-Server installieren.
 
-Installation:
+= Installation
 
   # curl -fsSL http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | \
     apt-key add -
   # echo deb http://pkg.jenkins-ci.org/debian binary/ \
-    > /etc/apt/sources.list.d/jenkins.list
+    >/etc/apt/sources.list.d/jenkins.list
   # apt-get update
   # apt-get install jenkins
+
+= Jenkins starten/stoppen
 
 Jenkins starten (findet bei der Installation automatisch statt):
 
@@ -34,10 +36,24 @@ Jenkins stoppen:
 
 Jenkins läuft auf Port 8080.
 
+= Englischsprachige Bedienoberfläche
+
+Wer seinen Browser auf Deutsch eingestellt hat, erhält bei Jenkins
+eine deutschsprachige Bedienoberfläche. Wer, wie ich, eine
+englischsprachige Bedienoberfläche bevorzugt, aber nicht die
+Browsersprache umstellen möchte, muss hierfür das Plugin "Locale"
+installieren und anschließend in den Systemeinstellungen Englisch als
+Sprache forcieren:
+
+1. Jenkins verwalten / Plugins verwalten -> Plugin "Locale" installieren
+2. Jenkins verwalten / System konfigurieren -> Default Language: English +
+   Ignore browser preference and force this language to all users
+
 = Links
 
 * U{"https://jenkins-ci.org/",text="Jenkins Homepage"}
 * U{"https://jenkins.io/doc/",text="Jenkins Documentation"}
 * U{"https://wiki.jenkins.io/display/JENKINS/Home",text="Jenkins Wiki"}
+* U{"https://plugins.jenkins.io/",text="Jenkins Plugins"}
     
 # eof
