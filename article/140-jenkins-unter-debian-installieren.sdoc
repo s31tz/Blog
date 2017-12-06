@@ -4,7 +4,7 @@
 # Categories: Jenkins
 
 %Document:
-  title="Jenkins unter Debian installieren"
+  title="Jenkins unter Debian installieren und konfigurieren"
   generateAnchors=0
   utf8=1
 
@@ -24,6 +24,11 @@ sondern muss es von einem Jenkins-Server installieren.
   # apt-get update
   # apt-get install jenkins
 
+Anschließend mit dem Browser auf http://localhost:8080 gehen, Jenkins
+mit Administrator-Passwort freischalten, mit "Install suggested
+plugins" den Standardsatz an Plugins installieren und die Installation
+mit der Einrichtung des ersten Administrator-Accounts abschließen.
+
 = Jenkins starten/stoppen
 
 Jenkins starten (findet bei der Installation automatisch statt):
@@ -34,26 +39,62 @@ Jenkins stoppen:
 
   # /etc/init.d/jenkins stop
 
-Jenkins läuft auf Port 8080.
+Jenkins Homeverzeichnis (~jenkins):
+
+  /var/lib/jenkins
+
+Jenkins läuft per Default auf Port 8080. Ein anderer Port kann
+in C{/etc/default/jenkins} konfiguriert werden.
 
 = Englischsprachige Bedienoberfläche
 
 Wer seinen Browser auf Deutsch eingestellt hat, erhält bei Jenkins
 eine deutschsprachige Bedienoberfläche. Wer, wie ich, eine
 englischsprachige Bedienoberfläche bevorzugt, aber nicht die
-Browsersprache umstellen möchte, muss hierfür das Plugin "Locale"
-installieren und anschließend in den Systemeinstellungen Englisch als
-Sprache forcieren:
+Browsersprache umstellen möchte, kann dies mit dem Plugin "Locale"
+erreichen:
 
 1. Jenkins verwalten / Plugins verwalten -> Plugin "Locale" installieren
 2. Jenkins verwalten / System konfigurieren -> Default Language: English +
    Ignore browser preference and force this language to all users
+
+Anschließend ist die Bedienoberfläche auf englisch.
+
+= Zugriff auf Git Repository einrichten
+
+Hierfür sind zwei Angaben notwendig: 1. Der URL des Git-Repositorys, 2. Die
+Credentials für den Repository-Zugriff. Z.B.
+
+  Project Repository: ssh://fs2@localhost/~/try/jenkins/example01
+  Domain: Global credentials (unresticted)
+  Kind: SSH Userkey with private key
+  Scope: Global (Jenkins, nodes, items, etc.)
+  Username: fs2
+  Private Key: from the jenkins master ~/.ssh
+
+Schlüsselpaar für jenkins erzeugen und zu den authorized_keys
+des Repostitory-Owners fs2 hinzufügen:
+
+  # cd ~jenkins/.ssh
+  # ssh-keygen -t rsa
+  # chown jenkins.jenkins *
+  # cat id_rsa.pub >>~fs2/.ssh/authorized_keys
+
+Siehe auch: U{"http://www.thegeekstuff.com/2016/10/jenkins-git-setup/",\
+text="How to Setup Git Repository and Credentials for Jenkins Jobs"}
+
+= Zugriff auf Docker einrichten
+
+Damit Jenkins Docker-Operationen ausführen kann, muss der der Benutzer
+jenkins zur Gruppe docker hinzugefügt werden:
+
+  # usermod -G docker jenkins
+  # /etc/init.d/jenkins restart
 
 = Links
 
 * U{"https://jenkins-ci.org/",text="Jenkins Homepage"}
 * U{"https://jenkins.io/doc/",text="Jenkins Documentation"}
 * U{"https://wiki.jenkins.io/display/JENKINS/Home",text="Jenkins Wiki"}
-* U{"https://plugins.jenkins.io/",text="Jenkins Plugins"}
     
 # eof

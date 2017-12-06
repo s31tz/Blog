@@ -12,7 +12,7 @@ Die Quellen der Artikel des Blog  L<http://fseitz.de/blog>
 
 =item *
 
-L<Jenkins unter Debian installieren|https://github.com/s31tz/Blog/blob/master/article/140-jenkins-unter-debian-installieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/152-x.html>)
+L<Jenkins unter Debian installieren und konfigurieren|https://github.com/s31tz/Blog/blob/master/article/140-jenkins-unter-debian-installieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/152-x.html>)
 
 =item *
 
