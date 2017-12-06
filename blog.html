@@ -234,7 +234,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2017 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2017-12-05 13:23:07
+    Copyright (C) 2010-2017 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2017-12-05 15:24:09
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -391,9 +391,26 @@
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre"># curl -fsSL http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add -&#10;# echo deb http://pkg.jenkins-ci.org/debian binary/ &gt; /etc/apt/sources.list.d/jenkins.list&#10;# apt-get update&#10;# apt-get install jenkins</pre>
   </div>
+  <p class="sdoc-para-p">
+    Jenkins starten (findet bei der Installation automatisch statt):
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre"># /etc/init.d/jenkins start</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Jenkins stoppen:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre"># /etc/init.d/jenkins stop</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Jenkins läuft auf Port 8080.
+  </p>
   <h2 class="sdoc-sec-h2">Links<a id="section_1_1"></a></h2>
   <ul class="sdoc-list-ul">
     <li class="sdoc-list-li-point" style="list-style-type:disc"><a class="sdoc-seg-u" href="https://jenkins-ci.org/">Jenkins Homepage</a></li>
+    <li class="sdoc-list-li-point" style="list-style-type:disc"><a class="sdoc-seg-u" href="https://jenkins.io/doc/">Jenkins Documentation</a></li>
+    <li class="sdoc-list-li-point" style="list-style-type:disc"><a class="sdoc-seg-u" href="https://wiki.jenkins.io/display/JENKINS/Home">Jenkins Wiki</a></li>
   </ul>
   <h1 class="sdoc-sec-h1">139. Docker unter Debian Testing (buster) installieren<a id="section_2"></a></h1>
   <p class="sdoc-fig-p">

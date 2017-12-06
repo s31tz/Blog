@@ -24,8 +24,20 @@ Installation:
   # apt-get update
   # apt-get install jenkins
 
+Jenkins starten (findet bei der Installation automatisch statt):
+
+  # /etc/init.d/jenkins start
+
+Jenkins stoppen:
+
+  # /etc/init.d/jenkins stop
+
+Jenkins läuft auf Port 8080.
+
 = Links
 
 * U{"https://jenkins-ci.org/",text="Jenkins Homepage"}
+* U{"https://jenkins.io/doc/",text="Jenkins Documentation"}
+* U{"https://wiki.jenkins.io/display/JENKINS/Home",text="Jenkins Wiki"}
     
 # eof
