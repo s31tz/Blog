@@ -62,8 +62,9 @@ Anschließend ist die Bedienoberfläche auf englisch.
 
 = Zugriff auf Git Repository einrichten
 
-Hierfür sind zwei Angaben notwendig: 1. Der URL des Git-Repositorys, 2. Die
-Credentials für den Repository-Zugriff. Z.B.
+Damit Jenkins auf ein Git-Repository zugreifen kann, sind zwei Angaben
+nötig: 1. Der URL des Git-Repository, 2. Die Credentials für den
+Repository-Zugriff. Zum Beispiel:
 
   Project Repository: ssh://fs2@localhost/~/try/jenkins/example01
   Domain: Global credentials (unresticted)

@@ -234,7 +234,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2017 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2017-12-06 17:30:22
+    Copyright (C) 2010-2017 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2017-12-06 18:03:54
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -444,8 +444,9 @@
   </p>
   <h2 class="sdoc-sec-h2">Zugriff auf Git Repository einrichten<a id="section_1_4"></a></h2>
   <p class="sdoc-para-p">
-    Hierfür sind zwei Angaben notwendig: 1. Der URL des Git-Repositorys, 2. Die
-    Credentials für den Repository-Zugriff. Z.B.
+    Damit Jenkins auf ein Git-Repository zugreifen kann, sind zwei Angaben
+    nötig: 1. Der URL des Git-Repository, 2. Die Credentials für den
+    Repository-Zugriff. Zum Beispiel:
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">Project Repository: ssh://fs2@localhost/~/try/jenkins/example01&#10;Domain: Global credentials (unresticted)&#10;Kind: SSH Userkey with private key&#10;Scope: Global (Jenkins, nodes, items, etc.)&#10;Username: fs2&#10;Private Key: from the jenkins master ~/.ssh</pre>
