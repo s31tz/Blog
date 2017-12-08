@@ -97,8 +97,6 @@ jenkins zur Gruppe docker hinzugefügt werden:
 * U{Jenkins Documentation}
 * U{Jenkins Wiki}
 
-# Link-Definitionen
-
 %Link:
   name="Jenkins|Jenkins Homepage"
   url="https://jenkins-ci.org/"
