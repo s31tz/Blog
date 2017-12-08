@@ -8,8 +8,11 @@
   generateAnchors=0
   utf8=1
 
-%Figure: file="IMGDIR/jenkins-396x127.png" width="187" height="60"
+%Figure:
+  file="IMGDIR/jenkins-396x127.png"
   url="https://jenkins-ci.org/"
+  width="187"
+  height="60"
 
 Wer U{Jenkins} unter Debian installieren möchte, findet das Paket
 (jenkins) nicht im Debian Repository, sondern muss es von einem
