@@ -11,9 +11,9 @@
 %Figure: file="IMGDIR/jenkins-396x127.png" width="187" height="60"
   url="https://jenkins-ci.org/"
 
-Wer U{"https://jenkins-ci.org/",text="Jenkins"} unter Debian installieren
-möchte, findet das Paket (jenkins) nicht im Debian Repository,
-sondern muss es von einem Jenkins-Server installieren.
+Wer U{Jenkins} unter Debian installieren möchte, findet das Paket
+(jenkins) nicht im Debian Repository, sondern muss es von einem
+Jenkins-Server installieren.
 
 = Installation
 
@@ -81,8 +81,7 @@ des Repostitory-Owners fs2 hinzufügen:
   # chown jenkins.jenkins *
   # cat id_rsa.pub >>~fs2/.ssh/authorized_keys
 
-Siehe auch: U{"http://www.thegeekstuff.com/2016/10/jenkins-git-setup/",\
-text="How to Setup Git Repository and Credentials for Jenkins Jobs"}
+Siehe auch: U{How to Setup Git Repository and Credentials for Jenkins Jobs}
 
 = Zugriff auf Docker einrichten
 
@@ -94,8 +93,23 @@ jenkins zur Gruppe docker hinzugefügt werden:
 
 = Links
 
-* U{"https://jenkins-ci.org/",text="Jenkins Homepage"}
-* U{"https://jenkins.io/doc/",text="Jenkins Documentation"}
-* U{"https://wiki.jenkins.io/display/JENKINS/Home",text="Jenkins Wiki"}
-    
+* U{Jenkins Homepage}
+* U{Jenkins Documentation}
+* U{Jenkins Wiki}
+
+# Link-Definitionen
+
+%Link:
+  name="Jenkins|Jenkins Homepage"
+  url="https://jenkins-ci.org/"
+%Link:
+  name="How to Setup Git Repository and Credentials for Jenkins Jobs"
+  url="http://www.thegeekstuff.com/2016/10/jenkins-git-setup/"
+%Link:
+  name="Jenkins Documentation"
+  url="https://jenkins.io/doc/"
+%Link:
+  name="Jenkins Wiki"
+  url="https://wiki.jenkins.io/display/JENKINS/Home"
+
 # eof
