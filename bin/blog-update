@@ -226,7 +226,7 @@ for my $file (Blog::Base::Prty::Path->glob("*.sdoc")) {
 }
 $db->commit;
 
-# Wenn Artikel aktualisiert wurden, terminieren wir mit 0, sonst 1
+# Wenn Artikel aktualisiert wurden, terminieren wir mit 0, sonst mit 1
 exit $n? 0: 1;
 
 # eof
