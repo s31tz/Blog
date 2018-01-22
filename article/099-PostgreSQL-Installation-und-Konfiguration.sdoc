@@ -97,18 +97,18 @@ und anschließend der Server neu gestartet werden.
 
 = Liste der existierenden Objekte
 
-| Schemata: => C{\dn} |
-| Tabellen: => C{\dt} |
-| Views: => C{\dv} |
-| Sequenzen: => C{\ds} |
+| Schemata:  | C{\dn} |
+| Tabellen:  | C{\dt} |
+| Views:     | C{\dv} |
+| Sequenzen: | C{\ds} |
 
 Liste aller interaktiven psql-Kommandos: C{\?}
 
 = Exportieren/Importieren
 
-| Alle Datenbanken: => C{pg_dumpall >FILE} |
-| Eine Datenbank: => C{pg_dump DB >FILE} |
-| Importieren: => C{psql -f FILE DB} |
+| Alle Datenbanken: | C{pg_dumpall >FILE} |
+| Eine Datenbank:   | C{pg_dump DB >FILE} |
+| Importieren:      | C{psql -f FILE DB}  |
 
 = Session-Einstellungen
 

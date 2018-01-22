@@ -110,9 +110,9 @@ automatisch gestartet und positioniert an den betreffenden Ort.
 
 Die Angaben für den Browser sind:
 
-| Mime-Type: => application/vnd.google-earth.kmz |
-| Description: => Keyhole Markup Language Archive |
-| Extension: => kmz |
+| Mime-Type:   | application/vnd.google-earth.kmz |
+| Description: | Keyhole Markup Language Archive  |
+| Extension:   | kmz                              |
 
 = Applikation
 

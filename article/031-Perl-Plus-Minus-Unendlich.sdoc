@@ -13,8 +13,8 @@
 Perl kennt mehrere Zeichenketten, die - numerisch interpretiert - plus
 und minus Unendlich bedeuten.
 
-  Plus Unendlich:  '+inf', '+infinity', 'inf', 'infinity'
-  Minus Unendlich: '-inf', '-infinity'
+  | Plus Unendlich:  | C{'+inf'}, C{'+infinity'}, C{'inf'}, C{'infinity'} |
+  | Minus Unendlich: | C{'-inf'}, C{'-infinity'}                          |
 
 B{Beispiel:} Maximum ermitteln
 
