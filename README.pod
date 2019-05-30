@@ -12,6 +12,10 @@ Die Quellen der Artikel des Blog  L<http://fseitz.de/blog>
 
 =item *
 
+L<Shell: Umgebung universell nutzbar aufsetzen|https://github.com/s31tz/Blog/blob/master/article/141-Shell-Environment-aufsetzen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/153-x.html>)
+
+=item *
+
 L<Jenkins unter Debian installieren und konfigurieren|https://github.com/s31tz/Blog/blob/master/article/140-jenkins-unter-debian-installieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/152-x.html>)
 
 =item *
@@ -558,4 +562,4 @@ Frank Seitz, L<http://fseitz.de>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2017 Frank Seitz
+Copyright (C) 2019 Frank Seitz
