@@ -1,23 +1,24 @@
 # Date: 2018-03-04
-# Id: 153
-# Draft: no
+# Id:
 # Categories: Linux/Unix, Shell
 
 %Document:
   title="Shell: Umgebung universell nutzbar aufsetzen"
-  generateAnchors=0
-  utf8=1
+  cssPrefix=sdoc3
+  tableOfContents=0
+  sectionNumberLevel=-2
 
-%Figure:
-  file="IMGDIR/bash-222x51.jpg"
-  url="http://www.gnu.org/software/bash/"
+%Graphic:
+  name="Bash Logo"
+  source="+/../image/bash-222x51.jpg"
   width="130"
   height="30"
+  link="http://www.gnu.org/software/bash/"
 
 Für die Ausführung von Programmen ist es oft notwendig, dass
 bestimmte Umgebungsvariablen gesetzt sind. Dies kann allgemeine
 Variablen betreffen, wie z.B. den Suchpfad C{PATH} oder
-programmspezifische Variablen, wie z.B. C{ORACLE_HOME}. X
+programmspezifische Variablen, wie z.B. C{ORACLE_HOME}.
 
 Die Frage ist, wie man eine Shell-Umgebung aufsetzt, so dass diese
 möglichst universell nutzbar ist, insbesondere, wenn Programme auch
