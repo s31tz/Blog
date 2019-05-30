@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# NAME
+#     blog-highlight - Erzeuge farbigen Sourcecode
+#     
+# USAGE
+#     blog-highlight LANGUAGE FORMAT
+#     
+# AUTHOR
+#     Frank Seitz, http://fseitz.de/
+
+set -e
+
+if [ $# != 2 ]; then
+    PROG=`basename $0`
+    echo "Usage: $PROG LANGUAGE FORMAT"
+    exit 10
+fi
+
+LANGUAGE=$1
+FORMAT=$2
+
+if [ $FORMAT = 'html' ] || [ $FORMAT = 'ehtml' ]; then
+    if [ $LANGUAGE = 'perl' ]; then
+        iconv -f UTF-8 -t ISO-8859-1 | perltidy --html --pre | \
+            egrep -v '^</?pre>' | sed -e 's/class="/class="pt-/g'
+    else
+        highlight --syntax=$LANGUAGE --encoding=utf-8 --fragment
+    fi
+else
+    cat
+fi
+
+# eof
