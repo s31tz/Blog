@@ -2,18 +2,19 @@
 
 use strict;
 use warnings;
+use v5.10.0;
 
 use FindBin qw/$Bin/;
 use lib "$Bin/../lib/perl5";
 use open OUT=>':locale';
 use POSIX ();
-use Blog::Base::Prty::Option;
+use Blog::Base::Quiq::Option;
 use Blog::Base::R1::Help;
-use Blog::Base::Prty::ApplicationPaths;
-use Blog::Base::Prty::Config;
-use Blog::Base::Prty::Process;
-use Blog::Base::Prty::Path;
-use Blog::Base::Prty::Sdoc::Document;
+use Blog::Base::Quiq::ApplicationPaths;
+use Blog::Base::Quiq::Config;
+use Blog::Base::Quiq::Process;
+use Blog::Base::Quiq::Path;
+use Sdoc1::Document;
 
 # -----------------------------------------------------------------------------
 
@@ -58,7 +59,7 @@ my $format = 'html';
 my $verbose = 0;
 my $help = 0;
 
-Blog::Base::Prty::Option->extract(\@ARGV,
+Blog::Base::Quiq::Option->extract(\@ARGV,
     -embed=>\$embed,
     -format=>\$format,
     -verbose=>\$verbose,
@@ -73,24 +74,24 @@ elsif (@ARGV) {
 
 # Konfiguration
 
-my $app = Blog::Base::Prty::ApplicationPaths->new;
-my $cfg = Blog::Base::Prty::Config->new($app->etcDir('blog.conf'));
+my $app = Blog::Base::Quiq::ApplicationPaths->new;
+my $cfg = Blog::Base::Quiq::Config->new($app->etcDir('blog.conf'));
 
 my $articleDir = $app->homeDir('article');
 my $imageDir = $app->homeDir('image');
 my $cssDir = $app->homeDir('css');
 
 # Ins Artikelverzeichnis wechseln
-Blog::Base::Prty::Process->cwd($articleDir);
+Blog::Base::Quiq::Process->cwd($articleDir);
 
 # Artikeldateien zusammenfügen
 
 my $sdoc = '';
 my $maxMtime = 0;
-for my $file (reverse Blog::Base::Prty::Path->glob("*.sdoc")) {
+for my $file (reverse Blog::Base::Quiq::Path->glob("*.sdoc")) {
     my ($num) = $file =~ m|(\d+)-[^/]+.sdoc|;
     $num += 0;
-    my $text = Blog::Base::Prty::Path->read($file);
+    my $text = Blog::Base::Quiq::Path->read($file);
 
     # Drafts übergehen wir
 
@@ -102,7 +103,7 @@ for my $file (reverse Blog::Base::Prty::Path->glob("*.sdoc")) {
 
     # Zeitpunkt der jüngsten Änderung
 
-    my $mtime = Blog::Base::Prty::Path->mtime($file);
+    my $mtime = Blog::Base::Quiq::Path->mtime($file);
     if ($mtime > $maxMtime) {
         $maxMtime = $mtime;
     }
@@ -169,7 +170,7 @@ if ($format eq 'sdoc') {
 }
 else {
     print Encode::decode('utf-8',
-        Blog::Base::Prty::Sdoc::Document->new(\$sdoc,-utf8=>1)->dump('html'));
+        Sdoc1::Document->new(\$sdoc,-utf8=>1)->dump('html'));
 }
 
 # eof

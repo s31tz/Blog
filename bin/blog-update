@@ -2,19 +2,20 @@
 
 use strict;
 use warnings;
+use v5.10.0;
 use utf8;
 
 use FindBin qw/$Bin/;;
 use lib "$Bin/../lib/perl5";
 use open OUT=>':locale';
-use Blog::Base::Prty::Sdoc::Document;
-use Blog::Base::Prty::Option;
+use Sdoc1::Document;
+use Blog::Base::Quiq::Option;
 use Blog::Base::R1::Help;
-use Blog::Base::Prty::ApplicationPaths;
-use Blog::Base::Prty::Config;
-use Blog::Base::Prty::Database::Connection;
-use Blog::Base::Prty::Process;
-use Blog::Base::Prty::Path;
+use Blog::Base::Quiq::ApplicationPaths;
+use Blog::Base::Quiq::Config;
+use Blog::Base::Quiq::Database::Connection;
+use Blog::Base::Quiq::Process;
+use Blog::Base::Quiq::Path;
 
 # -----------------------------------------------------------------------------
 
@@ -81,7 +82,7 @@ Frank Seitz, L<http://fseitz.de/>
 my $convertFile = sub {
     my $file = shift;
 
-    my $sdoc =  Blog::Base::Prty::Sdoc::Document->new("$file",-utf8=>1);
+    my $sdoc =  Sdoc1::Document->new("$file",-utf8=>1);
     my $html = Encode::decode('utf-8',$sdoc->dump('ehtml'));
     $html =~ s|<h1.*?>(.*?)</h1>\n+||;
     my $title = $1;
@@ -98,7 +99,7 @@ my $dryRun = 0;
 my $verbose = 0;
 my $help = 0;
 
-Blog::Base::Prty::Option->extract(\@ARGV,
+Blog::Base::Quiq::Option->extract(\@ARGV,
     -dryRun=>\$dryRun,
     -verbose=>\$verbose,
     -help=>\$help,
@@ -112,11 +113,11 @@ elsif (@ARGV) {
 
 # Konfiguration
 
-my $app = Blog::Base::Prty::ApplicationPaths->new;
-my $cfg = Blog::Base::Prty::Config->new($app->etcDir('blog.conf'));
+my $app = Blog::Base::Quiq::ApplicationPaths->new;
+my $cfg = Blog::Base::Quiq::Config->new($app->etcDir('blog.conf'));
 
 # Datenbankverbindung aufbauen
-my $db = Blog::Base::Prty::Database::Connection->new($cfg->get('Udl'),
+my $db = Blog::Base::Quiq::Database::Connection->new($cfg->get('Udl'),
     -utf8=>1,
     -log=>$verbose,
 );
@@ -132,14 +133,14 @@ my %idIdx = $entT->index('id');
 # Ins Artikelverzeichnis wechseln
 
 my $articleDir = $app->homeDir('article');
-Blog::Base::Prty::Process->cwd($articleDir);
+Blog::Base::Quiq::Process->cwd($articleDir);
 
 # Artikeldateien lesen
 
 my $n = 0; # Anzahl aktualisierter Artikel
-for my $file (Blog::Base::Prty::Path->glob("*.sdoc")) {
-    my $mtime = Blog::Base::Prty::Path->mtime($file);
-    my $text = Encode::decode('utf8',Blog::Base::Prty::Path->read($file));
+for my $file (Blog::Base::Quiq::Path->glob("*.sdoc")) {
+    my $mtime = Blog::Base::Quiq::Path->mtime($file);
+    my $text = Encode::decode('utf8',Blog::Base::Quiq::Path->read($file));
 
     my ($id) = $text =~ /^# (?:id=|Id: )(\d+)/m;
     if (!$id) {

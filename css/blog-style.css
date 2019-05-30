@@ -1,3 +1,42 @@
+/* Sdoc3 */
+
+tt {
+    color: black;
+}
+.sdoc3-graphic {
+    padding-left: 2em;
+}
+h1.sdoc3-section {
+    font-size: medium;
+    margin-top: 1em;
+    margin-bottom: 0.8em;
+}
+.sdoc3-code {
+    margin-left: 2em;
+    margin-top: 0.4em;
+    margin-bottom: 0.8em;
+    /* padding: 0.3em; */
+    line-height: normal;
+    /* border: dashed 1px #999; */
+    color: #333;
+    display: table;
+    /* white-space: pre; */
+    /* color: red; */
+    /*
+    border: 1px dashed black;
+    padding: 0.3em;
+    margin-left: 1.75em;
+    display: table;
+    */
+}
+.sdoc3-code pre {
+    margin-top: 0em;
+    margin-bottom: 0em;
+    border: dashed 1px #999;
+    padding: 4px;
+    background: #f6f6f6;
+}
+
 /* HTML-Seite */
 
 body { 
