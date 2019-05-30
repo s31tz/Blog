@@ -1,19 +1,18 @@
 # Date: 2018-03-04
-# Id:
+# Id: 153
+# Draft: no
 # Categories: Linux/Unix, Shell
 
 %Document:
   title="Shell: Umgebung universell nutzbar aufsetzen"
-  cssPrefix=sdoc3
-  tableOfContents=0
-  sectionNumberLevel=-2
+  generateAnchors=0
+  utf8=1
 
-%Graphic:
-  name="Bash Logo"
-  source="+/../image/bash-222x51.jpg"
+%Figure:
+  file="IMGDIR/bash-222x51.jpg"
+  url="http://www.gnu.org/software/bash/"
   width="130"
   height="30"
-  link="http://www.gnu.org/software/bash/"
 
 Für die Ausführung von Programmen ist es oft notwendig, dass
 bestimmte Umgebungsvariablen gesetzt sind. Dies kann allgemeine

@@ -12,7 +12,7 @@ Die Quellen der Artikel des Blog  L<http://fseitz.de/blog>
 
 =item *
 
-L<Shell: Umgebung universell nutzbar aufsetzen|https://github.com/s31tz/Blog/blob/master/article/141-Shell-Environment-aufsetzen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/0-x.html>)
+L<Shell: Umgebung universell nutzbar aufsetzen|https://github.com/s31tz/Blog/blob/master/article/141-Shell-Environment-aufsetzen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/153-x.html>)
 
 =item *
 
