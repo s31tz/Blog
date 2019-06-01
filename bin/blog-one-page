@@ -14,7 +14,7 @@ use Blog::Base::Quiq::ApplicationPaths;
 use Blog::Base::Quiq::Config;
 use Blog::Base::Quiq::Process;
 use Blog::Base::Quiq::Path;
-use Sdoc1::Document;
+use Sdoc2::Document;
 
 # -----------------------------------------------------------------------------
 
@@ -170,7 +170,7 @@ if ($format eq 'sdoc') {
 }
 else {
     print Encode::decode('utf-8',
-        Sdoc1::Document->new(\$sdoc,-utf8=>1)->dump('html'));
+        Sdoc2::Document->new(\$sdoc,-utf8=>1)->dump('html'));
 }
 
 # eof

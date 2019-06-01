@@ -14,7 +14,7 @@ use Blog::Base::Quiq::ApplicationPaths;
 use Blog::Base::Quiq::Config;
 use Blog::Base::Quiq::Process;
 use Blog::Base::Quiq::Path;
-use Sdoc1::Document;
+use Sdoc2::Document;
 
 # -----------------------------------------------------------------------------
 
@@ -130,6 +130,6 @@ __EOT__
     
 binmode STDOUT,':encoding(utf8)';
 print $format eq 'sdoc'? $code:
-    Sdoc1::Document->new(\$code,-utf8=>1)->dump($format);
+    Sdoc2::Document->new(\$code,-utf8=>1)->dump($format);
 
 # eof

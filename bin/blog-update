@@ -8,7 +8,7 @@ use utf8;
 use FindBin qw/$Bin/;;
 use lib "$Bin/../lib/perl5";
 use open OUT=>':locale';
-use Sdoc1::Document;
+use Sdoc2::Document;
 use Blog::Base::Quiq::Option;
 use Blog::Base::R1::Help;
 use Blog::Base::Quiq::ApplicationPaths;
@@ -82,7 +82,7 @@ Frank Seitz, L<http://fseitz.de/>
 my $convertFile = sub {
     my $file = shift;
 
-    my $sdoc =  Sdoc1::Document->new("$file",-utf8=>1);
+    my $sdoc =  Sdoc2::Document->new("$file",-utf8=>1);
     my $html = Encode::decode('utf-8',$sdoc->dump('ehtml'));
     $html =~ s|<h1.*?>(.*?)</h1>\n+||;
     my $title = $1;
