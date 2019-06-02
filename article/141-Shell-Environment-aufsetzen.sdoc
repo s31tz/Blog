@@ -21,8 +21,8 @@ programmspezifische Variablen, wie z.B. C{ORACLE_HOME}.
 
 Die Frage ist, wie man eine Shell-Umgebung aufsetzt, so dass diese
 möglichst universell nutzbar ist, insbesondere, wenn Programme auch
-von außerhalb der eigenen interaktiven Sitzung, z.B. via C{cron}
-ausgeführt werden sollen.
+von außerhalb der eigenen interaktiven Sitzung, z.B. via C{cron},
+C{sudo} oder C{ssh} ausgeführt werden sollen.
 
 Die Shell (bash, ksh, sh) führt bei I{jedem} Login die
 nutzerspezifische Datei C{.profile} aus. Werden in dieser Datei alle
@@ -32,18 +32,18 @@ rc-Datei (C{.bashrc} oder C{.kshrc}) zu setzen ist verkehrt, da der
 Inhalt einer rc-Datei ausschließlich bei I{interaktiven} Sitzungen
 ausgeführt wird und daher ausschließlich Definitionen enthalten
 sollte, die für eine Benutzerinteraktion mit der Shell relevant sind
-(Beispele: Aussehen des Prompt, Aliase, Länge der History, Farben für
-ls(1), usw.).
+(Beispielsweise: Aussehen des Prompt, Aliase, Länge der History,
+Farben für ls(1), usw.).
 
 = TTY-Login, SSH Login
 
-Der normale Anwendungsfall. Eine Login-Shell wird gestartet und
-im Zuge dessen C{.profile} ausgeführt.
+Dies ist der normale Anwendungsfall. Eine Login-Shell wird gestartet
+und im Zuge dessen C{.profile} ausgeführt.
 
 = Ausführung eines Remote-Kommandos per SSH
 
 Das Remote-Kommando ersetzt in diesem Fall die Login-Shell. Wir sorgen
-mit C{bash -lc} dafür, dass die Login-Umgebung hergestellt wird:
+mit C{bash -l} dafür, dass die Login-Umgebung hergestellt wird:
 
   $ ssh USER@HOST bash -lc COMMAND
 
