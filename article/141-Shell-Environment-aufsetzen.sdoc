@@ -49,7 +49,7 @@ mit C{bash -l} dafür, dass die Login-Umgebung hergestellt wird:
 
 = X11 Terminal Window Login
 
-Hier ist es wichtig, dass beim Öffnen des Terminal eine I{Login}-Shell
+Hier ist es wichtig, dass beim Öffnen des Terminals eine I{Login}-Shell
 ausgeführt wird. Ggf. ist es nötig, hierfür eine Option in den
 Einstellungen zu aktivieren. In den Einstellungen des Xfce Terminals
 heißt die Option Q{Run command as login shell}, ist per Default
