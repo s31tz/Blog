@@ -65,7 +65,7 @@ Login-Shell übergeben wird:
 = cron, eigene crontab
 
 Wie bei der Ausführung eines Remote-Kommandos per C{ssh} sorgen wir
-mit C{bash -lc} dafür, dass die Login-Umgebung vor Ausführung des
+mit C{bash -l} dafür, dass die Login-Umgebung vor Ausführung des
 Kommandos hergestellt wird.
 
   * * * * * bash -lc COMMAND
