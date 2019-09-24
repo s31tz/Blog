@@ -7,7 +7,7 @@
 #     blog-highlight LANGUAGE FORMAT
 #     
 # AUTHOR
-#     Frank Seitz, http://fseitz.de/
+#     Frank Seitz
 
 set -e
 
