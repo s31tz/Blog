@@ -1,0 +1,48 @@
+# Date: 2019-11-20
+# Id: 154
+# Draft: no
+# Categories: Hardware/Tablet
+
+%Document:
+  title="Google Pixel C Tablet in Werkszustand zurücksetzen"
+  generateAnchors=0
+  utf8=1
+
+%Figure:
+  file="IMGDIR/android-logo-512x220.png"
+  url="https://en.wikipedia.org/wiki/Pixel_C"
+  width="128"
+  height="55"
+
+Mein Pixel C Tablet ließ sich plötzlich (d.h. grundlos!) nicht mehr
+entsperren. Ein Zugang lässt sich dann nur durch Zurücksetzen
+des Systems in den Werkszustand wieder herstellen. Dies erwies sich als
+unerwartet verwickelt. Hier der Ablauf:
+
+1. System neu starten, dabei die Tasten Q{Power} und Q{Leiser} gedrückt
+   halten.
+2. Es erscheint ein Boot-Menü. Mit Q{Leiser/Lauter} den Menüpunkt
+   C{Reboot into Android Recovery} auswählen. Auswahl mit Q{Power}
+   bestätigen.
+3. Das System wird neu gestartet. Es erscheint ein umgekippter
+   Android mit der Meldung Q{No command}.
+4. Was aussieht wie ein harter Fehler, ist keiner. Die Tasten Q{Power}
+   und Q{Lauter} drücken. Es erscheint ein weiteres Menü, das
+   mit C{Android Recovery} betitelt ist.
+5. Mit C{Leiser/Lauter} den Menüpunkt C{Wipe data/factory reset}
+   auswählen und mit Q{Power} bestätigen.
+6. Die Daten auf dem Tablet werden gelöscht, was eine Weile dauert.
+   Anschließend kehrt das System in das Menü C{Android Recovery}
+   zurück.
+7. Nun den Menüpunkt C{Reboot system now} auswählen. Das System
+   startet neu. Anschließend kann die Neueinrichung
+   durchgeführt werden.
+
+Kein harter Fehler:
+
+%Figure:
+  file="IMGDIR/android-no-command-110x244.jpg"
+  width="100"
+  height="244"
+
+# eof
