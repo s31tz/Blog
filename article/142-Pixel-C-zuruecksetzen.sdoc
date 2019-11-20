@@ -15,8 +15,8 @@
   height="55"
 
 Mein Pixel C Tablet ließ sich plötzlich (d.h. grundlos!) nicht mehr
-entsperren. Ein Zugang lässt sich dann nur durch Zurücksetzen
-des Systems in den Werkszustand wieder herstellen. Dies erwies sich als
+entsperren. Der Zugang lässt sich dann nur durch Zurücksetzen
+des Systems in den Werkszustand wiederherstellen. Dies erwies sich als
 unerwartet verwickelt. Hier der Ablauf:
 
 1. System neu starten, dabei die Tasten Q{Power} und Q{Leiser} gedrückt
