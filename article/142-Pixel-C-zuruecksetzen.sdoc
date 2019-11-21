@@ -25,20 +25,18 @@ unerwartet verwickelt. Hier der Ablauf:
    C{Reboot into Android Recovery} auswählen. Auswahl mit Q{Power}
    bestätigen.
 3. Das System wird neu gestartet. Es erscheint ein umgekippter
-   Android mit der Meldung Q{No command}.
-4. Was aussieht wie ein harter Fehler, ist keiner. Die Tasten Q{Power}
+   Android (s.u.) mit der Meldung Q{No command}.
+4. Was aussieht wie ein fataler Fehler, ist keiner. Die Tasten Q{Power}
    und Q{Lauter} drücken. Es erscheint ein weiteres Menü, das
    mit C{Android Recovery} betitelt ist.
-5. Mit C{Leiser/Lauter} den Menüpunkt C{Wipe data/factory reset}
+5. Mit Q{Leiser/Lauter} den Menüpunkt C{Wipe data/factory reset}
    auswählen und mit Q{Power} bestätigen.
 6. Die Daten auf dem Tablet werden gelöscht, was eine Weile dauert.
-   Anschließend kehrt das System in das Menü C{Android Recovery}
-   zurück.
+   Anschließend kehrt das System zum Ausgangsmenü zurück.
 7. Nun den Menüpunkt C{Reboot system now} auswählen. Das System
-   startet neu. Anschließend kann die Neueinrichung
-   durchgeführt werden.
+   startet neu. Nun kann die Neueinrichung durchgeführt werden.
 
-Kein harter Fehler:
+Kein fataler Fehler:
 
 %Figure:
   file="IMGDIR/android-no-command-110x244.jpg"
