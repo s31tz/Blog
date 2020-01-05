@@ -23,6 +23,13 @@ Relay-Server wieder:
 
   $ cvlc -q http://localhost:8000
 
+Beispiel: Speichere die Songs des Kanals C{SomaFM/Groove Salad}
+im Unterverzeichnis C{groove-salad} und überschreibe eine existierende
+Datei nur, wenn sie größer ist:
+
+  $ streamripper http://somafm.com/groovesalad256.pls -r \
+      -d groove-salad -o larger
+
 = Radio-Links
 
 * SomaFM: U{http://somafm.com/}
