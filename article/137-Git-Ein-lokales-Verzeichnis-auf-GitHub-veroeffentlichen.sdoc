@@ -35,7 +35,20 @@ schon existierenden lokalen Dateien auszuschließen.
   $ git push -u origin master
 
 Hierbei ist C{URL} die Adresse des GitHub-Repository, die nach dessen
-Anlegen in Schritt 2. im oberen Teil der Seite angezeigt wird.
+Anlegen in Schritt 2. im oberen Teil der Seite angezeigt wird,
+
+  git@github.com:USER/REPO.git      # SSH-Protokoll
+
+oder
+
+  https://github.com/s31tz/Quiq.git # HTTPS-Protokoll
+
+Besser ist es, SSH als Protokoll zu nutzen, da dann Public
+Key Athentifizierung ohne Passworteingabe genutzt werden kann.
+
+= 4. Von HTTPS nach SSH wechseln
+
+  $ git remote set-url origin git@github.com:USER/REPO.git
 
 = Datenfluss der wichtigsten Git-Kommandos
     
@@ -48,6 +61,9 @@ Anlegen in Schritt 2. im oberen Teil der Seite angezeigt wird.
 * U{"https://help.github.com/articles/adding-an-existing-project-to-github\
   -using-the-command-line/#platform-linux",text="GitHub - Adding an existing \
   project to GitHub using the command line"}
+* U{"https://help.github.com/en/github/using-git/changing-a-remotes-url\
+  #switching-remote-urls-from-https-to-ssh",text="Switching remote URLs \
+  from HTTPS to SSH"}
 * U{"https://git-scm.com/book/en/v2",text="Pro Git (Buch über Git, \
   freie Online-Version)"}
 
