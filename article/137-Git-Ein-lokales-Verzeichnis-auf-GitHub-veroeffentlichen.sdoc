@@ -37,11 +37,11 @@ schon existierenden lokalen Dateien auszuschließen.
 Hierbei ist C{URL} die Adresse des GitHub-Repository, die nach dessen
 Anlegen in Schritt 2. im oberen Teil der Seite angezeigt wird,
 
-  git@github.com:USER/REPO.git      # SSH-Protokoll
+  git@github.com:USER/REPO.git     # SSH-Protokoll
 
 oder
 
-  https://github.com/s31tz/Quiq.git # HTTPS-Protokoll
+  https://github.com/USER/REPO.git # HTTPS-Protokoll
 
 Besser ist es, SSH als Protokoll zu nutzen, da dann Public
 Key Athentifizierung ohne Passworteingabe genutzt werden kann.
