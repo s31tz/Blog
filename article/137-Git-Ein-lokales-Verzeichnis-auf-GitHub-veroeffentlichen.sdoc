@@ -46,7 +46,7 @@ oder
 Besser ist es, SSH als Protokoll zu nutzen, da dann Public
 Key Athentifizierung ohne Passworteingabe genutzt werden kann.
 
-= 4. Von HTTPS nach SSH wechseln
+= Von HTTPS nach SSH wechseln
 
   $ git remote set-url origin git@github.com:USER/REPO.git
 
