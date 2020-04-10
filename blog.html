@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2020 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2020-04-10 17:45:33
+    Copyright (C) 2010-2020 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2020-04-10 17:46:51
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -784,138 +784,146 @@
   <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln"> 1</td>
-    <td class="sdoc-code-td-line"><span class="hl kwa">sub</span> functionSelect <span class="hl opt">{</span></td>
+    <td class="sdoc-code-td-line"><span class="hl kwa">package</span> PostgreSql<span class="hl opt">::</span>Catalog<span class="hl opt">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln"> 2</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwc">my</span> <span class="hl opt">(</span><span class="hl kwb">$class</span><span class="hl opt">,</span><span class="hl kwb">$db</span><span class="hl opt">,</span><span class="hl kwb">%clause</span><span class="hl opt">) =</span> <span class="hl kwb">&#64;_</span><span class="hl opt">;</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln"> 3</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line"><span class="hl kwa">sub</span> functionSelect <span class="hl opt">{</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln"> 4</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwb">$clause</span><span class="hl opt">{</span><span class="hl str">&apos;select&apos;</span><span class="hl opt">}</span> <span class="hl kwd">//</span><span class="hl opt">= [</span><span class="hl str">&apos;*&apos;</span><span class="hl opt">];</span></td>
+    <td class="sdoc-code-td-line">    <span class="hl kwc">my</span> <span class="hl opt">(</span><span class="hl kwb">$class</span><span class="hl opt">,</span><span class="hl kwb">$db</span><span class="hl opt">,</span><span class="hl kwb">%clause</span><span class="hl opt">) =</span> <span class="hl kwb">&#64;_</span><span class="hl opt">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln"> 5</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwb">$clause</span><span class="hl opt">{</span><span class="hl str">&apos;from&apos;</span><span class="hl opt">} = [</span><span class="hl str">&apos;function_view&apos;</span><span class="hl opt">];</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln"> 6</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line">    <span class="hl kwb">$clause</span><span class="hl opt">{</span><span class="hl str">&apos;select&apos;</span><span class="hl opt">}</span> <span class="hl kwd">//</span><span class="hl opt">= [</span><span class="hl str">&apos;*&apos;</span><span class="hl opt">];</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln"> 7</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwc">my</span> <span class="hl kwb">$stmt</span> <span class="hl opt">= &lt;&lt;</span> <span class="hl str">&apos;    __SQL__&apos;</span><span class="hl opt">;</span></td>
+    <td class="sdoc-code-td-line">    <span class="hl kwb">$clause</span><span class="hl opt">{</span><span class="hl str">&apos;from&apos;</span><span class="hl opt">} = [</span><span class="hl str">&apos;function_view&apos;</span><span class="hl opt">];</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln"> 8</td>
-    <td class="sdoc-code-td-line">    WITH function_view AS <span class="hl opt">(</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln"> 9</td>
-    <td class="sdoc-code-td-line">        SELECT</td>
+    <td class="sdoc-code-td-line">    <span class="hl kwc">my</span> <span class="hl kwb">$stmt</span> <span class="hl opt">= &lt;&lt;</span> <span class="hl str">&apos;    __SQL__&apos;</span><span class="hl opt">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">10</td>
-    <td class="sdoc-code-td-line">            fnc<span class="hl opt">.</span>oid AS fnc_oid</td>
+    <td class="sdoc-code-td-line">    WITH function_view AS <span class="hl opt">(</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">11</td>
-    <td class="sdoc-code-td-line">            <span class="hl opt">,</span> usr<span class="hl opt">.</span>usename AS fnc_owner</td>
+    <td class="sdoc-code-td-line">        SELECT</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">12</td>
-    <td class="sdoc-code-td-line">            <span class="hl opt">,</span> nsp<span class="hl opt">.</span>nspname AS fnc_schema</td>
+    <td class="sdoc-code-td-line">            fnc<span class="hl opt">.</span>oid AS fnc_oid</td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">13</td>
-    <td class="sdoc-code-td-line">            <span class="hl opt">,</span> fnc<span class="hl opt">.</span>proname AS fnc_name</td>
+    <td class="sdoc-code-td-line">            <span class="hl opt">,</span> usr<span class="hl opt">.</span>usename AS fnc_owner</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">14</td>
-    <td class="sdoc-code-td-line">            <span class="hl opt">,</span> pg_get_function_identity_arguments<span class="hl opt">(</span>pro<span class="hl opt">.</span>oid<span class="hl opt">)</span> AS fnc_arguments</td>
+    <td class="sdoc-code-td-line">            <span class="hl opt">,</span> nsp<span class="hl opt">.</span>nspname AS fnc_schema</td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">15</td>
-    <td class="sdoc-code-td-line">            <span class="hl opt">,</span> pg_get_functiondef<span class="hl opt">(</span>fnc<span class="hl opt">.</span>oid<span class="hl opt">)</span> AS fnc_source</td>
+    <td class="sdoc-code-td-line">            <span class="hl opt">,</span> fnc<span class="hl opt">.</span>proname AS fnc_name</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">16</td>
-    <td class="sdoc-code-td-line">        FROM</td>
+    <td class="sdoc-code-td-line">            <span class="hl opt">,</span> pg_get_function_identity_arguments<span class="hl opt">(</span>pro<span class="hl opt">.</span>oid<span class="hl opt">)</span> AS fnc_arguments</td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">17</td>
-    <td class="sdoc-code-td-line">            pg_proc AS fnc</td>
+    <td class="sdoc-code-td-line">            <span class="hl opt">,</span> pg_get_functiondef<span class="hl opt">(</span>fnc<span class="hl opt">.</span>oid<span class="hl opt">)</span> AS fnc_source</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">18</td>
-    <td class="sdoc-code-td-line">            JOIN pg_namespace AS nsp</td>
+    <td class="sdoc-code-td-line">        FROM</td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">19</td>
-    <td class="sdoc-code-td-line">                ON fnc<span class="hl opt">.</span>pronamespace <span class="hl opt">=</span> nsp<span class="hl opt">.</span>oid</td>
+    <td class="sdoc-code-td-line">            pg_proc AS fnc</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">20</td>
-    <td class="sdoc-code-td-line">            JOIN pg_user usr</td>
+    <td class="sdoc-code-td-line">            JOIN pg_namespace AS nsp</td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">21</td>
-    <td class="sdoc-code-td-line">                ON fnc<span class="hl opt">.</span>proowner <span class="hl opt">=</span> usr<span class="hl opt">.</span>usesysid</td>
+    <td class="sdoc-code-td-line">                ON fnc<span class="hl opt">.</span>pronamespace <span class="hl opt">=</span> nsp<span class="hl opt">.</span>oid</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">22</td>
-    <td class="sdoc-code-td-line">    <span class="hl opt">)</span></td>
+    <td class="sdoc-code-td-line">            JOIN pg_user usr</td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">23</td>
-    <td class="sdoc-code-td-line">    __SQL__</td>
+    <td class="sdoc-code-td-line">                ON fnc<span class="hl opt">.</span>proowner <span class="hl opt">=</span> usr<span class="hl opt">.</span>usesysid</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">24</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwb">$stmt</span> <span class="hl opt">=~</span> <span class="hl kwd">s/^    //mg</span><span class="hl opt">;</span></td>
+    <td class="sdoc-code-td-line">    <span class="hl opt">)</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">25</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line">    __SQL__</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">26</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwa">for</span> <span class="hl kwc">my</span> <span class="hl kwb">$key</span> <span class="hl opt">(</span>qw<span class="hl kwd">/select from where orderBy/</span><span class="hl opt">) {</span></td>
+    <td class="sdoc-code-td-line">    <span class="hl kwb">$stmt</span> <span class="hl opt">=~</span> <span class="hl kwd">s/^    //mg</span><span class="hl opt">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">27</td>
-    <td class="sdoc-code-td-line">        <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwc">my</span> <span class="hl kwb">$arr</span> <span class="hl opt">=</span> <span class="hl kwb">$clause</span><span class="hl opt">{</span><span class="hl kwb">$key</span><span class="hl opt">}) {</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">28</td>
-    <td class="sdoc-code-td-line">            <span class="hl kwc">my</span> <span class="hl kwb">$clause</span>  <span class="hl opt">=</span> <span class="hl kwb">$key</span> <span class="hl kwc">eq</span> <span class="hl str">&apos;orderBy&apos;</span>? <span class="hl str">&apos;ORDER BY&apos;</span><span class="hl opt">:</span> <span class="hl kwc">uc</span> <span class="hl kwb">$key</span><span class="hl opt">;</span></td>
+    <td class="sdoc-code-td-line">    <span class="hl kwa">for</span> <span class="hl kwc">my</span> <span class="hl kwb">$key</span> <span class="hl opt">(</span>qw<span class="hl kwd">/select from where orderBy/</span><span class="hl opt">) {</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">29</td>
-    <td class="sdoc-code-td-line">            <span class="hl kwb">$stmt</span> <span class="hl opt">.=</span> <span class="hl kwc">sprintf</span> <span class="hl str">&quot;</span><span class="hl ipl">%s</span><span class="hl str"></span><span class="hl esc">\n</span>    <span class="hl str"></span><span class="hl ipl">%s</span><span class="hl str"></span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span><span class="hl kwb">$clause</span><span class="hl opt">,</span><span class="hl kwc">join</span> <span class="hl str">&quot;</span><span class="hl esc">\n</span>    <span class="hl str">, &quot;</span><span class="hl opt">,</span>&#64;<span class="hl kwb">$arr</span><span class="hl opt">;</span></td>
+    <td class="sdoc-code-td-line">        <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwc">my</span> <span class="hl kwb">$arr</span> <span class="hl opt">=</span> <span class="hl kwb">$clause</span><span class="hl opt">{</span><span class="hl kwb">$key</span><span class="hl opt">}) {</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">30</td>
-    <td class="sdoc-code-td-line">        <span class="hl opt">}</span></td>
+    <td class="sdoc-code-td-line">            <span class="hl kwc">my</span> <span class="hl kwb">$clause</span>  <span class="hl opt">=</span> <span class="hl kwb">$key</span> <span class="hl kwc">eq</span> <span class="hl str">&apos;orderBy&apos;</span>? <span class="hl str">&apos;ORDER BY&apos;</span><span class="hl opt">:</span> <span class="hl kwc">uc</span> <span class="hl kwb">$key</span><span class="hl opt">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">31</td>
-    <td class="sdoc-code-td-line">    <span class="hl opt">}</span></td>
+    <td class="sdoc-code-td-line">            <span class="hl kwb">$stmt</span> <span class="hl opt">.=</span> <span class="hl kwc">sprintf</span> <span class="hl str">&quot;</span><span class="hl ipl">%s</span><span class="hl str"></span><span class="hl esc">\n</span>    <span class="hl str"></span><span class="hl ipl">%s</span><span class="hl str"></span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span><span class="hl kwb">$clause</span><span class="hl opt">,</span><span class="hl kwc">join</span> <span class="hl str">&quot;</span><span class="hl esc">\n</span>    <span class="hl str">, &quot;</span><span class="hl opt">,</span>&#64;<span class="hl kwb">$arr</span><span class="hl opt">;</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">32</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line">        <span class="hl opt">}</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">33</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwa">return</span> <span class="hl kwb">$stmt</span><span class="hl opt">;</span></td>
+    <td class="sdoc-code-td-line">    <span class="hl opt">}</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">34</td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">35</td>
+    <td class="sdoc-code-td-line">    <span class="hl kwa">return</span> <span class="hl kwb">$stmt</span><span class="hl opt">;</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-even">
+    <td class="sdoc-code-td-ln">36</td>
     <td class="sdoc-code-td-line"><span class="hl opt">}</span></td>
   </tr>
   </table>
@@ -10154,7 +10162,7 @@
     und im Browser
   </p>
   <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" &#10;   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">&#10;<!-- Generated by perltidy on Fri Apr 10 17:45:39 2020 -->&#10;<html xmlns="http://www.w3.org/1999/xhtml">&#10;<head>&#10;<title>perltidy</title>&#10;<style type="text/css">&#10;<!--&#10;/* default style sheet generated by perltidy */&#10;body {background: #FFFFFF; color: #000000}&#10;pre { color: #000000; &#10;      background: #FFFFFF;&#10;      font-family: courier;&#10;    } &#10;&#10;.c  { color: #000000;} /* comment */&#10;.cm { color: #000000;} /* comma */&#10;.co { color: #000000;} /* colon */&#10;.h  { color: #000000;} /* here-doc-target */&#10;.hh { color: #000000;} /* here-doc-text */&#10;.i  { color: #000000;} /* identifier */&#10;.j  { color: #000000;} /* label */&#10;.k  { color: #000000;} /* keyword */&#10;.m  { color: #000000;} /* subroutine */&#10;.n  { color: #000000;} /* numeric */&#10;.p  { color: #000000;} /* paren */&#10;.pd { color: #000000;} /* pod-text */&#10;.pu { color: #000000;} /* punctuation */&#10;.q  { color: #000000;} /* quote */&#10;.s  { color: #000000;} /* structure */&#10;.sc { color: #000000;} /* semicolon */&#10;.v  { color: #000000;} /* v-string */&#10;.w  { color: #000000;} /* bareword */&#10;-->&#10;</style>&#10;</head>&#10;<body>&#10;<a name="-top-"></a>&#10;<h1>perltidy</h1>&#10;<hr />&#10;<!-- contents of filename: perltidy -->&#10;<span class="pt-k">print</span> <span class="pt-q">&quot;Hello world!\n&quot;</span><span class="pt-sc">;</span>&#10;</body>&#10;</html>&#10;</pre>
+    <pre class="sdoc-code-pre"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" &#10;   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">&#10;<!-- Generated by perltidy on Fri Apr 10 17:47:01 2020 -->&#10;<html xmlns="http://www.w3.org/1999/xhtml">&#10;<head>&#10;<title>perltidy</title>&#10;<style type="text/css">&#10;<!--&#10;/* default style sheet generated by perltidy */&#10;body {background: #FFFFFF; color: #000000}&#10;pre { color: #000000; &#10;      background: #FFFFFF;&#10;      font-family: courier;&#10;    } &#10;&#10;.c  { color: #000000;} /* comment */&#10;.cm { color: #000000;} /* comma */&#10;.co { color: #000000;} /* colon */&#10;.h  { color: #000000;} /* here-doc-target */&#10;.hh { color: #000000;} /* here-doc-text */&#10;.i  { color: #000000;} /* identifier */&#10;.j  { color: #000000;} /* label */&#10;.k  { color: #000000;} /* keyword */&#10;.m  { color: #000000;} /* subroutine */&#10;.n  { color: #000000;} /* numeric */&#10;.p  { color: #000000;} /* paren */&#10;.pd { color: #000000;} /* pod-text */&#10;.pu { color: #000000;} /* punctuation */&#10;.q  { color: #000000;} /* quote */&#10;.s  { color: #000000;} /* structure */&#10;.sc { color: #000000;} /* semicolon */&#10;.v  { color: #000000;} /* v-string */&#10;.w  { color: #000000;} /* bareword */&#10;-->&#10;</style>&#10;</head>&#10;<body>&#10;<a name="-top-"></a>&#10;<h1>perltidy</h1>&#10;<hr />&#10;<!-- contents of filename: perltidy -->&#10;<span class="pt-k">print</span> <span class="pt-q">&quot;Hello world!\n&quot;</span><span class="pt-sc">;</span>&#10;</body>&#10;</html>&#10;</pre>
   </div>
   <a id="section_114_9"></a>
   <h2 class="sdoc-sec-h2">Links</h2>
