@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2020 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2020-04-11 13:50:06
+    Copyright (C) 2010-2020 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2020-04-12 10:19:02
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -413,7 +413,7 @@
     Das potentiell komplexeste Statement in SQL ist das SELECT-Statement.
     Dieses wiederverwendbar zu kapseln, z.B. in einer Methode einer
     Klasse, kann eine Herausforderung sein. Dieses Problem wollen wir
-    allgemeingültig lösen.
+    hier allgemeingültig lösen.
   </p>
   <p class="sdoc-para-p">
     Hier ein Beispiel. Mit folgendem SELECT-Statement wollen wir aus dem
@@ -482,7 +482,7 @@
     keine Details über die interne Repräsentation des Data Dictionary
     wissen müssen. In einem ersten Schritt haben wir den Kolumnen
     bereits Aliasnamen gegeben, aus denen sich die Bedeutung
-    der Kolumnen relativ klar ergibt:
+    der Kolumnen recht klar ergibt:
   </p>
   <dl class="sdoc-list-dl">
     <dt class="sdoc-list-dt">fnc_oid</dt>
@@ -554,15 +554,16 @@
     Durch die View werden die internen Namen verdeckt. Abfragen der View
     werden allein über den Kolumnennamen des zugrundeliegenden Statements
     formuliert. Das ist genau das, was wir wollen. Mit der View schaffen
-    wir allerdings eine öffentliche Schnittstelle, die wir nicht nach
-    Belieben anlegen (Namenskonflikte) und ändern können (wir wissen
-    nicht, wer die View sonst noch nutzt). Dies ist das Gegenteil einer
-    Kapselung. Das Ziel einer <i class="sdoc-seg-i">programminternen</i> Kapselung erreichen wir
-    mit einer View nicht.
+    wir allerdings eine öffentliche Schnittstelle, die wir ohne zusätzliche
+    Maßnahmen nicht nach Belieben anlegen (Namenskonflikte) und ändern
+    können (wir wissen nicht, wer die View sonst noch nutzt). Dies ist das
+    Gegenteil einer Kapselung. Das Ziel einer <i class="sdoc-seg-i">programminternen</i> Kapselung
+    erreichen wir mit einer View nicht.
   </p>
   <p class="sdoc-para-p">
     Eine mögliche Lösung bietet eine Inline-View. Bei einer Inline-View
-    betten wir das Select-Statement in eine FROM-Klausel ein:
+    betten wir das Select-Statement in die FROM-Klausel unserer
+    Abfrage ein:
   </p>
   <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
   <tr class="sdoc-code-tr-odd">
@@ -641,7 +642,7 @@
   <p class="sdoc-para-p">
     Auf dieser Grundlage können wir die Selektion in einer Methode
     kapseln. Hier eine Implementierung in Perl, die es
-    erlaubt, die Klauseln SELECT, WHERE und ORDER BY beliebig
+    zulässt, die Klauseln SELECT, WHERE und ORDER BY beliebig
     zu setzen:
   </p>
   <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
@@ -771,7 +772,7 @@
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">32</td>
-    <td class="sdoc-code-td-line">    <span class="hl slc"># Erzeuge vollständige Abfrage</span></td>
+    <td class="sdoc-code-td-line">    <span class="hl slc"># Erzeuge vollständiges Statement über den angegebenen Klauseln</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">33</td>
@@ -815,7 +816,7 @@
   </tr>
   </table>
   <p class="sdoc-para-p">
-    Der Aufruf
+    Beispiel: Der Aufruf
   </p>
   <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
   <tr class="sdoc-code-tr-odd">
@@ -836,7 +837,7 @@
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln"> 5</td>
-    <td class="sdoc-code-td-line">        <span class="hl str">&apos;fnc_schema&apos;</span><span class="hl opt">,</span></td>
+    <td class="sdoc-code-td-line">        <span class="hl str">&quot;fnc_schema&quot;</span><span class="hl opt">,</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln"> 6</td>
@@ -852,7 +853,7 @@
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln"> 9</td>
-    <td class="sdoc-code-td-line">        <span class="hl str">&quot;fnc_source ~ &apos;to_date&apos;&quot;</span><span class="hl opt">,</span></td>
+    <td class="sdoc-code-td-line">        <span class="hl str">&quot;fnc_source LIKE &apos;</span><span class="hl ipl">%to_date</span><span class="hl str">%&apos;&quot;</span><span class="hl opt">,</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">10</td>
@@ -969,7 +970,7 @@
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">22</td>
-    <td class="sdoc-code-td-line">    fnc_source ~ <span class="hl str">&apos;to_date&apos;</span></td>
+    <td class="sdoc-code-td-line">    fnc_source <span class="hl kwa">LIKE</span> <span class="hl str">&apos;%to_date%&apos;</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">23</td>
@@ -10057,7 +10058,7 @@
     und im Browser
   </p>
   <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" &#10;   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">&#10;<!-- Generated by perltidy on Sat Apr 11 13:50:23 2020 -->&#10;<html xmlns="http://www.w3.org/1999/xhtml">&#10;<head>&#10;<title>perltidy</title>&#10;<style type="text/css">&#10;<!--&#10;/* default style sheet generated by perltidy */&#10;body {background: #FFFFFF; color: #000000}&#10;pre { color: #000000; &#10;      background: #FFFFFF;&#10;      font-family: courier;&#10;    } &#10;&#10;.c  { color: #000000;} /* comment */&#10;.cm { color: #000000;} /* comma */&#10;.co { color: #000000;} /* colon */&#10;.h  { color: #000000;} /* here-doc-target */&#10;.hh { color: #000000;} /* here-doc-text */&#10;.i  { color: #000000;} /* identifier */&#10;.j  { color: #000000;} /* label */&#10;.k  { color: #000000;} /* keyword */&#10;.m  { color: #000000;} /* subroutine */&#10;.n  { color: #000000;} /* numeric */&#10;.p  { color: #000000;} /* paren */&#10;.pd { color: #000000;} /* pod-text */&#10;.pu { color: #000000;} /* punctuation */&#10;.q  { color: #000000;} /* quote */&#10;.s  { color: #000000;} /* structure */&#10;.sc { color: #000000;} /* semicolon */&#10;.v  { color: #000000;} /* v-string */&#10;.w  { color: #000000;} /* bareword */&#10;-->&#10;</style>&#10;</head>&#10;<body>&#10;<a name="-top-"></a>&#10;<h1>perltidy</h1>&#10;<hr />&#10;<!-- contents of filename: perltidy -->&#10;<span class="pt-k">print</span> <span class="pt-q">&quot;Hello world!\n&quot;</span><span class="pt-sc">;</span>&#10;</body>&#10;</html>&#10;</pre>
+    <pre class="sdoc-code-pre"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" &#10;   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">&#10;<!-- Generated by perltidy on Sun Apr 12 10:20:20 2020 -->&#10;<html xmlns="http://www.w3.org/1999/xhtml">&#10;<head>&#10;<title>perltidy</title>&#10;<style type="text/css">&#10;<!--&#10;/* default style sheet generated by perltidy */&#10;body {background: #FFFFFF; color: #000000}&#10;pre { color: #000000; &#10;      background: #FFFFFF;&#10;      font-family: courier;&#10;    } &#10;&#10;.c  { color: #000000;} /* comment */&#10;.cm { color: #000000;} /* comma */&#10;.co { color: #000000;} /* colon */&#10;.h  { color: #000000;} /* here-doc-target */&#10;.hh { color: #000000;} /* here-doc-text */&#10;.i  { color: #000000;} /* identifier */&#10;.j  { color: #000000;} /* label */&#10;.k  { color: #000000;} /* keyword */&#10;.m  { color: #000000;} /* subroutine */&#10;.n  { color: #000000;} /* numeric */&#10;.p  { color: #000000;} /* paren */&#10;.pd { color: #000000;} /* pod-text */&#10;.pu { color: #000000;} /* punctuation */&#10;.q  { color: #000000;} /* quote */&#10;.s  { color: #000000;} /* structure */&#10;.sc { color: #000000;} /* semicolon */&#10;.v  { color: #000000;} /* v-string */&#10;.w  { color: #000000;} /* bareword */&#10;-->&#10;</style>&#10;</head>&#10;<body>&#10;<a name="-top-"></a>&#10;<h1>perltidy</h1>&#10;<hr />&#10;<!-- contents of filename: perltidy -->&#10;<span class="pt-k">print</span> <span class="pt-q">&quot;Hello world!\n&quot;</span><span class="pt-sc">;</span>&#10;</body>&#10;</html>&#10;</pre>
   </div>
   <a id="section_114_9"></a>
   <h2 class="sdoc-sec-h2">Links</h2>
