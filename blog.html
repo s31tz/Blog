@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2020 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2020-04-13 10:58:19
+    Copyright (C) 2010-2020 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2020-04-13 11:06:08
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -480,7 +480,7 @@
     eine View), deren Aufbau und Verknüpfung alles andere als
     offensichtlich ist. Wir wollen es so kapseln, dass wir bei Abfragen
     keine Details über die interne Repräsentation des Data Dictionary
-    wissen müssen. In einem ersten Schritt haben wir den Kolumnen
+    kennen müssen. In einem ersten Schritt haben wir den Kolumnen
     bereits Aliasnamen gegeben (s.o.), aus denen sich die Bedeutung
     der Kolumnen recht klar ergibt:
   </p>
@@ -554,8 +554,8 @@
     Durch die View werden die internen Namen verdeckt. Abfragen der View
     werden allein über den Kolumnennamen des zugrundeliegenden Statements
     formuliert. Das ist genau das, was wir wollen. Mit der View schaffen
-    wir allerdings eine öffentliche Schnittstelle, die wir ohne zusätzliche
-    Maßnahmen nicht nach Belieben anlegen (Namenskonflikte) und ändern
+    wir allerdings eine öffentliche Schnittstelle, die wir ohne besondere
+    Vorkehrungen nicht nach Belieben anlegen (Namenskonflikte) und ändern
     können (wir wissen nicht, wer die View sonst noch nutzt). Dies ist das
     Gegenteil einer Kapselung. Das Ziel einer <i class="sdoc-seg-i">programminternen</i> Kapselung
     erreichen wir mit einer View nicht.
@@ -592,10 +592,10 @@
   </tr>
   </table>
   <p class="sdoc-para-p">
-    Diese Lösung hat jedoch den Nachteil, dass sie nicht portabel ist.
-    Z.B. verlangt PostgreSQL einen Namen für die Inline-View
-    (<tt class="sdoc-seg-c">AS function_view</tt>), Oracle jedoch nicht, wobei ein Name bei Oracle
-    zwar vereinbart werden kann, aber dann ohne <tt class="sdoc-seg-c">AS</tt>.
+    Diese Lösung hat jedoch den Nachteil, dass sie für den allgemeinen
+    Fall nicht portabel ist. Z.B. verlangt PostgreSQL einen Namen für die
+    Inline-View (<tt class="sdoc-seg-c">AS function_view</tt>), Oracle jedoch nicht, wobei ein
+    Name im Falle von Oracle zwar vereinbart werden kann, aber dann ohne <tt class="sdoc-seg-c">AS</tt>.
   </p>
   <p class="sdoc-para-p">
     Eine weitere Lösung bietet die Einbettung in eine WITH-Klausel:
@@ -821,66 +821,70 @@
   <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln"> 1</td>
-    <td class="sdoc-code-td-line"><span class="hl slc"># Ermittele alle Funktionen, deren Quelltext den Text &apos;to_date&apos; enthält</span></td>
+    <td class="sdoc-code-td-line"><span class="hl slc"># Ermittele alle Funktionen im Schema &apos;seitz&apos;, deren Quelltext</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln"> 2</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
+    <td class="sdoc-code-td-line"><span class="hl slc"># den Text &apos;to_date&apos; enthält</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln"> 3</td>
-    <td class="sdoc-code-td-line"><span class="hl kwb">$sql</span> <span class="hl opt">=</span> PostgreSql<span class="hl opt">::</span>Catalog<span class="hl opt">-&gt;</span><span class="hl kwd">functionSelect</span><span class="hl opt">(</span></td>
+    <td class="sdoc-code-td-line">&nbsp;</td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln"> 4</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwc">select</span> <span class="hl opt">=&gt; [</span></td>
+    <td class="sdoc-code-td-line"><span class="hl kwb">$sql</span> <span class="hl opt">=</span> PostgreSql<span class="hl opt">::</span>Catalog<span class="hl opt">-&gt;</span><span class="hl kwd">functionSelect</span><span class="hl opt">(</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln"> 5</td>
-    <td class="sdoc-code-td-line">        <span class="hl str">&quot;fnc_schema&quot;</span><span class="hl opt">,</span></td>
+    <td class="sdoc-code-td-line">    <span class="hl kwc">select</span> <span class="hl opt">=&gt; [</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln"> 6</td>
-    <td class="sdoc-code-td-line">        <span class="hl str">&quot;fnc_name || &apos;(&apos; || fnc_arguments || &apos;)&apos; AS fnc_signature&quot;</span><span class="hl opt">,</span></td>
+    <td class="sdoc-code-td-line">        <span class="hl str">&quot;fnc_schema&quot;</span><span class="hl opt">,</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln"> 7</td>
-    <td class="sdoc-code-td-line">    <span class="hl opt">],</span></td>
+    <td class="sdoc-code-td-line">        <span class="hl str">&quot;fnc_name || &apos;(&apos; || fnc_arguments || &apos;)&apos; AS fnc_signature&quot;</span><span class="hl opt">,</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln"> 8</td>
-    <td class="sdoc-code-td-line">    where <span class="hl opt">=&gt; [</span></td>
+    <td class="sdoc-code-td-line">    <span class="hl opt">],</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln"> 9</td>
-    <td class="sdoc-code-td-line">        <span class="hl str">&quot;fnc_schema = &apos;seitz&apos;&quot;</span><span class="hl opt">,</span></td>
+    <td class="sdoc-code-td-line">    where <span class="hl opt">=&gt; [</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">10</td>
-    <td class="sdoc-code-td-line">        <span class="hl str">&quot;fnc_source LIKE &apos;</span><span class="hl ipl">%to_date</span><span class="hl str">%&apos;&quot;</span><span class="hl opt">,</span></td>
+    <td class="sdoc-code-td-line">        <span class="hl str">&quot;fnc_schema = &apos;seitz&apos;&quot;</span><span class="hl opt">,</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">11</td>
-    <td class="sdoc-code-td-line">    <span class="hl opt">],</span></td>
+    <td class="sdoc-code-td-line">        <span class="hl str">&quot;fnc_source LIKE &apos;</span><span class="hl ipl">%to_date</span><span class="hl str">%&apos;&quot;</span><span class="hl opt">,</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">12</td>
-    <td class="sdoc-code-td-line">    orderBy <span class="hl opt">=&gt; [</span></td>
+    <td class="sdoc-code-td-line">    <span class="hl opt">],</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">13</td>
-    <td class="sdoc-code-td-line">        <span class="hl num">1</span><span class="hl opt">,</span></td>
+    <td class="sdoc-code-td-line">    orderBy <span class="hl opt">=&gt; [</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">14</td>
-    <td class="sdoc-code-td-line">        <span class="hl num">2</span></td>
+    <td class="sdoc-code-td-line">        <span class="hl num">1</span><span class="hl opt">,</span></td>
   </tr>
   <tr class="sdoc-code-tr-odd">
     <td class="sdoc-code-td-ln">15</td>
-    <td class="sdoc-code-td-line">    <span class="hl opt">],</span></td>
+    <td class="sdoc-code-td-line">        <span class="hl num">2</span></td>
   </tr>
   <tr class="sdoc-code-tr-even">
     <td class="sdoc-code-td-ln">16</td>
+    <td class="sdoc-code-td-line">    <span class="hl opt">],</span></td>
+  </tr>
+  <tr class="sdoc-code-tr-odd">
+    <td class="sdoc-code-td-ln">17</td>
     <td class="sdoc-code-td-line"><span class="hl opt">);</span></td>
   </tr>
   </table>
@@ -994,7 +998,7 @@
   </tr>
   </table>
   <p class="sdoc-para-p">
-    das wir gegen die Datenbank absetzen können.
+    das wir gegen die Datenbank ausführen können.
   </p>
   <a id="section_2"></a>
   <h1 class="sdoc-sec-h1">142. Google Pixel C Tablet in Werkszustand zurücksetzen</h1>
@@ -10069,7 +10073,7 @@
     und im Browser
   </p>
   <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" &#10;   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">&#10;<!-- Generated by perltidy on Mon Apr 13 10:58:52 2020 -->&#10;<html xmlns="http://www.w3.org/1999/xhtml">&#10;<head>&#10;<title>perltidy</title>&#10;<style type="text/css">&#10;<!--&#10;/* default style sheet generated by perltidy */&#10;body {background: #FFFFFF; color: #000000}&#10;pre { color: #000000; &#10;      background: #FFFFFF;&#10;      font-family: courier;&#10;    } &#10;&#10;.c  { color: #000000;} /* comment */&#10;.cm { color: #000000;} /* comma */&#10;.co { color: #000000;} /* colon */&#10;.h  { color: #000000;} /* here-doc-target */&#10;.hh { color: #000000;} /* here-doc-text */&#10;.i  { color: #000000;} /* identifier */&#10;.j  { color: #000000;} /* label */&#10;.k  { color: #000000;} /* keyword */&#10;.m  { color: #000000;} /* subroutine */&#10;.n  { color: #000000;} /* numeric */&#10;.p  { color: #000000;} /* paren */&#10;.pd { color: #000000;} /* pod-text */&#10;.pu { color: #000000;} /* punctuation */&#10;.q  { color: #000000;} /* quote */&#10;.s  { color: #000000;} /* structure */&#10;.sc { color: #000000;} /* semicolon */&#10;.v  { color: #000000;} /* v-string */&#10;.w  { color: #000000;} /* bareword */&#10;-->&#10;</style>&#10;</head>&#10;<body>&#10;<a name="-top-"></a>&#10;<h1>perltidy</h1>&#10;<hr />&#10;<!-- contents of filename: perltidy -->&#10;<span class="pt-k">print</span> <span class="pt-q">&quot;Hello world!\n&quot;</span><span class="pt-sc">;</span>&#10;</body>&#10;</html>&#10;</pre>
+    <pre class="sdoc-code-pre"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" &#10;   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">&#10;<!-- Generated by perltidy on Mon Apr 13 11:06:14 2020 -->&#10;<html xmlns="http://www.w3.org/1999/xhtml">&#10;<head>&#10;<title>perltidy</title>&#10;<style type="text/css">&#10;<!--&#10;/* default style sheet generated by perltidy */&#10;body {background: #FFFFFF; color: #000000}&#10;pre { color: #000000; &#10;      background: #FFFFFF;&#10;      font-family: courier;&#10;    } &#10;&#10;.c  { color: #000000;} /* comment */&#10;.cm { color: #000000;} /* comma */&#10;.co { color: #000000;} /* colon */&#10;.h  { color: #000000;} /* here-doc-target */&#10;.hh { color: #000000;} /* here-doc-text */&#10;.i  { color: #000000;} /* identifier */&#10;.j  { color: #000000;} /* label */&#10;.k  { color: #000000;} /* keyword */&#10;.m  { color: #000000;} /* subroutine */&#10;.n  { color: #000000;} /* numeric */&#10;.p  { color: #000000;} /* paren */&#10;.pd { color: #000000;} /* pod-text */&#10;.pu { color: #000000;} /* punctuation */&#10;.q  { color: #000000;} /* quote */&#10;.s  { color: #000000;} /* structure */&#10;.sc { color: #000000;} /* semicolon */&#10;.v  { color: #000000;} /* v-string */&#10;.w  { color: #000000;} /* bareword */&#10;-->&#10;</style>&#10;</head>&#10;<body>&#10;<a name="-top-"></a>&#10;<h1>perltidy</h1>&#10;<hr />&#10;<!-- contents of filename: perltidy -->&#10;<span class="pt-k">print</span> <span class="pt-q">&quot;Hello world!\n&quot;</span><span class="pt-sc">;</span>&#10;</body>&#10;</html>&#10;</pre>
   </div>
   <a id="section_114_9"></a>
   <h2 class="sdoc-sec-h2">Links</h2>
