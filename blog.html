@@ -259,7 +259,7 @@
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2020 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2020-04-17 11:19:15
+    Copyright (C) 2010-2020 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2020-04-18 19:11:19
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -891,112 +891,9 @@
   <p class="sdoc-para-p">
     liefert das Statement
   </p>
-  <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln"> 1</td>
-    <td class="sdoc-code-td-line"><span class="hl kwa">WITH</span> function_view <span class="hl kwa">AS</span> <span class="hl opt">(</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln"> 2</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwa">SELECT</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln"> 3</td>
-    <td class="sdoc-code-td-line">        fnc.oid <span class="hl kwa">AS</span> fnc_oid</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln"> 4</td>
-    <td class="sdoc-code-td-line">        <span class="hl opt">,</span> usr.usename <span class="hl kwa">AS</span> fnc_owner</td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln"> 5</td>
-    <td class="sdoc-code-td-line">        <span class="hl opt">,</span> nsp.nspname <span class="hl kwa">AS</span> fnc_schema</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln"> 6</td>
-    <td class="sdoc-code-td-line">        <span class="hl opt">,</span> fnc.proname <span class="hl kwa">AS</span> fnc_name</td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln"> 7</td>
-    <td class="sdoc-code-td-line">        <span class="hl opt">,</span> <span class="hl kwd">pg_get_function_identity_arguments</span><span class="hl opt">(</span>pro.oid<span class="hl opt">)</span> <span class="hl kwa">AS</span> fnc_arguments</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln"> 8</td>
-    <td class="sdoc-code-td-line">        <span class="hl opt">,</span> <span class="hl kwd">pg_get_functiondef</span><span class="hl opt">(</span>fnc.oid<span class="hl opt">)</span> <span class="hl kwa">AS</span> fnc_source</td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln"> 9</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwa">FROM</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">10</td>
-    <td class="sdoc-code-td-line">        pg_proc <span class="hl kwa">AS</span> fnc</td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">11</td>
-    <td class="sdoc-code-td-line">        <span class="hl kwa">JOIN</span> pg_namespace <span class="hl kwa">AS</span> nsp</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">12</td>
-    <td class="sdoc-code-td-line">            <span class="hl kwa">ON</span> fnc.pronamespace <span class="hl opt">=</span> nsp.oid</td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">13</td>
-    <td class="sdoc-code-td-line">        <span class="hl kwa">JOIN</span> pg_user usr</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">14</td>
-    <td class="sdoc-code-td-line">            <span class="hl kwa">ON</span> fnc.proowner <span class="hl opt">=</span> usr.usesysid</td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">15</td>
-    <td class="sdoc-code-td-line"><span class="hl opt">)</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">16</td>
-    <td class="sdoc-code-td-line"><span class="hl kwa">SELECT</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">17</td>
-    <td class="sdoc-code-td-line">    fnc_schema</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">18</td>
-    <td class="sdoc-code-td-line">    <span class="hl opt">,</span> fnc_name</td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">19</td>
-    <td class="sdoc-code-td-line"><span class="hl kwa">FROM</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">20</td>
-    <td class="sdoc-code-td-line">    function_view</td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">21</td>
-    <td class="sdoc-code-td-line"><span class="hl kwa">WHERE</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">22</td>
-    <td class="sdoc-code-td-line">    fnc_schema <span class="hl opt">=</span> <span class="hl str">&apos;seitz&apos;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">23</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwa">AND</span> fnc_source <span class="hl kwa">LIKE</span> <span class="hl str">&apos;%to_date%&apos;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">24</td>
-    <td class="sdoc-code-td-line"><span class="hl kwa">ORDER BY</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">25</td>
-    <td class="sdoc-code-td-line">    <span class="hl num">1</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">26</td>
-    <td class="sdoc-code-td-line">    <span class="hl opt">,</span> <span class="hl num">2</span></td>
-  </tr>
-  </table>
+  <div class="sdoc-highlight-div">
+    <pre class="sdoc-code-pre brush: sql; toolbar: false; pad-line-numbers: 1">WITH function_view AS (&#10;    SELECT&#10;        fnc.oid AS fnc_oid&#10;        , usr.usename AS fnc_owner&#10;        , nsp.nspname AS fnc_schema&#10;        , fnc.proname AS fnc_name&#10;        , pg_get_function_identity_arguments(pro.oid) AS fnc_arguments&#10;        , pg_get_functiondef(fnc.oid) AS fnc_source&#10;    FROM&#10;        pg_proc AS fnc&#10;        JOIN pg_namespace AS nsp&#10;            ON fnc.pronamespace = nsp.oid&#10;        JOIN pg_user usr&#10;            ON fnc.proowner = usr.usesysid&#10;)&#10;SELECT&#10;    fnc_schema&#10;    , fnc_name&#10;FROM&#10;    function_view&#10;WHERE&#10;    fnc_schema = 'seitz'&#10;    AND fnc_source LIKE '%to_date%'&#10;ORDER BY&#10;    1&#10;    , 2</pre>
+  </div>
   <p class="sdoc-para-p">
     das wir gegen die Datenbank ausführen können.
   </p>
@@ -10073,7 +9970,7 @@
     und im Browser
   </p>
   <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" &#10;   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">&#10;<!-- Generated by perltidy on Fri Apr 17 11:19:21 2020 -->&#10;<html xmlns="http://www.w3.org/1999/xhtml">&#10;<head>&#10;<title>perltidy</title>&#10;<style type="text/css">&#10;<!--&#10;/* default style sheet generated by perltidy */&#10;body {background: #FFFFFF; color: #000000}&#10;pre { color: #000000; &#10;      background: #FFFFFF;&#10;      font-family: courier;&#10;    } &#10;&#10;.c  { color: #000000;} /* comment */&#10;.cm { color: #000000;} /* comma */&#10;.co { color: #000000;} /* colon */&#10;.h  { color: #000000;} /* here-doc-target */&#10;.hh { color: #000000;} /* here-doc-text */&#10;.i  { color: #000000;} /* identifier */&#10;.j  { color: #000000;} /* label */&#10;.k  { color: #000000;} /* keyword */&#10;.m  { color: #000000;} /* subroutine */&#10;.n  { color: #000000;} /* numeric */&#10;.p  { color: #000000;} /* paren */&#10;.pd { color: #000000;} /* pod-text */&#10;.pu { color: #000000;} /* punctuation */&#10;.q  { color: #000000;} /* quote */&#10;.s  { color: #000000;} /* structure */&#10;.sc { color: #000000;} /* semicolon */&#10;.v  { color: #000000;} /* v-string */&#10;.w  { color: #000000;} /* bareword */&#10;-->&#10;</style>&#10;</head>&#10;<body>&#10;<a name="-top-"></a>&#10;<h1>perltidy</h1>&#10;<hr />&#10;<!-- contents of filename: perltidy -->&#10;<span class="pt-k">print</span> <span class="pt-q">&quot;Hello world!\n&quot;</span><span class="pt-sc">;</span>&#10;</body>&#10;</html>&#10;</pre>
+    <pre class="sdoc-code-pre"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" &#10;   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">&#10;<!-- Generated by perltidy on Sat Apr 18 19:11:37 2020 -->&#10;<html xmlns="http://www.w3.org/1999/xhtml">&#10;<head>&#10;<title>perltidy</title>&#10;<style type="text/css">&#10;<!--&#10;/* default style sheet generated by perltidy */&#10;body {background: #FFFFFF; color: #000000}&#10;pre { color: #000000; &#10;      background: #FFFFFF;&#10;      font-family: courier;&#10;    } &#10;&#10;.c  { color: #000000;} /* comment */&#10;.cm { color: #000000;} /* comma */&#10;.co { color: #000000;} /* colon */&#10;.h  { color: #000000;} /* here-doc-target */&#10;.hh { color: #000000;} /* here-doc-text */&#10;.i  { color: #000000;} /* identifier */&#10;.j  { color: #000000;} /* label */&#10;.k  { color: #000000;} /* keyword */&#10;.m  { color: #000000;} /* subroutine */&#10;.n  { color: #000000;} /* numeric */&#10;.p  { color: #000000;} /* paren */&#10;.pd { color: #000000;} /* pod-text */&#10;.pu { color: #000000;} /* punctuation */&#10;.q  { color: #000000;} /* quote */&#10;.s  { color: #000000;} /* structure */&#10;.sc { color: #000000;} /* semicolon */&#10;.v  { color: #000000;} /* v-string */&#10;.w  { color: #000000;} /* bareword */&#10;-->&#10;</style>&#10;</head>&#10;<body>&#10;<a name="-top-"></a>&#10;<h1>perltidy</h1>&#10;<hr />&#10;<!-- contents of filename: perltidy -->&#10;<span class="pt-k">print</span> <span class="pt-q">&quot;Hello world!\n&quot;</span><span class="pt-sc">;</span>&#10;</body>&#10;</html>&#10;</pre>
   </div>
   <a id="section_114_9"></a>
   <h2 class="sdoc-sec-h2">Links</h2>
