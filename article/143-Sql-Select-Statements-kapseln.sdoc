@@ -1,0 +1,226 @@
+# Date: 2020-03-10
+# Id: 155
+# Categories: Datenbanken, SQL
+
+%Document:
+  title="SQL: SELECT-Statements kapseln"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/sql-icon-86x100.png" width="48" height="56" url=""
+
+Das potentiell komplexeste Statement in SQL ist das SELECT-Statement.
+Dieses wiederverwendbar zu kapseln, z.B. in einer Methode einer
+Klasse, kann eine Herausforderung sein. Dieses Problem wollen wir
+hier allgemeingültig lösen.
+
+Hier ein Beispiel. Mit folgendem SELECT-Statement wollen wir aus dem
+Data Dictionary (Catalog) von PostgreSQL Informationen über die auf der
+Datenbank definierten Datenbank-Funktionen abfragen:
+
+  %Code: highlight=SQL
+    SELECT
+        fnc.oid AS fnc_oid
+        , usr.usename AS fnc_owner
+        , nsp.nspname AS fnc_schema
+        , fnc.proname AS fnc_name
+        , pg_get_function_identity_arguments(pro.oid) AS fnc_arguments
+        , pg_get_functiondef(fnc.oid) AS fnc_source
+    FROM
+        pg_proc AS fnc
+        JOIN pg_namespace AS nsp
+            ON fnc.pronamespace = nsp.oid
+        JOIN pg_user usr
+            ON fnc.proowner = usr.usesysid
+  .
+
+Dieses relativ kurze Statement besitzt eine beachtliche
+Komplexität. Es erstreckt sich über drei Relationen (zwei Tabellen,
+eine View), deren Aufbau und Verknüpfung alles andere als
+offensichtlich ist. Wir wollen es so kapseln, dass wir bei Abfragen
+keine Details über die interne Repräsentation des Data Dictionary
+wissen müssen. In einem ersten Schritt haben wir den Kolumnen
+bereits Aliasnamen gegeben (s.o.), aus denen sich die Bedeutung
+der Kolumnen schonmal recht klar ergibt:
+
+[fnc_oid]:
+  Statt C{oid}. Objekt-Id der Funktion.
+[fnc_owner]:
+  Statt C{usename}. Name des Owners der Funktion.
+[fnc_schema]:
+  Statt C{nspname}. Name des Schemas, in dem sich die Funktion befindet.
+[fnc_name]:
+  Statt C{proname}. Name der Funktion.
+[fnc_arguments]:
+  Statt C{pg_get_function_identity_arguments(oid)}. Argumentliste der
+  Funktion als kommaseparierte Aufzählung der Datentypen. Diese
+  Information ist wichtig, da eine Funktion nur durch ihre Signatur
+  (Name plus Argumentliste) eindeutig bestimmt ist.
+[fnc_source]:
+  Statt C{pg_get_functiondef(oid)}. Quelltext der Funktion.
+
+Über diesen Kolumnen wollen wir unsere Abfragen formulieren.
+Das Problem ist jedoch, dass wir die Kolumnen-Aliase nicht überall in
+einer Abfrage verwenden können, insbesondere nicht in der
+WHERE-Klausel, die die Ergebnismenge bestimmt. Wenn wir
+obiges Statement um eine WHERE-Klausel ergänzen, müssen wir dort also
+weiterhin die internen Namen verwenden. Das wollen wir gerade nicht.
+
+Eine mögliche Lösung ist das Anlegen einer View:
+
+  %Code: highlight=SQL
+    CREATE VIEW function_view AS
+    <obiges_statement>
+  .
+  
+Durch die View werden die internen Namen verdeckt. Abfragen der View
+werden allein über den Kolumnennamen des zugrundeliegenden Statements
+formuliert. Das ist genau das, was wir wollen. Mit der View schaffen
+wir allerdings eine öffentliche Schnittstelle, die wir (ohne besondere
+Vorkehrungen) nicht nach Belieben anlegen (Namenskonflikte) und ändern
+können (wir wissen nicht, wer die View sonst noch nutzt). Dies ist das
+Gegenteil einer Kapselung. Das Ziel einer I{programminternen} Kapselung
+erreichen wir mit einer View nicht.
+
+Eine bessere Lösung bietet eine Inline-View. Bei einer Inline-View
+betten wir das Select-Statement in die FROM-Klausel unserer
+Abfrage ein:
+
+  %Code: highlight=SQL
+    SELECT
+        ...
+    FROM (
+        <obiges_statement>
+    ) AS function_view
+    ...
+  .
+  
+Diese Lösung hat jedoch den Nachteil, dass sie nicht portabel
+ist. Z.B. erzwingt PostgreSQL einen Namen für die Inline-View (C{AS
+function_view}), Oracle jedoch nicht, wobei ein Name im Falle von
+Oracle zwar vereinbart werden kann, aber dann ohne das
+Schlüsselwort C{AS}.
+
+Eine weitere Lösung bietet die Einbettung in eine WITH-Klausel:
+
+  %Code: highlight=SQL
+    WITH function_view AS (
+        <obiges_statement>
+    )
+    SELECT
+        ...
+    FROM
+        function_view
+    ...
+  .
+
+Diese Lösung ist portabel und separiert die konkrete Abfrage
+(C{SELECT ... FROM function_view ...}) klar von dem gekapselten
+SELECT-Statement.
+
+Auf dieser Grundlage können wir die Selektion in einer Methode
+kapseln. Hier eine Implementierung in Perl, die so ausgelegt ist,
+dass die Klauseln SELECT (select), WHERE (where) und ORDER BY
+(orderBy) frei gesetzt werden können:
+
+  %Code: highlight=Perl
+    package PostgreSql::Catalog;
+
+    sub functionSelect {
+        my ($class,%clause) = @_;
+
+        # Defaults
+
+        $clause{'select'} //= ['*']; # Default für SELECT-Klausel
+        $clause{'from'} = ['function_view']; # FROM-Klausel ist festgelegt
+
+        # Gekapseltes Statement
+
+        my $stmt = << '    __SQL__';
+        WITH function_view AS (
+            SELECT
+                fnc.oid AS fnc_oid
+                , usr.usename AS fnc_owner
+                , nsp.nspname AS fnc_schema
+                , fnc.proname AS fnc_name
+                , pg_get_function_identity_arguments(pro.oid) AS fnc_arguments
+                , pg_get_functiondef(fnc.oid) AS fnc_source
+            FROM
+                pg_proc AS fnc
+                JOIN pg_namespace AS nsp
+                    ON fnc.pronamespace = nsp.oid
+                JOIN pg_user usr
+                    ON fnc.proowner = usr.usesysid
+        )
+        __SQL__
+        $stmt =~ s/^    //mg;
+
+        # Erzeuge vollständiges Statement über den angegebenen Klauseln
+
+        for my $key (qw/select from where orderBy/) {
+            if (my $arr = $clause{$key}) {
+                my $clause  = $key eq 'orderBy'? 'ORDER BY': uc $key;
+                $stmt .= sprintf "%s\n    %s\n",$clause,join "\n    , ",@$arr;
+            }
+        }
+
+        return $stmt;
+    }
+  .
+
+Beispiel: Der Aufruf
+
+  %Code: highlight=Perl
+    # Ermittele alle Funktionen im Schema 'mickey', deren Quelltext
+    # die Zeichenkette 'to_date' enthält
+
+    $sql = PostgreSql::Catalog->functionSelect(
+        select => [
+            "fnc_schema",
+            "fnc_name || '(' || fnc_arguments || ')' AS fnc_signature",
+        ],
+        where => [
+            "fnc_schema = 'mickey'",
+            "fnc_source LIKE '%to_date%'",
+        ],
+        orderBy => [
+            1,
+            2
+        ],
+    );
+  .
+
+generiert das Statement
+
+  %Code: highlight=SQL
+    WITH function_view AS (
+        SELECT
+            fnc.oid AS fnc_oid
+            , usr.usename AS fnc_owner
+            , nsp.nspname AS fnc_schema
+            , fnc.proname AS fnc_name
+            , pg_get_function_identity_arguments(pro.oid) AS fnc_arguments
+            , pg_get_functiondef(fnc.oid) AS fnc_source
+        FROM
+            pg_proc AS fnc
+            JOIN pg_namespace AS nsp
+                ON fnc.pronamespace = nsp.oid
+            JOIN pg_user usr
+                ON fnc.proowner = usr.usesysid
+    )
+    SELECT
+        fnc_schema
+        , fnc_name
+    FROM
+        function_view
+    WHERE
+        fnc_schema = 'mickey'
+        AND fnc_source LIKE '%to_date%'
+    ORDER BY
+        1
+        , 2
+  .
+
+das wir gegen die Datenbank ausführen können.
+
+# eof
