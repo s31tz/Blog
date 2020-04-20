@@ -97,7 +97,7 @@ Abfrage ein:
   
 Diese Lösung hat jedoch den Nachteil, dass sie nicht portabel
 ist. Z.B. erzwingt PostgreSQL einen Namen für die Inline-View (C{AS
-function_view}), Oracle jedoch nicht, wobei ein Name im Falle von
+function_view}), Oracle jedoch nicht. Wobei ein Name im Falle von
 Oracle zwar vereinbart werden kann, aber dann ohne das
 Schlüsselwort C{AS}.
 
