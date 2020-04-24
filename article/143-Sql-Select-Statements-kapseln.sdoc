@@ -41,7 +41,7 @@ offensichtlich ist. Wir wollen es so kapseln, dass wir bei Abfragen
 keine Details über die interne Repräsentation des Data Dictionary
 wissen müssen. In einem ersten Schritt haben wir den Kolumnen
 bereits Aliasnamen gegeben (s.o.), aus denen sich die Bedeutung
-der Kolumnen schonmal recht klar ergibt:
+der Kolumnen recht deutlich ergibt:
 
 [fnc_oid]:
   Statt C{oid}. Objekt-Id der Funktion.
