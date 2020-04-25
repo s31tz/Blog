@@ -119,8 +119,8 @@ Diese Lösung ist portabel und separiert die konkrete Abfrage
 (C{SELECT ... FROM function_view ...}) klar von dem gekapselten
 SELECT-Statement.
 
-Auf dieser Grundlage können wir die Selektion in einer Methode
-wie gewünscht kapseln. Hier eine Implementierung in Perl, die so
+Auf dieser Grundlage können wir die Selektion wie gewünscht kapseln.
+Hier die Implementierung einer Methode in Perl, die so
 ausgelegt ist, dass die Klauseln SELECT (Namensparameter select),
 WHERE (where) und ORDER BY (orderBy) frei gesetzt werden können:
 
