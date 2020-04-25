@@ -121,7 +121,7 @@ SELECT-Statement.
 Auf dieser Grundlage können wir die Selektion wie gewünscht kapseln.
 Hier die Implementierung einer Methode in Perl, die so
 ausgelegt ist, dass die Klauseln SELECT (Namensparameter select),
-WHERE (where) und ORDER BY (orderBy) frei gesetzt werden können:
+WHERE (where) und ORDER BY (orderBy) frei belegt werden können:
 
   %Code: highlight=Perl
     package PostgreSql::Catalog;
@@ -210,7 +210,7 @@ generiert das Statement
     )
     SELECT
         fnc_schema
-        , fnc_name
+        , fnc_name || '(' || fnc_arguments || ')' AS fnc_signature
     FROM
         function_view
     WHERE
