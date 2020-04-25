@@ -172,7 +172,7 @@ WHERE (where) und ORDER BY (orderBy) frei gesetzt werden können:
 Beispiel: Der Aufruf
 
   %Code: highlight=Perl
-    # Ermittele alle Funktionen im Schema 'mickey', deren Quelltext
+    # Ermittele alle Funktionen im Schema 'donald', deren Quelltext
     # die Zeichenkette 'to_date' enthält
 
     $sql = PostgreSql::Catalog->functionSelect(
@@ -181,7 +181,7 @@ Beispiel: Der Aufruf
             "fnc_name || '(' || fnc_arguments || ')' AS fnc_signature",
         ],
         where => [
-            "fnc_schema = 'mickey'",
+            "fnc_schema = 'donald'",
             "fnc_source LIKE '%to_date%'",
         ],
         orderBy => [
@@ -215,7 +215,7 @@ generiert das Statement
     FROM
         function_view
     WHERE
-        fnc_schema = 'mickey'
+        fnc_schema = 'donald'
         AND fnc_source LIKE '%to_date%'
     ORDER BY
         1
