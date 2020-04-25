@@ -82,7 +82,8 @@ können (wir wissen nicht, wer die View sonst noch nutzt). Dies ist das
 Gegenteil einer Kapselung. Das Ziel einer I{programminternen} Kapselung
 erreichen wir mit einer View nicht.
 
-Eine bessere Lösung bietet eine Inline-View. Bei einer Inline-View
+Eine bessere Lösung bietet eine Inline-View, die nur innerhalb unseres
+Programms oder unserer Klasse bekannt ist. Bei einer Inline-View
 betten wir das Select-Statement in die FROM-Klausel unserer
 Abfrage ein:
 
@@ -119,9 +120,9 @@ Diese Lösung ist portabel und separiert die konkrete Abfrage
 SELECT-Statement.
 
 Auf dieser Grundlage können wir die Selektion in einer Methode
-kapseln. Hier eine Implementierung in Perl, die so ausgelegt ist,
-dass die Klauseln SELECT (select), WHERE (where) und ORDER BY
-(orderBy) frei gesetzt werden können:
+wie gewünscht kapseln. Hier eine Implementierung in Perl, die so
+ausgelegt ist, dass die Klauseln SELECT (Namensparameter select),
+WHERE (where) und ORDER BY (orderBy) frei gesetzt werden können:
 
   %Code: highlight=Perl
     package PostgreSql::Catalog;
