@@ -41,7 +41,7 @@ offensichtlich ist. Wir wollen es so kapseln, dass wir bei Abfragen
 keine Details über die interne Repräsentation des Data Dictionary
 wissen müssen. In einem ersten Schritt haben wir den Kolumnen
 bereits Aliasnamen gegeben (s.o.), aus denen sich die Bedeutung
-der Kolumnen recht deutlich ergibt:
+der Kolumnen recht klar ergibt:
 
 [fnc_oid]:
   Statt C{oid}. Objekt-Id der Funktion.
@@ -82,10 +82,9 @@ können (wir wissen nicht, wer die View sonst noch nutzt). Dies ist das
 Gegenteil einer Kapselung. Das Ziel einer I{programminternen} Kapselung
 erreichen wir mit einer View nicht.
 
-Eine bessere Lösung bietet eine Inline-View, die nur innerhalb unseres
-Programms oder unserer Klasse bekannt ist. Bei einer Inline-View
-betten wir das Select-Statement in die FROM-Klausel unserer
-Abfrage ein:
+Eine bessere Lösung bietet eine Inline-View, die nur innerhalb unserer
+Methode bekannt ist. Bei einer Inline-View betten wir das Select-Statement
+in die FROM-Klausel unserer Abfrage ein:
 
   %Code: highlight=SQL
     SELECT
