@@ -228,9 +228,10 @@ Wir haben folgendes erreicht:
 * Wir haben das Gerüst eines komplexen Select-Statements in einer
   Methode gekapselt
 * Wir haben eigene Kolumnennamen vereinbart, über denen
-  wir Abfragen formulieren können
+  wir Selektionen formulieren können
 * Wir haben eine Methode geschaffen, die eine
-  Programmierschnittstelle zur Erzeugung von beliebigen
-  Selektionen über dem gekapselten Statement zur Verfügung stellt
+  Programmierschnittstelle zur Erzeugung von Selektionen über
+  dem gekapselten Statement zur Verfügung stellt
+* Zusätzliche Datenbankstrukturen (Views) werden nicht benötigt
 
 # eof
