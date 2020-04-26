@@ -223,4 +223,16 @@ generiert das Statement
 
 das wir gegen die Datenbank ausführen können.
 
+Wir haben folgendes erreicht:
+
+* Wir haben das Gerüst eines komplexen Select-Statements in einer
+  Methode gekapselt
+* Wir haben Kolumnennamen vereinbart, über denen
+  wir Abfragen formulieren können, ohne auf interne Namen
+  Bezug nehmen zu müssen
+* Wir haben eine Methode geschaffen, die eine
+  Programmierschnittstelle zur Erzeugung von beliebigen
+  Abfragen über dem gekapselten Select-Statement zur
+  Verfügung stellt
+
 # eof
