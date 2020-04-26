@@ -232,6 +232,7 @@ Wir haben folgendes erreicht:
 * Wir haben eine Methode geschaffen, die eine
   Programmierschnittstelle zur Erzeugung von Selektionen über
   dem gekapselten Statement zur Verfügung stellt
-* Zusätzliche Datenbankstrukturen (Views) werden nicht benötigt
+* Wir haben keine zusätzlichen Datenbankstrukturen (Views)
+  erzeugen müssen
 
 # eof
