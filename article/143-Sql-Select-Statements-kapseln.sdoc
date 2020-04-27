@@ -229,10 +229,8 @@ Wir haben folgendes erreicht:
   Methode gekapselt
 * Wir haben eigene Kolumnennamen vereinbart, über denen
   wir Selektionen formulieren können
-* Wir haben eine Methode geschaffen, die eine
-  Programmierschnittstelle zur Erzeugung von Selektionen über
-  dem gekapselten Statement zur Verfügung stellt
-* Wir haben keine zusätzlichen Datenbankstrukturen (Views)
-  erzeugen müssen
+* Wir haben eine Methode geschaffen, die eine Schnittstelle zur
+  Erzeugung von Selektionen über dem gekapselten Statement zur
+  Verfügung stellt
 
 # eof
