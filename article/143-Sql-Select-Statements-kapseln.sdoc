@@ -228,9 +228,10 @@ Wir haben folgendes erreicht:
 * Wir haben das Gerüst eines komplexen Select-Statements in einer
   Methode gekapselt
 * Wir haben eigene Kolumnennamen vereinbart, über denen
-  wir Selektionen formulieren können
+  wir Selektionen formulieren können, nur diese muss der Aufrufer
+  kennen
 * Wir haben eine Methode geschaffen, die eine Schnittstelle zur
-  Erzeugung von Selektionen über dem gekapselten Statement zur
-  Verfügung stellt
+  Erzeugung von konkreten Selektionen über dem gekapselten Statement
+  zur Verfügung stellt
 
 # eof
