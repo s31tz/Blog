@@ -229,8 +229,8 @@ Wir haben folgendes erreicht:
 * Wir haben das Gerüst eines komplexen Select-Statements in einer
   Methode gekapselt.
 * Wir haben eigene Kolumnennamen vereinbart, über denen
-  wir Selektionen formulieren können. Nur diese muss der Aufrufer
-  kennen.
+  wir Selektionen formulieren können. Nur diese Namen muss der
+  Aufrufer kennen.
 * Wir haben eine Methode geschaffen, die eine Schnittstelle zur
   Erzeugung von konkreten Selektionen über dem gekapselten Statement
   zur Verfügung stellt. Die internen Details muss der Aufrufer nicht
