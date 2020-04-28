@@ -82,9 +82,10 @@ können (wir wissen nicht, wer die View sonst noch nutzt). Dies ist das
 Gegenteil einer Kapselung. Das Ziel einer I{programminternen} Kapselung
 erreichen wir mit einer View nicht.
 
-Eine bessere Lösung bietet eine Inline-View, die nur innerhalb unserer
-Methode bekannt ist. Bei einer Inline-View betten wir das Select-Statement
-in die FROM-Klausel unserer Abfrage ein:
+Eine in dieser Hinsicht bessere Lösung bietet eine Inline-View,
+die nur innerhalb unserer Methode bekannt ist. Bei einer Inline-View
+betten wir das Select-Statement in die FROM-Klausel unserer
+Abfrage ein:
 
   %Code: highlight=SQL
     SELECT
