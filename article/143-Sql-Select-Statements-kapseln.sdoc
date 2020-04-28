@@ -122,7 +122,7 @@ SELECT-Statement.
 Auf dieser Grundlage können wir die Selektion wie gewünscht kapseln.
 Hier die Implementierung einer Methode in Perl, die so
 ausgelegt ist, dass die Klauseln SELECT (Namensparameter select),
-WHERE (where) und ORDER BY (orderBy) frei belegt werden können:
+WHERE (where) und ORDER BY (orderBy) frei gesetzt werden können:
 
   %Code: highlight=Perl
     package PostgreSql::Catalog;
@@ -234,6 +234,6 @@ Wir haben folgendes erreicht:
 * Wir haben eine Methode geschaffen, die eine Schnittstelle zur
   Erzeugung von konkreten Selektionen über dem gekapselten Statement
   zur Verfügung stellt. Die internen Details muss der Aufrufer nicht
-  kennen.
+  kennen und sie sind außerhalb der Methode nicht bekannt.
 
 # eof
