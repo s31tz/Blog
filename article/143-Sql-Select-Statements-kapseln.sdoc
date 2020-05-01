@@ -234,6 +234,7 @@ Wir haben folgendes erreicht:
 * Wir haben eine Methode geschaffen, die eine Schnittstelle zur
   Erzeugung von konkreten Selektionen über dem gekapselten Statement
   zur Verfügung stellt. Die internen Details muss der Aufrufer nicht
-  kennen und sie sind außerhalb der Methode nicht bekannt.
+  kennen und sie sind, bis auf die Kolumnennamen, außerhalb der Methode
+  nicht bekannt.
 
 # eof
