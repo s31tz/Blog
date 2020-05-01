@@ -54,7 +54,7 @@ der Kolumnen recht klar ergibt:
 [fnc_arguments]:
   Statt C{pg_get_function_identity_arguments(oid)}. Argumentliste der
   Funktion als kommaseparierte Aufzählung der Datentypen. Diese
-  Information ist wichtig, da eine Funktion nur durch ihre Signatur
+  Information ist bedeutsam, da eine Funktion nur durch ihre Signatur
   (Name plus Argumentliste) eindeutig bestimmt ist.
 [fnc_source]:
   Statt C{pg_get_functiondef(oid)}. Quelltext der Funktion.
