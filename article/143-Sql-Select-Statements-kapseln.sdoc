@@ -79,7 +79,7 @@ formuliert. Das ist genau das, was wir wollen. Mit der View schaffen
 wir allerdings eine öffentliche Schnittstelle, die wir (ohne besondere
 Vorkehrungen) nicht nach Belieben anlegen (Namenskonflikte) und ändern
 können (wir wissen nicht, wer die View sonst noch nutzt). Dies ist das
-Gegenteil einer Kapselung. Das Ziel einer I{programminternen} Kapselung
+Gegenteil einer Kapselung. Das Ziel einer echten Kapselung
 erreichen wir mit einer View nicht.
 
 Eine in dieser Hinsicht bessere Lösung bietet eine Inline-View,
