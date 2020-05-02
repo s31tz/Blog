@@ -135,7 +135,7 @@ WHERE (where) und ORDER BY (orderBy) frei gesetzt werden können:
         $clause{'select'} //= ['*']; # Default für SELECT-Klausel
         $clause{'from'} = ['function_view']; # FROM-Klausel ist festgelegt
 
-        # Gekapseltes Statement
+        # Gekapselter Statement-Rumpf
 
         my $stmt = << '    __SQL__';
         WITH function_view AS (
