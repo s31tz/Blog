@@ -233,7 +233,7 @@ Wir haben folgendes erreicht:
   der Methode bekannt.
 * Wir haben eine Methode geschaffen, die eine Schnittstelle zur
   Erzeugung von konkreten Selektionen über dem gekapselten Statement
-  bereitstellt. Die Interna muss der Aufrufer nicht kennen und die
-  Details des generierten Statements nicht durchdrungen haben.
+  bereitstellt. Den Quelltext der generierten Statements
+  muss der Nutzer nicht durchdringen.
 
 # eof
