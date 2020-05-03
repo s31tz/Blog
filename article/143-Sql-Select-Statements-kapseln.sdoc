@@ -80,7 +80,7 @@ wir allerdings eine öffentliche Schnittstelle, die wir (ohne besondere
 Vorkehrungen) nicht nach Belieben anlegen (Namenskonflikte) und ändern
 können (wir wissen nicht, wer die View sonst noch nutzt). Dies ist das
 Gegenteil einer Kapselung. Das Ziel einer echten Kapselung
-erreichen wir mit einer View nicht.
+in einer Methode, und nur dort, erreichen wir mit einer View nicht.
 
 Eine in dieser Hinsicht bessere Lösung bietet eine Inline-View,
 die nur innerhalb unserer Methode bekannt ist. Bei einer Inline-View
@@ -229,12 +229,11 @@ Wir haben folgendes erreicht:
 * Wir haben das Gerüst eines komplexen Select-Statements in einer
   Methode gekapselt.
 * Wir haben eigene Kolumnennamen vereinbart, über denen
-  wir Selektionen formulieren können. Nur diese Namen muss der
-  Aufrufer kennen.
+  wir Selektionen formulieren können. Nur diese Namen sind außerhalb
+  der Methode bekannt.
 * Wir haben eine Methode geschaffen, die eine Schnittstelle zur
   Erzeugung von konkreten Selektionen über dem gekapselten Statement
-  zur Verfügung stellt. Die internen Details muss der Aufrufer nicht
-  kennen und sie sind, bis auf die Kolumnennamen, außerhalb der Methode
-  nicht bekannt.
+  bereitstellt. Die Interna muss der Aufrufer nicht kennen und die
+  Details des generierten Statements nicht durchdrungen haben.
 
 # eof
