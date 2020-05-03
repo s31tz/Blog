@@ -233,6 +233,6 @@ Wir haben folgendes erreicht:
   der Methode bekannt.
 * Wir haben eine Methode geschaffen, die eine Schnittstelle zur
   Erzeugung von konkreten Selektionen über dem gekapselten Statement
-  bereitstellt.
+  bereitstellt, deren Details der Nutzer nicht kennen muss.
 
 # eof
