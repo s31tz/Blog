@@ -3,7 +3,7 @@
 # Categories: Datenbanken, SQL
 
 %Document:
-  title="SQL: SELECT-Statement in Methode kapseln"
+  title="SQL: SELECT-Statement in einer Methode kapseln"
   generateAnchors=0
   utf8=1
 
@@ -39,7 +39,7 @@ Komplexität. Es erstreckt sich über drei Relationen (zwei Tabellen,
 eine View), deren Aufbau und Verknüpfung alles andere als
 offensichtlich ist. Wir wollen es so kapseln, dass wir bei Abfragen
 keine Details über die interne Repräsentation des Data Dictionary
-kennen müssen. In einem ersten Schritt haben wir den Kolumnen
+wissen müssen. In einem ersten Schritt haben wir den Kolumnen
 bereits Aliasnamen gegeben (s.o.), aus denen sich die Bedeutung
 der Kolumnen recht klar ergibt:
 

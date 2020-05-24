@@ -1,0 +1,23 @@
+# Date: 2020-05-24
+# Id: 156
+# Categories: Grafik
+
+%Document:
+  title="GIMP: JPEG als Default-Exportformat festlegen"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/gimp-logo-1008x690.png" width="85" height="58"
+  url="https://www.gimp.org/"
+
+In GIMP wird beim Exportieren eines Bildes der Dateiname generell
+mit der Endung C{.png} vorbelegt. Wenn man Bilder meist als JPEG
+(Endung C{.jpg}) speichern möchte, ist es lästig, ständig die
+Endung in C{.jpg} ändern zu müssen. GIMP scheint keine Einstellung
+für ein Default Exportformat zu kennen. Hier ein Weg, wie man bei einem
+GIMP Executable trotzdem JPEG als Default-Exportformat festlegen kann:
+U{"https://www.flickr.com/groups/48637250@N00/discuss/72157645200558924/",\
+  text="How to set Gimp default export to JPEG"}. Ich habe es
+ausprobiert (GIMP 2.10.8), es funktioniert.
+
+# eof
