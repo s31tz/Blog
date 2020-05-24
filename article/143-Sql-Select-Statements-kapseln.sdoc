@@ -3,7 +3,7 @@
 # Categories: Datenbanken, SQL
 
 %Document:
-  title="SQL: SELECT-Statement in einer Methode kapseln"
+  title="SQL: SELECT-Statements in Methoden kapseln"
   generateAnchors=0
   utf8=1
 
