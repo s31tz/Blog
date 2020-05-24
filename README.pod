@@ -12,7 +12,11 @@ Die Quellen der Artikel des Blog  L<http://fseitz.de/blog>
 
 =item *
 
-L<SQL: SELECT-Statements in einer Methode kapseln|https://github.com/s31tz/Blog/blob/master/article/143-Sql-Select-Statements-kapseln.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/155-x.html>)
+L<GIMP: JPEG als Default-Exportformat|https://github.com/s31tz/Blog/blob/master/article/144-Gimp-JPEG-als-Default-Exportformat.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/156-x.html>)
+
+=item *
+
+L<SQL: SELECT-Statement in einer Methode kapseln|https://github.com/s31tz/Blog/blob/master/article/143-Sql-Select-Statements-kapseln.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/155-x.html>)
 
 =item *
 
