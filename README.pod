@@ -12,7 +12,7 @@ Die Quellen der Artikel des Blog  L<http://fseitz.de/blog>
 
 =item *
 
-L<SQL: SELECT-Statements kapseln|https://github.com/s31tz/Blog/blob/master/article/143-Sql-Select-Statements-kapseln.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/155-x.html>)
+L<SQL: SELECT-Statements in einer Methode kapseln|https://github.com/s31tz/Blog/blob/master/article/143-Sql-Select-Statements-kapseln.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/155-x.html>)
 
 =item *
 
