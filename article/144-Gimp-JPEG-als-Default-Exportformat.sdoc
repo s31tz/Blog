@@ -20,4 +20,12 @@ U{"https://www.flickr.com/groups/48637250@N00/discuss/72157645200558924/",\
   text="How to set Gimp default export to JPEG"}. Ich habe es
 ausprobiert (GIMP 2.10.8), es funktioniert.
 
+Zusammenfassung:
+
+%Code: highlight=Shell
+  $ which gimp
+  /usr/bin/gimp
+  $ ghex /usr/bin/gimp # extension.png durch extension.jpg ersetzen
+.
+
 # eof
