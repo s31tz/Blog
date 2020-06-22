@@ -12,7 +12,7 @@ Die Quellen der Artikel des Blog  L<http://fseitz.de/blog>
 
 =item *
 
-L<plotly: Gestaltungstipps für plotly.js Plots|https://github.com/s31tz/Blog/blob/master/article/145-Plotly.js-Tipps.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/157-x.html>)
+L<plotly: Gestaltungstipps für plotly.js Diagramme|https://github.com/s31tz/Blog/blob/master/article/145-Plotly.js-Tipps.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/157-x.html>)
 
 =item *
 
