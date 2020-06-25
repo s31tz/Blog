@@ -8,9 +8,9 @@ use utf8;
 use FindBin qw/$Bin/;;
 use lib "$Bin/../lib/perl5";
 use open OUT=>':locale';
+use Blog::Base::Quiq::Path;
 use Blog::Base::Quiq::ApplicationPaths;
 use Blog::Base::Quiq::Config;
-use Blog::Base::Quiq::Path;
 use Blog::Base::Quiq::Process;
 use Sdoc2::Document;
 use Blog::Base::Quiq::Option;
@@ -77,6 +77,10 @@ Frank Seitz
 
 # -----------------------------------------------------------------------------
 
+# Allgemeines
+
+my $p = Blog::Base::Quiq::Path->new;
+
 # Konfiguration
 
 my $app = Blog::Base::Quiq::ApplicationPaths->new;
@@ -139,13 +143,8 @@ my %idIdx = $entT->index('id');
 # Artikeldateien lesen
 
 my $n = 0; # Anzahl aktualisierter Artikel
-# for my $file (Blog::Base::Quiq::Path->glob("*.sdoc")) {
-for my $file (Blog::Base::Quiq::Path->find($articleDir,
-        -type=>'f',
-        -pattern=>'\.sdoc$',
-    )) {
-    my $mtime = Blog::Base::Quiq::Path->mtime($file);
-    my $text = Encode::decode('utf8',Blog::Base::Quiq::Path->read($file));
+for my $file ($p->find($articleDir,-type=>'f',-pattern=>'\.sdoc$')) {
+    my $text = Encode::decode('utf8',$p->read($file));
 
     my ($id) = $text =~ /^# (?:id=|Id: )(\d+)/m;
     if (!$id) {
@@ -163,6 +162,9 @@ for my $file (Blog::Base::Quiq::Path->find($articleDir,
         warn "WARNING: Artikel-Id auf der Datenbank nicht gefunden: $id\n";
         next;
     }
+
+    my $dir = $p->dir($file);
+    my $mtime = $dir eq $articleDir? $p->mtime($file): $p->mtimeDir($dir);
 
     if ($mtime > $ent->last_modified) {
         # Existierender Eintrag: Blog-DB aktualisieren
