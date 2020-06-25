@@ -8,14 +8,14 @@ use utf8;
 use FindBin qw/$Bin/;;
 use lib "$Bin/../lib/perl5";
 use open OUT=>':locale';
+use Blog::Base::Quiq::ApplicationPaths;
+use Blog::Base::Quiq::Config;
+use Blog::Base::Quiq::Path;
+use Blog::Base::Quiq::Process;
 use Sdoc2::Document;
 use Blog::Base::Quiq::Option;
 use Blog::Base::R1::Help;
-use Blog::Base::Quiq::ApplicationPaths;
-use Blog::Base::Quiq::Config;
 use Blog::Base::Quiq::Database::Connection;
-use Blog::Base::Quiq::Process;
-use Blog::Base::Quiq::Path;
 
 # -----------------------------------------------------------------------------
 
@@ -77,12 +77,23 @@ Frank Seitz
 
 # -----------------------------------------------------------------------------
 
+# Konfiguration
+
+my $app = Blog::Base::Quiq::ApplicationPaths->new;
+my $cfg = Blog::Base::Quiq::Config->new($app->etcDir('blog.conf'));
+
+# Artikelverzeichnis ermitteln
+my $articleDir = $app->homeDir('article');
+
 # Hilfsfunktion: Wandele Sdoc-Datei in Serendipty-Daten
 
 my $convertFile = sub {
-    my $file = shift;
+    my ($articleDir,$file) = @_;
 
+    my $dir = Blog::Base::Quiq::Path->dir($file);
+    Blog::Base::Quiq::Process->cwd($dir);
     my $sdoc =  Sdoc2::Document->new("$file",-utf8=>1);
+    Blog::Base::Quiq::Process->cwd($articleDir);
     my $html = Encode::decode('utf-8',$sdoc->dump('ehtml'));
     $html =~ s|<h1.*?>(.*?)</h1>\n+||;
     my $title = $1;
@@ -111,11 +122,6 @@ elsif (@ARGV) {
     Blog::Base::R1::Help->exit(10,'ERROR: Too many arguments');
 }
 
-# Konfiguration
-
-my $app = Blog::Base::Quiq::ApplicationPaths->new;
-my $cfg = Blog::Base::Quiq::Config->new($app->etcDir('blog.conf'));
-
 # Datenbankverbindung aufbauen
 my $db = Blog::Base::Quiq::Database::Connection->new($cfg->get('Udl'),
     -utf8=>1,
@@ -130,15 +136,14 @@ my $entT = $db->select(
 );
 my %idIdx = $entT->index('id');
 
-# Ins Artikelverzeichnis wechseln
-
-my $articleDir = $app->homeDir('article');
-Blog::Base::Quiq::Process->cwd($articleDir);
-
 # Artikeldateien lesen
 
 my $n = 0; # Anzahl aktualisierter Artikel
-for my $file (Blog::Base::Quiq::Path->glob("*.sdoc")) {
+# for my $file (Blog::Base::Quiq::Path->glob("*.sdoc")) {
+for my $file (Blog::Base::Quiq::Path->find($articleDir,
+        -type=>'f',
+        -pattern=>'\.sdoc$',
+    )) {
     my $mtime = Blog::Base::Quiq::Path->mtime($file);
     my $text = Encode::decode('utf8',Blog::Base::Quiq::Path->read($file));
 
@@ -147,7 +152,7 @@ for my $file (Blog::Base::Quiq::Path->glob("*.sdoc")) {
         # Neuer Eintrag: Daten für Serendipity ausgeben
         warn "WARNING: Datei enthält keine id: $file\n";
 
-        my ($title,$html) = $convertFile->($file);
+        my ($title,$html) = $convertFile->($articleDir,$file);
         print "Title: $title\n\nHTML:\n$html";
 
         next;
@@ -175,7 +180,7 @@ for my $file (Blog::Base::Quiq::Path->glob("*.sdoc")) {
 
             # Artikel aktualisieren
 
-            my ($title,$html) = $convertFile->($file);
+            my ($title,$html) = $convertFile->($articleDir,$file);
             $db->update('serendipity_entries',
                 title=>Encode::encode('iso-8859-1',$title),
                 body=>Encode::encode('iso-8859-1',$html),
