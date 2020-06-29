@@ -16,6 +16,7 @@ use Sdoc2::Document;
 use Blog::Base::Quiq::Option;
 use Blog::Base::R1::Help;
 use Blog::Base::Quiq::Database::Connection;
+use Blog::Base::Quiq::Shell;
 
 # -----------------------------------------------------------------------------
 
@@ -168,15 +169,29 @@ for my $file (@files) {
         next;
     }
 
+    # Jüngste Änderung an der oder den Quelldateien
+
     my $dir = $p->dir($file);
     my $mtime = $dir eq $articleDir? $p->mtime($file): $p->mtimeDir($dir);
+
+    # Jüngste Änderung am Generierungsprogramm (sofern vorhanden)
+
+    my $ext = $p->extension($file) eq 'sdoc3'? 'srun3': 'srun';
+    my $program = $p->basePath($file).".$ext";
+    if (-e $program) {
+        my $t = Blog::Base::Quiq::Shell->exec("$program --mtime",-capture=>'stdout');
+        chomp $t;
+        if ($t > $mtime) {
+            $mtime = $t;
+        }
+    }
 
     if ($mtime > $ent->last_modified) {
         # Existierender Eintrag: Blog-DB aktualisieren
         printf "Aktualisiere: %s\n",$file;
 
         if (!$dryRun) {
-            # Draft-Eigenschft ermitteln
+            # Draft-Eigenschaft ermitteln
 
             my $isDraft = 'f';
             if ($text =~ /^# (?:Draft: )(.+)/m) {
@@ -191,7 +206,7 @@ for my $file (@files) {
             $db->update('serendipity_entries',
                 title=>Encode::encode('iso-8859-1',$title),
                 body=>Encode::encode('iso-8859-1',$html),
-                last_modified=>$mtime,
+                last_modified=>time,
                 isdraft=>$isDraft,
                 -where,id=>$id,
             );
