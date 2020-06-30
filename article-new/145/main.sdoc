@@ -3,7 +3,7 @@
 # Categories: JavaScript, Plotly
 
 %Document:
-  title="plotly.js: Zeitreihe scrollbar darstellen"
+  title="Plotly.js: Plotten von Zeitreihen"
   generateAnchors=0
   utf8=1
 
@@ -19,12 +19,12 @@
   url=https://metacpan.org/pod/Quiq::PlotlyJs::TimeSeries
 
 Das folgende Diagramm zeigt einen Zeitserien-Plot mit Q{Rangeslider}
-auf Basis von U{plotly.js}.  Mit der linken Maustaste kann im Plot ein
+auf Basis von U{plotly.js}. Mit der linken Maustaste kann im Plot ein
 Teilbereich ausgewählt und anschließend mit dem Rangeslider durch den
 Gesamtbereich gescrollt werden. Bei Doppelklick in den Plot-Breich
 wird der ursprüngliche Zustand wieder hergestellt. Beim Überfahren des
 Plotbereichs mit der Maus wird das Koordinatenpaar des nächstgelegenen
-Punktes angezeigt. Der JavaScript-Quelltext des Diagramms wurde mit der
+Punktes angezeigt. Der JavaScript-Quelltext des Diagramms wurde von der
 Perl-Klasse U{Quiq::PlotlyJs::TimeSeries} generiert.
 
 %Include: file="lufttemperatur-plot.sinc"
