@@ -20,7 +20,7 @@
 
 Das folgende Diagramm zeigt einen Zeitserien-Plot mit Q{Rangeslider}
 auf Basis von U{plotly.js}. Mit der linken Maustaste kann im Plot ein
-Teilbereich ausgewählt und anschließend mit dem Rangeslider durch den
+Teilbereich ausgewählt und dann mit dem Rangeslider durch den
 Gesamtbereich gescrollt werden. Bei Doppelklick in den Plot-Breich
 wird der ursprüngliche Zustand wieder hergestellt. Beim Überfahren des
 Plotbereichs mit der Maus wird das Koordinatenpaar des nächstgelegenen

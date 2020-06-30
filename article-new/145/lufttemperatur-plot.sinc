@@ -8,7 +8,7 @@
         type: 'scatter',
         mode: 'lines',
         fill: 'tonexty',
-        fillcolor: 'rgb(230,230,230,0.1)',
+        fillcolor: '#e8e8e8',
         line: {
           width: 1,
           color: '#009900',
@@ -41,22 +41,22 @@
         xaxis: {
           type: 'date',
           mirror: true,
-          linecolor: '#b0b0b0',
+          linecolor: '#d0d0d0',
           autorange: true,
-          gridcolor: 'rgb(230,230,230,0.1)',
+          gridcolor: '#e8e8e8',
           hoverformat: '%Y-%m-%d %H:%M:%S',
           tickformat: '%Y-%m-%d %H:%M',
           tickangle: 30,
-          ticklen: 4,
-          tickcolor: '#b0b0b0',
+          ticklen: 5,
+          tickcolor: '#d0d0d0',
           showspikes: true,
           spikethickness: 1,
           spikesnap: 'data',
-          spikecolor: 'rgb(0,0,0,1)',
+          spikecolor: '#000000',
           spikedash: 'dot',
           rangeslider: {
             autorange: true,
-            bordercolor: '#b0b0b0',
+            bordercolor: '#e0e0e0',
             borderwidth: 1,
             thickness: 0.2,
           },
@@ -66,10 +66,11 @@
         yaxis: {
           type: 'linear',
           mirror: true,
-          linecolor: '#b0b0b0',
+          linecolor: '#d0d0d0',
           autorange: true,
-          tickcolor: '#b0b0b0',
-          gridcolor: 'rgb(230,230,230,0.1)',
+          ticklen: 4,
+          tickcolor: '#d0d0d0',
+          gridcolor: '#e8e8e8',
           showspikes: true,
           spikethickness: 1,
           spikesnap: 'data',
@@ -84,6 +85,10 @@
           zeroline: true,
           zerolinecolor: '#b0b0b0',
         },
+        yaxis2: {
+          overlaying: 'y',
+          side: 'right',
+        },
       },{
         displayModeBar: false,
         doubleClickDelay: 1000,
@@ -92,9 +97,7 @@
     });
   </script>
 </p>
-Parameter Color: <select id="color" onchange="var color = $('#color').val(); Plotly.restyle('plot',{ 'line.color': color, 'marker.color': color, }); Plotly.relayout('plot',{ 'title.font.color': color, 'yaxis.title.font.color': color, });" title="Setze die Farbe Kurve, des Titels und des Y-Titels"><option value="#009900">Green</option><option value="#0000cc">Blue</option><option value="#ff0000">Red</option></select> | Markers:<input type="checkbox" style="vertical-align: middle" value="1" title="Markiere die Datenpunkte, statt sie durch Linien zu verbinden" onclick="Plotly.restyle('plot',{ 'mode': this.checked? 'markers': 'lines', });" />
- | Splines:<input type="checkbox" style="vertical-align: middle" value="1" title="Verbinde die Datenpunkte mit Splines, statt mit geaden Linien" onclick="Plotly.restyle('plot',{ 'line.shape': this.checked? 'spline': 'linear', });" />
- | Rangeslider:<input type="checkbox" style="vertical-align: middle" value="1" checked="checked" title="Zeige den Rangeslider an" onclick="var visible = true; var height = 400; var margin = 150; if (!this.checked) { visible = false; height = 335; margin = 85; } Plotly.relayout('plot',{ 'xaxis.rangeslider.visible': visible, 'height': height, 'margin.b': margin, })" />
+Parameter Color: <select id="color" onchange="var color = $('#color').val(); Plotly.restyle('plot',{ 'line.color': color, 'marker.color': color, }); Plotly.relayout('plot',{ 'title.font.color': color, 'yaxis.title.font.color': color, });" title="Setze die Farbe Kurve, des Titels und des Y-Titels"><option value="#009900">Green</option><option value="#0000cc">Blue</option><option value="#ff0000">Red</option><option value="#ffff00">Yellow</option></select> | Line Shape: <select id="shape" onchange="var shape = $('#shape').val(); if (shape == 'Splines') { Plotly.restyle('plot',{ 'mode': 'lines', 'line.shape': 'spline', }); } else if (shape == 'Markers') { Plotly.restyle('plot',{ 'mode': 'markers', }); } else { Plotly.restyle('plot',{ 'mode': 'lines', 'line.shape': 'linear', }); }" title="Setze die Form der Kurve"><option value="Lines" selected="selected">Lines</option><option value="Splines">Splines</option><option value="Markers">Markers</option></select> | Rangeslider:<input type="checkbox" style="vertical-align: middle" value="1" checked="checked" title="Zeige den Rangeslider an" onclick="var visible = true; var height = 400; var margin = 150; if (!this.checked) { visible = false; height = 335; margin = 85; } Plotly.relayout('plot',{ 'xaxis.rangeslider.visible': visible, 'height': height, 'margin.b': margin, })" />
 @@LaTeX@@
 .
 
