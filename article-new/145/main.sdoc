@@ -24,8 +24,7 @@ Teilbereich ausgewählt und dann mit dem Rangeslider durch den
 Gesamtbereich gescrollt werden. Bei Doppelklick in den Plot-Breich
 wird der ursprüngliche Zustand wieder hergestellt. Beim Überfahren des
 Plotbereichs mit der Maus wird das Koordinatenpaar des nächstgelegenen
-Punktes angezeigt. Der JavaScript-Quelltext des Diagramms wurde von der
-Perl-Klasse U{Quiq::PlotlyJs::TimeSeries} generiert.
+Punktes angezeigt.
 
 %Include: file="lufttemperatur-plot.sinc"
 
