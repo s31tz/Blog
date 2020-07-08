@@ -29,6 +29,12 @@ Hierbei ist:
   %T - Uhrzeit
   %z - Zeitzone als hhmm-Offset
 
+Soll die Ausgabe in einer anderen als der lokalen Zeitzone erfolgen,
+wird die Environment-Variable TZ entsprechend gesetzt (hier Ausgabe in UTC):
+
+  $ TZ=UTC date -d @1406546442 '+%F %T %z'
+  2014-07-28 11:20:42 +0000
+
 Dasselbe im ISO-8601 Datumsformat (sekundengenau):
 
   $ date -d @1406546442 --iso-8601=seconds

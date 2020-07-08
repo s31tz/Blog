@@ -18,7 +18,7 @@
   name=Quiq::PlotlyJs::TimeSeries
   url=https://metacpan.org/pod/Quiq::PlotlyJs::TimeSeries
 
-Das folgende Diagramm zeigt einen Zeitserien-Plot mit Q{Rangeslider}
+Das folgende Diagramm zeigt einen Zeitreihen-Plot mit Q{Rangeslider}
 auf Basis von U{plotly.js}. Mit der linken Maustaste kann im Plot ein
 Teilbereich ausgewählt und dann mit dem Rangeslider durch den
 Gesamtbereich gescrollt werden. Bei Doppelklick in den Plot-Breich
