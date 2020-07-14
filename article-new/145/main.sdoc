@@ -3,7 +3,7 @@
 # Categories: JavaScript, Plotly
 
 %Document:
-  title="Plotly.js: Plotten von Zeitreihen"
+  title="Plotly.js: Plotten und sichten von Zeitreihen"
   generateAnchors=0
   utf8=1
 
@@ -18,13 +18,17 @@
   name=Quiq::PlotlyJs::TimeSeries
   url=https://metacpan.org/pod/Quiq::PlotlyJs::TimeSeries
 
-Das folgende Diagramm zeigt einen Zeitreihen-Plot mit Q{Rangeslider}
-auf Basis von U{plotly.js}. Mit der linken Maustaste kann im Plot ein
-Teilbereich ausgewählt und dann mit dem Rangeslider durch den
-Gesamtbereich gescrollt werden. Bei Doppelklick in den Plot-Breich
-wird der ursprüngliche Zustand wieder hergestellt. Beim Überfahren des
-Plotbereichs mit der Maus wird das Koordinatenpaar des nächstgelegenen
-Punktes angezeigt.
+Die folgenden Diagramme zeigen Zeitreihen-Plots mit Q{Rangeslider} auf
+Basis von U{plotly.js}. Ich habe eine Klasse implementiert, die diese
+als eine Einheit behandelt: In dem Diagramm, dessen Rangeslider
+aktiviert ist, kann mit der linken Maustaste im Plot ein Teilbereich
+ausgewählt und dann mit dem Rangeslider durch den Gesamtbereich
+gescrollt werden. Das Zoomen und Scrollen findet dabei über allen
+Diagrammen synchron statt. Bei Doppelklick in den Plot-Breich wird der
+ursprüngliche Zustand über allen Diagrammen wieder hergestellt. Beim
+Überfahren des Plotbereichs mit der Maus wird das Koordinatenpaar des
+nächstgelegenen Punktes angezeigt. Über den Button Q{Download as PNG}
+kann der aktuelle Diagramm-Zustand als Grafik heruntergeladen werden.
 
 %Include: file="lufttemperatur-plot.sinc"
 
