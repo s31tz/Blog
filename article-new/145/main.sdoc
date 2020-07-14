@@ -3,7 +3,7 @@
 # Categories: JavaScript, Plotly
 
 %Document:
-  title="Plotly.js: Plotten und sichten von Zeitreihen"
+  title="Plotly.js: Plotten und analysieren von Zeitreihen"
   generateAnchors=0
   utf8=1
 
@@ -19,18 +19,18 @@
   url=https://metacpan.org/pod/Quiq
 
 Die folgenden Diagramme zeigen Zeitreihen-Plots mit Q{Rangeslider} auf
-Basis von U{plotly.js}. Ich habe eine Klasse implementiert
-U{Quiq::PlotlyJs::TimeSeries::DiagramGroup}, die diese als eine
-Einheit behandelt und folgende Funktionalität realisiert: In dem
-Diagramm, dessen Rangeslider aktiviert ist, kann mit der linken
-Maustaste im Plot ein Teilbereich ausgewählt und anschließend mit dem
-Rangeslider durch den Gesamtbereich gescrollt werden. Das Zoomen und
-Scrollen findet dabei über I{allen} Diagrammen synchron statt. Bei
-Doppelklick in den Plot-Breich wird der ursprüngliche Zustand wieder
-hergestellt. Beim Überfahren des Plotbereichs mit der Maus wird das
-Koordinatenpaar des nächstgelegenen Punktes angezeigt. Über den Button
-Q{Download as PNG} kann der aktuelle Diagramm-Zustand als Grafik
-heruntergeladen werden.
+Basis von U{plotly.js}. Ich habe eine Klasse implementiert,
+U{Quiq::PlotlyJs::TimeSeries::DiagramGroup}, die eine Menge von
+Zeitreihen als eine Einheit behandelt und folgende Funktionalität
+realisiert: In dem Diagramm, dessen Rangeslider aktiviert ist, kann
+mit der linken Maustaste im Plot ein Teilbereich ausgewählt und
+anschließend mit dem Rangeslider durch den Gesamtbereich gescrollt
+werden. Das Zoomen und Scrollen findet dabei über allen Diagrammen
+synchron statt. Bei Doppelklick in den Plot-Breich wird der
+ursprüngliche Zustand wieder hergestellt. Beim Überfahren des
+Plotbereichs mit der Maus wird das Koordinatenpaar des nächstgelegenen
+Punktes angezeigt. Mittels des Buttons Q{Download as PNG} kann der
+aktuelle Diagramm-Zustand als Grafik heruntergeladen werden.
 
 %Include: file="lufttemperatur-plot.sinc"
 
