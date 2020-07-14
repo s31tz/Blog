@@ -7,7 +7,7 @@
   </tr>
   <tr>
     <td>
-      Rangeslider:<input type="checkbox" id="dig-r1" class="checkbox-rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="toggleRangeSliders('dig',this)" /> | <button type="button" onclick="let plot = $('#dig-d1'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'AirTemperature', });" title="Download plot graphic as PNG">Download as PNG</button>
+      <span style="margin-left: 0.5em">Rangeslider:</span><input type="checkbox" id="dig-r1" class="checkbox-rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="toggleRangeSliders('dig',this)" /> | <button type="button" onclick="let plot = $('#dig-d1'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'AirTemperature', });" title="Download plot graphic as PNG">Download as PNG</button>
     </td>
   </tr>
   </table>
@@ -17,7 +17,7 @@
   </tr>
   <tr>
     <td>
-      Rangeslider:<input type="checkbox" id="dig-r2" class="checkbox-rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="toggleRangeSliders('dig',this)" /> | <button type="button" onclick="let plot = $('#dig-d2'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'WindSpeed', });" title="Download plot graphic as PNG">Download as PNG</button>
+      <span style="margin-left: 0.5em">Rangeslider:</span><input type="checkbox" id="dig-r2" class="checkbox-rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="toggleRangeSliders('dig',this)" /> | <button type="button" onclick="let plot = $('#dig-d2'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'WindSpeed', });" title="Download plot graphic as PNG">Download as PNG</button>
     </td>
   </tr>
   </table>
@@ -27,7 +27,7 @@
   </tr>
   <tr>
     <td>
-      Rangeslider:<input type="checkbox" id="dig-r3" class="checkbox-rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="toggleRangeSliders('dig',this)" /> | <button type="button" onclick="let plot = $('#dig-d3'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'AirPressure', });" title="Download plot graphic as PNG">Download as PNG</button>
+      <span style="margin-left: 0.5em">Rangeslider:</span><input type="checkbox" id="dig-r3" class="checkbox-rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="toggleRangeSliders('dig',this)" /> | <button type="button" onclick="let plot = $('#dig-d3'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'AirPressure', });" title="Download plot graphic as PNG">Download as PNG</button>
     </td>
   </tr>
   </table>
@@ -37,7 +37,7 @@
   </tr>
   <tr>
     <td>
-      Rangeslider:<input type="checkbox" id="dig-r4" class="checkbox-rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="toggleRangeSliders('dig',this)" /> | <button type="button" onclick="let plot = $('#dig-d4'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'RelativeHumidity', });" title="Download plot graphic as PNG">Download as PNG</button>
+      <span style="margin-left: 0.5em">Rangeslider:</span><input type="checkbox" id="dig-r4" class="checkbox-rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="toggleRangeSliders('dig',this)" /> | <button type="button" onclick="let plot = $('#dig-d4'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'RelativeHumidity', });" title="Download plot graphic as PNG">Download as PNG</button>
     </td>
   </tr>
   </table>
