@@ -18,20 +18,21 @@
   name=Quiq::PlotlyJs::TimeSeries::DiagramGroup
   url=https://metacpan.org/pod/Quiq
 
-Die folgenden Diagramme zeigen Zeitreihen-Plots mit Q{Rangeslider} auf
-Basis von U{Plotly.js}. Ich habe eine Klasse implementiert,
+Die folgenden Diagramme zeigen Zeitreihen-Plots (Beispiel:
+Umweltdaten) mit Q{Rangeslider} auf Basis von U{Plotly.js}. Ich habe
+eine Perl-Klasse implementiert,
 U{Quiq::PlotlyJs::TimeSeries::DiagramGroup}, die eine Menge von
 Zeitreihen als eine Einheit behandelt und folgende Funktionalität
-realisiert: In dem Diagramm, dessen Rangeslider aktiviert ist
-(siehe Checkbox), kann mit der linken Maustaste im Plot ein Zeitbereich
-ausgewählt und anschließend mit dem Rangeslider durch den
+realisiert: In dem Diagramm, dessen Rangeslider aktiviert ist (siehe
+Checkbox an den Diagrammen), kann mit der linken Maustaste im Plot ein
+Zeitbereich ausgewählt und anschließend mit dem Rangeslider durch den
 Gesamtbereich gescrollt werden. Das Zoomen und Scrollen findet dabei
 über allen Diagrammen synchron statt. Bei Doppelklick in den
 Plot-Breich wird der ursprüngliche Zustand wieder hergestellt. Beim
-Überfahren des Plotbereichs mit der Maus wird das Koordinatenpaar des
-nächstgelegenen Punktes angezeigt. Mittels des Buttons Q{Download as
-PNG} kann der aktuelle Diagramm-Zustand als Grafik heruntergeladen
-werden.
+Überfahren der Plots mit der Maus wird das Koordinatenpaar des
+nächstgelegenen Punktes angezeigt. Über das Menü Q{Shape} kann die
+Kurvenform eingestellt und mittels des Buttons Q{Download as PNG} der
+aktuelle Diagramm-Zustand als Grafik heruntergeladen werden.
 
 %Include: file="lufttemperatur-plot.sinc"
 
