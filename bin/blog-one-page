@@ -15,6 +15,7 @@ use Blog::Base::Quiq::Config;
 use Blog::Base::Quiq::Process;
 use Blog::Base::Quiq::Path;
 use Sdoc2::Document;
+use Blog::Base::Quiq::Html::Tag;
 
 # -----------------------------------------------------------------------------
 
@@ -77,19 +78,22 @@ elsif (@ARGV) {
 my $app = Blog::Base::Quiq::ApplicationPaths->new;
 my $cfg = Blog::Base::Quiq::Config->new($app->etcDir('blog.conf'));
 
+my $homeDir = $app->homeDir;
 my $articleDir = $app->homeDir('article');
 my $imageDir = $app->homeDir('image');
 my $cssDir = $app->homeDir('css');
 
 # Ins Artikelverzeichnis wechseln
 Blog::Base::Quiq::Process->cwd($articleDir);
+# Blog::Base::Quiq::Process->cwd($homeDir);
 
 # Artikeldateien zusammenfügen
 
 my $sdoc = '';
 my $maxMtime = 0;
 for my $file (reverse Blog::Base::Quiq::Path->glob("*.sdoc")) {
-    my ($num) = $file =~ m|(\d+)-[^/]+.sdoc|;
+# for my $file (reverse Blog::Base::Quiq::Path->find('.',-pattern=>qr|^article-new/.*\.sdoc$|)) {
+    my ($num) = $file =~ m|(\d+)|;
     $num += 0;
     my $text = Blog::Base::Quiq::Path->read($file);
 
@@ -169,8 +173,18 @@ if ($format eq 'sdoc') {
     print Encode::decode('utf-8',$sdoc);
 }
 else {
-    print Encode::decode('utf-8',
-        Sdoc2::Document->new(\$sdoc,-utf8=>1)->dump('html'));
+    my $html = Sdoc2::Document->new(\$sdoc,-utf8=>1)->dump('html');
+    my $h = Blog::Base::Quiq::Html::Tag->new;
+    my @jsLibs = (
+        'https://code.jquery.com/jquery-latest.min.js',
+        'https://cdn.plot.ly/plotly-latest.min.js',
+    );
+    my $tmp = '';
+    for my $jsLib (@jsLibs) {
+        $tmp .= '  '.$h->tag('script',src=>$jsLib);
+    }
+    $html =~ s|(</head>)|$tmp$1|;
+    print Encode::decode('utf-8',$html);
 }
 
 # eof
