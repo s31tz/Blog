@@ -18,8 +18,8 @@
   name=Quiq::PlotlyJs::TimeSeries::DiagramGroup
   url=https://metacpan.org/pod/Quiq
 
-Die folgenden Diagramme zeigen Zeitreihen-Plots (Beispiel:
-Umweltdaten) mit Q{Rangeslider} auf Basis von U{Plotly.js}. Ich habe
+Die folgenden Diagramme zeigen Zeitreihen-Plots (Umweltdaten)
+mit Q{Rangeslider} auf Basis von U{Plotly.js}. Ich habe
 eine Perl-Klasse implementiert,
 U{Quiq::PlotlyJs::TimeSeries::DiagramGroup}, die eine Menge von
 Zeitreihen als eine Einheit behandelt und folgende Funktionalität
@@ -32,7 +32,10 @@ Plot-Breich wird der ursprüngliche Zustand wieder hergestellt. Beim
 Überfahren der Plots mit der Maus wird das Koordinatenpaar des
 nächstgelegenen Punktes angezeigt. Über das Menü Q{Shape} kann die
 Kurvenform eingestellt und mittels des Buttons Q{Download as PNG} der
-aktuelle Diagramm-Zustand als Grafik heruntergeladen werden.
+aktuelle Diagramm-Zustand als Grafik heruntergeladen werden. Die
+geplotteten Daten sind nicht Teil der Seite, sondern werden per
+asynchronen Ajax-Request von einer anderen Site via
+Cross-Origin Resource Sharing geladen.
 
 %Include: file="lufttemperatur-plot.sinc"
 
