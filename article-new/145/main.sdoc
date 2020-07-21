@@ -3,7 +3,7 @@
 # Categories: JavaScript, Plotly
 
 %Document:
-  title="Plotly.js: Plotten und analysieren von Zeitreihen"
+  title="Plotly.js: Plotten und analysieren einer Gruppe von Zeitreihen"
   generateAnchors=0
   utf8=1
 
@@ -19,11 +19,14 @@
   url=https://metacpan.org/pod/Quiq
 
 Die folgenden Diagramme zeigen Zeitreihen-Plots (Umweltdaten)
-mit Q{Rangeslider} auf Basis von U{Plotly.js}. Ich habe
-eine Perl-Klasse implementiert,
-U{Quiq::PlotlyJs::TimeSeries::DiagramGroup}, die eine Menge von
-Zeitreihen als eine Einheit behandelt und folgende Funktionalität
-realisiert: In dem Diagramm, dessen Rangeslider aktiviert ist (siehe
+mit Q{Rangeslider} auf Basis von U{Plotly.js}.
+# Ich habe eine Perl-Klasse implementiert,
+# U{Quiq::PlotlyJs::TimeSeries::DiagramGroup}, die eine Menge von
+# Zeitreihen als eine Einheit behandelt und folgende Funktionalität
+# realisiert:
+Die Zeitreihen werden als eine Einheit behandelt, wobei folgende
+Bedienlogik realisiert ist:
+In dem Diagramm, dessen Rangeslider aktiviert ist (siehe
 Checkbox an den Diagrammen), kann mit der linken Maustaste im Plot ein
 Zeitbereich ausgewählt und anschließend mit dem Rangeslider durch den
 Gesamtbereich gescrollt werden. Das Zoomen und Scrollen findet dabei
@@ -34,7 +37,7 @@ nächstgelegenen Punktes angezeigt. Über das Menü Q{Shape} kann die
 Kurvenform eingestellt und mittels des Buttons Q{Download as PNG} der
 aktuelle Diagramm-Zustand als Grafik heruntergeladen werden. Die
 geplotteten Daten sind nicht Teil der Seite, sondern werden per
-asynchronen Ajax-Request von einer anderen Site via
+asynchronem Ajax-Request von einer anderen Site via
 Cross-Origin Resource Sharing geladen.
 
 %Include: file="lufttemperatur-plot.sinc"
