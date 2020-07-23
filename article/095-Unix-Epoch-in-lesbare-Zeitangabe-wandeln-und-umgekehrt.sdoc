@@ -41,10 +41,18 @@ Dasselbe im ISO-8601 Datumsformat (sekundengenau):
   2014-07-28T13:20:42+0200
 
 Die Umkehrung - also die Wandlung einer lesbaren Zeitangabe
-(der lokalen Zeitzone, wenn keine angegeben ist) in Epoch - ist auch möglich:
+(der lokalen Zeitzone, wenn keine angegeben ist, hier: MESZ)
+in Epoch - ist auch möglich:
 
   $ date -d '2014-07-28 13:20:42' +%s
   1406546442
+
+Soll die Interpretation in einer anderen Zeitzone als der lokalen
+Zeitzone erfolgen, kann dies durch Setzen der Environmentvariable C{TZ}
+erreicht werden:
+
+  $ TZ=UTC date -d '2014-07-28 13:20:42' +%s
+  1406553642 # Differenz zu oben: -7200, also minus 2 Stunden gegenüber MESZ
 
 Der aktuelle Zeitpunkt als Epoch-Wert:
 
