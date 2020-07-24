@@ -103,7 +103,7 @@
           visible: true,
         },
         zeroline: true,
-        zerolinecolor: '#b0b0b0',
+        zerolinecolor: '#d0d0d0',
       },
       yaxis: {
         type: 'linear',
@@ -139,6 +139,7 @@
       height: [280,239],
       bottomMargin: [96,55],
       titleY: [0.946428571428571,0.937238493723849],
+      strict: false,
     };
     let setRangeSlider = function (groupId,i,bool) {
       let dId = groupId+'-d'+i;
@@ -198,7 +199,11 @@
           $('body').css('cursor','default');
         },
         error: function () {
-          alert('ERROR: Ajax request failed: '+url);
+          let msg = 'ERROR: Ajax request failed: '+url;
+          if (vars.strict)
+            alert(msg);
+          else
+            console.log(msg);
         },
         success: function (data,textStatus,jqXHR) {
           trace.x = [];
@@ -254,9 +259,9 @@
   })();
   $(function() {
     dgr.generatePlot('dgr',1,'WindSpeed','m/s','#006400','2009-02-19 00:00:00','2009-02-24 19:50:00',0,5.7,true,'http://s31tz.de/timeseries?name=WindSpeed');
-    dgr.generatePlot('dgr',2,'AirTemperature','°C','#ee9a00','2009-02-19 00:00:00','2009-02-24 19:50:00',-1.9,7.1,false,'http://s31tz.de/timeseries?name=AirTemperature');
-    dgr.generatePlot('dgr',3,'AirPressure','hPa','#8b008b','2009-02-19 00:00:00','2009-02-24 19:50:00',1009.4,1028.4,false,'http://s31tz.de/timeseries?name=AirPressure');
-    dgr.generatePlot('dgr',4,'RelativeHumidity','%','#000080','2009-02-19 00:00:00','2009-02-24 19:50:00',55,100,false,'http://s31tz.de/timeseries?name=RelativeHumidity');
+    dgr.generatePlot('dgr',2,'AirTemperature','°C','#ff0000','2009-02-19 00:00:00','2009-02-24 19:50:00',-1.9,7.1,false,'http://s31tz.de/timeseries?name=AirTemperature');
+    dgr.generatePlot('dgr',3,'AirPressure','hPa','#000080','2009-02-19 00:00:00','2009-02-24 19:50:00',1009.4,1028.4,false,'http://s31tz.de/timeseries?name=AirPressure');
+    dgr.generatePlot('dgr',4,'RelativeHumidity','%','#ee9a00','2009-02-19 00:00:00','2009-02-24 19:50:00',55,100,false,'http://s31tz.de/timeseries?name=RelativeHumidity');
   });
   // ]]>
 </script>

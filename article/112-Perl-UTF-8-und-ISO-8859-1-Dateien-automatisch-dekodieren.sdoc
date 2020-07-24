@@ -25,7 +25,7 @@ U{"http://perldoc.perl.org/Encode/Guess.html",text="Encode::Guess"}
 genutzt werden. Es ist Teil des Perl-Core und damit in jeder
 Perl-Installation enthalten. Es wird mit
 
-  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  %Code: highlight=Perl
   use Encode::Guess;
   .
 
@@ -34,7 +34,7 @@ geladen.
 Wir nutzen die objektorientierte Schnittstelle des Moduls. Theoretisch
 sollte folgender Sechszeiler die Aufgabe erledigen:
 
-  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  %Code: highlight=Perl
   Encode::Guess->set_suspects('iso-8859-1');
   my $dec = Encode::Guess->guess($text);
   if (!ref $dec) {
@@ -104,7 +104,7 @@ beinahe ebensowenig, wie dass ein ISO-8859-1 Text ein JPEG-Bild ergibt.
 Unter Berücksichtigung dieser Tatsache können wir die Unterscheidung
 von ISO-8859-1 und UTF-8 hinreichend sicher vornehmen:
 
-  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  %Code: highlight=Perl
   my $dec = Encode::Guess->guess($text);
   if (ref $dec) {
       $text = $dec->decode($text);
@@ -141,9 +141,9 @@ Dieser Ansatz ("Wenn etwas nach UTF-8 aussieht, ist es auch UTF-8, sonst
 betrachten wir es als ISO-8859-1") funktioniert.
 
 Das Ganze als vollständige Implementierung einer Perl-Klasse C{File}
-mit einer einzelnen Methode C{decode()}:
+mit  einer einzelnen Methode C{decode()}:
 
-  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  %Code: highlight=Perl
   package File;
 
   use strict;
