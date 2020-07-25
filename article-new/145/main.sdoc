@@ -26,9 +26,9 @@ mit Q{Rangeslider} auf Basis von U{Plotly.js}.
 # realisiert:
 Die Zeitreihen werden als eine Einheit behandelt, wobei folgende
 Bedienlogik realisiert ist:
-In dem Diagramm, dessen Rangeslider aktiviert ist (siehe
-Checkbox an den Diagrammen), kann mit der linken Maustaste im Plot ein
-Zeitbereich ausgewählt und anschließend mit dem Rangeslider durch den
+In dem Diagramm, dessen Rangeslider aktiviert ist (siehe Checkbox an
+den Diagrammen), kann mit der linken Maustaste im Plot ein Zeitbereich
+ausgewählt und anschließend mit dem Rangeslider durch den
 Gesamtbereich gescrollt werden. Das Zoomen und Scrollen findet dabei
 über allen Diagrammen synchron statt. Bei Doppelklick in den
 Plot-Breich wird der ursprüngliche Zustand wieder hergestellt. Beim
@@ -37,8 +37,8 @@ nächstgelegenen Punktes angezeigt. Über das Menü Q{Shape} kann die
 Kurvenform eingestellt und mittels des Buttons Q{Download as PNG} der
 aktuelle Diagramm-Zustand als Grafik heruntergeladen werden. Die
 geplotteten Daten sind nicht Teil der Seite, sondern werden per
-asynchronem Ajax-Request von einer anderen Site via
-Cross-Origin Resource Sharing geladen.
+Ajax-Request von einer anderen Site via Cross-Origin Resource Sharing
+asynchron geladen.
 
 %Include: file="lufttemperatur-plot.sinc"
 

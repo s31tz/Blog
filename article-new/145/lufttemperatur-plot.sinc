@@ -7,7 +7,7 @@
   </tr>
   <tr>
     <td>
-      <span style="margin-left: 0.5em">Rangeslider:</span><input type="checkbox" id="dgr-r1" class="checkbox-rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="dgr.toggleRangeSliders('dgr',this)" /> | Shape: <select id="dgr-s1" onchange="var shape = $('#dgr-s1').val(); if (shape == 'Spline') { Plotly.restyle('dgr-d1',{ 'mode': 'lines', 'line.shape': 'spline', }); } else if (shape == 'Marker') { Plotly.restyle('dgr-d1',{ 'mode': 'markers', }); } else { Plotly.restyle('dgr-d1',{ 'mode': 'lines', 'line.shape': 'linear', }); }" title="Connect data points with straight lines, splines or show markers"><option value="Spline" selected="selected">Spline</option><option value="Linear">Linear</option><option value="Marker">Marker</option></select> | <button type="button" onclick="let plot = $('#dgr-d1'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'WindSpeed', });" title="Download plot graphic as PNG">Download as PNG</button>
+      <span style="margin-left: 0.5em">Rangeslider:</span><input type="checkbox" id="dgr-r1" class="rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="dgr.toggleRangeSliders('dgr',this)" /> | Shape: <select id="dgr-s1" onchange="var shape = $('#dgr-s1').val(); if (shape == 'Spline') { Plotly.restyle('dgr-d1',{ 'mode': 'lines', 'line.shape': 'spline', }); } else if (shape == 'Marker') { Plotly.restyle('dgr-d1',{ 'mode': 'markers', }); } else { Plotly.restyle('dgr-d1',{ 'mode': 'lines', 'line.shape': 'linear', }); }" title="Connect data points with straight lines, splines or show markers"><option value="Spline" selected="selected">Spline</option><option value="Linear">Linear</option><option value="Marker">Marker</option></select> | <button type="button" onclick="let plot = $('#dgr-d1'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'WindSpeed', });" title="Download plot graphic as PNG">Download as PNG</button>
     </td>
   </tr>
   </table>
@@ -17,7 +17,7 @@
   </tr>
   <tr>
     <td>
-      <span style="margin-left: 0.5em">Rangeslider:</span><input type="checkbox" id="dgr-r2" class="checkbox-rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="dgr.toggleRangeSliders('dgr',this)" /> | Shape: <select id="dgr-s2" onchange="var shape = $('#dgr-s2').val(); if (shape == 'Spline') { Plotly.restyle('dgr-d2',{ 'mode': 'lines', 'line.shape': 'spline', }); } else if (shape == 'Marker') { Plotly.restyle('dgr-d2',{ 'mode': 'markers', }); } else { Plotly.restyle('dgr-d2',{ 'mode': 'lines', 'line.shape': 'linear', }); }" title="Connect data points with straight lines, splines or show markers"><option value="Spline" selected="selected">Spline</option><option value="Linear">Linear</option><option value="Marker">Marker</option></select> | <button type="button" onclick="let plot = $('#dgr-d2'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'AirTemperature', });" title="Download plot graphic as PNG">Download as PNG</button>
+      <span style="margin-left: 0.5em">Rangeslider:</span><input type="checkbox" id="dgr-r2" class="rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="dgr.toggleRangeSliders('dgr',this)" /> | Shape: <select id="dgr-s2" onchange="var shape = $('#dgr-s2').val(); if (shape == 'Spline') { Plotly.restyle('dgr-d2',{ 'mode': 'lines', 'line.shape': 'spline', }); } else if (shape == 'Marker') { Plotly.restyle('dgr-d2',{ 'mode': 'markers', }); } else { Plotly.restyle('dgr-d2',{ 'mode': 'lines', 'line.shape': 'linear', }); }" title="Connect data points with straight lines, splines or show markers"><option value="Spline" selected="selected">Spline</option><option value="Linear">Linear</option><option value="Marker">Marker</option></select> | <button type="button" onclick="let plot = $('#dgr-d2'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'AirTemperature', });" title="Download plot graphic as PNG">Download as PNG</button>
     </td>
   </tr>
   </table>
@@ -27,7 +27,7 @@
   </tr>
   <tr>
     <td>
-      <span style="margin-left: 0.5em">Rangeslider:</span><input type="checkbox" id="dgr-r3" class="checkbox-rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="dgr.toggleRangeSliders('dgr',this)" /> | Shape: <select id="dgr-s3" onchange="var shape = $('#dgr-s3').val(); if (shape == 'Spline') { Plotly.restyle('dgr-d3',{ 'mode': 'lines', 'line.shape': 'spline', }); } else if (shape == 'Marker') { Plotly.restyle('dgr-d3',{ 'mode': 'markers', }); } else { Plotly.restyle('dgr-d3',{ 'mode': 'lines', 'line.shape': 'linear', }); }" title="Connect data points with straight lines, splines or show markers"><option value="Spline" selected="selected">Spline</option><option value="Linear">Linear</option><option value="Marker">Marker</option></select> | <button type="button" onclick="let plot = $('#dgr-d3'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'AirPressure', });" title="Download plot graphic as PNG">Download as PNG</button>
+      <span style="margin-left: 0.5em">Rangeslider:</span><input type="checkbox" id="dgr-r3" class="rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="dgr.toggleRangeSliders('dgr',this)" /> | Shape: <select id="dgr-s3" onchange="var shape = $('#dgr-s3').val(); if (shape == 'Spline') { Plotly.restyle('dgr-d3',{ 'mode': 'lines', 'line.shape': 'spline', }); } else if (shape == 'Marker') { Plotly.restyle('dgr-d3',{ 'mode': 'markers', }); } else { Plotly.restyle('dgr-d3',{ 'mode': 'lines', 'line.shape': 'linear', }); }" title="Connect data points with straight lines, splines or show markers"><option value="Spline" selected="selected">Spline</option><option value="Linear">Linear</option><option value="Marker">Marker</option></select> | <button type="button" onclick="let plot = $('#dgr-d3'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'AirPressure', });" title="Download plot graphic as PNG">Download as PNG</button>
     </td>
   </tr>
   </table>
@@ -37,7 +37,7 @@
   </tr>
   <tr>
     <td>
-      <span style="margin-left: 0.5em">Rangeslider:</span><input type="checkbox" id="dgr-r4" class="checkbox-rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="dgr.toggleRangeSliders('dgr',this)" /> | Shape: <select id="dgr-s4" onchange="var shape = $('#dgr-s4').val(); if (shape == 'Spline') { Plotly.restyle('dgr-d4',{ 'mode': 'lines', 'line.shape': 'spline', }); } else if (shape == 'Marker') { Plotly.restyle('dgr-d4',{ 'mode': 'markers', }); } else { Plotly.restyle('dgr-d4',{ 'mode': 'lines', 'line.shape': 'linear', }); }" title="Connect data points with straight lines, splines or show markers"><option value="Spline" selected="selected">Spline</option><option value="Linear">Linear</option><option value="Marker">Marker</option></select> | <button type="button" onclick="let plot = $('#dgr-d4'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'RelativeHumidity', });" title="Download plot graphic as PNG">Download as PNG</button>
+      <span style="margin-left: 0.5em">Rangeslider:</span><input type="checkbox" id="dgr-r4" class="rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="dgr.toggleRangeSliders('dgr',this)" /> | Shape: <select id="dgr-s4" onchange="var shape = $('#dgr-s4').val(); if (shape == 'Spline') { Plotly.restyle('dgr-d4',{ 'mode': 'lines', 'line.shape': 'spline', }); } else if (shape == 'Marker') { Plotly.restyle('dgr-d4',{ 'mode': 'markers', }); } else { Plotly.restyle('dgr-d4',{ 'mode': 'lines', 'line.shape': 'linear', }); }" title="Connect data points with straight lines, splines or show markers"><option value="Spline" selected="selected">Spline</option><option value="Linear">Linear</option><option value="Marker">Marker</option></select> | <button type="button" onclick="let plot = $('#dgr-d4'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'RelativeHumidity', });" title="Download plot graphic as PNG">Download as PNG</button>
     </td>
   </tr>
   </table>
@@ -180,7 +180,7 @@
       $('#'+groupId+' .diagram').each(function(i) {
         this.removeAllListeners('plotly_relayout');
       });
-      $('#'+groupId+' .checkbox-rangeslider').each(function(i) {
+      $('#'+groupId+' .rangeslider').each(function(i) {
         i++;
         let state = this == e? this.checked: false;
         setRangeSlider(groupId,i,state);
