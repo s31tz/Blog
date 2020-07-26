@@ -15,13 +15,13 @@
   url=https://plotly.com/javascript/
 
 %Link:
-  name=Quiq::PlotlyJs::DiagramGroup
+  name=Quiq::PlotlyJs::XY::DiagramGroup
   url=https://metacpan.org/pod/Quiq
 
 Die folgenden Diagramme zeigen Zeitreihen-Plots (Umweltdaten)
 mit Q{Rangeslider} auf Basis von U{Plotly.js}.
 # Ich habe eine Perl-Klasse implementiert,
-# U{Quiq::PlotlyJs::DiagramGroup}, die eine Menge von
+# U{Quiq::PlotlyJs::XY::DiagramGroup}, die eine Menge von
 # Zeitreihen als eine Einheit behandelt und folgende Funktionalität
 # realisiert:
 Die Zeitreihen werden als eine Einheit behandelt, wobei folgende

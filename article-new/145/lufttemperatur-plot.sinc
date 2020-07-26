@@ -7,7 +7,7 @@
   </tr>
   <tr>
     <td>
-      <span style="margin-left: 0.5em">Rangeslider:</span><input type="checkbox" id="dgr-r1" class="rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="dgr.toggleRangeSliders('dgr',this)" /> | Shape: <select id="dgr-s1" onchange="var shape = $('#dgr-s1').val(); if (shape == 'Spline') { Plotly.restyle('dgr-d1',{ 'mode': 'lines', 'line.shape': 'spline', }); } else if (shape == 'Marker') { Plotly.restyle('dgr-d1',{ 'mode': 'markers', }); } else { Plotly.restyle('dgr-d1',{ 'mode': 'lines', 'line.shape': 'linear', }); }" title="Connect data points with straight lines, splines or show markers"><option value="Spline" selected="selected">Spline</option><option value="Linear">Linear</option><option value="Marker">Marker</option></select> | <button type="button" onclick="let plot = $('#dgr-d1'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'WindSpeed', });" title="Download plot graphic as PNG">Download as PNG</button>
+      <span style="margin-left: 0.5em">Rangeslider:</span><input type="checkbox" id="dgr-r1" class="rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="dgr.toggleRangeSliders('dgr',this)" /> | Shape: <select id="dgr-s1" onchange="var shape = $('#dgr-s1').val(); if (shape == 'Spline') { Plotly.restyle('dgr-d1',{ 'mode': 'lines', 'line.shape': 'spline', }); } else if (shape == 'Marker') { Plotly.restyle('dgr-d1',{ 'mode': 'markers', }); } else { Plotly.restyle('dgr-d1',{ 'mode': 'lines', 'line.shape': 'linear', }); }" title="Connect data points with straight lines, splines or show markers"><option value="Spline" selected="selected">Spline</option><option value="Linear">Linear</option><option value="Marker">Marker</option></select> | <button type="button" onclick="let plot = $('#dgr-d1'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'AirTemperature', });" title="Download plot graphic as PNG">Download as PNG</button>
     </td>
   </tr>
   </table>
@@ -17,7 +17,7 @@
   </tr>
   <tr>
     <td>
-      <span style="margin-left: 0.5em">Rangeslider:</span><input type="checkbox" id="dgr-r2" class="rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="dgr.toggleRangeSliders('dgr',this)" /> | Shape: <select id="dgr-s2" onchange="var shape = $('#dgr-s2').val(); if (shape == 'Spline') { Plotly.restyle('dgr-d2',{ 'mode': 'lines', 'line.shape': 'spline', }); } else if (shape == 'Marker') { Plotly.restyle('dgr-d2',{ 'mode': 'markers', }); } else { Plotly.restyle('dgr-d2',{ 'mode': 'lines', 'line.shape': 'linear', }); }" title="Connect data points with straight lines, splines or show markers"><option value="Spline" selected="selected">Spline</option><option value="Linear">Linear</option><option value="Marker">Marker</option></select> | <button type="button" onclick="let plot = $('#dgr-d2'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'AirTemperature', });" title="Download plot graphic as PNG">Download as PNG</button>
+      <span style="margin-left: 0.5em">Rangeslider:</span><input type="checkbox" id="dgr-r2" class="rangeslider" style="vertical-align: middle" value="1" title="Toggle visibility of range slider" onclick="dgr.toggleRangeSliders('dgr',this)" /> | Shape: <select id="dgr-s2" onchange="var shape = $('#dgr-s2').val(); if (shape == 'Spline') { Plotly.restyle('dgr-d2',{ 'mode': 'lines', 'line.shape': 'spline', }); } else if (shape == 'Marker') { Plotly.restyle('dgr-d2',{ 'mode': 'markers', }); } else { Plotly.restyle('dgr-d2',{ 'mode': 'lines', 'line.shape': 'linear', }); }" title="Connect data points with straight lines, splines or show markers"><option value="Spline" selected="selected">Spline</option><option value="Linear">Linear</option><option value="Marker">Marker</option></select> | <button type="button" onclick="let plot = $('#dgr-d2'); Plotly.downloadImage(plot[0],{ format: 'png', width: plot.width(), height: plot.height(), filename: 'WindSpeed', });" title="Download plot graphic as PNG">Download as PNG</button>
     </td>
   </tr>
   </table>
@@ -224,7 +224,7 @@
         },
       });
     };
-    let generatePlot = function (name,i,title,yTitle,color,xMin,xMax,yMin,yMax,rangeSlider,url,x,y,z) {
+    let generatePlot = function (name,i,title,yTitle,color,xMin,xMax,yMin,yMax,showRangeSlider,url,x,y,z) {
       let t = $.extend(true,{},trace);
       t.line.color = color;
       t.x = x;
@@ -249,7 +249,7 @@
           alert('ERROR: plot creation failed: '+title);
         }
       );
-      setRangeSlider(name,i,rangeSlider);
+      setRangeSlider(name,i,showRangeSlider);
     };
     return {
       generatePlot: generatePlot,
@@ -258,8 +258,8 @@
     };
   })();
   $(function() {
-    dgr.generatePlot('dgr',1,'WindSpeed','m/s','#006400','2009-02-19 00:00:00','2009-02-24 19:50:00',0,5.7,true,'http://s31tz.de/timeseries?name=WindSpeed');
-    dgr.generatePlot('dgr',2,'AirTemperature','°C','#ff0000','2009-02-19 00:00:00','2009-02-24 19:50:00',-1.9,7.1,false,'http://s31tz.de/timeseries?name=AirTemperature');
+    dgr.generatePlot('dgr',1,'AirTemperature','°C','#ff0000','2009-02-19 00:00:00','2009-02-24 19:50:00',-1.9,7.1,true,'http://s31tz.de/timeseries?name=AirTemperature');
+    dgr.generatePlot('dgr',2,'WindSpeed','m/s','#006400','2009-02-19 00:00:00','2009-02-24 19:50:00',0,5.7,false,'http://s31tz.de/timeseries?name=WindSpeed');
     dgr.generatePlot('dgr',3,'AirPressure','hPa','#000080','2009-02-19 00:00:00','2009-02-24 19:50:00',1009.4,1028.4,false,'http://s31tz.de/timeseries?name=AirPressure');
     dgr.generatePlot('dgr',4,'RelativeHumidity','%','#ee9a00','2009-02-19 00:00:00','2009-02-24 19:50:00',55,100,false,'http://s31tz.de/timeseries?name=RelativeHumidity');
   });

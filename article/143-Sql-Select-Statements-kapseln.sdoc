@@ -61,7 +61,7 @@ der Kolumnen recht klar ergibt:
 
 Über diesen Kolumnen wollen wir unsere Abfragen formulieren.
 Das Problem ist jedoch, dass wir die Kolumnen-Aliase nicht überall in
-einer Abfrage verwenden können, insbesondere nicht in der
+einer Abfrage verwenden können, auch nicht in der
 WHERE-Klausel, die die Ergebnismenge bestimmt. Wenn wir
 obiges Statement um eine WHERE-Klausel ergänzen, müssen wir dort also
 weiterhin die internen Namen verwenden. Das wollen wir gerade nicht.
@@ -122,7 +122,8 @@ SELECT-Statement.
 Auf dieser Grundlage können wir die Selektion wie gewünscht kapseln.
 Hier die Implementierung einer Methode in Perl, die so
 ausgelegt ist, dass die Klauseln SELECT (Namensparameter select),
-WHERE (where) und ORDER BY (orderBy) frei gesetzt werden können:
+WHERE (Namensparameter where) und ORDER BY (Namensparameter orderBy)
+frei gesetzt werden können:
 
   %Code: highlight=Perl
     package PostgreSql::Catalog;
@@ -229,8 +230,8 @@ Wir haben folgendes erreicht:
 * Wir haben das Gerüst eines komplexen Select-Statements in einer
   Methode gekapselt.
 * Wir haben eigene Kolumnennamen vereinbart, über denen
-  wir Selektionen formulieren können. Nur diese Namen sind außerhalb
-  der Methode bekannt.
+  wir Selektionen formulieren können. Nur diese Namen muss der
+  Aufrufer kennen.
 * Wir haben eine Methode geschaffen, die eine Schnittstelle zur
   Erzeugung von konkreten Selektionen über dem gekapselten Statement
   bereitstellt.
