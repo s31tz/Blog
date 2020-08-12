@@ -255,11 +255,13 @@
     .hl.kwc { color:#000000; font-weight:bold; }
     .hl.kwd { color:#010181; }
   </style>
+  <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js" type="text/javascript"></script>
 </head>
 <body id="sdoc-body">
   <h1 class="sdoc-doc-h1">Frank Seitz - Developer Logbuch</h1>
   <p class="sdoc-para-p">
-    Copyright (C) 2010-2020 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2020-07-08 22:56:15
+    Copyright (C) 2010-2020 Frank Seitz, <a class="sdoc-seg-u" href="http://fseitz.de/">http://fseitz.de/</a>, Last update: 2020-08-12 11:54:54
   </p>
   <div id="sdoc-toc">
     <a id="toc"></a>
@@ -504,7 +506,7 @@
   <p class="sdoc-para-p">
     Über diesen Kolumnen wollen wir unsere Abfragen formulieren.
     Das Problem ist jedoch, dass wir die Kolumnen-Aliase nicht überall in
-    einer Abfrage verwenden können, insbesondere nicht in der
+    einer Abfrage verwenden können, auch nicht in der
     WHERE-Klausel, die die Ergebnismenge bestimmt. Wenn wir
     obiges Statement um eine WHERE-Klausel ergänzen, müssen wir dort also
     weiterhin die internen Namen verwenden. Das wollen wir gerade nicht.
@@ -556,7 +558,8 @@
     Auf dieser Grundlage können wir die Selektion wie gewünscht kapseln.
     Hier die Implementierung einer Methode in Perl, die so
     ausgelegt ist, dass die Klauseln SELECT (Namensparameter select),
-    WHERE (where) und ORDER BY (orderBy) frei gesetzt werden können:
+    WHERE (Namensparameter where) und ORDER BY (Namensparameter orderBy)
+    frei gesetzt werden können:
   </p>
   <div class="sdoc-highlight-div">
     <pre class="sdoc-code-pre brush: perl; toolbar: false; pad-line-numbers: 1">package PostgreSql::Catalog;&#10;&#10;sub functionSelect {&#10;    my ($class,%clause) = @_;&#10;&#10;    # Defaults&#10;&#10;    $clause{'select'} //= ['*']; # Default für SELECT-Klausel&#10;    $clause{'from'} = ['function_view']; # FROM-Klausel ist festgelegt&#10;&#10;    # Gekapselter Statement-Rumpf&#10;&#10;    my $stmt = &lt;&lt; '    __SQL__';&#10;    WITH function_view AS (&#10;        SELECT&#10;            fnc.oid AS fnc_oid&#10;            , usr.usename AS fnc_owner&#10;            , nsp.nspname AS fnc_schema&#10;            , fnc.proname AS fnc_name&#10;            , pg_get_function_identity_arguments(pro.oid) AS fnc_arguments&#10;            , pg_get_functiondef(fnc.oid) AS fnc_source&#10;        FROM&#10;            pg_proc AS fnc&#10;            JOIN pg_namespace AS nsp&#10;                ON fnc.pronamespace = nsp.oid&#10;            JOIN pg_user usr&#10;                ON fnc.proowner = usr.usesysid&#10;    )&#10;    __SQL__&#10;    $stmt =~ s/^    //mg;&#10;&#10;    # Erzeuge vollständiges Statement über den angegebenen Klauseln&#10;&#10;    for my $key (qw/select from where orderBy/) {&#10;        if (my $arr = $clause{$key}) {&#10;            my $clause  = $key eq 'orderBy'? 'ORDER BY': uc $key;&#10;            $stmt .= sprintf "%s\n    %s\n",$clause,join "\n    , ",@$arr;&#10;        }&#10;    }&#10;&#10;    return $stmt;&#10;}</pre>
@@ -589,8 +592,8 @@
     <li class="sdoc-list-li-point" style="list-style-type:disc">
       <p class="sdoc-para-p">
         Wir haben eigene Kolumnennamen vereinbart, über denen
-        wir Selektionen formulieren können. Nur diese Namen sind außerhalb
-        der Methode bekannt.
+        wir Selektionen formulieren können. Nur diese Namen muss der
+        Aufrufer kennen.
       </p>
     </li>
     <li class="sdoc-list-li-point" style="list-style-type:disc">
@@ -615,34 +618,34 @@
   <ol class="sdoc-list-ol">
     <li class="sdoc-list-li-num">
       <p class="sdoc-para-p">
-        System neu starten, dabei die Tasten &#132;Power&#148; und &#132;Leiser&#148; gedrückt
+        System neu starten, dabei die Tasten "Power" und "Leiser" gedrückt
         halten.
       </p>
     </li>
     <li class="sdoc-list-li-num">
       <p class="sdoc-para-p">
-        Es erscheint ein Boot-Menü. Mit &#132;Leiser/Lauter&#148; den Menüpunkt
-        <tt class="sdoc-seg-c">Reboot into Android Recovery</tt> auswählen. Auswahl mit &#132;Power&#148;
+        Es erscheint ein Boot-Menü. Mit "Leiser/Lauter" den Menüpunkt
+        <tt class="sdoc-seg-c">Reboot into Android Recovery</tt> auswählen. Auswahl mit "Power"
         bestätigen.
       </p>
     </li>
     <li class="sdoc-list-li-num">
       <p class="sdoc-para-p">
         Das System wird neu gestartet. Es erscheint ein umgekippter
-        Android (s.u.) mit der Meldung &#132;No command&#148;.
+        Android (s.u.) mit der Meldung "No command".
       </p>
     </li>
     <li class="sdoc-list-li-num">
       <p class="sdoc-para-p">
-        Was aussieht wie ein fataler Fehler, ist keiner. Die Tasten &#132;Power&#148;
-        und &#132;Lauter&#148; drücken. Es erscheint ein weiteres Menü, das
+        Was aussieht wie ein fataler Fehler, ist keiner. Die Tasten "Power"
+        und "Lauter" drücken. Es erscheint ein weiteres Menü, das
         mit <tt class="sdoc-seg-c">Android Recovery</tt> betitelt ist.
       </p>
     </li>
     <li class="sdoc-list-li-num">
       <p class="sdoc-para-p">
-        Mit &#132;Leiser/Lauter&#148; den Menüpunkt <tt class="sdoc-seg-c">Wipe data/factory reset</tt>
-        auswählen und mit &#132;Power&#148; bestätigen.
+        Mit "Leiser/Lauter" den Menüpunkt <tt class="sdoc-seg-c">Wipe data/factory reset</tt>
+        auswählen und mit "Power" bestätigen.
       </p>
     </li>
     <li class="sdoc-list-li-num">
@@ -714,7 +717,7 @@
     Hier ist es wichtig, dass beim Öffnen des Terminals eine <i class="sdoc-seg-i">Login</i>-Shell
     ausgeführt wird. Ggf. ist es nötig, hierfür eine Option in den
     Einstellungen zu aktivieren. In den Einstellungen des Xfce Terminals
-    heißt die Option &#132;Run command as login shell&#148;, ist per Default
+    heißt die Option "Run command as login shell", ist per Default
     <i class="sdoc-seg-i">dekativert</i> und sollte aktiviert werden.
   </p>
   <a id="section_4_4"></a>
@@ -2535,12 +2538,9 @@
     genutzt werden. Es ist Teil des Perl-Core und damit in jeder
     Perl-Installation enthalten. Es wird mit
   </p>
-  <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">1</td>
-    <td class="sdoc-code-td-line"><span class="hl kwa">use</span> Encode<span class="hl opt">::</span>Guess<span class="hl opt">;</span></td>
-  </tr>
-  </table>
+  <div class="sdoc-highlight-div">
+    <pre class="sdoc-code-pre brush: perl; toolbar: false; pad-line-numbers: 1">use Encode::Guess;</pre>
+  </div>
   <p class="sdoc-para-p">
     geladen.
   </p>
@@ -2548,32 +2548,9 @@
     Wir nutzen die objektorientierte Schnittstelle des Moduls. Theoretisch
     sollte folgender Sechszeiler die Aufgabe erledigen:
   </p>
-  <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">1</td>
-    <td class="sdoc-code-td-line">Encode<span class="hl opt">::</span>Guess<span class="hl opt">-&gt;</span><span class="hl kwd">set_suspects</span><span class="hl opt">(</span><span class="hl str">&apos;iso-8859-1&apos;</span><span class="hl opt">);</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">2</td>
-    <td class="sdoc-code-td-line"><span class="hl kwc">my</span> <span class="hl kwb">$dec</span> <span class="hl opt">=</span> Encode<span class="hl opt">::</span>Guess<span class="hl opt">-&gt;</span><span class="hl kwd">guess</span><span class="hl opt">(</span><span class="hl kwb">$text</span><span class="hl opt">);</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">3</td>
-    <td class="sdoc-code-td-line"><span class="hl kwa">if</span> <span class="hl opt">(!</span><span class="hl kwc">ref</span> <span class="hl kwb">$dec</span><span class="hl opt">) {</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">4</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwc">die</span> <span class="hl str">&quot;ERROR:</span> <span class="hl ipl">$dec</span><span class="hl str"></span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">5</td>
-    <td class="sdoc-code-td-line"><span class="hl opt">}</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">6</td>
-    <td class="sdoc-code-td-line"><span class="hl kwb">$text</span> <span class="hl opt">=</span> <span class="hl kwb">$dec</span><span class="hl opt">-&gt;</span><span class="hl kwd">decode</span><span class="hl opt">(</span><span class="hl kwb">$text</span><span class="hl opt">);</span></td>
-  </tr>
-  </table>
+  <div class="sdoc-highlight-div">
+    <pre class="sdoc-code-pre brush: perl; toolbar: false; pad-line-numbers: 1">Encode::Guess-&gt;set_suspects('iso-8859-1');&#10;my $dec = Encode::Guess-&gt;guess($text);&#10;if (!ref $dec) {&#10;    die "ERROR: $dec\n";&#10;}&#10;$text = $dec-&gt;decode($text);</pre>
+  </div>
   <p class="sdoc-para-p">
     Erläuterung:
   </p>
@@ -2680,48 +2657,9 @@
     Unter Berücksichtigung dieser Tatsache können wir die Unterscheidung
     von ISO-8859-1 und UTF-8 hinreichend sicher vornehmen:
   </p>
-  <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln"> 1</td>
-    <td class="sdoc-code-td-line"><span class="hl kwc">my</span> <span class="hl kwb">$dec</span> <span class="hl opt">=</span> Encode<span class="hl opt">::</span>Guess<span class="hl opt">-&gt;</span><span class="hl kwd">guess</span><span class="hl opt">(</span><span class="hl kwb">$text</span><span class="hl opt">);</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln"> 2</td>
-    <td class="sdoc-code-td-line"><span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwc">ref</span> <span class="hl kwb">$dec</span><span class="hl opt">) {</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln"> 3</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwb">$text</span> <span class="hl opt">=</span> <span class="hl kwb">$dec</span><span class="hl opt">-&gt;</span><span class="hl kwd">decode</span><span class="hl opt">(</span><span class="hl kwb">$text</span><span class="hl opt">);</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln"> 4</td>
-    <td class="sdoc-code-td-line"><span class="hl opt">}</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln"> 5</td>
-    <td class="sdoc-code-td-line"><span class="hl kwa">elsif</span> <span class="hl opt">(</span><span class="hl kwb">$dec</span> <span class="hl opt">=~</span> <span class="hl kwd">/No appropriate encodings found/i</span><span class="hl opt">) {</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln"> 6</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwb">$text</span> <span class="hl opt">=</span> Encode<span class="hl opt">::</span>decode<span class="hl opt">(</span><span class="hl str">&apos;iso-8859-1&apos;</span><span class="hl opt">,</span><span class="hl kwb">$text</span><span class="hl opt">);</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln"> 7</td>
-    <td class="sdoc-code-td-line"><span class="hl opt">}</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln"> 8</td>
-    <td class="sdoc-code-td-line"><span class="hl kwa">else</span> <span class="hl opt">{</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln"> 9</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwc">die</span> <span class="hl str">&quot;ERROR:</span> <span class="hl ipl">$dec</span><span class="hl str"></span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">10</td>
-    <td class="sdoc-code-td-line"><span class="hl opt">}</span></td>
-  </tr>
-  </table>
+  <div class="sdoc-highlight-div">
+    <pre class="sdoc-code-pre brush: perl; toolbar: false; pad-line-numbers: 1">my $dec = Encode::Guess-&gt;guess($text);&#10;if (ref $dec) {&#10;    $text = $dec-&gt;decode($text);&#10;}&#10;elsif ($dec =~ /No appropriate encodings found/i) {&#10;    $text = Encode::decode('iso-8859-1',$text);&#10;}&#10;else {&#10;    die "ERROR: $dec\n";&#10;}</pre>
+  </div>
   <p class="sdoc-para-p">
     Erläuterung:
   </p>
@@ -2766,330 +2704,11 @@
   </p>
   <p class="sdoc-para-p">
     Das Ganze als vollständige Implementierung einer Perl-Klasse <tt class="sdoc-seg-c">File</tt>
-    mit einer einzelnen Methode <tt class="sdoc-seg-c">decode()</tt>:
+    mit  einer einzelnen Methode <tt class="sdoc-seg-c">decode()</tt>:
   </p>
-  <table class="sdoc-code-table" cellpadding="0" cellspacing="0">
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln"> 1</td>
-    <td class="sdoc-code-td-line"><span class="hl kwa">package</span> File<span class="hl opt">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln"> 2</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln"> 3</td>
-    <td class="sdoc-code-td-line"><span class="hl kwa">use</span> strict<span class="hl opt">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln"> 4</td>
-    <td class="sdoc-code-td-line"><span class="hl kwa">use</span> warnings<span class="hl opt">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln"> 5</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln"> 6</td>
-    <td class="sdoc-code-td-line"><span class="hl kwa">use</span> Encode<span class="hl opt">::</span>Guess <span class="hl opt">();</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln"> 7</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln"> 8</td>
-    <td class="sdoc-code-td-line"><span class="hl slc"># ---------------------------------------------------------------------------</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln"> 9</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">10</td>
-    <td class="sdoc-code-td-line"><span class="hl com">=encoding utf8</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">11</td>
-    <td class="sdoc-code-td-line"><span class="hl com"></span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">12</td>
-    <td class="sdoc-code-td-line"><span class="hl com">=head1 NAME</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">13</td>
-    <td class="sdoc-code-td-line"><span class="hl com"></span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">14</td>
-    <td class="sdoc-code-td-line"><span class="hl com">File - Klasse mit Datei-Operationen</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">15</td>
-    <td class="sdoc-code-td-line"><span class="hl com"></span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">16</td>
-    <td class="sdoc-code-td-line"><span class="hl com">=head1 METHODS</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">17</td>
-    <td class="sdoc-code-td-line"><span class="hl com"></span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">18</td>
-    <td class="sdoc-code-td-line"><span class="hl com">=head2 decode() - Lies und dekodiere eine Textdatei</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">19</td>
-    <td class="sdoc-code-td-line"><span class="hl com"></span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">20</td>
-    <td class="sdoc-code-td-line"><span class="hl com">=head3 Synopsis</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">21</td>
-    <td class="sdoc-code-td-line"><span class="hl com"></span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">22</td>
-    <td class="sdoc-code-td-line"><span class="hl com">    $text = $class-&gt;decode($file);</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">23</td>
-    <td class="sdoc-code-td-line"><span class="hl com"></span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">24</td>
-    <td class="sdoc-code-td-line"><span class="hl com">=head3 Description</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">25</td>
-    <td class="sdoc-code-td-line"><span class="hl com"></span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">26</td>
-    <td class="sdoc-code-td-line"><span class="hl com">Lies Textdatei $file und liefere den dekodierten Inhalt zurück.</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">27</td>
-    <td class="sdoc-code-td-line"><span class="hl com">Als Character Encoding erwarten wir Unicode (speziell UTF-8) oder</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">28</td>
-    <td class="sdoc-code-td-line"><span class="hl com">Latin1 (ISO-8859-1).</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">29</td>
-    <td class="sdoc-code-td-line"><span class="hl com"></span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">30</td>
-    <td class="sdoc-code-td-line"><span class="hl com">=cut</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">31</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">32</td>
-    <td class="sdoc-code-td-line"><span class="hl slc"># ---------------------------------------------------------------------------</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">33</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">34</td>
-    <td class="sdoc-code-td-line"><span class="hl kwa">sub</span> decode <span class="hl opt">{</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">35</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwc">my</span> <span class="hl opt">(</span><span class="hl kwb">$class</span><span class="hl opt">,</span><span class="hl kwb">$file</span><span class="hl opt">) =</span> <span class="hl kwb">&#64;_</span><span class="hl opt">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">36</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">37</td>
-    <td class="sdoc-code-td-line">    <span class="hl slc"># Datei einlesen</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">38</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">39</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwc">local</span> <span class="hl opt">$/ =</span> <span class="hl kwc">undef</span><span class="hl opt">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">40</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwc">open my</span> <span class="hl kwb">$fh</span><span class="hl opt">,</span><span class="hl str">&apos;&lt;&apos;</span><span class="hl opt">,</span><span class="hl kwb">$file</span> <span class="hl kwc">or die</span> <span class="hl str">&quot;ERROR: open failed:</span> <span class="hl ipl">$file</span> <span class="hl str">($!)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">41</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwc">my</span> <span class="hl kwb">$text</span> <span class="hl opt">= &lt;</span><span class="hl kwb">$fh</span><span class="hl opt">&gt;;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">42</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwc">close</span> <span class="hl kwb">$fh</span><span class="hl opt">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">43</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">44</td>
-    <td class="sdoc-code-td-line">    <span class="hl slc"># Encoding ermitteln und Text dekodieren</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">45</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">46</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwc">my</span> <span class="hl kwb">$dec</span> <span class="hl opt">=</span> Encode<span class="hl opt">::</span>Guess<span class="hl opt">-&gt;</span><span class="hl kwd">guess</span><span class="hl opt">(</span><span class="hl kwb">$text</span><span class="hl opt">);</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">47</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwc">ref</span> <span class="hl kwb">$dec</span><span class="hl opt">) {</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">48</td>
-    <td class="sdoc-code-td-line">        <span class="hl slc"># Wir dekodieren Unicode</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">49</td>
-    <td class="sdoc-code-td-line">        <span class="hl kwb">$text</span> <span class="hl opt">=</span> <span class="hl kwb">$dec</span><span class="hl opt">-&gt;</span><span class="hl kwd">decode</span><span class="hl opt">(</span><span class="hl kwb">$text</span><span class="hl opt">);</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">50</td>
-    <td class="sdoc-code-td-line">    <span class="hl opt">}</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">51</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwa">elsif</span> <span class="hl opt">(</span><span class="hl kwb">$dec</span> <span class="hl opt">=~</span> <span class="hl kwd">/No appropriate encodings found/i</span><span class="hl opt">) {</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">52</td>
-    <td class="sdoc-code-td-line">        <span class="hl slc"># Erwarteter Fehler: Wir dekodieren Latin1</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">53</td>
-    <td class="sdoc-code-td-line">        <span class="hl kwb">$text</span> <span class="hl opt">=</span> Encode<span class="hl opt">::</span>decode<span class="hl opt">(</span><span class="hl str">&apos;iso-8859-1&apos;</span><span class="hl opt">,</span><span class="hl kwb">$text</span><span class="hl opt">);</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">54</td>
-    <td class="sdoc-code-td-line">    <span class="hl opt">}</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">55</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwa">else</span> <span class="hl opt">{</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">56</td>
-    <td class="sdoc-code-td-line">        <span class="hl slc"># Unerwarteter Fehler</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">57</td>
-    <td class="sdoc-code-td-line">        <span class="hl kwc">die</span> <span class="hl str">&quot;ERROR:</span> <span class="hl ipl">$dec</span><span class="hl str"></span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">58</td>
-    <td class="sdoc-code-td-line">    <span class="hl opt">}</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">59</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">60</td>
-    <td class="sdoc-code-td-line">    <span class="hl kwa">return</span> <span class="hl kwb">$text</span><span class="hl opt">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">61</td>
-    <td class="sdoc-code-td-line"><span class="hl opt">}</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">62</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">63</td>
-    <td class="sdoc-code-td-line"><span class="hl slc"># ---------------------------------------------------------------------------</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">64</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">65</td>
-    <td class="sdoc-code-td-line"><span class="hl com">=head1 AUTHOR</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">66</td>
-    <td class="sdoc-code-td-line"><span class="hl com"></span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">67</td>
-    <td class="sdoc-code-td-line"><span class="hl com">Frank Seitz, L&lt;http://fseitz.de/&gt;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">68</td>
-    <td class="sdoc-code-td-line"><span class="hl com"></span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">69</td>
-    <td class="sdoc-code-td-line"><span class="hl com">=head1 LICENSE</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">70</td>
-    <td class="sdoc-code-td-line"><span class="hl com"></span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">71</td>
-    <td class="sdoc-code-td-line"><span class="hl com">This code is free software. You can redistribute it and/or modify</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">72</td>
-    <td class="sdoc-code-td-line"><span class="hl com">it under the same terms as Perl itself.</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">73</td>
-    <td class="sdoc-code-td-line"><span class="hl com"></span></td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">74</td>
-    <td class="sdoc-code-td-line"><span class="hl com">=cut</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">75</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">76</td>
-    <td class="sdoc-code-td-line"><span class="hl slc"># ---------------------------------------------------------------------------</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">77</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">78</td>
-    <td class="sdoc-code-td-line"><span class="hl num">1</span><span class="hl opt">;</span></td>
-  </tr>
-  <tr class="sdoc-code-tr-odd">
-    <td class="sdoc-code-td-ln">79</td>
-    <td class="sdoc-code-td-line">&nbsp;</td>
-  </tr>
-  <tr class="sdoc-code-tr-even">
-    <td class="sdoc-code-td-ln">80</td>
-    <td class="sdoc-code-td-line"><span class="hl slc"># eof</span></td>
-  </tr>
-  </table>
+  <div class="sdoc-highlight-div">
+    <pre class="sdoc-code-pre brush: perl; toolbar: false; pad-line-numbers: 1">package File;&#10;&#10;use strict;&#10;use warnings;&#10;&#10;use Encode::Guess ();&#10;&#10;# ---------------------------------------------------------------------------&#10;&#10;=encoding utf8&#10;&#10;=head1 NAME&#10;&#10;File - Klasse mit Datei-Operationen&#10;&#10;=head1 METHODS&#10;&#10;=head2 decode() - Lies und dekodiere eine Textdatei&#10;&#10;=head3 Synopsis&#10;&#10;    $text = $class-&gt;decode($file);&#10;&#10;=head3 Description&#10;&#10;Lies Textdatei $file und liefere den dekodierten Inhalt zurück.&#10;Als Character Encoding erwarten wir Unicode (speziell UTF-8) oder&#10;Latin1 (ISO-8859-1).&#10;&#10;=cut&#10;&#10;# ---------------------------------------------------------------------------&#10;&#10;sub decode {&#10;    my ($class,$file) = @_;&#10;&#10;    # Datei einlesen&#10;&#10;    local $/ = undef;&#10;    open my $fh,'&lt;',$file or die "ERROR: open failed: $file ($!)\n";&#10;    my $text = &lt;$fh&gt;;&#10;    close $fh;&#10;&#10;    # Encoding ermitteln und Text dekodieren&#10;&#10;    my $dec = Encode::Guess-&gt;guess($text);&#10;    if (ref $dec) {&#10;        # Wir dekodieren Unicode&#10;        $text = $dec-&gt;decode($text);&#10;    }&#10;    elsif ($dec =~ /No appropriate encodings found/i) {&#10;        # Erwarteter Fehler: Wir dekodieren Latin1&#10;        $text = Encode::decode('iso-8859-1',$text);&#10;    }&#10;    else {&#10;        # Unerwarteter Fehler&#10;        die "ERROR: $dec\n";&#10;    }&#10;&#10;    return $text;&#10;}&#10;&#10;# ---------------------------------------------------------------------------&#10;&#10;=head1 AUTHOR&#10;&#10;Frank Seitz, L&lt;http://fseitz.de/&gt;&#10;&#10;=head1 LICENSE&#10;&#10;This code is free software. You can redistribute it and/or modify&#10;it under the same terms as Perl itself.&#10;&#10;=cut&#10;&#10;# ---------------------------------------------------------------------------&#10;&#10;1;&#10;&#10;# eof</pre>
+  </div>
   <a id="section_28_1"></a>
   <h2 class="sdoc-sec-h2">Links</h2>
   <ul class="sdoc-list-ul">
@@ -3956,15 +3575,14 @@
     Aufgrund dieser Ungereimtheiten definiert man sich am besten ein
     eigenes Logfile-Format. Zum Glück ist dies mit der Apache-Direktive
     <tt class="sdoc-seg-c">LogFormat</tt> leicht möglich. Ich verwende folgende Definition, mit
-    einem senkrechten Strich als eindeutigem Feldtrenner (die Definition
-    ist hier auf zwei Zeilen umbrochen):
+    einem senkrechten Strich als eindeutigem Feldtrenner:
   </p>
   <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre">LogFormat "%{%Y-%m-%d %H:%M:%S}t|%h|%&gt;s|%L|%D|%I|%O|%{Content-Type}o|&#10;    %m|%v|%p|%U%q|%H|%{Referer}i|%{User-Agent}i" NAME</pre>
+    <pre class="sdoc-code-pre">LogFormat "%{%Y-%m-%d %H:%M:%S}t|%h|%&gt;s|%L|%D|%I|%O|%{Content-Type}o|%m|%v|%p|%U%q|%H|%{Referer}i|%{User-Agent}i" NAME</pre>
   </div>
   <p class="sdoc-para-p">
-    Verwendete Formatelemente (die mit + gekennzeichnete Information kommt im
-    ursprünglichen Format nicht vor):
+    Verwendete Formatelemente (die mit + gekennzeichneten Informationen
+    kommen im ursprünglichen Format nicht vor):
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">%{%Y-%m-%d %H:%M:%S}t Request-Zeitpunkt&#10;%h .................. Client-IP oder -Name&#10;%&gt;s ................. finaler HTTP Status (200, ...)&#10;%L .................. + error.log wurde geschrieben&#10;%D .................. + Ausführungsdauer in Mikrosekunden&#10;%I .................. + Bytes empfangen&#10;%O .................. Bytes gesendet&#10;%{Content-Type}o .... + Content-Type Header der Response&#10;%m .................. Request-Methode (GET, POST, ...)&#10;%v .................. + Hostname&#10;%p .................. + Port&#10;%U .................. URL-Pfad&#10;%q .................. Query-String&#10;%H .................. Request-Protokoll (HTTP/1.0, ...)&#10;%{Referer}i ......... Referer Header des Requests&#10;%{User-Agent}i ...... User-Agent Header des Requests&#10;NAME ................ Name es Log-Formats</pre>
@@ -5254,10 +4872,19 @@
   </div>
   <p class="sdoc-para-p">
     Die Umkehrung - also die Wandlung einer lesbaren Zeitangabe
-    (der lokalen Zeitzone, wenn keine angegeben ist) in Epoch - ist auch möglich:
+    (der lokalen Zeitzone, wenn keine angegeben ist, hier: MESZ)
+    in Epoch - ist auch möglich:
   </p>
   <div class="sdoc-code-div">
     <pre class="sdoc-code-pre">$ date -d '2014-07-28 13:20:42' +%s&#10;1406546442</pre>
+  </div>
+  <p class="sdoc-para-p">
+    Soll die Interpretation in einer anderen Zeitzone als der lokalen
+    Zeitzone erfolgen, kann dies durch Setzen der Environmentvariable <tt class="sdoc-seg-c">TZ</tt>
+    erreicht werden:
+  </p>
+  <div class="sdoc-code-div">
+    <pre class="sdoc-code-pre">$ TZ=UTC date -d '2014-07-28 13:20:42' +%s&#10;1406553642 # Differenz zu oben: -7200, also minus 2 Stunden gegenüber MESZ</pre>
   </div>
   <p class="sdoc-para-p">
     Der aktuelle Zeitpunkt als Epoch-Wert:
@@ -9681,7 +9308,7 @@
     und im Browser
   </p>
   <div class="sdoc-code-div">
-    <pre class="sdoc-code-pre"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" &#10;   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">&#10;<!-- Generated by perltidy on Wed Jul  8 22:56:56 2020 -->&#10;<html xmlns="http://www.w3.org/1999/xhtml">&#10;<head>&#10;<title>perltidy</title>&#10;<style type="text/css">&#10;<!--&#10;/* default style sheet generated by perltidy */&#10;body {background: #FFFFFF; color: #000000}&#10;pre { color: #000000; &#10;      background: #FFFFFF;&#10;      font-family: courier;&#10;    } &#10;&#10;.c  { color: #000000;} /* comment */&#10;.cm { color: #000000;} /* comma */&#10;.co { color: #000000;} /* colon */&#10;.h  { color: #000000;} /* here-doc-target */&#10;.hh { color: #000000;} /* here-doc-text */&#10;.i  { color: #000000;} /* identifier */&#10;.j  { color: #000000;} /* label */&#10;.k  { color: #000000;} /* keyword */&#10;.m  { color: #000000;} /* subroutine */&#10;.n  { color: #000000;} /* numeric */&#10;.p  { color: #000000;} /* paren */&#10;.pd { color: #000000;} /* pod-text */&#10;.pu { color: #000000;} /* punctuation */&#10;.q  { color: #000000;} /* quote */&#10;.s  { color: #000000;} /* structure */&#10;.sc { color: #000000;} /* semicolon */&#10;.v  { color: #000000;} /* v-string */&#10;.w  { color: #000000;} /* bareword */&#10;-->&#10;</style>&#10;</head>&#10;<body>&#10;<a name="-top-"></a>&#10;<h1>perltidy</h1>&#10;<hr />&#10;<!-- contents of filename: perltidy -->&#10;<span class="pt-k">print</span> <span class="pt-q">&quot;Hello world!\n&quot;</span><span class="pt-sc">;</span>&#10;</body>&#10;</html>&#10;</pre>
+    <pre class="sdoc-code-pre"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" &#10;   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">&#10;<!-- Generated by perltidy on Wed Aug 12 11:56:10 2020 -->&#10;<html xmlns="http://www.w3.org/1999/xhtml">&#10;<head>&#10;<title>perltidy</title>&#10;<style type="text/css">&#10;<!--&#10;/* default style sheet generated by perltidy */&#10;body {background: #FFFFFF; color: #000000}&#10;pre { color: #000000; &#10;      background: #FFFFFF;&#10;      font-family: courier;&#10;    } &#10;&#10;.c  { color: #000000;} /* comment */&#10;.cm { color: #000000;} /* comma */&#10;.co { color: #000000;} /* colon */&#10;.h  { color: #000000;} /* here-doc-target */&#10;.hh { color: #000000;} /* here-doc-text */&#10;.i  { color: #000000;} /* identifier */&#10;.j  { color: #000000;} /* label */&#10;.k  { color: #000000;} /* keyword */&#10;.m  { color: #000000;} /* subroutine */&#10;.n  { color: #000000;} /* numeric */&#10;.p  { color: #000000;} /* paren */&#10;.pd { color: #000000;} /* pod-text */&#10;.pu { color: #000000;} /* punctuation */&#10;.q  { color: #000000;} /* quote */&#10;.s  { color: #000000;} /* structure */&#10;.sc { color: #000000;} /* semicolon */&#10;.v  { color: #000000;} /* v-string */&#10;.w  { color: #000000;} /* bareword */&#10;-->&#10;</style>&#10;</head>&#10;<body>&#10;<a name="-top-"></a>&#10;<h1>perltidy</h1>&#10;<hr />&#10;<!-- contents of filename: perltidy -->&#10;<span class="pt-k">print</span> <span class="pt-q">&quot;Hello world!\n&quot;</span><span class="pt-sc">;</span>&#10;</body>&#10;</html>&#10;</pre>
   </div>
   <a id="section_115_9"></a>
   <h2 class="sdoc-sec-h2">Links</h2>
@@ -9710,7 +9337,7 @@
     <a href="https://rsync.samba.org/"><img class="sdoc-fig-img" src="data:image/jpeg;base64,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" width="103" height="50" alt="" /></a>
   </p>
   <p class="sdoc-para-p">
-    Mit der Option <tt class="sdoc-seg-c">-a</tt> führt <tt class="sdoc-seg-c">rsync</tt> den Abgleich im &#132;Archive Mode&#148;
+    Mit der Option <tt class="sdoc-seg-c">-a</tt> führt <tt class="sdoc-seg-c">rsync</tt> den Abgleich im "Archive Mode"
     durch, d.h. Symlinks, Devices, Permissions, Ownerschaft usw. werden
     auf die Zielmaschine transferiert.
   </p>
@@ -9721,8 +9348,8 @@
   </p>
   <p class="sdoc-para-p">
     Beispiel: Die Group des HTTP-Servers heißt auf der
-    einen Maschine &#132;www-data&#148; während sie auf der anderen Maschine
-    &#132;apache&#148; heißt. Über die Group bekommt der HTTP-Server
+    einen Maschine "www-data" während sie auf der anderen Maschine
+    "apache" heißt. Über die Group bekommt der HTTP-Server
     Rechte auf bestimmten Dateien eingeräumt, sie muss
     also passend zur Maschine gesetzt sein.
   </p>
