@@ -19,7 +19,8 @@ Default schreibt, ist in mehrfacher Hinsicht suboptimal:
   Request-Zeitpunkt wird als C{[15/Jul/2015:12:27:34 +0200]} (Formatelement
   C{%t}) aufgezeichnet. Ein ISO-8601-ähnlicher Aufbau à la
   C{2015-07-15 12:27:34} wäre besser lesbar und verarbeitbar. Zudem
-  wird die Zeitzone im Normalfall nicht benötigt.
+  wird die Zeitzone im Normalfall nicht benötigt (da der Server ja
+  nur in einer Zeitzone läuft, die bekannt sein sollte).
 
 * B{Information ist zusammengesetzt, die besser getrennt sein sollte:}
   Der Request wird als eine Zeichenkette C{"GET
