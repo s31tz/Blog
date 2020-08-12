@@ -259,7 +259,7 @@
         },
       });
     };
-    let generatePlot = function (name,i,title,yTitle,color,xMin,xMax,yMin,yMax,showRangeSlider,url,x,y,z) {
+    let generatePlot = function (name,i,title,yTitle,color,xMin,xMax,yMin,yMax,showRangeSlider,shape,url,x,y,z) {
       let t = $.extend(true,{},trace);
       t.line.color = color;
       t.marker.color = color;
@@ -295,11 +295,11 @@
     };
   })();
   $(function() {
-    dgr.generatePlot('dgr',1,'AirTemperature','°C','#ff0000','2009-02-19 00:00:00','2009-02-24 00:00:00',-1.9,7.1,true,'http://s31tz.de/timeseries?name=AirTemperature');
-    dgr.generatePlot('dgr',2,'WindSpeed','m/s','#006400','2009-02-19 00:00:00','2009-02-24 00:00:00',0,5.7,false,'http://s31tz.de/timeseries?name=WindSpeed');
-    dgr.generatePlot('dgr',3,'AirPressure','hPa','#000080','2009-02-19 00:00:00','2009-02-24 00:00:00',1009.4,1028.4,false,'http://s31tz.de/timeseries?name=AirPressure');
-    dgr.generatePlot('dgr',4,'RelativeHumidity','%','#ee9a00','2009-02-19 00:00:00','2009-02-24 00:00:00',63,100,false,'http://s31tz.de/timeseries?name=RelativeHumidity');
-    dgr.generatePlot('dgr',5,'GlobalRadiation','Watt','#8b008b','2009-02-19 00:00:00','2009-02-24 00:00:00',0,1000,false,'http://s31tz.de/timeseries?name=GlobalRadiation');
+    dgr.generatePlot('dgr',1,'AirTemperature','°C','#ff0000','2009-02-19 00:00:00','2009-02-24 00:00:00',-1.9,7.1,true,'Spline','http://s31tz.de/timeseries?name=AirTemperature');
+    dgr.generatePlot('dgr',2,'WindSpeed','m/s','#006400','2009-02-19 00:00:00','2009-02-24 00:00:00',0,5.7,false,'Spline','http://s31tz.de/timeseries?name=WindSpeed');
+    dgr.generatePlot('dgr',3,'AirPressure','hPa','#000080','2009-02-19 00:00:00','2009-02-24 00:00:00',1009.4,1028.4,false,'Spline','http://s31tz.de/timeseries?name=AirPressure');
+    dgr.generatePlot('dgr',4,'RelativeHumidity','%','#ee9a00','2009-02-19 00:00:00','2009-02-24 00:00:00',63,100,false,'Spline','http://s31tz.de/timeseries?name=RelativeHumidity');
+    dgr.generatePlot('dgr',5,'GlobalRadiation','Watt','#8b008b','2009-02-19 00:00:00','2009-02-24 00:00:00',0,1000,false,'Spline','http://s31tz.de/timeseries?name=GlobalRadiation');
   });
   // ]]>
 </script>

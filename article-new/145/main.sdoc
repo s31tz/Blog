@@ -19,7 +19,7 @@
   url=https://metacpan.org/pod/Quiq
 
 Die folgenden Diagramme zeigen Zeitreihen-Plots (Umweltdaten)
-mit Q{Rangeslider} auf Basis von U{Plotly.js}.
+mit Q{Rangeslider} auf Basis des JavaScript Plot-Frameworks U{Plotly.js}.
 # Ich habe eine Perl-Klasse implementiert,
 # U{Quiq::PlotlyJs::XY::DiagramGroup}, die eine Menge von
 # Zeitreihen als eine Einheit behandelt und folgende Funktionalität
