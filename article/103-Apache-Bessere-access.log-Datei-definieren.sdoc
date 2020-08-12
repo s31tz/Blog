@@ -41,7 +41,7 @@ Default schreibt, ist in mehrfacher Hinsicht suboptimal:
   von dynmisch generierten Inhalten hilfreich ist, sowie Hostname und
   Port, an die der Request gegangen ist, was bei einem
   VirtualHost-Setup von Nutzen sein kann. Auch der Content-Type der
-  Response kann interessant sein, um die Logeinträge danach
+  Response kann interessant sein, um Logeinträge danach
   filtern zu können.
 
 * B{Zeilen lassen sich schlecht in ihre Teilinformationen
@@ -49,7 +49,7 @@ Default schreibt, ist in mehrfacher Hinsicht suboptimal:
   manche Felder Whitespace enthalten. Solche Felder sind in doppelte
   Anführungsstriche eingefasst. Aber nicht alle. Der Aufruf-Zeitpunkt
   ist in eckige Klammern eingefasst (s.o.). Fehlende Werte werden
-  durch einen Bindstrich (C{-}) dargestellt. Aber auch nicht immer.
+  durch einen Bindstrich (-) dargestellt. Aber auch nicht immer.
   Für den Query-String (Formatelement C{%q}) gilt dies nicht.
 
 Aufgrund dieser Ungereimtheiten definiert man sich am besten ein
