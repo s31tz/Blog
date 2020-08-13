@@ -24,8 +24,8 @@ mit Q{Rangeslider} auf Basis des JavaScript Plot-Frameworks U{Plotly.js}.
 # U{Quiq::PlotlyJs::XY::DiagramGroup}, die eine Menge von
 # Zeitreihen als eine Einheit behandelt und folgende Funktionalität
 # realisiert:
-Die Zeitreihen werden als eine Einheit behandelt, wobei folgende
-Bedienlogik realisiert ist:
+Die Zeitreihen behandele ich als eine Einheit, wobei ich folgende
+Bedienlogik realisiert habe:
 In dem Diagramm, dessen Rangeslider aktiviert ist (siehe Checkbox an
 den Diagrammen), kann mit der linken Maustaste im Plot ein Zeitbereich
 ausgewählt und anschließend mit dem Rangeslider durch den

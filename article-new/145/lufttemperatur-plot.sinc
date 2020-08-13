@@ -100,6 +100,7 @@
         hoverformat: '%Y-%m-%d %H:%M:%S',
         ticklen: 5,
         tickcolor: '#d0d0d0',
+        tickfont: {},
         showspikes: true,
         spikethickness: 1,
         spikesnap: 'data',
@@ -124,6 +125,7 @@
         range: [-1,1],
         ticklen: 4,
         tickcolor: '#d0d0d0',
+        tickfont: {},
         gridcolor: '#e8e8e8',
         showspikes: true,
         side: 'left',
@@ -197,10 +199,31 @@
         setRangeSlider(groupId,i,state);
       });
     };
-    let setTrace = function (name,i,trace,layout,x,y,z) {
+    let setTrace = function (name,i,trace,layout,shape,x,y,z) {
       trace.x = x;
       trace.y = y;
-      trace.marker.color = z;
+      if (shape == 'Spline') {
+        trace.mode = 'lines';
+        trace.line.shape = 'spline';
+        trace.marker.color = trace.line.color;
+      }
+      else if (shape == 'Linear') {
+        trace.mode = 'lines';
+        trace.line.shape = 'linear';
+        trace.marker.color = trace.line.color;
+      }
+      else if (shape == 'Marker') {
+        trace.mode = 'markers';
+        trace.marker.color = trace.line.color;
+      }
+      else {
+        trace.mode = 'markers';
+        trace.marker = {
+          color: z,
+          size: 3,
+          symbol: 'circle',
+        }
+      }
       if (z.length) {
         vars.zArrays[i-1] = z.slice();
       }
@@ -224,7 +247,7 @@
       Plotly.addTraces(dId,trace);
       return;
     };
-    let loadDataSetTrace = function (name,i,trace,layout,url) {
+    let loadDataSetTrace = function (name,i,trace,layout,shape,url) {
       console.log(url);
       $.ajax({
         type: 'GET',
@@ -255,7 +278,7 @@
             if (arr.length > 2)
               z.push(arr[2]);
           }
-          setTrace(name,i,trace,layout,x,y,z);
+          setTrace(name,i,trace,layout,shape,x,y,z);
         },
       });
     };
@@ -274,9 +297,9 @@
       Plotly.newPlot(dId,[t],l,config).then(
         function() {
           if (url)
-            loadDataSetTrace(name,i,t,l,url);
+            loadDataSetTrace(name,i,t,l,shape,url);
           else
-            setTrace(name,i,t,l,x,y,z);
+            setTrace(name,i,t,l,shape,x,y,z);
         },
         function() {
           alert('ERROR: plot creation failed: '+title);
