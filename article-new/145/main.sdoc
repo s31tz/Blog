@@ -18,7 +18,7 @@
   name=Quiq::PlotlyJs::XY::DiagramGroup
   url=https://metacpan.org/pod/Quiq
 
-Die folgenden Diagramme zeigen Zeitreihen-Plots (Umweltdaten)
+Die folgenden Diagramme zeigen Zeitreihen-Plots (am Beispiel von Umweltdaten)
 mit Q{Rangeslider} auf Basis des JavaScript Plot-Frameworks U{Plotly.js}.
 # Ich habe eine Perl-Klasse implementiert,
 # U{Quiq::PlotlyJs::XY::DiagramGroup}, die eine Menge von

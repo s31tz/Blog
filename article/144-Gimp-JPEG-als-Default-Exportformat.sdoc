@@ -12,7 +12,7 @@
 
 In GIMP wird beim Exportieren eines Bildes der Dateiname generell
 mit der Endung C{.png} vorbelegt. Wenn man Bilder meist als JPEG
-(Endung C{.jpg}) speichern möchte, ist es lästig, ständig die
+(Endung C{.jpg}) speichert, ist es lästig, ständig die
 Endung in C{.jpg} ändern zu müssen. GIMP scheint keine Einstellung
 für ein Default Exportformat zu kennen. Hier ein Weg, wie man bei einem
 GIMP Executable trotzdem JPEG als Default-Exportformat festlegen kann:
