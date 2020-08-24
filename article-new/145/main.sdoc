@@ -36,7 +36,7 @@ Plot-Breich wird der ursprüngliche Zustand wieder hergestellt. Beim
 nächstgelegenen Punktes angezeigt. Über das Menü Q{Shape} kann die
 Kurvenform eingestellt und mittels des Buttons Q{Download as PNG} der
 aktuelle Diagramm-Zustand als Grafik heruntergeladen werden. Die
-geplotteten Daten sind nicht Teil der Seite, sondern werden per
+geplotteten Daten sind nicht Teil der Seite (!), sondern werden per
 Ajax-Request von einer anderen Site via Cross-Origin Resource Sharing
 asynchron geladen. Das letzte Diagramm (GlobalRadiation) zeigt den
 Fall, dass im gegebenen Zeitbereich keine Daten vorliegen.
