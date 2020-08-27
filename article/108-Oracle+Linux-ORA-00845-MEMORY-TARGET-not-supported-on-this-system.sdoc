@@ -67,7 +67,7 @@ Danach fährt die Datenbank wieder hoch:
 
   $ sqlplus / as sysdba
 
-  SQL*Plus: Release 11.2.0.1.0 Production on Fri Aug 7 13:29:21 2015
+  SQL*Plus: Release 11.2.0.1.0 Production on Fri Aug 7 13:29:21 2020
 
   Copyright (c) 1982, 2009, Oracle.  All rights reserved.
 

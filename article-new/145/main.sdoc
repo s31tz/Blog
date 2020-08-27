@@ -31,8 +31,12 @@ den Diagrammen), kann mit der linken Maustaste im Plot ein Zeitbereich
 ausgewählt und anschließend mit dem Rangeslider durch den
 Gesamtbereich gescrollt werden. Das Zoomen und Scrollen findet dabei
 über allen Diagrammen synchron statt. Bei Doppelklick in den
-Plot-Breich wird der ursprüngliche Zustand wieder hergestellt. Beim
-Überfahren der Plots mit der Maus wird das Koordinatenpaar des
+Plot-Breich wird der ursprüngliche Zustand wieder hergestellt.
+Mit dem Button Q{Scale Y Axis} kann die Y-Achse auf den Wertebereich
+der sichtbaren Daten eingestellt werden. Bei einer zweiten Betätigung
+wird der ursprünglche Zustand wieder hergestellt. Bei Doppelklick
+in irgendein Diagramm werden alle Y-Achsen gemeinsam wieder hergestellt.
+Beim Überfahren der Plots mit der Maus wird das Koordinatenpaar des
 nächstgelegenen Punktes angezeigt. Über das Menü Q{Shape} kann die
 Kurvenform eingestellt und mittels des Buttons Q{Download as PNG} der
 aktuelle Diagramm-Zustand als Grafik heruntergeladen werden. Die
