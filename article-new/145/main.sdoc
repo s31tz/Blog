@@ -24,34 +24,38 @@ mit Q{Rangeslider} auf Basis des JavaScript Plot-Frameworks U{Plotly.js}.
 # U{Quiq::PlotlyJs::XY::DiagramGroup}, die eine Menge von
 # Zeitreihen als eine Einheit behandelt und folgende Funktionalität
 # realisiert:
-Die Zeitreihen behandele ich als eine Einheit, wobei ich folgende
-Bedienlogik realisiert habe: In dem Diagramm, dessen Rangeslider
-aktiviert ist (Checkbox an den Diagrammen), kann mit der linken
-Maustaste im Plot ein Zeitbereich ausgewählt und anschließend mit dem
-Rangeslider durch den Gesamtbereich gescrollt werden. Das Zoomen und
-Scrollen findet dabei über allen Diagrammen synchron statt. Bei
-Doppelklick in den Plot-Breich wird der ursprüngliche Zustand wieder
-hergestellt.
+Die Zeitreihen behandele ich als eine Einheit und habe folgende
+Bedienlogik realisiert:
 
-Mit dem Button Q{Scale Y Axis} kann die Y-Achse auf den
-Wertebereich der sichtbaren Daten eingestellt werden. Bei einer
-zweiten Betätigung wird der ursprünglche Zustand der Y-Skalierung
-wieder hergestellt.  Bei Doppelklick in irgendein Diagramm werden alle
-Y-Achsen gemeinsam wieder hergestellt.
+* In dem Diagramm, dessen Rangeslider
+  aktiviert ist (Checkbox an den Diagrammen), kann mit der linken
+  Maustaste im Plot ein Zeitbereich ausgewählt und anschließend mit dem
+  Rangeslider durch den Gesamtbereich gescrollt werden. Das Zoomen und
+  Scrollen findet dabei über allen Diagrammen synchron statt. Bei
+  Doppelklick in den Plot-Breich wird der ursprüngliche Zustand wieder
+  hergestellt.
 
-Beim Überfahren der Plots mit
-der Maus wird das Koordinatenpaar des nächstgelegenen Punktes
-angezeigt.
+* Mit dem Button Q{Scale Y Axis} kann die Y-Achse auf den
+  Wertebereich der sichtbaren Daten skaliert werden. Bei einer
+  zweiten Betätigung wird der ursprünglche Zustand der Y-Skalierung
+  wieder hergestellt.  Bei Doppelklick in irgendein Diagramm werden alle
+  Y-Achsen gemeinsam wieder hergestellt.
 
-Über das Menü Q{Shape} kann die Kurvenform eingestellt und
-mittels des Buttons Q{Download as PNG} der aktuelle Diagramm-Zustand
-als Grafik heruntergeladen werden.
+* Beim Überfahren der Plots mit
+  der Maus wird das Koordinatenpaar des nächstgelegenen Punktes
+  angezeigt.
 
-Die geplotteten Daten sind nicht
-Teil der Seite (!), sondern werden per Ajax-Request von einer anderen
-Site via Cross-Origin Resource Sharing asynchron geladen. Das letzte
-Diagramm (GlobalRadiation) zeigt den
-Fall, dass im gegebenen Zeitbereich keine Daten vorliegen.
+* Mittels des Menüs Q{Shape} kann die Kurvenform eingestellt werden.
+
+* Mittels des Buttons Q{Download as PNG} kann der aktuelle Diagramm-Zustand
+  als Grafik heruntergeladen werden.
+
+* Die geplotteten Daten sind nicht
+  Teil der Seite (!), sondern werden per Ajax-Request von einer anderen
+  Site via Cross-Origin Resource Sharing asynchron geladen.
+
+* Sonderfall Q{Keine Daten}. Das letzte Diagramm (GlobalRadiation) zeigt
+  die Darstellung, wenn im gegebenen Zeitbereich keine Daten vorliegen.
 
 %Include: file="lufttemperatur-plot.sinc"
 
