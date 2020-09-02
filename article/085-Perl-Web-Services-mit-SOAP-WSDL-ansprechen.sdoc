@@ -54,7 +54,7 @@ C{wsdl2perl.pl} eine objektorientierte Client-Schnittstelle für Perl:
 
 Nun können wir einen Client programmieren, der das Wetter abfragt:
 
-  %Code: ln=1 filter="./blog-highlight perl %FORMAT%"
+  %Code: highlight=Perl
   #!/usr/bin/env perl
 
   use strict;
