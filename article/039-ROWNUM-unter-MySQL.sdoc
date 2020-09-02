@@ -31,7 +31,7 @@ verwendet wird, da die Nummerierung I{vor} der Sortierung
 stattfindet.
 
 Unter Oracle wird C{ROWNUM} auch benutzt, um die Ergebnismenge auf
-die die ersten I{n} Datensätze zu begrenzen. Dafür hat MySQL ein
+die ersten I{n} Datensätze zu begrenzen. Dafür hat MySQL ein
 besseres Konzept, die SELECT-Klausel C{LIMIT}.
 
 # eof

@@ -3,7 +3,7 @@
 # Categories: Perl, Netz, TCP/IP
 
 %Document:
-  title="Perl: Erreichbarkeit eines Host prüfen"
+  title="Perl: Erreichbarkeit eines Hosts prüfen"
   generateAnchors=0
   utf8=1
 
@@ -16,7 +16,7 @@ Prüfung kann in Perl mittels des Core-Moduls
 U{"http://perldoc.perl.org/Net/Ping.html",text="Net::Ping"}
 durchgeführt werden.
 
-  %Code: ln=1 bg=2 filter="./blog-highlight perl %FORMAT%"
+  %Code: highlight=Perl
   use Net::Ping;
 
   my $p = Net::Ping->new;

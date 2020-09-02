@@ -45,7 +45,7 @@ via STDOUT und C{warn} die Ausgabe via STDERR.
 
 Quelle mit einem Latin1-Editor erstellt:
 
-  %Code: ln=1 bg=2 filter="./blog-highlight perl %FORMAT%"
+  %Code: highlight=Perl
   #!/usr/bin/env perl
 
   use strict;
@@ -63,7 +63,7 @@ Quelle mit einem Latin1-Editor erstellt:
 
 Quelle mit einem UTF-8-Editor erstellt:
 
-  %Code: ln=1 bg=2 filter="./blog-highlight perl %FORMAT%"
+  %Code: highlight=Perl
   #!/usr/bin/env perl
 
   use strict;
