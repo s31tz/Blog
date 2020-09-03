@@ -23,7 +23,7 @@ wählbaren Angaben DOM-Id der Tabelle, Label-Text und CSS-Breite.
         
 Label-Text setzen (JS):
 
-  %Code: filter="./blog-highlight js %FORMAT%"
+  %Code: highlight=JavaScript
     $('#ID').DataTable({
         ...
         'language': {
@@ -34,7 +34,7 @@ Label-Text setzen (JS):
 
 Suchfeld links positionieren (CSS):
 
-  %Code: filter="./blog-highlight css %FORMAT%"
+  %Code: highlight=CSS
     #ID_filter {
         float: left;
     }
@@ -42,7 +42,7 @@ Suchfeld links positionieren (CSS):
         
 Suchfeld mittig positionieren (CSS):
 
-  %Code: filter="./blog-highlight css %FORMAT%"
+  %Code: highlight=CSS
     #ID_filter {
         width: 100%;
         text-align: center;
@@ -51,7 +51,7 @@ Suchfeld mittig positionieren (CSS):
 
 Größe des Suchfelds ändern (CSS):
 
-  %Code: filter="./blog-highlight css %FORMAT%"
+  %Code: highlight=CSS
     #ID_filter input[type="search"] {
         width: WIDTH;
     }
@@ -59,11 +59,11 @@ Größe des Suchfelds ändern (CSS):
 
 Eigenes Suchfeld definieren:
 
-  %Code: filter="./blog-highlight html %FORMAT%"
+  %Code: highlight=HTML
     <input type="text" id="searchField" ...>
   .
 
-  %Code: filter="./blog-highlight js %FORMAT%"
+  %Code: highlight=JavaScript
     $('#searchField').on('keyup',function () {
         tab.search(this.value).draw();
     });
@@ -71,7 +71,7 @@ Eigenes Suchfeld definieren:
 
 Das von DataTables erzeugte Suchfeld unterdrücken:
 
-  %Code: filter="./blog-highlight js %FORMAT%"
+  %Code: highlight=JavaScript
     $('#ID').DataTable({
         dom: 't', // nur die Tabelle selbst, ohne Suchfeld etc.
         ...

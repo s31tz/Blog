@@ -23,7 +23,7 @@ realisieren.
 
 = Struktur des Accordion
     
-  %Code: listing=1 filter="./blog-highlight html %FORMAT%"
+  %Code: highlight=HTML
   <div id="ID">
     <h3><a href="URL">TITLE</a></h3>
     <div></div>
@@ -39,7 +39,7 @@ wird per Ajax gefüllt.
    
 = Instanziierung des Accordion
     
-  %Code: listing=1 filter="./blog-highlight js %FORMAT%"
+  %Code: highlight=JavaScript
   $('#ID').accordion({
     beforeActivate: function (event,ui) {
       var url = ui.newHeader.find('a').attr('href');
@@ -81,7 +81,7 @@ ist.
     
 = Öffnen des ersten Accordion-Reiters
     
-  %Code: listing=1 filter="./blog-highlight js %FORMAT%"
+  %Code: highlight=JavaScript
   $('#ID a:first').trigger('click');
   .
 

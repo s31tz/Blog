@@ -89,6 +89,7 @@
       title: {
         font: {
           color: '#ff0000',
+          size: 16,
         },
         yref: 'container',
         yanchor: 'top',
@@ -97,8 +98,9 @@
       spikedistance: -1,
       height: 280,
       margin: {
-        t: 45,
-        b: 116,
+        l: 50,
+        t: 45.6,
+        b: 123.5,
         autoexpand: false,
       },
       xaxis: {
@@ -110,7 +112,9 @@
         hoverformat: '%Y-%m-%d %H:%M:%S',
         ticklen: 5,
         tickcolor: '#d0d0d0',
-        tickfont: {},
+        tickfont: {
+          size: 11,
+        },
         showspikes: true,
         spikethickness: 1,
         spikesnap: 'data',
@@ -125,7 +129,9 @@
         },
         title: {
           text: 'Time',
-          font: {},
+          font: {
+            size: 13,
+          },
         },
         zeroline: true,
         zerolinecolor: '#d0d0d0',
@@ -139,7 +145,9 @@
         range: [-1,1],
         ticklen: 4,
         tickcolor: '#d0d0d0',
-        tickfont: {},
+        tickfont: {
+          size: 11,
+        },
         gridcolor: '#e8e8e8',
         showspikes: true,
         side: 'left',
@@ -150,6 +158,7 @@
         title: {
           font: {
             color: '#ff0000',
+            size: 13,
           },
         },
         zeroline: true,
@@ -162,9 +171,9 @@
       responsive: true,
     };
     let vars = {
-      height: [280,219],
-      bottomMargin: [116,55],
-      titleY: [0.946428571428571,0.931506849315068],
+      height: [280,214],
+      bottomMargin: [123.5,37.5],
+      titleY: [0.946428571428571,0.929906542056075],
       strict: false,
       zArrays: [],
     };
