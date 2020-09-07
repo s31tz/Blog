@@ -20,7 +20,7 @@ Die Lautstärke kann per Audio-Filter geändert werden:
 
 = Ältere ffmpeg-Versionen
 
-Die Audio-Lautstärke kann bei ffmpeg mit der Option C{-vol}
+In älteren ffmpeg-Versionen kann die Lautstärke mit der Option C{-vol}
 verändert werden. Diese Option ist auf der Manpage (Version 0.6.2)
 nicht dokumentiert.
 

@@ -11,7 +11,7 @@
     width=94 height=47 url="http://www.perl.org/"
 
 Mitunter möchte man wissen, ob ein bestimmter Host erreichbar ist,
-z.B. vor Beginn von Regressionstests gegen Services des Host. Diese
+z.B. vor Beginn von Regressionstests gegen Services des Hosts. Diese
 Prüfung kann in Perl mittels des Core-Moduls
 U{"http://perldoc.perl.org/Net/Ping.html",text="Net::Ping"}
 durchgeführt werden.
