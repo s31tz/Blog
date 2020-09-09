@@ -89,7 +89,7 @@
       title: {
         font: {
           color: '#ff0000',
-          size: 16,
+          size: 14,
         },
         yref: 'container',
         yanchor: 'top',
@@ -99,7 +99,7 @@
       height: 280,
       margin: {
         l: 50,
-        t: 45.6,
+        t: 44.4,
         b: 123.5,
         autoexpand: false,
       },
