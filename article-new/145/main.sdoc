@@ -52,7 +52,7 @@ Bedienlogik realisiert habe:
 
 * Die geplotteten Daten sind nicht
   Teil der Seite (!), sondern werden per Ajax-Request von einer anderen
-  Site via Cross-Origin Resource Sharing asynchron geladen.
+  Site via Cross-Origin Resource Sharing I{asynchron} geladen.
 
 * Sonderfall Q{Keine Daten}. Das letzte Diagramm (GlobalRadiation) zeigt
   die Darstellung, wenn im gegebenen Zeitbereich keine Daten vorliegen.
