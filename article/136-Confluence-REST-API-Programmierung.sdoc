@@ -11,7 +11,7 @@
 %Figure: file="IMGDIR/confluence-logo-320x50.png" width="205" height="32"
   url="https://docs.atlassian.com/confluence/REST/latest/"
 
-Wer sich als Admin mit Confluence befassen oder gegen die
+Wer sich als Admin mit Confluence befassen oder gegen die 
 REST-Schnittstelle programmieren möchte oder einfach eine temporäre
 Testinstanz braucht, ohne selbst über eine Confluence-Instanz zu
 verfügen, kann sich beim Hersteller eine kostenlose Cloud-Instanz
