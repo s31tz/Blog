@@ -93,12 +93,12 @@
         },
         yref: 'container',
         yanchor: 'top',
-        y: 0.946428571428571,
+        y: 0.95,
       },
       spikedistance: -1,
       height: 280,
       margin: {
-        t: 45,
+        t: 75,
         b: 116,
         autoexpand: false,
       },
@@ -123,7 +123,7 @@
           autorange: true,
           bordercolor: '#e0e0e0',
           borderwidth: 1,
-          thickness: 0.1786,
+          thickness: 0.2809,
           visible: true,
         },
         title: {
@@ -172,7 +172,7 @@
     let vars = {
       height: [280,219],
       bottomMargin: [116,55],
-      titleY: [0.946428571428571,0.931506849315068],
+      titleY: [0.95,0.93607305936073],
       strict: false,
       zArrays: [],
     };
