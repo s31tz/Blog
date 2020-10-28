@@ -1,7 +1,7 @@
 %Format:
 @@HTML@@
 <div id="dgr" class="diagramGroup">
-  <table style="border: 1px dotted #b0b0b0; margin-top: 0.6em; background-color: #f8f8f8; position: relative;" width="100%" cellspacing="0">
+  <table style="border: 1px dotted #b0b0b0; margin-top: 0.6em; background-color: #f8f8f8; position: relative;" border="1" width="100%" cellspacing="0">
   <tr>
     <td id="dgr-d1" class="diagram" style="height: 280px;"></td>
   </tr>
@@ -13,7 +13,7 @@
     </td>
   </tr>
   </table>
-  <table style="border: 1px dotted #b0b0b0; margin-top: 0.6em; background-color: #f8f8f8; position: relative;" width="100%" cellspacing="0">
+  <table style="border: 1px dotted #b0b0b0; margin-top: 0.6em; background-color: #f8f8f8; position: relative;" border="1" width="100%" cellspacing="0">
   <tr>
     <td id="dgr-d2" class="diagram" style="height: 280px;"></td>
   </tr>
@@ -25,7 +25,7 @@
     </td>
   </tr>
   </table>
-  <table style="border: 1px dotted #b0b0b0; margin-top: 0.6em; background-color: #f8f8f8; position: relative;" width="100%" cellspacing="0">
+  <table style="border: 1px dotted #b0b0b0; margin-top: 0.6em; background-color: #f8f8f8; position: relative;" border="1" width="100%" cellspacing="0">
   <tr>
     <td id="dgr-d3" class="diagram" style="height: 280px;"></td>
   </tr>
@@ -37,7 +37,7 @@
     </td>
   </tr>
   </table>
-  <table style="border: 1px dotted #b0b0b0; margin-top: 0.6em; background-color: #f8f8f8; position: relative;" width="100%" cellspacing="0">
+  <table style="border: 1px dotted #b0b0b0; margin-top: 0.6em; background-color: #f8f8f8; position: relative;" border="1" width="100%" cellspacing="0">
   <tr>
     <td id="dgr-d4" class="diagram" style="height: 280px;"></td>
   </tr>
@@ -49,7 +49,7 @@
     </td>
   </tr>
   </table>
-  <table style="border: 1px dotted #b0b0b0; margin-top: 0.6em; background-color: #f8f8f8; position: relative;" width="100%" cellspacing="0">
+  <table style="border: 1px dotted #b0b0b0; margin-top: 0.6em; background-color: #f8f8f8; position: relative;" border="1" width="100%" cellspacing="0">
   <tr>
     <td id="dgr-d5" class="diagram" style="height: 280px;"></td>
   </tr>
@@ -98,8 +98,8 @@
       spikedistance: -1,
       height: 280,
       margin: {
-        t: 75,
-        b: 116,
+        t: 40,
+        b: 116.63,
         autoexpand: false,
       },
       xaxis: {
@@ -123,13 +123,13 @@
           autorange: true,
           bordercolor: '#e0e0e0',
           borderwidth: 1,
-          thickness: 0.2809,
+          thickness: 0.2026,
           visible: true,
         },
         title: {
           text: 'Time',
           font: {
-            size: 14,
+            size: 13,
           },
         },
         zeroline: true,
@@ -157,7 +157,7 @@
         title: {
           font: {
             color: '#ff0000',
-            size: 14,
+            size: 13,
           },
         },
         zeroline: true,
@@ -170,9 +170,9 @@
       responsive: true,
     };
     let vars = {
-      height: [280,219],
-      bottomMargin: [116,55],
-      titleY: [0.95,0.93607305936073],
+      height: [280,218.37],
+      bottomMargin: [116.63,55],
+      titleY: [0.95,0.935888629390484],
       strict: false,
       zArrays: [],
     };
