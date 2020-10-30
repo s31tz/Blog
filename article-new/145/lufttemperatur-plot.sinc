@@ -99,7 +99,7 @@
       height: 280,
       margin: {
         t: 48,
-        b: 117,
+        b: 98,
         autoexpand: false,
       },
       xaxis: {
@@ -123,11 +123,10 @@
           autorange: true,
           bordercolor: '#e0e0e0',
           borderwidth: 1,
-          thickness: 0.2174,
+          thickness: 0.1866,
           visible: true,
         },
         title: {
-          text: 'Time',
           font: {
             size: 13,
           },
@@ -171,7 +170,7 @@
     };
     let vars = {
       height: [280,240],
-      bottomMargin: [117,74],
+      bottomMargin: [98,55],
       titleY: [0.9357,0.9250],
       strict: false,
       zArrays: [],
