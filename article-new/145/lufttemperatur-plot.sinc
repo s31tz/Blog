@@ -169,9 +169,9 @@
       responsive: true,
     };
     let vars = {
-      height: [280,240],
+      height: [280,237],
       bottomMargin: [98,55],
-      titleY: [0.9357,0.9250],
+      titleY: [0.9357,0.9240],
       strict: false,
       zArrays: [],
     };
