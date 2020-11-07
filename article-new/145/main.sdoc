@@ -36,7 +36,8 @@ Bedienlogik realisiert habe:
   allen Diagrammen wieder hergestellt.
 
 * Mit dem Button Q{Scale Y Axis} kann die Y-Achse auf den
-  Wertebereich der sichtbaren Daten skaliert werden. Bei einer
+  Wertebereich der sichtbaren Daten skaliert werden. Dies ist nützlich, wenn
+  in einen Zeitbereich mit geringen Wertänderungen hineingezoomt wurde. Bei einer
   zweiten Betätigung wird der ursprünglche Zustand der Y-Skalierung
   wieder hergestellt.  Bei Doppelklick in irgendein Diagramm werden alle
   Y-Achsen gemeinsam wieder hergestellt.
@@ -47,14 +48,15 @@ Bedienlogik realisiert habe:
 
 * Mittels des Menüs Q{Shape} kann die Kurvenform eingestellt werden.
 
-* Mittels des Buttons Q{Download as PNG} kann der aktuelle Diagramm-Zustand
-  als Grafik heruntergeladen werden.
+* Mittels des Buttons Q{Download as PNG} kann das Diagramm als Grafik
+  heruntergeladen werden. Soll er Rangeslider darauf nicht erscheinen, bietet
+  es sich an, diesen vorher wegzuschalten.
 
 * Die geplotteten Daten sind nicht
-  Teil der Seite (!), sondern werden per Ajax-Request von einer anderen
+  Teil der HTML-Seite (!), sondern werden per Ajax-Request von einer anderen
   Site via Cross-Origin Resource Sharing I{asynchron} geladen.
 
-* Sonderfall Q{Keine Daten}. Das letzte Diagramm (GlobalRadiation) zeigt
+* Sonderfall Q{Keine Daten}: Das letzte Diagramm (GlobalRadiation) zeigt
   die Darstellung, wenn im gegebenen Zeitbereich keine Daten vorliegen.
 
 %Include: file="lufttemperatur-plot.sinc"
