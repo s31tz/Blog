@@ -28,7 +28,7 @@ Die Zeitreihen behandele ich als eine Einheit, wobei ich folgende
 Bedienlogik realisiert habe:
 
 * In dem Diagramm, dessen Rangeslider
-  aktiviert ist (siehe Checkbox am Diagramm), kann mit der linken
+  aktiviert ist (siehe Checkbox am jeweiligen Diagramm), kann mit der linken
   Maustaste im Plot ein Zeitbereich ausgewählt und anschließend mit dem
   Rangeslider durch den Gesamtbereich gescrollt werden. Das Zoomen und
   Scrollen findet dabei über allen Diagrammen synchron statt. Bei
@@ -46,7 +46,12 @@ Bedienlogik realisiert habe:
   der Maus wird das Koordinatenpaar des nächstgelegenen Punktes
   angezeigt.
 
-* Mittels des Menüs Q{Shape} kann die Kurvenform eingestellt werden.
+* Im Menü Q{Shape} kann die Kurvendarstellung eingestellt werden. Spline: Die
+  Messwerte werden durch eine Spline-Approximation verbunden. Linear: Die
+  Messwerte werden durch eine gerade Linie verbunden. Marker: Die Messwerte werden
+  nicht verbunden, sondern durch einen Punkt dargestellt. Quality: Wie Marker,
+  nur dass in der Farbe des Punktes eine dritte Dimension (hier: die Qualität
+  des Messwerts) kodiert ist.
 
 * Mittels des Buttons Q{Download as PNG} kann das Diagramm als Grafik
   heruntergeladen werden. Soll er Rangeslider darauf nicht erscheinen, bietet
