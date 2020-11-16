@@ -4,7 +4,7 @@
 # Categories: Docker
 
 %Document:
-  title="Docker unter Debian Testing (buster) installieren"
+  title="Docker unter Debian (buster) installieren"
   generateAnchors=0
   utf8=1
 
@@ -46,6 +46,14 @@ ebenfalls mit Docker arbeiten kann:
 
   # usermod -G docker USER
 
+Container starten:
+
+  $ docker run IMAGE
+
+Container stoppen:
+
+  $ docker stop CONTAINER
+
 Liste der aktuell ausgeführten Container:
 
   $ docker ps
@@ -58,9 +66,62 @@ Lösche einen oder mehrere Container:
 
   $ docker rm CONTAINER ...
 
+Kommando im Container ausführen:
+
+  $ docker exec CONTAINER COMMAND ARG ...
+
+Z.B.
+
+  $ docker run debian -d sleep 120 # -d = detach
+  06f0ee0e2256c5d531f8134f1bbb8f91b7189483c4ab21c4fb7807384420b1bf
+  $ docker exec 06f0ee0e2256 cat /etc/hosts
+  127.0.0.1	localhost
+  ::1	localhost ip6-localhost ip6-loopback
+  fe00::0	ip6-localnet
+  ff00::0	ip6-mcastprefix
+  ff02::1	ip6-allnodes
+  ff02::2	ip6-allrouters
+  172.17.0.2	06f0ee0e2256
+
+Stdin und stdout mit dem Container verbinden:
+
+  $ docker run -it IMAGE # -i = stdin, -t = stdout
+
+Einen internen Port auf einen externen Port abbilden:
+
+  $ docker run -p PORT_EXTERN:PORT_INTERN IMAGE
+
+  PORT_INTERN: Port innerhalb des Containers
+  PORT_EXTERN: Port auf dem Docker-Host
+
+Ein internes Verzeichnis auf ein externes Verzeichnis abbilden:
+
+  $ docker run -v DIR_EXTERN:DIR_INTERN IMAGE
+
+  DIR_EXTERN: Verzeichnis auf dem Docker-Host
+  DIR_INTERN: Verzeichnis innerhalb des Containers
+
+Environement-Variablen setzen:
+
+  $docker run -e NAME=VALUE IMAGE
+
+(die definierten Enviroment-Variablen: C{docker inspect IMAGE})
+
+Logs auf stdout ausgeben:
+
+  $ docker logs CONTAINER
+
+Image herunterladen:
+
+  $ docker pull IMAGE
+
 Liste der lokal vorrätigen Images:
 
   $ docker image ls
+
+Lösche ein oder mehrere Images:
+
+  $ docker rmi IMAGE ...
 
 Image-Konfiguration ansehen:
 
@@ -88,6 +149,24 @@ Eigenes Image erstellen:
   ...
   $ docker build -t my-app .
 
+Beispiel:
+
+  FROM ubuntu
+
+  RUN apt-get update
+  RUN apt-get -y install python3
+
+  RUN pip install flask
+  RUN pip install flask-mysql
+
+  COPY . /opt/source-code
+
+  ENTRYPOINT FLASK_APP=/opt/source-code/app.py flask run
+
+Image erzeugen:
+
+  docker build . -t ACCOUNT/NAME
+
 Lokales Netz (Class B) erzeugen:
 
   $ docker network create NAME
@@ -113,5 +192,10 @@ Doku zu den offiziellen Docker-Images:
 * U{"http://docker.com/",text="Docker Homepage"}
 * U{"https://docs.docker.com/engine/installation/linux/docker-ce/debian/",\
     text="Get Docker CE for Debian"}
-    
+* U{Labs - Docker For The Absolute Beginner}
+
+%Link:
+  name="Labs - Docker For The Absolute Beginner"
+  url=https://kodekloud/p/docker-labs
+
 # eof
