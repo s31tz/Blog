@@ -32,7 +32,7 @@ L<Jenkins unter Debian installieren und konfigurieren|https://github.com/s31tz/B
 
 =item *
 
-L<Docker unter Debian Testing (buster) installieren|https://github.com/s31tz/Blog/blob/master/article/139-docker-auf-debian-testing-buster-installieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/151-x.html>)
+L<Docker unter Debian (buster) installieren|https://github.com/s31tz/Blog/blob/master/article/139-docker-auf-debian-testing-buster-installieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/151-x.html>)
 
 =item *
 
@@ -104,7 +104,7 @@ L<Perl: Modulpfade ermitteln|https://github.com/s31tz/Blog/blob/master/article/1
 
 =item *
 
-L<Perl: Erreichbarkeit eines Host prüfen|https://github.com/s31tz/Blog/blob/master/article/116-Perl-Erreichbarkeit-Host-pruefen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/128-x.html>)
+L<Perl: Erreichbarkeit eines Hosts prüfen|https://github.com/s31tz/Blog/blob/master/article/116-Perl-Erreichbarkeit-Host-pruefen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/128-x.html>)
 
 =item *
 
