@@ -168,6 +168,15 @@ Image erzeugen:
 
   docker build . -t ACCOUNT/NAME
 
+Beispiel:
+
+  $ docker build . -t s31tz/webapp
+  $ docker run -p 5000:5000 s31tz/webapp
+
+Erzeugungshistorie anzeigen:
+
+  $ docker history IMAGE
+
 Lokales Netz (Class B) erzeugen:
 
   $ docker network create NAME
