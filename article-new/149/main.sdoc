@@ -10,9 +10,12 @@
 %Figure: file="IMGDIR/python-perl-370x65.png" width="268" height="47"
   url="https://github.com/tkluck/pyperler"
 
-U{PyPerler} ist ein Python-Package mit dem es möglich ist, Perl-Code unter
-Python zu nutzen. Es wird vom Autor nach eigener Aussage zur
-Zeit nicht mehr gepflegt, funktioniert aber noch.
+U{PyPerler} ist ein Python-Package mit dem es möglich ist, Perl-Code
+unter Python zu nutzen. Es wird vom Autor nach eigener Aussage zur
+Zeit nicht gepflegt, funktioniert aber tadellos. Es lassen sich
+damit sogar komplexe Perl-Klassen unter Python verwenden, wie z.B.
+O/R-Mapper für Datenbank-Operationen. Ich arbeite zur Zeit unter
+Debian 10 mit Python 3.7.3 und Perl 5.28.1.
 
 = Installation
 
@@ -26,19 +29,19 @@ Wir holen den Sourcecode von GitHub:
 
   $ git clone https://github.com/tkluck/pyperler.git
 
-Wir kompilieren und installieren PyPerler in die virtuelle Umgebung:
+Wir kompilieren den Code und installieren PyPerler in die virtuelle Umgebung:
 
   $ cd pyperler
   $ make
   $ make install
 
-Bricht das Kompilieren mit der Fehlermeldung
+Bricht C{make} ab mit
 
   pyperler.c:2561:41: error: expected ‘)’ before ‘SV’
    static int __pyx_f_8pyperler__free(tTHX, SV *, MAGIC *); /*proto*/
                                            ^~~
-ab, muss am Anfang von C{pyperler.h} das Makro C{PERL_IMPLICIT_CONTEXT}
-definiert werden:
+lässt sich dies beheben, indem am Anfang von C{pyperler.h} das Makro
+C{PERL_IMPLICIT_CONTEXT} definiert wird:
 
   #define PERL_IMPLICIT_CONTEXT
 
