@@ -177,6 +177,10 @@ Erzeugungshistorie anzeigen:
 
   $ docker history IMAGE
 
+Alle Images entfernen, die von keinem Container genutzt werden:
+
+  $ docker image prune -a
+
 Lokales Netz (Class B) erzeugen:
 
   $ docker network create NAME
