@@ -66,6 +66,11 @@ Lösche einen oder mehrere Container:
 
   $ docker rm CONTAINER ...
 
+Lösche alle unbenutzten oder unreferenzierten Images, Container,
+Volumes und Networks:
+
+  $ docker system prune -a
+
 Kommando im Container ausführen:
 
   $ docker exec CONTAINER COMMAND ARG ...
