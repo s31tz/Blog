@@ -3,7 +3,7 @@
 # Categories: Python, Perl
 
 %Document:
-  title="PyPerler: Python meets Perl -oder- Perl-Klassen unter Python nutzen"
+  title="PyPerler: Perl-Klassen unter Python nutzen"
   generateAnchors=0
   utf8=1
 
@@ -12,10 +12,11 @@
 
 U{PyPerler} ist ein Python-Package mit dem es möglich ist, Perl-Code
 unter Python zu nutzen. Es wird vom Autor nach eigener Aussage zur
-Zeit nicht gepflegt, funktioniert aber tadellos. Es lassen sich
-damit sogar komplexe Perl-Klassen unter Python verwenden, wie z.B.
-O/R-Mapper für Datenbank-Operationen. Ich nutze es zur Zeit unter
-Debian 10 mit Python 3.7.3 und Perl 5.28.1.
+Zeit nicht gepflegt, funktioniert aber recht gut (Einschränkungen
+siehe unten). Es lassen sich damit sogar komplexe Perl-Klassen unter
+Python verwenden, wie z.B. ein O/R-Mapper für Datenbank-Operationen. Ich
+experimentiere zur Zeit damit unter Debian 10 mit Python 3.7.3 und
+Perl 5.28.1.
 
 = Installation
 
@@ -35,15 +36,25 @@ Wir kompilieren den Code und installieren PyPerler in die virtuelle Umgebung:
   $ make
   $ make install
 
-Bricht C{make} ab mit
+= Probleme
 
-  pyperler.c:2561:41: error: expected ‘)’ before ‘SV’
-   static int __pyx_f_8pyperler__free(tTHX, SV *, MAGIC *); /*proto*/
-                                           ^~~
-lässt sich dies beheben, indem am Anfang von C{pyperler.h} das Makro
-C{PERL_IMPLICIT_CONTEXT} definiert wird:
+== Operatoren sind nicht vollständig überladen
 
-  #define PERL_IMPLICIT_CONTEXT
+Die Operator-Methoden C{__radd__}, C{__rmul__} usw. fehlen in Klasse
+C{ScalarValue}, so dass ein Perl-Skalar ohne explizite Typwandlung
+zwar linksseitig mit einem Python-Objekt verknüpft werden kann, aber
+nicht rechtsseitig. Dies lässt sich nachtragen.
+
+== Die Extension ist nicht thread-save
+
+Pyperler ist offenbar nicht tread-save. Eine Flask-Anwendung muss mit
+
+  $ flask run --without-threads
+
+gestartet werden, sonst schmiert sie mit einem Segmentation fault beim
+ersten Zugriff auf ein Perl-Objekt ab. Dies hat möglicherweise mit
+der fehlerhaften Nutzung von Pythons I{Global Interpreter Lock} (GIL)
+zu tun.
 
 = Links
 
