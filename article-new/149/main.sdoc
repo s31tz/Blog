@@ -43,7 +43,13 @@ Wir kompilieren den Code und installieren PyPerler in die virtuelle Umgebung:
 Die Operator-Methoden C{__radd__}, C{__rmul__} usw. fehlen in Klasse
 C{ScalarValue}, so dass ein Perl-Skalar ohne explizite Typwandlung
 zwar linksseitig mit einem Python-Objekt verknüpft werden kann, aber
-nicht rechtsseitig. Dies lässt sich nachtragen.
+nicht rechtsseitig. Diese Definitionen lassen sich relativ
+einfach nachtragen. Als Leitfaden kann
+
+  $ make check
+
+genutzt werden, das unter o.g. Python-Version entsprechende
+Fehler feststellt.
 
 == Die Extension ist nicht thread-save
 
