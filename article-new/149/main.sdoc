@@ -36,6 +36,13 @@ Wir kompilieren den Code und installieren PyPerler in die virtuelle Umgebung:
   $ make
   $ make install
 
+Nun können wir Perl-Code von Python aus nutzen. Ein Beispiel
+findet sich im U{README}.
+
+%Link:
+  name=README
+  url=https://github.com/tkluck/pyperler#pyperler
+
 = Probleme
 
 == Operatoren sind nicht vollständig überladen
@@ -44,21 +51,21 @@ Die Operator-Methoden C{__radd__()}, C{__rmul__()} usw. fehlen in Klasse
 C{ScalarValue}, so dass unter o.g. Python-Version ein Perl-Skalar ohne
 explizite Typwandlung nur linksseitig mit einem Python-Objekt
 verknüpft werden kann, aber nicht rechtsseitig. Diese Definitionen
-lassen sich relativ einfach nachtragen. Als Leitfaden kann
+lassen sich relativ einfach nachtragen. Als Richtschnur kann
 
   $ make check
 
-genutzt werden, das die entsprechenden Defizite aufzeigt.
+genutzt werden, das die Defizite aufzeigt.
 
 == Die Extension ist nicht thread-save
 
-Pyperler ist offenbar nicht tread-save. Eine Flask-Anwendung muss mit
+Pyperler ist offenbar nicht thread-save. Eine Flask-Anwendung muss mit
 
   $ flask run --without-threads
 
 gestartet werden, sonst stürzt sie mit einem Segmentation Fault beim
 ersten Zugriff auf ein Perl-Objekt ab. Dies hat möglicherweise mit
-einer unzureichenden Nutzung von Pythons I{Global Interpreter Lock} (GIL)
+einem Fehler bei der Nutzung von Cythons I{Global Interpreter Lock} (GIL)
 zu tun.
 
 = Links
