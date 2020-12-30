@@ -21,7 +21,7 @@ Python 3.7.3 und Perl 5.28.1.
 = Installation
 
 Wir setzen zunächt eine virtuelle Umgebung auf, in die wir PyPerler
-installieren wollen:
+installieren werden:
 
   $ virtualenv venv
   $ . venv/bin/activate
@@ -49,7 +49,7 @@ findet sich im U{README}.
 
 Die Operator-Methoden C{__radd__()}, C{__rmul__()} usw. fehlen in Klasse
 C{ScalarValue}, so dass unter o.g. Python-Version ein Perl-Skalar ohne
-explizite Typwandlung nur linksseitig mit einem Python-Objekt
+explizite Typwandlung zwar linksseitig mit einem Python-Objekt
 verknüpft werden kann, aber nicht rechtsseitig. Diese Definitionen
 lassen sich relativ einfach nachtragen. Als Richtschnur kann
 
