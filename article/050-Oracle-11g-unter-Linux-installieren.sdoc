@@ -34,7 +34,7 @@ Enterprise Edition"} (Hierfür ist ein OTN-Konto nötig)
 = Schritt 2: Oracle-Benutzer und DBA-Gruppe erzeugen
 
   # addgroup --system dba
-  # adduser --system --home /opt/oracle --shell /bin/bash --ingroup dba \
+  # adduser --system --home /opt/oracle --shell /bin/bash --ingroup dba
     --gecos 'Oracle DBA' oracle
   # passwd oracle
 

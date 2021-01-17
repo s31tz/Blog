@@ -57,7 +57,7 @@ eigenes Logfile-Format. Zum Glück ist dies mit der Apache-Direktive
 C{LogFormat} leicht möglich. Ich verwende folgende Definition, mit
 einem senkrechten Strich als eindeutigem Feldtrenner:
 
-  LogFormat "%{%Y-%m-%d %H:%M:%S}t|%h|%>s|%L|%D|%I|%O|%{Content-Type}o|\
+  LogFormat "%{%Y-%m-%d %H:%M:%S}t|%h|%>s|%L|%D|%I|%O|%{Content-Type}o|
       %m|%v|%p|%U%q|%H|%{Referer}i|%{User-Agent}i" NAME
 
 Verwendete Formatelemente (die mit + gekennzeichneten Informationen

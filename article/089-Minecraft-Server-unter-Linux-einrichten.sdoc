@@ -25,7 +25,8 @@ Server gestartet wird.
 
 Werte für I{URL} und I{CMD} zum Zeitpunkt des Schreibens dieses Texts:
 
-  URL: https://s3.amazonaws.com/Minecraft.Download/versions/1.8.1/minecraft_server.1.8.1.jar
+  URL: https://s3.amazonaws.com/Minecraft.Download/versions/1.8.1/\
+    minecraft_server.1.8.1.jar
   CMD: java -Xmx1024M -Xms1024M -jar minecraft_server.1.8.1.jar nogui
 
 = Installation in Kurzform

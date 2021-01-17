@@ -27,17 +27,22 @@ führt unter Debian zu dem Fehler
   Traceback (most recent call last):
     File "./test.py", line 5, in <module>
       driver = webdriver.Firefox()
-    File ".../venv/lib/python3.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 174, in __init__
-      keep_alive=True)
-    File ".../venv/lib/python3.7/site-packages/selenium/webdriver/remote/webdriver.py", line 157, in __init__
-      self.start_session(capabilities, browser_profile)
-    File ".../venv/lib/python3.7/site-packages/selenium/webdriver/remote/webdriver.py", line 252, in start_session
-      response = self.execute(Command.NEW_SESSION, parameters)
-    File ".../venv/lib/python3.7/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
-      self.error_handler.check_response(response)
-    File ".../venv/lib/python3.7/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
-      raise exception_class(message, screen, stacktrace)
-  selenium.common.exceptions.SessionNotCreatedException: Message: Unable to find a matching set of capabilities
+    File ".../venv/lib/python3.7/site-packages/selenium/webdriver/firefox/
+      webdriver.py", line 174, in __init__ keep_alive=True)
+    File ".../venv/lib/python3.7/site-packages/selenium/webdriver/remote/
+      webdriver.py", line 157, in __init__ self.start_session(capabilities,
+      browser_profile)
+    File ".../venv/lib/python3.7/site-packages/selenium/webdriver/remote/
+      webdriver.py", line 252, in start_session response = self.execute(
+      Command.NEW_SESSION, parameters)
+    File ".../venv/lib/python3.7/site-packages/selenium/webdriver/remote/
+      webdriver.py", line 321, in execute self.error_handler.check_response(
+      response)
+    File ".../venv/lib/python3.7/site-packages/selenium/webdriver/remote/
+      errorhandler.py", line 242, in check_response raise exception_class(
+      message, screen, stacktrace)
+  selenium.common.exceptions.SessionNotCreatedException: Message: Unable
+      to find a matching set of capabilities
 
 Grund hierfür ist, dass unter Debian C{firefox} ein Shellskript
 ist, das das Q{richtige} Firefox-Executable C{firefox-esr} indirekt aufruft.
@@ -60,7 +65,7 @@ Firefox-Executable explizit anzugeben:
   $ virtualenv venv
   $ . venv/bin/activate
   $ pip install selenium
-  $ curl -L https://github.com/mozilla/geckodriver/releases/download/v0.27.0/\
+  $ curl -L https://github.com/mozilla/geckodriver/releases/download/v0.27.0/
     geckodriver-v0.27.0-linux64.tar.gz | (cd venv/bin; tar xvzf -)
 
 (mit dem geckodriver, der zum Zeitpunkt dieses Artikels aktuell war)
