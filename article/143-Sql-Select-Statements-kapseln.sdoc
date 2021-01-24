@@ -233,7 +233,7 @@ Wir haben folgendes erreicht:
   wir Selektionen formulieren können. Nur diese Namen muss der
   Aufrufer kennen.
 * Wir haben eine Methode geschaffen, die eine Schnittstelle zur
-  Erzeugung von konkreten Selektionen über dem gekapselten Statement
+  Erzeugung von frei formulierten Selektionen über dem gekapselten Statement
   bereitstellt.
 
 # eof
