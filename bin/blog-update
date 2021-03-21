@@ -155,7 +155,7 @@ for my $file (@files) {
     my ($id) = $text =~ /^# (?:id=|Id: )(\d+)/m;
     if (!$id) {
         # Neuer Eintrag: Daten für Serendipity ausgeben
-        warn "WARNING: Datei enthält keine d: $file\n";
+        warn "WARNING: Datei enthält keine Id: $file\n";
 
         my ($title,$html) = $convertFile->($articleDir,$file);
         print "Title: $title\n\nHTML:\n$html";
