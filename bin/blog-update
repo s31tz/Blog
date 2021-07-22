@@ -85,7 +85,6 @@ my $p = Blog::Base::Quiq::Path->new;
 # Konfiguration
 
 my $app = Blog::Base::Quiq::ApplicationPaths->new;
-say $app->etcDir('blog.conf');
 my $cfg = Blog::Base::Quiq::Config->new($app->etcDir('blog.conf'));
 
 # Artikelverzeichnis ermitteln
