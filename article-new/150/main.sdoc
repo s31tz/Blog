@@ -1,0 +1,30 @@
+# Date: 2021-01-24
+# Id: 163
+# Categories: Linux/Unix, Debian
+
+%Document:
+  title="Debian: Netzwerk-Installation vom USB-Stick"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/debian-logo-391x103.png" width="121" height="32"
+  url="https://www.debian.org"
+
+Einfacher geht's nicht, die Installation des Stable-Releases von Debian:
+
+1. ISO-Image von Homepage herunterladen: U{https://www.debian.org/}
+2. Image auf USB-Stick kopieren (C{cp FILE.iso /dev/sdX})
+3. Rechner vom USB-Stick booten
+4. Installation durchführen
+
+Voraussetzung ist, dass der Rechner, auf dem die Installation stattfindet,
+eine Verbindung ins Internet aufbauen kann (per Ethernet oder WLAN).
+Der Stick kann auch im Recovery-Fall genutzt werden (eine
+Netzwerkverbindung ist in dem Fall nicht nötig).
+
+= Links
+
+* U{"https://www.debian.org/releases/",\
+    text="Übersicht über die Debian-Releases"}
+* U{"https://www.debian.org/devel/debian-installer/",\
+    text="Download-Seite für Distribution 'testing'"}
