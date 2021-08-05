@@ -128,7 +128,10 @@ elsif (@ARGV) {
 }
 
 # Datenbankverbindung aufbauen
-my $db = Blog::Base::Quiq::Database::Connection->new($cfg->get('Udl'),
+
+my $udl = $cfg->get('Udl');
+say $udl;
+my $db = Blog::Base::Quiq::Database::Connection->new($udl,
     -utf8=>1,
     -log=>$verbose,
 );
