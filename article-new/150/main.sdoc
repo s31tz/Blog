@@ -10,9 +10,12 @@
 %Figure: file="IMGDIR/debian-logo-391x103.png" width="121" height="32"
   url="https://www.debian.org"
 
-Einfacher geht's nicht, die Installation des Stable-Releases von Debian:
+Wer im Netz nach "debian installation" sucht, stößt auf folgendes Dokument:
+U{Debian GNU/Linux Installation Guide}, was erschlagend ist. Dabei
+ist die Installation des Stable-Releases von Debian so einfach:
 
-1. ISO-Image von Homepage herunterladen: U{https://www.debian.org/}
+1. ISO-Image von Homepage herunterladen: U{https://www.debian.org/} (Button
+   Q{Download})
 2. Image auf USB-Stick kopieren (C{cp FILE.iso /dev/sdX})
 3. Rechner vom USB-Stick booten
 4. Installation durchführen
@@ -28,3 +31,7 @@ Netzwerkverbindung ist in dem Fall nicht nötig).
     text="Übersicht über die Debian-Releases"}
 * U{"https://www.debian.org/devel/debian-installer/",\
     text="Download-Seite für Distribution 'testing'"}
+
+%Link:
+  name="Debian GNU/Linux Installation Guide"
+  url=https://www.debian.org/releases/stable/i386/
