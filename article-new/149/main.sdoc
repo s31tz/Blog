@@ -21,7 +21,7 @@ Python 3.7.3 und Perl 5.28.1.
 = Installation
 
 Wir setzen zunächt eine virtuelle Umgebung auf, in die wir PyPerler
-installieren werden:
+installieren:
 
   $ virtualenv venv
   $ . venv/bin/activate

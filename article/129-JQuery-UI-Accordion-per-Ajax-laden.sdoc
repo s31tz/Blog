@@ -1,7 +1,7 @@
 # Date: 2016-04-24
 # Id: 141
 # Draft: no
-# Categories: Accordion, jQuery, JavaScript
+# Categories: Accordion, jQuery, Ajax, JavaScript
 
 %Document:
   title="jQuery UI: Accordion Panels per Ajax laden"

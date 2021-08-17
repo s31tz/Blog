@@ -25,7 +25,10 @@ Zusammenfassung:
 %Code: highlight=Shell
   $ which gimp
   /usr/bin/gimp
-  $ ghex /usr/bin/gimp # extension.png durch extension.jpg ersetzen
+  $ ghex /usr/bin/gimp # "extension.png" durch "extension.jpg" ersetzen
 .
+
+In ghex C{Edit/Replace} auswählen, dann auf der rechten Seite Such- und
+Ersetzung-String eintragen und per Button C{Replace} Ersetzung durchführen.
 
 # eof

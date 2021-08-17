@@ -12,7 +12,7 @@
 
 Wer im Netz nach "debian installation" sucht, stößt auf folgendes Dokument:
 U{Debian GNU/Linux Installation Guide}, was erschlagend ist. Dabei
-ist die Installation des Stable-Releases von Debian sehr einfach:
+ist die Installation des Stable-Releases von Debian sensationell einfach:
 
 1. ISO-Image von Homepage herunterladen: U{https://www.debian.org/} (Button
    Q{Download})
@@ -20,10 +20,10 @@ ist die Installation des Stable-Releases von Debian sehr einfach:
 3. Rechner vom USB-Stick booten
 4. Installation durchführen
 
-Voraussetzung ist, dass der Rechner, auf dem die Installation stattfindet,
-eine Verbindung ins Internet aufbauen kann (per Ethernet oder WLAN).
-Der Stick kann auch im Recovery-Fall genutzt werden (eine
-Netzwerkverbindung ist in dem Fall nicht nötig).
+Voraussetzung hierfür ist, dass der Rechner, auf dem die Installation
+stattfindet, eine Verbindung ins Internet aufbauen kann (per Ethernet
+oder WLAN). Zusätzlicher Vorteil: Der Stick kann auch im Recovery-Fall
+genutzt werden (eine Netzwerkverbindung ist in dem Fall nicht nötig).
 
 = Links
 

@@ -15,7 +15,7 @@
   url=https://www.gnu.org/software/emacs/manual/html_node/emacs/\
     Rectangles.html#Rectangles
 
-Ein sehr nützliches Konzept sind Rectangles (Rechtecke). Es gibt
+Ein sehr nützliches Konzept in Emacs sind Rectangles (Rechtecke). Es gibt
 diverse Kommandos, um auf ihnen zu operieren. Mit C{C-SPC} wird
 zunächst eine Marke auf die eine Ecke des Rechtecks gesetzt, dann wird
 mit dem Cursor zur gegenüberliegenden Ecke navigiert. Anschließend kann
