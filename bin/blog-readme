@@ -11,7 +11,7 @@ use POSIX ();
 use Blog::Base::Quiq::Option;
 use Blog::Base::R1::Help;
 use Blog::Base::Quiq::ApplicationPaths;
-use Blog::Base::Quiq::Config;
+use Blog::Base::Quiq::Shell;
 use Blog::Base::Quiq::Process;
 use Blog::Base::Quiq::Path;
 use Sdoc2::Document;
@@ -69,12 +69,16 @@ elsif (@ARGV) {
 # Konfiguration
 
 my $app = Blog::Base::Quiq::ApplicationPaths->new;
-my $cfg = Blog::Base::Quiq::Config->new($app->etcDir('blog.conf'));
+my $homeDir = $app->homeDir;
+my $cmd = "find $homeDir | sort -r | grep '\.sdoc\$'";
+my @sdocFiles = split /\n/, Blog::Base::Quiq::Shell->exec($cmd,-capture=>'stdout');
+# say "@docFiles";
+# exit;
 
-my $articleDir = $app->homeDir('article');
+# my $articleDir = $app->homeDir('article');
 
-# Ins Artikelverzeichnis wechseln
-Blog::Base::Quiq::Process->cwd($articleDir);
+# # Ins Artikelverzeichnis wechseln
+# Blog::Base::Quiq::Process->cwd($articleDir);
 
 # Artikeldateien zusammenfügen
 
@@ -92,7 +96,8 @@ __EOT__
 my $fmt1 = 'https://github.com/s31tz/Blog/blob/master/article/%s';
 my $fmt2 = 'http://fseitz.de/blog/index.php?/archives/%d-x.html';
 
-for my $file (reverse Blog::Base::Quiq::Path->glob("*.sdoc")) {
+# for my $file (reverse Blog::Base::Quiq::Path->glob("*.sdoc")) {
+for my $file (@sdocFiles) {
     my $text = Encode::decode('utf-8',Blog::Base::Quiq::Path->read($file));
 
     # Drafts übergehen wir
@@ -109,8 +114,10 @@ for my $file (reverse Blog::Base::Quiq::Path->glob("*.sdoc")) {
     # Serendipity-Id des Artikels
     my ($id) = $text =~ /^# (?:id=|Id: )(\d+)/m;
 
-    $code .= sprintf qq|* U{"$fmt1",text="%s"} (U{"$fmt2",text="Article"})\n\n|,
-        $file,$title,$id;
+    $file =~ s|.*/article(-new)?/||; # Pfadanfang abschneiden
+
+    $code .= sprintf qq|* U{"$fmt1",text="%s"} (U{"$fmt2",text="Article"})|.
+        "\n\n",$file,$title,$id;
     # $code .= sprintf qq|* U{"$fmt1",text="%s"}\n\n|,$file,$title;
 }
 
