@@ -1,0 +1,37 @@
+# Date: 2020-06-28
+# Id: 158
+# Categories: Text, Emacs
+
+%Document:
+  title="Emacs: Rectangles"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/emacs-logo-470x475.png" width="51" height="52"
+  url="https://www.gnu.org/software/emacs/"
+
+%Link:
+  name="Rectangle Commands"
+  url=https://www.gnu.org/software/emacs/manual/html_node/emacs/\
+    Rectangles.html#Rectangles
+
+Ein sehr nützliches Konzept in Emacs sind Rectangles (Rechtecke). Es gibt
+diverse Kommandos, um auf ihnen zu operieren. Mit C{C-SPC} wird
+zunächst eine Marke auf die eine Ecke des Rechtecks gesetzt, dann wird
+mit dem Cursor zur gegenüberliegenden Ecke navigiert. Anschließend kann
+ein Kommando auf das Rechteck angewendet werden. Die Rectangle-Kommandos
+beginnen mit C{C-x r}. Referenz: U{Rectangle Commands}
+
+Ersetze jede Zeile des Rechtecks durch eine Zeichenkette (dies kann
+zum Auskommentieren genutzt werden):
+
+%Code: highlight=Shell
+  C-x r t <string> RET
+.
+
+Umkehrung. Entferne ein markiertes Rechteck (kann zum wieder
+Einkommentieren genutzt werden):
+
+%Code: highlight=Shell
+  C-x r d
+.

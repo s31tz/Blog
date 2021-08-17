@@ -1,0 +1,66 @@
+# Date: 2020-07-19
+# Id: 159
+# Categories: JavaScript, Ajax
+
+%Document:
+  title="Ajax: Cross-Origin Resource Sharing (CORS) implementieren"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/ajax-logo-304x132.png" width="97" height="42"
+  url="https://de.wikipedia.org/wiki/Ajax_(Programmierung)"
+
+%Link:
+  name="Ajax-Requests"
+  url="https://de.wikipedia.org/wiki/Ajax_(Programmierung)"
+
+%Link:
+  name="Cross-Origin Resource Sharing (CORS)"
+  url=https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+
+%Link:
+  name="Access-Control-Allow-Origin"
+  url=https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/\
+      Access-Control-Allow-Origin
+
+Aus Sicherheitsgründen lassen moderne Browser U{Ajax-Requests} über
+Domaingrenzen hinweg nur dann zu, wenn die angefragte Resource die
+anfragende Domain Q{kennt}. Ob dies der Fall ist, teilt die Resource
+dem Browser über den HTTP-Header C{Access-Control-Allow-Origin} mit:
+
+%Code: highlight=JavaScript
+  Access-Control-Allow-Origin: <origin>
+.
+
+Liefert die angefragte Resource diesen Header nicht oder passt C{<origin>}
+nicht zur anfragenden Seite, verwirft der Browser die Response.
+Firefox z.B. schreibt dann die Warnung ins Console Log
+
+  Cross-Origin Request Blocked: The Same Origin Policy disallows \
+  reading the remote resource at ...
+
+mit dem Zusatz
+
+  (Reason: CORS header 'Access-Control-Allow-Origin' missing)
+
+wenn der Header fehlt, oder
+
+  (Reason: CORS header 'Access-Control-Allow-Origin' does not match '...')
+
+wenn C{<origin>} nicht passt.
+
+Möchte die angefragte Resource Zugriffe von jeglichen Domains zulassen,
+liefert sie einfach
+
+%Code: highlight=JavaScript
+  Access-Control-Allow-Origin: *
+.
+
+Möchte sie den Zugriff von mehreren (aber nicht allen) Domains
+zulassen, muss sie C{<origin>} dynamisch zur jeweils anfragenden Seite
+setzen, die ihre Origin unter dem Header C{Origin:} sendet.
+
+= Links
+
+* U{Access-Control-Allow-Origin}
+* U{Cross-Origin Resource Sharing (CORS)}

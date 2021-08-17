@@ -1,0 +1,88 @@
+# Date: 2020-10-12
+# Id: 160
+# Categories: Python, Selenium
+
+%Document:
+  title="Selenium+Python+Firefox+Debian: Unable to find a matching set of capabilities"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/selenium-python-1740x363.png" width="192" height="40"
+  url="https://selenium-python.readthedocs.io/"
+
+Das Python-Programm
+
+%Code: highlight=Python
+  #!/usr/bin/env python3
+
+  from selenium import webdriver
+  driver = webdriver.Firefox()
+
+  # eof
+.
+
+führt unter Debian zu dem Fehler
+
+  Traceback (most recent call last):
+    File "./test.py", line 5, in <module>
+      driver = webdriver.Firefox()
+    File ".../venv/lib/python3.7/site-packages/selenium/webdriver/firefox/
+      webdriver.py", line 174, in __init__ keep_alive=True)
+    File ".../venv/lib/python3.7/site-packages/selenium/webdriver/remote/
+      webdriver.py", line 157, in __init__ self.start_session(capabilities,
+      browser_profile)
+    File ".../venv/lib/python3.7/site-packages/selenium/webdriver/remote/
+      webdriver.py", line 252, in start_session response = self.execute(
+      Command.NEW_SESSION, parameters)
+    File ".../venv/lib/python3.7/site-packages/selenium/webdriver/remote/
+      webdriver.py", line 321, in execute self.error_handler.check_response(
+      response)
+    File ".../venv/lib/python3.7/site-packages/selenium/webdriver/remote/
+      errorhandler.py", line 242, in check_response raise exception_class(
+      message, screen, stacktrace)
+  selenium.common.exceptions.SessionNotCreatedException: Message: Unable
+      to find a matching set of capabilities
+
+Grund hierfür ist, dass unter Debian C{firefox} ein Shellskript
+ist, das das Q{richtige} Firefox-Executable C{firefox-esr} indirekt aufruft.
+Damit kann der WebDriver von Firefox (C{geckodriver}) nicht umgehen.
+Die Lösung ist, bei der Instantiierung des Firefox-Drivers den Pfad zum
+Firefox-Executable explizit anzugeben:
+
+%Code: highlight=Python
+  #!/usr/bin/env python3
+
+  from selenium import webdriver
+  driver = webdriver.Firefox(firefox_binary="/usr/bin/firefox-esr")
+
+  # eof
+.
+
+= Installation von Python-Bindings für Selenium und Firefox-Treiber \
+  in Virtualenv-Umgebung
+
+  $ virtualenv venv
+  $ . venv/bin/activate
+  $ pip install selenium
+  $ curl -L https://github.com/mozilla/geckodriver/releases/download/v0.27.0/
+    geckodriver-v0.27.0-linux64.tar.gz | (cd venv/bin; tar xvzf -)
+
+(mit dem geckodriver, der zum Zeitpunkt dieses Artikels aktuell war)
+
+= Links
+
+* U{Selenium für Python}
+* U{Selenium für Python - Inoffizielle Dokumentation}
+* U{WebDriver Firefox}
+
+%Link:
+  name="Selenium für Python"
+  url=https://pypi.org/project/selenium/
+
+%Link:
+  name="Selenium für Python - Inoffizielle Dokumentation"
+  url=https://selenium-python.readthedocs.io/
+
+%Link:
+  name="WebDriver Firefox"
+  url=https://github.com/mozilla/geckodriver/releases

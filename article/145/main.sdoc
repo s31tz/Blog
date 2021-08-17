@@ -1,0 +1,150 @@
+# Date: 2020-05-29
+# Id: 157
+# Categories: JavaScript, Plotly
+
+%Document:
+  title="Plotly.js: Plotten und analysieren einer Gruppe von Zeitreihen"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/plotly-js-logo-522x122.png" width="171" height="40"
+  url="https://plotly.com/javascript/"
+
+%Link:
+  name=Plotly.js
+  url=https://plotly.com/javascript/
+
+%Link:
+  name=Quiq::PlotlyJs::XY::DiagramGroup
+  url=https://metacpan.org/pod/Quiq
+
+Die folgenden Diagramme zeigen Zeitreihen-Plots (am Beispiel von Umweltdaten)
+mit Q{Rangeslider} auf Basis des JavaScript Plot-Frameworks U{Plotly.js}.
+# Ich habe eine Perl-Klasse implementiert,
+# U{Quiq::PlotlyJs::XY::DiagramGroup}, die eine Menge von
+# Zeitreihen als eine Einheit behandelt und folgende Funktionalität
+# realisiert:
+Die Zeitreihen behandele ich als eine Einheit, wobei ich folgende
+Bedienlogik realisiert habe:
+
+* In dem Diagramm, dessen Rangeslider
+  aktiviert ist (siehe Checkbox am jeweiligen Diagramm), kann mit der linken
+  Maustaste im Plot ein Zeitbereich ausgewählt und anschließend mit dem
+  Rangeslider durch den Gesamtbereich gescrollt werden. Das Zoomen und
+  Scrollen findet dabei über allen Diagrammen synchron statt. Bei
+  Doppelklick in den Plot-Breich wird der ursprüngliche Zustand über
+  allen Diagrammen wieder hergestellt.
+
+* Mit dem Button Q{Scale Y Axis} kann die Y-Achse auf den
+  Wertebereich der sichtbaren Daten skaliert werden. Dies ist nützlich, wenn
+  in einen Zeitbereich mit geringen Wertänderungen hineingezoomt wurde. Bei einer
+  zweiten Betätigung wird der ursprünglche Zustand der Y-Skalierung
+  wieder hergestellt.  Bei Doppelklick in irgendein Diagramm werden alle
+  Y-Achsen gemeinsam wieder hergestellt.
+
+* Beim Überfahren der Plots mit
+  der Maus wird das Koordinatenpaar des nächstgelegenen Punktes
+  angezeigt.
+
+* Im Menü Q{Shape} kann die Kurvendarstellung eingestellt werden. Spline: Die
+  Messwerte werden durch eine Spline-Approximation verbunden. Linear: Die
+  Messwerte werden durch eine gerade Linie verbunden. Marker: Die Messwerte werden
+  nicht verbunden, sondern durch einen Punkt dargestellt. Quality: Wie Marker,
+  nur dass in der Farbe des Punktes eine dritte Dimension (hier: die Qualität
+  des Messwerts) kodiert ist.
+
+* Mittels des Buttons Q{Download as PNG} kann das Diagramm als Grafik
+  heruntergeladen werden. Soll er Rangeslider darauf nicht erscheinen, bietet
+  es sich an, diesen vorher wegzuschalten.
+
+* Die geplotteten Daten sind nicht
+  Teil der HTML-Seite (!), sondern werden per Ajax-Request von einer anderen
+  Site via Cross-Origin Resource Sharing I{asynchron} geladen.
+
+* Sonderfall Q{Keine Daten}: Das letzte Diagramm (GlobalRadiation) zeigt
+  die Darstellung, wenn im gegebenen Zeitbereich keine Daten vorliegen.
+
+%Include: file="lufttemperatur-plot.sinc"
+
+# Die folgenden Angaben beziehen sich auf Line Charts und Scatter
+# Plots und damit auf Trace-Objekte vom C{type: 'scatter'}.
+# 
+# B{Datenpunkte mit geraden Linien verbinden (Trace-Objekt)}
+# 
+# %Code: highlight=JavaScript
+#   mode: 'lines',
+#   line: {
+#     shape: 'linear',
+#   },
+# .
+# 
+# Im C{line}-Objekt können weitere Linien-Eigenschaften definiert
+# werden.
+# 
+# B{Datenpunkte mit Splines verbinden (Trace-Objekt)}
+# 
+# %Code: highlight=JavaScript
+#   mode: 'lines',
+#   line: {
+#     shape: 'spline',
+#   },
+# .
+# 
+# B{Datenpunkte allein darstellen, ohne Verbindung (Trace-Objekt)}
+# 
+# %Code: highlight=JavaScript
+#   mode: 'markers',
+# .
+# 
+# Die genauen Marker-Eigenschaften werden durch das C{marker}-Objekt definiert.
+# 
+# B{Datenpunkte hervorheben und verbinden (Trace-Objekt)}
+# 
+# %Code: highlight=JavaScript
+#   mode: 'lines+markers',
+# .
+# 
+# B{Plot-Bereich einrahmen (Layout-Objekt)}
+# 
+# Die Einrahmung wird dadurch erreicht, dass die Achsenlinien einzeln
+# gespiegelt werden:
+# 
+# %Code: highlight=JavaScript
+#   xaxis: {
+#     mirror: true,
+#   },
+#   yaxis: {
+#     mirror: true,
+#   },
+# .
+# 
+# Achsenfarbe und -dicke werden durch die Achsenattribute C{linecolor}
+# und C{linewidth} definiert.
+# 
+# B{Diagrammgröße bei Änderung der Fenstergröße automatisch anpassen
+# (Config-Objekt)}
+# 
+# %Code: highlight=JavaScript
+#   responsive: true,
+# .
+# 
+# B{Geometrie eines Diagramms definieren}
+# 
+# Die Gesamtdarstellung bezeichnen wir als I{Diagramm}. Ein Digramm besteht
+# aus einem I{Plot}, also dem Bereich mit den visualisierten Daten, und
+# irgendwelchem Q{Drumherum}, wie I{Titel}, I{Achsebeschriftung},
+# I{Rangeslider} usw. Wichtig zu wissen ist, dass das Q{Drumherum} in
+# den I{Rand} um den Plot gezeichnet wird. Der Rand muss also groß genug
+# bemessen sein, damit er alle Elemente, die vereinbart sind, aufnehmen kann.
+# Der Rand wird definiert durch das Objekt C{layout.margin} mit
+# den Komponenten C{t} (top), C{b} (bottom), C{l} (left), C{r} (right).
+# Wenn man die genaue Kontrolle über die Gestaltung des Randes haben
+# möchte, empfiehlt es sich, zusätzlich das Rand-Attribut
+# C{autoexpand: false} zu setzen.
+# 
+# Die Höhe des Diagramms definieren wir durch Setzen des Attribus
+# C{layout.hight}. Die Breite des Diagramms definieren wird nicht, denn
+# das Diagramm soll horizontal immer den gesamten verfügbaren Raum
+# einnehmen. Diesen Raum zu bestimmen, überlassen wir Plotly. Damit eine
+# Breitenanpassung nach z.B. Änderung der Fenstergröße automatisch
+# erfolgt, setzen wir C{config.responsive: true}.

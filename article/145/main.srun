@@ -1,0 +1,52 @@
+#!/usr/bin/env perl
+
+use v5.10;
+use strict;
+use warnings;
+
+use FindBin;;
+use lib "$FindBin::Bin/../../lib/perl5";
+use Blog::Base::Quiq::Program;
+
+# -----------------------------------------------------------------------------
+
+=encoding utf8
+
+=head1 NAME
+
+145::main.srun - Erzeuge dynamische Teile für Blog-Artikel 145
+
+=head1 USAGE
+
+145::main.srun [OPTIONS]
+
+=head1 OPTIONS
+
+=over 4
+
+=item --mtime[=BOOL]
+
+Schreibe den Zeitpunkt der letzten Änderung am Programm und
+seinen Modulen nach STDOUT und beende das Progamm.
+
+=item --help|-h
+
+Diese Hilfe.
+
+=back
+
+=head1 PROGRAM CLASS
+
+L<Blog::GenerateIncludes::Article145>
+
+=head1 AUTHOR
+
+Frank Seitz
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+exit Blog::Base::Quiq::Program->run('Blog::GenerateIncludes::Article145')->exitCode;
+
+# eof
