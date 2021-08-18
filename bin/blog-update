@@ -145,10 +145,7 @@ my %idIdx = $entT->index('id');
 
 # Artikeldateien lesen
 
-my @files;
-# for my $articleDir ($articleDir,"$articleDir-new") {
-    push @files,$p->find($articleDir,-type=>'f',-pattern=>'\.sdoc$');
-# }
+my @files = $p->find($articleDir,-type=>'f',-pattern=>'\.sdoc$');
 
 my $n = 0; # Anzahl aktualisierter Artikel
 for my $file (@files) {

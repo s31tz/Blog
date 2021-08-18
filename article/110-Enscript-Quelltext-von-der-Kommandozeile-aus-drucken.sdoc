@@ -108,7 +108,8 @@ letzten Änderungszeitpunkt erfährt.
 
 %Code: ln=1 bg=2 \
 filter="sed -r 's/r1-|-fs//g' | ./blog-highlight bash %FORMAT%" \
-file="/media/seitzf/share/opt/CoTeDo/storage/root/code/program/r1-src-to-pdf" 
+file="~/dvl/jaz/.cotedo/root/code/program/r1-src-to-pdf" 
+# file="/media/seitzf/share/opt/CoTeDo/storage/root/code/program/r1-src-to-pdf" 
 
 = Globale Einstellungen
 
