@@ -1,0 +1,64 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use Devel::Size;
+
+print "Perl Version: $]\n";
+
+my $s1;
+print 'Skalar ohne Wert: ',Devel::Size::size(\$s1)," Bytes\n";
+
+my $s2 = \$s1;
+print 'Referenz: ',Devel::Size::size(\$s2)," Bytes\n";
+
+my $s3 = 4711;
+print 'Integer: ',Devel::Size::size(\$s3)," Bytes\n";
+
+my $s4 = 1234.567;
+print 'Float: ',Devel::Size::size(\$s4)," Bytes\n";
+
+my $s5 = '';
+my $nLast = Devel::Size::size(\$s5);
+print "String - leer: $nLast Bytes\n";
+
+for my $i (1..12,16,20) {
+    $s5 = 'x'x$i;
+    my $n = Devel::Size::size(\$s5);
+    print "String - $i 1-Byte Zeichen: $n Bytes (Diff: ",$n-$nLast,")\n";
+    $nLast = $n;
+}
+
+my @a1;
+$nLast = Devel::Size::size(\@a1);
+print "Array - leer: $nLast Bytes\n";
+
+for my $i (4,8,16,32,64) {
+    my @a2 = (1..$i);
+    my $n = Devel::Size::size(\@a2);
+    my $diff = $n-$nLast;
+    my $avg = $n/$i;
+    printf "Array - $i Elemente: $n Bytes (Diff: $diff) - %.1f Bytes/Key\n",
+        $avg;
+    $nLast = $n;
+}
+
+my %h1;
+$nLast = Devel::Size::size(\%h1);
+print "Hash - leer: $nLast Bytes\n";
+
+for my $i (4,8,16,32,64,128,256,512,1024) {
+    my %h2;
+    for (my $j = 1; $j <= $i; $j++) {
+        $h2{sprintf 'Eintrag%04d',$j} = $j;
+    }
+    # @h2{(1..$i)} = (1..$i);
+    my $n = Devel::Size::size(\%h2);
+    my $diff = $n-$nLast;
+    my $avg = $n/$i;
+    printf "Hash - $i Keys: $n Bytes (Diff: $diff) - %.1f Bytes/Key\n",$avg;
+    $nLast = $n;
+}
+
+# eof

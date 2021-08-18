@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+  <name>__NAME__</name>
+  <open>1</open>
+  <description>__DESCRIPTION__</description>
+  <GroundOverlay>
+    <name>Image</name>
+    <Icon>
+      <href>__FILE__</href>
+    </Icon>
+    <LatLonBox>
+      <north>__NORTH__</north>
+      <south>__SOUTH__</south>
+      <east>__EAST__</east>
+      <west>__WEST__</west>
+    </LatLonBox>
+  </GroundOverlay>
+  <ScreenOverlay>
+    <name>Legend</name>
+    <Icon>
+      <href>__LEGEND_FILE__</href>
+    </Icon>
+    <overlayXY x="0.02" y="0.98" xunits="fraction" yunits="fraction"/>
+    <screenXY x="0.02" y="0.98" xunits="fraction" yunits="fraction"/>
+    <size x="-1" y="-1" xunits="pixels" yunits="pixels"/>
+  </ScreenOverlay>
+</Document>
+</kml>

@@ -1,0 +1,19 @@
+.my-toc {
+  font-family: verdana, arial, sans-serif;
+  background: #f8f8f8;
+}
+.my-toc h1 {
+  background: #f0f0f0;
+}
+.my-toc ul {
+  background: #f0f0f0;
+}
+.my-toc ul ul {
+  background: #e0e0e0;
+}
+.my-toc ul ul ul {
+  background: #d0d0d0;
+}
+.my-toc a {
+  color: red;
+}

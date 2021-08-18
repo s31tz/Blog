@@ -1,0 +1,20 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+my %mod;
+my $cmd = 'perldoc -u perllocal';
+open(my $fh,'-|',$cmd) or die "ERROR: open failed ($!)";
+while (<$fh>) {
+    if (/^=head2.*\|(.*)>/) {
+        $mod{$1} = 1;
+    }
+}
+close($fh) or die qq|ERROR: Command failed: "$cmd" (Exit Code: $?)\n|;
+
+for my $mod (sort keys %mod) {
+    print "$mod\n";
+}
+
+# eof

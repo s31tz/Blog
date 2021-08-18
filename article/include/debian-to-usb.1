@@ -1,0 +1,41 @@
+NAME
+    debian-to-usb - Erzeuge bootbaren USB-Stick mit Debian Image
+
+USAGE
+    debian-to-usb [OPTIONS] IMAGE DEVICE
+
+    debian-to-usb --get net-inst
+
+    debian-to-usb --get businesscard-inst
+
+OPTIONS
+    --verbose=BOOL (Default: 1)
+        Gib die ausführenden Kommandos aus.
+
+    --help
+        Diese Hilfe.
+
+    IMAGE
+        Der Dateiname eines Debian Live-Image mit der Endung .iso oder .img
+        oder einer der beiden Bezeichner
+
+        businesscard-inst
+            Erzeuge Installer aus Businesscard-Image.
+
+        net-inst
+            Erzeuge Installer aus NetInst-Image.
+
+    DEVICE
+        Der Device-Name, unter dem der USB-Stick angesprochen wird. Z.B.
+        "/dev/sdb". Das Device darf nicht gemountet sein.
+
+        Vorsicht! Ein falscher Device-Name kann Daten auf anderen Geräten
+        oder gar das System zerstören. Er sollte daher akribisch geprüft
+        werden. Er lässt sich z.B. mit "fdisk -l" ermitteln.
+
+AUTHOR
+    Frank Seitz, http://www.fseitz.de/
+
+COPYRIGHT
+    Copyright (C) Frank Seitz, 2012
+

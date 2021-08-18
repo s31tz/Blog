@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Dirhandle;
+
+my $dh = Dirhandle->new($ARGV[0]);
+while (my $entry = $dh->next) {
+    printf "$entry\n";
+}
+$dh->close;
+
+# eof

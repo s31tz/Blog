@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Filehandle;
+
+my $fh = Filehandle->new('<',$ARGV[0]);
+print $fh->slurp;
+$fh->close;
+print "---\n";
+$fh = Filehandle->new('<',$ARGV[0]);
+while (<$fh>) {
+    print;
+  }
+$fh->close;
+
+# eof
