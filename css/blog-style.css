@@ -44,7 +44,7 @@ body {
     font-size: 14px;
     color: #000000;
     background: #ffffff;
-    /* max-width: 1024px; /* max. Darstellungsbreite */
+    max-width: 1080px; /* max. Darstellungsbreite */
 }
 
 /* Dokument (%Document:) */

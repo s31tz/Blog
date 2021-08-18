@@ -18,7 +18,7 @@
   name=Quiq::PlotlyJs::XY::DiagramGroup
   url=https://metacpan.org/pod/Quiq
 
-Die folgenden Diagramme zeigen Zeitreihen-Plots (am Beispiel von Umweltdaten)
+Die  folgenden Diagramme zeigen Zeitreihen-Plots (am Beispiel von Umweltdaten)
 mit Q{Rangeslider} auf Basis des JavaScript Plot-Frameworks U{Plotly.js}.
 Die Zeitreihen behandele ich als eine Einheit, wobei ich folgende
 Bedienlogik realisiert habe:
@@ -33,8 +33,8 @@ Bedienlogik realisiert habe:
 
 * Mit dem Button Q{Scale Y Axis} kann die Y-Achse auf den
   Wertebereich der sichtbaren Daten skaliert werden. Dies ist nützlich, wenn
-  in einen Zeitbereich mit geringen Wertänderungen hineingezoomt wurde. Bei einer
-  zweiten Betätigung wird der ursprünglche Zustand der Y-Skalierung
+  in einen Zeitbereich mit geringen Wertänderungen hineingezoomt wurde.
+  Bei einer zweiten Betätigung wird der ursprünglche Zustand der Y-Skalierung
   wieder hergestellt.  Bei Doppelklick in irgendein Diagramm werden alle
   Y-Achsen gemeinsam wieder hergestellt.
 
@@ -42,12 +42,13 @@ Bedienlogik realisiert habe:
   der Maus wird das Koordinatenpaar des nächstgelegenen Punktes
   angezeigt.
 
-* Im Menü Q{Shape} kann die Kurvendarstellung eingestellt werden. Spline: Die
-  Messwerte werden durch eine Spline-Approximation verbunden. Linear: Die
-  Messwerte werden durch eine gerade Linie verbunden. Marker: Die Messwerte werden
-  nicht verbunden, sondern durch einen Punkt dargestellt. Quality: Wie Marker,
-  nur dass in der Farbe des Punktes eine dritte Dimension (hier: die Qualität
-  des Messwerts) kodiert ist.
+* Im Menü Q{Shape} kann die Kurvendarstellung eingestellt
+  werden. Spline: Die Messwerte werden durch eine Spline-Approximation
+  verbunden. Linear: Die Messwerte werden durch eine gerade Linie
+  verbunden.  Marker: Die Messwerte werden nicht verbunden, sondern
+  durch einen Punkt dargestellt. Quality: Wie Marker, nur dass in der
+  Farbe des Punktes eine dritte Dimension (hier: die Qualität des
+  Messwerts) kodiert ist.
 
 * Mittels des Buttons Q{Download as PNG} kann das Diagramm als Grafik
   heruntergeladen werden. Soll er Rangeslider darauf nicht erscheinen, bietet
@@ -60,7 +61,8 @@ Bedienlogik realisiert habe:
 * Sonderfall Q{Keine Daten}: Das letzte Diagramm (GlobalRadiation) zeigt
   die Darstellung, wenn im gegebenen Zeitbereich keine Daten vorliegen.
 
-%Include: file="plots.sinc"
+# Der Pfad -Präfix wird für blog-one-page benötigt
+%Include: file="~/opt/blog/article/145/plots.sinc"
 
 # Die folgenden Angaben beziehen sich auf Line Charts und Scatter
 # Plots und damit auf Trace-Objekte vom C{type: 'scatter'}.

@@ -13,6 +13,7 @@ use Blog::Base::R1::Help;
 use Blog::Base::Quiq::ApplicationPaths;
 use Blog::Base::Quiq::Config;
 use Blog::Base::Quiq::Process;
+use Blog::Base::Quiq::Shell;
 use Blog::Base::Quiq::Path;
 use Sdoc2::Document;
 use Blog::Base::Quiq::Html::Tag;
@@ -91,7 +92,12 @@ Blog::Base::Quiq::Process->cwd($articleDir);
 
 my $sdoc = '';
 my $maxMtime = 0;
-for my $file (reverse Blog::Base::Quiq::Path->glob("*.sdoc")) {
+
+my $cmd = "find $homeDir | sort -r | grep '\.sdoc\$'";
+my @sdocFiles = split /\n/, Blog::Base::Quiq::Shell->exec($cmd,-capture=>'stdout');
+
+for my $file (@sdocFiles) {
+# for my $file (reverse Blog::Base::Quiq::Path->glob("*.sdoc")) {
 # for my $file (reverse Blog::Base::Quiq::Path->find('.',-pattern=>qr|^article-new/.*\.sdoc$|)) {
     my ($num) = $file =~ m|(\d+)|;
     $num += 0;
