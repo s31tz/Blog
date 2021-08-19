@@ -3,7 +3,7 @@
 # Categories: Python, Selenium
 
 %Document:
-  title="Selenium+Python+Firefox+Debian: Unable to find a matching set of capabilities"
+  title="Selenium+Python+Firefox: Unable to find a matching set of capabilities"
   generateAnchors=0
   utf8=1
 
