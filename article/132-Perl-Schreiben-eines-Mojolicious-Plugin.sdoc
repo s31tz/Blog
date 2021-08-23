@@ -29,7 +29,7 @@ Schritten:
 In der Dokumentation zur Basisklasse Mojolicious::Plugin wird die
 Implementierung so beschrieben:
     
-  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  %Code: highlight=Perl
     package Mojolicious::Plugin::MyPlugin;
     use Mojo::Base 'Mojolicious::Plugin';
 
@@ -52,14 +52,14 @@ bezeichneten Teil mit Leben zu füllen.
 Ist das Plugin implementiert, wird es durch einen einzigen Aufruf zur
 Applikation hinzugefügt:
     
-  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  %Code: highlight=Perl
     $app->plugin(MyPlugin => \%config);
   .
 
 Der analoge Aufruf unter
 U{"https://metacpan.org/pod/Mojolicious::Lite",text="Mojolicious::Lite"}:
 
-  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  %Code: highlight=Perl
     plugin MyPlugin => \%config;
   .
 
@@ -76,7 +76,7 @@ IP-Adresse des Aufrufers ins Log ausgibt. Dies erreichen wir, indem
 wir in der Methode C{register()} einen C{before_routes}-Handler
 aufsetzen, der genau dies tut.
 
-  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  %Code: highlight=Perl
     package Mojolicious::Plugin::Hello;
     Mojo::Base 'Mojolicious::Plugin';
 
@@ -94,13 +94,13 @@ aufsetzen, der genau dies tut.
 
 Das Plugin wird durch
     
-  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  %Code: highlight=Perl
     $app->plugin('Hello');
   .
 
 oder im Falle von Mojolicious::Lite durch
     
-  %Code: listing=1 filter="./blog-highlight perl %FORMAT%"
+  %Code: highlight=Perl
     plugin 'Hello';
   .
 
