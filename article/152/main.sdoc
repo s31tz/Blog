@@ -1,0 +1,172 @@
+# Date: 2021-08-20
+# Id: 165
+# Draft: no
+# Categories: Mojolicious, Systemd
+
+%Document:
+  title="Mojolicious: Webanwendung auf Entwicklungsrechner einrichten"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/mojolicious-logo-386x90.png" \
+  width=189 height=44 url="https://mojolicious.org/"
+
+Wir entwickeln auf Basis von U{Mojolicious} eine Webanwendung C{NAME}
+und möchten, dass diese
+
+* in ihrer vorgegebenen Entwicklungsumgebung abläuft
+* beim Booten automatisch gestartet wird
+* permanent läuft
+* sich bei Codeänderungen neu lädt
+* fürs Debugging eine eigene Logdatei schreibt
+* interaktiv gestoppt und gestartet werden kann
+* wenn nicht benötigt, auf unbestimmte Zeit deaktiviert werden kann
+
+Dies lässt sich sehr einfach mit U{morbo} als Webserver in Kombination
+mit der Prozesssteuerung U{systemd} realisieren. Hierbei ist C{morbo}
+der Entwicklungs-Webserver von Mojolicious und C{systemd} die fundamentale
+Prozesssteuerung vieler Linux-Systeme (ein moderner Ersatz für C{init}).
+Ein zusätzlicher Webserver wie U{nginx} oder U{apache} wird nicht benötigt.
+
+Die Unit-Datei C{NAME}.service, mit der wir den Service gegenüber C{systemd}
+definieren, ist recht einfach (Erläuterungen zur einzig
+interessanten Zeile C{ExecStart} siehe im Folgenden):
+
+%Code: highlight=Plain
+  [Unit]
+  Description=DESCRIPTION
+  After=network.target
+
+  [Service]
+  Type=simple
+  User=USER
+  ExecStart=bash -lc "morbo PROGRAM --listen http://*:PORT --watch SOURCEDIR \
+    --verbose >LOGFILE.log 2>&1"
+
+  [Install]
+  WantedBy=multi-user.target
+.
+
+Hierbei ist:
+
+[DESCRIPTION]:
+  Eine kurze, einzeilige Beschreibung des Service.
+
+[USER]:
+  Der Name des Unix-Users, unter dessen Rechten der Prozess ausgeführt wird,
+  denn wir möchten, dass der Prozess im Kontext eines bestimmten Users
+  läuft. Wenn nicht angegeben, ist C{root} der User. 
+
+[PROGRAM]:
+  Pfad/Name des Programms, das die Webanwendung ausführt. Wir rufen die
+  Anwendung nicht direkt auf, sondern via C{bash -lc "..."}, damit sie
+  in der Umgebung des Users USER läuft.
+
+[PORT]:
+  Port, über den die Anwendung erreicht wird (wegen * auf allen Interfaces).
+  Sie ist lokal zugreifbar via C{localhost:PORT}.
+
+[SOURCEDIR]:
+  Wurzelverzeichnis, im dem sich die Quellen der Anwendung befinden.
+  Dieses Verzeichnis überwacht C{morbo} in Bezug auf Änderungen.
+  Verteilen sich die Quellen über mehrere Verzeichnisse, kann die
+  Option C{--watch} mehrfach angegeben werden.
+
+[LOGFILE]:
+  Pfad/Name der Logdatei, in die der Webserver (C{morbo}) die Zugriffe
+  und Fehlermeldungen protokolliert. Die Logdatei wird beim Booten
+  neu begonnen, womit auf einfache Weise vermieden wird, dass sie unbegrenzt
+  wächst, historische Information wird in der Entwicklungsumgebung ja
+  nicht benötigt.
+
+Die systemd Unit-Datei kopieren wir in das Verzeichnis C{/etc/systemd/system}.
+Mit folgender Kommandofolge machen wir die Anwendung sofort und
+dauerhaft verfügbar:
+
+%Code:
+  # systemctl daemon-reload # Konfigurationsänderung systemd bekannt machen
+  # systemctl enable NAME   # Service aktivieren, so dass die Anwendung \
+                              beim Booten gestartet wird
+  # systemctl start NAME    # Service sofort verfügbar machen (ohne Rebooten \
+                              zu müssen)
+.
+
+Den Status überprüfen wir mit:
+
+%Code:
+  # systemctl status NAME
+.
+
+Die Anwendung kann jederzeit gestoppt und gestartet werden mit:
+
+%Code:
+  # systemctl stop NAME
+  # systemctl start NAME
+.
+
+Der automatische Start beim Booten lässt sich ab- und anschalten mit:
+
+%Code:
+  # systemctl disable NAME
+  # systemctl enable NAME
+.
+
+Die Liste aller vorhandenen Unit-Files und ihres jeweiligen Status:
+
+%Code:
+  # systemctl list-unit-files
+.
+
+Vorschlag für eine Verzeichnisstruktur im Homeverzeichnis von USER:
+
+  ~/etc/systemd/NAME.service # Unit-Datei, per Symlink referenziert \
+                               von /etc/systemd/system aus, Qwner ist USER
+  ~/var/log/NAME.log         # Logdatei
+  ~/opt/NAME/...             # Projektverzeichnis
+
+Die konkrete Kommandozeile zum Starten der Anwendung lautet dann:
+
+  morbo ~/opt/NAME/bin/PROGRAM --listen http://*:PORT --watch ~/opt/NAME \
+    --verbose >~/var/log/NAME.log 2>&1"
+
+= Links
+
+* U{Mojolicious}
+* U{Mojolicious Cookbook} (mit einer ähnlichen Unit-Datei für C{systemd})
+* U{morbo}
+* U{systemd - Homepage}
+* U{systemd - Debian Wiki}
+* U{systemd/Services - Debian Wiki}
+
+%Link:
+  name="Mojolicious Cookbook"
+  url=https://metacpan.org/dist/Mojolicious/view/lib/Mojolicious/Guides/\
+      Cookbook.pod
+
+%Link:
+  name="morbo"
+  url=https://docs.mojolicious.org/Mojo/Server/Morbo
+
+%Link:
+  name="systemd/Services - Debian Wiki"
+  url=https://wiki.debian.org/systemd/Services
+
+%Link:
+  name="systemd|systemd - Homepage"
+  url=https://systemd.io/
+
+%Link:
+  name="systemd - Debian Wiki"
+  url=https://wiki.debian.org/systemd
+
+%Link:
+  name="Mojolicious"
+  url=https://mojolicious.org/
+
+%Link:
+  name="nginx"
+  url=https://www.nginx.com/
+
+%Link:
+  name="apache"
+  url=https://httpd.apache.org/
