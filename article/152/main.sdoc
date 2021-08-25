@@ -22,11 +22,12 @@ und möchten, dass diese
 * interaktiv gestoppt und gestartet werden kann
 * wenn nicht benötigt, auf unbestimmte Zeit deaktiviert werden kann
 
-Dies lässt sich sehr einfach mit U{morbo} als Webserver in Kombination
-mit der Prozesssteuerung U{systemd} realisieren. Hierbei ist C{morbo}
-der Entwicklungs-Webserver von Mojolicious und C{systemd} die fundamentale
-Prozesssteuerung vieler Linux-Systeme (ein moderner Ersatz für C{init}).
-Ein zusätzlicher Webserver wie U{nginx} oder U{apache} wird nicht benötigt.
+Diese Anforderungen lassen sich leicht mit U{morbo} als Webserver
+in Kombination mit der Prozesssteuerung U{systemd}
+realisieren. Hierbei ist C{morbo} der Entwicklungs-Webserver von
+Mojolicious und C{systemd} die fundamentale Prozesssteuerung vieler
+Linux-Systeme (ein moderner Ersatz für C{init}). Ein zusätzlicher
+Webserver wie U{nginx} oder U{apache} wird nicht benötigt.
 
 Die Unit-Datei C{NAME}.service, mit der wir den Service gegenüber C{systemd}
 definieren, ist recht einfach (Erläuterungen zur einzig
@@ -80,8 +81,8 @@ Hierbei ist:
   nicht benötigt.
 
 Die systemd Unit-Datei kopieren wir in das Verzeichnis C{/etc/systemd/system}.
-Mit folgender Kommandofolge machen wir die Anwendung sofort und
-dauerhaft verfügbar:
+Mit folgender Kommandofolge machen wir die Anwendung dauerhaft und
+sofort verfügbar:
 
 %Code:
   # systemctl daemon-reload # Konfigurationsänderung systemd bekannt machen
