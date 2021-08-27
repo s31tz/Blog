@@ -64,8 +64,9 @@ Hierbei ist:
   in der Umgebung des Users USER läuft.
 
 [PORT]:
-  Port, über den die Anwendung erreicht wird (wegen * auf allen Interfaces).
-  Sie ist lokal zugreifbar via C{localhost:PORT}.
+  Port, auf dem die Anwendung läuft. Wegen * ist sie auf allen Interfaces
+  erreichbar, d.h. sie ist zugreifbar via C{localhost:PORT} oder
+  C{HOSTNAME:PORT}.
 
 [SOURCEDIR]:
   Wurzelverzeichnis, im dem sich die Quellen der Anwendung befinden.
