@@ -17,7 +17,7 @@ und möchten, dass diese
 * in ihrer vorgegebenen Entwicklungsumgebung abläuft
 * beim Booten automatisch gestartet wird
 * permanent läuft
-* sich bei Codeänderungen neu lädt
+* sich bei Codeänderungen automatisch neu lädt
 * fürs Debugging eine eigene Logdatei schreibt
 * interaktiv gestoppt und gestartet werden kann
 * wenn nicht benötigt, auf unbestimmte Zeit deaktiviert werden kann
