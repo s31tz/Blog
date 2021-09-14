@@ -16,7 +16,7 @@ ist die Installation von Debian sensationell einfach:
 
 1. ISO-Image von Homepage herunterladen: U{https://www.debian.org/} (Button
    Q{Download})
-2. Image auf USB-Stick kopieren (C{cp FILE.iso /dev/sdX})
+2. Image auf ungemounteten USB-Stick kopieren (C{cp FILE.iso /dev/sdX})
 3. Rechner vom USB-Stick booten
 4. Installation durchführen
 
