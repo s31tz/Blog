@@ -1,0 +1,33 @@
+# Date: 2010-01-25
+# Id: 21
+# Categories: Netz, SSH
+
+%Document:
+  title="SSH: Timeout unterbinden"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/ssh-logo-90x78.png" \
+    width=58 height=50 url="http://www.openssh.com/"
+
+= Clientseitig
+
+  $ echo "ServerAliveInterval 120" >> /etc/ssh/ssh_config
+
+Wenn der Server 120 Sekunden kein Paket gesendet hat, sendet der
+Client ein Dummy-Paket zum Server.
+
+Bei U{Putty} findet sich die Einstellung in den Einstellungen unter
+C{Connection / Seconds between keepalives}.
+
+= Serverseitig
+
+  $ echo "ClientAliveInterval 120" >> /etc/ssh/sshd_config
+  $ /etc/init.d/ssh reload
+
+Wenn der Client 120 Sekunden kein Paket gesendet hat, sendet der
+Server ein Dummy-Paket zum Client.
+
+%Link:
+  name=Putty
+  url=https://www.chiark.greenend.org.uk/~sgtatham/putty/

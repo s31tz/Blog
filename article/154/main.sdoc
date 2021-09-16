@@ -1,0 +1,45 @@
+# Date: 2021-09-15
+# Id: 167
+# Draft: no
+# Categories: Emacs, PuTTY
+
+%Document:
+  title="Emacs: Arbeiten im Putty Terminal"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/emacs-logo-470x475.png" width="49" height="49"
+  url="https://www.gnu.org/software/emacs/"
+
+= Mausunterstützung
+
+Die Mausunterstützug wird im Emacs-Init-File (C{~/.emacs.el}, C{~/.emacs}
+oder C{~/.emacs.d/init.el}) aktiviert mit:
+
+  (xterm-mouse-mode 1)
+
+Die Unterstützung schließt das Mausrad ein. Eine Markierung für
+Copy & Paste wird gesetzt, wenn die SHIFT-Taste gehalten wird.
+
+= Cursorsteuerung via Numeric Keypad
+
+Funktioniert im Emacs die Cursorsteuerung über das Numeric Keypad
+nicht (das Verhalten ist wie im NumLock-Modus, d.h. anstatt
+Cursorbewegungungen auszuführen zeigt Emacs Ziffern an), muss der
+Q{Application Keypad mode} in PuTTY abgeschaltet werden.  Zu finden
+ist die Option in den Einstellungen unter C{Terminal / Features /
+Disable application keypad mode}.
+
+= Links
+
+* U{How can mouse support be enabled in terminal Emacs?}
+* U{Why does PuTTY not recognize input from the numeric keypad?}
+
+%Link:
+  name="How can mouse support be enabled in terminal Emacs?"
+  url=https://unix.stackexchange.com/questions/252995/how-can-mouse-\
+    support-be-enabled-in-terminal-emacs
+
+%Link:
+  name="Why does PuTTY not recognize input from the numeric keypad?"
+  url=https://kb.iu.edu/d/axpf
