@@ -4,7 +4,7 @@
 # Categories: Emacs, PuTTY
 
 %Document:
-  title="Emacs: Arbeiten im Putty Terminal"
+  title="Emacs: Arbeiten im PuTTY-Terminal"
   generateAnchors=0
   utf8=1
 
@@ -18,14 +18,14 @@ oder C{~/.emacs.d/init.el}) aktiviert mit:
 
   (xterm-mouse-mode 1)
 
-Die Unterstützung schließt das Mausrad ein. Eine Markierung für
-Copy & Paste wird gesetzt, wenn die SHIFT-Taste gehalten wird.
+Auch das Mausrad wird unterstützt. Eine Markierung wird in den Paste-Buffer
+(Copy & Paste) kopiert, wenn gleichzeitig die SHIFT-Taste gehalten wird.
 
 = Cursorsteuerung via Numeric Keypad
 
 Funktioniert im Emacs die Cursorsteuerung über das Numeric Keypad
 nicht (das Verhalten ist wie im NumLock-Modus, d.h. anstatt
-Cursorbewegungungen auszuführen zeigt Emacs Ziffern an), muss der
+Cursorbewegungungen auszuführen zeigt der Emacs Ziffern an), muss der
 Q{Application Keypad mode} in PuTTY abgeschaltet werden.  Zu finden
 ist die Option in den Einstellungen unter C{Terminal / Features /
 Disable application keypad mode}.
