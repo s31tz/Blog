@@ -26,9 +26,11 @@ Auch das Mausrad wird unterstützt. Eine Markierung wird in den Paste-Buffer
 Funktioniert im Emacs die Cursorsteuerung über das Numeric Keypad
 nicht (das Verhalten ist wie im NumLock-Modus, d.h. anstatt
 Cursorbewegungungen auszuführen zeigt der Emacs Ziffern an), muss der
-Q{Application Keypad mode} in PuTTY abgeschaltet werden.  Zu finden
+Q{Application Keypad mode} in PuTTY abgeschaltet werden. Zu finden
 ist die Option in den Einstellungen unter C{Terminal / Features /
-Disable application keypad mode}.
+Disable application keypad mode}. Die Cursorsteuerung funktioniert
+natürlich nur, wenn der NumLock-Modus auf dem Keyboard tatsächlich
+abgeschaltet ist.
 
 = Links
 
