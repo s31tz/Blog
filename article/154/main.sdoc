@@ -13,7 +13,6 @@
 
 = Mausunterstützung
 
-
 Die Mausunterstützug wird im Emacs-Init-File (C{~/.emacs.el}, C{~/.emacs}
 oder C{~/.emacs.d/init.el}) aktiviert mit:
 

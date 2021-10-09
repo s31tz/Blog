@@ -12,11 +12,23 @@ Die Quellen der Artikel des Blog  L<http://fseitz.de/blog>
 
 =item *
 
-L<MS SQL Server: DB-übergreifender Zugriff auf Tabelle (nur) über View|https://github.com/s31tz/Blog/blob/master/article/151/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/164-x.html>)
+L<Emacs: Arbeiten im PuTTY-Terminal|https://github.com/s31tz/Blog/blob/master/article/154/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/167-x.html>)
 
 =item *
 
-L<Debian: Netzwerk-Installation vom USB-Stick|https://github.com/s31tz/Blog/blob/master/article/150/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/163-x.html>)
+L<PuTTYgen: Schlüsselpaar für Windows und Linux erzeugen|https://github.com/s31tz/Blog/blob/master/article/153/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/166-x.html>)
+
+=item *
+
+L<Mojolicious: Webanwendung auf Entwicklungsrechner einrichten|https://github.com/s31tz/Blog/blob/master/article/152/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/165-x.html>)
+
+=item *
+
+L<MS SQL Server: DB-übergreifender Zugriff auf Tabelle nur über View|https://github.com/s31tz/Blog/blob/master/article/151/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/164-x.html>)
+
+=item *
+
+L<Debian: Netzwerk-Installation von USB-Stick|https://github.com/s31tz/Blog/blob/master/article/150/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/163-x.html>)
 
 =item *
 
@@ -24,7 +36,7 @@ L<PyPerler: Perl-Klassen unter Python nutzen|https://github.com/s31tz/Blog/blob/
 
 =item *
 
-L<Selenium+Python+Firefox+Debian: Unable to find a matching set of capabilities|https://github.com/s31tz/Blog/blob/master/article/148/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/160-x.html>)
+L<Selenium+Python+Firefox: Unable to find a matching set of capabilities|https://github.com/s31tz/Blog/blob/master/article/148/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/160-x.html>)
 
 =item *
 
@@ -520,7 +532,7 @@ L<HTML: String in Entity-Schreibweise wandeln|https://github.com/s31tz/Blog/blob
 
 =item *
 
-L<SSH: Timeout unterbinden|https://github.com/s31tz/Blog/blob/master/article/019-SSH-Timeout-unterbinden.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/21-x.html>)
+L<SSH: Timeout unterbinden|https://github.com/s31tz/Blog/blob/master/article/019/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/21-x.html>)
 
 =item *
 
