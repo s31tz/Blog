@@ -12,7 +12,7 @@ Die Quellen der Artikel des Blog  L<http://fseitz.de/blog>
 
 =item *
 
-L<Emacs: Arbeiten im PuTTY-Terminal|https://github.com/s31tz/Blog/blob/master/article/154/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/167-x.html>)
+L<Mit Emacs im PuTTY-Terminal arbeiten|https://github.com/s31tz/Blog/blob/master/article/154/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/167-x.html>)
 
 =item *
 
