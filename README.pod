@@ -12,6 +12,10 @@ Die Quellen der Artikel des Blog  L<http://fseitz.de/blog>
 
 =item *
 
+L<Ältere Bücher von O'Reilly online verfügbar|https://github.com/s31tz/Blog/blob/master/article/155/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/168-x.html>)
+
+=item *
+
 L<Mit Emacs im PuTTY-Terminal arbeiten|https://github.com/s31tz/Blog/blob/master/article/154/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/167-x.html>)
 
 =item *
