@@ -19,13 +19,13 @@ Schlüsselpaar mit 2048 Bit Schlüssellänge:
   width=650 height=469
 
 Anschließend speichern wir drei Dateien, um in einem Netzwerk aus
-Windows-Clients und Linux-Hosts eine Anmeldung mit Public-Key-Authentisierung
+Windows-Clients und Linux-Servern eine Anmeldung mit Public-Key-Authentisierung
 einrichten zu können:
 
 [id_rsa.pub]:
   Mit Copy & Paste speichern wir den Public Key, der im oberen Bereich
   des Fensters angezeigt wird, in C{id_rsa.pub}. Den Inhalt
-  dieser Datei fügen wir auf allen Linux-Rechnern, auf denen
+  dieser Datei fügen wir auf allen Linux-Servern, auf denen
   wir uns mit Public-Key-Authentisierung einloggen wollen, zur
   Datei C{.ssh/authorized_keys} hinzu.
 
@@ -33,7 +33,7 @@ einrichten zu können:
   Mit Klick auf C{Save private key} speichern wir den Private Key
   in C{id_rsa.ppk}. Diese Datei machen wir allen Windows-Clientprogrammen
   bekannt, mit denen wir uns per Public-Key-Authentisierung
-  auf einem Linux-Rechner einloggen wollen. Im PuTTY-Client z.B. wird der
+  auf einem Linux-Server einloggen wollen. Im PuTTY-Client z.B. wird der
   Dateipfad in die Konfiguration eingetragen unter
   C{Connection / SSH / Auth / Private key file for authentication}.
 
