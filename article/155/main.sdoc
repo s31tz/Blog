@@ -1,0 +1,46 @@
+# Date: 2021-10-17
+# Id: 168
+# Draft: no
+# Categories: Perl
+
+%Document:
+  title="Ältere Bücher von O'Reilly online lesen"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/oreilly-1247x230.png" width="152" height="28"
+  url=""
+
+Zahlreiche ältere Bücher von O'Reilly, die nur noch antiquarisch erhältlich
+sind, können U{hier} online gelesen werden. Vieles ist veraltet, manche Themen
+sind jedoch nach wie vor relevant und exzellent dargestellt.
+Die umfangreiche Sammlung lädt zum Stöbern ein:
+
+%Figure: file="IMGDIR/oreilly-books-1230x1770.png" width="615" height="885"
+  url="https://docstore.mik.ua/orelly/bookshelfs.html"
+
+Beispiele:
+* U{Unix Power Tools} (Buch)
+* U{DNS and BIND} (Buch)
+* U{Practical Unix and Internet Security} (Buch)
+* U{Programming the Perl DBI - Database Proxying} (Kapitel)
+
+%Link:
+   name=hier
+   url=https://docstore.mik.ua/orelly/bookshelfs.html
+
+%Link:
+   name="Unix Power Tools"
+   url=https://docstore.mik.ua/orelly/unix3/upt/index.htm
+
+%Link:
+   name="DNS and BIND"
+   url=https://docstore.mik.ua/orelly/networking_2ndEd/dns/index.htm
+
+%Link:
+   name="Practical Unix and Internet Security"
+   url=https://docstore.mik.ua/orelly/other/puis3rd/0596003234_toc.html
+
+%Link:
+   name="Programming the Perl DBI - Database Proxying"
+   url=https://docstore.mik.ua/orelly/linux/dbi/ch08_02.htm
