@@ -4,7 +4,7 @@
 # Categories: Perl
 
 %Document:
-  title="Ältere Bücher von O'Reilly online lesen"
+  title="Ältere O'Reilly Bücher online lesen"
   generateAnchors=0
   utf8=1
 
@@ -21,8 +21,8 @@ Die umfangreiche Sammlung lädt zum Stöbern ein:
 
 Beispiele:
 * U{Unix Power Tools} (Buch)
-* U{DNS and BIND} (Buch)
 * U{Practical Unix and Internet Security} (Buch)
+* U{DNS and BIND} (Buch)
 * U{Programming the Perl DBI - Database Proxying} (Kapitel)
 
 %Link:
