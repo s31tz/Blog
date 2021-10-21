@@ -37,6 +37,12 @@ einrichten zu können:
   Dateipfad in die Konfiguration eingetragen unter
   C{Connection / SSH / Auth / Private key file for authentication}.
 
+  Verlangt ein Client die PPK-Datei in einem älteren Format (Version 2
+  statt Version 3), können wir dieses erzeugen, indem wir unter
+  C{Key / Parameters for saving files ...} die Option
+  C{PPK file version: 2} setzen, bevor wir den Private Key speichern.
+  
+
 [id_rsa]:
   Wollen wir uns ferner zwischen Linux-Rechnern per Public-Key-Verfahren
   authentisieren, erzeugen wir über den Menüeintrag
