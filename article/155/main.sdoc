@@ -23,6 +23,7 @@ Beispiele:
 * U{Unix Power Tools} (Buch)
 * U{Practical Unix and Internet Security} (Buch)
 * U{DNS and BIND} (Buch)
+* U{CVS} (Buch)
 * U{Programming the Perl DBI - Database Proxying} (Kapitel)
 
 %Link:
@@ -40,6 +41,10 @@ Beispiele:
 %Link:
    name="Practical Unix and Internet Security"
    url=https://docstore.mik.ua/orelly/other/puis3rd/0596003234_toc.html
+
+%Link:
+   name="CVS"
+   url=https://docstore.mik.ua/orelly/other/cvs/
 
 %Link:
    name="Programming the Perl DBI - Database Proxying"
