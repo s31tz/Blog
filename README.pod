@@ -12,6 +12,10 @@ Die Quellen der Artikel des Blog  L<http://fseitz.de/blog>
 
 =item *
 
+L<SQLite-Datenbank von einem entfernten Rechner zugreifen|https://github.com/s31tz/Blog/blob/master/article/156/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/169-x.html>)
+
+=item *
+
 L<Ältere O'Reilly Bücher online lesen|https://github.com/s31tz/Blog/blob/master/article/155/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/168-x.html>)
 
 =item *
@@ -68,7 +72,7 @@ L<Google Pixel C Tablet in Werkszustand zurücksetzen|https://github.com/s31tz/B
 
 =item *
 
-L<Shell: Umgebung universell nutzbar aufsetzen|https://github.com/s31tz/Blog/blob/master/article/141-Shell-Environment-aufsetzen.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/153-x.html>)
+L<Shell: Umgebung universell nutzbar aufsetzen|https://github.com/s31tz/Blog/blob/master/article/141/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/153-x.html>)
 
 =item *
 
