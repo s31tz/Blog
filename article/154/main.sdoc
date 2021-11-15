@@ -18,8 +18,13 @@ oder C{~/.emacs.d/init.el}) aktiviert mit:
 
   (xterm-mouse-mode 1)
 
-Auch das Mausrad wird unterstützt. Eine Markierung wird in den Paste-Buffer
-(Copy & Paste) kopiert, wenn gleichzeitig die SHIFT-Taste gehalten wird.
+Auch das Mausrad wird unterstützt. Eine Markierung wird in den
+Paste-Buffer (Copy & Paste) kopiert, wenn gleichzeitig die SHIFT-Taste
+gehalten wird.  Aus dem Paste-Buffer wird per Default mit SHIFT
+MOUSE-RIGHT eingefügt. Wer lieber mit der mittleren Maustaste
+(MOUSE-MIDDLE) einfügen möchte, wie man es von X11 her kennt, kann
+diese Bedienlogik unter C{Window / Selection / Action of mouse buttons
+/ xterm} aktivieren.
 
 = Cursorsteuerung via Numeric Keypad
 
