@@ -1,0 +1,84 @@
+# Date: 2021-10-17
+# Id: 169
+# Draft: no
+# Categories: SQLite, Perl
+
+%Document:
+  title="SQLite-Datenbank von einem entfernten Rechner zugreifen"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/sqlite-759x339.png" width="125" height="56"
+  url="https://www.sqlite.org"
+
+U{SQLite} ist ein leichtgewichtiges relationales Datenbanksystem, das
+genial konzipiert, allerdings nicht netzwerkfähig ist. Letzteres ist laut
+der Autoren Absicht: Q{SQLite is designed for situations where the
+data and application coexist on the same machine.}
+
+Mitunter möchte man dennoch eine SQLite-Datenbank von einem entfernten
+Rechner zugreifen. Dass es keine gute Idee ist, wie es im Netz öfter
+als Lösung genannt wird, die Datenbankdatei (eine SQLite-Datenbank
+besteht aus einer einzigen Datei) auf ein Netzwerk-Dateisystem zu legen,
+wird von den Autoren in U{SQLite Over a Network, Caveats and
+Considerations} dargelegt.
+
+Unter Perl lässt sich der Netzwerk-Zugriff auch solide realisieren,
+unter Rückgriff auf U{DBI} und U{dessen Proxy-Server}. Der Unterschied
+ist, dass die API Schicht in dem Fall ins Netz verlegt wird und nicht
+die File-I/O Schicht.
+
+Starten des Proxy-Servers auf dem Rechner mit der SQLite-Datenbank:
+
+  $ ssh USER@HOST "bash -lc 'dbiproxy --localport=PORT'"
+
+Zugriff auf die Datenbank aus Perl heraus von einem beliebigen
+Rechner aus:
+
+%Code: highlight=Perl
+  use DBD::SQLite;
+
+  my $dbh = DBI->connect('dbi:Proxy:hostname=HOST;port=PORT;dsn=DSN',{
+      RaiseError => 1,
+      ShowErrorStatement => 1,
+  });
+
+  # ab hier können wir auf die SQLite-Datenbank zugreifen, \
+    als ob sie lokal wäre
+.
+
+Hierbei ist:
+
+[HOST]:
+  Der Name des Rechners, auf dem die SQLite-Datenbank liegt.
+
+[PORT]:
+  Der Port, auf dem der Proxy-Server läuft.
+
+[DSN]:
+  Der DBI I{Data Source Name} der SQLite-Datenbank. Dieser hat die
+  Form C{dbi:SQLite:dbname=PATH}, wobei PATH der Pfad der
+  Datenbank-Datei auf dem entfernten Rechner ist.
+
+Eine breitere Darstellung der Möglichkeiten des DBI Proxy-Servers
+findet sich in U{Programming the Perl DBI - Database Proxying}.
+
+%Link:
+  name="SQLite"
+  url=https://www.sqlite.org
+
+%Link:
+  name="SQLite Over a Network, Caveats and Considerations"
+  url=https://www.sqlite.org/draft/useovernet.html
+
+%Link:
+  name=DBI
+  url=https://metacpan.org/dist/DBI
+
+%Link:
+  name="dessen Proxy-Server"
+  url=https://metacpan.org/dist/DBI/view/dbiproxy.PL
+
+%Link:
+   name="Programming the Perl DBI - Database Proxying"
+   url=https://docstore.mik.ua/orelly/linux/dbi/ch08_02.htm
