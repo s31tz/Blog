@@ -1,15 +1,3 @@
-package Blog::Base::Quiq::Css;
-use base qw/Blog::Base::Quiq::Hash/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Path;
-use Blog::Base::Quiq::String;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -31,6 +19,24 @@ L<Blog::Base::Quiq::Hash>
 Format des generierten CSS-Code.
 
 =back
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Css;
+use base qw/Blog::Base::Quiq::Hash/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Path;
+use Blog::Base::Quiq::String;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

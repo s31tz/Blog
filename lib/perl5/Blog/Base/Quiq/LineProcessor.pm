@@ -1,16 +1,3 @@
-package Blog::Base::Quiq::LineProcessor;
-use base qw/Blog::Base::Quiq::Hash/;
-
-use v5.10;
-use strict;
-use warnings;
-use utf8;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Option;
-use Blog::Base::Quiq::FileHandle;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -51,6 +38,25 @@ produziert (z.B.)
       20
   Stacktrace:
       ...
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::LineProcessor;
+use base qw/Blog::Base::Quiq::Hash/;
+
+use v5.10;
+use strict;
+use warnings;
+use utf8;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Option;
+use Blog::Base::Quiq::FileHandle;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

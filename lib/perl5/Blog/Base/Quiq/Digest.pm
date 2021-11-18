@@ -1,3 +1,19 @@
+# -----------------------------------------------------------------------------
+
+=encoding utf8
+
+=head1 NAME
+
+Blog::Base::Quiq::Digest - Erzeuge Digest
+
+=head1 BASE CLASS
+
+L<Blog::Base::Quiq::Object>
+
+=cut
+
+# -----------------------------------------------------------------------------
+
 package Blog::Base::Quiq::Digest;
 use base qw/Blog::Base::Quiq::Object/;
 
@@ -10,16 +26,6 @@ our $VERSION = '1.196';
 use Digest::MD5 ();
 
 # -----------------------------------------------------------------------------
-
-=encoding utf8
-
-=head1 NAME
-
-Blog::Base::Quiq::Digest - Erzeuge Digest
-
-=head1 BASE CLASS
-
-L<Blog::Base::Quiq::Object>
 
 =head1 METHODS
 

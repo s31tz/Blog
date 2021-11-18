@@ -1,14 +1,3 @@
-package Blog::Base::Quiq::Html::Widget::Button;
-use base qw/Blog::Base::Quiq::Html::Widget/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::JavaScript;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -74,6 +63,23 @@ Wenn wahr, liefere C<undef> als Widget-Code.
 Wert, der gesendet wird.
 
 =back
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Html::Widget::Button;
+use base qw/Blog::Base::Quiq::Html::Widget/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::JavaScript;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

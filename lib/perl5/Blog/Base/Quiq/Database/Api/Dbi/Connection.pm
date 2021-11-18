@@ -1,16 +1,3 @@
-package Blog::Base::Quiq::Database::Api::Dbi::Connection;
-use base qw/Blog::Base::Quiq::Hash/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Option;
-use DBI ();
-use Blog::Base::Quiq::Database::Api::Dbi::Cursor;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -41,6 +28,25 @@ DBI Database Handle.
 Name des DBMS, für DBMS-spezifische Fallunterscheidungen.
 
 =back
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Database::Api::Dbi::Connection;
+use base qw/Blog::Base::Quiq::Hash/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Option;
+use DBI ();
+use Blog::Base::Quiq::Database::Api::Dbi::Cursor;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

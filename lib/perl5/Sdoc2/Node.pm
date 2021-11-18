@@ -1,17 +1,3 @@
-package Sdoc2::Node;
-use base qw/Blog::Base::Quiq::Hash/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1';
-
-use Blog::Base::Quiq::Array;
-use Blog::Base::Quiq::Converter;
-use Blog::Base::Quiq::Hash;
-use Blog::Base::Quiq::Pod::Generator;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -38,6 +24,26 @@ Elementtyp. Folgende Elementtypen existieren:
   Quote
   Code
   PageBreak
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Sdoc2::Node;
+use base qw/Blog::Base::Quiq::Hash/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1';
+
+use Blog::Base::Quiq::Array;
+use Blog::Base::Quiq::Converter;
+use Blog::Base::Quiq::Hash;
+use Blog::Base::Quiq::Pod::Generator;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 
@@ -885,7 +891,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2020 Frank Seitz
+Copyright (C) 2021 Frank Seitz
 
 =cut
 

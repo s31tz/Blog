@@ -1,12 +1,3 @@
-package Blog::Base::Quiq::Html::Base;
-use base qw/Blog::Base::Quiq::Hash/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -44,6 +35,21 @@ CSS-Klassennamen vorangestellt. (MEMO: dieses Konzept ist zweifelhaft
 und sollte abgeschafft werden)
 
 =back
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Html::Base;
+use base qw/Blog::Base::Quiq::Hash/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

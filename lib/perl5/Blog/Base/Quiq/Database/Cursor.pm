@@ -1,3 +1,24 @@
+# -----------------------------------------------------------------------------
+
+=encoding utf8
+
+=head1 NAME
+
+Blog::Base::Quiq::Database::Cursor - Datenbank-Cursor
+
+=head1 BASE CLASS
+
+L<Blog::Base::Quiq::Hash>
+
+=head1 DESCRIPTION
+
+Ein Objekt der Klasse repräsentiert das Resultat einer
+Statement-Ausführung auf einer Relationalen Datenbank.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
 package Blog::Base::Quiq::Database::Cursor;
 use base qw/Blog::Base::Quiq::Hash/;
 
@@ -20,21 +41,6 @@ use Blog::Base::Quiq::Digest;
 use Encode ();
 
 # -----------------------------------------------------------------------------
-
-=encoding utf8
-
-=head1 NAME
-
-Blog::Base::Quiq::Database::Cursor - Datenbank-Cursor
-
-=head1 BASE CLASS
-
-L<Blog::Base::Quiq::Hash>
-
-=head1 DESCRIPTION
-
-Ein Objekt der Klasse repräsentiert das Resultat einer
-Statement-Ausführung auf einer Relationalen Datenbank.
 
 =head1 METHODS
 

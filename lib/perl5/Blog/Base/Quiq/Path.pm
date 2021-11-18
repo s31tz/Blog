@@ -1,3 +1,25 @@
+# -----------------------------------------------------------------------------
+
+=encoding utf8
+
+=head1 NAME
+
+Blog::Base::Quiq::Path - Dateisystem-Operationen
+
+=head1 BASE CLASS
+
+L<Blog::Base::Quiq::Object>
+
+=head1 DESCRIPTION
+
+Die Klasse definiert alle grundlegenden (link, mkdir, rename, symlink
+usw.) und komplexen (copy, glob, find usw.) Dateisystem-Operationen.
+Eine Dateisystem-Operation ist eine Operation auf einem I<Pfad>.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
 package Blog::Base::Quiq::Path;
 BEGIN {
     $INC{'Blog::Base::Quiq/Path.pm'} ||= __FILE__;
@@ -31,22 +53,6 @@ use Blog::Base::Quiq::Time;
 use Blog::Base::Quiq::Process;
 
 # -----------------------------------------------------------------------------
-
-=encoding utf8
-
-=head1 NAME
-
-Blog::Base::Quiq::Path - Dateisystem-Operationen
-
-=head1 BASE CLASS
-
-L<Blog::Base::Quiq::Object>
-
-=head1 DESCRIPTION
-
-Die Klasse definiert alle grundlegenden (link, mkdir, rename, symlink
-usw.) und komplexen (copy, glob, find usw.) Dateisystem-Operationen.
-Eine Dateisystem-Operation ist eine Operation auf einem I<Pfad>.
 
 =head1 METHODS
 

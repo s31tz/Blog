@@ -1,12 +1,3 @@
-package Blog::Base::Quiq::Html::Producer;
-use base qw/Blog::Base::Quiq::Html::Construct/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -42,6 +33,21 @@ Einfacher Anwendungsfall:
   print Blog::Base::Quiq::Html::Page->html($h,
       ...
   );
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Html::Producer;
+use base qw/Blog::Base::Quiq::Html::Construct/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+# -----------------------------------------------------------------------------
 
 =head1 VERSION
 

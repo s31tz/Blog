@@ -1,3 +1,21 @@
+# -----------------------------------------------------------------------------
+
+=encoding utf8
+
+=head1 NAME
+
+Blog::Base::Quiq::Object - Basisklasse für alle Klassen der Klassenbibliothek
+
+=head1 SYNOPSIS
+
+  package MyClass;
+  use base qw/Blog::Base::Quiq::Object/;
+  ...
+
+=cut
+
+# -----------------------------------------------------------------------------
+
 package Blog::Base::Quiq::Object;
 
 use v5.10;
@@ -12,18 +30,6 @@ use Blog::Base::Quiq::Parameters;
 use Blog::Base::Quiq::Stacktrace;
 
 # -----------------------------------------------------------------------------
-
-=encoding utf8
-
-=head1 NAME
-
-Blog::Base::Quiq::Object - Basisklasse für alle Klassen der Klassenbibliothek
-
-=head1 SYNOPSIS
-
-  package MyClass;
-  use base qw/Blog::Base::Quiq::Object/;
-  ...
 
 =head1 METHODS
 

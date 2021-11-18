@@ -1,3 +1,19 @@
+# -----------------------------------------------------------------------------
+
+=encoding utf8
+
+=head1 NAME
+
+Blog::Base::Quiq::JavaScript - Generierung von JavaScript-Code
+
+=head1 BASE CLASS
+
+L<Blog::Base::Quiq::Object>
+
+=cut
+
+# -----------------------------------------------------------------------------
+
 package Blog::Base::Quiq::JavaScript;
 use base qw/Blog::Base::Quiq::Object/;
 
@@ -12,16 +28,6 @@ use Blog::Base::Quiq::Path;
 use Scalar::Util ();
 
 # -----------------------------------------------------------------------------
-
-=encoding utf8
-
-=head1 NAME
-
-Blog::Base::Quiq::JavaScript - Generierung von JavaScript-Code
-
-=head1 BASE CLASS
-
-L<Blog::Base::Quiq::Object>
 
 =head1 METHODS
 

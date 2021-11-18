@@ -1,14 +1,3 @@
-package Blog::Base::Quiq::Pod::Generator;
-use base qw/Blog::Base::Quiq::Hash/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Unindent;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -39,6 +28,23 @@ und die Details der Formatierung nicht zu kümmern braucht.
 Einrücktiefe bei Code-Abschnitten und Listen.
 
 =back
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Pod::Generator;
+use base qw/Blog::Base::Quiq::Hash/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Unindent;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

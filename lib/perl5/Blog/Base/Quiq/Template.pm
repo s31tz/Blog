@@ -1,19 +1,3 @@
-package Blog::Base::Quiq::Template;
-use base qw/Blog::Base::Quiq::Hash/;
-
-use v5.10;
-use strict;
-use warnings;
-use utf8;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Path;
-use Blog::Base::Quiq::Option;
-use Blog::Base::Quiq::Unindent;
-use Scalar::Util ();
-use Blog::Base::Quiq::Reference;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -59,6 +43,28 @@ Resultat C<$str>:
   <body>
     Hello World!
   </body>
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Template;
+use base qw/Blog::Base::Quiq::Hash/;
+
+use v5.10;
+use strict;
+use warnings;
+use utf8;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Path;
+use Blog::Base::Quiq::Option;
+use Blog::Base::Quiq::Unindent;
+use Scalar::Util ();
+use Blog::Base::Quiq::Reference;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

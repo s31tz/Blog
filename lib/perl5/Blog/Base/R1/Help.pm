@@ -1,3 +1,19 @@
+# -----------------------------------------------------------------------------
+
+=encoding utf8
+
+=head1 NAME
+
+Blog::Base::R1::Help - Programm-Dokumentation
+
+=head1 BASE CLASS
+
+L<Blog::Base::Quiq::Object>
+
+=cut
+
+# -----------------------------------------------------------------------------
+
 package Blog::Base::R1::Help;
 use base qw/Blog::Base::Quiq::Object/;
 
@@ -11,16 +27,6 @@ use Blog::Base::Quiq::Converter;
 use Blog::Base::Quiq::FileHandle;
 
 # -----------------------------------------------------------------------------
-
-=encoding utf8
-
-=head1 NAME
-
-Blog::Base::R1::Help - Programm-Dokumentation
-
-=head1 BASE CLASS
-
-L<Blog::Base::Quiq::Object>
 
 =head1 METHODS
 

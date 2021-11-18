@@ -1,12 +1,3 @@
-package Blog::Base::Quiq::Html::Widget::TextField;
-use base qw/Blog::Base::Quiq::Html::Widget/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -77,6 +68,21 @@ Wenn wahr, liefere C<undef> als Widget-Code.
 Anfänglicher Wert des Textfelds.
 
 =back
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Html::Widget::TextField;
+use base qw/Blog::Base::Quiq::Html::Widget/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

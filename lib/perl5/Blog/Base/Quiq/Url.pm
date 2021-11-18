@@ -1,3 +1,19 @@
+# -----------------------------------------------------------------------------
+
+=encoding utf8
+
+=head1 NAME
+
+Blog::Base::Quiq::Url - URL Klasse
+
+=head1 BASE CLASS
+
+L<Blog::Base::Quiq::Object>
+
+=cut
+
+# -----------------------------------------------------------------------------
+
 package Blog::Base::Quiq::Url;
 use base qw/Blog::Base::Quiq::Object/;
 
@@ -12,16 +28,6 @@ use Blog::Base::Quiq::Array;
 use Blog::Base::Quiq::Option;
 
 # -----------------------------------------------------------------------------
-
-=encoding utf8
-
-=head1 NAME
-
-Blog::Base::Quiq::Url - URL Klasse
-
-=head1 BASE CLASS
-
-L<Blog::Base::Quiq::Object>
 
 =head1 METHODS
 

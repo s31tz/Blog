@@ -1,3 +1,19 @@
+# -----------------------------------------------------------------------------
+
+=encoding utf8
+
+=head1 NAME
+
+Blog::Base::Quiq::Formatter - Formatierung von Werten
+
+=head1 BASE CLASS
+
+L<Blog::Base::Quiq::Object>
+
+=cut
+
+# -----------------------------------------------------------------------------
+
 package Blog::Base::Quiq::Formatter;
 use base qw/Blog::Base::Quiq::Object/;
 
@@ -10,16 +26,6 @@ our $VERSION = '1.196';
 use Blog::Base::Quiq::Epoch;
 
 # -----------------------------------------------------------------------------
-
-=encoding utf8
-
-=head1 NAME
-
-Blog::Base::Quiq::Formatter - Formatierung von Werten
-
-=head1 BASE CLASS
-
-L<Blog::Base::Quiq::Object>
 
 =head1 METHODS
 

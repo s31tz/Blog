@@ -1,14 +1,3 @@
-package Blog::Base::Quiq::Hash::Ordered;
-use base qw/Blog::Base::Quiq::Object/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Hash;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -27,6 +16,23 @@ Ein Objekt der Klasse repräsentiert einen geordneten Hash. Ein
 geordneter Hash ist ein Hash, bei dem die Schlüssel/Wert-Paare
 eine definierte Reihenfolge haben. Initial ist dies die
 Hinzufügereihenfolge.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Hash::Ordered;
+use base qw/Blog::Base::Quiq::Object/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Hash;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

@@ -1,13 +1,3 @@
-package Blog::Base::Quiq::LineProcessor::Line;
-use base qw/Blog::Base::Quiq::Object/;
-
-use v5.10;
-use strict;
-use warnings;
-use utf8;
-
-our $VERSION = '1.196';
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -24,6 +14,22 @@ L<Blog::Base::Quiq::Object>
 
 Ein Objekt der Klasse repräsentiert eine Zeile, bestehend aus
 dem Zeileninhalt (Text) und einer Zeilennummer.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::LineProcessor::Line;
+use base qw/Blog::Base::Quiq::Object/;
+
+use v5.10;
+use strict;
+use warnings;
+use utf8;
+
+our $VERSION = '1.196';
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

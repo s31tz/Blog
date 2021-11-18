@@ -1,16 +1,3 @@
-package Blog::Base::Quiq::Time;
-use base qw/Blog::Base::Quiq::Object/;
-
-use v5.10;
-use strict;
-use warnings;
-use utf8;
-
-our $VERSION = '1.196';
-
-use Time::Local ();
-use Blog::Base::Quiq::Duration;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -33,6 +20,25 @@ zur Manipulation der Zeitangabe zur Verfügung.
 Die Zeitangabe ist keiner bestimmten Zeitzone zugeordnet, alle Tage
 haben 24 Stunden (keine Sommerzeit- und Winterzeit-Umschaltung) und
 alle Tage haben genau 86400 Sekunden (keine Schaltsekunden).
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Time;
+use base qw/Blog::Base::Quiq::Object/;
+
+use v5.10;
+use strict;
+use warnings;
+use utf8;
+
+our $VERSION = '1.196';
+
+use Time::Local ();
+use Blog::Base::Quiq::Duration;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

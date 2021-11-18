@@ -1,17 +1,3 @@
-package Blog::Base::Quiq::Array;
-use base qw/Blog::Base::Quiq::Object/;
-
-use v5.10;
-use strict;
-use warnings;
-use utf8;
-
-our $VERSION = '1.196';
-
-use Encode ();
-use Blog::Base::Quiq::Reference;
-use Blog::Base::Quiq::Math;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -38,6 +24,26 @@ Aufruf als Objektmethode:
 Aufruf als Klassenmethode:
 
   $class->$meth(\@arr, ...);
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Array;
+use base qw/Blog::Base::Quiq::Object/;
+
+use v5.10;
+use strict;
+use warnings;
+use utf8;
+
+our $VERSION = '1.196';
+
+use Encode ();
+use Blog::Base::Quiq::Reference;
+use Blog::Base::Quiq::Math;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

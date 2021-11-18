@@ -1,16 +1,3 @@
-package Blog::Base::Quiq::Duration;
-use base qw/Blog::Base::Quiq::Object/;
-
-use v5.10;
-use strict;
-use warnings;
-use utf8;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Option;
-use Blog::Base::Quiq::Math;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -70,6 +57,25 @@ Bei der Instantiierung kann die Zeitdauer auch in Doppelpunkt-Notation
 übergeben werden:
 
   D:H:M:S.X
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Duration;
+use base qw/Blog::Base::Quiq::Object/;
+
+use v5.10;
+use strict;
+use warnings;
+use utf8;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Option;
+use Blog::Base::Quiq::Math;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

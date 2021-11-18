@@ -1,19 +1,3 @@
-package Blog::Base::Quiq::Config;
-use base qw/Blog::Base::Quiq::Hash/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Option;
-use Blog::Base::Quiq::Reference;
-use Blog::Base::Quiq::Path;
-use Blog::Base::Quiq::Unindent;
-use Blog::Base::Quiq::Perl;
-use Blog::Base::Quiq::Process;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -77,6 +61,28 @@ Verzeichnis über einen Dienst wie FTP:
   FtpUrl => 'user:passw@localhost:%CWD%'
 
 =back
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Config;
+use base qw/Blog::Base::Quiq::Hash/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Option;
+use Blog::Base::Quiq::Reference;
+use Blog::Base::Quiq::Path;
+use Blog::Base::Quiq::Unindent;
+use Blog::Base::Quiq::Perl;
+use Blog::Base::Quiq::Process;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

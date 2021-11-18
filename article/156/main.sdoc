@@ -25,8 +25,8 @@ Considerations} dargelegt.
 
 Unter Perl lässt sich der Netzwerk-Zugriff auch solide realisieren,
 unter Rückgriff auf U{DBI} und U{dessen Proxy-Server}. Der Unterschied
-ist, dass die API Schicht in dem Fall ins Netz verlegt wird und nicht
-die File-I/O Schicht.
+ist, dass die I{API Schicht} in dem Fall ins Netz verlegt wird und nicht
+die I{File-I/O Schicht}.
 
 Starten des Proxy-Servers auf dem Rechner mit der SQLite-Datenbank:
 

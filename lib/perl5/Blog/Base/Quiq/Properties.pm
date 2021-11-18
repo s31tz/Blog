@@ -1,14 +1,3 @@
-package Blog::Base::Quiq::Properties;
-use base qw/Blog::Base::Quiq::Object/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::String;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -86,6 +75,23 @@ Erzeuge eine formatierte Liste von Float-Werten:
       5.45000
   92345.60000
      42.56739
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Properties;
+use base qw/Blog::Base::Quiq::Object/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::String;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

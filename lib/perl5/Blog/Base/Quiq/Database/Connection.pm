@@ -1,3 +1,24 @@
+# -----------------------------------------------------------------------------
+
+=encoding utf8
+
+=head1 NAME
+
+Blog::Base::Quiq::Database::Connection - Verbindung zu einer Relationalen Datenbank
+
+=head1 BASE CLASS
+
+L<Blog::Base::Quiq::Hash>
+
+=head1 DESCRIPTION
+
+Ein Objekt der Klasse repräsentiert eine Verbindung zu einer
+Relationalen Datenbank.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
 package Blog::Base::Quiq::Database::Connection;
 use base qw/Blog::Base::Quiq::Hash/;
 
@@ -28,21 +49,6 @@ use Blog::Base::Quiq::Database::ResultSet;
 use Blog::Base::Quiq::Parameters;
 
 # -----------------------------------------------------------------------------
-
-=encoding utf8
-
-=head1 NAME
-
-Blog::Base::Quiq::Database::Connection - Verbindung zu einer Relationalen Datenbank
-
-=head1 BASE CLASS
-
-L<Blog::Base::Quiq::Hash>
-
-=head1 DESCRIPTION
-
-Ein Objekt der Klasse repräsentiert eine Verbindung zu einer
-Relationalen Datenbank.
 
 =head1 METHODS
 

@@ -1,23 +1,3 @@
-package Blog::Base::Quiq::Program;
-use base qw/Blog::Base::Quiq::Process Blog::Base::Quiq::Hash/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Perl;
-use Encode ();
-use Blog::Base::Quiq::Parameters;
-use Blog::Base::Quiq::Assert;
-use Blog::Base::Quiq::Option;
-use Time::HiRes ();
-use Blog::Base::Quiq::FileHandle;
-use PerlIO::encoding;
-use Blog::Base::Quiq::System;
-use Blog::Base::Quiq::Hash;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -44,15 +24,69 @@ L<Blog::Base::Quiq::Hash>
 
 Programm:
 
-  Command failed: Blob/sdoc_reference/sdoc-highlight perl pod
+  #!/usr/bin/env perl
+  
+  use Blog::Base::Quiq::Program;
+  exit Blog::Base::Quiq::Program->run('MyProg')->exitCode;
+  
+  # eof
 
 Programm-Klasse:
 
-  Command failed: Blob/sdoc_reference/sdoc-highlight perl pod
+  package MyProg;
+  use base 'Blog::Base::Quiq::Program';
+  
+  sub main {
+      my $self = shift;
+      ...
+      return;
+  }
+  
+  # eof
 
 Optionen und Argumente:
 
-  Command failed: Blob/sdoc_reference/sdoc-highlight perl pod
+  my ($error,$opt,$argA) = $self->options(
+      ...
+      -help => 0,
+  );
+  if ($error) {
+      $self->help(10,"ERROR: $error");
+  }
+  elsif ($opt->help) {
+      $self->help;
+  }
+  elsif (@$argA != 1) {
+      $self->help(11,'ERROR: Falsche Anzahl Argumente');
+  }
+  my $myArg = shift @$argA;
+  ...
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Program;
+use base qw/Blog::Base::Quiq::Process Blog::Base::Quiq::Hash/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Perl;
+use Encode ();
+use Blog::Base::Quiq::Parameters;
+use Blog::Base::Quiq::Assert;
+use Blog::Base::Quiq::Option;
+use Time::HiRes ();
+use Blog::Base::Quiq::FileHandle;
+use PerlIO::encoding;
+use Blog::Base::Quiq::System;
+use Blog::Base::Quiq::Hash;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

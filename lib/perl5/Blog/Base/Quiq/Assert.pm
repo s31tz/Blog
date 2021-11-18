@@ -1,15 +1,3 @@
-package Blog::Base::Quiq::Assert;
-use base qw/Blog::Base::Quiq::Hash/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Path;
-use Blog::Base::Quiq::Math;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -59,6 +47,24 @@ Test von der Kommandozeile aus:
       Blog::Base::Quiq::Assert::isNotNull() [+1 -e]
         Quiq::Object::throw() [+210 .../Quiq/Assert.pm]
           Quiq::Stacktrace::asString() [+425 .../Quiq/Object.pm]
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Assert;
+use base qw/Blog::Base::Quiq::Hash/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Path;
+use Blog::Base::Quiq::Math;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

@@ -1,16 +1,3 @@
-package Blog::Base::Quiq::Html::Component;
-use base qw/Blog::Base::Quiq::Hash/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Css;
-use Blog::Base::Quiq::JavaScript;
-use Blog::Base::Quiq::JQuery::Function;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -69,6 +56,25 @@ speichert die einzelnen Bestandteile nur, die Methoden
 manipulieren sie nicht. Einzig die Methode L<fragment|"fragment() - Generiere HTML">() führt
 eine Verarbeitung durch, indem sie zusammenfassenden HTML-Code über
 allen Komponenten generiert.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Html::Component;
+use base qw/Blog::Base::Quiq::Hash/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Css;
+use Blog::Base::Quiq::JavaScript;
+use Blog::Base::Quiq::JQuery::Function;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

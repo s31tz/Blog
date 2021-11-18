@@ -1,19 +1,3 @@
-package Blog::Base::Quiq::Database::Row::Object;
-use base qw/Blog::Base::Quiq::Database::Row/;
-
-use v5.10;
-use strict;
-use warnings;
-use utf8;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Hash;
-use Blog::Base::Quiq::Option;
-use Scalar::Util ();
-use Blog::Base::Quiq::Database::ResultSet;
-use Blog::Base::Quiq::AnsiColor;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -31,6 +15,24 @@ L<Blog::Base::Quiq::Database::Row>
 Ein Objekt der Klasse repräsentiert einen Datensatz.
 
 =cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Database::Row::Object;
+use base qw/Blog::Base::Quiq::Database::Row/;
+
+use v5.10;
+use strict;
+use warnings;
+use utf8;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Hash;
+use Blog::Base::Quiq::Option;
+use Scalar::Util ();
+use Blog::Base::Quiq::Database::ResultSet;
+use Blog::Base::Quiq::AnsiColor;
 
 # -----------------------------------------------------------------------------
 

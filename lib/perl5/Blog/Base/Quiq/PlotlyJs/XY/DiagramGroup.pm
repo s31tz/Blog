@@ -1,22 +1,3 @@
-package Blog::Base::Quiq::PlotlyJs::XY::DiagramGroup;
-use base qw/Blog::Base::Quiq::Hash/;
-
-use v5.10;
-use strict;
-use warnings;
-use utf8;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Math;
-use Blog::Base::Quiq::Json;
-use Blog::Base::Quiq::JavaScript;
-use Blog::Base::Quiq::Html::Table::Simple;
-use Blog::Base::Quiq::JQuery::Function;
-use Blog::Base::Quiq::Html::Widget::CheckBox;
-use Blog::Base::Quiq::Html::Widget::SelectMenu;
-use Blog::Base::Quiq::Html::Widget::Button;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -239,6 +220,31 @@ Id der Nten Rangeslider-Checkbox.
 Klasse aller Rangeslider.
 
 =back
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::PlotlyJs::XY::DiagramGroup;
+use base qw/Blog::Base::Quiq::Hash/;
+
+use v5.10;
+use strict;
+use warnings;
+use utf8;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Math;
+use Blog::Base::Quiq::Json;
+use Blog::Base::Quiq::JavaScript;
+use Blog::Base::Quiq::Html::Table::Simple;
+use Blog::Base::Quiq::JQuery::Function;
+use Blog::Base::Quiq::Html::Widget::CheckBox;
+use Blog::Base::Quiq::Html::Widget::SelectMenu;
+use Blog::Base::Quiq::Html::Widget::Button;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

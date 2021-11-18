@@ -1,14 +1,3 @@
-package Blog::Base::Quiq::JQuery::Function;
-use base qw/Blog::Base::Quiq::Object/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Unindent;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -24,6 +13,23 @@ L<Blog::Base::Quiq::Object>
 =head1 DESCRIPTION
 
 Diese Klasse erweitert das jQuery-Objekt um nützliche Funktionen.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::JQuery::Function;
+use base qw/Blog::Base::Quiq::Object/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Unindent;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

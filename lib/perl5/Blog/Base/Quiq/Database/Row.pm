@@ -1,15 +1,3 @@
-package Blog::Base::Quiq::Database::Row;
-use base qw/Blog::Base::Quiq::Object/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Perl;
-use Blog::Base::Quiq::Database::ResultSet::Object;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -25,6 +13,24 @@ L<Blog::Base::Quiq::Object>
 =head1 DESCRIPTION
 
 Ein Objekt der Klasse repräsentiert einen Datensatz.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Database::Row;
+use base qw/Blog::Base::Quiq::Object/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Perl;
+use Blog::Base::Quiq::Database::ResultSet::Object;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

@@ -1,3 +1,25 @@
+# -----------------------------------------------------------------------------
+
+=encoding utf8
+
+=head1 NAME
+
+Blog::Base::Quiq::Perl - Erweiterte und abgesicherte Perl-Operationen
+
+=head1 BASE CLASS
+
+L<Blog::Base::Quiq::Object>
+
+=head1 DESCRIPTION
+
+Die Klasse implementiert grundlegende Perl-Operationen, die
+Erweiterungen darstellen und/oder durch Exception-Behandlung
+abgesichert sind.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
 package Blog::Base::Quiq::Perl;
 use base qw/Blog::Base::Quiq::Object/;
 
@@ -17,22 +39,6 @@ use Blog::Base::Quiq::FileHandle;
 use Encode ();
 
 # -----------------------------------------------------------------------------
-
-=encoding utf8
-
-=head1 NAME
-
-Blog::Base::Quiq::Perl - Erweiterte und abgesicherte Perl-Operationen
-
-=head1 BASE CLASS
-
-L<Blog::Base::Quiq::Object>
-
-=head1 DESCRIPTION
-
-Die Klasse implementiert grundlegende Perl-Operationen, die
-Erweiterungen darstellen und/oder durch Exception-Behandlung
-abgesichert sind.
 
 =head1 METHODS
 

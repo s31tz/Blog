@@ -1,14 +1,3 @@
-package Blog::Base::Quiq::Sdoc::Producer;
-use base qw/Blog::Base::Quiq::Hash/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Unindent;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -36,6 +25,23 @@ Sdoc-Dokument aufgebaut ist.
 Einrücktiefe bei der Codegenerierung
 
 =back
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Sdoc::Producer;
+use base qw/Blog::Base::Quiq::Hash/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Unindent;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

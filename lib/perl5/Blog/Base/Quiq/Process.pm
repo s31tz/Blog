@@ -1,3 +1,19 @@
+# -----------------------------------------------------------------------------
+
+=encoding utf8
+
+=head1 NAME
+
+Blog::Base::Quiq::Process - Informationen über den laufenden Prozess
+
+=head1 BASE CLASS
+
+L<Blog::Base::Quiq::System>
+
+=cut
+
+# -----------------------------------------------------------------------------
+
 package Blog::Base::Quiq::Process;
 use base qw/Blog::Base::Quiq::System/;
 
@@ -11,16 +27,6 @@ use Cwd ();
 use Blog::Base::Quiq::System;
 
 # -----------------------------------------------------------------------------
-
-=encoding utf8
-
-=head1 NAME
-
-Blog::Base::Quiq::Process - Informationen über den laufenden Prozess
-
-=head1 BASE CLASS
-
-L<Blog::Base::Quiq::System>
 
 =head1 METHODS
 

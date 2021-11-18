@@ -1,16 +1,3 @@
-package Blog::Base::Quiq::Database::ResultSet::Object;
-use base qw/Blog::Base::Quiq::Database::ResultSet/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Option;
-use Blog::Base::Quiq::Hash;
-use Blog::Base::Quiq::Formatter;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -27,6 +14,25 @@ L<Blog::Base::Quiq::Database::ResultSet>
 
 Ein Objekt der Klasse repräsentiert eine Liste von gleichartigen
 Datensätzen in Objekt-Repräsentation.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Database::ResultSet::Object;
+use base qw/Blog::Base::Quiq::Database::ResultSet/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Option;
+use Blog::Base::Quiq::Hash;
+use Blog::Base::Quiq::Formatter;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

@@ -1,15 +1,3 @@
-package Blog::Base::Quiq::Html::Construct;
-use base qw/Blog::Base::Quiq::Html::Tag/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Css;
-use Blog::Base::Quiq::JavaScript;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -28,6 +16,24 @@ Die Klasse erweitert ihre Basisklasse Blog::Base::Quiq::Html::Tag um die
 Generierung von einfachen HTML-Konstrukten, die einerseits
 über Einzeltags hinausgehen, andererseits aber nicht die Implementierung
 einer eigenen Klasse rechtfertigen.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Html::Construct;
+use base qw/Blog::Base::Quiq::Html::Tag/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Css;
+use Blog::Base::Quiq::JavaScript;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

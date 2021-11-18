@@ -1,15 +1,3 @@
-package Blog::Base::Quiq::Html::Widget::SelectMenu;
-use base qw/Blog::Base::Quiq::Html::Widget/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Html::Widget::TextField;
-use Blog::Base::Quiq::JavaScript;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -99,6 +87,24 @@ Liste der CSS-Definitionen für die einzelnen Optionen. Kann z.B. für
 verschiedene Hintergrundfarben genutzt werden.
 
 =back
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Html::Widget::SelectMenu;
+use base qw/Blog::Base::Quiq::Html::Widget/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Html::Widget::TextField;
+use Blog::Base::Quiq::JavaScript;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

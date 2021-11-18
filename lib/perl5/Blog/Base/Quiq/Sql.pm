@@ -1,21 +1,3 @@
-package Blog::Base::Quiq::Sql;
-use base qw/Blog::Base::Quiq::Dbms/;
-
-use v5.10;
-use strict;
-use warnings;
-use utf8;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Hash;
-use Blog::Base::Quiq::Option;
-use Blog::Base::Quiq::String;
-use Blog::Base::Quiq::Template;
-use Scalar::Util ();
-use Blog::Base::Quiq::Unindent;
-use Blog::Base::Quiq::Reference;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -73,6 +55,30 @@ Folgende DBMSe werden von der Klasse unterstützt:
   PostgreSQL
   SQLite
   MySQL
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Sql;
+use base qw/Blog::Base::Quiq::Dbms/;
+
+use v5.10;
+use strict;
+use warnings;
+use utf8;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Hash;
+use Blog::Base::Quiq::Option;
+use Blog::Base::Quiq::String;
+use Blog::Base::Quiq::Template;
+use Scalar::Util ();
+use Blog::Base::Quiq::Unindent;
+use Blog::Base::Quiq::Reference;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

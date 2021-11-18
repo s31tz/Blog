@@ -1,3 +1,17 @@
+# -----------------------------------------------------------------------------
+
+=head1 NAME
+
+Blog::GenerateIncludes::Article145
+
+=head1 BASE CLASS
+
+L<Blog::Base::Quiq::Program>
+
+=cut
+
+# -----------------------------------------------------------------------------
+
 package Blog::GenerateIncludes::Article145;
 use base qw/Blog::Base::Quiq::Program/;
 
@@ -24,14 +38,6 @@ use Blog::Base::Quiq::Html::Widget::Button;
 use Encode ();
 
 # -----------------------------------------------------------------------------
-
-=head1 NAME
-
-Blog::GenerateIncludes::Article145
-
-=head1 BASE CLASS
-
-L<Blog::Base::Quiq::Program>
 
 =head1 METHODS
 

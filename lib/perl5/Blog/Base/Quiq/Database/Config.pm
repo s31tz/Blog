@@ -1,15 +1,3 @@
-package Blog::Base::Quiq::Database::Config;
-use base qw/Blog::Base::Quiq::Config/;
-
-use v5.10;
-use strict;
-use warnings;
-
-our $VERSION = '1.196';
-
-use Blog::Base::Quiq::Path;
-use Blog::Base::Quiq::Hash;
-
 # -----------------------------------------------------------------------------
 
 =encoding utf8
@@ -65,6 +53,24 @@ Konfigurationseinträge genutzt werden.
   
   $cfg = Blog::Base::Quiq::Database::Config->new('~/project/test/db.conf');
   $udl = $cfg->udl('test_db');
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+package Blog::Base::Quiq::Database::Config;
+use base qw/Blog::Base::Quiq::Config/;
+
+use v5.10;
+use strict;
+use warnings;
+
+our $VERSION = '1.196';
+
+use Blog::Base::Quiq::Path;
+use Blog::Base::Quiq::Hash;
+
+# -----------------------------------------------------------------------------
 
 =head1 METHODS
 

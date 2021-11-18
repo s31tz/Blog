@@ -1,3 +1,19 @@
+# -----------------------------------------------------------------------------
+
+=encoding utf8
+
+=head1 NAME
+
+Blog::Base::Quiq::Shell - Ausführung von Shell-Kommandos
+
+=head1 BASE CLASS
+
+L<Blog::Base::Quiq::Hash>
+
+=cut
+
+# -----------------------------------------------------------------------------
+
 package Blog::Base::Quiq::Shell;
 BEGIN {
     $INC{'Blog::Base::Quiq/Shell.pm'} ||= __FILE__;
@@ -21,16 +37,6 @@ use Blog::Base::Quiq::Process;
 use Cwd ();
 
 # -----------------------------------------------------------------------------
-
-=encoding utf8
-
-=head1 NAME
-
-Blog::Base::Quiq::Shell - Ausführung von Shell-Kommandos
-
-=head1 BASE CLASS
-
-L<Blog::Base::Quiq::Hash>
 
 =head1 METHODS
 

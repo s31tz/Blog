@@ -1,3 +1,24 @@
+# -----------------------------------------------------------------------------
+
+=encoding utf8
+
+=head1 NAME
+
+Blog::Base::Quiq::Database::ResultSet - Liste von Datensätzen (abstrakt)
+
+=head1 BASE CLASS
+
+L<Blog::Base::Quiq::Hash>
+
+=head1 DESCRIPTION
+
+Ein Objekt der Klasse repräsentiert eine Liste von gleichartigen
+Datensätzen.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
 package Blog::Base::Quiq::Database::ResultSet;
 use base qw/Blog::Base::Quiq::Hash/;
 
@@ -18,21 +39,6 @@ use Blog::Base::Quiq::AnsiColor;
 use Blog::Base::Quiq::Duration;
 
 # -----------------------------------------------------------------------------
-
-=encoding utf8
-
-=head1 NAME
-
-Blog::Base::Quiq::Database::ResultSet - Liste von Datensätzen (abstrakt)
-
-=head1 BASE CLASS
-
-L<Blog::Base::Quiq::Hash>
-
-=head1 DESCRIPTION
-
-Ein Objekt der Klasse repräsentiert eine Liste von gleichartigen
-Datensätzen.
 
 =head1 METHODS
 
