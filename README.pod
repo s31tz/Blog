@@ -12,7 +12,7 @@ Die Quellen der Artikel des Blog  L<http://fseitz.de/blog>
 
 =item *
 
-L<Perl: Mehrzeilige Ersetzung auf Dateien in Verzeichnisbaum|https://github.com/s31tz/Blog/blob/master/article/157/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/170-x.html>)
+L<Perl: Mehrzeilige Ersetzung auf Dateien|https://github.com/s31tz/Blog/blob/master/article/157/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/170-x.html>)
 
 =item *
 
