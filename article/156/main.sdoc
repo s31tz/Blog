@@ -63,6 +63,12 @@ Hierbei ist:
 Eine breitere Darstellung der Möglichkeiten des DBI Proxy-Servers
 findet sich in U{Programming the Perl DBI - Database Proxying}.
 
+SQLite-Client für entfernte Datenbank aufrufen:
+
+%Code: highlight=Shell
+  $ ssh -t USER@HOST sqlite3 PATH
+.
+
 %Link:
   name="SQLite"
   url=https://www.sqlite.org
