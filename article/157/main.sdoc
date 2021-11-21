@@ -1,0 +1,61 @@
+# Date: 2021-10-17
+# Id: 170
+# Draft: no
+# Categories: Perl, Shell
+
+%Document:
+  title="Perl: Mehrzeilige Ersetzung auf Dateien"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/perl-130x65.png" width="104" height="50"
+  url="https://www.perl.org"
+
+In Dateien eines Verzeichnisbaums wollen wir eine I{mehrzeilige}
+Ersetzung vornehmen. Mit Perl geht dies mit einem Einzeiler:
+
+%Code: highlight=Shell
+  $ find DIR ... | xargs perl -0777 -p -i -E 's/REGEX/REPLACEMENT/gms'
+.
+
+Hierbei ist C{REGEX} ein Regulärer Ausdruck, der Text über
+mehreren Zeilen matcht. Wie funktioniert der Aufruf?
+
+Perl verarbeitet jede Datei, die von C{xargs(1)} als Arument übergeben wird,
+einzeln und behandelt sie gemäß den angegebenen Optionen:
+
+[-0777]:
+  Kein Input-Separator, d.h. Perl liest die jeweilige Datei komplett
+  ein statt sie zeilenweise zu verarbeiten. Dadurch wirkt der
+  Perl-Code, siehe Option C{-E CODE}, nicht auf eine einzelne Zeile,
+  sondern auf den I{gesamten} Dateiinhalt.
+
+[-p]:
+  Perl gibt den Dateiinhalt nach Manipulation durch den Perl-Code
+  C{CODE} mit C{print} aus.
+
+[-i]:
+  Die Ausgabe mit C{print} ersetzt den Inhalt der ursprünglichen Datei
+  (Bearbeitung Q{in place}). Wird die Option C{-i} mit einem Wert
+  ergänzt, z.B.  C{-i.orig}, bleibt die Originaldatei mit der Endung
+  C{.orig} erhalten. Auf diesem Weg kann man den Code C{CODE}
+  gefahrlos testen.
+
+[-E CODE]:
+  Der Perl-Code, der auf den Inhalt der Datei angewandt wird. Dieser
+  kann beliebige Manipulationen vornehmen. Wir führen oben ein
+  einzelnes Substitute C{s///} aus, mit den Optionen C{g} (I{alle}
+  Fundstellen werden ersetzt), C{m} (C{^} uns C{$} matchen
+  Zeilenanfang und Zeilenende), C{s} (der Punkt C{.} matcht auch
+  Zeilenumbrüche).  Diese Semantik ist in dem gegebenen Anwendungsfall
+  besonders nützlich.
+
+B{Beispiel}
+
+Entferne im Verzeichnisbaum C{DIR} die Inline-Dokumentation (POD)
+aus allen .pm-Dateien:
+
+%Code: highlight=Shell
+  $ find DIR -name '*.pm' | xargs perl -0777 -p -i \
+      -E 's/^=[a-z].*?^=cut\n//gms'
+.
