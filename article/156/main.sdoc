@@ -64,7 +64,7 @@ Eine breitere Darstellung der Möglichkeiten des DBI Proxy-Servers
 findet sich in U{Programming the Perl DBI - Database Proxying}.
 
 Soll lediglich mit dem SQLite-Client auf eine entfernte Datenbank
-zugegriffen werden, ist dies per C{ssh(1)} möglich:
+zugegriffen werden, kann dies per C{ssh(1)} erreicht werden:
 
 %Code: highlight=Shell
   $ ssh -t USER@HOST sqlite3 PATH
