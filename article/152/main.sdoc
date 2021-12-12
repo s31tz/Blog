@@ -128,8 +128,13 @@ Vorschlag für eine Verzeichnisstruktur im Homeverzeichnis von USER:
 
 Die konkrete Kommandozeile zum Starten der Anwendung lautet dann:
 
-  morbo ~/opt/NAME/bin/PROGRAM --listen http://*:PORT --watch ~/opt/NAME \
-    --verbose >~/var/log/NAME.log 2>&1"
+  morbo ~/opt/NAME/bin/PROGRAM --listen http://*:PORT \
+    --watch ~/opt/NAME --verbose >~/var/log/NAME.log 2>&1
+
+= nohup
+
+  nohup morbo ~/opt/NAME/bin/PROGRAM --listen http://*:PORT \
+    --watch ~/opt/NAME --verbose >~/var/log/NAME.log 2>&1 &
 
 = Links
 
