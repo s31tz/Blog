@@ -12,17 +12,17 @@
   url="https://www.perl.org"
 
 In Dateien eines Verzeichnisbaums wollen wir eine I{mehrzeilige}
-Ersetzung vornehmen. Unter Rückgriff auf Perl geht dies mit einem Einzeiler:
+Ersetzung vornehmen. Unter Nutzung von Perl geht dies mit einem Einzeiler:
 
 %Code: highlight=Shell
   $ find DIR ... | xargs perl -0777 -p -i -E 's/REGEX/REPLACEMENT/gms'
 .
 
 Hierbei ist C{REGEX} ein Regulärer Ausdruck, der Text über
-mehreren Zeilen matcht. Wie funktioniert der Aufruf?
+mehreren Zeilen matchen kann. Wie funktioniert der Aufruf?
 
-Perl verarbeitet jede Datei, die von C{xargs(1)} als Arument übergeben wird,
-einzeln und behandelt sie gemäß den angegebenen Optionen:
+Perl verarbeitet die Dateien, die von C{xargs(1)} als Argumente übergeben
+werden, und behandelt sie gemäß den angegebenen Optionen:
 
 [-0777]:
   Kein Input-Separator, d.h. Perl liest die jeweilige Datei komplett
@@ -31,7 +31,8 @@ einzeln und behandelt sie gemäß den angegebenen Optionen:
   sondern auf den I{gesamten} Dateiinhalt.
 
 [-p]:
-  Perl gibt den Dateiinhalt nach Manipulation durch den Perl-Code
+  Perl iteriert über die Dateien, die als Argumente angegeben sind,
+  und gibt den Dateiinhalt nach Manipulation durch den Perl-Code
   C{CODE} mit C{print} aus.
 
 [-i]:

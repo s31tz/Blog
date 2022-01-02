@@ -63,6 +63,9 @@ Hierbei ist:
 Eine breitere Darstellung der Möglichkeiten des DBI Proxy-Servers
 findet sich in U{Programming the Perl DBI - Database Proxying}.
 
+B{Achtung:} Der DBI Proxy-Server hat offenbar ein Memory Leak und sollte
+daher nicht unbegrenzt lange laufen.
+
 Soll lediglich mit dem SQLite-Client auf eine entfernte Datenbank
 zugegriffen werden, kann dies per C{ssh(1)} erreicht werden:
 
