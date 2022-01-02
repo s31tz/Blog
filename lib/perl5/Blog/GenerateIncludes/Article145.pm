@@ -81,7 +81,8 @@ sub main {
 
     # * Datenbankverbindung aufbauen
 
-    my $conf = Blog::Base::Quiq::Config->new('~/etc/opt/tsplot/devel.conf');
+    # my $conf = Blog::Base::Quiq::Config->new('~/etc/opt/tsplot/devel.conf');
+    my $conf = Blog::Base::Quiq::Config->new('~/etc/tsplot/devel.conf');
     my $udl = $conf->get('UdlTseries');
     my $db = Blog::Base::Quiq::Database::Connection->new($udl,-utf8=>1);
 

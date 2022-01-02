@@ -77,7 +77,8 @@ elsif (@ARGV) {
 # Konfiguration
 
 my $app = Blog::Base::Quiq::ApplicationPaths->new;
-my $cfg = Blog::Base::Quiq::Config->new($app->etcDir('blog.conf'));
+# my $cfg = Blog::Base::Quiq::Config->new($app->etcDir('blog.conf'));
+my $cfg = Blog::Base::Quiq::Config->new('~/etc/blog/blog.conf');
 
 my $homeDir = $app->homeDir;
 my $articleDir = $app->homeDir('article');
