@@ -12,7 +12,7 @@
   url="https://www.perl.org"
 
 In Dateien eines Verzeichnisbaums wollen wir eine I{mehrzeilige}
-Ersetzung vornehmen. Mit Perl geht dies mit einem Einzeiler:
+Ersetzung vornehmen. Unter Rückgriff auf Perl geht dies mit einem Einzeiler:
 
 %Code: highlight=Shell
   $ find DIR ... | xargs perl -0777 -p -i -E 's/REGEX/REPLACEMENT/gms'
