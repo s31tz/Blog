@@ -488,6 +488,7 @@ our $VERSION = '1.197';
 use Blog::Base::Quiq::Css;
 use Blog::Base::Quiq::Template;
 use Blog::Base::Quiq::String;
+use Blog::Base::Quiq::JavaScript;
 use Scalar::Util ();
 use Blog::Base::Quiq::Image;
 use Blog::Base::Quiq::Path;
@@ -1544,11 +1545,15 @@ sub tag {
     elsif ($fmt eq 'v' && $content !~ /\n/ || $fmt eq 'i') {
         # nichts tun
     }
-    elsif ($fmt eq 'v' || $fmt eq 'm' || $fmt eq 'c') {
+    elsif ($fmt eq 'v' || $fmt eq 'm' || $fmt eq 'c' || $fmt eq 'C') {
         Blog::Base::Quiq::String->removeIndentation(\$content);
         if ($contentInd) {
             # Bringe Einrückung des Content auf Tiefe $contendInd
             Blog::Base::Quiq::String->reduceIndentation($contentInd,\$content);
+        }
+        if ($fmt eq 'C') {
+            # JavaScript-Code einzeilig machen
+            $content = Blog::Base::Quiq::JavaScript->line($content);
         }
         if (($fmt eq 'c' || $fmt eq 'C') && $content =~ tr/&<>//) {
             # Script-Code in CDATA einfassen, wenn &, < oder > enthalten
