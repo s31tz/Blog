@@ -483,7 +483,7 @@ use strict;
 use warnings;
 use utf8;
 
-our $VERSION = '1.197';
+our $VERSION = '1.198';
 
 use Blog::Base::Quiq::Css;
 use Blog::Base::Quiq::Template;
@@ -843,11 +843,11 @@ sub new {
 
 # -----------------------------------------------------------------------------
 
-=head3 setDefault:() - Setze Objekt-Defaults
+=head3 setDefault() - Setze Objekt-Defaults
 
 =head4 Synopsis
 
-  $class->setDefault:(@keyVal);
+  $class->setDefault(@keyVal);
 
 =head4 Arguments
 
@@ -864,7 +864,7 @@ Liste der Schlüssel/Wert-Paare, die gesetzt werden sollen.
 Definiere, dass applikationsweit jeglicher CSS- und JavaScript-Code
 in HTML einzeilig dargestellt wird:
 
-  Blog::Base::Quiq::Html::Tag->setDefault:(
+  Blog::Base::Quiq::Html::Tag->setDefault(
       oneLineCss => 1,
       oneLineJs => 1,
   );
@@ -873,7 +873,7 @@ in HTML einzeilig dargestellt wird:
 
 # -----------------------------------------------------------------------------
 
-sub setDefault: {
+sub setDefault {
     my $class = shift;
     # @_: @keyVal
 
@@ -2246,7 +2246,7 @@ sub import {
 
 =head1 VERSION
 
-1.197
+1.198
 
 =head1 AUTHOR
 
