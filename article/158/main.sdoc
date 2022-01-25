@@ -1,0 +1,73 @@
+# Date: 2022-01-24
+# Id: 171
+# Draft: no
+# Categories: Web, Mojolicious
+
+%Document:
+  title="Mojolicious: Notizen zu Strukturen und Methoden"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/mojolicious-logo-251x228.png" \
+  height=65 url="https://mojolicious.org/"
+
+Das Request-Objekt ist über das Controller-Objekt $c erreichbar (in den
+Controller-Methoden $self).
+
+Vollständiger URL des Aufrufs:
+
+  %Code: highlight=Perl
+    $url = $c->req->url->to_abs;
+  .
+
+Wert eines HTTP Headers:
+
+  %Code: highlight=Perl
+    $val = $c->req->headers->HEADER;
+  .
+
+Liste der Header-Methoden C{HEADER} siehe Klasse U{Mojo::Headers}.
+
+Abfrage eines Parameters:
+
+  %Code: highlight=Perl
+    # Only GET parameters
+    $foo = $c->req->query_params->param('foo');
+
+    # Only POST parameters
+    $foo = $c->req->body_params->param('foo');
+
+    # GET and POST parameters
+    $foo = $c->req->param('foo');
+
+    # Only file uploads
+    $foo = $c->req->upload('foo');
+  .
+
+Alle per POST empfangenen Parameter als String:
+
+  %Code: highlight=Perl
+    $queryString = $obj->req->body_params->to_string;
+  .
+
+Zugrundeliegende Klasse: U{Mojo::Parameters}
+
+IP-Adresse des Remote-Interfaces:
+
+  %Code: highlight=Perl
+    $ip = $c->tx->remote_address;
+  .
+
+Zugrundeliegende Klasse: U{Mojo::Transaction}
+
+%Link:
+  name="Mojo::Headers"
+  url="https://docs.mojolicious.org/Mojo/Headers"
+
+%Link:
+  name="Mojo::Parameters"
+  url="https://docs.mojolicious.org/Mojo/Parameters"
+
+%Link:
+  name="Mojo::Transaction"
+  url="https://docs.mojolicious.org/Mojo/Transaction"
