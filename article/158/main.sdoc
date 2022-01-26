@@ -9,7 +9,7 @@
   utf8=1
 
 %Figure: file="IMGDIR/mojolicious-logo-251x228.png" \
-  height=65 url="https://mojolicious.org/"
+  height=64 url="https://mojolicious.org/"
 
 Das Request-Objekt ist über das Controller-Objekt $c erreichbar (in den
 Controller-Methoden $self).
