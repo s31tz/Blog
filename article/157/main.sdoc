@@ -32,15 +32,15 @@ werden, und behandelt sie gemäß den angegebenen Optionen:
 
 [-p]:
   Perl iteriert über die Dateien, die als Argumente angegeben sind,
-  und gibt den Dateiinhalt nach Manipulation durch den Perl-Code
+  und gibt den Dateiinhalt jeweils nach Manipulation durch den Perl-Code
   C{CODE} mit C{print} aus.
 
 [-i]:
   Die Ausgabe mit C{print} ersetzt den Inhalt der ursprünglichen Datei
   (Bearbeitung Q{in place}). Wird die Option C{-i} mit einem Wert
   ergänzt, z.B.  C{-i.orig}, bleibt die Originaldatei mit der Endung
-  C{.orig} erhalten. Auf diesem Weg kann man den Code C{CODE}
-  gefahrlos testen.
+  C{.orig} erhalten. Auf diesem Weg kann Code C{CODE}
+  gefahrlos getestet werden.
 
 [-E CODE]:
   Der Perl-Code, der auf den Inhalt der Datei angewandt wird. Dieser
@@ -48,7 +48,7 @@ werden, und behandelt sie gemäß den angegebenen Optionen:
   einzelnes Substitute C{s///} aus, mit den Optionen C{g} (I{alle}
   Fundstellen werden ersetzt), C{m} (C{^} uns C{$} matchen
   Zeilenanfang und Zeilenende), C{s} (der Punkt C{.} matcht auch
-  Zeilenumbrüche).  Diese Semantik ist in dem gegebenen Anwendungsfall
+  Zeilenumbrüche). Diese Semantik ist in dem gegebenen Anwendungsfall
   besonders nützlich.
 
 B{Beispiel}
