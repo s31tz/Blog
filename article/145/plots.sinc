@@ -229,7 +229,6 @@
           if (ed['yaxis.range']) {
             return;
           }
-          console.log(ed+JSON.stringify(ed,null,4));
           $('#'+groupId+' '+'.diagram').each(function(j) {
             if (j+1 != i && ed['height'] === undefined) {
               Plotly.relayout(this,ed);
@@ -365,6 +364,13 @@
           let yMin = $(this).data('yMinOrig');
           let yMax = $(this).data('yMaxOrig');
           Plotly.relayout(this,{'yaxis.range': [yMin,yMax]});
+        });
+      });
+      d.on('plotly_hover',function (ed) {
+        $('#'+name+' .diagram').each(function(j) {
+          if (j+1 != i) {
+            console.log(ed);
+          }
         });
       });
     };
