@@ -366,12 +366,11 @@
               Plotly.relayout(this,{'yaxis.range': [yMin,yMax]});
             });
           });
-  if (i == 1) {
+  if (i) {
     d.addEventListener('mousemove',function (ed) {
       $('#'+name+' .diagram').each(function(j) {
         if (j+1 != i) {
           console.log(ed);
-          this.dispatchEvent(new MouseEvent(ed.type,ed));
         }
       });
     });
