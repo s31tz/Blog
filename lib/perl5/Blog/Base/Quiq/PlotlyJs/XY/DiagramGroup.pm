@@ -954,6 +954,20 @@ sub html {
                 for my $par (@$diagramA) {
                     $tmp .= $self->jsDiagram($j,++$i,$par);
                 }
+$tmp .= Blog::Base::Quiq::JavaScript->code(q~
+$('body').bind('mousemove',function(e){   
+    alert(e);
+});
+
+event = $.Event('mousemove');
+
+// coordinates
+event.pageX = 300;
+event.pageY = 300; 
+
+// trigger event
+$(document).trigger(event);
+~);
                 Blog::Base::Quiq::JQuery::Function->ready($tmp);
             },
         ),
