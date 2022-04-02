@@ -200,7 +200,7 @@ L<Perl: Hostname zu IP-Adresse ermitteln|https://github.com/s31tz/Blog/blob/mast
 
 =item *
 
-L<Perl: Speedy (CGI-SpeedyCGI) unter Perl 5.10 und höher kompilieren|https://github.com/s31tz/Blog/blob/master/article/105-Perl-Speedy-CGI-SpeedyCGI-unter-Perl-5.10-und-hoeher-kompilieren.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/113-x.html>)
+L<Perl: Speedy (CGI-SpeedyCGI) unter Perl 5.10 und höher kompilieren|https://github.com/s31tz/Blog/blob/master/article/105/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/113-x.html>)
 
 =item *
 
