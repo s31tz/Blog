@@ -1,0 +1,22 @@
+# Date: 2022-04-03
+# Id: 172
+# Draft: no
+# Categories: Web, JavaScript, jQuery
+
+%Document:
+  title="jQuery: Information an Context-Menü übergeben"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/jquery-logo-100x100.png" \
+  height=64 url="https://swisnl.github.io/jQuery-contextMenu/"
+
+Ein U{jQuery contextMenu} muss nicht statisch sein. Es kann sich komplett
+dynamisch aufbauen, Einträge ein- und ausblenden oder Einträge
+aktivieren und deaktivieren (Q{grau schalten}). Siehe U{Doku}.
+
+Aber nach welchen Kriterien geschieht dies?
+
+%Link:
+  name="jQuery contextMenu|Doku"
+  url="https://swisnl.github.io/jQuery-contextMenu/"
