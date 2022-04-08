@@ -9,14 +9,16 @@
   utf8=1
 
 %Figure: file="IMGDIR/jquery-logo-100x100.png" \
-  height=64 url="https://swisnl.github.io/jQuery-contextMenu/"
+  height=64 url="https://jquery.com/"
 
-Ein U{jQuery contextMenu} muss nicht statisch sein. Es kann sich komplett
+Ein B{jQuery contextMenu} muss nicht statisch sein. Es kann sich vollständig
 dynamisch aufbauen, Einträge ein- und ausblenden oder Einträge
 aktivieren und deaktivieren (Q{grau schalten}). Siehe U{Doku}.
 
-Aber nach welchen Kriterien geschieht dies?
+Wir wollen, dass das Context-Menü sich in Abhängigkeit von dem Element,
+über dem es sich öffnet, selbst konfiguriert. Wie lässt sich das
+erreichen?
 
 %Link:
-  name="jQuery contextMenu|Doku"
+  name="Doku"
   url="https://swisnl.github.io/jQuery-contextMenu/"
