@@ -16,8 +16,13 @@ dynamisch aufbauen, Einträge ein- und ausblenden oder Einträge
 aktivieren und deaktivieren (Q{grau schalten}). Siehe U{Doku}.
 
 Wir wollen, dass das Context-Menü sich in Abhängigkeit von dem Element,
-über dem es sich öffnet, selbst konfiguriert. Wie lässt sich das
+über dem es sich öffnet, selbst konfiguriert. Wie lässt sich dies
 erreichen?
+
+Eine Parameterübergabe scheidet aus, da das Context-Menü durch einen
+Click-Event ausgelöst wird. 
+
+Hierfür eignen sich die data-Attribute. 
 
 %Link:
   name="Doku"

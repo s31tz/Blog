@@ -61,7 +61,7 @@ die Macro-Definition C{SPEEDY_INLINE} geändert wird zu
   #endif
 
 Zum Testen (Perl 5.28.1) muss entgegen dem üblichen C{make test} im
-Wurzelverzeichnis erst in der Unterverzeichnis C{speedy} gewechselt
+Wurzelverzeichnis erst in das Unterverzeichnis C{speedy} gewechselt
 werden:
 
   $ cd speedy
