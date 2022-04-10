@@ -1,7 +1,7 @@
 # Date: 2022-04-03
 # Id: 172
-# Draft: no
-# Categories: Web, JavaScript, jQuery
+# Draft: yes
+# Categories: Web, JavaScript, jQuery, ContextMenu
 
 %Document:
   title="jQuery: Information an Context-Menü übergeben"
@@ -9,21 +9,24 @@
   utf8=1
 
 %Figure: file="IMGDIR/jquery-logo-100x100.png" \
-  height=64 url="https://jquery.com/"
+  height=68 url="https://jquery.com/"
 
-Ein B{jQuery contextMenu} muss nicht statisch sein. Es kann sich vollständig
-dynamisch aufbauen, Einträge ein- und ausblenden oder Einträge
-aktivieren und deaktivieren (Q{grau schalten}). Siehe U{Doku}.
-
-Wir wollen, dass das Context-Menü sich in Abhängigkeit von dem Element,
-über dem es sich öffnet, selbst konfiguriert. Wie lässt sich dies
-erreichen?
+Ein U{jQuery contextMenu} muss nicht statisch sein. Es kann sich
+vollständig dynamisch aufbauen, Einträge ein- und ausblenden oder
+Einträge aktivieren und deaktivieren (Q{grau schalten}). Siehe U{Demo
+Gallery}. Wir wollen, dass das Context-Menü sich in Abhängigkeit von
+dem Trigger-Element, über dem es sich öffnet, selbst konfiguriert. Wie
+lässt sich dies erreichen?
 
 Eine Parameterübergabe scheidet aus, da das Context-Menü durch einen
-Click-Event ausgelöst wird. 
-
-Hierfür eignen sich die data-Attribute. 
+Click- oder Hover-Event ausgelöst wird. Wir haben aber die
+Möglichkeit, Information mittels data-Attribut(en) auf dem
+Trigger-Element zu hinterlegen, die vom Context-Menü ausgewertet wird.
 
 %Link:
-  name="Doku"
+  name="jQuery contextMenu"
   url="https://swisnl.github.io/jQuery-contextMenu/"
+
+%Link:
+  name="Demo-Gallery"
+  url="https://swisnl.github.io/jQuery-contextMenu/demo.html"

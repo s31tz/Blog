@@ -12,10 +12,6 @@ Die Quellen der Artikel des Blog  L<http://fseitz.de/blog>
 
 =item *
 
-L<jQuery: Information an Context-Menü übergeben|https://github.com/s31tz/Blog/blob/master/article/159/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/172-x.html>)
-
-=item *
-
 L<Perl: Mehrzeilige Ersetzung auf Dateien|https://github.com/s31tz/Blog/blob/master/article/157/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/170-x.html>)
 
 =item *
