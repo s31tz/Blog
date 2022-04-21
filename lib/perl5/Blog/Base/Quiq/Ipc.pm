@@ -25,6 +25,7 @@ our $VERSION = '1.202';
 
 use Blog::Base::Quiq::Option;
 use Blog::Base::Quiq::Shell;
+use Blog::Base::Quiq::Exit;
 use IPC::Open3 ();
 
 # -----------------------------------------------------------------------------
@@ -106,7 +107,8 @@ sub filter {
     if (!$ignoreError) {
         # FIXME: checkError nach Blog::Base::Quiq::Ipc verlagern,
         # in checkExit umbenennen
-        Blog::Base::Quiq::Shell->checkError($?,$err,$cmd);
+        # Blog::Base::Quiq::Shell->checkError($?,$err,$cmd);
+        Blog::Base::Quiq::Exit->check($?,"$cmd\n$err");
     }
 
     return wantarray? ($out,$err): $out;

@@ -33,8 +33,8 @@ use Blog::Base::Quiq::AnsiColor;
 use Blog::Base::Quiq::Option;
 use Blog::Base::Quiq::Path;
 use Blog::Base::Quiq::Converter;
+use Blog::Base::Quiq::Exit;
 use Blog::Base::Quiq::Process;
-use Cwd ();
 
 # -----------------------------------------------------------------------------
 
@@ -390,8 +390,9 @@ sub exec {
         }
         if ($except) {
             # geht sonst beim Autoload von checkError() verloren
-            my $msg = $!;
-            $self->checkError($exit,$msg,$cmd);
+            # my $msg = $!;
+            # $self->checkError($exit,$msg,$cmd);
+            Blog::Base::Quiq::Exit->check($?,$cmd);
         }
     }
 
@@ -529,77 +530,6 @@ zu verändern.
 
 sub backDir {
     return shift->{'dirStack'}->[-1];
-}
-
-# -----------------------------------------------------------------------------
-
-=head2 Fehlerbehandlung
-
-=head3 checkError() - Löse Exception bei Kommandofehler aus
-
-=head4 Synopsis
-
-  $this->checkError($code,$errMsg,@cmd);
-
-=head4 Returns
-
-nichts
-
-=head4 Description
-
-Prüfe den Status einer vorhergehenden Programmausführung und löse
-eine Execption aus, wenn der Status ungleich 0 ist.
-
-=head4 Examples
-
-Prüfe den Ausführungsstatus von system():
-
-  system($cmd);
-  Blog::Base::Quiq::Shell->checkError($?,$!,$cmd);
-
-Prüfe den Ausführungsstatus des Backtick-Operators:
-
-  $str = `$cmd`;
-  Blog::Base::Quiq::Shell->checkError($?,$!,$cmd);
-
-=cut
-
-# -----------------------------------------------------------------------------
-
-sub checkError {
-    my $this = shift;
-    my $errCode = shift;   # $?
-    my $errMsg = shift;    # $!
-    my $cmd = join ' ',@_; # Kommando
-
-    if ($errCode == 0) {
-        return; # ok
-    }
-    elsif ($errCode == -1) {
-        $this->throw(
-            'CMD-00001: Kommando konnte nicht aufgerufen werden',
-            Command => $cmd,
-            ErrorMessage => $errMsg,
-        );
-    }
-    elsif ($errCode & 127) {       # Abbruch mit Signal
-        my $sig = $errCode & 127;  # unterste 8 Bit sind Signalnummer
-        my $core = $errCode & 128; # 8. Bit zeigt Coredump an
-        $this->throw(
-            'CMD-00003: Kommando wurde abgebrochen',
-            Signal => $sig.($core? ' (Coredump)': ''),
-            Command => $cmd,
-            ErrorMessage => $errMsg,
-        );
-    }
-    $errCode >>= 8;
-    $this->throw(
-        'CMD-00002: Kommando endete mit Fehler',
-        ExitCode => $errCode,
-        Command => $cmd,
-        Cwd => Cwd::getcwd,
-        ErrorMessage => $errMsg,
-    );
 }
 
 # -----------------------------------------------------------------------------
