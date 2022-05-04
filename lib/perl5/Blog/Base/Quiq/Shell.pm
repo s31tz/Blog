@@ -4,7 +4,7 @@
 
 =head1 NAME
 
-Blog::Base::Quiq::Shell - Ausführung von Shell-Kommandos
+Blog::Base::Quiq::Shell - Führe Shell-Kommandos aus
 
 =head1 BASE CLASS
 
