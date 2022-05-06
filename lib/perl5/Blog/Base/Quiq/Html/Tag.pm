@@ -483,7 +483,7 @@ use strict;
 use warnings;
 use utf8;
 
-our $VERSION = '1.202';
+our $VERSION = '1.203';
 
 use Blog::Base::Quiq::Css;
 use Blog::Base::Quiq::Template;
@@ -2246,7 +2246,7 @@ sub import {
 
 =head1 VERSION
 
-1.202
+1.203
 
 =head1 AUTHOR
 
