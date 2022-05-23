@@ -1764,6 +1764,46 @@ sub applyPatches {
 
 # -----------------------------------------------------------------------------
 
+=head3 maxLevel() - Liefere den maximalen Patchlevel
+
+=head4 Synopsis
+
+  $patchLevel = $this->maxLevel($class);
+
+=head4 Returns
+
+(Integer) Maximaler Patchlevel.
+
+=head4 Description
+
+Ermittele den maximalen Patchlevel, also größten Patchlevel, der in
+der Klasse $class implementiert ist, und liefere diesen zurück.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub maxLevel {
+    my ($this,$class) = @_;
+
+    # Ermittele Patch-Methoden
+
+    my @patchMethods;
+    my $refH = Blog::Base::Quiq::Perl->stash($class);
+    for my $name (keys %$refH) {
+        if ($name =~ /^patch\d+/) {
+            push @patchMethods,[$name,$refH->{$name}];
+        }
+    }
+    @patchMethods = sort {$a->[0] cmp $b->[0]} @patchMethods;
+    my $name = $patchMethods[-1]->[0];
+    my ($n) = map {int} $name =~ /(\d+)/;
+
+    return $n;
+}
+
+# -----------------------------------------------------------------------------
+
 =head3 patchLevel() - Liefere den Patchlevel der Datenbank
 
 =head4 Synopsis
