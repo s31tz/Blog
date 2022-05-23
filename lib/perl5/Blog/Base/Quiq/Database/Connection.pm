@@ -1683,20 +1683,33 @@ sub execute {
 
   $n = $db->applyPatches($class);
 
+=head4 Arguments
+
+=over 4
+
+=item $class
+
+(String) Klasse, die die Patchmethoden enthält.
+
+=back
+
+=head4 Returns
+
+(Integer) Anzahl der ausgeführten Patch-Methoden.
+
 =head4 Description
 
-Wende alle offenen Patches auf die Datenbank an, wobei die Patches als
-Methoden in der Klasse $class implementiert sind. Die Patch-Methoden
+Wende alle offenen Patches auf die Datenbank an. Die Patches sind als
+Methoden in der Klasse $class implementiert. Die Patch-Methoden
 haben das Namensmuster
 
   patchNNN
 
-Hierbei ist NNN der Patchlevel (mit führenden Nullen), den die
-jeweilige Methode implementiert. Der aktuelle Patchlevel ist der
-maximale Wert der Kolumne PAT_LEVEL in Tabelle PATCHLEVEL. Es werden
-alle Patch-Methoden angewandt, deren Patchlevel größer ist als der
-aktuelle Patchlevel.  Existiert die Tabelle PATCHLEVEL nicht, wird
-sie angelegt.
+Hierbei ist NNN der Patchlevel, den die Methode implementiert. Der
+aktuelle Patchlevel ist der maximale Wert der Kolumne PAT_LEVEL in
+Tabelle PATCHLEVEL. Es werden alle Patch-Methoden angewandt, deren
+Patchlevel größer ist als der aktuelle Patchlevel.  Existiert die
+Tabelle PATCHLEVEL nicht, wird sie angelegt.
 
 =cut
 
@@ -1704,8 +1717,6 @@ sie angelegt.
 
 sub applyPatches {
     my ($self,$class) = @_;
-
-    my $n = 0;
 
     my $exists = $self->tableExists('patchlevel');
     if (!$exists) {
@@ -1716,13 +1727,6 @@ sub applyPatches {
                 default=>\"(DATETIME('now','localtime'))"], # FIXME
         );
     }
-
-    # Ermittele aktuellen Patchlevel der Datenbank
-
-    my $maxLevel = $self->value(
-        -select => 'IFNULL(MAX(pat_level), 0)',
-        -from => 'patchlevel',
-    );
 
     # Ermittele Patch-Methoden
 
@@ -1735,16 +1739,65 @@ sub applyPatches {
     }
     @patchMethods = sort {$a->[0] cmp $b->[0]} @patchMethods;
 
-    # Wende Patchmethoden an
+    # Ermittele aktuellen Patchlevel der Datenbank
+    my $maxLevel = $self->patchLevel;
 
+    # Wende ausstehende Patchmethoden an
+
+    my $i = 0;
     for (@patchMethods) {
         my ($name,$sub) = @$_;
-        say $name;
-        my ($n) = $name =~ /\d+/;
-        $sub->($self,int($n));
+        my ($n) = map {int} $name =~ /(\d+)/;
+        if ($n > $maxLevel) {
+            $self->begin;
+            $sub->($self,$n);
+            $self->insert('patchlevel',
+                pat_level => $n,
+            );
+            $self->commit;
+            $i++;
+        }
     }
 
-    return $n;
+    return $i;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 patchLevel() - Liefere den Patchlevel der Datenbank
+
+=head4 Synopsis
+
+  $patchLevel = $db->patchLevel;
+
+=head4 Returns
+
+(Integer) Patchlevel der Datenbank.
+
+=head4 Description
+
+Ermittele den aktuellen Patchlevel der Datenbank und liefere diesen
+zurück. Existiert die Tabelle PATCHLEVEL auf der Datenbank nicht oder
+hat sie keinen Eintrag, liefert die Methode 0.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub patchLevel {
+    my $self = shift;
+
+    my $patchLevel = 0;
+
+    my $exists = $self->tableExists('patchlevel');
+    if ($exists) {
+        $patchLevel = $self->value(
+            -select => 'IFNULL(MAX(pat_level), 0)',
+            -from => 'patchlevel',
+        );
+    }
+
+    return $patchLevel;
 }
 
 # -----------------------------------------------------------------------------
