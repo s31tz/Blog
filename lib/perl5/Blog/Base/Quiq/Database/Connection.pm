@@ -1681,13 +1681,13 @@ sub execute {
 
 =head4 Synopsis
 
-  $n = $db->applyPatches($class);
+  $n = $db->applyPatches($patchClass);
 
 =head4 Arguments
 
 =over 4
 
-=item $class
+=item $patchClass
 
 (String) Klasse, die die Patchmethoden enthält.
 
@@ -1695,49 +1695,40 @@ sub execute {
 
 =head4 Returns
 
-(Integer) Anzahl der ausgeführten Patch-Methoden.
+(Integer) Anzahl der angewandten Patch-Methoden.
 
 =head4 Description
 
 Wende alle offenen Patches auf die Datenbank an. Die Patches sind als
-Methoden in der Klasse $class implementiert. Die Patch-Methoden
+Methoden in der Klasse $patchClass implementiert. Die Patch-Methoden
 haben das Namensmuster
 
   patchNNN
 
 Hierbei ist NNN der Patchlevel, den die Methode implementiert. Der
-aktuelle Patchlevel ist der maximale Wert der Kolumne PAT_LEVEL in
-Tabelle PATCHLEVEL. Es werden alle Patch-Methoden angewandt, deren
-Patchlevel größer ist als der aktuelle Patchlevel.  Existiert die
-Tabelle PATCHLEVEL nicht, wird sie angelegt.
+aktuelle Patchlevel der Datnbank ist der maximale Wert der Kolumne
+PAT_LEVEL in Tabelle PATCH. Es werden alle Patch-Methoden
+angewandt, deren Patchlevel größer ist als der aktuelle Patchlevel.
+Existiert die Tabelle PATCH nicht, wird sie angelegt.
 
 =cut
 
 # -----------------------------------------------------------------------------
 
 sub applyPatches {
-    my ($self,$class) = @_;
+    my ($self,$patchClass) = @_;
 
-    my $exists = $self->tableExists('patchlevel');
+    my $exists = $self->tableExists('patch');
     if (!$exists) {
-        $self->createTable('patchlevel',
+        $self->createTable('patch',
             ['pat_id',type=>'INTEGER',primaryKey=>1,autoIncrement=>1],
             ['pat_level',type=>'INTEGER',notNull=>1],
+            # FIXME: Portabilität
             ['pat_time',type=>'DATETIME',notNull=>1,
-                default=>\"(DATETIME('now','localtime'))"], # FIXME
+                default=>\"(DATETIME('now','localtime'))"],
+            ['pat_description',type=>'TEXT'],
         );
     }
-
-    # Ermittele Patch-Methoden
-
-    my @patchMethods;
-    my $refH = Blog::Base::Quiq::Perl->stash($class);
-    for my $name (keys %$refH) {
-        if ($name =~ /^patch\d+/) {
-            push @patchMethods,[$name,$refH->{$name}];
-        }
-    }
-    @patchMethods = sort {$a->[0] cmp $b->[0]} @patchMethods;
 
     # Ermittele aktuellen Patchlevel der Datenbank
     my $maxLevel = $self->patchLevel;
@@ -1745,14 +1736,15 @@ sub applyPatches {
     # Wende ausstehende Patchmethoden an
 
     my $i = 0;
-    for (@patchMethods) {
+    for ($self->patchMethods($patchClass)) {
         my ($name,$sub) = @$_;
         my ($n) = map {int} $name =~ /(\d+)/;
         if ($n > $maxLevel) {
             $self->begin;
-            $sub->($self,$n);
-            $self->insert('patchlevel',
+            my $descr = $sub->($self,$n);
+            $self->insert('patch',
                 pat_level => $n,
+                pat_description => $descr,
             );
             $self->commit;
             $i++;
@@ -1764,11 +1756,21 @@ sub applyPatches {
 
 # -----------------------------------------------------------------------------
 
-=head3 maxLevel() - Liefere den maximalen Patchlevel
+=head3 maxPatchLevel() - Liefere maximalen Patchlevel der Patch-Klasse
 
 =head4 Synopsis
 
-  $patchLevel = $this->maxLevel($class);
+  $patchLevel = $this->maxPatchLevel($patchClass);
+
+=head4 Arguments
+
+=over 4
+
+=item $patchClass
+
+Name der Klasse, die die Patchmethoden enthält.
+
+=back
 
 =head4 Returns
 
@@ -1776,35 +1778,30 @@ sub applyPatches {
 
 =head4 Description
 
-Ermittele den maximalen Patchlevel, also größten Patchlevel, der in
-der Klasse $class implementiert ist, und liefere diesen zurück.
+Ermittele den maximalen Patchlevel, also die höchste Nummer unter
+allen Patch-Methoden, die in der Klasse $patchClass implementiert sind,
+und liefere diesen zurück.
 
 =cut
 
 # -----------------------------------------------------------------------------
 
-sub maxLevel {
-    my ($this,$class) = @_;
+sub maxPatchLevel {
+    my ($this,$patchClass) = @_;
 
-    # Ermittele Patch-Methoden
-
-    my @patchMethods;
-    my $refH = Blog::Base::Quiq::Perl->stash($class);
-    for my $name (keys %$refH) {
-        if ($name =~ /^patch\d+/) {
-            push @patchMethods,[$name,$refH->{$name}];
-        }
+    my $n = 0;
+    my $patchMethodA = $this->patchMethods($patchClass);
+    if (@$patchMethodA) {
+        my $name = $patchMethodA->[-1][0];
+        ($n) = map {int} $name =~ /(\d+)/;
     }
-    @patchMethods = sort {$a->[0] cmp $b->[0]} @patchMethods;
-    my $name = $patchMethods[-1]->[0];
-    my ($n) = map {int} $name =~ /(\d+)/;
 
     return $n;
 }
 
 # -----------------------------------------------------------------------------
 
-=head3 patchLevel() - Liefere den Patchlevel der Datenbank
+=head3 patchLevel() - Liefere den aktuellen Patchlevel der Datenbank
 
 =head4 Synopsis
 
@@ -1817,7 +1814,7 @@ sub maxLevel {
 =head4 Description
 
 Ermittele den aktuellen Patchlevel der Datenbank und liefere diesen
-zurück. Existiert die Tabelle PATCHLEVEL auf der Datenbank nicht oder
+zurück. Existiert die Tabelle PATCH auf der Datenbank nicht oder
 hat sie keinen Eintrag, liefert die Methode 0.
 
 =cut
@@ -1829,15 +1826,54 @@ sub patchLevel {
 
     my $patchLevel = 0;
 
-    my $exists = $self->tableExists('patchlevel');
+    my $exists = $self->tableExists('patch');
     if ($exists) {
         $patchLevel = $self->value(
             -select => 'IFNULL(MAX(pat_level), 0)',
-            -from => 'patchlevel',
+            -from => 'patch',
         );
     }
 
     return $patchLevel;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 patchMethods() - Liefere Liste der Patch-Methoden
+
+=head4 Synopsis
+
+  @patchMethods | $patchMehodA = $db->patchMethods($patchClass);
+
+=head4 Returns
+
+(Array of Pairs) Liste der Patch-Methoden der Klasse $patchClass. Im
+Skalarkontext eine Referenz auf die Liste.
+
+=head4 Description
+
+Ermittele die Liste der Patch-Mehoden der Klasse $patchClass und liefere
+diese zurück. Ein Element der Liste ist ein Paar, bestehend aus dem
+Methoden-Namen und einer Glob-Referenz, über die die Patch-Methode
+aufgerufen werden kann. Die Liste ist aufsteigend nach Methodenname
+sortiert.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub patchMethods {
+    my ($this,$patchClass) = @_;
+
+    my @arr;
+    my $refH = Blog::Base::Quiq::Perl->stash($patchClass);
+    for my $name (sort keys %$refH) {
+        if ($name =~ /^patch\d+/) {
+            push @arr,[$name,$refH->{$name}];
+        }
+    }
+
+    return wantarray? @arr: \@arr;
 }
 
 # -----------------------------------------------------------------------------
