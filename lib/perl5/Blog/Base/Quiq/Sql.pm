@@ -68,7 +68,7 @@ use strict;
 use warnings;
 use utf8;
 
-our $VERSION = '1.203';
+our $VERSION = '1.204';
 
 use Blog::Base::Quiq::Hash;
 use Blog::Base::Quiq::Option;
@@ -5694,7 +5694,7 @@ sub diff {
 
 =head1 VERSION
 
-1.203
+1.204
 
 =head1 AUTHOR
 
