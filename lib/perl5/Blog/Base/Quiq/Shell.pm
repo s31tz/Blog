@@ -451,6 +451,7 @@ sub cd {
     }
 
     my $cwd = Blog::Base::Quiq::Process->cwd;
+
     unless ($dryRun) {
         my $t0 = Time::HiRes::gettimeofday;
         Blog::Base::Quiq::Process->cwd($dir);
