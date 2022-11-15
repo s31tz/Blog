@@ -1,0 +1,11 @@
+# Date: 2022-10-28
+# Id: 173
+# Draft: no
+# Categories: LDAP
+
+%Document:
+  title="LDAP: Autorisierung gegen Active Directory"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/ldap-logo-278x101.png" height=65
