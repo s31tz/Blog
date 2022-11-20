@@ -4,7 +4,7 @@
 # Categories: LDAP
 
 %Document:
-  title="LDAP: Autorisierung gegen Active Directory"
+  title="LDAP: Authentisierung gegen Active Directory"
   generateAnchors=0
   utf8=1
 
