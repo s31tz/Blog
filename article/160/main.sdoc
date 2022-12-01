@@ -9,3 +9,21 @@
   utf8=1
 
 %Figure: file="IMGDIR/ldap-logo-278x101.png" height=65
+
+%Code: highlight=Perl
+  use Net::LDAP;
+
+  my $workgroup = '...';
+  my $user = '...';
+  my $password = '...';
+
+  my $ldap = Net::LDAP->new(
+      'ldaps://dc1',    # SSL/TLS verschlüsselte Verbindung
+      verify => 'none', # keine Verifikation des Server-Zertifikats
+      onerror => 'die', # Exception, wenn wenn folgende Methodenaufrufe \
+        fehlschlagen
+  ) or die $@;
+
+  $ldap->bind("$workgroup\\$user",password=>$password);
+  $ldap->unbind;
+.
