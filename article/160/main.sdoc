@@ -10,6 +10,10 @@
 
 %Figure: file="IMGDIR/ldap-logo-278x101.png" height=65
 
+Eine Authentisierung über LDAP gegen ein Active Directory (AD) besteht im
+Kern im Aufruf der Methode bind(). Gelingt dieser Aufruf, ist der Benutzer
+authentisiert:
+
 %Code: highlight=Perl
   use Net::LDAP;
 
@@ -18,12 +22,15 @@
   my $password = '...';
 
   my $ldap = Net::LDAP->new(
-      'ldaps://dc1',    # SSL/TLS verschlüsselte Verbindung
-      verify => 'none', # keine Verifikation des Server-Zertifikats
-      onerror => 'die', # Exception, wenn wenn folgende Methodenaufrufe \
-        fehlschlagen
+      'ldaps://dc1',    # verschlüsselte Verbindung
+      verify => 'none', # keine Verifikation des Server-Zertifikats \
+        (sollte eigetlich 'require' sein)
+      onerror => 'die', # Exception, wenn wenn nachfolgende \
+        Methodenaufrufe fehlschlagen
   ) or die $@;
 
   $ldap->bind("$workgroup\\$user",password=>$password);
   $ldap->unbind;
+
+  # ab hier ist der Benutzer authentisiert
 .
