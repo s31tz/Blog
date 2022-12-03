@@ -133,10 +133,10 @@ sub edit {
     }
     Blog::Base::Quiq::Shell->exec("$program $file");
 
-    if ($backupFile && !$p->compare($file,$backupFile)) {
-        $p->delete($backupFile);
-            
-    }
+    # MEMO: Geht nicht, wenn GIMP bereits offen ist
+    # if ($backupFile && !$p->compare($file,$backupFile)) {
+    #     $p->delete($backupFile);
+    # }
 
     return;
 }
