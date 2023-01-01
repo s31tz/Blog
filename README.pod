@@ -634,4 +634,4 @@ Frank Seitz, L<http://fseitz.de>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2022 Frank Seitz
+Copyright (C) 2023 Frank Seitz
