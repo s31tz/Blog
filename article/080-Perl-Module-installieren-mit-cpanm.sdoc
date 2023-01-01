@@ -22,7 +22,7 @@ Nach dem Kompilieren und Installieren von Perl aus den Quellen per
 
 und der Installation von C{cpanm} per
 
-  $ curl -L http://cpanmin.us | ~/bin/perl - --self-upgrade
+  $ curl -L http://cpanmin.us | `which perl` - --self-upgrade
 
 kann man jedes (naja, fast jedes) CPAN-Modul mit einem simplen Aufruf zur
 Installation hinzufügen:
