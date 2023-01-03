@@ -1,0 +1,25 @@
+# Date: 2022-10-28
+# Id: 174
+# Draft: no
+# Categories: XRechnung
+
+%Document:
+  title="XRechnung kostenlos online erstellen und übermitteln"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/xrechnung-logo-405x68.png" height=36
+
+Wer in Deutschland einem öffentlichen Auftraggeber eine Rechnung stellen
+möchte, muss diese u.U. I{zwingend} als U{XRechnung} übermitteln.
+Was tun, wenn man hierfür keine Software besitzt?
+
+Für gelegentliche Rechnungsstellung bietet sich hierfür das Portal
+U{https://xrechnung-bdr.de} der Bundesdruckerei an. Dort kann man nach
+Registrierung die Rechnungsdaten in einem selbsterklärenden Arbeitsablauf
+eingeben. Nach Abschluss wird die XRechnung erzeugt und anhand der Leitweg-Id
+automatisch an den Empfänger übermittelt. Dies alles ist kostenfrei.
+
+%Link:
+  name="XRechnung"
+  url="https://de.wikipedia.org/wiki/XRechnung"
