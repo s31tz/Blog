@@ -194,10 +194,12 @@ sub findImages {
     
     # Optionen
 
+    my $encoding = 'utf-8';
     my $object = 0;
     my $sort = '';
 
     Blog::Base::Quiq::Option->extract(-mode=>'sloppy',\@_,
+        -encoding => \$encoding,
         -object => \$object,
         -sort => \$sort,
     );
@@ -206,7 +208,10 @@ sub findImages {
     for my $path (@_) {
         if (-d $path) {
             my @tmp;
-            for my $file (Blog::Base::Quiq::Path->find($path,-type=>'f')) {
+            for my $file (Blog::Base::Quiq::Path->find($path,
+                    -type => 'f',
+                    -decode => $encoding,
+                )) {
                 my $ext = Blog::Base::Quiq::Path->extension($file);
                 if ($ext) {
                     if ($ext =~ /^(jpe?g|gif|png)$/i) {
