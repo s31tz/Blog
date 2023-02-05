@@ -26,7 +26,7 @@ use strict;
 use warnings;
 use utf8;
 
-our $VERSION = '1.207';
+our $VERSION = '1.208';
 
 use Blog::Base::Quiq::Hash;
 use Blog::Base::Quiq::Option;
@@ -1657,7 +1657,7 @@ sub AUTOLOAD {
 
 =head1 VERSION
 
-1.207
+1.208
 
 =head1 AUTHOR
 

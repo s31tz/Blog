@@ -26,7 +26,7 @@ use v5.10;
 use strict;
 use warnings;
 
-our $VERSION = '1.207';
+our $VERSION = '1.208';
 
 use Blog::Base::Quiq::Option;
 use Blog::Base::Quiq::Hash;
@@ -764,7 +764,7 @@ sub selectParentRows {
 
 =head1 VERSION
 
-1.207
+1.208
 
 =head1 AUTHOR
 
