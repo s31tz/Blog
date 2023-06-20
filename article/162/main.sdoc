@@ -1,0 +1,55 @@
+# Date: 2023-05-28
+# Id: 175
+# Draft: no
+# Categories: Perl
+
+%Document:
+  title="Einen minimalen Offline-Mirror des CPAN erstellen"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/perl-130x65.png" width="104" height="50"
+  url="https://www.perl.org"
+
+Wie in Q{U{Einen Offline-Mirror des CPAN erstellen}} beschrieben, ist
+es möglich, eine beliebige Kollektion von CPAN-Modulen auf einem
+Rechner ohne Internet-Zugang zu installieren. Der Offline-Mirror hat
+aktuell eine Größe von ca. 5GB. Dies läßt sich reduzieren, indem man
+ihn auf genau die Module beschränkt, die man I{tatsächlich}
+installieren möchte. Dies geht mit Bordmitteln wie folgt:
+
+1. Einen Rechner mit Internet-Zugang wählen.
+
+2. Auf diesem Rechner die benötigten Module in das (frei gewählte)
+   MicroCPAN-Verzeichnis installieren:
+
+       $ cpanm --save-dists MICROCPANDIR \
+           --local-lib-contained MICRCPANDIR/inst \
+           --prompt MODULE ...
+
+3. Das Verzeichnis um die CPAN Package-Liste ergänzen (diese umfasst I{alle}
+   CPAN-Module, auch wenn wir nur einen Teil davon nutzen):
+
+       $ curl -L http://www.perl.com/CPAN/modules/02packages.details.txt.gz \
+           --silent --output MICROCPANDIR/modules/02packages.details.txt.gz
+
+4. Das MicroCPAN-Verzeichnis auf den Zielrechner (ohne Internet-Zugang)
+   übertragen.
+
+5. Die o.g. Module auf dem Zielrechner offline installieren:
+
+       $ cpanm --mirror MICROCPANDIR --mirror-only MODULE ...
+
+Hierbei ist:
+
+[MICROCPANDIR]:
+    Das (frei gewählte) MicroCPAN-Verzeichnis auf dem Quell- und dem
+    Zielrechner
+
+[MODULE ...]:
+    Die Liste der Module, die auf dem Zielrechner offline installiert
+    werden sollen
+
+%Link:
+  name="Einen Offline-Mirror des CPAN erstellen"
+  url="http://fseitz.de/blog/index.php?/archives/147-Perl-Einen-Offline-Mirror-des-CPAN-erstellen.html"
