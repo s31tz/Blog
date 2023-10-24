@@ -63,7 +63,7 @@ use strict;
 use warnings;
 use utf8;
 
-our $VERSION = '1.211';
+our $VERSION = '1.212';
 
 use Scalar::Util ();
 use Blog::Base::Quiq::Stacktrace;
@@ -241,7 +241,7 @@ sub fabricate {
 
 # -----------------------------------------------------------------------------
 
-=head2 Akzessor-Methoden
+=head2 Akzessoren
 
 =head3 get() - Werte abfragen
 
@@ -575,7 +575,7 @@ sub compute {
 
 # -----------------------------------------------------------------------------
 
-=head2 Automatische Akzessor-Methoden
+=head2 Automatische Akzessoren
 
 =head3 AUTOLOAD() - Erzeuge Akzessor-Methode
 
@@ -1515,7 +1515,7 @@ Das Benchmark-Programm (bench-hash):
 
 =head1 VERSION
 
-1.211
+1.212
 
 =head1 AUTHOR
 
