@@ -1,0 +1,28 @@
+# Date: 2023-10-24
+# Id: 176
+# Draft: no
+# Categories: OpenSSL
+
+%Document:
+  title="Mit OpenSSL Nachrichten verschlüsseln und entschlüsseln"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/openssl-428x91.png" width="179" height="38"
+  url="https://www.openssl.org/"
+
+Privaten Schlüssel (ohne Passphrase) erzeugen:
+
+  $ openssl genrsa -out private.pem 2048
+
+Öffentlichen Schlüssel aus privatem Schlüssel erzeugen:
+
+  $ openssl rsa -in private.pem -pubout >public.pem
+
+Nachricht mit öffentlichem Schlüssel verschlüsseln:
+
+  $ openssl pkeyutl -encrypt -pubin -inkey public.pem -in text.txt -out text.enc
+
+Verschlüsselte Nachricht mit privatem Schlüssel entschlüsseln:
+
+  $ openssl pkeyutl -decrypt -inkey private.pem -in text.enc >text.dec
