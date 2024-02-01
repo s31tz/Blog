@@ -63,7 +63,7 @@ use strict;
 use warnings;
 use utf8;
 
-our $VERSION = '1.213';
+our $VERSION = '1.214';
 
 use Scalar::Util ();
 use Blog::Base::Quiq::Stacktrace;
@@ -921,6 +921,53 @@ sub clear {
 
 # -----------------------------------------------------------------------------
 
+=head2 Externe Repräsentation
+
+=head3 asString() - Darstellung in einer Zeile
+
+=head4 Synopsis
+
+  $str = $h->asString;
+
+=head4 Alias
+
+asLine()
+
+=head4 Description
+
+Liefere den Hash in der Darstellung:
+
+  KEY1=>VAL1;KEY2=>VAL2;...
+
+Die Schlüssel sind in alphanumerischer Reihenfolge.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub asString {
+    my $self = shift;
+
+    my $str = '';
+    my @keys = CORE::keys %$self;
+    for my $key (sort @keys) {
+        if ($str) {
+            $str .= ';';
+        }
+        my $val = $self->{$key} // 'undef';
+        $str .= "$key=>$val";
+    }
+
+    return $str;
+}
+
+{
+    no warnings 'once';
+    *asLine = \&asString;
+}
+
+# -----------------------------------------------------------------------------
+
 =head2 Tests
 
 =head3 exists() - Prüfe Schlüssel auf Existenz
@@ -1304,6 +1351,35 @@ sub addNumber {
 
 # -----------------------------------------------------------------------------
 
+=head3 keyVal() - Liste von Schlüssel/Wert-Paaren
+
+=head4 Synopsis
+
+  @keyVal | $keyValA = $h->keyVal;
+
+=head4 Description
+
+Liefere die Liste der Schlüssel/Wert-Paare. Im Skalarkontext liefere eine
+Referenz auf die Liste.
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub keyVal {
+    my $self = shift;
+
+    my @arr;
+    my @keys = CORE::keys %$self;
+    for my $key (sort @keys) {
+        CORE::push @arr,$key,$self->{$key};
+    }
+
+    return wantarray? @arr: \@arr;
+}
+
+# -----------------------------------------------------------------------------
+
 =head3 weaken() - Erzeuge schwache Referenz
 
 =head4 Synopsis
@@ -1515,7 +1591,7 @@ Das Benchmark-Programm (bench-hash):
 
 =head1 VERSION
 
-1.213
+1.214
 
 =head1 AUTHOR
 
@@ -1523,7 +1599,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2023 Frank Seitz
+Copyright (C) 2024 Frank Seitz
 
 =head1 LICENSE
 

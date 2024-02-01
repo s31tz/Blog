@@ -11,7 +11,7 @@
 %Figure: file="IMGDIR/perl-130x65.png" width="104" height="50"
   url="https://www.perl.org"
 
-Wie in Q{U{Einen Offline-Mirror des CPAN erstellen}} beschrieben, ist
+Wie in U{Einen Offline-Mirror des CPAN erstellen} beschrieben, ist
 es möglich, eine beliebige Kollektion von CPAN-Modulen auf einem
 Rechner ohne Internet-Zugang zu installieren. Der Offline-Mirror hat
 aktuell eine Größe von ca. 5GB. Dies läßt sich reduzieren, indem man

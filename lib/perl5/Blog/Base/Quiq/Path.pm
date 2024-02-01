@@ -31,7 +31,7 @@ use strict;
 use warnings;
 use utf8;
 
-our $VERSION = '1.213';
+our $VERSION = '1.214';
 
 use Blog::Base::Quiq::Option;
 use Blog::Base::Quiq::FileHandle;
@@ -51,6 +51,7 @@ use File::Find ();
 use Blog::Base::Quiq::Exit;
 use Blog::Base::Quiq::TempDir;
 use Cwd ();
+use POSIX ();
 use Blog::Base::Quiq::Time;
 use Blog::Base::Quiq::Process;
 
@@ -2515,7 +2516,7 @@ sub tempDir {
 
 =head4 Synopsis
 
-  $absolutePath = $class->absolute($path);
+  $absolutePath = $this->absolute($path);
 
 =head4 Alias
 
@@ -2532,8 +2533,10 @@ unverändert.
 # -----------------------------------------------------------------------------
 
 sub absolute {
-    my $class = shift;
+    my $this = shift;
     my $path = shift // '';
+
+    $path = $this->expandTilde($path);
     return Cwd::realpath($path);
 }
 
@@ -3017,6 +3020,84 @@ sub mode {
     }
 
     return $stat[2] & 07777;
+}
+
+# -----------------------------------------------------------------------------
+
+=head3 moveToDateSubDir() - Verschiebe Pfad in Datums-Subverzeichnis
+
+=head4 Synopsis
+
+  $this->moveToDateSubDir($path);
+  $this->moveToDateSubDir($path,$rootDir);
+
+=head4 Arguments
+
+=over 4
+
+=item $path
+
+Pfad, der verschoben wird.
+
+=item $rootDir (Default: '.')
+
+Verzeichnis, in dem das Datums-Subverzeichnis angelegt wird.
+
+=back
+
+=head4 Options
+
+=over 4
+
+=item -verbose => $bool (Default: 1)
+
+Gib Information aus.
+
+=back
+
+=head4 Description
+
+Ermitte das Modifikationsdatum des Pfads $path, erzeuge ein Subverzeichnis
+C<YYYY-MM-DD> in $rootDir und verschiebe den Pfad dorthin. Diese Methode
+ist nützlich, wenn der Inhalt eines großen Verzeichnisses, der sich
+nach-und-nach aufgebaut hat, auf Subverzeichnisse aufgeteilt werden soll.
+
+=head4 Example
+
+Innerhalb eines Verzeichnisses:
+
+  $ perl -MBlog::Base::Quiq::Path -E 'Blog::Base::Quiq::Path->moveToDateSubDir($_) for glob("*.jpg")'
+
+Mit Zielverzeichnis ("dest"):
+
+  $ perl -MBlog::Base::Quiq::Path -E 'Blog::Base::Quiq::Path->moveToDateSubDir($_,"dest") for glob("src/*.jpg")'
+
+=cut
+
+# -----------------------------------------------------------------------------
+
+sub moveToDateSubDir {
+    my $this = shift;
+
+    # Optionen und Argumente
+
+    my $verbose = 1;
+
+    my $argA = $this->parameters(1,2,\@_,
+        -verbose => \$verbose,
+    );
+    my ($path,$rootDir) = @$argA;
+
+    my $date = POSIX::strftime('%Y-%m-%d',localtime $this->mtime($path));
+    my $destDir = $rootDir? "$rootDir/$date": $date;
+    my $name = $this->filename($path);
+    if ($verbose) {
+        say "$path => $destDir/$name";
+    }
+    $this->mkdir($destDir,-recursive=>1);
+    $this->duplicate('move',$path,"$destDir/$name");
+
+    return;
 }
 
 # -----------------------------------------------------------------------------
@@ -3528,7 +3609,7 @@ Die Schrittweite der Nummerierung.
 Ordne alle Pfade von $from bis $to (lexikalisch sortiert) nach der
 Datei $after ein. Ist $after leer (Leerstring oder undef), werden
 die Pfade an den Anfang gestellt. Alle Angaben I<vor> der
-(Re-)Nummerierung.
+Nummerierung.
 
 =item -start => $n (Default: $step)
 
@@ -3538,7 +3619,7 @@ Verwende $n als Startwert.
 
 =head4 Description
 
-Nummeriere die Pfade @paths, gemäß ihrer gegebenen Reihenfolge.
+Nummeriere die Pfade @paths, gemäß der gegebenen Reihenfolge.
 Der Basisname der jeweiligen Datei/des Directory aus @paths wird
 hierbei durch eine Nummer der Breite $width ersetzt. Die Extension
 (sofern vorhanden) bleibt erhalten. Die Nummerierung erfolgt mit
@@ -4104,7 +4185,7 @@ sub uid {
 
 =head1 VERSION
 
-1.213
+1.214
 
 =head1 AUTHOR
 
@@ -4112,7 +4193,7 @@ Frank Seitz, L<http://fseitz.de/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2023 Frank Seitz
+Copyright (C) 2024 Frank Seitz
 
 =head1 LICENSE
 
