@@ -33,7 +33,7 @@ use strict;
 use warnings;
 use utf8;
 
-our $VERSION = '1.215';
+our $VERSION = '1.218';
 
 use Time::Local ();
 use Blog::Base::Quiq::Duration;
@@ -1452,7 +1452,7 @@ sub monthAbbrToNum {
 
 =head1 VERSION
 
-1.215
+1.218
 
 =head1 AUTHOR
 
