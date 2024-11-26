@@ -1,0 +1,31 @@
+# Date: 2024-07-08
+# Id: 177
+# Draft: no
+# Categories: SQLite
+
+%Document:
+  title="SQLite client (sqlite3) mit Transaktionen und Foreign Key Constraints"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/sqlite-759x339.png" width="125" height="56"
+  url="https://www.sqlite.org"
+
+U{SQLite} unterstützt Transaktionen und Forein Key Constraints. Diese sind bei
+Nutzung des interaktiven Clients U{sqlite3} per Default allerdings nicht
+aktiviert.
+
+Eine automatische Aktivierung lässt sich durch eine geeignete Startup-Datei
+erreichen:
+
+  $ vi ~/.sqliterc
+  BEGIN TRANSACTION;
+  PRAGMA foreign_keys = ON;
+
+%Link:
+  name="SQLite"
+  url="https://sqlite.org"
+
+%Link:
+  name="sqlite3"
+  url="https://sqlite.org/cli.html"
