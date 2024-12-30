@@ -21,7 +21,7 @@ oder einem Teil davon.
 
 Wie das Verbinden von mehr als zwei Boxen geht, möchte ich hier
 kurz beschreiben, da ich keine detaillierte Beschreibung dazu gefunden habe
-und das genaue Vorgehen entsprechend experimentell ermitteln musste.
+und das genaue Vorgehen entsprechend experimentell ermittelt habe.
 
 B{Schritt 1}
 
@@ -33,6 +33,8 @@ Einschalten also keine Bluetooth-Verbindung zu dieser (oder einer anderen)
 Soundquelle auf. Auf der Master-Box die Taste I{Multi Speaker Connection}
 betätigen.
 
+%Figure: file="IMGDIR/jbl-partybox-master-600x407.jpg" width="150"
+
 B{Schritte 2 bis n}
 
 Nacheinander die gewünschten weiteren Boxen 2 bis n, die I{Slaves},
@@ -40,6 +42,8 @@ einschalten. Diese sollten (s.o.) keine eigene Bluetooth-Verbindung
 irgendwohin aufbauen. Anschließend wird die Verbindung zum Master durch
 Betätigung der Taste I{Multi Speaker Connection} hergestellt. Nach ein paar
 Sekunden kommt die Musik auch aus der betreffenden Slave-Box.
+
+%Figure: file="IMGDIR/jbl-partybox-slave-600x407.jpg" width="150"
 
 B{Ergebnis}
 
