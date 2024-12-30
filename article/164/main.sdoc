@@ -11,7 +11,7 @@
 %Figure: file="IMGDIR/sqlite-759x339.png" width="125" height="56"
   url="https://www.sqlite.org"
 
-U{SQLite}  unterstützt Transaktionen und Forein Key Constraints. Diese sind bei
+U{SQLite} unterstützt Transaktionen und Forein Key Constraints. Diese sind bei
 Nutzung des interaktiven Clients U{sqlite3} per Default allerdings nicht
 aktiviert.
 
