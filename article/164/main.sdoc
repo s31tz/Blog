@@ -12,7 +12,7 @@
   url="https://www.sqlite.org"
 
 U{SQLite} unterstützt Transaktionen und Forein Key Constraints. Diese sind bei
-Nutzung des interaktiven Clients U{sqlite3} per Default allerdings nicht
+Nutzung des interaktiven Clients U{sqlite3} per Default allerdings I{nicht}
 aktiviert.
 
 Eine automatische Aktivierung lässt sich durch eine geeignete Startup-Datei

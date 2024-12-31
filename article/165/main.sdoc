@@ -21,17 +21,17 @@ einem Teil davon.
 
 Wie das Verbinden von mehr als zwei Boxen geht, möchte ich hier
 kurz beschreiben, da ich keine detaillierte Beschreibung dazu gefunden
-und das Vorgehen daher mehr experimentell ermittelt habe.
+habe und das Vorgehen daher mehr experimentell ermitteln musste.
 
 B{Schritt 1}
 
 Eine der Boxen zum I{Master} erklären. Der Master wird als erstes eingeschaltet
 und ist als einzige Box via Bluetooth mit der Soundquelle verbunden. Die
 Musikwiedergabe auf der Soundquelle starten. Die Musik ertönt aus der Box.
-Alle anderen Boxen sind der Soundquelle unbekannt (Q{entkoppelt}), bauen beim
-Einschalten also keine Bluetooth-Verbindung zu dieser (oder einer anderen)
-Soundquelle auf. Auf der Master-Box die Taste I{Multi Speaker Connection}
-betätigen.
+Alle anderen Boxen sollten der Soundquelle unbekannt oder dort deaktiviert
+sein, so dass beim Einschalten keine Bluetooth-Verbindung zu dieser
+(oder einer anderen) Soundquelle aufgebaut wird. Auf der Master-Box die
+Taste I{Multi Speaker Connection} betätigen.
 
 %Figure: file="IMGDIR/jbl-partybox-master-600x407.jpg" width="150"
   title=" Panel des Masters"
@@ -49,11 +49,11 @@ Betätigung der Taste I{Multi Speaker Connection} hergestellt. Nach ca.
 
 B{Ergebnis}
 
-* Die Musik wird auf allen Boxen wiedergegeben
+* Die Musik wird auf allen verbundenen Boxen wiedergegeben
 * Die Slaves Q{erben} initial die Einstellungen des Masters
-* Die Einstellungen können an den Slaves individuell verändert werden,
+* Die Einstellungen können an den Slaves individuell verändert werden, z.B.
   die Lautstärke am rechten Knopf, die visuellen Effekte am linken Knopf
-* Werden über die JBL App Einstellungen am Master vorgenommen, werden
+* Werden I{über die JBL App} Einstellungen am Master vorgenommen, werden
   diese auf die Slaves übertragen
 
 B{Beschreibung im Manual}
