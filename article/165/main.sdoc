@@ -11,27 +11,28 @@
 %Figure: file="IMGDIR/jbl-300x173.png" height="42"
   url="https://de.jbl.com/party-lautsprecher/PARTYBOX-STAGE-320.html"
   
-Die U{JBL PartyBox Stage 320} hat einen für meine Ohren guten Sound.
+Die U{JBL PartyBox Stage 320} besitzt einen für meine Ohren guten Sound.
 Die Box hat einen Frequenzgang von 40Hz bis 20kHz und eine Leistung von 240W.
 
 Ich habe fünf Stück davon in den Räumen meiner Wohnung verteilt, denn
 der Clou ist, dass I{sie sich zu einer Einheit verbinden lassen}. Dies ergibt
-einen raumübergreifenden Klangteppich in der ganzen Wohnung - oder in
-einem Teil davon.
+einen raumübergreifenden Klangteppich in der ganzen Wohnung - oder wahlweise
+in einem Teil davon.
 
 Wie das Verbinden von mehr als zwei Boxen geht, möchte ich hier
 kurz beschreiben, da ich keine detaillierte Beschreibung dazu gefunden
-habe und das Vorgehen daher mehr experimentell ermitteln musste.
+habe und daher das Vorgehen mehr experimentell ermitteln musste.
 
 B{Schritt 1}
 
-Eine der Boxen zum I{Master} erklären. Der Master wird als erstes eingeschaltet
-und ist als einzige Box via Bluetooth mit der Soundquelle verbunden. Die
-Musikwiedergabe auf der Soundquelle starten. Die Musik ertönt aus der Box.
-Alle anderen Boxen sollten der Soundquelle unbekannt oder dort deaktiviert
-sein, so dass beim Einschalten der jeweiligen Box keine Bluetooth-Verbindung
-zu dieser (oder einer anderen) Soundquelle aufgebaut wird. Auf der Master-Box
-die Taste I{Multi Speaker Connection} betätigen.
+Eine der Boxen zum I{Master} erklären. Der Master wird als erstes
+eingeschaltet und ist als einzige Box via Bluetooth mit der
+Soundquelle verbunden. Die Musikwiedergabe auf der Soundquelle
+starten. Die Musik ertönt aus der Box.  Alle anderen Boxen sollten der
+Soundquelle unbekannt oder dort deaktiviert sein, so dass beim
+Einschalten der jeweiligen Box keine (Audio) Bluetooth-Verbindung zu
+dieser (oder einer anderen) Soundquelle aufgebaut wird. Auf der
+Master-Box die Taste I{Multi Speaker Connection} betätigen.
 
 %Figure: file="IMGDIR/jbl-partybox-master-600x407.jpg" width="150"
   title=" Panel des Masters"
@@ -39,8 +40,8 @@ die Taste I{Multi Speaker Connection} betätigen.
 B{Schritte 2 bis n}
 
 Nacheinander die gewünschten weiteren Boxen 2 bis n, die I{Slaves},
-einschalten. Diese sollten (s.o.) keine eigene Bluetooth-Verbindung
-irgendwohin aufbauen. Dann wird die Verbindung zum Master durch
+einschalten. Diese sollten (s.o.) keine eigene (Audio) Bluetooth-Verbindung
+irgendwohin aufbauen. Die Verbindung zum Master wird durch
 Betätigung der Taste I{Multi Speaker Connection} hergestellt. Nach ca.
 10 Sekunden (dauert ein bisschen) kommt die Musik auch aus der
 betreffenden Slave-Box.
