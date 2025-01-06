@@ -16,12 +16,12 @@ Die Box hat einen Frequenzgang von 40Hz bis 20kHz und eine Leistung von 240W.
 
 Ich habe fünf Stück davon in den Räumen meiner Wohnung verteilt, denn
 der Clou ist, dass I{sie sich zu einer Einheit verbinden lassen}. Dies ergibt
-einen raumübergreifenden Klangteppich in der ganzen Wohnung - oder wahlweise
-in einem Teil davon.
+einen raumübergreifenden Klangteppich in der ganzen Wohnung - oder einem
+einem frei gewählten Teil davon.
 
 Wie das Verbinden von mehr als zwei Boxen geht, möchte ich hier
 kurz beschreiben, da ich keine detaillierte Beschreibung dazu gefunden
-habe und daher das Vorgehen mehr experimentell ermitteln musste.
+habe und das genaue Vorgehen daher mehr experimentell ermitteln musste.
 
 B{Schritt 1}
 
@@ -52,7 +52,6 @@ betreffenden Slave-Box.
 B{Ergebnis}
 
 * Die Musik wird auf allen verbundenen Boxen wiedergegeben
-* Die Slaves Q{erben} initial die Einstellungen des Masters
 * Die Einstellungen können an den Slaves individuell verändert werden, z.B.
   die Lautstärke am rechten Knopf oder die visuellen Effekte am linken Knopf
 * Werden I{über die JBL App} Einstellungen am Master vorgenommen, werden

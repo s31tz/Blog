@@ -24,7 +24,7 @@ authentisiert:
   my $ldap = Net::LDAP->new(
       'ldaps://dc1',    # verschlüsselte Verbindung
       verify => 'none', # keine Verifikation des Server-Zertifikats \
-        (sollte eigetlich 'require' sein)
+        (sollte eigentlich 'require' sein)
       onerror => 'die', # Exception, wenn wenn nachfolgende \
         Methodenaufrufe fehlschlagen
   ) or die $@;
