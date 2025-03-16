@@ -23,7 +23,7 @@ use Blog::Base::Quiq::Path;
 use Blog::Base::Quiq::Config;
 use Blog::Base::Quiq::Database::Connection;
 use Blog::Base::Quiq::Html::Producer;
-use Blog::Base::Quiq::Json;
+use Blog::Base::Quiq::Json::Code;
 use Blog::Base::Quiq::FileHandle;
 use Blog::Base::Quiq::PlotlyJs::XY::Diagram;
 use Blog::Base::Quiq::Url;
@@ -157,7 +157,7 @@ print $parT->asTable;
     # *** Parameter-Objekte instantiieren
 
     my $h = Blog::Base::Quiq::Html::Producer->new;
-    my $j = Blog::Base::Quiq::Json->new;
+    my $j = Blog::Base::Quiq::Json::Code->new;
 
     my (@par,$obj);
     for my $parameter (@parameters) {

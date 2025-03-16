@@ -238,7 +238,7 @@ use warnings;
 
 our $VERSION = '1.224';
 
-use Blog::Base::Quiq::Json;
+use Blog::Base::Quiq::Json::Code;
 use Blog::Base::Quiq::Template;
 
 # -----------------------------------------------------------------------------
@@ -500,7 +500,7 @@ sub js {
     my $zeroLineColor = '#d0d0d0';
 
     # Instantiiere Objekt zum Erzeugen von JSON-Code
-    my $j = Blog::Base::Quiq::Json->new;
+    my $j = Blog::Base::Quiq::Json::Code->new;
 
     # Traces
 

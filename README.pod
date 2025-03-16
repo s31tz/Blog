@@ -12,6 +12,10 @@ Die Quellen der Artikel des Blog  L<http://fseitz.de/blog>
 
 =item *
 
+L<Perl: CSV-Dateien korrekt verarbeiten|https://github.com/s31tz/Blog/blob/master/article/166/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/179-x.html>)
+
+=item *
+
 L<JBL PartyBox Stage 320 - Mehrere Boxen zu einer Einheit verbinden|https://github.com/s31tz/Blog/blob/master/article/165/main.sdoc> (L<Article|http://fseitz.de/blog/index.php?/archives/178-x.html>)
 
 =item *

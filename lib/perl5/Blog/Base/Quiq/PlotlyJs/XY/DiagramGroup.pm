@@ -236,7 +236,7 @@ use utf8;
 our $VERSION = '1.224';
 
 use Blog::Base::Quiq::Math;
-use Blog::Base::Quiq::Json;
+use Blog::Base::Quiq::Json::Code;
 use Blog::Base::Quiq::JavaScript;
 use Blog::Base::Quiq::Html::Table::Simple;
 use Blog::Base::Quiq::JQuery::Function;
@@ -509,7 +509,7 @@ sub html {
 
     # JavaScript-Code
 
-    my $j = Blog::Base::Quiq::Json->new;
+    my $j = Blog::Base::Quiq::Json::Code->new;
 
     # * Namespace mit Datenstrukturen und Funktionen
 
