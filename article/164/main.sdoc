@@ -22,10 +22,6 @@ erreichen:
   BEGIN TRANSACTION;
   PRAGMA foreign_keys = ON;
 
-Von nun an werden Datenänderungen per INSERT, UPDATE, DELETE auf der Datenbank
-erst permanent, wenn sie mit COMMIT bestätigt werden. Mit ROLLBACK können
-sie wahlweise verworfen werden.
-
 %Link:
   name="SQLite"
   url="https://sqlite.org"
