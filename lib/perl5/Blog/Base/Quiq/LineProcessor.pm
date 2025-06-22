@@ -51,7 +51,7 @@ use strict;
 use warnings;
 use utf8;
 
-our $VERSION = '1.227';
+our $VERSION = '1.228';
 
 use Blog::Base::Quiq::Option;
 use Blog::Base::Quiq::FileHandle;
@@ -403,7 +403,7 @@ sub dump {
 
 =head1 VERSION
 
-1.227
+1.228
 
 =head1 AUTHOR
 
