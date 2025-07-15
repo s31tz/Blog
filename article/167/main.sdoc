@@ -1,0 +1,116 @@
+# Date: 2025-07-13
+# Id: 180
+# Draft: no
+# Categories: Perl, Mojolicious
+
+%Document:
+  title="Mojolicious: Prüfung von Parameterwerten"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/mojolicious-logo-386x90.png" \
+  width=189 height=44 url="https://mojolicious.org/"
+
+Eine Seite, die Daten verändert, wie z.B. eine Speichernseite, die die
+Felder eines Formulars gepostet bekommt, um deren Werte auf einer
+Datenbank zu speichern, sollte alle Daten vor dem Speichern akribisch
+prüfen.
+
+Als Helper definieren wir uns zwei Methoden.
+
+Erstens Methode B{getParam()}, die den Wert eines Parameters abfragt und
+zusammen mit dem Parameternamen liefert:
+
+%Code: highlight=Perl
+  $self->helper(
+      getParam => sub {
+          my ($self,$field) = @_;
+          my $val = $self->param($field);
+          return ($val,$field);
+      }
+  );
+.
+
+Zweitens Methode B{returnTo()}, die wir im Fehlerfall nutzen, um die
+Fehlermeldung, den Namen des fehlerauslösenden Feldes und sämtliche
+Formularwerte an die Formularseite zurück zu kommunizieren:
+
+%Code: highlight=Perl
+  $self->helper(
+      returnTo => sub {
+          my ($self,$page,$msg,$field) = @_;
+
+          my $url = Quiq::Url->href($page,
+              navMsg => $msg,
+              navField => $field,
+              -append => $self->req->params->to_string,
+          );
+          $self->redirect_to($url);
+
+          return;
+      }
+  );
+.
+
+Damit können wir leicht eine universelle Fehlerbehandlung auf der
+Speichernseite realisieren. Beispiel (Speichern eines Belegs):
+
+%Code: highlight=Perl
+  if ($aktion eq 'Speichern') {
+      !! Prüfe die Formulardaten
+
+      my $a = Quiq::Assert->new;
+
+      my ($field,$val,$msg);
+      ($val,$field) = $self->getParam('blg_betrag');
+      if (!$a->isNumber($val)) {
+          $msg = "FEHLER: Ungültiger Betrag ,$val'";
+      }
+      ...weitere Prüfungen...
+
+      if ($msg) {
+          $self->returnTo('/belegFormular',$msg,$field);
+          return;
+      }
+
+      ...führe die Operation aus...
+  }
+.
+
+Auf der Formularseite nehmen wir die Information entgegen, initialisieren das
+bearbeitete Objekt mit den vorhergehenden Formulardaten, stellen die
+Fehlermeldung dar und setzen den Fokus auf das Feld mit dem beanstandeten
+Wert.
+
+Entgegennahme der Information:
+
+%Code: highlight=Perl
+  my $field = $self->param('navField') // 'blg_datum';
+  my $msg = $self->param('navMsg') // '';
+  if ($msg =~ /FEHLER/) {
+      $blg->initFromCgi($self);
+  }
+.
+
+Darstellung der Fehlermeldung auf der Seite (wir nutzen I{zwei} CSS-Klassen,
+auch eine für die Darstellung von normalen Meldungen):
+
+%Code: highlight=Perl
+  $h->tag('div',
+      -ignoreIf => !$msg,
+      class => $msg =~ /FEHLER/i? 'fehler': 'meldung',
+      $msg
+  ),
+.
+
+Den Fokus setzen wir zum Schluss unter Nutzung von jQuery:
+
+%Code: highlight=Perl
+  ready => q~
+      var e = $('#__FIELD__');
+      $(e).focus();
+  ~,
+  placeholders => [
+      __FIELD__ => $field,
+  ],
+.

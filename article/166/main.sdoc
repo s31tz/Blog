@@ -1,0 +1,72 @@
+# Date: 2025-03-17
+# Id: 179
+# Draft: no
+# Categories: Perl, CSV
+
+%Document:
+  title="Perl: CSV-Dateien korrekt verarbeiten"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/perl-130x65.png" width="104" height="50"
+  url="https://www.perl.org"
+
+Es ist ratsam, einer Verarbeitung von CSV-Dateien zu widerstehen, die z.B.
+so aussieht:
+
+%Code: highlight=Perl
+  while (<$fh>) {
+      my @row = split /;/;
+      # ... @row verarbeiten ...
+  }
+.
+
+Denn diese Verarbeitung misslingt, wenn in den Daten
+
+* Kolumnentrennzeichen (hier: Semikolon) oder
+* Zeilentrennzeichen (unter Unix: LF) oder
+* doppelte Anführungsstriche
+
+vorkommen.
+
+Einen sicheren Weg bietet das Modul U{Text::CSV_XS}.
+
+Instantiierung (das Objekt kann zum Lesen I{und} Schreiben genutzt werden):
+
+%Code: highlight=Perl
+  my $csv = Text::CSV_XS->new({
+      binary => 1,
+      sep_char => ';',
+      eol => "\n", # nur für's Schreiben
+  }) or die "FATAL: CSV instantiation failed\n";
+.
+
+Lesen:
+
+%Code: highlight=Perl
+  while (my $row = $csv->getline($fh)) {
+      # ... @$row verarbeiten ...
+  }
+.
+
+Schreiben:
+
+%Code: highlight=Perl
+  $csv->print($fh,\@titles);
+  for my $row (@rows) {
+      $csv->print($fh,$row);
+  }
+.
+
+Hierbei ist:
+
+%Code:
+$fh     - Filehandle zum Lesen bzw. Schreiben
+@titles - Array von Kolumnentiteln
+@rows   - Array von Zeilen
+$row    - Zeile (= Referenz auf ein Array von Kolumnenwerten)
+.
+
+%Link:
+  name="Text::CSV_XS"
+  url="https://metacpan.org/pod/Text::CSV_XS"
