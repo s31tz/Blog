@@ -21,7 +21,7 @@ use v5.10;
 use strict;
 use warnings;
 
-our $VERSION = '1.230';
+our $VERSION = '1.231';
 
 use Blog::Base::Quiq::Math;
 use Blog::Base::Quiq::Formatter;
@@ -302,7 +302,7 @@ sub reducedIsoTime {
 
 =head1 VERSION
 
-1.230
+1.231
 
 =head1 AUTHOR
 
