@@ -28,7 +28,7 @@ use v5.10;
 use strict;
 use warnings;
 
-our $VERSION = '1.231';
+our $VERSION = '1.232';
 
 use Blog::Base::Quiq::Css;
 use Blog::Base::Quiq::JavaScript;
@@ -91,7 +91,7 @@ sub loadFiles {
 
 =head1 VERSION
 
-1.231
+1.232
 
 =head1 AUTHOR
 
