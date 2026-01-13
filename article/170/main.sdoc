@@ -1,0 +1,42 @@
+# Date: 2026-01-11
+# Id: 183
+# Draft: no
+# Categories: Perl
+
+%Document:
+  title="Perl: XML-Template mit XML::Compile generieren"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/perl-130x65.png" width="104" height="50"
+  url="https://www.perl.org"
+
+Mit der Methode C{$sch->template()} der Klasse U{XML::Compile::Schema}
+kann ein XML-Template zu einer gegebenen Schemadefinition generiert werden
+(Anwendungsfall s. U{XML: Erzeugung von komplexem XML}).
+
+Beispiel:
+
+  $ perl -MQuiq::Zugferd -E 'say Quiq::Zugferd->createTemplate(\
+      "ZF24_DE/Schema/3_Factur-X_1.08_EN16931")'
+
+Die aktuelle Implementierung von C{XML::Compile} hat jedoch leider das Defizit,
+dass mehrfach auftretende XML-Konstrukte C{<ELEMENT>...</ELEMENT>} ab dem
+zweiten Auftreten abgekürzt werden zu C{<ELEMENT/>}. Dies macht die Nutzung des
+Templates leider weitgehend unbrauchbar.
+
+Mit einem kleinen Patch lässt sich dies jedoch beheben. Das unerwünschte
+Verhalten unterbleibt, wenn in C{Compile/Translate/Template.pm} die Zeile
+
+  $reuse_type{$type}++;   $reuse_tag{$tag}++;
+
+auskommentiert wird.
+
+%Link:
+  name="XML: Erzeugung von komplexem XML"
+  url=http://fseitz.de/blog/index.php?/archives/182-XML-Erzeugung-von-komplexem-XML.html
+
+= Links
+
+* U{"https://metacpan.org/dist/XML-Compile",\
+    text="XML::Compile"}

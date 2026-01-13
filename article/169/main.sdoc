@@ -1,0 +1,40 @@
+# Date: 2026-01-10
+# Id: 182
+# Draft: no
+# Categories: XML, Perl
+
+%Document:
+  title="XML: Erzeugung von komplexem XML"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/xml-480x512.png" height="60"
+  url="https://www.w3.org/XML/"
+
+Ausgangslage: Wir möchten hochstrukturierte XML-Dateien erzeugen, konkret:
+E-Rechnungen nach den Standards ZUGFeRD und XRechnung.
+
+= Ablauf
+
+1. Einlesen des betreffenden XML-Templates mit Platzhaltern
+2. Wandlung des XML-Templates in eine hierarchische Datenstruktur der
+   Programmiersprache (XML-Baum)
+3. Ersetzen der Platzhalter im XML-Baum durch konrete Werte
+4. Entfernen aller unersetzten Platzhalter
+5. Entfernen aller leeren Knoten des Baums (rekursiv)
+6. Wandeln des resultierenden Baums in XML-Code
+
+= XML::Compile
+
+Als wichtigstes Hilfsmittel zur Durchführung der Aufgabe verwenden wir das
+Perl-Package U{XML::Compile}. Es leistet (unter Rückgriff auf eine XML
+Schemadefinition) Folgendes:
+
+%Link:
+  name=XML::Compile
+  url=https://metacpan.org/dist/XML-Compile
+
+* Es generiert ein XML-Template zur Schemadefinition
+* Es übersetzt XML-Code (z.B. das Template) in eine Datenstruktur (XML-Baum),
+  die mit Mitteln der Programmiersprache (Perl) bearbeitet werden kann
+* Es rückübersetzt den finalen XML-Baum in XML-Code

@@ -1,0 +1,21 @@
+# Date: 2025-07-13
+# Id: 181
+# Draft: no
+# Categories: Perl
+
+%Document:
+  title="Perl: Perl-Modul finden"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/perl-130x65.png" width="104" height="50"
+  url="https://www.perl.org"
+
+Manchmal möchte man wissen, unter welchem Pfad ein bestimmtes Perl-Modul zu
+finden ist. Einfache Antwort: Mit C{perldoc -l}:
+
+  $ perldoc -l <MODUL>
+
+Hierbei ist <MODUL> der Modulname, z.B C{Scalar::Util}. (Genau genommen wird
+der Pfad der Datei mit der POD-Doku gesucht. Die Doku sollte jedoch i.d.R.
+in der Moduldatei enthalten sein.)
