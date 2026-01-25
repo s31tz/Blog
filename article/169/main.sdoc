@@ -11,8 +11,8 @@
 %Figure: file="IMGDIR/xml-480x512.png" height="60"
   url="https://www.w3.org/XML/"
 
-Ausgangslage: Wir möchten hochstrukturierte XML-Dateien erzeugen, konkret:
-E-Rechnungen nach den Standards ZUGFeRD und XRechnung.
+Ausgangslage: Wir möchten hochstrukturierte XML-Dateien erzeugen,
+beispielsweise E-Rechnungen nach den Standards ZUGFeRD und XRechnung.
 
 = Ablauf
 
@@ -27,8 +27,8 @@ E-Rechnungen nach den Standards ZUGFeRD und XRechnung.
 = XML::Compile
 
 Als wichtigstes Hilfsmittel zur Durchführung der Aufgabe verwenden wir das
-Perl-Package U{XML::Compile}. Es leistet (unter Rückgriff auf eine XML
-Schemadefinition) Folgendes:
+Perl-Package U{XML::Compile}. Es leistet (unter Rückgriff auf die
+betreffende XML Schemadefinition) Folgendes:
 
 %Link:
   name=XML::Compile
