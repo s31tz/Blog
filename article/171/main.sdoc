@@ -1,0 +1,60 @@
+# Date: 2026-02-15
+# Id: 184
+# Draft: no
+# Categories: Mojolicious, Perl
+
+%Document:
+  title="Mojolicious: Formularvalidierung in Webanwendung"
+  generateAnchors=0
+  utf8=1
+
+%Figure: file="IMGDIR/mojolicious-logo-386x90.png" \
+  width=189 height=44 url="https://mojolicious.org/"
+
+%Figure: file="IMGDIR/perl-130x65.png" width="104" height="50"
+  url="https://www.perl.org"
+
+In einer Webanwendung, die Daten über Formulare pflegt/verwaltet, ist es
+essentiell, die Eingabedaten vor der Speicherung akribisch zu prüfen.
+
+Im Falle einer Regelverletzung wird mit einer aussagekräftigen Fehlermeldung
+zum ausgefüllten Formular zurückgekehrt und auf das betreffende Eingabefeld
+positioniert (also der Eingabefokus gesetzt).
+
+Wie lässt sich dies effektiv erreichen?
+
+* Die Prüfmethoden sind in der Klasse Quiq::Assert enthalten
+* Wir führen die Tests in einem eval-Block durch
+* 
+
+  if ($aktion eq 'Speichern') {
+      my $field;
+      eval {
+          my $val;
+
+          my $a = Quiq::Assert->new;
+
+          $field = 'NAME1';
+          $val = $self->param($field)
+          if (!$a->METHOD1($val)) {
+              die "FEHLER: $field verletzt METHOD1\n";
+          }
+          if (!$a->METHOD2($val)) {
+              die "FEHLER: $field verletzt METHOD2\n";
+          }
+          ...
+          $field = 'NAME2';
+          $val = $self->param($field);
+          if (!$a->METHOD3($val)) {
+              die "FEHLER: $field verletzt METHOD3\n";
+          }
+      };
+      if ($@) {
+          $@ =~ s/\n$//;
+          my $url = '/FORMULAR?'."navMsg=$@&navFocus=$field&".
+              $self->req->params->to_string;
+          $self->redirect_to($url);
+          return;
+      }
+      ...
+  }
