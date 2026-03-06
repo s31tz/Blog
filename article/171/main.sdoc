@@ -25,8 +25,10 @@ Wie lässt sich dies effektiv erreichen?
 
 * Die Prüfmethoden sind in der Klasse Quiq::Assert enthalten
 * Wir führen die Tests in einem eval-Block durch
-* 
+* Im Falle einer Regelverletzung wird eine Exception ausgelöst, der Prüfblock
+  sofort verlassen und mit Fehlermeldung zum Formular zurückgekehrt
 
+%Code:
   if ($aktion eq 'Speichern') {
       my $field;
       eval {
@@ -58,3 +60,4 @@ Wie lässt sich dies effektiv erreichen?
       }
       ...
   }
+.
