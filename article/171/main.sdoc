@@ -29,6 +29,7 @@ Wie lässt sich dies effektiv erreichen?
   sofort verlassen und mit Fehlermeldung zum Formular zurückgekehrt
 
 %Code:
+  highlight=Perl
   if ($aktion eq 'Speichern') {
       my $field;
       eval {
