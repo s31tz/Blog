@@ -68,7 +68,7 @@ use v5.10;
 use strict;
 use warnings;
 
-our $VERSION = '1.236';
+our $VERSION = '1.237';
 
 use Blog::Base::Quiq::Css;
 use Blog::Base::Quiq::JavaScript;
@@ -407,7 +407,7 @@ sub putValue {
 
 =head1 VERSION
 
-1.236
+1.237
 
 =head1 AUTHOR
 
