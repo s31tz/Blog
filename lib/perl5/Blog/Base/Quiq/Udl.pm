@@ -107,7 +107,7 @@ use strict;
 use warnings;
 use utf8;
 
-our $VERSION = '1.237';
+our $VERSION = '1.238';
 
 use Blog::Base::Quiq::Hash;
 use Blog::Base::Quiq::Database::Config;
@@ -790,7 +790,7 @@ sub udl {
 
 =head1 VERSION
 
-1.237
+1.238
 
 =head1 AUTHOR
 
